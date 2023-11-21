@@ -6,7 +6,6 @@
 
 #wrap {
     width: 100vw;
-    background-color: wheat;
 }
 
 header{
@@ -90,7 +89,7 @@ header .main-list li {
     font-family: 'Pretendard Light';
     font-size: 18px;
     text-decoration: none;
-    color: #222;
+    color: rgba(34, 34, 34);
 }
 
 .main-list img{
