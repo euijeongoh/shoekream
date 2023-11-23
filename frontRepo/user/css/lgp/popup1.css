@@ -1,0 +1,43 @@
+.popup1 {
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid;
+    width: 600px;
+    height: 400px;
+    color: black;
+    /* display: flex; */
+    display: flex;
+    flex-direction: column;
+
+}
+
+.popup1>:nth-child(1) {
+    margin: auto;
+    margin-top: 75px;
+    /* background-color: yellow; */
+    width: 250px;
+    height: 200px;
+}
+
+.popup1>:nth-child(2) {
+    /* background-color: gray; */
+    width: 600px;
+    height: 100px;
+}
+
+.choice {
+    display: flex;
+    justify-content: space-around;
+}
+
+.choice>div {
+    /* background-color: blue; */
+    width: 100px;
+    height: 100px;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    ;
+}
