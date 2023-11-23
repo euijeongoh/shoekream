@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#menutab {
+    width: 1280px;
+    margin: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#menutab ul {
+    display: flex;
+    height: 44px;
+    justify-content: start;
+}
+
+#menutab ul span{
+    /* border-bottom: 2px solid black; */
+    margin-left: 40px;
+    padding-top: 15px;
+    padding-bottom: 6px;
+    font-family: 'Pretendard';
+    font-size: 16px;
+    color: rgba(34, 34, 34, 0.8);
+}
