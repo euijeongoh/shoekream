@@ -60,10 +60,27 @@
 }
 
 .product-list-wrap {
+    width: 1200px;
     padding: 0px 40px;
     background-color: aquamarine;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.product-item {
-    
+.product-list-wrap li{
+    width: 20%;
+    margin-right: 6px;
+}
+
+.product-list-wrap li #product-img {
+    background-color: rgba(235, 240, 245);
+    width: 186px;
+    height: 186px;
+    border-radius: 12px;
+}
+
+.product-list-wrap li #product-img img {
+    width: 186px;
+    height: 186px;
+    border-radius: 12px;
 }
