@@ -6,6 +6,7 @@
 
 #wrap {
     width: 100vw;
+    background-color: wheat;
 }
 
 header{
@@ -40,7 +41,7 @@ header .top-list ul li {
 
 .top-list ul li a {
     text-decoration: none;
-    color: rgba(34, 34, 34, 0.8);;
+    color: rgba(34, 34, 34, 0.8);
 }
 
 #search-btn {

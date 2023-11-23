@@ -9,7 +9,7 @@
 }
 
 .menu-container {
-    width: 180px;
+    width: 200px;
     margin: 0px 20px 0px 0px;
 }
 
@@ -22,12 +22,12 @@
 }
 
 .menu-container nav .shop-menu {
-    width: 180px;   
+    width: 200px;   
 }
 
 .menu-container nav .my-menu {
     margin-top: 40px;
-    width: 180px;   
+    width: 200px;   
 }
 
 .shop-menu #title {

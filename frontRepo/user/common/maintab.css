@@ -9,7 +9,6 @@
     margin: auto;
     padding-left: 40px;
     padding-right: 40px;
-    background-color: wheat;
 }
 
 #menutab ul {
@@ -20,7 +19,7 @@
 
 #menutab ul span{
     /* border-bottom: 2px solid black; */
-    margin-right: 25px;
+    margin-left: 40px;
     padding-top: 15px;
     padding-bottom: 6px;
     font-family: 'Pretendard';
