@@ -66,15 +66,9 @@ header .main-list {
     height: 24px;
 }
 
-.main-list .logo-area a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.main-list .logo-area img{
+    width: 120px;
     height: 24px;
-    font-family: 'Pretendard ExtraBold';
-    font-size: 18px;
-    text-decoration: none;
-    color: #222;
 }
 
 .main-list .head-list ul {
