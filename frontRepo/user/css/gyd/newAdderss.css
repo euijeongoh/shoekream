@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+input, textarea {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    padding: 0;
+    resize: none;
+}
+.delivery_bind {
+    padding: 0 32px;
+}
+.layer_container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);
+    left: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 448px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.btn_layer_close{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    font-size: 25px;
+}
+.layer_header{
+    background-color: #fff;
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.27px;
+    letter-spacing: -.15px;
+    line-height: 22px;
+    min-height: 44px;
+    padding: 18px 50px;
+    text-align: center;
+}
+.input_box {
+    padding: 10px 0 14px;
+    position: relative;
+}
+.input_item {
+    position: relative;
+}
+.input_title {
+    font-size: 13px;
+    letter-spacing: -.07px;
+    line-height: 18px;
+}
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.input_txt {
+    border-bottom: 1px solid #ebebeb;
+    font-size: 15px;
+    letter-spacing: -.15px;
+    line-height: 22px;
+    padding: 8px 0;
+    width: 100%;
+}
+.input_error {
+    color: #f15746;
+    display: block;
+    font-size: 11px;
+    line-height: 16px;
+    position: absolute;
+}
+.btn.btn_zipcode{
+    bottom: 8px;
+    position: absolute;
+    right: 0;
+}
+.btn {
+    align-items: center;
+    background-color: #fff;
+    color: rgba(34,34,34,.8);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+.outline{
+    border: 1px solid #d3d3d3;
+}
+.small{
+    border-radius: 10px;
+    font-size: 12px;
+    height: 34px;
+    letter-spacing: -.06px;
+    padding: 0 14px;
+}
+.delivery_check .checkbox_item:last-child {
+    margin-right: 0;
+}
+.delivery_check .checkbox_item {
+    float: left;
+    margin-right: 19px;
+}
+.layer_btn {
+    width: 456px;
+    height: 42;
+    display: flex;
+    justify-content: center;
+    padding: 24px 32px 32px;
+}
+.medium {
+    width: 120px;
+    border: 1px solid #d3d3d3;
+    color: rgba(34,34,34,.8);
+    border-radius: 12px;
+    font-size: 14px;
+    height: 42px;
+    letter-spacing: -.14px;
+    padding: 0 18px;
+    margin-left: 8px;
+}
+.btn_save{
+}
