@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/frontRepo/admin/css/msh/enrollProduct.css">
+    <script src="/frontRepo/admin/js/msh/enrollProduct.js"></script>
+</head>
+<body>
+    <!-- <div>
+        <div class="filebox">
+            <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+            <label for="file">파일찾기</label> 
+            <input type="file" id="file">
+        </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div> -->
+
+    <!-- 파일 선택 버튼 -->
+    <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
+
+    <!-- 이미지 미리보기 창 -->
+    <div id="image-preview-container">
+        <img id="image-preview" src="#" alt="이미지 미리보기">
+    </div>
+
+    <!-- 파일 선택 버튼 트리거 -->
+    <label for="file-input">
+        <button>이미지 선택</button>
+    </label>
+
+</body>
+</html>
