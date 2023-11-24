@@ -9,6 +9,7 @@
     height: 480px;
     display: flex;
     justify-content: center;
+    background: rgba(156, 156, 117);
 }
 
 .main-img img {
@@ -22,8 +23,11 @@
     margin-top: 30px;
     margin-bottom: 56px;
     display: block;
-    background-color: wheat;
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba(34, 34, 34, 0.2);
 }
+
+
 
 .container-title {
     width: 1200px;
@@ -31,6 +35,7 @@
     padding: 0px 40px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 16px;
 }
 
 .container-title #title {
@@ -62,25 +67,51 @@
 .product-list-wrap {
     width: 1200px;
     padding: 0px 40px;
-    background-color: aquamarine;
     display: flex;
     justify-content: space-evenly;
+    
 }
 
 .product-list-wrap li{
     width: 20%;
     margin-right: 6px;
+    
 }
 
 .product-list-wrap li #product-img {
     background-color: rgba(235, 240, 245);
-    width: 186px;
-    height: 186px;
+    width: 100%;
+    height: 234px;
     border-radius: 12px;
 }
 
 .product-list-wrap li #product-img img {
-    width: 186px;
-    height: 186px;
+    width: 100%;
+    height: 234px;
     border-radius: 12px;
 }
+
+.info-box {
+    padding-top: 9px;
+    font-family: 'Pretendard';
+    width: 100%;
+}
+
+#brand {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#model-name {
+    font-size: 13px;
+    margin-bottom: 2px;
+    color: rgba(34, 34, 34);
+}
+
+#price {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 12px;
+    color: rgba(34, 34, 34);
+}
+
