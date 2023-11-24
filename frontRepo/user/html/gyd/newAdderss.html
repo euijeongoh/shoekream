@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>새주소추가</title>
+
+    <link rel="stylesheet" href="/user/css/gyd/newAdderss.css">
+
+</head>
+
+<body>
+
+    <div class="layer_container">
+        <!-- a 태그 삭제 버튼 -->
+        <a href="#" class="btn_layer_close">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+        </a>
+        <div class="layer_header">
+            <!-- 여기 헤더 -->
+            <h2>새 주소 추가</h2>
+        </div>
+        <div class="layer_content">
+            <div class="delivery_bind">
+                <div class="delivery_input">
+                    <div class="input_box">
+                        <!-- 여기 내용 -->
+                        <h4 class="input_title">이름</h4>
+                        <div class="input_item">
+                            <input type="text" placeholder="수령인 이름" class="input_txt">
+                        </div>
+                        <!-- <p class="input_error">올바른 이름을 입력해주세요. (2-50자)</p> -->
+                    </div>
+                    <div class="input_box">
+                        <!-- 여기 내용 -->
+                        <h4 class="input_title">휴대폰 번호</h4>
+                        <div class="input_item">
+                            <input type="text" placeholder="-없이 입력" class="input_txt">
+                        </div>
+                    </div>
+                    <div class="input_box">
+                        <!-- 여기 내용 -->
+                        <h4 class="input_title">우편번호</h4>
+                        <div class="input_item">
+                            <input type="text" placeholder="우편 번호를 검색하세요" class="input_txt">
+                            <a href="#" class="btn btn_zipcode outline small"> 우편번호 </a>
+                        </div>
+                    </div>
+                    <div class="input_box">
+                        <!-- 여기 내용 -->
+                        <h4 class="input_title">주소</h4>
+                        <div class="input_item">
+                            <input type="text" placeholder="우편 번호 검색 후, 자동입력 됩니다" class="input_txt">
+                        </div>
+                    </div>
+                    <div class="input_box">
+                        <!-- 여기 내용 -->
+                        <h4 class="input_title">상세 주소</h4>
+                        <div class="input_item">
+                            <input type="text" placeholder="건물, 아파트, 동/호수 이력" class="input_txt">
+                        </div>
+                        <div class="delivery_check">
+                            <div class="checkbox_item" data-v-4be3d37a="">
+                                <input id="check1" type="checkbox" name="" class="blind">
+                                <label for="check1" class="check_label">
+                                    <span class="label_txt">기본 배송지로 설정</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layer_btn">
+                <!-- 여기 하단(풋터) -->
+                <a href="#" class="btn btn_delete outlinegrey medium"> 취소 </a>
+                <a href="#" class="btn btn_save solid medium disabled"> 저장하기 </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
