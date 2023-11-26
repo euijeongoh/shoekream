@@ -105,7 +105,7 @@
 #model-name {
     font-size: 13px;
     margin-bottom: 2px;
-    color: rgba(34, 34, 34);
+    color: rgba(34, 34, 34, 0.8);
 }
 
 #price {
