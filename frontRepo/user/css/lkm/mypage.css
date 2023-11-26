@@ -1,0 +1,65 @@
+main {
+    width: 100vw;
+    background-color: aquamarine;
+    margin: auto;
+}
+
+.mypage-home {
+    width: 1100px;
+    background-color: aquamarine;
+}
+
+.profile {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ebebeb;
+    border-radius: 12px; 
+    background-color: bisque;
+    padding: 23px 0px 23px 23px;
+}
+
+
+.profile .user-detail {
+    display: flex;
+    justify-content: flex-start;
+    height: 100px;
+    background-color: blueviolet;
+    align-content: center;
+}
+
+.user-detail .user-info {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+.user-detail div img {
+    width: 100px;
+    height: 100px;
+    background-color: azure;
+    border-radius: 100px;
+}
+
+.user-detail .user-info button {
+    height: 36px;
+    border: 1px solid #ebebeb;
+    margin: 12px 0px 0px;
+    padding: 0px 14px;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.user-menu {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: sandybrown;
+}
+
+.user-detail .user-menu:first-child{
+    display: block;
+}
+
+.user-detail .user-menu:last-child{
+    display: block;
+}
