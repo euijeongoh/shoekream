@@ -27,7 +27,7 @@
                 </div>
                 <div class="head-list">
                     <ul>
-                        <li><a href=""><strong>HOME</strong></a></li>
+                        <li><a href="">HOME</a></li>
                         <li><a href="">SHOP</a></li>
                         <li id="search-btn"><a><img src="../../common/searchIcon.png"></a></li>
                     </ul>
@@ -39,28 +39,38 @@
     <div class="content">
         <div class="login-area">
             <div class="login-title">
+                <img src="./resources/logo.svg" id="login-img">
             </div>
             <div class="input-box">
                 <div id="input-title">아이디</div>
-                <input id="input-txt">
+                <input id="input-txt" type="text" name="memberId" placeholder="예) shoekream@kream.co.kr">
             </div>
             <div class="input-box">
                 <div id="input-title">비밀번호</div>
-                <input id="input-txt">
+                <input id="input-txt" type="password" name="memberPwd">
             </div>
             <div class="login-btn-box">
-                <button>로그인</button>
+                <button id="login-btn">로그인</button>
             </div>
             <ul>
-                <li>회원가입</li>
-                <li>아이디 찾기</li>
-                <li>비밀번호 찾기</li>
+                <li><a>회원가입</a></li>
+                <li><a>아이디 찾기</a></li>
+                <li><a>비밀번호 찾기</a></li>
             </ul>
-            <div class="social-btn-box">
-                <button>네이버로 로그인</button>
-            </div>
-            <div class="social-btn-box">
-                <button>카카오로 로그인</button>
+            <div class="social-login-area">
+                <div class="social-btn-box">
+                    
+                    <button id="social-btn">
+                        <img id="navericon" src="./resources/navericon.png">
+                        네이버로 로그인
+                    </button>
+                </div>
+                <div class="social-btn-box">
+                    <button id="social-btn">
+                        <img id="kakaoicon" src="./resources/kakaoicon.png">
+                        카카오로 로그인
+                    </button>
+                </div>
             </div>
         </div>
     </div>
