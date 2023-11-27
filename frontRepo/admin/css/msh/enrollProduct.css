@@ -1,48 +1,15 @@
-* {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.dtd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+    margin: 50px auto;
 }
-/* .filebox{
-
-    border: 2px solid lightgray;
-    background-color: rgb(228, 228, 228);
-    width: 400px;
-    height: 400px;
-}
-.filebox .upload-name {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
-}
-.filebox label {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #999999;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
-}
-
-.filebox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-} */
 
 #image-preview-container {
     width: 300px;
     height: 300px;
-    border: 1px solid #ccc;
+    border: 2px dashed #3498db;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,8 +19,69 @@
 #image-preview {
     max-width: 100%;
     max-height: 100%;
+    object-fit: cover;
 }
 
 #file-input {
     display: none;
+}
+
+#file-input-label :hover{
+    background-color: #217dbb; 
+}
+#file-input-label {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: block;
+}
+
+#product-information {
+    border: 1px solid #ccc;
+    width: 400px;
+    padding: 20px;
+}
+
+#product-information form {
+    display: flex;
+    flex-direction: column;
+}
+
+#product-information input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#product-information input[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#product-information input[type="submit"]:hover {
+    background-color: #217dbb;
+}
+
+#product-information button {
+    background-color: #ccc;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#product-information button:hover {
+    background-color: #999;
 }
