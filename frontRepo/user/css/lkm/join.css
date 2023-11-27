@@ -64,3 +64,16 @@
     font-weight: 700;
     font-size: 16px;
 }
+
+#size {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+#size button {
+    width: 52px;
+    height: 36px;
+    background-color: black;
+    color: white;
+}
