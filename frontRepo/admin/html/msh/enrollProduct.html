@@ -8,35 +8,31 @@
     <script src="/frontRepo/admin/js/msh/enrollProduct.js"></script>
 </head>
 <body>
-    <!-- <div>
-        <div class="filebox">
-            <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-            <label for="file">파일찾기</label> 
-            <input type="file" id="file">
+    <div class="dtd">
+        <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
+    
+        <div id="image-preview-container" >
+            <img id="image-preview" src="#" alt="이미지 미리보기">
         </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <br>
+        <label for="file-input" id="file-input-label">이미지 선택</label>
+        <div id="product-information">
+            <form action="" method="post">
+                <input type="text" naome="productName" placeholder="제품명">
+                <input type="text" name="modelNumber" placeholder="모델 번호">
+                <input type="text" name="releasePrice" placeholder="발매가">
+                <input type="text" name="category" placeholder="카테고리">
+                <input type="text" name="brand" placehlder="브랜드">
+                <input type="text" name="size" placeholder="사이즈">
+                <input type="submit" value="저장">
+                <button>취소</button>
+            </form>
         </div>
-    </div> -->
+        <br>
+        
 
-    <!-- 파일 선택 버튼 -->
-    <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
-
-    <!-- 이미지 미리보기 창 -->
-    <div id="image-preview-container">
-        <img id="image-preview" src="#" alt="이미지 미리보기">
     </div>
 
-    <!-- 파일 선택 버튼 트리거 -->
-    <label for="file-input">
-        <button>이미지 선택</button>
-    </label>
 
 </body>
 </html>
