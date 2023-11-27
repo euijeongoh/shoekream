@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../common/userheader.css">
+    <link rel="stylesheet" href="../../common/mypagemenu.css">
+    <link rel="stylesheet" href="../../css/lkm/mypage.css">
+    <link rel="stylesheet" href="../../css/lkm/my_selllist.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="top-list">
+                <ul>
+                    <li><a href="">고객센터</a></li>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">관심</a></li>
+                    <li><a>알림</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </div>
+            <div class="main-list">
+                <div class="logo-area">
+                    <a href="">
+                    <img src="./logo.svg">
+                    </a>
+                </div>
+                <div class="head-list">
+                    <ul>
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li id="search-btn"><a><img src="./searchIcon.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main>
+            <div class="mypage-container">
+                <div class="menu-container">
+                    <div class="menu-title">마이 페이지</div>
+                    <nav>
+                        <div class="shop-menu">
+                            <div id="title">쇼핑 정보</div>
+                            <ul>
+                                <li><a href="">구매 내역</a></li>
+                                <li><a href=""><strong>판매 내역</strong></a></li>
+                                <li><a href="">관심</a></li>
+                            </ul>
+                        </div>
+                        <div class="my-menu">
+                            <div id="title">내 정보</div>
+                            <ul>
+                                <li><a href="">로그인 정보</a></li>
+                                <li><a href="">주소록</a></li>
+                                <li><a href="">결제 정보</a></li>
+                                <li><a href="">정산 계좌</a></li>
+                                <li><a href="">포인트</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="selling-container">
+                    <div class="selling-title">
+                        구매 내역
+                    </div>
+                    <div class="tab-container">
+                        <div class="tab">
+                            <div id="count">0</div>
+                            <div id="stage">판매 입찰</div>
+                        </div>
+                        <div class="tab">
+                            <div id="count">0</div>
+                            <div id="stage">진행 중</div>
+                        </div>
+                        <div class="tab">
+                            <div id="count">0</div>
+                            <div id="stage">종료</div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="period-search">
+                        <form>
+                            <div>
+                            <div class="month">최근 2개월</div>
+                            <div class="month">4개월</div>
+                            <div class="month">6개월</div>
+                            </div>
+                            <input type="date" name="startDate">
+                            <span>~</span>
+                            <input type="date" name="endDate">
+                            <input type="submit" value="조회">
+                        </form>
+                    </div>
+
+                    <div class="guide">
+                        * 한 번에 조회 가능한 기간은 최대 6개월입니다. 기간별 조회 결과는 입찰일 기준으로 노출됩니다.
+                    </div>
+
+                    <div class="selling-head">
+                        <select type="filter">
+                            <option>전체</option>
+                            <option>입찰 중</option>
+                            <option>기한만료</option>
+                        </select>
+                        <div class="orderby">
+                            <div>판매희망가▼</div>
+                            <div>만료일▼</div>
+                        </div>
+                    </div>
+
+                    <div class="selling-body">
+                        <div>판매 입찰 내역이 없습니다.</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+</body>
+</html>
