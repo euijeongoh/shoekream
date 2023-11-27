@@ -3,29 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-div {
-    display: block;
-}
-.mypage-container{
+.mypage-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-left: auto;
     margin-right: auto;
-    width: 1280px;
-    padding: 40px 40px 160px
+    max-width: 1280px;
+    padding: 40px 40px 160px;
 }
-.content_area {
+.container {
     flex: 1;
-    height: 380px;
+    min-height: 380px;
     overflow: hidden;
-}
-.my_adderssbock{
-    height: 315px;
 }
 .content_title {
     display: flex;
-    width: 100%;
+    border-bottom: 3px solid #222;
+    padding-bottom: 16px;
 }
 .title {
     font-size: 24px;
@@ -35,33 +28,51 @@ div {
     font-size: inherit;
     line-height: 29px;
 }
-.btn_box, .btn{
-    display: flex;
+.sub_title {
+    color: rgba(34,34,34,.5);
+    font-size: 12px;
+    letter-spacing: -.005em;
+}
+.btn_box {
+    padding-top: 4px;
+}
+a, a:active, a:focus, a:hover {
+    text-decoration: none;
+}
+.btn {
     align-items: center;
+    background-color: #fff;
+    color: rgba(34,34,34,.8);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+.btn_box {
+    align-items: center;
+    display: flex;
     flex-shrink: 0;
-    margin-left: auto;
+    margin-left: 300px;
     padding-left: 30px;
 }
-.btn_box .btn , .btn_add{
+.btn_box .btn_add {
     border: 1px solid #222;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 12px;
     height: 34px;
+    letter-spacing: -.06px;
     line-height: 32px;
     margin-right: 0;
     padding: 0 14px;
-    cursor: pointer;
-    text-align: center;
-    color: rgba(34,34,34,.8)
 }
-a {
-    text-decoration: none;
+.my_payment .my_list .basic {
+    padding: 22px 0 29px;
 }
 .basic {
     border-bottom: 2px solid #222;
-    padding: 30px 0 29px;
 }
-.my_item{
+.my_item {
     align-items: center;
     display: flex;
     position: relative;
@@ -69,50 +80,31 @@ a {
 .my_item .info_bind {
     margin-right: 24px;
 }
-.address_info {
-    line-height: 17px;
+.my_payment .basic .card_info {
+    padding: 13px 0 1px;
 }
-.address_info .name {
-    font-weight: 700;
+.my_list .card_name, .other_card .card_name {
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
     display: inline-block;
+    min-width: 52px;
+    padding: 9px;
+    text-align: center;
+}
+.card_name {
     font-size: 15px;
-    font-weight: 700;
     letter-spacing: -.15px;
-    line-height: 20px;
-    vertical-align: top;
 }
-.address_info .mark {
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    box-sizing: border-box;
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: -.06px;
-    line-height: 14px;
-    margin-left: 4px;
-    margin-top: 0;
-    padding: 3px 6px;
-    vertical-align: top;
-}
-.address_info .phone {
+.card_num .num_bind {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    font-size: 15px;
-    padding-top: 5px;
 }
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-.address_info .phone .dot {
-    margin-top: -5px;
+.card_num .dot {
     white-space: nowrap;
 }
-.address_info .phone .dot:after {
+.card_num .dot:after, .card_num .dot:before {
     background-color: #222;
     border-radius: 100%;
     content: "";
@@ -121,7 +113,7 @@ p {
     margin-left: 2px;
     width: 5px;
 }
-.address_info .phone .hyphen {
+.card_num .hyphen {
     background-color: #000;
     display: inline-flex;
     height: 1px;
@@ -129,17 +121,27 @@ p {
     margin-right: 2px;
     width: 4px;
 }
-.address_info .address_box {
-    font-size: 14px;
-    letter-spacing: -.21px;
-    padding-top: 4px;
+.last_num_box {
+    display: flex;
 }
-.btn_bind {
-    margin-left: auto;
+.mark {
+    background-color: #bbb;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 6px;
+    vertical-align: top;
 }
 .btn_bind .btn {
     padding-left: 11px;
     padding-right: 12px;
+}
+.btn_bind {
+    margin-left: auto;
 }
 .outlinegrey {
     border: 1px solid #d3d3d3;
