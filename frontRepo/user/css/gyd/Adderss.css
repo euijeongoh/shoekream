@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+.content_area {
+    min-height: 380px;
+    overflow: hidden;
+    flex: 1;
+}
+.my_addressbook{
+    min-height: 315px;
+}
+.content_title {
+    display: flex;
+}
+.btn_box, .btn{
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding-left: 30px;
+}
+.btn_box .btn , .btn_add{
+    border: 1px solid #222;
+    border-radius: 10px;
+    font-size: 12px;
+    height: 34px;
+    letter-spacing: -.06px;
+    line-height: 32px;
+    margin-right: 0;
+    padding: 0 14px;
+}
