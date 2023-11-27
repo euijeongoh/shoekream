@@ -1,15 +1,122 @@
-.dtd {
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.side-body{
+    display: inline-block;
+}
+
+#wrap {
+    width: 100vw;
+    background-color: wheat;
+}
+
+header{
+    width: 1280px;
+    height: 86px;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 22px 64px;
+}
+
+header .top-list {
+    display: flex;
+    justify-content: end;
+    padding-top: 8px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+header .top-list ul {
+    display: flex;
+    align-items: center;
+    padding: 0;   
+    text-decoration: none;
+}
+
+header .top-list ul li {
+    align-items: center;
+    margin-left: 20px;
+    font-size: 12px;
+    font-family: 'Pretendard';
+}
+
+.top-list ul li a {
+    text-decoration: none;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+#search-btn {
+    width: 24px;
+    cursor: pointer;
+}
+
+header .main-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+}
+
+.main-list .logo-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+}
+
+.main-list .logo-area a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    font-family: 'Pretendard ExtraBold';
+    font-size: 18px;
+    text-decoration: none;
+    color: #222;
+}
+
+.main-list .head-list ul {
+    display: flex;
+    align-items: center;
+}
+
+header .main-list li {
+    width: 90px;
+}
+
+.main-list li a {
+    font-family: 'Pretendard Light';
+    font-size: 18px;
+    text-decoration: none;
+    color: rgba(34, 34, 34);
+}
+
+.main-list img{
+    height: 24px;
+}
+
+.header-list{
+    display: inline-block;
+    width: 100%;
+    font-size: 20px;
+}
+.enroll-area {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     width: 800px;
-    margin: 50px auto;
+    margin: auto;
 }
 
 #image-preview-container {
     width: 300px;
     height: 300px;
-    border: 2px dashed #3498db;
+    border: 2px solid lightgray;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,13 +133,10 @@
     display: none;
 }
 
-#file-input-label :hover{
-    background-color: #217dbb; 
-}
 #file-input-label {
     cursor: pointer;
     padding: 10px;
-    background-color: #3498db;
+    background-color: #020406;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -59,7 +163,7 @@
 }
 
 #product-information input[type="submit"] {
-    background-color: #3498db;
+    background-color: #020406;
     color: #fff;
     cursor: pointer;
     border: none;
@@ -69,7 +173,7 @@
 }
 
 #product-information input[type="submit"]:hover {
-    background-color: #217dbb;
+    background-color: #44484a;
 }
 
 #product-information button {
@@ -84,4 +188,128 @@
 
 #product-information button:hover {
     background-color: #999;
+}
+#file-input-label:hover{
+    background-color: #44484a;
+}
+
+.sidebar{
+    margin-left: auto;
+    width: 180px;
+    font-size: 22px;
+}
+
+.sidebar :visited, .sidebar :link, .sidebar :hover, .sidebar :active{
+    text-decoration: none;
+    color: black;
+}
+.sidebar a{
+    font-family: 'Pretendard';
+} 
+.sidenav_menu{
+    list-style: none;
+    padding-left: 0px;
+}
+.sidenav_list{
+    font-size: 20px;
+}
+.menu_link{
+    font-size: 16px;
+    color: rgb(141, 141, 141);
+}
+
+
+li a{
+    list-style: none;
+    text-decoration: none;
+    color: gray;
+}
+
+.service-container {
+    padding: 40px 40px 160px 40px;
+}
+
+.menu-container {
+    width: 200px;
+    margin: 0px 20px 0px 0px;
+    
+}
+
+.service-title {
+    font-family: 'Pretendard';
+    font-weight: 650;
+    font-size: 24px;
+    padding: 0px 0px 30px;
+    color: rgba(34, 34, 34);
+}
+
+.notice{
+    font-size: 18px;
+    font-family: 'Pretendard';
+    font-weight: 650;
+    margin: 0px 0px 12px;
+    color: rgba(34, 34, 34);
+}
+
+.faq {
+    font-size: 18px;
+    font-family: 'Pretendard';
+    font-weight: 650;
+    margin: 0px 0px 12px;
+    color: rgba(34, 34, 34);
+}
+
+
+.qna {
+    font-size: 18px;
+    font-family: 'Pretendard';
+    font-weight: 650;
+    margin: 0px 0px 12px;
+    color: rgba(34, 34, 34);
+}
+.first{
+    display: flex;
+}
+
+
+.side-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar {
+    margin-right: 20px; /* 오른쪽 여백 추가 */
+    width: 180px;
+    font-size: 22px;
+}
+
+.enroll-area {
+    width: 800px;
+    display: flex;
+    flex-direction: row; /* 상품 등록 영역의 요소들을 세로로 배치 */
+}
+
+/* 다른 CSS 스타일들은 그대로 유지 */
+
+.enroll-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+#file-input-container {
+    width: 48%; /* 예시로 48%로 설정, 필요에 따라 조절 가능 */
+}
+
+#product-information {
+    width: 48%; /* 나머지 48%로 설정 */
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+/* 나머지 CSS 스타일들은 그대로 유지 */
+.header-list {
+    display: inline-block;
+    width: 100%;
+    font-size: 16px; /* 예시로 16px로 설정, 필요에 따라 조절 가능 */
+    margin-left: 30px;
 }
