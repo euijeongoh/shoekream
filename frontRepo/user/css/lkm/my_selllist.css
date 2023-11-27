@@ -1,4 +1,4 @@
-.shoplist-title {
+.selling-title {
     width: 1000px;
     display: flex;
     justify-content: space-between;
@@ -28,7 +28,7 @@
 
 .tab #count {
     font-size: 20px;
-    color: #F15746;
+    color: #31b462;
     font-weight: 700;
 }
 
@@ -94,7 +94,7 @@
     padding: 12px 0px;
 }
 
-.purchase-head {
+.selling-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,7 +103,7 @@
     border-bottom: 1px solid #ebebeb;
 }
 
-.purchase-head select {
+.selling-head select {
     height: 37px;
     width: 100px;
     border-radius: 10px;
@@ -114,7 +114,7 @@
     color: rgba(34, 34, 34, 0.8);
 }
 
-.purchase-head .orderby {
+.selling-head .orderby {
     display: flex;
 }
 
@@ -124,7 +124,7 @@
     color:rgba(34, 34, 34, 0.8);
 }
 
-.purchase-body {
+.selling-body {
     display: flex;
     justify-content: center;
     align-items: center;

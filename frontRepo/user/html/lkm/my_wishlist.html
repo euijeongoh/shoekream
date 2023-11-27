@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../common/userheader.css">
     <link rel="stylesheet" href="../../common/mypagemenu.css">
     <link rel="stylesheet" href="../../css/lkm/mypage.css">
-    <link rel="stylesheet" href="../../css/lkm/my_shoplist.css">
+    <link rel="stylesheet" href="../../css/lkm/my_wishlist.css">
 </head>
 <body>
     <header>
@@ -65,59 +65,42 @@
                     </nav>
                 </div>
 
-                <div class="shoplist-container">
-                    <div class="shoplist-title">
-                        구매 내역
-                    </div>
-                    <div class="tab-container">
-                        <div class="tab">
-                            <div id="count">0</div>
-                            <div id="stage">구매 입찰</div>
-                        </div>
-                        <div class="tab">
-                            <div id="count">0</div>
-                            <div id="stage">진행 중</div>
-                        </div>
-                        <div class="tab">
-                            <div id="count">0</div>
-                            <div id="stage">종료</div>
-                        </div>
-
+                <div class="wishlist-container">
+                    <div class="wishlist-title">
+                        관심
+                        <div></div>
                     </div>
 
+                    
 
-                    <div class="period-search">
-                        <form>
-                            <div>
-                            <div class="month">최근 2개월</div>
-                            <div class="month">4개월</div>
-                            <div class="month">6개월</div>
+                    <div class="wishlist-head">
+                        <div>전체 0</div>
+                        <div>관심등록순 ▼</div>
+                    </div>
+
+                    <div class="wishlist-body">
+                        <div class="wish-item">
+                            <div class="wish-product">
+                                <div class="product-img">
+                                    <img src="./resources/product1.webp">
+                                </div>
+                                <div class="product-info">
+                                    <div id="brand">UGG</div>
+                                    <div id="model">UGG Classic Mini Platform Boots Black</div>
+                                    <div id="release">US 12W</div>
+                                </div>
                             </div>
-                            <input type="date" name="startDate">
-                            <span>~</span>
-                            <input type="date" name="endDate">
-                            <input type="submit" value="조회">
-                        </form>
-                    </div>
-
-                    <div class="guide">
-                        * 한 번에 조회 가능한 기간은 최대 6개월입니다. 기간별 조회 결과는 입찰일 기준으로 노출됩니다.
-                    </div>
-
-                    <div class="purchase-head">
-                        <select type="filter">
-                            <option>전체</option>
-                            <option>입찰 중</option>
-                            <option>기한만료</option>
-                        </select>
-                        <div class="orderby">
-                            <div>구매희망가▼</div>
-                            <div>만료일▼</div>
+                            <div class="wish-price">
+                                <button>
+                                    <div>구매</div>
+                                    <div>
+                                        <span>100000원</span>
+                                        <br><span>즉시구매가</span>
+                                    </div>
+                                </button>
+                                <a>삭제</a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="purchase-body">
-                        <div>구매 입찰 내역이 없습니다.</div>
                     </div>
                 </div>
             </div>
