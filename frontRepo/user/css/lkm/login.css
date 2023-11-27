@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: none;
+}
+
+.content{
+    width: 100vw;
+}
+
+.login-area {
+    margin: auto;
+    width: 400px;
+    padding: 60px 0px 160px;
+}
+
+.login-title {
+    padding: 0px 0px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-title #login-img {
+    width: 180px;
+}
+
+.input-box {
+    padding: 10px 0px 14px;
+}
+
+#input-title {
+    font-family: 'Pretendard';
+    font-weight: 500;
+    font-size: 13px;
+    color: rgba(34, 34, 34);
+}
+
+#input-txt {
+    width: 370px;
+    padding: 8px 30px 8px 0px;
+    font-size: 15px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+#input-txt::placeholder{
+    color: #ebebeb;
+}
+
+.login-btn-box {
+    padding: 20px 0px 0px;
+}
+
+#login-btn {
+    width: 400px;
+    height: 52px;
+    border-radius: 12px;
+    background-color: #ebebeb;
+    color: white;
+    font-family: 'Pretendard';
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.content ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 14px;
+}
+
+.content ul li {
+    display: flex;
+    justify-content: center;
+    padding: 0px 10px;
+    margin: 0.4px 27px;
+}
+
+.content ul li a {
+    font-size: 13px;
+    font-family: 'Pretendard';
+    color: rgba(34, 34, 34);
+}
+
+.social-btn-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-btn-box:first-child {
+    padding-top: 20px;
+}
+
+#social-btn {
+    width: 400px;
+    height: 52px;
+    display: flex;
+    border-radius: 12px;
+    border: 1px solid #ebebeb;
+    background-color: white;
+    color: rgba(34, 34, 34);
+    font-family: 'Pretendard';
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.social-btn-box:last-child {
+    padding-top: 7px;
+}
+
+.social-btn-box #navericon {
+    width: 25px;
+    height: 25px;
+    padding-right: 15px;
+}
+
+.social-btn-box #kakaoicon {
+    width: 25px;
+    height: 25px;
+    padding-right: 15px;
+}
