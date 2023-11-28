@@ -14,12 +14,13 @@ li a{
 }
 
 .menu-container {
-    width: 200px;
+    width: 160px;
     margin: 0px 20px 0px 0px;
     
 }
 
 .service-title {
+    display: flex;
     font-family: 'Pretendard';
     font-weight: 650;
     font-size: 24px;
@@ -52,6 +53,7 @@ li a{
     color: rgba(34, 34, 34);
 }
 .first{
+    width: 160px;
     display: flex;
 }
 

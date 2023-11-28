@@ -1,0 +1,39 @@
+.wrap{
+    display: flex;
+    width: 100%;
+    height: 1420px;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+
+.wrap-inner{
+    display: flex;
+    width: 1200px;
+    height: 1220px;
+    /* margin-left: auto; *
+    /* margin-right:auto; */
+    padding-left :40px;
+    padding-top : 40px;
+    padding-right: 40px;
+    padding-bottom: 160px;;
+    /* background-color: blue; */
+    justify-content: center;
+}
+
+.board{
+   display: flex;
+   width: 1000px;
+   height: 1220px;
+   background-color:antiquewhite;
+}
+
+.title{
+    width: 1000px;
+    height: 28.980px;
+    display: flex;
+    border-bottom: 3px solid black;
+    padding-bottom: 16px;
+    
+    background-color: red;
+
+}
