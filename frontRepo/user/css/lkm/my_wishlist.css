@@ -85,6 +85,8 @@
     display: flex;
     align-items: center;
     font-family: 'Pretendard';
+    justify-content: flex-end;
+    cursor: pointer;
 }
 
 .wish-price button :first-child {
@@ -96,14 +98,35 @@
 }
 
 .wish-price button :nth-child(2) {
-    margin: 9px;
+    margin: 14px;
     text-align: end;
     font-size: 15px;
     letter-spacing: -.27px;
 }
 
 .wish-price button :nth-child(2) span {
-    
+    color: hsla(0,0%,100%,.8);
+    font-size: 11px;
+}
+
+.wish-price button :nth-child(2) #immediate-price {
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.wish-price #a {
+    display: flex;
+    padding: 0 3px;
+    justify-content: flex-end;
+}
+
+.wish-price #a a {
+    color: rgba(34,34,34,.8);
+    font-size: 12px;
+    letter-spacing: -.06px;
+    margin-top: 6px;
+    text-decoration: underline;
 }
 
 
