@@ -117,3 +117,32 @@ button {
     width: 24px;
 }
 
+.registration_btn_box {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+.medium  {
+    border-radius: 12px;
+    font-size: 14px;
+    height: 42px;
+    letter-spacing: -.14px;
+    padding: 0 18px;
+}
+.solid {
+    background-color: #222;
+    color: #fff;
+    font-weight: 700;
+}
+.disabled {
+    background-color: #ebebeb;
+    color: #fff;
+    cursor: default;
+}
+.btn_save{
+    border-radius: 10px;
+    width: 102px;
+}
+a{
+    text-decoration: none;
+}

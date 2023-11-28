@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/common/admin-sidebar.css">
+    <link rel="stylesheet" href="/admin/common/adminheader.css">
+    <link rel="stylesheet" href="/admin/css/gyd/admin_page.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="top-list">
+                <ul>
+                    <li><a href="">고객센터</a></li>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">관심</a></li>
+                    <li><a>알림</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </div>
+            <div class="main-list">
+                <div class="logo-area">
+                    <a href="">
+                    <img src="/admin/common/logo.svg">
+                    <span>관리자</span>
+                    </a>
+                </div>
+                <div class="head-list">
+                    <ul>
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li id="search-btn"><a><img src="/admin/common/searchIcon.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <div class="sidebar" >
+            <a href="/admin"><h2>관리자 페이지</h2></a>
+            <br>
+            <nav class="sidenav">
+                <div class="sidenav_list">
+                    <strong class="sidenav_title"><a href="">주문관리</a></strong>
+                    <ul class="sidenav_menu">
+                        <li class="menu_item">
+                            <a href="" class="menu_link">입고 현황</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">검수진행 현황</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">배송 현황</a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="sidenav_list">
+                    <strong class="sidenav_title"><a href="">상품 관리</a></strong>
+                    <ul class="sidenav_menu">
+                        <li class="menu_item">
+                            <a href="" class="menu_link">상품 등록</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">상품 수정</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">상품 삭제</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">상품 목록</a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="sidenav_list">
+                    <strong class="sidenav_title"><a href="">고객 센터</a></strong>
+                    <ul class="sidenav_menu">
+                        <li class="menu_item">
+                            <a href="" class="menu_link">공지사항</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">FAQ</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">Q&A</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="order_area">
+            <div class="order">
+                <div class="order_title">
+                    <h4 class="title">입고 필요</h4>
+                    <a href="#" class="breakdown_views">+ 내역 보기</a>
+                </div>
+                <div class="order_contant">
+                    <h5 class="contant">입고가 필요한 주문</h5>
+                </div>
+            </div>
+            <div class="order_area">
+                <div class="order_title">
+                    <h4 class="title">검수 진행</h4>
+                    <a href="#" class="breakdown_views">+ 내역 보기</a>
+                </div>
+                <div class="order_contant">
+                    <h5 class="contant">검수를 진행중인 주문</h5>
+                </div>
+            </div>
+            <div class="order_area">
+                <div class="order_title">
+                    <h4 class="title">배송 필요</h4>
+                    <a href="#" class="breakdown_views">+ 내역 보기</a>
+                </div>
+                <div class="order_contant">
+                    <h5 class="contant">발송이 필요한 주문</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        
+        <script>
+            const searchBtn = document.querySelector("#search-btn");
+        </script>
+    
+</body>
+</html>
