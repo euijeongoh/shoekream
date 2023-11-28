@@ -1,0 +1,18 @@
+*{
+  
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+.container{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding: 40px 40px 160px;
+}
+.order_area{
+   display: grid;
+   
+}
