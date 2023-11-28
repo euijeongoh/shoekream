@@ -4,24 +4,35 @@
     list-style: none;
 }
 
-#wrap {
-    width: 100vw;
-    background-color: wheat;
+.wrap {
+    /* width: 100vw;
+    background-color: wheat; */
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    width: 100%;
+    height: 86px;
 }
 
 header{
-        /* 픽스드(탑고정) */
-        position: fixed;
+        /* 픽스드(탑고정) 이거 말고 상위에서 */
+        /* position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 3;
+        z-index: 3; */
         background-color: #ffffff;
         /* 픽스드(탑고정) */
 
-    width: 1280px;
+    /* width: 1280px; */
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1280px;
     height: 86px;
-    margin: auto;
+    /* margin: auto; */
     display: grid;
     grid-template-rows: 22px 64px;
 }

@@ -19,17 +19,18 @@ body {
 
 .container {
     width: 100%;
-    height: 885px;
+    height: 978px;
     background-color: rgb(246, 246, 246);
+    /* background-color: rgb(#000000); 1.이거 왜 안돼*/
     box-sizing: border-box;
     margin: auto;
-
 }
 
 .content {
     width: 780px;
-    height: 100%;
-    background-color: rgb(255, 255, 255);
+    height: 980px;
+    background-color: rgb(246, 246, 246);
+    /* background-color: rgb(161, 163, 47); 2.이거는 되는데*/
     margin: 0 auto;
     padding: 20px 40px 160px;
     box-sizing: border-box;
@@ -37,7 +38,7 @@ body {
 
 .buy_before {
     width: 700px;
-    height: 705px;
+    height: 798px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);
     padding: 0px;
@@ -46,13 +47,13 @@ body {
 
 #buy_before_check {
     padding: 20px 0px 0px 0px;
-    height: 705px;
-    background-color: rgb(250, 250, 250);
+    height: 798px;
+    background-color: rgb(255, 255, 255);
     box-sizing: border-box;
 }
     .buy {
-        height: 477px;
-        background-color: rgb(246, 246, 246);
+        height: 570px;
+        background-color: rgb(255, 255, 255);
         box-sizing: border-box;
     }
         .check_list {
@@ -61,16 +62,16 @@ body {
             padding: 0;
             box-sizing: border-box;
             width: 636px;
-            height: 385px;
+            height: 475px;
         }
             .check_item {
+                border-top: 1px solid #ebebeb;
                 height: 93px;
                 display: list-item;
                 list-style: none;
                 /* text-align: -webkit-match-parent; */
                 box-sizing: border-box;
                 padding: 19px 0 20px;
-                border-top: none;
             }
                 .check_area {
                     width: 100%;
@@ -131,7 +132,7 @@ body {
         .accent_text {
             width: 56px;
             height: 38pc;
-            color: #f15746;
+            color: #31B46E;
             box-sizing: border-box;
             font-size: 32px;
             font-weight: 700;
@@ -157,7 +158,6 @@ body {
         height: 80px;
         width: 80px;
         box-sizing: border-box;
-        background-color: rgb(126, 126, 126);
     }
         .porduct {
             background-color: rgb(235, 240, 245);
@@ -206,11 +206,34 @@ body {
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 
 
-    .select_area{
-        min-height: 484px;
-        padding: 20px 0;
+    .btn_confirm{
+        height: 84px;
+        margin: 0;
+        padding: 0 32px 32px;
         box-sizing: border-box;
     }
+        .blindAgree {
+            clip: rect(0,0,0,0)!important;
+            height: 1px!important;
+            margin: -1px!important;
+            overflow: hidden!important;
+            position: absolute!important;
+            width: 1px!important;
+        }
+            .button {
+                border: none;
+                background-color: #ebebeb;
+                color: #fff;
+                cursor: default;
+                font-weight: 700;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 700;
+                height: 52px;
+                letter-spacing: -.16px;
+                width: 100%;
+            }
+
     .order_btn_area{
         border-top: 1px solid #ebebeb;
         width: 636px;
