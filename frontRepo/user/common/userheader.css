@@ -4,15 +4,15 @@
     list-style: none;
 }
 
-#wrap {
-    width: 100vw;
-    background-color: wheat;
-}
 
 header{
-    width: 1280px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-inner {
     height: 86px;
-    margin: auto;
     display: grid;
     grid-template-rows: 22px 64px;
 }
