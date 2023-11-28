@@ -107,7 +107,6 @@ header .main-list li {
 /*사이드 메뉴*/
 .side-body {
     display: flex;
-    width: 1200px;
     justify-content: space-between;
 }
 .sidebar{
@@ -116,7 +115,7 @@ header .main-list li {
     width: 180px;
     font-size: 22px;
 }
- .sidebar :link, .sidebar :hover, .sidebar :active{
+.sidebar :visited, .sidebar :link, .sidebar :hover, .sidebar :active{
     text-decoration: none;
     color: black;
 }
@@ -133,6 +132,7 @@ header .main-list li {
 .menu_link{
     font-size: 16px;
     color: rgb(141, 141, 141);
+    margin-left: 10px;
 }
 /*상품등록*/
 .enroll-area {
