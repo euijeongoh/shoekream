@@ -9,17 +9,17 @@ li a{
     color: gray;
 }
 
-.service-container {
+.service_container {
     padding: 40px 40px 160px 40px;
 }
 
-.menu-container {
+.menu_container {
     width: 160px;
     margin: 0px 20px 0px 0px;
     
 }
 
-.service-title {
+.service_title {
     display: flex;
     font-family: 'Pretendard';
     font-weight: 650;
