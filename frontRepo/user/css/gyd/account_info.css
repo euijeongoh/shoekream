@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.my_account {
+    width: 480px;
+}
+.content_title {
+    display: flex;
+}
+.title {
+    font-size: 24px;
+    letter-spacing: -.36px;
+}
+.title>h3 {
+    font-size: inherit;
+    line-height: 29px;
+}
+.registered_account_box {
+    background-color: #fafafa;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 21px;
+    overflow: hidden;
+    padding: 15px 15px 16px;
+}
+.box_title{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -.06px;
+    letter-spacing: -.5px;
+    line-height: 14px;
+    margin-bottom: 5px;
+}
+.box_account_info {
+    font-size: 15px;
+    letter-spacing: -.15px;
+    letter-spacing: -1px;
+    line-height: 22px;
+}
+.account_devider {
+    padding: 0 4px;
+}
+.content_registration {
+    width: 100%;
+}
+.account_registration {
+    padding-top: 20px;
+}
+.input_box {
+    padding-top: 16px;
+    padding: 10px 0 14px;
+    position: relative;
+}
+.input_title {
+    line-height: 14px;
+    font-size: 13px;
+    letter-spacing: -.07px;
+}
+.input_item {
+    position: relative;
+}
+.input_txt {
+    border-bottom: 1px solid #ebebeb;
+    font-size: 15px;
+    letter-spacing: -.15px;
+    line-height: 22px;
+    padding: 8px 0;
+    width: 100%;
+}
+.input_txt {
+    padding: 6px 0 7px;
+    cursor: pointer;
+}
+input, textarea {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    padding: 0;
+    resize: none;
+}
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+}
+.btn {
+    align-items: center;
+    background-color: #fff;
+    color: rgba(34,34,34,.8);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+.btn.btn_dropdown {
+    line-height: 0;
+    margin-top: -12px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+[class*=ico-] {
+    height: 24px;
+    width: 24px;
+}
+
