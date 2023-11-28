@@ -2,70 +2,66 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    font-family: 'Pretendard';
 }
 
-.mypage-container {
-    width: 1200px;
+.mypage_container {
+    max-width: 1200px;
     margin: auto;
     display: flex;
     padding: 40px 40px 160px 40px;
 }
 
-.menu-container {
+.menu_container {
     width: 180px;
     margin: 0px 20px 0px 0px;
 }
 
-.menu-title {
-    font-family: 'Pretendard';
+.menu_title {
     font-weight: 650;
     font-size: 24px;
     padding: 0px 0px 30px;
     color: rgba(34, 34, 34);
 }
 
-.menu-container nav .shop-menu {
+.menu_container nav .shop_menu {
     width: 200px;   
 }
 
-.menu-container nav .my-menu {
+.menu_container nav .my_menu {
     margin-top: 40px;
     width: 200px;   
 }
 
-.shop-menu #title {
+.shop_menu #title {
     font-size: 18px;
-    font-family: 'Pretendard';
     font-weight: 650;
     margin: 0px 0px 12px;
     color: rgba(34, 34, 34);
 }
 
-.my-menu #title {
+.my_menu #title {
     font-size: 18px;
-    font-family: 'Pretendard';
     font-weight: 650;
     margin: 0px 0px 12px;
     color: rgba(34, 34, 34);
 }
 
-nav .shop-menu ul li {
+nav .shop_menu ul li {
     margin-bottom: 12px;
 }
 
-nav .shop-menu ul li a{
-    font-family: 'Pretendard';
+nav .shop_menu ul li a{
     text-decoration: none;
     color: rgba(34, 34, 34, 0.5);
     cursor: pointer;
 }
 
-nav .my-menu ul li {
+nav .my_menu ul li {
     margin-bottom: 12px;
 }
 
-nav .my-menu ul li a{
-    font-family: 'Pretendard';
+nav .my_menu ul li a{
     text-decoration: none;
     color: rgba(34, 34, 34, 0.5);
     cursor: pointer;

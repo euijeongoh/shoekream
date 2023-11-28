@@ -4,20 +4,20 @@
     list-style: none;
 }
 
-#wrap {
-    width: 100vw;
-    background-color: wheat;
-}
 
 header{
-    width: 1280px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header_inner {
     height: 86px;
-    margin: auto;
     display: grid;
     grid-template-rows: 22px 64px;
 }
 
-header .top-list {
+header .top_list {
     display: flex;
     justify-content: end;
     padding-top: 8px;
@@ -25,31 +25,31 @@ header .top-list {
     padding-right: 40px;
 }
 
-header .top-list ul {
+header .top_list ul {
     display: flex;
     align-items: center;
     padding: 0;   
     text-decoration: none;
 }
 
-header .top-list ul li {
+header .top_list ul li {
     align-items: center;
     margin-left: 20px;
     font-size: 12px;
     font-family: 'Pretendard';
 }
 
-.top-list ul li a {
+.top_list ul li a {
     text-decoration: none;
     color: rgba(34, 34, 34, 0.8);
 }
 
-#search-btn {
+#search_btn {
     width: 24px;
     cursor: pointer;
 }
 
-header .main-list {
+header .main_list {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,34 +59,34 @@ header .main-list {
     padding-bottom: 20px;
 }
 
-.main-list .logo-area {
+.main_list .logo_area {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 24px;
 }
 
-.main-list .logo-area img{
+.main_list .logo_area img{
     width: 120px;
     height: 24px;
 }
 
-.main-list .head-list ul {
+.main_list .head_list ul {
     display: flex;
     align-items: center;
 }
 
-header .main-list li {
+header .main_list li {
     width: 90px;
 }
 
-.main-list li a {
+.main_list li a {
     font-family: 'Pretendard Light';
     font-size: 18px;
     text-decoration: none;
     color: rgba(34, 34, 34);
 }
 
-.main-list img{
+.main_list img{
     height: 24px;
 }

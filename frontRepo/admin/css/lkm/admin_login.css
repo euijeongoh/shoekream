@@ -3,58 +3,63 @@
     padding: 0;
     list-style: none;
     border: none;
-    font-family: 'Pretendard';
 }
 
 .content{
     width: 100vw;
 }
 
-.content .join_area {
+.login-area {
     margin: auto;
     width: 400px;
     padding: 60px 0px 160px;
 }
 
-.join_title {
+.login-title {
     padding: 0px 0px 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Pretendard';
-    font-size: 32px;
-    letter-spacing: -.48px;
-    font-weight: 700;
 }
 
-.input_box {
+.login-title #login-img {
+    width: 180px;
+}
+
+.login-title div {
+    font-family: 'Pretendard';
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.input-box {
     padding: 10px 0px 14px;
 }
 
-#input_title {
+#input-title {
     font-family: 'Pretendard';
     font-weight: 500;
     font-size: 13px;
     color: rgba(34, 34, 34);
 }
 
-#input_txt {
+#input-txt {
     width: 370px;
     padding: 8px 30px 8px 0px;
     font-size: 15px;
     border-bottom: 1px solid #ebebeb;
 }
 
-#input_txt::placeholder{
-    font-weight: 300;
+#input-txt::placeholder{
     color: #ebebeb;
 }
 
-.join_btn_box {
+.login-btn-box {
     padding: 20px 0px 0px;
 }
 
-#join_btn {
+#login-btn {
     width: 400px;
     height: 52px;
     border-radius: 12px;
@@ -65,15 +70,22 @@
     font-size: 16px;
 }
 
-#size {
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
+.content ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 14px;
 }
 
-#size button {
-    width: 52px;
-    height: 36px;
-    background-color: black;
-    color: white;
+.content ul li {
+    display: flex;
+    justify-content: center;
+    padding: 0px 10px;
+    margin: 0.4px 27px;
+}
+
+.content ul li a {
+    font-size: 13px;
+    font-family: 'Pretendard';
+    color: rgba(34, 34, 34);
+    cursor: pointer;
 }

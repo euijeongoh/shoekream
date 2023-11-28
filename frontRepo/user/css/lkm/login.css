@@ -9,50 +9,50 @@
     width: 100vw;
 }
 
-.login-area {
+.login_area {
     margin: auto;
     width: 400px;
     padding: 60px 0px 160px;
 }
 
-.login-title {
+.login_title {
     padding: 0px 0px 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-title #login-img {
+.login_title #login-img {
     width: 180px;
 }
 
-.input-box {
+.input_box {
     padding: 10px 0px 14px;
 }
 
-#input-title {
+#input_title {
     font-family: 'Pretendard';
     font-weight: 500;
     font-size: 13px;
     color: rgba(34, 34, 34);
 }
 
-#input-txt {
+#input_txt {
     width: 370px;
     padding: 8px 30px 8px 0px;
     font-size: 15px;
     border-bottom: 1px solid #ebebeb;
 }
 
-#input-txt::placeholder{
+#input_txt::placeholder{
     color: #ebebeb;
 }
 
-.login-btn-box {
+.login_btn_box {
     padding: 20px 0px 0px;
 }
 
-#login-btn {
+#login_btn {
     width: 400px;
     height: 52px;
     border-radius: 12px;
@@ -82,17 +82,17 @@
     color: rgba(34, 34, 34);
 }
 
-.social-btn-box{
+.social_btn_box{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.social-btn-box:first-child {
+.social_btn_box:first-child {
     padding-top: 20px;
 }
 
-#social-btn {
+#social_btn {
     width: 400px;
     height: 52px;
     display: flex;
@@ -109,17 +109,17 @@
     cursor: pointer;
 }
 
-.social-btn-box:last-child {
+.social_btn_box:last-child {
     padding-top: 7px;
 }
 
-.social-btn-box #navericon {
+.social_btn_box #navericon {
     width: 25px;
     height: 25px;
     padding-right: 15px;
 }
 
-.social-btn-box #kakaoicon {
+.social_btn_box #kakaoicon {
     width: 25px;
     height: 25px;
     padding-right: 15px;
