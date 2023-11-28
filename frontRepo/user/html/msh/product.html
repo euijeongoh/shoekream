@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>document</title>
+
+    <link rel="stylesheet" href="/frontRepo/user/css/msh/product.css">
+</head>
+<body>
+    <header>
+        <div class="header_inner">
+            <div class="top_list">
+                <ul>
+                    <li><a href="">고객센터</a></li>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">관심</a></li>
+                    <li><a>알림</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </div>
+            <div class="main_list">
+                <div class="logo_area">
+                    <a href="">
+                    <img src="/frontRepo/user/css/msh/logo.svg">
+                    </a>
+                </div>
+                <div class="head_list">
+                    <ul>
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li id="search_btn"><a><img src="/frontRepo/user/css/msh/searchIcon.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </header>
+        <div class="search_title">
+            <h1 class="title_txt">SHOP</h1>
+        </div>
+        <main>
+            <div class="content">
+                <aside>
+                    <div class="search_filter">
+                        <div class="filter_status">
+                            <div class="status_box">
+                                <span class="status_txt">필터</span>
+                            </div>
+                            <a href="#" class="btn_delete">초기화</a>
+                        </div>
+                        <div class="filter_list filter_open selected">
+                            <div class="filter_title">
+                                <div class="title_box">
+                                    <span class="main_title">카테고리</span>
+                                </div>
+                                    <form action="" class="category">
+                                        <div class="category_select">
+                                            <input type="checkbox" name="category" value="Sneaker"> 스니커즈
+                                            <br>
+                                            <input type="checkbox" name="category" value="Sandal"> 샌들/슬리퍼
+                                            <br>
+                                            <input type="checkbox" name="category" value="flat" > 플랫
+                                            <br>
+                                            <input type="checkbox" name="category" value="loafers"> 로퍼
+                                            <br>
+                                            <input type="checkbox" name="category" value="derby"> 더비/레이스업
+                                            <br>
+                                            <input type="checkbox" name="category" value="heel-pumps"> 힐/펌프스
+                                            <br>
+                                            <input type="checkbox" name="category" value="boots"> 부츠
+                                            <br>
+                                            <input type="checkbox" name="category" value="etc"> 기타신발
+                                            
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <span class="main_title">브랜드</span>
+                                    </div>
+                                    <div class="brand_select">
+                                        <form action="">
+                                                <input type="checkbox" name="brand" value="Nike">Nike
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Adidas">Adidas
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Gucci">Gucci
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Balenciaga">Balenciaga
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Louis_Vuitton">Louis Vuitton
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Off-White">Off-White
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Yeezy">Yeezy
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Supreme">Supreme
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Prada">Prada
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Saint_Laurent">Saint Laurent
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Givenchy">Givenchy
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Fendi">Fendi
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Versace">Versace
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Alexander McQueen">Alexander McQueen
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Puma">Puma
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Chanel">Chanel
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Dior">Dior
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Converse">Converse
+                                                <br>
+                                                <input type="checkbox" name="brand" value="New_Balance">New Balance
+                                                <br>
+                                                <input type="checkbox" name="brand" value="Vans">Vans
+                                        </form>
+                                    </div>
+                                </div>
+                                <br>
+                                <div>
+                                    <span class="main_title">가격대</span>
+                                </div>
+                                <form action="" class="price">
+                                    <div class="price_select">
+                                        <label><input type="checkbox" name="price" value="under_10"> 10만원 이하</label><br>
+                                        <label><input type="checkbox" name="price" value="10_30"> 10-30만원</label><br>
+                                        <label><input type="checkbox" name="price" value="30_50"> 30-50만원</label><br>
+                                        <label><input type="checkbox" name="price" value="50_100"> 50-100만원</label><br>
+                                        <label><input type="checkbox" name="price" value="100_300"> 100-300만원</label><br>
+                                        <label><input type="checkbox" name="price" value="over_300"> 300만원 이상</label><br>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </aside>
+                <div></div>
+            </div>
+        </main>
+        
+</body>
+</html>
+        <script>
+            const searchBtn = document.querySelector("#search_btn");
+        </script>
+        <!-- JavaScript 코드를 추가 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchBtn = document.querySelector("#search_btn");
+
+        // 카테고리 체크박스들을 모두 선택합니다.
+        const categoryCheckboxes = document.querySelectorAll('[name="category"]');
+
+        // 초기화 버튼을 선택합니다.
+        const resetButton = document.querySelector(".btn_delete");
+
+        // 카테고리 체크박스들에 이벤트 리스너를 추가합니다.
+        categoryCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", function() {
+                filterProducts(); // 카테고리가 변경될 때마다 상품을 필터링합니다.
+            });
+        });
+
+        // 초기화 버튼에 이벤트 리스너를 추가합니다.
+        resetButton.addEventListener("click", function() {
+            // 모든 카테고리 체크박스를 해제합니다.
+            categoryCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+
+            filterProducts(); // 초기화할 때도 필터링을 수행합니다.
+        });
+
+        // 상품을 필터링하고 결과를 콘솔에 출력하는 함수입니다.
+        function filterProducts() {
+            // 선택된 카테고리를 저장할 배열입니다.
+            const selectedCategories = [];
+
+            // 선택된 카테고리 체크박스들을 확인하고 배열에 추가합니다.
+            categoryCheckboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    selectedCategories.push(checkbox.value);
+                }
+            });
+
+            // 선택된 카테고리에 따라 필터링된 상품을 가져오는 로직을 추가할 수 있습니다.
+            // 여기서는 콘솔에 로그를 출력하는 예시 코드를 작성합니다.
+            console.clear(); // 콘솔을 정리합니다.
+            console.log("Selected Categories:", selectedCategories);
+
+            // 여기에 상품 필터링 및 화면 갱신 로직을 추가하세요.
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+            const categoryForm = document.querySelector('.category');
+            const brandForm = document.querySelector('.brand_select');
+
+            categoryForm.addEventListener('change', displaySelectedItems);
+            brandForm.addEventListener('change', displaySelectedItems);
+
+            function displaySelectedItems() {
+                const selectedCategories = getSelectedItems(categoryForm);
+                const selectedBrands = getSelectedItems(brandForm);
+
+                console.clear(); // 콘솔 청소
+                console.log('Selected Categories:', selectedCategories.join(', '));
+                console.log('Selected Brands:', selectedBrands.join(', '));
+            }
+
+            function getSelectedItems(form) {
+                const selectedItems = [];
+                const checkboxes = form.querySelectorAll('input:checked');
+
+                checkboxes.forEach((checkbox) => {
+                    selectedItems.push(checkbox.value);
+                });
+
+                return selectedItems;
+            }
+        });
+</script>
