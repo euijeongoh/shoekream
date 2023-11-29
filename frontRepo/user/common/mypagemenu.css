@@ -6,7 +6,7 @@
 }
 
 .mypage_container {
-    max-width: 1200px;
+    width: 1200px;
     margin: auto;
     display: flex;
     padding: 40px 40px 160px 40px;
