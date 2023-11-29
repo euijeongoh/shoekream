@@ -112,7 +112,7 @@ header .main-list li {
     /* align-items: center; */
     padding: 0;   
     text-decoration: none;
-    background-color: red;
+    /* background-color: red; */
 }
 .profile_img{
     display: flex;
@@ -161,7 +161,7 @@ header .main-list li {
     align-items: center;
     padding-right: 50% 30%;
     /* border-bottom: 1px solid lightgray; */
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 .board{
     /* justify-content: center; */
@@ -176,13 +176,13 @@ header .main-list li {
 }
 
 .listpoto{
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
 }
 .poto{
-    width: 100%;
+    width: 95%;
     padding: 15px 0px;
     height: 100%;
     border-radius: 10%
@@ -193,6 +193,7 @@ header .main-list li {
 .detail{
     display: flex;
     justify-content: space-between;
+    width: 94%;
 }
 
 .one{
@@ -210,8 +211,6 @@ header .main-list li {
     height: 20px;
     padding: 80% 90%;
 } */
-
-
 
 
 
