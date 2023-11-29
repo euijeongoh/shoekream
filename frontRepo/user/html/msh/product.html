@@ -115,7 +115,12 @@
                         <div class="filter_result">
                             <span class="title">상품</span>
                         </div>
-
+                        <div class="filter_sorting">
+                            <button type="button" class="sorting_title">남성 인기순</button>
+                        </div>
+                    </div>
+                    <div class="search_product_content">
+                        
                     </div>
                 </div>
             </div>
@@ -128,77 +133,70 @@
         </script>
         <!-- JavaScript 코드를 추가 -->
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const searchBtn = document.querySelector("#search_btn");
+ document.addEventListener("DOMContentLoaded", function () {
+            const searchBtn = document.querySelector("#search_btn");
 
-        // 카테고리 체크박스들을 모두 선택합니다.
-        const categoryCheckboxes = document.querySelectorAll('[name="category"]');
+            // 카테고리, 브랜드, 가격대 체크박스들을 모두 선택합니다.
+            const categoryCheckboxes = document.querySelectorAll('[name="category"]');
+            const brandCheckboxes = document.querySelectorAll('[name="brand"]');
+            const priceCheckboxes = document.querySelectorAll('[name="price"]');
 
-        // 초기화 버튼을 선택합니다.
-        const resetButton = document.querySelector(".btn_delete");
+            // 초기화 버튼을 선택합니다.
+            const resetButton = document.querySelector(".btn_delete");
 
-        // 카테고리 체크박스들에 이벤트 리스너를 추가합니다.
-        categoryCheckboxes.forEach(function(checkbox) {
-            checkbox.addEventListener("change", function() {
-                filterProducts(); // 카테고리가 변경될 때마다 상품을 필터링합니다.
-            });
-        });
-
-        // 초기화 버튼에 이벤트 리스너를 추가합니다.
-        resetButton.addEventListener("click", function() {
-            // 모든 카테고리 체크박스를 해제합니다.
-            categoryCheckboxes.forEach(function(checkbox) {
-                checkbox.checked = false;
-            });
-
-            filterProducts(); // 초기화할 때도 필터링을 수행합니다.
-        });
-
-        // 상품을 필터링하고 결과를 콘솔에 출력하는 함수입니다.
-        function filterProducts() {
-            // 선택된 카테고리를 저장할 배열입니다.
-            const selectedCategories = [];
-
-            // 선택된 카테고리 체크박스들을 확인하고 배열에 추가합니다.
-            categoryCheckboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    selectedCategories.push(checkbox.value);
-                }
-            });
-
-            // 선택된 카테고리에 따라 필터링된 상품을 가져오는 로직을 추가할 수 있습니다.
-            // 여기서는 콘솔에 로그를 출력하는 예시 코드를 작성합니다.
-            console.clear(); // 콘솔을 정리합니다.
-            console.log("Selected Categories:", selectedCategories);
-
-            // 여기에 상품 필터링 및 화면 갱신 로직을 추가하세요.
-        }
-    });
-    document.addEventListener("DOMContentLoaded", function() {
-            const categoryForm = document.querySelector('.category');
-            const brandForm = document.querySelector('.brand_select');
-
-            categoryForm.addEventListener('change', displaySelectedItems);
-            brandForm.addEventListener('change', displaySelectedItems);
-
-            function displaySelectedItems() {
-                const selectedCategories = getSelectedItems(categoryForm);
-                const selectedBrands = getSelectedItems(brandForm);
-
-                console.clear(); // 콘솔 청소
-                console.log('Selected Categories:', selectedCategories.join(', '));
-                console.log('Selected Brands:', selectedBrands.join(', '));
-            }
-
-            function getSelectedItems(form) {
-                const selectedItems = [];
-                const checkboxes = form.querySelectorAll('input:checked');
-
-                checkboxes.forEach((checkbox) => {
-                    selectedItems.push(checkbox.value);
+            // 초기화 버튼에 이벤트 리스너를 추가합니다.
+            resetButton.addEventListener("click", function () {
+                // 모든 카테고리, 브랜드, 가격대 체크박스를 해제합니다.
+                categoryCheckboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
                 });
 
-                return selectedItems;
+                brandCheckboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                });
+
+                priceCheckboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                });
+
+                filterProducts(); // 초기화할 때도 필터링을 수행합니다.
+            });
+
+            // 상품을 필터링하고 결과를 콘솔에 출력하는 함수입니다.
+            function filterProducts() {
+                // 선택된 카테고리, 브랜드, 가격대를 저장할 배열들입니다.
+                const selectedCategories = [];
+                const selectedBrands = [];
+                const selectedPrices = [];
+
+                // 선택된 카테고리 체크박스들을 확인하고 배열에 추가합니다.
+                categoryCheckboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        selectedCategories.push(checkbox.value);
+                    }
+                });
+
+                // 선택된 브랜드 체크박스들을 확인하고 배열에 추가합니다.
+                brandCheckboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        selectedBrands.push(checkbox.value);
+                    }
+                });
+
+                // 선택된 가격대 체크박스들을 확인하고 배열에 추가합니다.
+                priceCheckboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        selectedPrices.push(checkbox.value);
+                    }
+                });
+
+                // 여기에 상품 필터링 및 화면 갱신 로직을 추가하세요.
+                // 여기서는 콘솔에 로그를 출력하는 예시 코드를 작성합니다.
+                console.clear(); // 콘솔을 정리합니다.
+                console.log("Selected Categories:", selectedCategories);
+                console.log("Selected Brands:", selectedBrands);
+                console.log("Selected Prices:", selectedPrices);
             }
         });
+        
 </script>
