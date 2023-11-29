@@ -91,6 +91,7 @@ header .main-list li {
     height: 24px;
 }
 
+
 .profile_state{
     display:flex;
     justify-content: space-between;
@@ -99,6 +100,7 @@ header .main-list li {
     align-items: center;
     padding: 0;   
     text-decoration: none;
+    background-color: red;
 }
 
 /* .profile_img{
@@ -116,9 +118,16 @@ header .main-list li {
     border-radius: 70%;
     border: 1px solid lightgray;
 }
+.nickname{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
 .prfile_nick{
+    display: flex;
+    justify-content: space-between;
     /* padding: 5px 700px; */
-    padding: 0% 30%;
+    /* padding: 0% 30%; */
     text-decoration: none;
 }
 .date001{
