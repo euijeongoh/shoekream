@@ -15,6 +15,14 @@ public class HomeController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		/*
+		 * 데이터 받아오기
+		 * - 신규 등록 상품, 새로운 즉시 구매가
+		 * 
+		 */
+		
+		
+		
 		req.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(req, resp);
 		
 	}
