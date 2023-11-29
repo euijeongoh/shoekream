@@ -66,7 +66,7 @@ header .main_list {
     height: 24px;
 }
 
-.main_list .logo_area img{
+.main_list .logo_area img {
     width: 120px;
     height: 24px;
 }
@@ -87,7 +87,7 @@ header .main_list li {
     color: rgba(34, 34, 34);
 }
 
-.main_list img{
+.main_list img {
     height: 24px;
 }
 .content {
@@ -103,14 +103,17 @@ header .main_list li {
     display: flex;
     justify-content: center;
     padding: 16px 0;
-    position: relative
+    position: relative;
+    border-bottom: 1px solid lightgray;
 }
 .title_txt {
     color: #000;
     cursor: pointer;
     font-size: 28px;
     font-weight: 600;
-    letter-spacing: -.12px
+    letter-spacing: -.12px;
+
+    
 }
 .search_filter {
     -ms-overflow-style: none;
@@ -149,16 +152,19 @@ header .main_list li {
     -webkit-text-decoration: underline;
     text-decoration: underline
 }
-.category{
-    margin: 10px;
+.category {
     font-size: 16px;
     font-family: 'Pretendard';
 }
-.category_select{
+.category_select {
     height: 180px;
     margin-bottom: 20px;
 }
-.brand_select{
+.category_select > span{
+    margin-left: 10px;
+}
+.brand_select {
+    font-family: 'Pretendard';
     -webkit-mask-image: linear-gradient(0deg,transparent,#000),linear-gradient(270deg,transparent 17px,#000 0);
     mask-image: linear-gradient(0deg,transparent,#000),linear-gradient(270deg,transparent 17px,#000 0);
     -webkit-mask-position: left bottom;
@@ -175,4 +181,7 @@ header .main_list li {
 .brand_select :hover {
     -webkit-mask-position: left top;
     mask-position: left top
+}
+.price{
+    font-family: 'Pretendard';
 }
