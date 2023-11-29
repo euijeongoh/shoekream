@@ -149,21 +149,21 @@ body {
                         }
                 .instant_group {
                     box-sizing: border-box;
+                    height: 168px;
                 }       
                     .tab_area {
                         position: relative;
                         box-sizing: border-box;
                     }
                         .tab_list {
-                            height: 51px;
-                            display: flex;
                             border: 1px solid #ebebeb;
                             border-radius: 80px;
                             margin-bottom: 27px;
+                            height: 51px;
+                            display: flex;
                             box-sizing: border-box;
                         }
                             .item {
-                                width: 315px;
                                 flex: 1;
                                 margin: 3px 0;
                                 margin-left: 3px;
@@ -177,10 +177,11 @@ body {
                                     color: rgba(34,34,34,.8);
                                     font-size: 14px;
                                     /* letter-spacing: -.21px; */
-                                    letter-spacing: .15px;
+                                    letter-spacing: -.15px;
                                     padding: 14px 0;
                                 }
                             .item_on {
+                                flex: 1;
                                 box-sizing: border-box;
                                 margin: 3px 0;
                                 margin-right: 3px;
