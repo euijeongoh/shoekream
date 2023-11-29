@@ -98,6 +98,9 @@ header .main_list li {
         padding: 0 40px 80px;
         position: relative
 }
+.content .search_content{
+    flex : 1;
+}
 .search_title {
     align-items: center;
     display: flex;
@@ -184,4 +187,46 @@ header .main_list li {
 }
 .price{
     font-family: 'Pretendard';
+}
+.search_content{
+    flex: 1;
+}
+.shop_counts{
+    margin-top : 20px;
+}
+.shop_counts{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.sorting_title{
+    color: #222;
+    font-size: 14px;
+}
+.sorting_title{
+    align-items: center;
+    cursor: pointer;
+    display:flex;
+    font-size: 13px;
+    border: none;
+    background-color: white;
+}
+.sorting_title:after{
+    content: "";
+    display:inline-flex;
+    height: 12px;
+    margin-left: 2px;
+    width: 13px;
+}
+.sorting_title::after{
+    background: url(/frontRepo/user/html/msh/sorting.svg);
+    height: 24px;
+    width: 24px;
+}
+.search_product_content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    column-gap: 20px; 
+    row-gap: 40px;
 }
