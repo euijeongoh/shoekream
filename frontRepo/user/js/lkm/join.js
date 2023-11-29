@@ -1,9 +1,11 @@
-const idbox = document.querySelector("#input_id");
+const idInputTag = document.querySelector("input[name=memberId]");
 
-idbox.addEventListener("blur", ( x )=>{
-    const str1 = x.target.value;
+idInputTag.addEventListener("keydown", ()=>{
+    const idInputTagValue = idInputTag.value;
 
-    if(str1.length < 5) {
+    fetch("/app99/member/check/id?memberId="+idInputTagValue)
+    .then( (resp)=>{return resp.json()} )
+    .then( (data)=>{
         
-    }
-});
+    } );
+})
