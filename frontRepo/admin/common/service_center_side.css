@@ -3,25 +3,21 @@
     padding: 3px 0px;
     list-style: none;
 }
-li a{
-    list-style: none;
-    text-decoration: none;
-    color: gray;
-}
 
-.service_container {
+.service-container {
+    width: 1200px;
+    margin: auto;
+    display: flex;
     padding: 40px 40px 160px 40px;
 }
 
 .menu_container {
-    width: 160px;
+    width: 180px;
     margin: 0px 20px 0px 0px;
     
 }
 
 .service_title {
-    display: flex;
-    font-family: 'Pretendard';
     font-weight: 650;
     font-size: 24px;
     padding: 0px 0px 30px;
@@ -29,32 +25,58 @@ li a{
 }
 
 .notice{
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Pretendard';
     font-weight: 650;
-    margin: 0px 0px 12px;
-    color: rgba(34, 34, 34);
+    margin: 20px 0px 12px;
+    color: lightgray;
+}
+
+.notice #title a {
+    text-decoration: none;
+    color: lightgray;
 }
 
 .faq {
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Pretendard';
     font-weight: 650;
     margin: 0px 0px 12px;
-    color: rgba(34, 34, 34);
+    color: lightgray;
 }
 
+.faq #title a{
+   text-decoration: none;
+    color: lightgray; 
+}
 
 .qna {
-    font-size: 18px;
+    font-size: 16px;
+    font-family: 'Pretendard';
+    font-weight: 650;
+    margin: 0px 0px 12px;
+    color: lightgray;
+}
+
+.qna #title a{
+    text-decoration: none;
+     color: lightgray; 
+     /* font-size: medium */
+ }
+/* .first{
+    width: 160px;
+    display: flex;
+} */
+.request{
+    font-size: 16px;
     font-family: 'Pretendard';
     font-weight: 650;
     margin: 0px 0px 12px;
     color: rgba(34, 34, 34);
 }
-.first{
-    width: 160px;
-    display: flex;
-}
 
+.request #title a{
+    text-decoration: none;
+     color: lightgray; 
+ }
 
