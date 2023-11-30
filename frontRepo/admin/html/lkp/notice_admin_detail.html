@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 헤더</title>
+
+    <link rel="stylesheet" href="../../common/adminheader.css">
+    <link rel="stylesheet" href="../../css/lkp/notice_admin.css">
+    <link rel="stylesheet" href="../../common/admin-sidebar.css">
+    <link rel="stylesheet" href="../../common/footer.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="top-list">
+                <ul>
+                    <li><a href="">고객센터</a></li>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">관심</a></li>
+                    <li><a>알림</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </div>
+            <div class="main-list">
+                <div class="logo-area">
+                    <a href="">
+                        <img src="../../common/logo.svg">
+                        <span>관리자</span>
+                    </a>
+                </div>
+                <div class="head-list">
+                    <ul>
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li id="search-btn"><a><img src="../../common/searchIcon.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="wrap">
+        <div class="wrap_inner">
+            <!-- 레프트 사이드바 -->
+            <div class="sidebar">
+                <a href="/admin">
+                    <h2>관리자 페이지</h2>
+                </a>
+                <br>
+                <nav class="sidenav">
+                    <div class="sidenav_list">
+                        <strong class="sidenav_title"><a href="">주문관리</a></strong>
+                        <ul class="sidenav_menu">
+                            <li class="menu_item">
+                                <a href="" class="menu_link">입고 현황</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">검수진행 현황</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">배송 현황</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="sidenav_list">
+                        <strong class="sidenav_title"><a href="">상품 관리</a></strong>
+                        <ul class="sidenav_menu">
+                            <li class="menu_item">
+                                <a href="" class="menu_link">상품 등록</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">상품 수정</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">상품 삭제</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">상품 목록</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="sidenav_list">
+                        <strong class="sidenav_title"><a href="">고객 센터</a></strong>
+                        <ul class="sidenav_menu">
+                            <li class="menu_item">
+                                <a href="" class="menu_link">공지사항</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">FAQ</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">Q&A</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <footer>
+        <div class="box1"></div>
+        <div class="box2">
+            <div></div>
+            <div>고객센터 1588-4444</div>
+        </div>
+        <div class="box3">
+            <div class="left_bar">
+                <div>고객지원</div>
+                <div>공지사항</div>
+                <div>1:1문의</div>
+                <div>상품 등록 문의</div>
+            </div>
+            <div class="icons">
+                <div class="social">
+                    <img src="../../../user/common/footer_img/인별.png" alt="인별">
+                </div>
+                <div class="social">
+                    <img src="../../../user/common/footer_img/페북.png" alt="페북">
+                </div>
+                <div class="social">
+                    <img src="../../../user/common/footer_img/카톡.png" alt="카톡">
+                </div>
+            </div>
+            <div></div>
+            <div class="faq">
+                <button>자주 묻는 질문</button>
+            </div>
+        </div>
+        <div class="box4"></div>
+    </footer>
+
+
+    <script>
+        const searchBtn = document.querySelector("#search-btn");
+    </script>
+</body>
+
+</html>
