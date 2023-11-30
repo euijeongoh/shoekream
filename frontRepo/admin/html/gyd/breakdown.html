@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/common/admin-sidebar.css">
+    <link rel="stylesheet" href="/user/common/footer.css">
+    <link rel="stylesheet" href="/admin/common/adminheader.css">
+    <link rel="stylesheet" href="/admin/css/gyd/breakdown.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="top-list">
+                <ul>
+                    <li><a href="">고객센터</a></li>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">관심</a></li>
+                    <li><a>알림</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </div>
+            <div class="main-list">
+                <div class="logo-area">
+                    <a href="">
+                    <img src="/admin/common/logo.svg">
+                    <span>관리자</span>
+                    </a>
+                </div>
+                <div class="head-list">
+                    <ul>
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li id="search-btn"><a><img src="/admin/common/searchIcon.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="sidebar" >
+            <a href="/admin"><h2>관리자 페이지</h2></a>
+            <br>
+            <nav class="sidenav">
+                <div class="sidenav_list">
+                    <strong class="sidenav_title"><a href="">주문관리</a></strong>
+                    <ul class="sidenav_menu">
+                        <li class="menu_item">
+                            <a href="" class="menu_link">입고 현황</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">검수진행 현황</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">배송 현황</a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="sidenav_list">
+                    <strong class="sidenav_title"><a href="">상품 관리</a></strong>
+                    <ul class="sidenav_menu">
+                        <li class="menu_item">
+                            <a href="" class="menu_link">상품 등록</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">상품 수정</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">상품 삭제</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">상품 목록</a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="sidenav_list">
+                    <strong class="sidenav_title"><a href="">고객 센터</a></strong>
+                    <ul class="sidenav_menu">
+                        <li class="menu_item">
+                            <a href="" class="menu_link">공지사항</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">FAQ</a>
+                        </li>
+                        <li class="menu_item">
+                            <a href="" class="menu_link">Q&A</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <form name="searchForm">
+            <div class="search_box">
+                <table class="table left_gray filters-table collapsed">
+                    <tbody>
+                        <tr>
+                            <td id="search-title">일자</td>
+                            <td colspan="3" class="form-inline">
+                                <select class="input-sm" name="date_option">
+                                    <option value="order" selected="">주문일자</option>
+                                    <option value="send">발송일자</option>
+                                    <option value="invInput">인쇄일자</option>
+                                </select>
+    
+                                <div class="form-group" role="group" aria-label="...">
+                                    <label><input type="radio" name="date_type" class="date_type">3개월</label>
+                                    <label><input type="radio" name="date_type" class="date_type">어제</label>
+                                    <label><input type="radio" name="date_type" class="date_type">오늘</label>
+                                    <label><input type="radio" name="date_type" class="date_type">일주일</label>
+                                    <label><input type="radio" name="date_type" class="date_type">한달</label>
+                                    <label><input type="radio" name="date_type" class="date_type">임의기간</label>
+                                </div>
+    
+                                <input type="text" class="form-control input-sm hasDatepicker" id="start_date" name="start_date" maxlength="10" value="2023-11-30" size="10" disabled="" onblur="javascript:jsDayCheck(this);" autocomplete="off">
+                                ~
+                                <input type="text" class="form-control input-sm hasDatepicker" id="end_date" name="end_date" maxlength="10" value="2023-11-30" size="10" disabled="" onblur="javascript:jsDayCheck(this);" autocomplete="off">
+    
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="search-title">키워드 </td>
+                            <td colspan="3">
+                                <div id="search_div">
+                                <select id="search_how" class="input-sm" name="search_how">
+                                        <option value="all">통합검색</option>
+                                        <option value="order_code">주문번호</option>
+                                        <option value="opt_match_p_nm">재고매칭상품명</option>
+                                        <option value="opt_match_o_nm">재고매칭옵션명</option>
+                                        <option value="option_note_search_key">옵션비고</option>  
+                                </select>
+                                    <input type="text" class="form-control input-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn_center">
+                <button type="submit" id="search_button" class="btn btn-primary btn-lg"></i> 검색</button>
+            </div>
+    
+            
+        </form>
+
+    </div>
+    
+
+
+    <footer>
+        <div class="box1"></div>
+        <div class="box2">
+            <div></div>
+            <div>고객센터 1588-4444</div>
+        </div>
+        <div class="box3">
+            <div class="left_bar">
+                <div>고객지원</div>
+                <div>공지사항</div>
+                <div>1:1문의</div>
+                <div>상품 등록 문의</div>
+            </div>
+            <div class="icons">
+                <div>
+                    <img src="/user/common/footer_img/인별.png" alt="인별">
+                </div>
+                <div>
+                    <img src="/user/common/footer_img/페북.png" alt="페북">
+                </div>
+                <div>
+                    <img src="/user/common/footer_img/카톡.png" alt="카톡">
+                </div>
+            </div>
+            <div></div>
+            <div class="faq">
+                <button>자주 묻는 질문</button>
+            </div>
+        </div>
+        <div class="box4"></div>
+    </footer>
+
+    
+        
+        <script>
+            const searchBtn = document.querySelector("#search-btn");
+
+        </script>
+    
+</body>
+</html>

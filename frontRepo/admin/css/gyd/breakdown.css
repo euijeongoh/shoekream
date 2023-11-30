@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+form {
+    display: block;
+    margin-top: 0em;
+    margin-block-end: 1em;
+    width: 100%;
+}
+.sidebar{
+    margin-left: 0;
+}
+.container{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding: 40px 40px 160px;
+}
+/* 폼 스타일 */
+form {
+    margin: 20px; /* 원하는 여백으로 조정 */
+    font-size: 12px;
+}
+
+/* 검색 상자 스타일 */
+.search_box {
+    margin-bottom: 20px; /* 검색 상자 아래 여백 조정 */
+}
+
+/* 날짜 및 키워드 필터 테이블 스타일 */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* 테이블 아래 여백 조정 */
+}
+
+.table td {
+    padding: 6px;
+    border: 1px solid #ddd; /* 셀 테두리 스타일 */
+}
+
+/* 날짜 입력란 스타일 */
+.hasDatepicker {
+    width: 100px; /* 원하는 너비로 조정 */
+}
+
+/* 검색 버튼 스타일 */
+.btn_center {
+    text-align: center;
+}
+/* 가로 정렬 스타일 */
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-inline label {
+    margin-right: 10px; /* 각 라디오 버튼 간의 간격 조정 */
+}
+
+/* 키워드 검색 부분 가로 정렬 스타일 */
+#search_div {
+    display: flex;
+    align-items: center;
+}
+
+#search_div > select,
+#search_div > input {
+    margin-left: 10px; /* 선택 상자와 입력 필드 간의 간격 조정 */
+}
+.table input[name=search_key] {
+    width: 400px;
+}
+#search-title{
+    background-color: lightgray;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+.btn {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    color: #3498db;
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #3498db;
+    color: white;
+}
