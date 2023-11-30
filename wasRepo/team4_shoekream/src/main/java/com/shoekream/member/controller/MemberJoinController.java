@@ -1,4 +1,4 @@
-package com.shoekream.member;
+package com.shoekream.member.controller;
 
 import java.io.IOException;
 

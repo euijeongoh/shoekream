@@ -2,11 +2,12 @@
  * 
  */
 
-const mainSpan = document.querySelector("#menutab #main");
-const mainSpanLink = document.querySelector("#menutab #main a");
-const headListHome = document.querySelector(".head_list ul li a");
 
 window.onload=() => {
+	const mainSpan = document.querySelector("#menutab #main");
+	const mainSpanLink = document.querySelector("#menutab #main a");
+	const headListHome = document.querySelector(".head_list ul li a");
+	
     if(location.href.indexOf("/shoekream/home")>-1) {
     mainSpanLink.style.color="black";
     mainSpan.style.fontWeight = "700";
