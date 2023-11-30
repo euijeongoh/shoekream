@@ -4,31 +4,31 @@
 
 const joinBtn = document.querySelector("#join_btn");
 
+const inputBoxTagArr = document.querySelectorAll("input[class=input_txt]");
 const idInputTag = document.querySelector("input[name=memberId]");
 const pwdInputTag = document.querySelector("input[name=memberPwd]");
+const pwd2InputTag = document.querySelector("input[name=memberPwd2]");
 
-idInputTag.addEventListener('keyup', ()=> {
-	activateJoinBtn();
-})
-
-pwdInputTag.addEventListener('keyup', () => {
-	activateJoinBtn();
-})
-
+for(let i = 0; i<inputBoxTagArr.length; i++){
+	inputBoxTagArr[i].addEventListener('keyup', (event)=>{
+		activateJoinBtn();
+	})
+}
 
 function activateJoinBtn() {
 	const pwdChecked = checkPwd();
 	const idChecked = checkId();
+	const pwd2Checked = checkPwd2();
 	
-	if(idInputTag.value.length>6 && isChecked==true){
-		loginBtn.style.backgroundColor="black";
-		loginBtn.style.cursor="pointer";
+	if(idChecked==true && pwdChecked==true && pwd2Checked==true){
+		joinBtn.style.backgroundColor="black";
+		joinBtn.style.cursor="pointer";
 	}	
 }
 
 function checkId() {
 	const strId = idInputTag.value;
-	const regId = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z]{6,12}$/;
+	const regId = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z\d]{6,12}$/;
 	const idChecked = regId.test(strId);
 	
 	if(strId.length>1 && idChecked==false) {
@@ -37,8 +37,8 @@ function checkId() {
 	}
 	
 	if(idChecked===true) {
-		const idCheckDiv = document.querySelector("#pwd_check");
-		pwdCheckDiv.innerHTML="";
+		const idCheckDiv = document.querySelector("#id_check");
+		idCheckDiv.innerHTML="";
 	}
 	
 	return idChecked;
@@ -61,3 +61,28 @@ function checkPwd() {
 	
 	return pwdChecked;
 }
+
+function checkPwd2() {
+	const pwd2CheckDiv = document.querySelector("#pwd2_equalCheck");
+	
+	if(pwd2InputTag.value.length>1 && pwdInputTag.value !== pwd2InputTag.value) {
+		pwd2CheckDiv.innerHTML="비밀번호가 일치하지 않습니다.";
+	}
+	
+	if(pwd2InputTag.value === pwdInputTag.value){
+		pwd2CheckDiv.innerHTML="";
+	}
+}
+
+function checkNick() {
+	
+}
+
+function checkEmail() {
+	
+}
+
+function checkPhone() {
+	
+}
+
