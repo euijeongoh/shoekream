@@ -1,9 +1,13 @@
 *{
-  
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 div {
     display: block;
+}
+.sidebar{
+    margin-left: 0;
 }
 .container{
     display: flex;
@@ -14,5 +18,61 @@ div {
 }
 .order_area{
    display: grid;
-   
+    
+}
+
+/* 추가 또는 수정된 CSS 코드 */
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.order_area {
+    flex: 1;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.order_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    margin: 0;
+}
+
+.breakdown_views {
+    text-decoration: none;
+    color: #007bff;
+}
+
+/* 각 주문 상태에 대한 색상 지정 */
+.order_contant {
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.title.incoming {
+    color: #28a745; /* Green color for "입고 필요" */
+}
+
+.title.inspection {
+    color: #ffc107; /* Yellow color for "검수 진행" */
+}
+
+.title.shipping {
+    color: #007bff; /* Blue color for "배송 필요" */
+}
+
+.order_count {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 50px;
+    font-weight: bold;
 }
