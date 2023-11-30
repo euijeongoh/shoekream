@@ -45,7 +45,7 @@ main {
     line-height: 18px;
 }
 
-.user-detail .user-info button {
+.user-detail .user-info :nth-child(3) button {
     height: 36px;
     border: 1px solid #ebebeb;
     margin: 12px 0px 0px;
@@ -57,11 +57,17 @@ main {
     color: rgba(34, 34, 34);
 }
 
-.user-detail div img {
+.user-detail #img_upload {
+	display: none;
+}
+
+.user-detail div #profile-img {
     width: 100px;
     height: 100px;
-    background-color: azure;
-    border-radius: 100px;
+    background-color: seagreen;
+    border-radius: 250px;
+    border: none;
+    overflow: hidden;
 }
 
 .user-menu {

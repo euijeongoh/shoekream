@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/shoekream/resources/css/common/mypage_side.css"> 
 <link rel="stylesheet" href="/shoekream/resources/css/mypage/my.css"> 
 
+<script defer src="/shoekream/resources/js/mypage/my.js"></script>
+
 </head>
 <body>
 
@@ -28,14 +30,17 @@
                         <div class="user-info">
                             <div>가리반</div>
                             <div>sillacurry</div>
-                            <button type="button">내 리뷰</button>
+                            <div>
+                            	<input id="img_upload" type="file" accept="image/*" style="display:none">
+                            	<button type="button">내 리뷰</button>
+                            </div>
                         </div>
                     </div>
                     <div class="user-menu">
                         <div class="icon">
                             <div>
                                 <a>
-                                <img src="./resources/pointicon.png">
+                                <img src="/shoekream/resources/img/mypage/pointicon.png">
                                 <div>포인트</div>      
                                 </a>
                             </div>
@@ -43,7 +48,7 @@
                         <div class="icon">
                             <div>
                                 <a>
-                                <img src="./resources/noticeicon.png">
+                                <img src="/shoekream/resources/img/mypage/noticeicon.png">
                                 <div>공지사항</div>      
                                 </a>
                             </div>
