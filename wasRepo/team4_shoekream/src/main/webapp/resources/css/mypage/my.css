@@ -81,6 +81,8 @@ main {
 
 .user-menu .icon div{
     padding: 16px 0px;
+    display: flex;
+    justify-content: center;
 }
 
 .icon div a {
@@ -104,16 +106,17 @@ main {
 }
 
 
-.mypage-title :first-child{
+.mypage-title .list{
     font-family: 'Pretendard';
     font-size: 18px;
     font-weight: 600;
 }
 
-.mypage-title :nth-child(2){
+.mypage-title .more a{
     font-family: 'Pretendard';
     font-size: 13px;
     color: rgba(34, 34, 34, 0.5);
+    text-decoration: none;
 }
 
 .count-box {
@@ -155,7 +158,7 @@ main {
     align-items: center;
 }
 
-.my-list div {
+.my-list .none {
     font-size: 13px;
     color: rgba(34, 34, 34, 0.8);
 }

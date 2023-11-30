@@ -32,7 +32,7 @@
                             <div>sillacurry</div>
                             <div>
                             	<input id="img_upload" type="file" accept="image/*" style="display:none">
-                            	<button type="button">내 리뷰</button>
+                            	<button type="button" onclick="location.href='/shoekream/review/boardlist'">내 리뷰</button>
                             </div>
                         </div>
                     </div>
@@ -40,15 +40,15 @@
                         <div class="icon">
                             <div>
                                 <a>
-                                <img src="/shoekream/resources/img/mypage/pointicon.png">
-                                <div>포인트</div>      
+                                <img href="/shoekream/mypage/point" src="/shoekream/resources/img/mypage/pointicon.png">
+                                <div>0 P</div>      
                                 </a>
                             </div>
                         </div>  
                         <div class="icon">
                             <div>
                                 <a>
-                                <img src="/shoekream/resources/img/mypage/noticeicon.png">
+                                <img href="/shoekream/notice/main" src="/shoekream/resources/img/mypage/noticeicon.png">
                                 <div>공지사항</div>      
                                 </a>
                             </div>
@@ -56,8 +56,8 @@
                     </div>
                 </div>
                 <div class="mypage-title">
-                    <span>구매 내역</span>
-                    <span>더보기</span>
+                    <span class="list">구매 내역</span>
+                    <span class="more"><a href="/shoekream/mypage/buying">더보기</a></span>
                 </div>
                 <div class="count-box">
                     <div class="tab">
@@ -78,13 +78,16 @@
                     </div>
                 </div>
                 <div class="my-list">
-                    <div>거래 내역이 없습니다.</div>
+                    <div class="none">거래 내역이 없습니다.</div>
+                    <div class="item_list">
+                    	
+          			</div>
                 </div>
 
 
                 <div class="mypage-title">
-                    <span>판매 내역</span>
-                    <span>더보기</span>
+                    <span class="list">판매 내역</span>
+                    <span class="more"><a href="/shoekream/mypage/selling">더보기</a></span>
                 </div>
                 <div class="count-box">
                     <div class="tab">
@@ -105,13 +108,16 @@
                     </div>
                 </div>
                 <div class="my-list">
-                    <div>거래 내역이 없습니다.</div>
+                    <div class="none">거래 내역이 없습니다.</div>
+                    <div class="item_list">
+                    	
+          			</div>
                 </div>
 
 
                 <div class="mypage-title">
-                    <span>관심 상품</span>
-                    <span>더보기</span>
+                    <span class="list">관심 상품</span>
+                    <span class="more">더보기</span>
                 </div>
                 <ul class="product-list-wrap">
                     <li>
