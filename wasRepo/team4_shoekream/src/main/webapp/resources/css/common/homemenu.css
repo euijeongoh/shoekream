@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#menutab {
+    max-width: 1280px;
+    margin: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#menutab ul {
+    display: flex;
+    height: 44px;
+    justify-content: start;
+}
+
+#menutab ul span{
+    margin-left: 40px;
+    padding-top: 15px;
+    padding-bottom: 6px;
+    font-size: 16px;
+}
+
+#menutab ul span a {
+    text-decoration: none;
+    color: rgba(34, 34, 34, 0.8);
+}
