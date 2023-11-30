@@ -23,10 +23,12 @@
                 <div class="input_box">
                     <div class="input_title">아이디</div>
                     <input class="input_txt" type="text" name="memberId" placeholder="영문, 숫자 조합 6-12자">
+                    <div id="id_check"></div>
                 </div>
                 <div class="input_box">
                     <div class="input_title">비밀번호</div>
                     <input class="input_txt" type="password" name="memberPwd" placeholder="영문, 숫자, 특수문자 조합 8-16자">
+                    <div id="pwd_check"></div>
                 </div>
                 <div class="input_box">
                     <div class="input_title">비밀번호 확인</div>
