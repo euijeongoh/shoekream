@@ -1,1 +1,204 @@
-@charset "UTF-8";
+main {
+    width: 1280px;
+    margin: auto;
+    font-family: 'Pretendard';
+}
+
+.mypage-home {
+    width: 1000px;
+}
+
+.profile {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ebebeb;
+    border-radius: 12px; 
+    padding: 23px 0px 23px 23px;
+}
+
+
+.profile .user-detail {
+    display: flex;
+    justify-content: flex-start;
+    height: 100px;
+    align-content: center;
+}
+
+.user-detail .user-info {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+.user-detail .user-info :first-child {
+    font-size: 18px;
+    font-family: 'Pretendard';
+    font-weight: 600;
+}
+
+.user-detail .user-info :nth-child(2) {
+    font-size: 14px;
+    font-family: 'Pretendard';
+    color: rgba(34, 34, 34, 0.5);
+    letter-spacing: -.05px;
+    line-height: 18px;
+}
+
+.user-detail .user-info button {
+    height: 36px;
+    border: 1px solid #ebebeb;
+    margin: 12px 0px 0px;
+    padding: 0px 14px;
+    border-radius: 12px;
+    background-color: white;
+    font-size: 12px;
+    font-family: 'Pretendard';
+    color: rgba(34, 34, 34);
+}
+
+.user-detail div img {
+    width: 100px;
+    height: 100px;
+    background-color: azure;
+    border-radius: 100px;
+}
+
+.user-menu {
+    width: 250px;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: 'Pretendard';
+    font-size: 12px;
+    color: rgba(34, 34, 34);
+}
+
+.user-menu .icon div{
+    padding: 16px 0px;
+}
+
+.icon div a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.icon div a img{
+    margin: auto;
+    width: 28px;
+    height: 28px;
+}
+
+.mypage-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0px;
+    margin: 42px 0px 0px;
+}
+
+
+.mypage-title :first-child{
+    font-family: 'Pretendard';
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.mypage-title :nth-child(2){
+    font-family: 'Pretendard';
+    font-size: 13px;
+    color: rgba(34, 34, 34, 0.5);
+}
+
+.count-box {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 18px 0px 0px;
+    height: 96px;
+    background-color: #ebebeb;
+    border-radius: 12px;
+}
+
+.tab {
+    font-family: 'Pretendard';
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 78px;
+    padding: 18px 0px 0px;
+}
+
+.tab :first-child{
+    color: rgba(34, 34, 34, 0.8);
+    font-size: 13px;
+    border: none;
+}
+
+.tab :nth-child(2) {
+    color: #F15746;
+    font-size: 18px;
+    margin: 2px 0px 0px;
+    font-weight: 700;
+}
+
+.my-list {
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-list div {
+    font-size: 13px;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+.product-list-wrap {
+    width: 1000px;
+    display: flex;
+    justify-content: space-evenly; 
+}
+
+.product-list-wrap li{
+    width: 25%;
+    margin: 20px 0;
+    padding: 0 12px;
+}
+
+.product-list-wrap li #product-img {
+    background-color: rgba(235, 240, 245);
+    width: 100%;
+    border-radius: 12px;
+}
+
+.product-list-wrap li #product-img img {
+    width: 100%;
+    height: 234px;
+    border-radius: 12px;
+}
+
+.info-box {
+    padding-top: 9px;
+    font-family: 'Pretendard';
+    width: 100%;
+}
+
+#brand {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#model-name {
+    font-size: 13px;
+    margin-bottom: 2px;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+#price {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 12px;
+    color: rgba(34, 34, 34);
+}
+
