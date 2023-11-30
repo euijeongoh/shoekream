@@ -58,6 +58,10 @@ header .main_list {
     padding-right: 40px;
     padding-bottom: 20px;
 }
+.main_title{
+    font-family: 'Pretendard';
+    font-size: 20px;
+}
 
 .main_list .logo_area {
     display: flex;
@@ -225,8 +229,60 @@ header .main_list li {
     width: 24px;
 }
 .search_product_content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     column-gap: 20px; 
     row-gap: 40px;
+    flex-wrap: wrap;
+
+}
+.product_list_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product_list_wrap li{
+    width: 30%;
+    margin-right: 6px;
+    
+}
+
+.product_list_wrap li #product_img {
+    background-color: rgba(235, 240, 245);
+    width: 100%;
+    height: 234px;
+    border-radius: 12px;
+}
+
+.product_list_wrap li #product_img img {
+    width: 100%;
+    height: 234px;
+    border-radius: 12px;
+}
+
+.info_box {
+    padding-top: 9px;
+    font-family: 'Pretendard';
+    width: 100%;
+}
+
+#brand {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#model-name {
+    font-size: 13px;
+    margin-bottom: 2px;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+#price {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 12px;
+    color: rgba(34, 34, 34);
 }
