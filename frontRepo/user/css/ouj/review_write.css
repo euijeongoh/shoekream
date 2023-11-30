@@ -98,11 +98,14 @@ header .main-list li {
     margin: auto;
 }
 .write_review{
+    margin-top: 30px;
     border-bottom: 3px solid lightgray;
     /* background-color: saddlebrown; */
 }
 .wreview{
     text-align: left;
+    margin-bottom: 10px;
+    font-size: large;
 }
 .picjor{
     display: flex;
@@ -121,59 +124,100 @@ header .main-list li {
 .picture_img{
     height: 200px;
     width: 200px;
-    margin: auto;
+    margin: 15px 60px;
     display: block;
 }
 .jordan{
     display: block;
-    margin: auto;
+    margin: 100px 40px;
     /* background-color: aqua; */
 }
-/* .jordan_eg{
-
-} */
+.jordan_eg{
+    margin-bottom: 10px;
+}
 .jordan_ko{
     font-size: small;
+    margin-left: 10px;
     color: lightgray
+}
+.ggg{
+    display: block;
+    justify-content: space-around;
+    /* background-color: yellow; */
 }
 .star{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    height: 80px;
+    /* background-color: yellow; */
 }
 .wstar{
-    display: flex;
-    justify-content: center;
-    /* padding: 0px 1200px; */
+    margin: auto;
+    /* background-color: aqua; */
 }
-.starjom{
-    /* padding: 0px 900px; */
+#wstar{
+    margin: 25px 100px;
+    font-size: large;
+}
+.starjom{ 
+    margin: auto;
+    /* background-color: salmon; */
+}
+#starjom{
+    margin: 15px 60px;
+    height: 60px;
+    width: 160px;
 }
 .ignition{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    height: 80px;
+    /* background-color: greenyellow; */
+}
+/* .wignition{
+    margin: 25px 100px;
+    font-size: large;
+} */
+#wignition{
+    margin: 30px 80px;
+    font-size: large;
 }
 .ignition ul{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     /* align-items: center; */
-    width: 20%;
+    width: 90%;
     height: 60%;
-
-    border-radius: 30px;
+    border-radius: 20px;
     border: 1px solid lightgray;
+    margin: 20px 40px;
+}
+.ignition li{
+    display: block;
+    justify-content: center;
+    margin: 10px 10px;
 }
 .ignition button{
     background-color: white;
     color: lightgray;
     border: none;
-    /* padding: 30%; */
+    height: 30px;
+    width: 40px;
+    display: block;
 }
+/* .ignition button:nth-child(3){
+    width: 900px;
+} */
 .ignition button :hover{
     color: black;
+    /* background-color: black; */
 }
 .content{
     /* background-color: antiquewhite; */
     /* display: ; */
+}
+#wcontent{
+    margin: 10px 20px;
 }
 #write{
     border: 1px solid lightgray;
@@ -184,12 +228,12 @@ header .main-list li {
 #write ::placeholder{
     color: lightgray;
 }
-.upload{
-    /* padding: 0px 300px; */
+#wupload{
+    margin: 10px 20px;
 }
-.upload02{
+.upload_picture{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     border: 1px solid lightgray;
     border-radius: 30px;
     width: 700px;
@@ -198,6 +242,9 @@ header .main-list li {
 #reviewpng{
     width: 200px;
     height: 200px;
+    border: 1px solid lightgray;
+    margin: auto;
+    text-align: center;
 }
 
 

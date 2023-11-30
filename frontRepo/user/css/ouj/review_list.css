@@ -173,13 +173,32 @@ header .main-list li {
 .feed {
     width: 1200px;
     height: 200%;
+    /* background-color: aqua; */
 }
 
 .listpoto{
-    /* background-color: antiquewhite; */
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
+    /* background-color: antiquewhite; */
+}
+.listpoto2{
+    width: 1200px;
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: blue; */
+}
+.listpoto3{
+    width: 1200px;
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: white; */
+}
+.listpoto4{
+    width: 1200px;
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: green; */
 }
 .poto{
     width: 95%;
@@ -195,11 +214,20 @@ header .main-list li {
     justify-content: space-between;
     width: 94%;
 }
-
+/* .likenum{
+    display: ;
+    justify-content: flex-end;
+} */
+.likebox{
+    display: inline-flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
 .one{
     display: block;
     width: 25%;
     height: 25%;
+    /* background-color: skyblue; */
 }
 /* .poto04{
     width: 25%;
