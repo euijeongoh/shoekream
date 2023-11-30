@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/shoekream/resources/css/home.css"> 
 <link rel="stylesheet" href="/shoekream/resources/css/common/homemenu.css"> 
 
-<script src="/resources/js/common/homemenu.js"></script>
+<script defer src="/shoekream/resources/js/common/homemenu.js"></script>
 
 </head>
 <body>
@@ -150,23 +150,6 @@
 </body>
 
 <script>
-// homemenu js
-const mainSpan = document.querySelector("#menutab #main");
-const rankingSpan = document.querySelector("#menutab #ranking");
-
-window.onload=() => {
-    if(location.href.indexOf("/shoekream/home")>-1) {
-    mainSpan.style.color="rgba(34, 34, 34)";
-    mainSpan.style.fontWeight = "700";
-	mainSpan.style.borderBottom = "3px solid rgba(34, 34, 34)";
-    }
-
-    // if(location.href="/shoekream/ranking") {
-    // rankingSpan.style.borderBottom="2px solid rgba(34, 34, 34)";
-    // }
-}
-
-// header js
 
 </script>
 </html>
