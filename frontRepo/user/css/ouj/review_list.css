@@ -176,31 +176,31 @@ header .main-list li {
     /* background-color: aqua; */
 }
 
-.listpoto{
+.listphoto{
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: antiquewhite; */
 }
-.listpoto2{
+.listphoto2{
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: blue; */
 }
-.listpoto3{
+.listphoto3{
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: white; */
 }
-.listpoto4{
+.listphoto4{
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: green; */
 }
-.poto{
+.photo{
     width: 95%;
     padding: 15px 0px;
     height: 100%;
@@ -229,7 +229,7 @@ header .main-list li {
     height: 25%;
     /* background-color: skyblue; */
 }
-/* .poto04{
+/* .photo04{
     width: 25%;
     height: 20%;
     padding: 0% 0%;
