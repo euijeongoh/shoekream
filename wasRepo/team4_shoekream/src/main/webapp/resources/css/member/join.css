@@ -50,6 +50,12 @@
     color: #ebebeb;
 }
 
+#id_check, #pwd_check, #pwd2_equalCheck {
+	color: #f15746;
+	font-size: 11px;
+	padding-top: 3px;
+}
+
 .join_btn_box {
     padding: 20px 0px 0px;
 }

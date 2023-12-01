@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="/shoekream/resources/css/common/header.css"> 
 <link rel="stylesheet" href="/shoekream/resources/css/member/join.css"> 
 
+<script defer src="/shoekream/resources/js/member/join.js"></script>
+
 </head>
 <body>
 <!-- 	헤더 -->
@@ -21,29 +23,30 @@
             </div>
             <form action="/member/join" method="post">
                 <div class="input_box">
-                    <div class="input_title">아이디</div>
+                    <div class="input_title">아이디*</div>
                     <input class="input_txt" type="text" name="memberId" placeholder="영문, 숫자 조합 6-12자">
                     <div id="id_check"></div>
                 </div>
                 <div class="input_box">
-                    <div class="input_title">비밀번호</div>
+                    <div class="input_title">비밀번호*</div>
                     <input class="input_txt" type="password" name="memberPwd" placeholder="영문, 숫자, 특수문자 조합 8-16자">
                     <div id="pwd_check"></div>
                 </div>
                 <div class="input_box">
-                    <div class="input_title">비밀번호 확인</div>
+                    <div class="input_title">비밀번호 확인*</div>
                     <input class="input_txt" type="password" name="memberPwd2">
+                    <div id="pwd2_equalCheck"></div>
                 </div>
                 <div class="input_box">
-                    <div class="input_title">닉네임</div>
+                    <div class="input_title">닉네임*</div>
                     <input class="input_txt" type="text" name="memberNick" placeholder="한글 3-5자">
                 </div>
                 <div class="input_box">
-                    <div class="input_title">이메일</div>
+                    <div class="input_title">이메일*</div>
                     <input class="input_txt" type="text" name="email" placeholder="예) shoekream@kream.co.kr">
                 </div>
                 <div class="input_box">
-                    <div class="input_title">휴대폰 번호</div>
+                    <div class="input_title">휴대폰 번호*</div>
                     <input class="input_txt" type="text" name="phone" placeholder="- 포함 13자">
                 </div>
                 <div id="size">
