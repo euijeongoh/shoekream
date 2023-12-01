@@ -104,3 +104,114 @@ form {
     background-color: #3498db;
     color: white;
 }
+/* 기본 글꼴 크기 설정 */
+html {
+    font-size: 16px; /* 기본 글꼴 크기, 원하는 크기로 조절하세요 */
+}
+
+/* 모든 텍스트 크기를 상대적인 크기로 설정 */
+body {
+    font-size: 1em;
+}
+
+/* 테이블 스타일 */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 1em; /* 상대적인 패딩 사용 */
+    text-align: left;
+}
+
+.order-table th {
+    background-color: #f2f2f2;
+}
+
+/* 기본 글꼴 크기 설정 */
+html {
+    font-size: 16px; /* 기본 글꼴 크기, 원하는 크기로 조절하세요 */
+}
+
+/* 모든 텍스트 크기를 비율로 설정 */
+body {
+    font-size: 1rem;
+}
+
+/* 테이블 스타일 */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 1rem; /* 상대적인 패딩 사용 */
+    text-align: left;
+}
+
+.order-table th {
+    background-color: #f2f2f2;
+}
+
+/* 체크박스 관련 스타일 */
+.checkbox-cell input[type="checkbox"] {
+    margin-top: 0.5rem; /* 상대적인 여백 사용 */
+}
+
+/* 주문 정보 셀 스타일 */
+.order-info {
+    white-space: nowrap;
+}
+
+/* 상품 셀 스타일 */
+.product p {
+    margin-top: 0.8rem; /* 상대적인 여백 사용 */
+}
+
+/* 진행 현황 셀 스타일 */
+.status input[type="checkbox"] {
+    margin-top: 0.5rem; /* 상대적인 여백 사용 */
+}
+
+/* 검수 진행 셀 스타일 */
+.inspection-progress select {
+    width: 100%;
+    padding: 0.8rem; /* 상대적인 패딩 사용 */
+}
+
+/* 일반 행 스타일 */
+.order-item:hover {
+    background-color: #f9f9f9;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px; /* 작은 화면에 대한 글꼴 크기 조절 */
+    }
+
+    .order-table th, .order-table td {
+        padding: 0.8rem; /* 작은 화면에 대한 패딩 조절 */
+    }
+
+    .checkbox-cell input[type="checkbox"],
+    .status input[type="checkbox"] {
+        margin-top: 0.3rem; /* 작은 화면에 대한 여백 조절 */
+    }
+
+    .product p {
+        margin-top: 0.6rem; /* 작은 화면에 대한 여백 조절 */
+    }
+
+    .inspection-progress select {
+        padding: 0.6rem; /* 작은 화면에 대한 패딩 조절 */
+    }
+}
+.order-table > thead > .order-title{
+    text-align: center;
+}
