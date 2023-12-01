@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+.mypage-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1280px;
+    padding: 40px 40px 160px
+}
+.content_area {
+    flex: 1;
+    height: 380px;
+    overflow: hidden;
+}
+.my_adderssbock{
+    height: 315px;
+}
+.content_title {
+    display: flex;
+    width: 100%;
+}
+.title {
+    font-size: 24px;
+    letter-spacing: -.36px;
+}
+.title>h3 {
+    font-size: inherit;
+    line-height: 29px;
+}
+.btn_box, .btn{
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding-left: 30px;
+}
+.btn_box .btn , .btn_add{
+    border: 1px solid #222;
+    border-radius: 10px;
+    font-size: 14px;
+    height: 34px;
+    line-height: 32px;
+    margin-right: 0;
+    padding: 0 14px;
+    cursor: pointer;
+    text-align: center;
+    color: rgba(34,34,34,.8)
+}
+a {
+    text-decoration: none;
+}
+.basic {
+    border-bottom: 2px solid #222;
+    padding: 30px 0 29px;
+}
+.my_item{
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+.my_item .info_bind {
+    margin-right: 24px;
+}
+.address_info {
+    line-height: 17px;
+}
+.address_info .name {
+    font-weight: 700;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.15px;
+    line-height: 20px;
+    vertical-align: top;
+}
+.address_info .mark {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: -.06px;
+    line-height: 14px;
+    margin-left: 4px;
+    margin-top: 0;
+    padding: 3px 6px;
+    vertical-align: top;
+}
+.address_info .phone {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 15px;
+    padding-top: 5px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.address_info .phone .dot {
+    margin-top: -5px;
+    white-space: nowrap;
+}
+.address_info .phone .dot:after {
+    background-color: #222;
+    border-radius: 100%;
+    content: "";
+    display: inline-flex;
+    height: 5px;
+    margin-left: 2px;
+    width: 5px;
+}
+.address_info .phone .hyphen {
+    background-color: #000;
+    display: inline-flex;
+    height: 1px;
+    margin-left: 4px;
+    margin-right: 2px;
+    width: 4px;
+}
+.address_info .address_box {
+    font-size: 14px;
+    letter-spacing: -.21px;
+    padding-top: 4px;
+}
+.btn_bind {
+    margin-left: auto;
+}
+.btn_bind .btn {
+    padding-left: 11px;
+    padding-right: 12px;
+}
+.outlinegrey {
+    border: 1px solid #d3d3d3;
+    color: rgba(34,34,34,.8);
+}
+.small {
+    border-radius: 10px;
+    font-size: 12px;
+    height: 34px;
+    letter-spacing: -.06px;
+    padding: 0 14px;
+}
+.btn {
+    align-items: center;
+    background-color: #fff;
+    color: rgba(34,34,34,.8);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}

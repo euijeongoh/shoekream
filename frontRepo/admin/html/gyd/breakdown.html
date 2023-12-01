@@ -149,22 +149,50 @@
                 
             </form>
             <form name="selectForm">
-                <table>
+                <table class="order-table" border="1">
                     <thead>
-                        <tr>
-                            <th><input type="checkbox"></th>
-                            <th>주문일자</th>
-                            <th>주문번호<br>
-                                연락처
-                            </th>
-                            <th>상품</th>
-                            <th>가격</th>
-                            <th>판매자/구매자</th>
-                            <th>검수진행</th>
-                            <th>진행현황</th>
+                        <tr class="order">
+                            <th class="checkbox-header"><input type="checkbox"></th>
+                            <th class="order-date">주문일자</th>
+                            <th class="order-info">주문번호/<br>연락처</th>
+                            <th class="product">상품</th>
+                            <th class="price">가격</th>
+                            <th class="seller-buyer">판매자/구매자</th>
+                            <th class="inspection-progress">검수진행</th>
+                            <th class="status">진행현황</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr class="order-item">
+                            <td class="checkbox-cell">
+                                <input type="checkbox">
+                                <br>
+                                <p>1</p>
+                            </td>
+                            <td class="order-date">2023-11-30</td>
+                            <td class="order-info">1234567887654321/<br>010123445678</td>
+                            <td class="product">Jordan 1 x Travis Scott Retro Low OG SP Sail and Ridgerock
+                                <p>조던 1 x 트래비스 스캇 레트로 로우 OG SP 세일 앤 리저록</p>
+                            </td>
+                            <td class="price">1,315,000원</td>
+                            <td class="seller-buyer">홍길동/홍길은</td>
+                            <td class="inspection-progress">
+                                <select name="inspection" id="inspection">
+                                    <option value="inspection_Before">입고필요</option>
+                                    <option value="inspection_ing">검수중</option>
+                                    <option value="inspection_success">검수(합격)</option>
+                                    <option value="inspection_fail">검수(불합격)</option>
+                                </select>
+                            </td>
+                            <td class="status">
+                                <input type="checkbox" value="requires-warehousing">검수완료<br>
+                                <input type="checkbox" value="inspection-completed">입고완료<br>
+                                <input type="checkbox" value="delivery-completed">배송완료<br>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
+                
             </form>
         </div>
     </div>
