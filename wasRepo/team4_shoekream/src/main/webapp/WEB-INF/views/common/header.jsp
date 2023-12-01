@@ -12,7 +12,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	
-	<script defer src="/shoekream/resources/common/header.js"></script>
 	
 </head>
 <body>
