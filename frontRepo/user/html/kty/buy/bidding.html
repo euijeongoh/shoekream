@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>입찰</title>
+    <title>구매 입찰</title>
 
     <link rel="stylesheet" href="../../../css/kty/userheader.css">
-    <link rel="stylesheet" href="../../../css/kty/buy/bidding.css">
+    <link rel="stylesheet" href="../../../css/kty/buy/buy.css">
     <link rel="stylesheet" href="../../../common/footer.css">
 </head>
 
@@ -32,7 +32,7 @@
                     </div>
                     <div class="center">
                         <h2 class="h2_buy">
-                            <span>구매 입찰하기</span>
+                            <span>즉시 구매하기</span>
                         </h2>
                     </div>
                     <div class="right">
@@ -75,14 +75,14 @@
                         <li class="list_item">
                             <p class="title">즉시 구매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">170,000</span>
+                                <span class="price_a">171,000</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
                         <li class="list_item">
                             <p class="title">즉시 판매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">170,000</span>
+                                <span class="price_a">163,000</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
@@ -101,9 +101,9 @@
                         </div>
                         <div class="price_now">
                             <dl class="price_now_box">
-                                <dt class="price_now_title">즉시구매가</dt>
+                                <dt class="price_now_title">구매 희망가</dt>
                                 <dd class="price">
-                                    <span class="amount_b">166,000</span>
+                                    <input type="amount_b" placeholder="희망가 입력">
                                     <span class="unit_b">원</span>
                                 </dd>
                             </dl>
@@ -118,8 +118,19 @@
 
                 <!-- 여기부터 ㄱㄱ -->
                 <div class="buy_total_confirm">
-                    <a></a>
-                    <button></button>
+                    <div class="price_total">
+                        <dl class="price_box">
+                            <dt class="price_title">총 결제금액</dt>
+                            <dd class="price_empty_desc">다음 화면에서 확인</dd>
+                        </dl>
+                        <span class="price_warning">
+                            <em></em>
+                        </span>
+                    </div>
+                    <div class="btn_confirm">
+                        <a blind class="blind_full_solid_false">계속하기</a>
+                        <button class="blind_full_solid_false">즉시 구매 계속</button>
+                    </div>
                 </div>
             </div>
         </div>
