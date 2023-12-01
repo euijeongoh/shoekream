@@ -246,6 +246,53 @@ header .main-list li {
     margin: auto;
     text-align: center;
 }
+.update{
+    display: flex;
+    justify-content: flex-end;
+    height: 80px;
+    margin-top: 20px;
+    /* margin: auto; */
+    /* background-color: yellow; */
+}
+.update ul{
+    display: inline-flex;
+    /* justify-content: center; */
+    margin-right: 40px;
+    /* justify-content: flex-end; */
+}
+.update ul :nth-child(1){
+    /* display: flex; */
+    /* justify-content: space-around; */
+    width: 90px;
+    height: 30px;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    margin: auto;
+    /* background-color: aliceblue; */
+}
+.update_li{
+    display: block;
+    justify-content: center;
+    margin: 10px 10px;
+}
+.update ul :nth-child(2){
+    width: 90px;
+    height: 30px;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    margin: auto;
+    /* background-color: aliceblue; */
+}
+.update button{
+    justify-content:space-evenly;
+    background-color: white;
+    color: black;
+    font-size: medium;
+    /* display: block; */
+}
+#update_detail{
+    text-align: center;
+}
 
 
 footer {
