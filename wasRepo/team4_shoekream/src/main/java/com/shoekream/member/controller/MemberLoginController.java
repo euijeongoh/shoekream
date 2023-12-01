@@ -47,13 +47,14 @@ public class MemberLoginController extends HttpServlet{
 			
 			HttpSession session = req.getSession();
 			session.setAttribute("loginMember", loginMember);
+			session.removeAttribute("loginError");
 			
 			resp.sendRedirect("/shoekream/home");
 		} catch(Exception e) {
 			System.out.println("[ERROR-M] 로그인 작업 도중 예외 발생");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			req.setAttribute("errorMsg", "로그인 실패");
+			req.getSession().setAttribute("loginError", "아이디와 비밀번호를 다시 확인하세요.");
 			resp.sendRedirect("/shoekream/member/login");
 		}
 	}

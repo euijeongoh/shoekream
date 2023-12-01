@@ -6,33 +6,57 @@
 // 이 때 비밀번호 영문, 숫자, 특수문자 조합 확인
 
 const loginBtn = document.querySelector("#login_btn");
-
 const loginInputTagArr = document.querySelectorAll(".input_txt");
-console.log(loginInputTagArr);
-console.log(loginInputTagArr[0]);
 
-for(let i=0; i<loginInputTagArr.length; i++) {
+activateLoginBtn();
+
+function activateLoginBtn() {
+	for(let i=0; i<loginInputTagArr.length; i++) {
 	loginInputTagArr[i].addEventListener('keyup', ()=>{
-		activateLoginBtn();
+		let result = checkValidation();
+		return result;
 	})
+	}
 }
 
 
-function activateLoginBtn() {
+function checkValidation() {
 	const pwdChecked = checkPwd();
+	const idChecked = checkId();
 	
-	if(loginInputTagArr[0].value.length>6 && pwdChecked==true){
+	if(idChecked===true && pwdChecked===true){
 		loginBtn.style.backgroundColor="black";
 		loginBtn.style.cursor="pointer";
-	}	
+		
+		return true;
+	}
+	
+	return false;
+}
+
+function checkId() {
+	const idCheckDiv = document.querySelector("#id_check");
+	const strId = loginInputTagArr[0].value;
+	let idChecked=false;
+	
+	if(strId.length < 5) {
+		idCheckDiv.innerHTML="6자 이상 입력해주세요";
+	}
+	
+	if(strId.length > 5) {
+		idCheckDiv.innerHTML="";
+		idChecked=true;
+	}
+	
+	return idChecked;
 }
 
 function checkPwd() {
-	const str = loginInputTagArr[1].value;
+	const strPwd = loginInputTagArr[1].value;
 	const regPwd = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
-	const pwdChecked = regPwd.test(str);
+	const pwdChecked = regPwd.test(strPwd);
 	
-	if(str.length>1 && pwdChecked===false) {
+	if(strPwd.length>1 && pwdChecked===false) {
 		const pwdCheckDiv = document.querySelector("#pwd_check");
 		pwdCheckDiv.innerHTML="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8-16자)";	
 	}
