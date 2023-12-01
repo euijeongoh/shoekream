@@ -11,3 +11,5 @@ wasRepo/.metadata/
 wasRepo/Servers/
 *.MF
 wasRepo/**/.gitignore
+/.metadata/
+wasRepo/team4_shoekream/src/main/webapp/WEB-INF/web.xml
