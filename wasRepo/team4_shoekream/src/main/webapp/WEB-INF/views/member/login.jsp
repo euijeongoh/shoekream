@@ -38,7 +38,7 @@
                     <div id="pwd_check"></div>
                 </div>
                 <div class="login_btn_box">
-                    <button id="login_btn">로그인</button>
+                    <input type="submit" id="login_btn" value="로그인">
                 </div>
             </form>
             
