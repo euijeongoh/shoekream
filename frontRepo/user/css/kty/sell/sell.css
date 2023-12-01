@@ -102,7 +102,7 @@ body {
                 }
 
             .price_descision_box {
-                height: 288px;
+                height: 341px;
                 padding: 0 32px 32px;
                 background-color: #fff;
                 margin: 0;
@@ -214,6 +214,11 @@ body {
                             letter-spacing: -.21px;
                             min-width: 63px;
                         }
+                        .price_b {
+                            align-items: center;
+                            display: flex;
+                            box-sizing: border-box;
+                        }
                         .price {
                             align-items: center;
                             display: flex;
@@ -235,23 +240,34 @@ body {
                                 padding-left: 2px;
                             }
                 .price_bind {
-                    height: 36px;
+                    height: 88px;
                     padding-top: 10px;
                     font-size: 13px;
                     letter-spacing: -.07px;
                     box-sizing: border-box;
                     display: block;
                 }
-                    .price_bind_empty {
-                        color: rgba(34,34,34,.5);
-                        font-size: 14px;
-                        padding-top: 10px;
+                    .price_addition {
+                        margin-top: 0;
+                        align-items: center;
+                        display: flex;
+                        font-size: 13px;
+                        justify-content: space-between;
+                        letter-spacing: -.07px;
+                        min-height: 26px;
                         box-sizing: border-box;
                     }
+                        #fo {
+                            color: rgba(34,34,34,.5);
+                            box-sizing: border-box;
+                            font-size: 13px;
+                            letter-spacing: -.07px;
+                        }
+            
 
 
             .buy_total_confirm {
-                height: 132px;
+                height: 139px;
                 border-top: 1px solid #ebebeb;
                 padding: 0 32px 32px;
                 background-color: #fff;
@@ -281,6 +297,23 @@ body {
                             color: rgba(34,34,34,.5);
                             box-sizing: border-box;
                         }
+                            .amount_c {
+                                font-size: 20px;
+                                font-weight: 600;
+                                letter-spacing: normal;
+                                line-height: 26px;
+                                box-sizing: border-box;
+                                color: #31b46e;
+                            }
+                            .unit {
+                                font-size: 20px;
+                                font-weight: 700;
+                                letter-spacing: -.15px;
+                                line-height: 26px;
+                                box-sizing: border-box;
+                                color: #31b46e;
+                            }
+
                 .btn_confirm {
                     box-sizing: border-box;
                 }
