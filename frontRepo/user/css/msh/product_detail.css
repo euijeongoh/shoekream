@@ -9,134 +9,453 @@
     background-color: wheat;
 }
 
-header{
-    width: 1280px;
-    height: 86px;
-    margin: auto;
-    display: grid;
-    grid-template-rows: 22px 64px;
+
+
+
+
+main {
+    margin: 0 auto;
+    max-width: 1280px;
+    overflow: hidden;
+    padding: 30px 40px 120px;
 }
 
-header .top-list {
+.container {
     display: flex;
-    justify-content: end;
-    padding-top: 8px;
+}
+
+.column_2 {
+    float: right;
     padding-left: 40px;
+    position: relative;
+    align-items: stretch;
+    width: 600px;
+    border-left: 1px solid lightgray;
+    flex-wrap: wrap;
+}
+
+/* ... (나머지 스타일에 대한 계속) */
+
+
+/* Slider Styles */
+.slider_container {
+    width: 100%;
     padding-right: 40px;
-}
-
-header .top-list ul {
-    display: flex;
-    align-items: center;
-    padding: 0;   
-    text-decoration: none;
-}
-
-header .top-list ul li {
-    align-items: center;
-    margin-left: 20px;
-    font-size: 12px;
-    font-family: 'Pretendard';
-}
-
-.top-list ul li a {
-    text-decoration: none;
-    color: rgba(34, 34, 34, 0.8);
-}
-
-#search-btn {
-    width: 24px;
-    cursor: pointer;
-}
-
-header .main-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 20px;
-}
-
-.main-list .logo-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 24px;
-}
-
-.main-list .logo-area a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 24px;
-    font-family: 'Pretendard ExtraBold';
-    font-size: 18px;
-    text-decoration: none;
-    color: #222;
-}
-
-.main-list .head-list ul {
-    display: flex;
-    align-items: center;
-}
-
-header .main-list li {
-    width: 90px;
-}
-
-.main-list li a {
-    font-family: 'Pretendard Light';
-    font-size: 18px;
-    text-decoration: none;
-    color: rgba(34, 34, 34);
-}
-
-.main-list img{
-    height: 24px;
-}
-.column2{
-    float:right;
-    padding-left: 3.334%;
-    position:relative;
-}
-
-
-.slider_container{
-    width: 50%;
-    margin: auto;
     overflow: hidden;
 }
-.slider{
+
+.slider {
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
-.slide{
-    min-width: 100%;
+
+.slide {
+    min-width: 33%;
     box-sizing: border-box;
 }
-img{
+
+img {
     width: 100%;
     height: 500px;
 }
-.slider_container{
-    float: left;
-    padding-right: 3.334%;
-    width: 50%;
-    box-sizing: border-box;
+
+/* Product Detail Styles */
+.product_price {
+    font-size: 27px;
+    font-weight: 700;
 }
-.product_detail_info{
-    padding-left:3.334%;
+
+.product_detail_info {
+    padding-left: 3.334%;
 }
-.price_container{
+
+.price_container span {
     align-items: center;
+    justify-content: left;
     display: flex;
 }
-.main_title_container{
+
+.main_title_container {
     margin-bottom: 20px;
     margin-top: 20px;
 }
-.product_size_select{
-    width: 100px;
+
+.product_size_select,
+.select_box {
+    width: 80%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.product_detail_box {
+    display: flex;
+}
+
+.detail-product-container {
+    display: flex;
+    margin-bottom: 20px;
+    overflow: visible;
+}
+
+.detail-product-container>div {
+    flex: 1;
+}
+
+.detail-product-container {
+    -webkit-overflow-scrolling: touch;
+    min-height: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    white-space: nowrap;
+}
+
+/* Division Button Box Styles */
+.division_btn_box {
+    display: flex;
+    height: 60px;
+}
+
+.division_btn_box .btn_action {
+    align-items: center;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    flex: 1;
+    position: relative;
+}
+
+.division_btn_box .btn_action:before {
+    background-color: rgba(34, 34, 34, 0.1);
+    bottom: 0;
+    content: "";
+    left: 55px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+}
+
+.division_btn_box .btn_action+.btn_action {
+    margin-left: 10px;
+}
+
+.division_btn_box .title {
+    font-size: 18px;
+    letter-spacing: -0.27px;
+    text-align: center;
+    width: 55px;
+}
+
+.division_btn_box .price {
+    line-height: 15px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.division_btn_box .amount {
+    display: block;
+    font-size: 0;
+}
+
+.division_btn_box .num,
+.division_btn_box .won {
+    display: inline-block;
+    font-weight: 700;
+    vertical-align: top;
+}
+
+.division_btn_box .won {
+    font-size: 14px;
+    letter-spacing: -0.21px;
+}
+
+.division_btn_box .desc {
+    color: hsla(0, 0%, 100%, 0.8);
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.my_interest .division_btn_box {
+    margin-top: 0;
+    text-align: left;
+    width: 164px;
+}
+
+.my_interest .division_btn_box .desc {
+    font-weight: 400;
+}
+
+.division_btn_box.mo,
+.division_btn_box.sm {
+    margin-top: 18px;
+}
+
+.floating_price .division_btn_box.mo,
+.floating_price .division_btn_box.sm {
+    height: 52px;
+    margin-top: 0;
+}
+
+.division_btn_box.mo .btn_action:before,
+.division_btn_box.sm .btn_action:before {
+    left: 42px;
+}
+
+.division_btn_box.mo .btn_action+.btn_action,
+.division_btn_box.sm .btn_action+.btn_action {
+    margin-left: 6px;
+}
+
+.division_btn_box.mo .title,
+.division_btn_box.sm .title {
+    font-size: 14px;
+    letter-spacing: -0.21px;
+    width: 42px;
+}
+
+.division_btn_box.mo .num,
+.division_btn_box.sm .num {
+    font-size: 12px;
+}
+
+.division_btn_box.mo .won,
+.division_btn_box.sm .won {
+    font-size: 12px;
+    letter-spacing: -0.06px;
+}
+
+/* Bids Styles */
+.wrap_bids {
+    position: relative;
+}
+
+.wrap_bids table {
+    margin: auto;
+}
+
+.wrap_bids th,
+.wrap_bids td {
+    text-align: center;
+}
+
+/* Tab Styles */
+.tab_area {
+    display: flex;
+    margin: auto;
+}
+
+.tab_list {
+    width: 50%;
+    justify-content: space-evenly;
+    height: 40px;
+    margin: auto;
+    /* 이 스타일은 tab_list를 가로 방향으로 가운데 정렬합니다. */
+}
+
+.tab_area ul {
+    justify-content: center;
+    align-items: center;
+}
+
+.tab_area,
+.tab_list {
+    display: flex;
+    background-color: #cccbcb;
+    height: 50px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.tab_list {
+    width: 50%;
+    justify-content: space-evenly;
+    height: 40px;
+}
+
+.tab_list li a {
+    border-radius: 10px;
+    list-style: none;
+    font-size: 22px;
+    color: black;
+    background-color: white;
+}
+
+li a:visited,
+li a:hover,
+li a {
+    text-decoration: none;
+}
+
+/* Price Table Styles */
+.price_table table,
+.price_table tbody,
+.price_table thead {
+    display: inline;
+    display: initial;
+    table-layout: auto;
+    width: 100% !important;
+}
+
+.price_table .table_td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.price_table tr {
+    display: flex;
+}
+
+.price_table table,
+.price_table tbody,
+.price_table thead {
+    display: inline;
+    display: initial;
+    table-layout: auto;
+    width: 100%;
+}
+
+.price_table tr {
+    display: flex;
+}
+
+.table_th {
+    border-bottom: 1px solid #ebebeb;
+    color: rgba(34, 34, 34, 0.5);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.06px;
+    line-height: 14px;
+    padding-bottom: 9px;
+    text-align: left;
+}
+
+.table_td{
+    font-size: 14px;
+}
+.lg .feed_title {
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 40px
+}
+.search_product_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 20px; 
+    row-gap: 40px;
+    flex-wrap: wrap;
+
+}
+.product_list_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product_list_wrap li{
+    width: 30%;
+    margin-right: 6px;
+    
+}
+
+.product_list_wrap li #product_img {
+    background-color: rgba(235, 240, 245);
+    width: 100%;
+    height: 234px;
+    border-radius: 12px;
+}
+
+.product_list_wrap li #product_img img {
+    width: 100%;
+    height: 234px;
+    border-radius: 12px;
+}
+
+.info_box {
+    padding-top: 9px;
+    font-family: 'Pretendard';
+    width: 100%;
+}
+
+#brand {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#model-name {
+    font-size: 13px;
+    margin-bottom: 2px;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+#price {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 12px;
+    color: rgba(34, 34, 34);
+}
+.one{
+    display: block;
+    width: 25%;
+    height: 25%;
+    /* background-color: skyblue; */
+}
+.detail{
+    height: 10%;
+}
+.likebox{
+    display: inline-flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+.wave{
+    border-radius: 70%;
+}
+.detail{
+    display: flex;
+    justify-content: space-between;
+    width: 94%;
+}
+.listpoto {
+    width: 1280px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.one {
+    width: calc(25% - 12px); /* 4개의 열로 나누고 간격을 조절합니다 */
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.one img {
+    height: auto;
+    border-radius: 12px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.likebox {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+.wave {
+    width: 24px; /* 원하는 크기로 조절하세요 */
+    height: 24px; /* 원하는 크기로 조절하세요 */
+    border-radius: 50%; /* 원형으로 표현합니다 */
 }
