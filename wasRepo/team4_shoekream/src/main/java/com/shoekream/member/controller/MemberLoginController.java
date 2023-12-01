@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.member.service.MemberService;
 
 @WebServlet("/member/login")
@@ -25,11 +27,35 @@ public class MemberLoginController extends HttpServlet{
 	// 로그인 처리
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 데이터
-		String memberId = req.getParameter("memberId");
-		String memberPwd = req.getParameter("memebrPwd");
-	
-		// service
-		MemberService ms = new MemberService();
+		try {
+			// 데이터
+			String memberId = req.getParameter("memberId");
+			String memberPwd = req.getParameter("memberPwd");
+		
+			MemberVo vo = new MemberVo();
+			vo.setId(memberId);
+			vo.setPwd(memberPwd);
+			
+			// service
+			MemberService ms = new MemberService();
+			MemberVo loginMember = ms.login(vo);
+			
+			// result
+			if(loginMember == null) {
+				throw new Exception("[ERROR-M-01] 일치하는 회원정보 없음");
+			}
+			
+			HttpSession session = req.getSession();
+			session.setAttribute("loginMember", loginMember);
+			session.removeAttribute("loginError");
+			
+			resp.sendRedirect("/shoekream/home");
+		} catch(Exception e) {
+			System.out.println("[ERROR-M] 로그인 작업 도중 예외 발생");
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			req.getSession().setAttribute("loginError", "아이디와 비밀번호를 다시 확인하세요.");
+			resp.sendRedirect("/shoekream/member/login");
+		}
 	}
 }

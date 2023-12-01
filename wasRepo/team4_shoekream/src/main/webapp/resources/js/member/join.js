@@ -28,15 +28,14 @@ function activateJoinBtn() {
 
 function checkId() {
 	const strId = idInputTag.value;
-	const regId = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z\d]{6,12}$/;
-	const idChecked = regId.test(strId);
+	let idChecked = false;
 	
-	if(strId.length>1 && idChecked==false) {
+	if(strId.length>5) {
 		const idCheckDiv = document.querySelector("#id_check");
 		idCheckDiv.innerHTML="영문, 숫자를 조합해서 입력해주세요.(6-12자)";
 	}
 	
-	if(idChecked===true) {
+	if(strId.length<5) {
 		const idCheckDiv = document.querySelector("#id_check");
 		idCheckDiv.innerHTML="";
 	}

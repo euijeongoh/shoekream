@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	String loginError = (String) session.getAttribute("loginError");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +27,13 @@
         <div class="login_area">
             <div class="login_title">
                 <img src="/shoekream/resources/img/member/logo.svg" id="login_img">
+	            <%if(loginError != null) {%>
+		            <div id="login_fail"><%= loginError %></div>            	
+   	            <%}%>
             </div>
             
 <!--    로그인 폼 -->
-            <form action="/shoekream/member/login" method="post">
+            <form action="/shoekream/member/login" method="post" onsubmit="return activateLoginBtn();">
                 <div class="input_box">
                     <div class="input_title">아이디</div>
                     <input class="input_txt" type="text" name="memberId">
@@ -38,7 +45,7 @@
                     <div id="pwd_check"></div>
                 </div>
                 <div class="login_btn_box">
-                    <button id="login_btn">로그인</button>
+                    <input type="submit" id="login_btn" value="로그인">
                 </div>
             </form>
             

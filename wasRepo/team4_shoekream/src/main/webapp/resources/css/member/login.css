@@ -19,6 +19,7 @@
 .login_title {
     padding: 0px 0px 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -48,7 +49,13 @@
     color: #ebebeb;
 }
 
-#pwd_check{
+#login_fail {
+	color: #f15746;
+	font-size: 11px;
+	padding-top: 40px;
+}
+
+#pwd_check, #id_check {
 	color: #f15746;
 	font-size: 11px;
 	padding-top: 3px;
