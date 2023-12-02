@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
 
 public class MemberDao {
@@ -46,6 +47,26 @@ public class MemberDao {
 		}
 		
 		return loginMember;
+	}
+
+	public boolean checkIdDup(Connection conn, String memberId) throws Exception {
+		// sql
+		String sql = "SELECT * FROM MEMBER WHERE ID=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, memberId);
+		ResultSet rs = pstmt.executeQuery();
+		
+		// rs
+		boolean isDup = false;
+		if(rs.next()) {
+			isDup = true;
+		}
+		
+		// close
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		System.out.println(isDup);
+		return isDup;
 	}
 
 }
