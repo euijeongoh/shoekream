@@ -4,6 +4,8 @@
     
     <%
     	MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
+    	String alertMsg = (String) session.getAttribute("alertMsg");
+    	session.removeAttribute("alertMsg");
     %>
     
 <!DOCTYPE html>
@@ -15,6 +17,16 @@
 	
 </head>
 <body>
+
+<script>
+
+	<%if(alertMsg != null){%>
+		alert('<%= alertMsg %>');		
+	<%}%>
+	
+</script>
+
+
 	<header>
         <div class="header_inner">
             <div class="top_list">
