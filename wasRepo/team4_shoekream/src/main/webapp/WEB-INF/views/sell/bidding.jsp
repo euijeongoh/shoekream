@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>판매가 제기</h1>
+	<h1>판매가 제시</h1>
 </body>
 </html>
