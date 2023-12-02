@@ -220,12 +220,12 @@ body {
                             margin-top: 15px;
                             box-sizing: border-box;
                         }
-                            .amount_b {
+                            /* 이거 안됨.. */
+                            .input_amount1 {
                                 font-size: 20px;
+                                text-align: right;
+                                border:none;
                                 font-weight: 600;
-                                letter-spacing: normal;
-                                line-height: 26px;
-                                box-sizing: border-box;
                             }
                             .unit_b {
                                 font-size: 20px;
