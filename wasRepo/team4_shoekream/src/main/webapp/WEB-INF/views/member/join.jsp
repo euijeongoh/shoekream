@@ -21,7 +21,7 @@
             <div class="join_title">
                 회원가입
             </div>
-            <form action="/member/join" method="post">
+            <form action="/member/join" method="post" onsubmit="return activateJoinBtn();")>
                 <div class="input_box">
                     <div class="input_title">아이디*</div>
                     <input class="input_txt" type="text" name="memberId" placeholder="영문, 숫자 조합 6-12자">
@@ -35,11 +35,12 @@
                 <div class="input_box">
                     <div class="input_title">비밀번호 확인*</div>
                     <input class="input_txt" type="password" name="memberPwd2">
-                    <div id="pwd2_equalCheck"></div>
+                    <div id="pwd2_check"></div>
                 </div>
                 <div class="input_box">
                     <div class="input_title">닉네임*</div>
                     <input class="input_txt" type="text" name="memberNick" placeholder="한글 3-5자">
+                    <div id="nick_check"></div>
                 </div>
                 <div class="input_box">
                     <div class="input_title">이메일*</div>
