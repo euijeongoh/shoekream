@@ -77,4 +77,18 @@ public class MemberService {
 		return isDup;
 	}
 
+	public MemberVo searchId(String email) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MemberDao dao = new MemberDao();
+		MemberVo vo = dao.searchId(conn, email);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return vo;
+	}
+
 }

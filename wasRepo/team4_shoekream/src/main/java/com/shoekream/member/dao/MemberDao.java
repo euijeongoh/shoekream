@@ -94,4 +94,23 @@ public class MemberDao {
 		return 0;
 	}
 
+	public MemberVo searchId(Connection conn, String email) throws Exception {
+		// sql
+		String sql = "SELECT ID FROM MEMBER WHERE EMAIL = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, email);
+		ResultSet rs = pstmt.executeQuery();
+		
+		MemberVo vo = null; 
+		if(rs.next()) {
+			String id = rs.getString("ID");
+			
+			vo = new MemberVo();
+			
+			vo.setId(id);
+		}
+		
+		return vo;
+	}
+
 }
