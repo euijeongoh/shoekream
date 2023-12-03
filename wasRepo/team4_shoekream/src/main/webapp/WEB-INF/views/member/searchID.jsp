@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	
-	<link rel="stylesheet" href="/WEB-INF/resources/css/common/header.jsp">
-	<link rel="stylesheet" href="/WEB-INF/resources/css/member/searchID.jsp">
-
+	<link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
+	<link rel="stylesheet" href="/shoekream/resources/css/member/searchID.css">
+	
+	<script defer src="/shoekream/resources/js/member/searchID.js"></script>
 </head>
 <body>
 	
@@ -20,7 +21,7 @@
                 아이디 찾기
                 <div></div>
             </div>
-            <form action="/member/searchID" method="post">
+            <form action="/shoekream/member/searchID" method="post">
                 <div id="guide">
                     가입 시 등록한 이메일 주소를 입력하면<br>
                     아이디의 일부를 알려드립니다.
@@ -30,7 +31,7 @@
                     <input id="input-txt" type="text" name="email" placeholder="가입하신 이메일 주소">
                 </div>
                 
-                <input type="submit" value="아이디 찾기">
+                <input type="submit" value="아이디 찾기" disabled>
             </form>
         </div>
     </div>

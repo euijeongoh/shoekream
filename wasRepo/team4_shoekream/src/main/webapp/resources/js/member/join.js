@@ -110,7 +110,7 @@ function checkPwd2() {
 
 function checkEmail() {
 	const strEmail = joinInputTagArr[4].value;
-	const regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	const regEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 	const emailChecked = regEmail.test(strEmail);
 	const emailCheckDiv = document.querySelector("#email_check");
 	const emailBtn = document.querySelector("input[type=button]");
