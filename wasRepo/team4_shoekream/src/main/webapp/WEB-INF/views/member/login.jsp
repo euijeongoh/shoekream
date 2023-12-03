@@ -3,6 +3,7 @@
     
     <%
     	String loginError = (String) session.getAttribute("loginError");
+    	session.removeAttribute("loginError");
     	String searchIdFailed = (String) session.getAttribute("searchIdFailed");
     	session.removeAttribute("searchIdFailed");
     %>
