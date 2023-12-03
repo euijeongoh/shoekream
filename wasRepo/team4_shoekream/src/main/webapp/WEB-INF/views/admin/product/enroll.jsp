@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/frontRepo/admin/css/msh/enrollProduct.css">
+    <link rel="stylesheet" href="/resources/css/admin/product/enroll.css">
     <script src="/frontRepo/admin/js/msh/enrollProduct.js"></script>
 </head>
 <body>
@@ -12,18 +14,18 @@
         <div class="header-inner">
             <div class="top-list">
                 <ul>
-                    <li><a href="">ê³ ê°ì„¼í„°</a></li>
-                    <li><a href="">ë§ˆì´íŽ˜ì´ì§€</a></li>
-                    <li><a href="">ê´€ì‹¬</a></li>
-                    <li><a>ì•Œë¦¼</a></li>
-                    <li><a href="">ë¡œê·¸ì¸</a></li>
+                    <li><a href="">°í°´¼¾ÅÍ</a></li>
+                    <li><a href="">¸¶ÀÌÆäÀÌÁö</a></li>
+                    <li><a href="">°ü½É</a></li>
+                    <li><a>¾Ë¸²</a></li>
+                    <li><a href="">·Î±×ÀÎ</a></li>
                 </ul>
             </div>
             <div class="main-list">
                 <div class="logo-area">
                     <a href="">
                     <img src="./logo.svg">
-                    <span>ê´€ë¦¬ìž</span>
+                    <span>°ü¸®ÀÚ</span>
                     </a>
                 </div>
                 <div class="head-list">
@@ -37,10 +39,10 @@
         </div>
         <br>        
         <div class="header-list">
-            <a href="">ìƒí’ˆë“±ë¡</a>
-            <a href=""><b><u>ìƒí’ˆìˆ˜ì •</u></b></a>
-            <a href="">ìƒí’ˆì‚­ì œ</a>
-            <a href="">ìƒí’ˆëª©ë¡</a>
+            <a href=""><b><u>»óÇ°µî·Ï</u></b></a>
+            <a href="">»óÇ°¼öÁ¤</a>
+            <a href="">»óÇ°»èÁ¦</a>
+            <a href="">»óÇ°¸ñ·Ï</a>
         </div>
     </header>
     <br><br>
@@ -48,47 +50,47 @@
     <br><br><br>
     <div class="side-body">
         <div class="sidebar">
-            <a href="/admin"><h2>ê´€ë¦¬ìž íŽ˜ì´ì§€</h2></a>
+            <a href="/admin"><h2>°ü¸®ÀÚ ÆäÀÌÁö</h2></a>
             <br>
             <nav class="sidenav">
                 <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="">ì£¼ë¬¸ê´€ë¦¬</a></strong>
+                    <strong class="sidenav_title"><a href="">ÁÖ¹®°ü¸®</a></strong>
                     <ul class="sidenav_menu">
                         <li class="menu_item">
-                            <a href="" class="menu_link">ìž…ê³  í˜„í™©</a>
+                            <a href="" class="menu_link">ÀÔ°í ÇöÈ²</a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">ê²€ìˆ˜ì§„í–‰ í˜„í™©</a>
+                            <a href="" class="menu_link">°Ë¼öÁøÇà ÇöÈ²</a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">ë°°ì†¡ í˜„í™©</a>
+                            <a href="" class="menu_link">¹è¼Û ÇöÈ²</a>
                         </li>
                     </ul>
                 </div>
                 <br>
                 <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="">ìƒí’ˆ ê´€ë¦¬</a></strong>
+                    <strong class="sidenav_title"><a href="">»óÇ° °ü¸®</a></strong>
                     <ul class="sidenav_menu">
                         <li class="menu_item">
-                            <a href="" class="menu_link">ìƒí’ˆ ë“±ë¡</a>
+                            <a href="" class="menu_link"><b><u>»óÇ°µî·Ï</u></b></a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link"><b><u>ìƒí’ˆ ìˆ˜ì •</u></b></a>
+                            <a href="" class="menu_link">»óÇ° ¼öÁ¤</a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">ìƒí’ˆ ì‚­ì œ</a>
+                            <a href="" class="menu_link">»óÇ° »èÁ¦</a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">ìƒí’ˆ ëª©ë¡</a>
+                            <a href="" class="menu_link">»óÇ° ¸ñ·Ï</a>
                         </li>
                     </ul>
                 </div>
                 <br>
                 <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="">ê³ ê° ì„¼í„°</a></strong>
+                    <strong class="sidenav_title"><a href="">°í°´ ¼¾ÅÍ</a></strong>
                     <ul class="sidenav_menu">
                         <li class="menu_item">
-                            <a href="" class="menu_link">ê³µì§€ì‚¬í•­</a>
+                            <a href="" class="menu_link">°øÁö»çÇ×</a>
                         </li>
                         <li class="menu_item">
                             <a href="" class="menu_link">FAQ</a>
@@ -104,21 +106,22 @@
                 <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
                 <div>
                     <div id="image-preview-container" >
-                        <img id="image-preview" src="#" alt="ì´ë¯¸ì§€ ë¯¸ë¦¬ë³´ê¸°">
+                        <img id="image-preview" src="#" alt="ÀÌ¹ÌÁö ¹Ì¸®º¸±â">
                     </div>
                     <div>
-                        <label for="file-input" id="file-input-label" >ì´ë¯¸ì§€ ì„ íƒ</label>
+                        <label for="file-input" id="file-input-label" >ÀÌ¹ÌÁö ¼±ÅÃ</label>
                     </div>
                 </div>
                 <br>
                 <div id="product-information">
-                    <form action="" method="post">
-                        <input type="text" name="productName" placeholder="ì œí’ˆëª…">
-                        <input type="text" name="modelNumber" placeholder="ëª¨ë¸ ë²ˆí˜¸">
-                        <input type="text" name="releasePrice" placeholder="ë°œë§¤ê°€">
-                        <input type="text" name="category" placeholder="ì¹´í…Œê³ ë¦¬">
-                        <input type="text" name="brand" placeholder="ë¸Œëžœë“œ">
-                        <span>ì‚¬ì´ì¦ˆ</span>
+                    <form action="" method="post" >
+                        <input type="text" name="productName" placeholder="Á¦Ç°¸í">
+                        <input type="text" name="modelNumber" placeholder="¸ðµ¨ ¹øÈ£">
+                        <input type="text" name="releasePrice" placeholder="¹ß¸Å°¡">
+                        <input type="text" name="category" placeholder="Ä«Å×°í¸®">
+                        <input type="text" name="brand" placeholder="ºê·£µå">
+                        <input type="date" name="releaseDate" placeholder="Ãâ½ÃÀÏ">
+                        <span>»çÀÌÁî</span>
                         <div>
                             <input type="checkbox" name="size" value="210">210
                             <input type="checkbox" name="size" value="215">215
@@ -139,29 +142,33 @@
                             <input type="checkbox" name="size" value="290">290
                             <input type="checkbox" name="size" value="295">295
                             <input type="checkbox" name="size" value="300">300
+
                         </div>
-                        <input type="submit" value="ì €ìž¥">
-                        <button>ì·¨ì†Œ</button>
+                        <input type="submit" value="ÀúÀå">
+                        <button>Ãë¼Ò</button>
                     </form>
                 </div>
                 <br>
                 
+                
             </div>
         </div>
-        <br><br><br><br><br><hr>
+  <br><br><br><br><br><hr>
         <div class="service-container">
             <div class="menu-container">
-                <div class="service-title">ê³ ê°ì„¼í„°</div>
+                <div class="service-title">°í°´¼¾ÅÍ</div>
                     <div class="first">
                         <ul>
-                            <div><li><a href="">ê³µì§€ì‚¬í•­</a></li></div>
-                            <div><li><a href="">ìžì£¼ ë¬»ëŠ” ì§ˆë¬¸</a></li></div>
+                            <div><li><a href="">°øÁö»çÇ×</a></li></div>
+                            <div><li><a href="">ÀÚÁÖ ¹¯´Â Áú¹®</a></li></div>
                             <div><li><a href="">Q&A</a></li></div>
-                            <div><li><a href="">ìƒí’ˆë“±ë¡ ìš”ì²­</a></li></div>
+                            <div><li><a href="">»óÇ°µî·Ï ¿äÃ»</a></li></div>
                         </ul>
                         <main>
+                            
                         </main>
                     </div>
+                   
             </div>
         </div>
 
