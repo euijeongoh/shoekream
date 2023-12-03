@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/sell/bidding")
-public class SellbiddingControlloer extends HttpServlet{
+@WebServlet("/sell/nowsattle")
+public class SellNowSattleControlloer extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.getRequestDispatcher("/WEB-INF/views/sell/bidding.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/sell/nowsattle.jsp").forward(req, resp);
 		
 	}
 	
