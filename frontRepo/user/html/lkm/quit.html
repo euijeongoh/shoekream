@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/lkm/quit(modal).css">
+    <link rel="stylesheet" href="/user/common/userheader.css">
+    <link rel="stylesheet" href="/user/common/mypagemenu.css">
+    <link rel="stylesheet" href="/user/css/lkm/quit.css">
+</head>
+<body>
+    <header>
+        <div class="header_inner">
+            <div class="top_list">
+                <ul>
+                    <li><a href="">고객센터</a></li>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">관심</a></li>
+                    <li><a>알림</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </div>
+            <div class="main_list">
+                <div class="logo_area">
+                    <a href="">
+                    <img src="./logo.svg">
+                    </a>
+                </div>
+                <div class="head_list">
+                    <ul>
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li id="search_btn"><a><img src="./searchIcon.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="mypage_container">
+            <div class="menu_container">
+                <div class="menu_title">마이 페이지</div>
+                <nav>
+                    <div class="shop_menu">
+                        <div id="title">쇼핑 정보</div>
+                        <ul>
+                            <li><a href="">구매 내역</a></li>
+                            <li><a href="">판매 내역</a></li>
+                            <li><a href="">관심</a></li>
+                        </ul>
+                    </div>
+                    <div class="my_menu">
+                        <div id="title">내 정보</div>
+                        <ul>
+                            <li><a href="">로그인 정보</a></li>
+                            <li><a href="">주소록</a></li>
+                            <li><a href="">결제 정보</a></li>
+                            <li><a href="">정산 계좌</a></li>
+                            <li><a href="">포인트</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="quit-container">
+                <div class="quit-title">
+                    회원탈퇴
+                    <div><span>사용 가능한 포인트 0P</span></div>
+                </div>
+
+                
+
+                <div class="point-head">
+                    회원 탈퇴에 앞서 아래 내용을 반드시 확인해 주세요.
+                </div>
+
+                <div class="point-body">
+                    <form>
+                        <div class="quit_term">
+                            <input type="checkbox">
+                            <span>SHOEKREAM을 탈퇴하면 회원 정보 및 서비스 이용 기록이 삭제됩니다.</span>
+                            <div class="detail">내 프로필, 거래내역, 관심상품, 리뷰 게시물, 미사용 보유 포인트 등의 정보가 사라지게 되며 재가입을 하더라도 복구가 불가능합니다.</div>
+                        </div>
+                        <div class="quit_term">
+                            <input type="checkbox">
+                            <span>관련 법령 및 내부 기준에 따라 별도 보관하는 경우 일부 정보가 보관될 수 있습니다.</span>
+                            <div class="detail">전자상거래 등 소비자 보호에 관한 법률, 통신비밀보호법, 회사 내부 기준</div>
+                        </div>
+                        <div class="quit_term">
+                            <input type="checkbox">
+                            <span>대금 미지급 등의 사유로 패널티가 부여된 회원은 회원탈퇴가 불가능합니다.</span>
+                        </div>
+
+
+                        <input type="submit" value="탈퇴하기">
+                    </form>
+                        <input type="button" value="취소하기">
+
+                    <div class="modal_quit">
+                        <!-- a 태그 삭제 버튼 -->
+                        <a href="#" class="btn_layer_close">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
+                                    viewBox="0 0 16 16"w>
+                                    <path
+                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </div>
+                        </a>
+                        <div class="layer_header">
+                            <!-- 여기 헤더 -->
+                            <div>정말 탈퇴하시겠습니까?</div>
+                        </div>
+                        <div class="layer_content">
+                            <!-- 여기 내용 -->
+                            <div class="input_title">
+                                <div>탈퇴하기 클릭 시 바로 탈퇴 처리됩니다.<br><br>
+                                <input type="checkbox" name="quit_yn" value="yes"> ShoeKream 회원을 탈퇴하겠습니다.
+                                </div>
+                            </div>
+                            <div class="layer_btn">
+                                <!-- 여기 하단(풋터) -->
+                                <button type="button">탈퇴 안 할래요</button>
+                                <a>탈퇴하기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
