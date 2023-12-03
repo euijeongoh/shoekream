@@ -1,0 +1,406 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+        /* 픽스드(탑고정) : 헤더크기 여유분 */
+        padding-top: 86px;
+        /* 픽스드(탑고정) : 헤더크기 여유분 */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 964px;
+    background-color: rgb(246, 246, 246);
+    box-sizing: border-box;
+    margin: auto;
+}
+    .content {
+        width: 780px;
+        height: 100%;
+        background-color: rgb(246, 246, 246);
+        margin: 0 auto;
+        padding: 20px 40px 160px;
+        box-sizing: border-box;
+    }
+        .buy_immediate {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            box-sizing: border-box;
+        }
+            .product_info_area {
+                padding: 32px;
+                box-sizing: border-box;
+            }
+                .product_info {
+                    display: flex;
+                    align-items: center;
+                    background-color: #fff;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+                    .product_thumb {
+                        flex: none;
+                        height: 80px;
+                        width: 80px;
+                        box-sizing: border-box;
+                        background-color: rgb(255, 255, 255);
+                    }
+                        .porduct {
+                            background-color: rgb(255, 255, 255);
+                            border-radius: 10px;
+                            height: 80px;
+                            position: relative;
+                            box-sizing: border-box;
+                        }
+                            #airforce {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 10px;
+                            }
+                    .model_desc {
+                        height: 17px;
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 4px;
+                        box-sizing: border-box;
+                    }
+                        .size_txt {
+                            font-size: 14px;
+                            font-weight: 800;
+                            box-sizing: border-box;
+                        }
+            .product_detail {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                padding-left: 16px;
+                width: 556px;
+            }
+                .code {
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+                .name {
+                    font-size: 14px;
+                }
+                .translated_name {
+                    color: rgba(34,34,34,.5);
+                    font-size: 13px;
+                    margin-top: 2px;
+                }
+
+            .price_descision_box {
+                height: 341px;
+                padding: 0 32px 32px;
+                background-color: #fff;
+                margin: 0;
+                box-sizing: border-box;
+            }
+                .price_list {
+                    padding-bottom: 22px;
+                    padding-top: 28px;
+                    display: flex;
+                    align-items: center;
+                    border-top: 1px solid #ebebeb;
+                    box-sizing: border-box;
+                }
+                    .list_item {
+                        /* width: 318px;
+                        height: 38px; */
+                        text-align: center;
+                        flex: 1;
+                        box-sizing: border-box;
+                    }
+                        .title {
+                            color: rgba(34,34,34,.5);
+                            font-size: 12px;
+                            letter-spacing: -.06px;
+                            line-height: 14px;
+                            box-sizing: border-box;
+                            text-align: center;
+                        }
+                        .price_a {
+                            display: inline-block;
+                            font-size: 16px;
+                            line-height: 24px;
+                            vertical-align: top;
+                            text-align: center;
+                            box-sizing: border-box;
+                        }
+                        .unit_a {
+                            display: inline-block;
+                            font-size: 16px;
+                            line-height: 24px;
+                            vertical-align: top;
+                            text-align: center;
+                            box-sizing: border-box;
+                        }
+                .instant_group {
+                    box-sizing: border-box;
+                    height: 168px;
+                }       
+                    .tab_area {
+                        position: relative;
+                        box-sizing: border-box;
+                    }
+                        .tab_list {
+                            display: flex;
+                            border: 1px solid #ebebeb;
+                            border-radius: 80px;
+                            margin-bottom: 27px;
+                            height: 51px;
+                            box-sizing: border-box;
+                        }
+                            .item {
+                                flex: 1;
+                                margin: 3px 0;
+                                margin-left: 3px;
+                                box-sizing: border-box;
+                            }
+                                .item_link {
+                                    display: block;
+                                    box-sizing: border-box;
+                                    cursor: pointer;
+                                    text-align: center;
+                                    border-radius: 80px;
+                                    color: rgba(34,34,34,.8);
+                                    /* box-shadow: inset 0 0 0 0.5px; */
+                                    font-size: 14px;
+                                    /* letter-spacing: -.21px; */
+                                    letter-spacing: -.15px;
+                                    padding: 14px 0;
+                                    height: 100%;
+                                }
+                                .item_link[color] {
+                                    background-color: #41b979;
+                                    color: #fff;
+                                    font-weight: 700;
+                                }
+                            .item_on {
+                                flex: 1;
+                                box-sizing: border-box;
+                                margin: 3px 0;
+                                margin-right: 3px;
+                            }
+                .price_now {
+                    height: 53px;
+                    box-sizing: border-box;
+                    display: block;
+                    color: #222;
+                }
+                    .price_now_box {
+                        height: 53px;
+                        border-bottom: 2px solid #ebebeb;
+                        display: flex;
+                        justify-content: space-between;
+                        padding-bottom: 10px;
+                        box-sizing: border-box;
+                    }
+                        .price_now_title {
+                            font-size: 14px;
+                            font-weight: 700;
+                            letter-spacing: -.21px;
+                            min-width: 63px;
+                        }
+                        .price_b {
+                            align-items: center;
+                            display: flex;
+                            box-sizing: border-box;
+                        }
+                        .price {
+                            align-items: center;
+                            display: flex;
+                            margin-top: 15px;
+                            box-sizing: border-box;
+                        }
+                            .input_amount1 {
+                                font-size: 20px;
+                                text-align: right;
+                                border:none;
+                                font-weight: 600;
+                                box-sizing: border-box;
+                            }
+                            .unit_b {
+                                height: 29px;
+                                font-size: 20px;
+                                font-weight: 600;
+                                letter-spacing: -.3px;
+                                line-height: 26px;
+                                padding-left: 2px;
+                                box-sizing: border-box;
+                            }
+                .price_bind {
+                    height: 88px;
+                    padding-top: 10px;
+                    font-size: 13px;
+                    letter-spacing: -.07px;
+                    box-sizing: border-box;
+                    display: block;
+                }
+                    .price_addition {
+                        margin-top: 0;
+                        align-items: center;
+                        display: flex;
+                        font-size: 13px;
+                        justify-content: space-between;
+                        letter-spacing: -.07px;
+                        min-height: 26px;
+                        box-sizing: border-box;
+                    }
+                        #fo {
+                            color: rgba(34,34,34,.5);
+                            box-sizing: border-box;
+                            font-size: 13px;
+                            letter-spacing: -.07px;
+                        }
+                        .deadline_info_area {
+                            height: 160px;
+                            padding: 32px;
+                            box-sizing: border-box;
+                        }
+                            .section_title {
+                                height: 32px;
+                                padding-bottom: 16px;
+                                box-sizing: border-box;
+                            }
+                                .title_txt {
+                                    height: 16px;
+                                    font-size: 14px;
+                                    box-sizing: border-box;
+                                }
+                            .section_content {
+                                height: 67px;
+                                box-sizing: border-box;
+                            }
+                                .bid_deadline {
+                                    margin-top: -3px;
+                                    height: 67px;
+                                    box-sizing: border-box;
+                                }
+                                    .deadline_txt {
+                                        height: 18px;
+                                        font-size: 15px;
+                                        letter-spacing: -.15px;
+                                        box-sizing: border-box;
+                                    }
+                                    .deadline_tab {
+                                        height: 42px;
+                                        margin-top: 7px;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        box-sizing: border-box;
+                                    }
+                                        .btnoutlinegrey {
+                                            height: 42px;
+                                            padding: 0 18px;
+                                            flex: 1;
+                                            border: 1px solid #d3d3d3;
+                                            font-size: 14px;
+                                            letter-spacing: -.14px;
+                                            border-radius: 12px;
+                                            background-color: #fff;
+                                            color: rgba(34,34,34,.8);
+                                            cursor: pointer;
+                                            display: inline-flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            box-sizing: border-box;
+                                        }
+                                        .btnoutlinegrey[btnoutlinegrey_color] {
+                                            border: 1px solid #222;
+                                            color: #222;
+                                            font-weight: 700;
+                                        }
+
+
+            .buy_total_confirm {
+                height: 139px;
+                border-top: 1px solid #ebebeb;
+                padding: 0 32px 32px;
+                background-color: #fff;
+                margin: 0;
+                box-sizing: border-box;
+            }
+                .price_total {
+                    height: 47px;
+                    padding-bottom: 12px;
+                    padding-top: 16px;
+                    box-sizing: border-box;
+                }
+                    .price_box {
+                        height: 19px;
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        box-sizing: border-box;
+                    }
+                        .price_title {                            
+                            font-size: 13px;
+                            letter-spacing: -.07px;
+                            font-weight: 700;
+                            box-sizing: border-box;
+                        }
+                        .price_empty_desc {
+                            color: rgba(34,34,34,.5);
+                            box-sizing: border-box;
+                        }
+                            .amount_c {
+                                font-size: 20px;
+                                font-weight: 600;
+                                letter-spacing: normal;
+                                line-height: 26px;
+                                box-sizing: border-box;
+                                /* color: #31b46e; */
+                                color: #222!important;
+                            }
+                            .unit {
+                                font-size: 20px;
+                                font-weight: 700;
+                                letter-spacing: -.15px;
+                                line-height: 26px;
+                                box-sizing: border-box;
+                                color: #31b46e;
+                            }
+
+                .btn_confirm {
+                    box-sizing: border-box;
+                }
+                    /* 즉시 구매 버튼 뒤에  */
+                    .blind_full_solid_false[blind] {
+                        clip: rect(0,0,0,0)!important;
+                        height: 1px!important;
+                        margin: -1px!important;
+                        overflow: hidden!important;
+                        position: absolute!important;
+                        width: 1px!important;
+                    } 
+                    .blind_full_solid_false {
+                        border: 0px;
+                        font-weight: 600;
+                        background-color: #ebebeb;
+                        color: #fff;
+                        border-radius: 12px;
+                        font-size: 16px;
+                        height: 52px;
+                        letter-spacing: -.16px;
+                        width: 100%;
+                        cursor: pointer;
+
+                        align-items: center;
+                        display: inline-flex;
+                        justify-content: center;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
