@@ -3,12 +3,16 @@
     padding: 3px 0px;
     list-style: none;
 }
-
 .service-container {
-    width: 1200px;
+    /* width: 1200px;
     margin: auto;
     display: flex;
-    padding: 40px 40px 160px 40px;
+    padding: 40px 40px 160px 40px; */
+    margin-right: auto;/*필요시 제거*/
+    margin-left: 20px; /* 오른쪽 여백 추가 */
+    width: 180px;
+    font-size: 22px;
+    /* background-color: aqua; */
 }
 
 .menu_container {
@@ -36,6 +40,9 @@
     text-decoration: none;
     color: lightgray;
 }
+.notice #title :hover{
+    color: black;
+}
 
 .faq {
     font-size: 16px;
@@ -48,6 +55,9 @@
 .faq #title a{
    text-decoration: none;
     color: lightgray; 
+}
+.faq #title :hover{
+    color: black;
 }
 
 .qna {
@@ -63,6 +73,9 @@
      color: lightgray; 
      /* font-size: medium */
  }
+ .qna #title :hover{
+    color: black;
+}
 /* .first{
     width: 160px;
     display: flex;
@@ -79,4 +92,6 @@
     text-decoration: none;
      color: lightgray; 
  }
-
+ .request #title :hover{
+    color: black;
+}
