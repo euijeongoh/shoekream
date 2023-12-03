@@ -112,66 +112,7 @@ body {
                 background-color: rgb(244, 244, 244);
             }
 
-            /* 판매 정산 계좌 */
-            .section_payout_account {
-                box-sizing: border-box;
-                padding: 32px;
-            }
-                .payout_account_area {
-                    box-sizing: border-box;
-                }
-                    .section_title {
-                        padding-bottom: 12px;
-                        box-sizing: border-box;
-                        color: #222;
-                    }
-                        /* .title_txt {
-                            font-size: 18px;
-                            font-weight: 600;
-                            letter-spacing: -.15px;
-                            line-height: 22px;
-                            box-sizing: border-box;
-                        } */
-                    .section_content_b {
-                        height: 100%;
-                        position: relative;
-                        box-sizing: border-box;
-                        color: #222;
-                    }
-                        .account_info {
-                            box-sizing: border-box;
-                        }
-                            .info_list {
-                                box-sizing: border-box;
-                            }
-                                .info_box {
-                                    line-height: 17px;
-                                    overflow: hidden;
-                                    box-sizing: border-box;
-                                }
-                                .info_box[margin] {
-                                    margin-top: 6px;
-                                }
-                        .btn_account_edit {
-                            position: absolute;
-                            top: 2px;
-                            right: 0;
-                            border: 1px solid #d3d3d3;
-                            color: rgba(34,34,34,.8);
-                            border-radius: 10px;
-                            font-size: 12px;
-                            height: 34px;
-                            padding: 0 14px;
-                            cursor: pointer;
-                            display: flex;
-                            align-items: center;
-                            text-align: center;
-                        }
-
-
-            /* 판매 정산 계좌 */
-
-            /* 반송 주소 */
+            /* 배송 주소 */
             section { 
                 height: 150px;
                 background-color: #fff;
@@ -198,12 +139,18 @@ body {
                             flex: 1;
                             box-sizing: border-box;
                         }
+                        p {
+                            font-size: 15px;
+                            font-weight: 300;
+                            
+                        }
                         .add_more_btn {
                             color: rgba(34,34,34,.5);
                             font-size: 13px;
                             letter-spacing: -.07px;
                             margin-left: auto;
                             padding-left: 2px;
+                            cursor: pointer;
                         }
                     .section_content{
                         height: 60px;
@@ -254,9 +201,9 @@ body {
                             align-items: center;
                             background-color: #fff;
                             cursor: pointer;
-                            display: flex;
+                            display: inline-flex;
                         }
-            /* 반송 주소 */
+            /* 배송 주소 */
             
             /* 결제 방법 */
             .section_payment {
@@ -272,22 +219,71 @@ body {
                     }
                     /* div {
                     } */
-                        .payment_card {
+                        .payment_account {
                             box-sizing: border-box;
                         }
                             .method_title {
-                                box-sizing: border-box;
                                 align-items: center;
                                 display: flex;
                                 padding: 16px 0 13px;
                             }
+                                .main_title {
+                                    box-sizing: border-box;
+                                }
+                            .btn_card_add {
+                                color: rgba(34,34,34,.5);
+                                font-size: 13px;
+                                font-weight: 400;
+                                margin-left: auto;
+                                cursor: pointer;
+                            }
+                            /* div {
+                            } */
+                                .payment_detail {
+                                    box-sizing: border-box;
+                                }
+                                    .payment_item { /* 계좌 */
+                                        box-sizing: border-box;
+                                        background-color: #fafafa;
+                                        border: 1px solid #d3d3d3;
+                                        border-radius: 10px;
+                                        color: rgba(34,34,34,.5);
+                                        font-size: 14px;
+                                        letter-spacing: -.21px;
+                                        
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        display: flex;
+                                        width: 100%;
+                                        height: 63px;
+                                        padding: 11px 8px 13px 9px;
+                                        cursor: pointer;
+                                    }
+                                        .info_wrap {
+                                            box-sizing: border-box;
+                                        }
+                                            .bank_info {
+                                                box-sizing: border-box;
+                                                font-size: 14px;
+                                                letter-spacing: -.21px;
+                                                cursor: pointer;
+
+                                            }
+                                                .bank_name {
+                                                    box-sizing: border-box;
+                                                    font-size: 14px;
+                                                    letter-spacing: -.21px;
+                                                }
+                                                .account_number {
+                                                    box-sizing: border-box;
+                                                }
+                        .payment_card {
+                            box-sizing: border-box;
+                        }
+                            /* .method_title {
+                            } */
                                 /* .main_title {
                                 } */
-                                    .payment {
-                                        box-sizing: border-box;
-                                        font-size: 15px;
-                                        font-weight: 400;
-                                    }
                             /* div {
                             } */
                                 /* .card_list 
@@ -313,7 +309,7 @@ body {
             .section_orderinfo {
                 padding-bottom: 16px!important;
                 padding: 32px;
-                height: 230px;
+                height: 190px;
                 box-sizing: border-box;
             }
                 .orderinfo_area {
@@ -342,13 +338,6 @@ body {
                         font-size: 14px;
                         line-height: 17px;
                         padding: 4px 0;
-                    }
-                    .display_line {
-                        background-color: rgb(240, 240, 240);
-                        margin: 12px 0;
-                        height: 1px;
-                        width: 100%;
-                        box-sizing: border-box;
                     }
                         .line_title {
                             box-sizing: border-box;
@@ -410,14 +399,14 @@ body {
                                 font-size: 20px;
                                 font-weight: 600;
                                 line-height: 26px;
-                                color: #31b46e;
+                                color: #f15746;
                             }
                             .unit {
                                 box-sizing: border-box;
                                 font-size: 20px;
                                 font-weight: 700;
                                 line-height: 26px;
-                                color: #31b46e;
+                                color: #f15746;
                             }
                 .btn_confirm {
                     box-sizing: border-box;
