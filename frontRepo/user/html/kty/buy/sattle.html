@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>구매 입찰</title>
+    <title>구매</title>
 
     <link rel="stylesheet" href="../../../css/kty/userheader.css">
-    <link rel="stylesheet" href="../../../css/kty/buy/bidding.css">
+    <link rel="stylesheet" href="../../../css/kty/buy/sattle.css">
     <link rel="stylesheet" href="../../../common/footer.css">
 </head>
 
@@ -32,7 +32,7 @@
                     </div>
                     <div class="center">
                         <h2 class="h2_buy">
-                            <span>구매 입찰하기</span>
+                            <span>즉시 구매하기</span>
                         </h2>
                     </div>
                     <div class="right">
@@ -51,6 +51,7 @@
         <div class="content">
             <div class="buy_immediate">
 
+                <!-- 상품 정보 -->
                 <div class="product_info_area">
                     <div class="product_info">
                         <div class="product_thumb">
@@ -68,73 +69,44 @@
                         </div>
                     </div>
                 </div>
+                <!-- 상품 정보 -->
 
-                <div class="price_descision_box">
-
-                    <ul class="price_list">
-                        <li class="list_item">
-                            <p class="title">즉시 구매가</p>
-                            <div style="display: flex; justify-content: center;">
-                                <span class="price_a">171,000</span>
-                                <span class="unit_a">원</span>
-                            </div>
-                        </li>
-                        <li class="list_item">
-                            <p class="title">즉시 판매가</p>
-                            <div style="display: flex; justify-content: center;">
-                                <span class="price_a">163,000</span>
-                                <span class="unit_a">원</span>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="instant_group">
-                        <div class="tab_area">
-                            <ul class="tab_list">
-                                <li class="item">
-                                    <a item_link_color class="item_link">구매 입찰</a>
-                                </li>
-                                <li class="item_on">
-                                    <a class="item_link">즉시 구매</a>
-                                </li>
-                            </ul>
+                <div class="display_separator"></div>
+                
+                <section>
+                    <div class="section_unit">
+                        <div class="section_title">
+                            <h3 class="title_txt">배송 주소</h3>
+                            <a class="add_more_btn">+ 새 주소 추가</a>
                         </div>
-                        <div class="price_now">
-                            <dl class="price_now_box">
-                                <dt class="price_now_title">구매 희망가</dt>
-                                <dd class="price">
-                                    <!-- input_amount1 이거 CSS 안됨.. -->
-                                    <input class="input_amount1" type="text" placeholder="희망가 입력">
-                                    <span class="unit_b">원</span>
-                                </dd>
-                            </dl>
-                            <div class="price_warning"></div>
-                        </div>
-                        <div class="price_bind">
-                            <p class="price_bind_empty">총 결제금액은 다음 화면에서 계산됩니다.</p>
-                        </div>
-                    </div>
-
-                </div>
-            <!-- 여기부터 ㅡㅡ -->
-                <div class="deadline_info_area">
-                    <div class="section_title">
-                        <h3 class="title_txt">입찰 마감기한</h3>
-                    </div>
-                    <div class="section_content">
-                        <div class="bid_deadline">
-                            <p class="deadline_txt">60일 (2024/01/31 마감)</p>
-                            <div class="deadline_tab">
-                                <a class="btnoutlinegrey">1일</a>
-                                <a class="btnoutlinegrey">3일</a>
-                                <a class="btnoutlinegrey">7일</a>
-                                <a class="btnoutlinegrey">30일</a>
-                                <a btnoutlinegrey_color class="btnoutlinegrey">60일</a>
+                        <div class="section_content">
+                            <div class="delivery_info">
+                                <div class="address_info">
+                                    <dl class="info_list">
+                                        <div class="info_box">
+                                            <dt class="title">받는 분</dt>
+                                            <dd class="desc">곽태윤</dd>
+                                        </div>
+                                        <div class="info_box">
+                                            <dt class="title">연락처</dt>
+                                            <dd class="desc">010-9740-4885</dd>
+                                        </div>
+                                        <div class="info_box">
+                                            <dt class="title">배송 주소</dt>
+                                            <dd class="desc">인천 연수구 함박뫼로 100 (연수동, 문남마을아파트) 109-505</dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <a class="btn_edit"></a>
                             </div>
                         </div>
                     </div>
-                </div>
-            <!-- 여기부터 ㅡㅡ -->
+                </section>
+                
+                <div class="display_separator"></div>
+
+
+                <!-- 즉시 구매 계속 -->
                 <div class="buy_total_confirm">
                     <div class="price_total">
                         <dl class="price_box">
@@ -147,7 +119,7 @@
                     </div>
                     <div class="btn_confirm">
                         <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">구매 입찰 계속</button>
+                        <button class="blind_full_solid_false">즉시 구매 계속</button>
                     </div>
                 </div>
             </div>

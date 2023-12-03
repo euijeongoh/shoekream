@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>구매 입찰</title>
+    <title>판매</title>
 
     <link rel="stylesheet" href="../../../css/kty/userheader.css">
-    <link rel="stylesheet" href="../../../css/kty/buy/bidding.css">
+    <link rel="stylesheet" href="../../../css/kty/sell/bidding.css">
     <link rel="stylesheet" href="../../../common/footer.css">
 </head>
 
@@ -32,7 +32,7 @@
                     </div>
                     <div class="center">
                         <h2 class="h2_buy">
-                            <span>구매 입찰하기</span>
+                            <span>판매 입찰하기</span>
                         </h2>
                     </div>
                     <div class="right">
@@ -92,18 +92,17 @@
                         <div class="tab_area">
                             <ul class="tab_list">
                                 <li class="item">
-                                    <a item_link_color class="item_link">구매 입찰</a>
+                                    <a color class="item_link">판매 입찰</a>
                                 </li>
                                 <li class="item_on">
-                                    <a class="item_link">즉시 구매</a>
+                                    <a  class="item_link">즉시 판매</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="price_now">
                             <dl class="price_now_box">
-                                <dt class="price_now_title">구매 희망가</dt>
+                                <dt class="price_now_title">판매 희망가</dt>
                                 <dd class="price">
-                                    <!-- input_amount1 이거 CSS 안됨.. -->
                                     <input class="input_amount1" type="text" placeholder="희망가 입력">
                                     <span class="unit_b">원</span>
                                 </dd>
@@ -111,12 +110,30 @@
                             <div class="price_warning"></div>
                         </div>
                         <div class="price_bind">
-                            <p class="price_bind_empty">총 결제금액은 다음 화면에서 계산됩니다.</p>
+                            <dl class="price_addition">
+                                <dt class="price_title">
+                                    <span id="fo">검수비</span>
+                                </dt>
+                                <dd class="price_text">-</dd>
+                            </dl>
+                            <dl class="price_addition">
+                                <dt class="price_title">
+                                    <span id="fo">수수료</span>
+                                </dt>
+                                <dd class="price_text">-</dd>
+                            </dl>
+                            <dl class="price_addition">
+                                <dt class="price_title">
+                                     <span id="fo">배송비</span>
+                                </dt>
+                                <dd class="price_text">선불, 판매자 부담</dd>
+                            </dl>
                         </div>
                     </div>
 
                 </div>
-            <!-- 여기부터 ㅡㅡ -->
+
+                <!-- 여기부터 ㅡㅡ -->
                 <div class="deadline_info_area">
                     <div class="section_title">
                         <h3 class="title_txt">입찰 마감기한</h3>
@@ -135,19 +152,21 @@
                     </div>
                 </div>
             <!-- 여기부터 ㅡㅡ -->
+                
                 <div class="buy_total_confirm">
+                    <!-- 여기부터 ㄱㄱ -->
                     <div class="price_total">
                         <dl class="price_box">
-                            <dt class="price_title">총 결제금액</dt>
-                            <dd class="price_empty_desc">다음 화면에서 확인</dd>
+                            <dt class="price_title">정산금액</dt>
+                            <dd class="price_b">
+                                <span class="amount_c">-</span>
+                                <span class="unit"></span>
+                            </dd>
                         </dl>
-                        <span class="price_warning">
-                            <em></em>
-                        </span>
                     </div>
                     <div class="btn_confirm">
                         <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">구매 입찰 계속</button>
+                        <button class="blind_full_solid_false">판매 입찰 계속</button>
                     </div>
                 </div>
             </div>
