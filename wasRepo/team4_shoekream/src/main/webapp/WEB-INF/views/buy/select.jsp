@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/select.css">
 	<link rel="stylesheet" href="../../../common/footer.css">
+	
+	<script defer src="/shoekream/resources/js/bidding//buy/select.js"></script>
+	
 <body>
     <div class="wrap">
         <header>
@@ -70,7 +73,8 @@
 	                            	<li id="select_item">
 	                                    <button class="select_link buy">
 	                                        <div class="link_inner">
-	                                            <div class="size"><%= 210 + (i*5)%></div>
+                                                <% int size = 210 + (i*5); %>
+	                                            <div class="size"><%= size %></div>
 	                                            <div class="price">180,000</div>
 	                                        </div>
 	                                    </button>
