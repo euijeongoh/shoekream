@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: 'Pretendard';
 }
-.layer_container {
+.modal_quit {
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);
