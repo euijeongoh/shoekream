@@ -313,7 +313,7 @@ body {
             .section_orderinfo {
                 padding-bottom: 16px!important;
                 padding: 32px;
-                height: 190px;
+                height: 230px;
                 box-sizing: border-box;
             }
                 .orderinfo_area {
@@ -342,6 +342,14 @@ body {
                         font-size: 14px;
                         line-height: 17px;
                         padding: 4px 0;
+                    }
+                    .display_line {
+                        background-color: rgb(240, 240, 240);
+                        margin: 12px 0;
+                        height: 1px;
+                        width: 100%;
+                        box-sizing: border-box;
+
                     }
                         .line_title {
                             box-sizing: border-box;
