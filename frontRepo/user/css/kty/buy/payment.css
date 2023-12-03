@@ -1,0 +1,433 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+        /* 픽스드(탑고정) : 헤더크기 여유분 */
+        padding-top: 86px;
+        /* 픽스드(탑고정) : 헤더크기 여유분 */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.container { /* 컨테이너, 컨텐트 */
+    width: 100%;
+    height: 1150px;
+    background-color: rgb(246, 246, 246);
+    box-sizing: border-box;
+    margin: auto;
+}
+    .content {
+        width: 780px;
+        height: 100%;
+        background-color: rgb(246, 246, 246);
+        margin: 0 auto;
+        padding: 20px 40px 160px;
+        box-sizing: border-box;
+    } /* 컨테이너, 컨텐트 */
+
+        .buy_immediate {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            box-sizing: border-box;
+        }
+        
+            /* 상품 정보 */
+            .product_info_area {
+                padding: 32px;
+                box-sizing: border-box;
+            }
+                .product_info {
+                    display: flex;
+                    align-items: center;
+                    background-color: #fff;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+                    .product_thumb {
+                        flex: none;
+                        height: 80px;
+                        width: 80px;
+                        box-sizing: border-box;
+                        background-color: rgb(255, 255, 255);
+                    }
+                        .porduct {
+                            background-color: rgb(255, 255, 255);
+                            border-radius: 10px;
+                            height: 80px;
+                            position: relative;
+                            box-sizing: border-box;
+                        }
+                            #airforce {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 10px;
+                            }
+                    .model_desc {
+                        height: 17px;
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 4px;
+                        box-sizing: border-box;
+                    }
+                        .size_txt {
+                            font-size: 14px;
+                            font-weight: 800;
+                            box-sizing: border-box;
+                        }
+            .product_detail {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                padding-left: 16px;
+                width: 556px;
+            }
+                .code {
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+                .name {
+                    font-size: 14px;
+                }
+                .translated_name {
+                    color: rgba(34,34,34,.5);
+                    font-size: 13px;
+                    margin-top: 2px;
+                }
+            /* 상품 정보 */
+            
+            .display_separator { /* 빈공간1 */
+                height: 8px;
+                box-sizing: border-box;
+                background-color: rgb(244, 244, 244);
+            }
+
+            /* 배송 주소 */
+            section { 
+                height: 150px;
+                background-color: #fff;
+                padding: 32px;
+                box-sizing: border-box;
+
+            }
+                .section_unit {
+                    box-sizing: border-box;
+                    height: 100%;
+                }
+                    .section_title{
+                        height: 34px;
+                        align-items: center;
+                        display: flex;
+                        padding-bottom: 12px;
+                        box-sizing: border-box;
+                    }
+                        .title_txt {
+                            font-size: 18px;
+                            font-weight: 600;
+                            letter-spacing: -.15px;
+                            line-height: 22px;
+                            flex: 1;
+                            box-sizing: border-box;
+                        }
+                        .add_more_btn {
+                            color: rgba(34,34,34,.5);
+                            font-size: 13px;
+                            letter-spacing: -.07px;
+                            margin-left: auto;
+                            padding-left: 2px;
+                        }
+                    .section_content{
+                        height: 60px;
+                        box-sizing: border-box;
+                    }
+                        .delivery_info {
+                            padding-right: 70px;
+                            position: relative;
+                        }
+                            .address_info {
+                                box-sizing: border-box;
+                            }
+                                .info_list {
+                                    box-sizing: border-box;
+                                }
+                                    .info_box {
+                                        letter-spacing: -.15px;
+                                        line-height: 17px;
+                                        overflow: hidden;
+                                        box-sizing: border-box;
+                                    }
+                                        .title {
+                                            color: rgba(34,34,34,.5);
+                                            float: left;
+                                            font-size: 13px;
+                                            letter-spacing: -.07px;
+                                            min-width: 80px;
+                                            box-sizing: border-box;
+                                        }
+                                        .desc {
+                                            font-size: 14px;
+                                            letter-spacing: -.21px;
+                                            overflow: hidden;
+                                            box-sizing: border-box;
+                                        }
+                        .btn_edit {
+                            height: 34px;
+                            margin-top: -17px;
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            border: 1px solid #d3d3d3;
+                            color: rgba(34,34,34,.8);
+                            border-radius: 10px;
+                            font-size: 12px;
+                            letter-spacing: -.06px;
+                            padding: 0 14px;
+                            align-items: center;
+                            background-color: #fff;
+                            cursor: pointer;
+                            display: inline-flex;
+                        }
+            /* 배송 주소 */
+            
+            /* 결제 방법 */
+            .section_payment {
+                padding: 32px;
+                box-sizing: border-box;
+            }
+                .payment_area {
+                    box-sizing: border-box;
+                }
+                    .payment_title {
+                        /* display: flex;
+                        align-items: center; */
+                    }
+                    /* div {
+                    } */
+                        .payment_account {
+                            box-sizing: border-box;
+                        }
+                            .method_title {
+                                align-items: center;
+                                display: flex;
+                                padding: 16px 0 13px;
+                            }
+                                .main_title {
+                                    box-sizing: border-box;
+                                }
+                            .btn_card_add {
+                                color: rgba(34,34,34,.5);
+                                font-size: 13px;
+                                font-weight: 400;
+                                margin-left: auto;
+                                cursor: pointer;
+                            }
+                            /* div {
+                            } */
+                                .payment_detail {
+                                    box-sizing: border-box;
+                                }
+                                    .payment_item { /* 계좌 */
+                                        box-sizing: border-box;
+                                        background-color: #fafafa;
+                                        border: 1px solid #d3d3d3;
+                                        border-radius: 10px;
+                                        color: rgba(34,34,34,.5);
+                                        font-size: 14px;
+                                        letter-spacing: -.21px;
+                                        
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        display: flex;
+                                        width: 100%;
+                                        height: 63px;
+                                        padding: 11px 8px 13px 9px;
+                                        cursor: pointer;
+                                    }
+                                        .info_wrap {
+                                            box-sizing: border-box;
+                                        }
+                                            .bank_info {
+                                                box-sizing: border-box;
+                                                font-size: 14px;
+                                                letter-spacing: -.21px;
+                                                cursor: pointer;
+
+                                            }
+                                                .bank_name {
+                                                    box-sizing: border-box;
+                                                    font-size: 14px;
+                                                    letter-spacing: -.21px;
+                                                }
+                                                .account_number {
+                                                    box-sizing: border-box;
+                                                }
+                        .payment_card {
+                            box-sizing: border-box;
+                        }
+                            /* .method_title {
+                            } */
+                                /* .main_title {
+                                } */
+                            /* div {
+                            } */
+                                /* .card_list 
+                                */
+                                    .main_card { /* 카드 */
+                                        box-sizing: border-box;
+                                        background-color: #fafafa;
+                                        border: 1px solid #d3d3d3;
+                                        border-radius: 10px;
+                                        color: rgba(34,34,34,.5);
+                                        font-size: 14px;
+                                        letter-spacing: -.21px;
+                                        
+                                        align-items: center;
+                                        display: flex;
+                                        height: 52px;
+                                        padding: 0 12px;
+                                        cursor: pointer;
+                                    }
+            /* 결제 방법 */
+
+            /* 최종 주문정보 */
+            .section_orderinfo {
+                padding-bottom: 16px!important;
+                padding: 32px;
+                height: 190px;
+                box-sizing: border-box;
+            }
+                .orderinfo_area {
+                    height: 100%;
+                    box-sizing: border-box;
+                }
+                    .title_wrap {
+                        height: 31px;
+                        box-sizing: border-box;
+                        padding-bottom: 12px;
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                        /* div {
+                        } */
+                            .wrap_title {
+                                flex: 1;
+                                font-size: 16px;
+                                font-weight: 600;     
+                                box-sizing: border-box;
+                            }
+                    .title_description {
+                        display: flex;
+                        box-sizing: border-box;
+                        font-size: 14px;
+                        line-height: 17px;
+                        padding: 4px 0;
+                    }
+                        .line_title {
+                            box-sizing: border-box;
+                            color: rgb(34, 34, 34);
+                            min-width: 66px;
+                            font-size: 14px;
+                            line-height: 17px;
+                        }
+                            .description_wrap {
+                                flex: 1;
+                                font-size: 14px;
+                                line-height: 17px;
+                                box-sizing: border-box;
+                            }
+                                .line_description {
+                                    color: rgb(34, 34, 34);
+                                    flex: 1;
+                                    text-align: right;
+                                    font-size: 14px;
+                                    line-height: 17px;
+                                    box-sizing: border-box;
+                                }
+            /* 최종 주문정보 */
+
+            /* 결제하기 */
+            .buy_total_confirm {
+                height: 132px;
+                border-top: 1px solid #ebebeb;
+                padding: 0 32px 32px;
+                background-color: #fff;
+                margin: 0;
+                box-sizing: border-box;
+            }
+                .price_total {
+                    height: 47px;
+                    padding-bottom: 12px;
+                    padding-top: 16px;
+                    box-sizing: border-box;
+                }
+                    .price_box {
+                        height: 19px;
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        box-sizing: border-box;
+                    }
+                        .price_title {                            
+                            font-size: 13px;
+                            letter-spacing: -.07px;
+                            font-weight: 700;
+                            box-sizing: border-box;
+                        }
+                        .price_empty_desc {
+                            color: rgba(34,34,34,.5);
+                            box-sizing: border-box;
+                        }
+                            .amount {
+                                box-sizing: border-box;
+                                font-size: 20px;
+                                font-weight: 600;
+                                line-height: 26px;
+                                color: #f15746;
+                            }
+                            .unit {
+                                box-sizing: border-box;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 26px;
+                                color: #f15746;
+                            }
+                .btn_confirm {
+                    box-sizing: border-box;
+                }
+                    /* 즉시 구매 버튼 뒤에  */
+                    .blind_full_solid_false[blind] {
+                        clip: rect(0,0,0,0)!important;
+                        height: 1px!important;
+                        margin: -1px!important;
+                        overflow: hidden!important;
+                        position: absolute!important;
+                        width: 1px!important;
+                    } 
+                    .blind_full_solid_false {
+                        font-weight: 600;
+                        background-color: #222;
+                        color: #fff;
+                        border-radius: 12px;
+                        font-size: 16px;
+                        height: 52px;
+                        letter-spacing: -.16px;
+                        width: 100%;
+                        cursor: pointer;
+
+                        align-items: center;
+                        display: inline-flex;
+                        justify-content: center;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
