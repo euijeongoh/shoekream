@@ -50,7 +50,7 @@
     color: #ebebeb;
 }
 
-#id_check, #pwd_check, #pwd2_equalCheck {
+#id_check, #pwd_check, #pwd2_check, #nick_check{
 	color: #f15746;
 	font-size: 11px;
 	padding-top: 3px;
@@ -69,6 +69,7 @@
     font-family: 'Pretendard';
     font-weight: 700;
     font-size: 16px;
+    text-align: center;
 }
 
 #size {

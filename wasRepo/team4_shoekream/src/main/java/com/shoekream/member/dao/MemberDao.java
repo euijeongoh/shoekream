@@ -69,4 +69,29 @@ public class MemberDao {
 		return isDup;
 	}
 
+	public boolean checkEmailDup(Connection conn, String email) throws Exception {
+		// sql
+		String sql = "SELECT EMAIL FROM MEMBER WHERE EMAIL=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, email);
+		ResultSet rs = pstmt.executeQuery();
+		// rs
+		boolean isDup = false;
+		if(rs.next()) {
+			isDup = true;
+		}
+		
+		return isDup;
+	}
+
+	public int deleteInfo(Connection conn, MemberVo loginMember) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int updateStatus(Connection conn, MemberVo loginMember) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

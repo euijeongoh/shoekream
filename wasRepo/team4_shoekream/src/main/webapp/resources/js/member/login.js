@@ -13,7 +13,7 @@ activateLoginBtn();
 function activateLoginBtn() {
 	for(let i=0; i<loginInputTagArr.length; i++) {
 	loginInputTagArr[i].addEventListener('keyup', ()=>{
-		let result = checkValidation();
+		const result = checkValidation();
 		return result;
 	})
 	}

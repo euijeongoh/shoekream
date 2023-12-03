@@ -38,4 +38,43 @@ public class MemberService {
 		return isDup;
 	}
 
+	public int quit(MemberVo loginMember) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MemberDao dao = new MemberDao();
+		int result1 = dao.deleteInfo(conn, loginMember);
+		int result2 = dao.updateStatus(conn, loginMember);
+		
+		// tx
+		int result = 0;
+		if(result1==1 && result2==1) {
+			result = 1;
+			JDBCTemplate.commit(conn);
+		} else {
+			result = -1;
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public boolean checkEmailDup(String email) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MemberDao dao = new MemberDao();
+		boolean isDup = dao.checkEmailDup(conn, email);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return isDup;
+	}
+
 }

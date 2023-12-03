@@ -24,7 +24,7 @@
             <form action="/member/join" method="post" onsubmit="return activateJoinBtn();")>
                 <div class="input_box">
                     <div class="input_title">아이디*</div>
-                    <input class="input_txt" type="text" name="memberId" placeholder="영문, 숫자 조합 6-12자">
+                    <input class="input_txt" type="text" name="memberId" placeholder="아이디">
                     <div id="id_check"></div>
                 </div>
                 <div class="input_box">
@@ -45,17 +45,19 @@
                 <div class="input_box">
                     <div class="input_title">이메일*</div>
                     <input class="input_txt" type="text" name="email" placeholder="예) shoekream@kream.co.kr">
-                </div>
-                <div class="input_box">
-                    <div class="input_title">휴대폰 번호*</div>
-                    <input class="input_txt" type="text" name="phone" placeholder="- 포함 13자">
+                    <div id="email_check"></div>
+                    <input type="button" value="인증하기" onclick="authenticateEmail();">
+                    <div>
+                    	<input class="input_txt" type="text" name="appr_no">
+                    	<span> 타이머 </span>
+                    </div>
                 </div>
                 <div id="size">
                     <div class="input_title">신발 사이즈</div>
-                    <button type="button">선택</button>
+                    <button type="button" onclick="">선택</button>
                 </div>
                 <div class="join_btn_box">
-                    <button id="join_btn">가입하기</button>
+                	<input id="join_btn" value="가입하기">
                 </div>
             </form>
         </div>
