@@ -19,7 +19,7 @@ body {
 
 .container {
     width: 100%;
-    height: 905px;
+    height: 964px;
     background-color: rgb(246, 246, 246);
     box-sizing: border-box;
     margin: auto;
@@ -102,7 +102,7 @@ body {
                 }
 
             .price_descision_box {
-                height: 288px;
+                height: 341px;
                 padding: 0 32px 32px;
                 background-color: #fff;
                 margin: 0;
@@ -183,8 +183,8 @@ body {
                                     padding: 14px 0;
                                     height: 100%;
                                 }
-                                .item_link[item_link_color] {
-                                    background-color: #ef6253;
+                                .item_link[color] {
+                                    background-color: #41b979;
                                     color: #fff;
                                     font-weight: 700;
                                 }
@@ -214,6 +214,11 @@ body {
                             letter-spacing: -.21px;
                             min-width: 63px;
                         }
+                        .price_b {
+                            align-items: center;
+                            display: flex;
+                            box-sizing: border-box;
+                        }
                         .price {
                             align-items: center;
                             display: flex;
@@ -230,87 +235,98 @@ body {
                             .unit_b {
                                 height: 29px;
                                 font-size: 20px;
-                                font-weight: 700;
+                                font-weight: 600;
                                 letter-spacing: -.3px;
                                 line-height: 26px;
                                 padding-left: 2px;
                                 box-sizing: border-box;
                             }
                 .price_bind {
-                    height: 36px;
+                    height: 88px;
                     padding-top: 10px;
                     font-size: 13px;
                     letter-spacing: -.07px;
                     box-sizing: border-box;
                     display: block;
                 }
-                    .price_bind_empty {
-                        color: rgba(34,34,34,.5);
-                        font-size: 14px;
-                        padding-top: 10px;
+                    .price_addition {
+                        margin-top: 0;
+                        align-items: center;
+                        display: flex;
+                        font-size: 13px;
+                        justify-content: space-between;
+                        letter-spacing: -.07px;
+                        min-height: 26px;
                         box-sizing: border-box;
                     }
-            .deadline_info_area {
-                height: 160px;
-                padding: 32px;
-                box-sizing: border-box;
-            }
-                .section_title {
-                    height: 32px;
-                    padding-bottom: 16px;
-                    box-sizing: border-box;
-                }
-                    .title_txt {
-                        height: 16px;
-                        font-size: 14px;
-                        box-sizing: border-box;
-                    }
-                .section_content {
-                    height: 67px;
-                    box-sizing: border-box;
-                }
-                    .bid_deadline {
-                        margin-top: -3px;
-                        height: 67px;
-                        box-sizing: border-box;
-                    }
-                        .deadline_txt {
-                            height: 18px;
-                            font-size: 15px;
-                            letter-spacing: -.15px;
+                        #fo {
+                            color: rgba(34,34,34,.5);
+                            box-sizing: border-box;
+                            font-size: 13px;
+                            letter-spacing: -.07px;
+                        }
+                        .deadline_info_area {
+                            height: 160px;
+                            padding: 32px;
                             box-sizing: border-box;
                         }
-                        .deadline_tab {
-                            height: 42px;
-                            margin-top: 7px;
-                            display: flex;
-                            justify-content: space-between;
-                            box-sizing: border-box;
-                        }
-                            .btnoutlinegrey {
-                                height: 42px;
-                                padding: 0 18px;
-                                flex: 1;
-                                border: 1px solid #d3d3d3;
-                                font-size: 14px;
-                                letter-spacing: -.14px;
-                                border-radius: 12px;
-                                background-color: #fff;
-                                color: rgba(34,34,34,.8);
-                                cursor: pointer;
-                                display: inline-flex;
-                                justify-content: center;
-                                align-items: center;
+                            .section_title {
+                                height: 32px;
+                                padding-bottom: 16px;
                                 box-sizing: border-box;
                             }
-                            .btnoutlinegrey[btnoutlinegrey_color] {
-                                border: 1px solid #222;
-                                color: #222;
-                                font-weight: 700;
+                                .title_txt {
+                                    height: 16px;
+                                    font-size: 14px;
+                                    box-sizing: border-box;
+                                }
+                            .section_content {
+                                height: 67px;
+                                box-sizing: border-box;
                             }
+                                .bid_deadline {
+                                    margin-top: -3px;
+                                    height: 67px;
+                                    box-sizing: border-box;
+                                }
+                                    .deadline_txt {
+                                        height: 18px;
+                                        font-size: 15px;
+                                        letter-spacing: -.15px;
+                                        box-sizing: border-box;
+                                    }
+                                    .deadline_tab {
+                                        height: 42px;
+                                        margin-top: 7px;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        box-sizing: border-box;
+                                    }
+                                        .btnoutlinegrey {
+                                            height: 42px;
+                                            padding: 0 18px;
+                                            flex: 1;
+                                            border: 1px solid #d3d3d3;
+                                            font-size: 14px;
+                                            letter-spacing: -.14px;
+                                            border-radius: 12px;
+                                            background-color: #fff;
+                                            color: rgba(34,34,34,.8);
+                                            cursor: pointer;
+                                            display: inline-flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            box-sizing: border-box;
+                                        }
+                                        .btnoutlinegrey[btnoutlinegrey_color] {
+                                            border: 1px solid #222;
+                                            color: #222;
+                                            font-weight: 700;
+                                        }
+
 
             .buy_total_confirm {
-                height: 132px;
+                height: 139px;
                 border-top: 1px solid #ebebeb;
                 padding: 0 32px 32px;
                 background-color: #fff;
@@ -340,6 +356,24 @@ body {
                             color: rgba(34,34,34,.5);
                             box-sizing: border-box;
                         }
+                            .amount_c {
+                                font-size: 20px;
+                                font-weight: 600;
+                                letter-spacing: normal;
+                                line-height: 26px;
+                                box-sizing: border-box;
+                                /* color: #31b46e; */
+                                color: #222!important;
+                            }
+                            .unit {
+                                font-size: 20px;
+                                font-weight: 700;
+                                letter-spacing: -.15px;
+                                line-height: 26px;
+                                box-sizing: border-box;
+                                color: #31b46e;
+                            }
+
                 .btn_confirm {
                     box-sizing: border-box;
                 }
@@ -353,8 +387,9 @@ body {
                         width: 1px!important;
                     } 
                     .blind_full_solid_false {
+                        border: 0px;
                         font-weight: 600;
-                        background-color: #222;
+                        background-color: #ebebeb;
                         color: #fff;
                         border-radius: 12px;
                         font-size: 16px;

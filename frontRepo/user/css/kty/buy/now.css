@@ -38,6 +38,8 @@ body {
             background-color: rgb(255, 255, 255);
             box-sizing: border-box;
         }
+        
+            /* 상품 정보 */
             .product_info_area {
                 padding: 32px;
                 box-sizing: border-box;
@@ -100,7 +102,8 @@ body {
                     font-size: 13px;
                     margin-top: 2px;
                 }
-
+            /* 상품 정보 */
+            
             .price_descision_box {
                 height: 288px;
                 padding: 0 32px 32px;
@@ -250,6 +253,7 @@ body {
                     }
 
 
+            /* 즉시 구매 계속 */
             .buy_total_confirm {
                 height: 132px;
                 border-top: 1px solid #ebebeb;
