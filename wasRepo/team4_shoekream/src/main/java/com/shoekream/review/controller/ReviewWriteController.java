@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.member.MemberVo;
 import com.shoekream.review.service.ReviewService;
+import com.shoekream.review.vo.CategoryVo;
+import com.shoekream.review.vo.ReviewVo;
 
 @WebServlet("/review/write")
 public class ReviewWriteController extends HttpServlet {
@@ -30,9 +32,9 @@ public class ReviewWriteController extends HttpServlet {
 			
 			//service
 			ReviewService rs = new ReviewService();
-			List<ReviewListVo> reviewlistVo = rs.selectReviewList();
-			 req.setAttribute("reviewlistVo", reviewlistVo);
-			 req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp);
+	        List<ReviewVo> reviewVoList = rs.getReviewList();
+			req.setAttribute("reviewVoList", reviewVoList);
+			req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp);
 
 		}catch (Exception e){
 			e.printStackTrace();
