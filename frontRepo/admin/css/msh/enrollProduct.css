@@ -116,7 +116,7 @@ header .main-list li {
     width: 180px;
     font-size: 22px;
 }
- .sidebar :visited, .sidebar :link, .sidebar :hover, .sidebar :active{
+ .sidebar :link, .sidebar :hover, .sidebar :active{
     text-decoration: none;
     color: black;
 }
