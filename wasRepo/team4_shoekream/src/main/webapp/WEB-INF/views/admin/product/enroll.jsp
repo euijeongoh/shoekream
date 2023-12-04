@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/resources/css/admin/product/enroll.css">
+    <link rel="stylesheet" href="/shoekream/resources/css/admin/product/enroll.css">
     <script src="/frontRepo/admin/js/msh/enrollProduct.js"></script>
 </head>
 <body>
@@ -24,7 +24,7 @@
             <div class="main-list">
                 <div class="logo-area">
                     <a href="">
-                    <img src="./logo.svg">
+                    <img src="/shoekream/resources/img/admin/header/logo.svg">
                     <span>°ü¸®ÀÚ</span>
                     </a>
                 </div>
@@ -32,7 +32,7 @@
                     <ul>
                         <li><a href="">HOME</a></li>
                         <li><a href="">SHOP</a></li>
-                        <li id="search-btn"><a><img src="./searchIcon.png"></a></li>
+                        <li id="search-btn"><a><img src=" /shoekream/resources/img/searchlogo.png"></a></li>
                     </ul>
                 </div>
             </div>
@@ -175,3 +175,23 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+function previewImage(event) {
+    const fileInput = event.target;
+    const imagePreview = document.getElementById('image-preview');
+
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
