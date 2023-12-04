@@ -9,12 +9,13 @@ import com.shoekream.db.util.JDBCTemplate;
 public class EnrollProductService {
 
 
-	public EnrollProductVo checkCategoryInfo(String category) throws Exception{
+
+	public EnrollProductVo categoryCheck(String category) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 		
 		EnrollProductDao dao = new EnrollProductDao();
 		
-		EnrollProductVo checkVo = dao.checkInfo(conn, category);
+		EnrollProductVo checkVo = dao.categoryCheck(conn, category);
 		
 		JDBCTemplate.close(conn);
 		

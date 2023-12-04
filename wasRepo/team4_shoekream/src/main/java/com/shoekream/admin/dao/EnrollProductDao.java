@@ -8,8 +8,14 @@ import com.shoekream.admin.vo.EnrollProductVo;
 
 public class EnrollProductDao {
 
-	public EnrollProductVo checkInfo(Connection conn, String category) {
-		// TODO Auto-generated method stub
+	public EnrollProductVo categoryCheck(Connection conn, String category) throws Exception{
+		String sql = "";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		ResultSet rs = pstmt.executeQuery();
+		if(rs.next()) {
+			
+		}
 		return null;
 	}
 

@@ -27,8 +27,8 @@ public class EnrollProductController extends HttpServlet{
 			String[] size = req.getParameterValues("size");
 			
 			EnrollProductService ps = new EnrollProductService();
-
-			ps.
+			EnrollProductVo catogoryCheckVo = ps.categoryCheck(category);
+			
 			
 			
 			
