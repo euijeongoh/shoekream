@@ -22,4 +22,18 @@ public class ManagerService {
 		return loginAdmin;
 	}
 
+	public String searchId(ManagerVo vo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		ManagerDao dao = new ManagerDao();
+		String id = dao.searchId(conn, vo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return id;
+	}
+
 }

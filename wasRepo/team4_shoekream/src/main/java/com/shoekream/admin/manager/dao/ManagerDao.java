@@ -41,4 +41,21 @@ public class ManagerDao {
 		return loginAdmin;
 	}
 
+	public String searchId(Connection conn, ManagerVo vo) throws Exception {
+		// sql
+		String sql = "SELECT ID FROM MANAGER WHERE NAME = ? AND PHONE = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getName());
+		pstmt.setString(2, vo.getPhone());
+		ResultSet rs = pstmt.executeQuery();
+		
+		// rs
+		String id = null;
+		if(rs.next()) {
+			id = rs.getString("ID");
+		}
+		
+		return id;
+	}
+
 }

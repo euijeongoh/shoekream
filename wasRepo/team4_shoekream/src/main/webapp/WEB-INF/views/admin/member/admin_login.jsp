@@ -5,6 +5,8 @@
     
     	String loginError = (String) session.getAttribute("loginError");
     	session.removeAttribute("loginError");
+    	String searchIdFailed = (String) session.getAttribute("searchIdFailed");
+    	session.removeAttribute("searchIdFailed");
     
     %>
     
@@ -20,6 +22,10 @@
 	<script defer src="/shoekream/resources/js/admin/member/admin_login.js"></script>
 </head>
 <body>
+
+<%if(searchIdFailed != null) { %>
+	alert(<%= searchIdFailed %>);
+<%} %>
 	
 	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp" %>
 	
@@ -48,8 +54,8 @@
                 </div>
             </form>
             <ul>
-                <li><a>아이디 찾기</a></li>
-                <li><a>비밀번호 찾기</a></li>
+                <li><a href="/shoekream/admin/searchID">아이디 찾기</a></li>
+                <li><a href="/shoekream/admin/searchPwd">비밀번호 찾기</a></li>
             </ul>
         </div>
     </div>
