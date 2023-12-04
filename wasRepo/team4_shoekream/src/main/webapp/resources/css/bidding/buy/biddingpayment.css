@@ -20,7 +20,7 @@ body {
 
 .container { /* 컨테이너, 컨텐트 */
     width: 100%;
-    height: 1150px;
+    height: 1050px;
     background-color: rgb(246, 246, 246);
     box-sizing: border-box;
     margin: auto;

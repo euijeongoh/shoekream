@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SHOEKREAM</title>
 </head>
 
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
@@ -185,12 +185,6 @@
         </div>
         <div class="box4"></div>
     </footer>
-
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
 
 </body>
 </html>
