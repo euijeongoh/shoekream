@@ -27,7 +27,7 @@ public class ReviewWriteController extends HttpServlet {
 	        if(loginMember == null) {
 //	        	resp.sendRedirect("/member/login");
 	           req.setAttribute("errorMsg" , "잘못된 접근입니다. (로그인 하고 오세요)");
-	           req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
+	           req.getRequestDispatcher("/WEB-INF/views/riview/error.jsp").forward(req, resp);
 	        }
 			
 			//service

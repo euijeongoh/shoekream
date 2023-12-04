@@ -55,33 +55,33 @@ public class ReviewDao {
 		return 0;
 	}
 
-	//카테고리 리스트 조회
-	public List<CategoryVo> getCategoryList(Connection conn) {
-		 
-		   //sql
-		   String sql="SELECT * FROM CATEGORY ORDER BY NO ;";
-		   PreparedStatement pstmt = conn.prepareStatement(sql);
-		   ResultSet rs = pstmt.executeQuery();
-		   
-		   //rs
-		   List<CategoryVo> voList = new ArrayList<CategoryVo>();
-		   while(rs.next()) {
-			   String no = rs.getString("NO");
-			   String name= rs.getString("NAME");
-			   
-			   CategoryVo vo = new CategoryVo();
-			   vo.setNo(no);
-			   vo.setName(name);
-			   voList.add(vo);
-			   
-		   }
-		   
-		   //close
-		   JDBCTemplate.close(rs);
-		   JDBCTemplate.close(pstmt);
-		   
-		   return voList;
-	   }
+//	//카테고리 리스트 조회
+//	public List<CategoryVo> getCategoryList(Connection conn) {
+//		 
+//		   //sql
+//		   String sql="SELECT * FROM CATEGORY ORDER BY NO ;";
+//		   PreparedStatement pstmt = conn.prepareStatement(sql);
+//		   ResultSet rs = pstmt.executeQuery();
+//		   
+//		   //rs
+//		   List<CategoryVo> voList = new ArrayList<CategoryVo>();
+//		   while(rs.next()) {
+//			   String no = rs.getString("NO");
+//			   String name= rs.getString("NAME");
+//			   
+//			   CategoryVo vo = new CategoryVo();
+//			   vo.setNo(no);
+//			   vo.setName(name);
+//			   voList.add(vo);
+//			   
+//		   }
+//		   
+//		   //close
+//		   JDBCTemplate.close(rs);
+//		   JDBCTemplate.close(pstmt);
+//		   
+//		   return voList;
+//	   }
 
 	
 

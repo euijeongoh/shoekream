@@ -6,7 +6,6 @@ import java.util.List;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.page.vo.PageVo;
 import com.shoekream.review.dao.ReviewDao;
-import com.shoekream.review.vo.CategoryVo;
 import com.shoekream.review.vo.ReviewVo;
 
 public class ReviewService {
@@ -50,30 +49,30 @@ public class ReviewService {
 	      return result;
 	   }
 
-	//전체 리뷰 갯수 조회
-	public int selectReviewCount() {
-		//conn
-		
-		//dao
-		
-		//close
-	}
+//	//전체 리뷰 갯수 조회
+//	public int selectReviewCount() {
+//		//conn
+//		
+//		//dao
+//		
+//		//close
+//	}
 
-	//카테고리 리스트 조회
-	public List<CategoryVo> getCategoryList() {
-			   
-	   //conn
-	   Connection conn = JDBCTemplate.getConnection();
-	   
-	   //dao
-	   ReviewDao dao = new ReviewDao();
-	   List<CategoryVo> voList = dao.getCategoryList(conn);
-	   
-	   //close
-	   JDBCTemplate.close(conn);
-	   
-	   return voList;
-	}
+//	//카테고리 리스트 조회
+//	public List<ReviewVo> getCategoryList() {
+//			   
+//	   //conn
+//	   Connection conn = JDBCTemplate.getConnection();
+//	   
+//	   //dao
+//	   ReviewDao dao = new ReviewDao();
+//	   List<ReviewVo> voList = dao.getReviewList(conn);
+//	   
+//	   //close
+//	   JDBCTemplate.close(conn);
+//	   
+//	   return voList;
+//	}
 
 	
 	

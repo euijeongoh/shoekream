@@ -24,15 +24,15 @@ public class AdminEnrollProductController extends HttpServlet{
 		String brand = req.getParameter("brand");
 		String releaseDate = req.getParameter("releaseDate");
 		
-		ProductVo vo = new ProductVo();
-		vo.setProductName(productName);
-		vo.setModelNumber(modelNumber);
-		vo.setReleasePrice(releasePrice);
-		vo.setCategory(category);
-		vo.setBrand(brand);
-		vo.setReleaseDate(releaseDate);
-		
-		AdminEnrollProductService ps = new AdminEnrollProductService();
-		int result = ps.EnrollProduct(vo);
+//		ProductVo vo = new ProductVo();
+//		vo.setProductName(productName);
+//		vo.setModelNumber(modelNumber);
+//		vo.setReleasePrice(releasePrice);
+//		vo.setCategory(category);
+//		vo.setBrand(brand);
+//		vo.setReleaseDate(releaseDate);
+//		
+//		AdminEnrollProductService ps = new AdminEnrollProductService();
+//		int result = ps.EnrollProduct(vo);
 	}
 }
