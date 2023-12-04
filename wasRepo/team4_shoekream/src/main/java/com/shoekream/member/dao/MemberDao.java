@@ -25,7 +25,7 @@ public class MemberDao {
 			String id = rs.getString("ID");
 			String pwd = rs.getString("PWD");
 			String nickname = rs.getString("NICKNAME");
-			String phone = rs.getString("PHONE");
+			String phone = rs.getString("EMAIL");
 			String joinDate = rs.getString("JOIN_DATE");
 			String delYn = rs.getString("DEL_YN");
 			String profileImage = rs.getString("PROFILE_IMAGE");

@@ -50,7 +50,37 @@
     color: #ebebeb;
 }
 
-#id_check, #pwd_check, #pwd2_check, #nick_check{
+.email_area {
+	display: flex;
+}
+
+.email_area input[type=button] {
+	width: 90px;
+	margin-left: 10px;
+	height: 36px;
+	background-color: #ebebeb;
+	color: white;
+}
+
+.approval_area {
+	visibility: hidden;
+	display: flex;
+}
+
+.approval_area input[name=appr_no]{
+	width: 200px;
+}
+
+.approval_area span {
+	width: 40px;
+	margin-left: 10px;
+	font-size: 13px;
+	font-family: 'Pretendard';
+	line-height: 40px;
+}
+
+
+#id_check, #pwd_check, #pwd2_check, #nick_check, #email_check {
 	color: #f15746;
 	font-size: 11px;
 	padding-top: 3px;

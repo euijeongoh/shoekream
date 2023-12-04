@@ -3,6 +3,9 @@
     
     <%
     	String loginError = (String) session.getAttribute("loginError");
+    	session.removeAttribute("loginError");
+    	String searchIdFailed = (String) session.getAttribute("searchIdFailed");
+    	session.removeAttribute("searchIdFailed");
     %>
 <!DOCTYPE html>
 <html>
@@ -18,9 +21,15 @@
 </head>
 <body>
 	
+	
+<script>
+	<%if(searchIdFailed != null ){ %>
+		alert("<%= searchIdFailed %>");
+	<%} %>
+</script>		
+	
 <!-- 	헤더 -->
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	
 	
 <!-- 	로그인 -->
 	<div class="content">

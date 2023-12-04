@@ -44,12 +44,15 @@
                 </div>
                 <div class="input_box">
                     <div class="input_title">이메일*</div>
-                    <input class="input_txt" type="text" name="email" placeholder="예) shoekream@kream.co.kr">
+                    <div class="email_area">
+	                    <input class="input_txt" type="text" name="email" placeholder="예) shoekream@kream.co.kr">
+	                    <input type="button" value="인증하기" onclick="authenticateEmail();" disabled>                    
+                    </div>
                     <div id="email_check"></div>
-                    <input type="button" value="인증하기" onclick="authenticateEmail();">
-                    <div>
-                    	<input class="input_txt" type="text" name="appr_no">
+                    <div class="approval_area">
+                    	<input class="input_txt" type="text" name="appr_no" placeholder="인증번호 입력">
                     	<span> 타이머 </span>
+                    	<span> 재전송 </span>
                     </div>
                 </div>
                 <div id="size">
@@ -57,7 +60,7 @@
                     <button type="button" onclick="">선택</button>
                 </div>
                 <div class="join_btn_box">
-                	<input id="join_btn" value="가입하기">
+                	<input type="submit" disabled id="join_btn" value="가입하기">
                 </div>
             </form>
         </div>

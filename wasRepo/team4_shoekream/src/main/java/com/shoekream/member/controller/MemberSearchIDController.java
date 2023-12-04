@@ -42,10 +42,13 @@ public class MemberSearchIDController extends HttpServlet {
 			
 			String id = vo.getId();
 			String searchResult = id.replaceAll(id.substring(2, 4), "**");
-			System.out.println(searchResult);
+			
+			req.setAttribute("searchResult", searchResult);
+			req.getRequestDispatcher("/WEB-INF/views/member/findID.jsp").forward(req, resp);
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+			req.getSession().setAttribute("searchIdFailed", "일치하는 회원정보를 찾을 수 없습니다. 로그인 페이지로 돌아갑니다.");
 			resp.sendRedirect("/shoekream/member/login");
 		}
 	}
