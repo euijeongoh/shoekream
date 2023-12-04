@@ -23,7 +23,7 @@ public class BuySelectService {
 		// close
 		JDBCTemplate.close(conn);
 		
-		return voList;
+		return null;
 	}
 	
 }

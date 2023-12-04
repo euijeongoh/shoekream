@@ -11,11 +11,11 @@ import com.shoekream.member.MemberVo;
 
 public class BuySelectDao {
 
-	public List<BiddingVo> buySelect(Connection conn, BiddingVo vo) {
+	public List<BiddingVo> buySelect(Connection conn, BiddingVo vo) throws Exception{
 		// sql
 		String sql = "";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, );
+//		pstmt.setString(1, );
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
