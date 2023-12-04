@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+header{
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header_inner {
+    height: 86px;
+    display: grid;
+    grid-template-rows: 22px 64px;
+}
+
+header .top_list {
+    display: flex;
+    justify-content: end;
+    padding-top: 8px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+header .top_list ul {
+    display: flex;
+    align-items: center;
+    padding: 0;   
+    text-decoration: none;
+}
+
+header .top_list ul li {
+    align-items: center;
+    margin-left: 20px;
+    font-size: 12px;
+    font-family: 'Pretendard';
+}
+
+.top_list ul li a {
+    text-decoration: none;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+#search_btn {
+    width: 24px;
+    cursor: pointer;
+}
+
+header .main_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+}
+
+.main_list .logo_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+}
+
+.main_list .logo_area img{
+    width: 120px;
+    height: 24px;
+}
+
+.main_list .head_list ul {
+    display: flex;
+    align-items: center;
+}
+
+header .main_list li {
+    width: 90px;
+}
+
+.main_list li a {
+    font-family: 'Pretendard Light';
+    font-size: 18px;
+    text-decoration: none;
+    color: rgba(34, 34, 34);
+}
+
+.main_list img{
+    height: 24px;
+}
+
+
+* {
+    margin: 0;
+    padding: 3px 0px;
+    list-style: none;
+}
+.service-container {
+    /* width: 1200px;
+    margin: auto;
+    display: flex;
+    padding: 40px 40px 160px 40px; */
+    margin-right: auto;/*필요시 제거*/
+    margin-left: 20px; /* 오른쪽 여백 추가 */
+    width: 180px;
+    font-size: 22px;
+    /* background-color: aqua; */
+}
+
+.menu_container {
+    width: 180px;
+    margin: 0px 20px 0px 0px;
+    
+}
+
+.service_title {
+    font-weight: 650;
+    font-size: 24px;
+    padding: 0px 0px 30px;
+    color: rgba(34, 34, 34);
+}
+
+.notice{
+    font-size: 16px;
+    font-family: 'Pretendard';
+    font-weight: 650;
+    margin: 20px 0px 12px;
+    color: lightgray;
+}
+
+.notice #title a {
+    text-decoration: none;
+    color: lightgray;
+}
+.notice #title :hover{
+    color: black;
+}
+
+.faq {
+    font-size: 16px;
+    font-family: 'Pretendard';
+    font-weight: 650;
+    margin: 0px 0px 12px;
+    color: lightgray;
+}
+
+.faq #title a{
+   text-decoration: none;
+    color: lightgray; 
+}
+.faq #title :hover{
+    color: black;
+}
+
+.qna {
+    font-size: 16px;
+    font-family: 'Pretendard';
+    font-weight: 650;
+    margin: 0px 0px 12px;
+    color: lightgray;
+}
+
+.qna #title a{
+    text-decoration: none;
+     color: lightgray; 
+     /* font-size: medium */
+ }
+ .qna #title :hover{
+    color: black;
+}
+/* .first{
+    width: 160px;
+    display: flex;
+} */
+.request{
+    font-size: 16px;
+    font-family: 'Pretendard';
+    font-weight: 650;
+    margin: 0px 0px 12px;
+    color: rgba(34, 34, 34);
+}
+
+.request #title a{
+    text-decoration: none;
+     color: lightgray; 
+ }
+ .request #title :hover{
+    color: black;
+}
+
+
+footer {
+    /* background-color: gray; */
+    max-width: 1280px;
+    height: 200px;
+    display: grid;
+    margin: auto;
+    padding: 50px 40px;
+    grid-template-rows: 2fr 2fr 3fr 3fr;
+}
+
+/* .box1,
+.box2,
+.box3,
+.box4 { */
+/* border: 5px solid;
+    color: black; */
+/* } */
+
+
+.box2 {
+    /* border: 3px solid; */
+    font-family: 'pretendard';
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+}
+
+.box2>div {
+    /* border: 1px solid;
+    color: black; */
+    font-size: 20px;
+}
+
+.box3 {
+    /* border: 3px solid; */
+    display: grid;
+    grid-template-columns: 4fr 3fr 1fr 2fr;
+}
+
+.box3>:nth-child(1) {
+    font-family: 'pretendard';
+    display: grid;
+    grid-template-columns: 2.5fr 2.5fr 2.5fr 2.5fr;
+    /* border: 1px solid;
+    color: blue; */
+    place-items: center center;
+}
+
+.left_bar>:nth-child(1) {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.box3>div>div {
+    /* border: 1px solid; */
+    font-size: 14px;
+    color: black;
+}
+
+.box3>:nth-child(2) {
+    display: grid;
+    grid-template-columns: 3.3fr 3.4fr 3.3fr;
+}
+
+.icons>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 25px;
+    height: 25px;
+}
+
+button {
+    background-color: black;
+    font-family: 'pretendard';
+    color: white;
+    width: 110px;
+    height: 50px
+}
