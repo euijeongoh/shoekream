@@ -1,4 +1,4 @@
-package com.shoekream.bidding;
+package com.shoekream.biddingVo;
 
 public class BiddingVo {
 

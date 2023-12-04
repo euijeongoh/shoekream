@@ -6,7 +6,7 @@
     <title>구매</title>
 
     <link rel="stylesheet" href="../../../css/kty/userheader.css">
-    <link rel="stylesheet" href="../../../css/kty/buy/sattle.css">
+    <link rel="stylesheet" href="../../../css/kty/buy/biddingPayment.css">
     <link rel="stylesheet" href="../../../common/footer.css">
 </head>
 
@@ -32,7 +32,7 @@
                     </div>
                     <div class="center">
                         <h2 class="h2_buy">
-                            <span>즉시 구매하기</span>
+                            <span>배송/결제</span>
                         </h2>
                     </div>
                     <div class="right">
@@ -73,6 +73,7 @@
 
                 <div class="display_separator"></div>
                 
+                <!-- 배송 주소 -->
                 <section>
                     <div class="section_unit">
                         <div class="section_title">
@@ -97,21 +98,119 @@
                                         </div>
                                     </dl>
                                 </div>
-                                <a class="btn_edit"></a>
+                                <a class="btn_edit">변경</a>
                             </div>
                         </div>
                     </div>
                 </section>
+                <!-- 배송 주소 -->
                 
                 <div class="display_separator"></div>
 
+                <!-- 결제 방법 -->
+                <div class="section_payment">
+                    <div class="payment_area">
+                        <div class="payment_title">
+                            <h3 class="payment_title_txt">결제 방법</h3>
+                        </div>
+                        <div>
+                            <div class="payment_card">
+                                <h4 class="method_title">
+                                    <div class="main_title">
+                                        <p>카드 간편결제</p>
+                                    </div>
+                                </h4>
+                                <div>
+                                    <div class="card_list">
+                                        <div class="main_card">
+                                            <a class="regist_link">
+                                                <span class="regist_text">카드를 등록하세요</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 결제 방법 -->
 
-                <!-- 즉시 구매 계속 -->
+                <div class="display_separator"></div>
+
+                <!-- 최종 주문정보 -->
+                <div class="section_orderinfo">
+                    <div class="orderinfo_area">
+                        <div class="title_wrap">
+                            <div>
+                                <p class="wrap_title">최종 주문정보</p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">구매 희망가</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        168,000원
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">검수비</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        무료
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">수수료</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        5,000원
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">배송비</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        3,000원
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 입찰 -->
+                        <div class="display_line"></div>
+                        <div class="title_description">
+                            <p class="line_title">입찰 마감기한</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        60일-2024/01/31
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 입찰 -->
+                    </div>
+                </div>
+                <!-- 최종 주문정보 -->
+
+                <!-- 결제하기 -->
                 <div class="buy_total_confirm">
                     <div class="price_total">
                         <dl class="price_box">
                             <dt class="price_title">총 결제금액</dt>
-                            <dd class="price_empty_desc">다음 화면에서 확인</dd>
+                            <dd class="price_empty_desc">
+                                <span class="amount">176,000</span>
+                                <span class="unit">원</span>
+                            </dd>
                         </dl>
                         <span class="price_warning">
                             <em></em>
@@ -119,7 +218,7 @@
                     </div>
                     <div class="btn_confirm">
                         <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">즉시 구매 계속</button>
+                        <button class="blind_full_solid_false">결제하기</button>
                     </div>
                 </div>
             </div>
