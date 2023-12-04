@@ -1,25 +1,38 @@
+<%@page import="com.shoekream.admin.manager.vo.ManagerVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+        ManagerVo loginAdmin = (ManagerVo) session.getAttribute("loginAdmin");
+    	String alertMsg = (String) session.getAttribute("alertMsg");
+    	session.removeAttribute("alertMsg");
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-	<link rel="stylesheet" href="/shoekream/resources/css/admin/common/header.css">
-
 </head>
 <body>
+
+
+		<%if(alertMsg!=null){ %>
+			alert(<%=alertMsg%>);			
+		<%} %>
+	
+
 	
 	<header>
         <div class="header_inner">
             <div class="top_list">
                 <ul>
                     <li><a href="">고객센터</a></li>
-                    <li><a href="">마이페이지</a></li>
-                    <li><a href="">관심</a></li>
-                    <li><a>알림</a></li>
-                    <li><a href="">로그인</a></li>
+                    <%if(loginAdmin==null){%>
+	                    <li><a href="/shoekream/admin/login">로그인</a></li>                	
+                    <%} else {%>
+                    	<li><a href="/shoekream/admin/logout">로그아웃</a><li>
+                    <%}%>
                 </ul>
             </div>
             <div class="main_list">
