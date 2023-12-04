@@ -14,6 +14,25 @@ import com.shoekream.review.vo.CategoryVo;
 import com.shoekream.review.vo.ReviewVo;
 
 public class ReviewDao {
+	
+	
+	//리뷰작성 //sql 수정
+	public int write(Connection conn, ReviewVo vo) {
+		
+	 //SQL
+      String sql = "INSERT INTO BOARD (NO, CATEGORY_NO, TITLE, CONTENT, WRITER_NO) VALUES ( SEQ_BOARD_NO.NEXTVAL, ?, ?, ?, ?)";
+      PreparedStatement pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, vo.getCategoryNo());
+      pstmt.setString(2, vo.getTitle());
+      pstmt.setString(3, vo.getContent());
+      pstmt.setString(4, vo.getWriterNo());
+      int result = pstmt.executeUpdate();
+      
+      //close
+      JDBCTemplate.close(pstmt);
+      return result;
+      
+   }
 
 	//리뷰 목록 조회
 	public List<ReviewVo> getReviewList(Connection conn) throws Exception {
@@ -49,11 +68,7 @@ public class ReviewDao {
 		return reviewVoList;
 	}
 
-	//리뷰작성
-	public int write(Connection conn, ReviewVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 //	//카테고리 리스트 조회
 //	public List<CategoryVo> getCategoryList(Connection conn) {
