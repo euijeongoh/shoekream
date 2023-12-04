@@ -85,48 +85,47 @@
 
  .btn_list{
     margin-top: 30px;
+    display:flex;
     width: 1000px;
-    height: 52px;
-    text-align: center;
-    display: flex;
-    /* background-color: yellow; */
-    justify-content: center;
+    height: 50px;
+    justify-content: space-evenly;
 }
 
-.btn_listbox{
+.btn_list>div{
     display: flex;
-    width: 100px;
-    height: 32px;
-    border-radius: 30px;
-    border : 1px solid black;
+    width: 333px;
+    height: 50px;
+}
+
+.btn_list>:nth-child(2){
+
     justify-content: center;
     align-items: center;
- }
- .btn_box>a{
-    color: gray;
- }
+}
 
-.btn_list2{
-    display: flex;
-    width: 1000px;
-    height: 52px;
-    text-align: center;
-    /* background-color: yellow; */
+.btn_list>:nth-child(3){
     justify-content: end;
     align-items: center;
 }
 
-.btn_list2>div{
-    width: 50px;
-    height: 32px;
+.btn_listbox{
+    border : 1px solid lightgray;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
+
+.btn_rightbox > div{
+    border : 1px solid lightgray;
     margin-left: 10px;
-    border-radius: 30px;
-    border : 1px solid black;
-    align-items: end;
-
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
 }
 
-.btn_list2>div>a{
 
-}
+ 
+
 
