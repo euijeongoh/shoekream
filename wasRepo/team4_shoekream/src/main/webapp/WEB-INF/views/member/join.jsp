@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    
+    	String AuthenticationKey = (String) session.getAttribute("AuthenticationKey");
+    	session.removeAttribute("AuthenticationKey");
+    
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,18 +54,15 @@
                     <div class="input_title">이메일*</div>
                     <div class="email_area">
 	                    <input class="input_txt" type="text" name="email" placeholder="예) shoekream@kream.co.kr">
-	                    <input type="button" value="인증하기" onclick="authenticateEmail();" disabled>                    
+	                    <input type="button" value="인증하기" onclick="sendEmail();" disabled>                    
                     </div>
                     <div id="email_check"></div>
                     <div class="approval_area">
                     	<input class="input_txt" type="text" name="appr_no" placeholder="인증번호 입력">
+                    	<input type="button" name="appr_btn" value="입력" onclick="authenticateEmail()" disabled>
                     	<span> 타이머 </span>
                     	<span> 재전송 </span>
                     </div>
-                </div>
-                <div id="size">
-                    <div class="input_title">신발 사이즈</div>
-                    <button type="button" onclick="">선택</button>
                 </div>
                 <div class="join_btn_box">
                 	<input type="submit" disabled id="join_btn" value="가입하기">

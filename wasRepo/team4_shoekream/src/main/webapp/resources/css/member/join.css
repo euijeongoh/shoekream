@@ -62,21 +62,34 @@
 	color: white;
 }
 
+.approval_area input[type=button] {
+	width: 70px;
+	margin-left: 10px;
+	height: 36px;
+	background-color: #ebebeb;
+	color: white;
+	border-radius: 12px;
+}
+
 .approval_area {
 	visibility: hidden;
 	display: flex;
+	height: 36px;
+	justify-content: space-evenly;
+	padding-top: 10px;
 }
 
 .approval_area input[name=appr_no]{
-	width: 200px;
+	width: 150px;
 }
 
 .approval_area span {
-	width: 40px;
+	width: 60px;
 	margin-left: 10px;
 	font-size: 13px;
 	font-family: 'Pretendard';
 	line-height: 40px;
+	text-decoration: underline;
 }
 
 
@@ -100,17 +113,4 @@
     font-weight: 700;
     font-size: 16px;
     text-align: center;
-}
-
-#size {
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
-}
-
-#size button {
-    width: 52px;
-    height: 36px;
-    background-color: black;
-    color: white;
 }
