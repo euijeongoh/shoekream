@@ -6,7 +6,6 @@ wasRepo/.metadata/
 setup/
 *.class
 lib/
-*.png
 wasRepo/.metadata/
 wasRepo/Servers/
 *.MF
