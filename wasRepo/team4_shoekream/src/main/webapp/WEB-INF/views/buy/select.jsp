@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/select.css">
 	<link rel="stylesheet" href="../../../common/footer.css">
 	
-	<script defer src="/shoekream/resources/js/bidding//buy/select.js"></script>
+	<script defer src="/shoekream/resources/js/bidding/buy/select.js"></script>
 	
 <body>
     <div class="wrap">
@@ -76,9 +76,12 @@
                     <div class="buy_before_select">
                         <div class="select_area md">
                             <ul class="select_list grid_3">
-                            	<% for( BiddingVo vo : voList) { %>
+                            	<% for(int i = 0; i < voList.size(); i++){ 
+                            		BiddingVo vo = voList.get(i);
+                            	
+                            	%>
 	                            	<li id="select_item">
-	                                    <button class="select_link buy">
+	                                    <button class="select_link buy" onclick="f01(<%= vo.getPrice()%>)">
 	                                        <div class="link_inner">
 	                                            <div class="size"><%= vo.getShoesSizes() %></div>
 	                                            <div class="price"><%= vo.getPrice() %></div>
@@ -294,12 +297,6 @@
         </div>
         <div class="box4"></div>
     </footer>
-
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
 
 </body>
 </html>
