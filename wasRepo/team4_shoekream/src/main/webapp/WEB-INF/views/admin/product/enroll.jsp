@@ -32,7 +32,7 @@
                     <ul>
                         <li><a href="">HOME</a></li>
                         <li><a href="">SHOP</a></li>
-                        <li id="search-btn"><a><img src=" /shoekream/resources/img/searchlogo.png"></a></li>
+                        <li id="search-btn"><a><img src=" /shoekream/resources/img/admin/header/searchIcon.png"></a></li>
                     </ul>
                 </div>
             </div>
@@ -116,9 +116,10 @@
                 <div id="product-information">
                     <form action="" method="post" >
                         <input type="text" name="productName" placeholder="제품명">
+                        <input type="text" name="productNameKo" placeholder="한글명">
                         <input type="text" name="modelNumber" placeholder="모델 번호">
                         <input type="text" name="releasePrice" placeholder="발매가">
-                        <input type="text" name="category" placeholder="카테고리">
+                        <input type="text" name="category" placeholder="카테고리">	
                         <input type="text" name="brand" placeholder="브랜드">
                         <input type="date" name="releaseDate" placeholder="출시일">
                         <span>사이즈</span>

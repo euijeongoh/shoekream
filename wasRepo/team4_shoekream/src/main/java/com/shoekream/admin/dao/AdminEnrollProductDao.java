@@ -57,13 +57,18 @@ public class AdminEnrollProductDao {
 	}
 
 	public int enrollProduct(Connection conn, EnrollProductVo vo) throws Exception{
-		String sql = "INSERT INTO PRODUCTS(NO, BRAND_NO, CATEGORY_NO, NAME, NAME_KO, MODEL_NUMBER, RELEASE_PRICE, RELEASE_DATE, DEL_YN) VALUES(SEQ_PRODUCTS_NO.NEXTVAL, ?,?,)";
+		String sql = "INSERT INTO PRODUCTS(NO, BRAND_NO, CATEGORY_NO, NAME, NAME_KO, MODEL_NUMBER, RELEASE_PRICE, RELEASE_DATE, DEL_YN) VALUES(SEQ_PRODUCTS_NO.NEXTVAL, ?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setString(0, sql);
-		pstmt.setString(0, sql);
-		pstmt.setString(0, sql);
-		pstmt.setString(0, sql);
+		pstmt.setString(1, vo.getBrandNo());
+		pstmt.setString(2, vo.getCategoryNo());
+		pstmt.setString(3, vo.getProductName());
+		pstmt.setString(4, vo.getProductNameKo());
+		pstmt.setString(5, vo.getModelNumber());
+		pstmt.setString(6, vo.getReleasePrice());
+		pstmt.setString(7, vo.getReleaseDate());
+		pstmt.setString(8, vo.getDelYn());
+		
 		
 		
 		int result = pstmt.executeUpdate();
