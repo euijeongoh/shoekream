@@ -27,20 +27,20 @@ public class ReviewWriteController extends HttpServlet {
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 	        if(loginMember == null) {
 //	        	resp.sendRedirect("/member/login");
-	           req.setAttribute("errorMsg" , "잘못된 접근입니다. (로그인 하고 오세요)");
-	           req.getRequestDispatcher("/WEB-INF/views/review/error.jsp").forward(req, resp);
+	           req.setAttribute("errorMsg" , "로그인이 필요한 페이지 입니다.");
+	           req.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(req, resp);
 	        }
 			
 			//service
 			ReviewService rs = new ReviewService();
-	        List<ReviewVo> reviewVoList = rs.getReviewList();
+	        List<ReviewVo> reviewVoList = rs.myReviewList();
 			req.setAttribute("reviewVoList", reviewVoList);
 			req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp);
 
 		}catch (Exception e){
 			e.printStackTrace();
-			req.setAttribute("errorMsg", "상품 리뷰 등록하기 (화면) 에러");
-			req.getRequestDispatcher("/WEB-INF/views/review/error.jsp").forward(req, resp);
+			req.setAttribute("errorMsg", "리뷰 작성 에러");
+			req.getRequestDispatcher("/WEB-INF/views/review/list.jsp").forward(req, resp);
 		}
 		
 	}
@@ -82,13 +82,13 @@ public class ReviewWriteController extends HttpServlet {
          }
          
          req.getSession().setAttribute("alertMsg", "게시글 작성 성공 !");
-         resp.sendRedirect("/shoekream//review/list");
+         resp.sendRedirect("/shoekream//review/mylist");
          
       }catch(Exception e) {
          System.out.println("[ERROR-B002] 게시글 작성 실패 ...");
          e.printStackTrace();
          req.setAttribute("errorMsg", "게시글 작성 실패 ...");
-         req.getRequestDispatcher("/WEB-INF/views/review/error.jsp").forward(req, resp);
+         req.getRequestDispatcher("/WEB-INF/views/review/mylist").forward(req, resp);
       }
       
    }

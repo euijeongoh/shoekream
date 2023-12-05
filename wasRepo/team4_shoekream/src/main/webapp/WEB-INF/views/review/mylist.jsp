@@ -1,42 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>review_list</title>
-    <link rel="stylesheet" href="../../css/ouj/review_list.css">
-    <link rel="stylesheet" href="../../common/footer.css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/shoekream/resources/css/common/header.css"> 
+<link rel="stylesheet" href="/shoekream/resources/css/review/mylist.css">
 </head>
 <body>
-    <header>
-        <div class="header-inner">
-            <div class="top-list">
-                <ul>
-                    <li><a href="">고객센터</a></li>
-                    <li><a href="">마이페이지</a></li>
-                    <li><a href="">관심</a></li>
-                    <li><a>알림</a></li>
-                    <li><a href="">로그인</a></li>
-                </ul>
-            </div>
-            <div class="main-list">
-                <div class="logo-area">
-                    <a href="">
-                    <img src="../../common/logo.svg">
-                    </a>
-                </div>
-                <div class="head-list">
-                    <ul>
-                        <li><a href="">HOME</a></li>
-                        <li><a href="">SHOP</a></li>
-                        <li id="search-btn"><a><img src="../../common/searchIcon.png"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </header>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-        <div class="user_top">
+<div class="user_top">
             <div class="profile_img">
                 <img src="../../html/ouj/img/물결.png" alt="프로필사진" class="profile_img">
                 <div class="profile_info_box">
@@ -45,12 +20,6 @@
                         <br>
                         <li>홍길동</li>
                     </ul>
-                    <!-- <div class="info01">
-                        <p><b>h1h110</b></p>
-                    </div>
-                    <div class="info02">
-                        <p class="name">홍길동</p>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -62,7 +31,7 @@
             <div class="feed">
                 <div class="listphoto">
                     <div class="one">
-                        <img src="../ouj/img/reviewlist02.png" alt="사진02" class="photo">
+                        <img src="/resources/img/review/reviewlist01.png" alt="사진02" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -74,7 +43,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist02.png" alt="사진02" class="photo">
+                        <img src="/resources/img/review/reviewlist02.png" alt="사진02" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -86,7 +55,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist03.png" alt="사진03" class="photo">
+                        <img src="/resources/img/review/reviewlist03.png" alt="사진03" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -98,7 +67,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist04.png" alt="사진04" class="photo">
+                        <img src="/resources/img/review/reviewlist04.png" alt="사진04" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -113,7 +82,7 @@
 
                 <div class="listphoto2">
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist01.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -125,7 +94,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist02.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist02.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -137,7 +106,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist03.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist03.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -149,7 +118,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist04.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist04.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -163,7 +132,7 @@
 
                 <div class="listphoto3">
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist01.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -175,7 +144,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist02.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -187,7 +156,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist03.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -199,7 +168,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist04.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -213,7 +182,7 @@
 
                 <div class="listphoto4">
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist01.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -225,7 +194,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist02.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -237,7 +206,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist03.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -249,7 +218,7 @@
                     </div>
 
                     <div class="one">
-                        <img src="../ouj/img/reviewlist01.png" alt="사진01" class="photo">
+                        <img src="/resources/img/review/reviewlist04.png" alt="사진01" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
@@ -263,43 +232,5 @@
             </div>
         </div>
 
-
-
-    
-
-        <footer>
-            <div class="box1"></div>
-            <div class="box2">
-                <div></div>
-                <div>고객센터 1588-4444</div>
-            </div>
-            <div class="box3">
-                <div class="left_bar">
-                    <div>고객지원</div>
-                    <div>공지사항</div>
-                    <div>1:1문의</div>
-                    <div>상품 등록 문의</div>
-                </div>
-                <div class="icons">
-                    <div>
-                        <img src="../../common/footer_img/인별.png" alt="인별">
-                    </div>
-                    <div>
-                        <img src="../../common/footer_img/페북.png" alt="페북">
-                    </div>
-                    <div>
-                        <img src="../../common/footer_img/카톡.png" alt="카톡">
-                    </div>
-                </div>
-                <div></div>
-                <div class="faq">
-                    <button>자주 묻는 질문</button>
-                </div>
-            </div>
-            <div class="box4"></div>
-        </footer>        
 </body>
 </html>
-<script>
-    const searchBtn = document.querySelector("#search-btn");
-</script>
