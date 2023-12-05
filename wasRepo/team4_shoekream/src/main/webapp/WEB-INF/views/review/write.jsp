@@ -5,9 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/shoekream/resources/css/review/write.css">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 	
  	<div class="write_wrap">
 
