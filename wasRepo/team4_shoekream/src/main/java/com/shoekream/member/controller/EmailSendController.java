@@ -1,6 +1,8 @@
 package com.shoekream.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.security.SecureRandom;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -15,12 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/authenticate/email")
+@WebServlet("/send/email")
 
 public class EmailSendController extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		PrintWriter out = resp.getWriter();
 		
 		try {
 			// data
@@ -41,8 +45,11 @@ public class EmailSendController extends HttpServlet{
 			props.put("mail.smtp.ssl.enabel", "true");
 			
 			// 인증번호 생성
+			SecureRandom random = SecureRandom.getInstance("NativePRNG");
 			
-			String AuthenticationKey = "";
+			String AuthenticationKey = random.toString();
+			System.out.println(AuthenticationKey);
+			
 			
 			// session 생성
 			Session session = Session.getDefaultInstance(props, null);
@@ -63,7 +70,11 @@ public class EmailSendController extends HttpServlet{
 			// 인증번호 session에 저장
 			HttpSession saveAuthKey = req.getSession();
 			saveAuthKey.setAttribute("AuthenticationKey", AuthenticationKey);
+			
+			// 응답
+			out.write("{\"reply\" : \"ok\"}");
 		} catch(Exception e) {
+			out.write("{\"replay\" : \"no\"}");
 			e.printStackTrace();
 		}
 		

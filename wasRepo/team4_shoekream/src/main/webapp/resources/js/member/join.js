@@ -136,7 +136,7 @@ function checkValidation(){
 
 
 
-function authenticateEmail(){
+function sendEmail(){
 	const emailInputValue = document.querySelector("input[name=email]").value;
 	const approvalArea = document.querySelector(".approval_area");
 	if(approvalArea.style.visibility==='hidden'){ 		
@@ -144,14 +144,15 @@ function authenticateEmail(){
     }else{ 		
             approvalArea.style.visibility = 'hidden'; 	
     }
-    
-    
-    fetch("/shoekream/authenticate/email?email=" + emailInputValue, { method : "POST" })
-    .then( (resp) => { return resp.json() })
-    .then( (data) => {
-		
-		
-		
-	});
+ 
+ 	fetch("/shoekream/send/email?email=" + emailInputValue)
+ 	.then( (resp) => { return resp.json() })
+ 	.then( (data) => {
+		 const result = (data.reply == "ok")
+		 
+		 if(result === false){
+			 alert("이메일 전송에 실패했습니다.");
+		 }
+	 })
 
 }
