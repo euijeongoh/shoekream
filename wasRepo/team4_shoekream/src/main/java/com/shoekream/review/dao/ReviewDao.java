@@ -17,15 +17,17 @@ public class ReviewDao {
 	
 	
 	//리뷰작성 //sql 수정
-	public int write(Connection conn, ReviewVo vo) {
+	public int write(Connection conn, ReviewVo vo) throws Exception {
 		
 	 //SQL
-      String sql = "INSERT INTO BOARD (NO, CATEGORY_NO, TITLE, CONTENT, WRITER_NO) VALUES ( SEQ_BOARD_NO.NEXTVAL, ?, ?, ?, ?)";
+	  String sql = "INSERT INTO REVIEW(NO, MEMBER_NO, PRODUCT_NO, COMFORT_NO, FIVE_STAR_RATING, CONTENT)VALUES (SEQ_REVIEW_NO.NEXTVAL, ?, ?, ?, ?, ?)";
       PreparedStatement pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, vo.getCategoryNo());
-      pstmt.setString(2, vo.getTitle());
-      pstmt.setString(3, vo.getContent());
-      pstmt.setString(4, vo.getWriterNo());
+      pstmt.setString(1, vo.getNo());
+      pstmt.setString(2, vo.getMemberNo());
+      pstmt.setString(3, vo.getProductNo());
+      pstmt.setString(4, vo.getComfortNo());
+      pstmt.setString(5, vo.getFiveStarRating());
+      pstmt.setString(6, vo.getContent());
       int result = pstmt.executeUpdate();
       
       //close
@@ -67,6 +69,30 @@ public class ReviewDao {
 		
 		return reviewVoList;
 	}
+
+	
+//	public int selectReviewCount(Connection conn) {
+//		
+//		//sql
+//		String sql = "SELECT COUNT(*) as cnt FROM REVIEW WHERE STATUS = 'O'";
+//        PreparedStatement pstmt = conn.prepareStatement(sql);
+//      
+//        ResultSet rs = pstmt.executeQuery();
+//      
+//        //rs
+//        int cnt = 0;
+//        if(rs.next()) {
+////	         int cnt = rs.getInt("cnt");
+//           cnt = rs.getInt(1); //첫번째 열을 가져오겠다 라는 뜻, 계산에 써야되기 때문에 String이 아닌 Int로 받아줌
+//        }
+//      
+//        //close
+//        JDBCTemplate.close(rs);
+//        JDBCTemplate.close(pstmt);
+//      
+//        return cnt;
+//         
+//     }
 
 	
 

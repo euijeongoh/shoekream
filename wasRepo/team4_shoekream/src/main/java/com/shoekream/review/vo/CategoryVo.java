@@ -4,6 +4,7 @@ public class CategoryVo {
 	
 	private String no;
 	private String name;
+	
 	public CategoryVo() {
 		super();
 		// TODO Auto-generated constructor stub
