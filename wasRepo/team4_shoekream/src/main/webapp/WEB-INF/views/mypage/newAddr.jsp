@@ -52,7 +52,7 @@
 							<!-- 여기 내용 -->
 							<h4 class="input_title">우편번호</h4>
 							<div class="input_item" id="map">
-								<input type="text" placeholder="우편 번호를 검색하세요" class="input_txt" id="sample6_postcode">
+								<input type="text" placeholder="우편 번호를 검색하세요" class="input_txt" id="sample6_postcode" readonly>
 								<input type="button" class="btn btn_zipcode outline small" onclick="sample6_execDaumPostcode()"  value="우편번호">
 							</div>
 						</div>
@@ -61,7 +61,7 @@
 							<h4 class="input_title">주소</h4>
 							<div class="input_item">
 								<input type="text" id="sample6_address" placeholder="우편 번호 검색 후, 자동입력 됩니다"
-									class="input_txt">
+									class="input_txt" readonly>
 							</div>
 						</div>
 						<div class="input_box">
@@ -98,6 +98,7 @@
     function sample6_execDaumPostcode() {
     	new daum.Postcode({
             oncomplete: function(data) {
+            	console.log(data);
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
