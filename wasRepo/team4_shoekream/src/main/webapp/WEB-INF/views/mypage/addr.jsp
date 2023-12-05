@@ -1,155 +1,216 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
-	<link rel="stylesheet" href="/shoekream/resources/css/common/header.css"> 
-	<link rel="stylesheet" href="/shoekream/resources/css/common/mypage_side.css"> 
-	<link rel="stylesheet" href="/shoekream/resources/css/mypage/Adderss.css"> 
+
+<link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
+<link rel="stylesheet"
+	href="/shoekream/resources/css/common/mypage_side.css">
+<link rel="stylesheet"
+	href="/shoekream/resources/css/mypage/Adderss.css">
 </head>
-<body>
 
 <body>
 
-    <header>
-        <div class="header_inner">
-            <div class="top_list">
-                <ul>
-                    <li><a href="">°í°´¼¾ÅÍ</a></li>
-                    <li><a href="">¸¶ÀÌÆäÀÌÁö</a></li>
-                    <li><a href="">°ü½É</a></li>
-                    <li><a>¾Ë¸²</a></li>
-                    <li><a href="">·Î±×ÀÎ</a></li>
-                </ul>
-            </div>
-            <div class="main_list">
-                <div class="logo_area">
-                    <a href="">
-                    <img src="/user/common/logo.svg">
-                    </a>
-                </div>
-                <div class="head_list">
-                    <ul>
-                        <li><a href="">HOME</a></li>
-                        <li><a href="">SHOP</a></li>
-                        <li id="search_btn"><a><img src="/user/common/searchIcon.png"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+	<header>
+		<div class="header_inner">
+			<div class="top_list">
+				<ul>
+					<li><a href="">ê³ ê°ì„¼í„°</a></li>
+					<li><a href="">ë§ˆì´í˜ì´ì§€</a></li>
+					<li><a href="">ê´€ì‹¬</a></li>
+					<li><a>ì•Œë¦¼</a></li>
+					<li><a href="">ë¡œê·¸ì¸</a></li>
+				</ul>
+			</div>
+			<div class="main_list">
+				<div class="logo_area">
+					<a href=""> <img src="/user/common/logo.svg">
+					</a>
+				</div>
+				<div class="head_list">
+					<ul>
+						<li><a href="">HOME</a></li>
+						<li><a href="">SHOP</a></li>
+						<li id="search_btn"><a><img
+								src="/user/common/searchIcon.png"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
 
-    <div class="mypage_container">
-        <div class="menu_container">
-            <div class="menu_title">¸¶ÀÌ ÆäÀÌÁö</div>
-            <nav>
-                <div class="shop_menu">
-                    <div id="title">¼îÇÎ Á¤º¸</div>
-                    <ul>
-                        <li><a href="">±¸¸Å ³»¿ª</a></li>
-                        <li><a href="">ÆÇ¸Å ³»¿ª</a></li>
-                        <li><a href="">°ü½É</a></li>
-                    </ul>
-                </div>
-                <div class="my_menu">
-                    <div id="title">³» Á¤º¸</div>
-                    <ul>
-                        <li><a href="">·Î±×ÀÎ Á¤º¸</a></li>
-                        <li><a href="">ÁÖ¼Ò·Ï</a></li>
-                        <li><a href="">°áÁ¦ Á¤º¸</a></li>
-                        <li><a href="">Á¤»ê °èÁÂ</a></li>
-                        <li><a href="">Æ÷ÀÎÆ®</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <div class="content_area">
-            <div class="my_adderssbock">
-                <div class="content_title">
-                    <div class="title">
-                        <h3>ÁÖ¼Ò·Ï</h3>
-                    </div>
-                    <div class="btn_box">
-                        <a href="#" class="btn_add">
-                            <span class="btn_txt">+ »õ ¹è¼ÛÁö Ãß°¡</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="my_list">
-                    <div class="basic">
-                        <div class="my_item">
-                            <div class="info_bind">
-                                <div class="address_info">
-                                    <div class="name_box">
-                                        <span class="name">***</span>
-                                        <span class="mark">±âº» ¹è¼ÛÁö</span>
-                                    </div>
-                                    <p class="phone">
-                                        "010"
-                                        <span class="hyphen"></span>
-                                        "9"
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="hyphen"></span>
-                                        <span class="dot"></span>
-                                        "339"
-                                    </p>
-                                    <div class="address_box">
-                                        <span class="zipcode">(00000)</span>
-                                        <span class="adderss">¼­¿ï½Ã °­³²±¸ Å×ÇØ¶õ·Î¾îµò°¡</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="btn_bind">
-                                <a href="#" class="btn outlinegrey small"> ¼öÁ¤</a>
-                                <a href="#" class="btn outlinegrey small"> »èÁ¦</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="other">
-                        <div class="other_list"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="mypage_container">
+		<div class="menu_container">
+			<div class="menu_title">ë§ˆì´ í˜ì´ì§€</div>
+			<nav>
+				<div class="shop_menu">
+					<div id="title">ì‡¼í•‘ ì •ë³´</div>
+					<ul>
+						<li><a href="">êµ¬ë§¤ ë‚´ì—­</a></li>
+						<li><a href="">íŒë§¤ ë‚´ì—­</a></li>
+						<li><a href="">ê´€ì‹¬</a></li>
+					</ul>
+				</div>
+				<div class="my_menu">
+					<div id="title">ë‚´ ì •ë³´</div>
+					<ul>
+						<li><a href="">ë¡œê·¸ì¸ ì •ë³´</a></li>
+						<li><a href="">ì£¼ì†Œë¡</a></li>
+						<li><a href="">ê²°ì œ ì •ë³´</a></li>
+						<li><a href="">ì •ì‚° ê³„ì¢Œ</a></li>
+						<li><a href="">í¬ì¸íŠ¸</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="content_area">
+			<div class="my_adderssbock">
+				<div class="content_title">
+					<div class="title">
+						<h3>ì£¼ì†Œë¡</h3>
+					</div>
+					<div class="btn_box">
+						<a href="#" class="btn_add" id="openModal"> <span
+							class="btn_txt">+ ìƒˆ ë°°ì†¡ì§€ ì¶”ê°€</span>
+						</a>
+					</div>
 
-    <footer>
-        <div class="box1"></div>
-        <div class="box2">
-            <div></div>
-            <div>°í°´¼¾ÅÍ 1588-4444</div>
-        </div>
-        <div class="box3">
-            <div class="left_bar">
-                <div>°í°´Áö¿ø</div>
-                <div>°øÁö»çÇ×</div>
-                <div>1:1¹®ÀÇ</div>
-                <div>»óÇ° µî·Ï ¹®ÀÇ</div>
-            </div>
-            <div class="icons">
-                <div>
-                    <img src="/user/common/footer_img/ÀÎº°.png" alt="ÀÎº°">
-                </div>
-                <div>
-                    <img src="/user/common/footer_img/ÆäºÏ.png" alt="ÆäºÏ">
-                </div>
-                <div>
-                    <img src="/user/common/footer_img/Ä«Åå.png" alt="Ä«Åå">
-                </div>
-            </div>
-            <div></div>
-            <div class="faq">
-                <button>ÀÚÁÖ ¹¯´Â Áú¹®</button>
-            </div>
-        </div>
-        <div class="box4"></div>
-    </footer>
+					<!-- ëª¨ë‹¬ -->
+					<div id="myModal" class="modal">
+						<div class="modal-content">
+							<!-- ëª¨ë‹¬ ë‚´ìš©ì„ ì—¬ê¸°ì— ì¶”ê°€í•˜ì„¸ìš” -->
+							<p><%@ include file="/WEB-INF/views/mypage/newAddr.jsp"%></p>
+							<button id="closeModal">ëª¨ë‹¬ ë‹«ê¸°</button>
+						</div>
+					</div>
+
+					<!-- ë¹„í™œì„±í™”ëœ ìš”ì†Œë¥¼ ë‚˜íƒ€ë‚´ëŠ” ì˜¤ë²„ë ˆì´ -->
+					<div id="overlay" class="overlay"></div>
+
+				</div>
+				<div class="my_list">
+					<div class="basic">
+						<div class="my_item">
+							<div class="info_bind">
+								<div class="address_info">
+									<div class="name_box">
+										<span class="name">***</span> <span class="mark">ê¸°ë³¸ ë°°ì†¡ì§€</span>
+									</div>
+									<p class="phone">
+										"010" <span class="hyphen"></span> "9" <span class="dot"></span>
+										<span class="dot"></span> <span class="dot"></span> <span
+											class="hyphen"></span> <span class="dot"></span> "339"
+									</p>
+									<div class="address_box">
+										<span class="zipcode">(00000)</span> <span class="adderss">ì„œìš¸ì‹œ
+											ê°•ë‚¨êµ¬ í…Œí•´ë€ë¡œì–´ë”˜ê°€</span>
+									</div>
+								</div>
+							</div>
+							<div class="btn_bind">
+								<a href="#" class="btn outlinegrey small"> ìˆ˜ì •</a> <a href="#"
+									class="btn outlinegrey small"> ì‚­ì œ</a>
+							</div>
+						</div>
+					</div>
+					<div class="other">
+						<div class="other_list"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="box1"></div>
+		<div class="box2">
+			<div></div>
+			<div>ê³ ê°ì„¼í„° 1588-4444</div>
+		</div>
+		<div class="box3">
+			<div class="left_bar">
+				<div>ê³ ê°ì§€ì›</div>
+				<div>ê³µì§€ì‚¬í•­</div>
+				<div>1:1ë¬¸ì˜</div>
+				<div>ìƒí’ˆ ë“±ë¡ ë¬¸ì˜</div>
+			</div>
+			<div class="icons">
+				<div>
+					<img src="/user/common/footer_img/ì¸ë³„.png" alt="ì¸ë³„">
+				</div>
+				<div>
+					<img src="/user/common/footer_img/í˜ë¶.png" alt="í˜ë¶">
+				</div>
+				<div>
+					<img src="/user/common/footer_img/ì¹´í†¡.png" alt="ì¹´í†¡">
+				</div>
+			</div>
+			<div></div>
+			<div class="faq">
+				<button>ìì£¼ ë¬»ëŠ” ì§ˆë¬¸</button>
+			</div>
+		</div>
+		<div class="box4"></div>
+	</footer>
+
 </body>
 
+<script>
+	// ëª¨ë‹¬ ìš”ì†Œ ë° ì˜¤ë²„ë ˆì´ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+	const modal = document.getElementById("myModal");
+	const overlay = document.getElementById("overlay");
 
-</body>
+	// ëª¨ë‹¬ì„ ì—´ê¸° ìœ„í•œ ë²„íŠ¼ ê°€ì ¸ì˜¤ê¸°
+	const btn = document.getElementById("openModal");
+
+	// ëª¨ë‹¬ì„ ë‹«ê¸° ìœ„í•œ ë²„íŠ¼ ê°€ì ¸ì˜¤ê¸°
+	const closeModalBtn = document.getElementById("closeModal");
+
+	// ì‚¬ìš©ìê°€ ë²„íŠ¼ì„ í´ë¦­í•˜ë©´ ëª¨ë‹¬ ì—´ê¸°
+	btn.onclick = function() {
+		modal.style.display = "block";
+		overlay.style.display = "block";
+	}
+
+	// ì‚¬ìš©ìê°€ ë‹«ê¸° ë²„íŠ¼ì„ í´ë¦­í•˜ë©´ ëª¨ë‹¬ ë‹«ê¸°
+	closeModalBtn.onclick = function() {
+		modal.style.display = "none";
+		overlay.style.display = "none";
+	}
+
+	// ì‚¬ìš©ìê°€ ëª¨ë‹¬ ì™¸ë¶€ë¥¼ í´ë¦­í•˜ë©´ ëª¨ë‹¬ ë‹«ê¸°
+	window.onclick = function(event) {
+		if (event.target === overlay) {
+			modal.style.display = "none";
+			overlay.style.display = "none";
+		}
+	}
+	document.addEventListener("DOMContentLoaded", function() {
+		// ë‹«ê¸° ë²„íŠ¼ì— ëŒ€í•œ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
+		document.querySelector('.btn_layer_close').addEventListener('click',
+				function() {
+					closeModal();
+				});
+
+		// ì·¨ì†Œ ë²„íŠ¼ì— ëŒ€í•œ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
+		document.querySelector('.btn_delete').addEventListener('click',
+				function() {
+					closeModal();
+				});
+	});
+
+	function closeModal() {
+		// ëª¨ë‹¬ ë‹«ê¸°
+		const modal = document.getElementById("myModal");
+		const overlay = document.getElementById("overlay");
+
+		modal.style.display = 'none';
+		overlay.style.display = 'none';
+	}
+</script>
 </html>
