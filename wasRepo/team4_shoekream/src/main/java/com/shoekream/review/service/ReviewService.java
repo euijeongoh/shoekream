@@ -34,39 +34,40 @@ public class ReviewService {
       return result;
    }
 	
-	//리뷰 목록 조회
-	public List<ReviewVo> getReviewList() throws Exception {
+	//내 리뷰 목록 조회
+	public List<ReviewVo> myReviewList() throws Exception {
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
 		ReviewDao dao = new ReviewDao();
-		List<ReviewVo> reviewVoList = dao.getReviewList(conn);
+		List<ReviewVo> myreviewVoList = dao.myReviewList(conn);
 		
 		//close
 		JDBCTemplate.close(conn);
 		
-		return reviewVoList;
+		return myreviewVoList;
 	}
 
 
-//	//전체 리뷰 갯수 조회
-//	public int selectBoardCount() throws Exception {
-//	      
-//      // conn
-//      Connection conn = JDBCTemplate.getConnection();
-//      
-//      // dao
-//      ReviewDao dao = new ReviewDao();
-//      int cnt = dao.selectReviewCount(conn);
-//      
-//      // close
-//      JDBCTemplate.close(conn);
-//      
-//      return cnt;
+	//전체 리뷰 갯수 조회
+	public int selectReviewCount() throws Exception {
+	      
+      // conn
+      Connection conn = JDBCTemplate.getConnection();
       
-//   }//selectReviewCount
+      // dao
+      ReviewDao dao = new ReviewDao();
+      int cnt = dao.selectReviewCount(conn);
+      
+      // close
+      JDBCTemplate.close(conn);
+      
+      return cnt;
+      
+   }//selectReviewCount
+	
 
 //	//카테고리 리스트 조회
 //	public List<CategoryVo> getCategoryList() {
@@ -83,11 +84,11 @@ public class ReviewService {
 //	   
 //	   return voList;
 //	}
-
-	public List<ReviewVo> selectReviewList(PageVo pvo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//
+//	public List<ReviewVo> selectReviewList(PageVo pvo) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 
 
