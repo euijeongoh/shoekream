@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +27,10 @@
             <div class="mypage-home">
                 <div class="profile">
                     <div class="user-detail">
-                        <div><img id="profile-img"></div>
+                        <div><img id="profile-img" src=""></div>
                         <div class="user-info">
-                            <div>가리반</div>
-                            <div>sillacurry</div>
+                            <div><%= loginMember.getNickname() %></div>
+                            <div><%= loginMember.getId() %></div>
                             <div>
                             	<input id="img_upload" type="file" accept="image/*" style="display:none">
                             	<button type="button" onclick="location.href='/shoekream/review/boardlist'">내 리뷰</button>

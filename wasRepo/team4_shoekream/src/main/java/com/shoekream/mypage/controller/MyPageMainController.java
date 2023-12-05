@@ -13,7 +13,7 @@ import com.shoekream.member.service.MemberService;
 
 @WebServlet("/mypage/main")
 
-public class MyPageController extends HttpServlet{
+public class MyPageMainController extends HttpServlet{
 	
 	// 마이페이지 메인 화면 띄우기
 	@Override
@@ -26,7 +26,14 @@ public class MyPageController extends HttpServlet{
 			resp.sendRedirect("/shoekream/member/login");
 		}
 		
+		// service
+		// 프로필 정보
 		
+		// 구매내역 정보
+		// 판매내역 정보
+		// 관심 정보
+		
+		// result == view
 		
 		req.getRequestDispatcher("/WEB-INF/views/mypage/my.jsp").forward(req, resp);
 		
