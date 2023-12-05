@@ -123,3 +123,23 @@
     margin-left: 25px;
     /* background-color: green; */
 }
+
+.write_box{
+    display: flex;
+    width:1000px;
+    justify-content: end;
+    align-items: center;
+
+}
+.write_btn{
+    width: 100px;
+    height: 30px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}

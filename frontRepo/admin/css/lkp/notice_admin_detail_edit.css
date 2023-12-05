@@ -81,6 +81,7 @@
     background-color: lightgray;
     max-width: 940px;
     height: 514px;
+   
 }
 
  .btn_list{
@@ -88,27 +89,10 @@
     display:flex;
     width: 1000px;
     height: 50px;
-    justify-content: space-evenly;
-}
-
-.btn_list>div{
-    display: flex;
-    width: 333px;
-    height: 50px;
-}
-
-.btn_list>:nth-child(2){
-
-    justify-content: center;
-    align-items: center;
-}
-
-.btn_list>:nth-child(3){
     justify-content: end;
-    align-items: center;
 }
 
-.btn_listbox{
+.btn_editbox{
     border : 1px solid lightgray;
     border-radius: 10px;
     width: 100px;
@@ -116,25 +100,10 @@
     text-align: center;
 }
 
-.btn_rightbox > div{
-    border : 1px solid lightgray;
-    border-radius: 10px;
-    margin-left: 10px;
-    width: 100px;
-    height: 30px;
-    text-align: center;
-}
-
-.btn_listbox > a{
+.btn_editbox > a{
     text-decoration: none;
     color: black;
 }
-
-.btn_rightbox > div > a{
-    text-decoration: none;
-    color: black;
-}
-
 
 
  

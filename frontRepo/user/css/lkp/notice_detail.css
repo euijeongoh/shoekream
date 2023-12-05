@@ -51,7 +51,7 @@
     height: 30px;
     padding-top: 17px;
     padding-bottom: 19px;
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
  }
 
  .date {
@@ -77,7 +77,8 @@
  }
 
  .content{
-    max-width: 640px;
+    border: 1px solid darkgray;
+    max-width: 940px;
     height: 514px;
     background-color: lightgray;
  }
@@ -96,11 +97,13 @@
     display: flex;
     width: 100px;
     height: 32px;
-    border-radius: 30px;
-    border : 1px solid black;
+    border : 1px solid lightgray;
+    border-radius: 10px;
     justify-content: center;
     align-items: center;
+    text-align: center;
  }
  .btn_box>a{
-    color: gray;
+    text-decoration: none;
+    color: black;
  }
