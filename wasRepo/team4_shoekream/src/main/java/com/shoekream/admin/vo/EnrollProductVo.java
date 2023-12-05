@@ -14,19 +14,29 @@ public class EnrollProductVo {
 	private String enrollDate;
 	private String modifyDate;
 	private String delYn;
-	private String CategoryNo;
+	private String categoryNo;
 	private String brandNo;
-	private String sizeNo;
+	private String[] sizeNo;
 	private String[] size;
 	private String sizeStr;
-	
+	private String sizeNoStr;
 	public EnrollProductVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "EnrollProductVo [productNo=" + productNo + ", brand=" + brand + ", category=" + category
+				+ ", productName=" + productName + ", productNameKo=" + productNameKo + ", modelNumber=" + modelNumber
+				+ ", releasePrice=" + releasePrice + ", releaseDate=" + releaseDate + ", enrollDate=" + enrollDate
+				+ ", modifyDate=" + modifyDate + ", delYn=" + delYn + ", categoryNo=" + categoryNo + ", brandNo="
+				+ brandNo + ", sizeNo=" + Arrays.toString(sizeNo) + ", size=" + Arrays.toString(size) + ", sizeStr="
+				+ sizeStr + ", sizeNoStr=" + sizeNoStr + "]";
+	}
 	public EnrollProductVo(String productNo, String brand, String category, String productName, String productNameKo,
 			String modelNumber, String releasePrice, String releaseDate, String enrollDate, String modifyDate,
-			String delYn, String categoryNo, String brandNo, String sizeNo, String[] size, String sizeStr) {
+			String delYn, String categoryNo, String brandNo, String[] sizeNo, String[] size, String sizeStr,
+			String sizeNoStr) {
 		super();
 		this.productNo = productNo;
 		this.brand = brand;
@@ -39,11 +49,12 @@ public class EnrollProductVo {
 		this.enrollDate = enrollDate;
 		this.modifyDate = modifyDate;
 		this.delYn = delYn;
-		this.CategoryNo = categoryNo;
+		this.categoryNo = categoryNo;
 		this.brandNo = brandNo;
 		this.sizeNo = sizeNo;
 		this.size = size;
 		this.sizeStr = sizeStr;
+		this.sizeNoStr = sizeNoStr;
 	}
 	public String getProductNo() {
 		return productNo;
@@ -112,10 +123,10 @@ public class EnrollProductVo {
 		this.delYn = delYn;
 	}
 	public String getCategoryNo() {
-		return CategoryNo;
+		return categoryNo;
 	}
 	public void setCategoryNo(String categoryNo) {
-		CategoryNo = categoryNo;
+		this.categoryNo = categoryNo;
 	}
 	public String getBrandNo() {
 		return brandNo;
@@ -123,11 +134,16 @@ public class EnrollProductVo {
 	public void setBrandNo(String brandNo) {
 		this.brandNo = brandNo;
 	}
-	public String getSizeNo() {
+	public String[] getSizeNo() {
 		return sizeNo;
 	}
-	public void setSizeNo(String sizeNo) {
+	public void setSizeNo(String[] sizeNo) {
+		if(sizeNo == null) {
+			this.sizeNoStr = ""	;
+			return;
+		}
 		this.sizeNo = sizeNo;
+		this.sizeNoStr = String.join(",", sizeNo);
 	}
 	public String[] getSize() {
 		return size;
@@ -141,19 +157,24 @@ public class EnrollProductVo {
 		this.sizeStr = String.join(",", size);
 	}
 	public String getSizeStr() {
-		return sizeStr;
+		if(size == null) {
+			return "";
+		}
+		return String.join(",", size);
 	}
 	public void setSizeStr(String sizeStr) {
 		this.sizeStr = sizeStr;
 	}
-	@Override
-	public String toString() {
-		return "EnrollProductVo [productNo=" + productNo + ", brand=" + brand + ", category=" + category
-				+ ", productName=" + productName + ", productNameKo=" + productNameKo + ", modelNumber=" + modelNumber
-				+ ", releasePrice=" + releasePrice + ", releaseDate=" + releaseDate + ", enrollDate=" + enrollDate
-				+ ", modifyDate=" + modifyDate + ", delYn=" + delYn + ", CategoryNo=" + CategoryNo + ", brandNo="
-				+ brandNo + ", sizeNo=" + sizeNo + ", size=" + Arrays.toString(size) + ", sizeStr=" + sizeStr + "]";
+	public String getSizeNoStr() {
+		if(sizeNo == null) {
+			return "";
+		}
+		return String.join(",", sizeNo);
 	}
+	public void setSizeNoStr(String sizeNoStr) {
+		this.sizeNoStr = sizeNoStr;
+	}
+	
 	
 	
 	

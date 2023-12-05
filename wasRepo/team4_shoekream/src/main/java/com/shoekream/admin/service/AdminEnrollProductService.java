@@ -43,14 +43,14 @@ public class AdminEnrollProductService {
 	}
 	
 	//사이즈 확인
-	public EnrollProductVo sizeCheck(String[] size) throws Exception{
+	public EnrollProductVo sizeCheck(String[] sizes) throws Exception{
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
 		AdminEnrollProductDao dao = new AdminEnrollProductDao();
 		
-		EnrollProductVo dbVo = dao.sizeCheck(conn, size);
+		EnrollProductVo dbVo = dao.sizeCheck(conn, sizes);
 		
 		//close
 		JDBCTemplate.close(conn);
