@@ -39,7 +39,7 @@ public class EnrollProductVo {
 		this.enrollDate = enrollDate;
 		this.modifyDate = modifyDate;
 		this.delYn = delYn;
-		CategoryNo = categoryNo;
+		this.CategoryNo = categoryNo;
 		this.brandNo = brandNo;
 		this.sizeNo = sizeNo;
 		this.size = size;

@@ -21,6 +21,7 @@ public class AdminEnrollProductController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			
 			//db에서 먼저 체크할 데이터들
 			String category = req.getParameter("category");
 			String brand = req.getParameter("brand");
@@ -59,6 +60,7 @@ public class AdminEnrollProductController extends HttpServlet {
 			vo.setBrand(brandNo);
 			vo.setReleaseDate(releaseDate);
 			vo.setSize(sizeNo);
+			vo.setDelYn("N");
 			
 			int result = ps.enrollProduct(vo);
 			if(result != 1) {
