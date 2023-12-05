@@ -1,5 +1,12 @@
+<%@page import="java.util.List"%>
+<%@page import="com.shoekream.biddingVo.BiddingVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	List<BiddingVo> voList = (List<BiddingVo>)request.getAttribute("voList");
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,13 +76,12 @@
                     <div class="buy_before_select">
                         <div class="select_area md">
                             <ul class="select_list grid_3">
-                            	<% for(int i = 1; i <= 20; i++) { %>
+                            	<% for( BiddingVo vo : voList) { %>
 	                            	<li id="select_item">
 	                                    <button class="select_link buy">
 	                                        <div class="link_inner">
-                                                <% int size = 210 + (i*5); %>
-	                                            <div class="size"><%= size %></div>
-	                                            <div class="price">180,000</div>
+	                                            <div class="size"><%= vo.getShoesSizes() %></div>
+	                                            <div class="price"><%= vo.getPrice() %></div>
 	                                        </div>
 	                                    </button>
 	                                </li>

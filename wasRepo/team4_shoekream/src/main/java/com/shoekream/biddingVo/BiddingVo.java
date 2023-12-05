@@ -3,9 +3,10 @@ package com.shoekream.biddingVo;
 public class BiddingVo {
 
 	private String no;
-	private String MemberNo;
+	private String memberNo;
 	private String productsNo;
 	private String productsSizesNo;
+	private String shoesSizes;
 	private String products;
 	private String biddingStatusNo;
 	private String biddingPositionNo;
@@ -14,12 +15,14 @@ public class BiddingVo {
 	private String expireDate;
 	public BiddingVo() {
 	}
-	public BiddingVo(String no, String memberNo, String productsNo, String productsSizesNo, String products,
-			String biddingStatusNo, String biddingPositionNo, String price, String enrollDate, String expireDate) {
+	public BiddingVo(String no, String memberNo, String productsNo, String productsSizesNo, String shoesSizes,
+			String products, String biddingStatusNo, String biddingPositionNo, String price, String enrollDate,
+			String expireDate) {
 		this.no = no;
-		MemberNo = memberNo;
+		this.memberNo = memberNo;
 		this.productsNo = productsNo;
 		this.productsSizesNo = productsSizesNo;
+		this.shoesSizes = shoesSizes;
 		this.products = products;
 		this.biddingStatusNo = biddingStatusNo;
 		this.biddingPositionNo = biddingPositionNo;
@@ -34,10 +37,10 @@ public class BiddingVo {
 		this.no = no;
 	}
 	public String getMemberNo() {
-		return MemberNo;
+		return memberNo;
 	}
 	public void setMemberNo(String memberNo) {
-		MemberNo = memberNo;
+		this.memberNo = memberNo;
 	}
 	public String getProductsNo() {
 		return productsNo;
@@ -50,6 +53,12 @@ public class BiddingVo {
 	}
 	public void setProductsSizesNo(String productsSizesNo) {
 		this.productsSizesNo = productsSizesNo;
+	}
+	public String getShoesSizes() {
+		return shoesSizes;
+	}
+	public void setShoesSizes(String shoesSizes) {
+		this.shoesSizes = shoesSizes;
 	}
 	public String getProducts() {
 		return products;
@@ -89,10 +98,10 @@ public class BiddingVo {
 	}
 	@Override
 	public String toString() {
-		return "BiddingVo [no=" + no + ", MemberNo=" + MemberNo + ", productsNo=" + productsNo + ", productsSizesNo="
-				+ productsSizesNo + ", products=" + products + ", biddingStatusNo=" + biddingStatusNo
-				+ ", biddingPositionNo=" + biddingPositionNo + ", price=" + price + ", enrollDate=" + enrollDate
-				+ ", expireDate=" + expireDate + "]";
+		return "BiddingVo [no=" + no + ", memberNo=" + memberNo + ", productsNo=" + productsNo + ", productsSizesNo="
+				+ productsSizesNo + ", shoesSizes=" + shoesSizes + ", products=" + products + ", biddingStatusNo="
+				+ biddingStatusNo + ", biddingPositionNo=" + biddingPositionNo + ", price=" + price + ", enrollDate="
+				+ enrollDate + ", expireDate=" + expireDate + "]";
 	}
 	
 }
