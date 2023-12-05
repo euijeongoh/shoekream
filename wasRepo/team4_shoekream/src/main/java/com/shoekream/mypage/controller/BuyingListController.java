@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public class BuyingListController extends HttpServlet{
 
+	// 마이페이지 구매내역 화면
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.getRequestDispatcher("/WEB-INF/views/mypage/buying.jsp").forward(req, resp);
-		
 	}
 	
 	

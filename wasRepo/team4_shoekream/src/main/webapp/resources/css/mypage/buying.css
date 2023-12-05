@@ -1,0 +1,128 @@
+.shoplist-title {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -.27px;
+    color: rgba(34, 34, 34);
+}
+
+.tab-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    height: 80px;
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0px 0px;
+    width: 332px;
+    height: 68px;
+    cursor: pointer;
+    border-bottom: 2px solid #222222;
+}
+
+.tab #count {
+    font-size: 20px;
+    color: #F15746;
+    font-weight: 700;
+}
+
+.tab #stage {
+    font-size: 13px;
+    color: #222222;
+    font-weight: 600;
+}
+
+.period-search{
+    height: 33px;
+    padding: 14px;
+    background-color: #ebebeb66;
+}
+
+.period-search form {
+    display: flex;
+    justify-content: center;
+}
+
+.period-search form :first-child {
+    display: flex;
+}
+
+.period-search form :first-child .month {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: rgba(34, 34, 34, 0.8);
+    background-color: white;
+    padding: 0px 12px;
+    align-items: center;
+    height: 32px;
+    cursor: pointer;
+    margin-left: 5px;
+    border: 1px solid rgba(34, 34, 34, 0.4);
+}
+
+.period-search form :nth-child(2) {
+    margin-left: 15px;
+}
+
+.period-search form :nth-child(3) {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.period-search form input[type=submit] {
+    margin-left: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    height: 32px;
+    width: 50px;
+    font-family: 'Pretendard';
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.guide {
+    font-size: 12px;
+    color: rgba(34, 34, 34, 0.8);
+    padding: 12px 0px;
+}
+
+.purchase-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    height: 37px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.purchase-head select {
+    height: 37px;
+    width: 100px;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 34, 34, 0.5);
+    font-family: 'Pretendard';
+    display: flex;
+    align-items: center;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+.purchase-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    height: 37px;
+    color: rgba(34, 34, 34, 0.5);
+    font-size: 13px;
+}
