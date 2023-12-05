@@ -3,6 +3,8 @@ package com.shoekream.admin.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.db.util.JDBCTemplate;
@@ -50,16 +52,39 @@ public class AdminEnrollProductDao {
 		return dbVo;
 	}
 	//사이즈 배열 -> 사이즈 번호 배열로 반환
-	public EnrollProductVo sizeCheck(Connection conn, String[] size) {
-
-		String sql = "SELECT * FROM ";
-		return null;
+	public EnrollProductVo sizeCheck(Connection conn, String[] sizes) throws Exception{
+		EnrollProductVo dbVo = new EnrollProductVo();
+		List<String> sizeNoList = new ArrayList<>();
+		for(String size : sizes) {
+			//sql
+			String sql = "SELECT * FROM SHOES_SIZES WHERE SHOES_SIZES = ?";
+			//rs
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, size);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String sizeNo = rs.getString("NO");
+				sizeNoList.add(sizeNo);
+				System.out.println("dao sizeNo = " + sizeNo);
+			}
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+			
+		}
+		
+		
+		String[] sizeNoArr = sizeNoList.toArray(new String[0]);
+		dbVo.setSizeNo(sizeNoArr);
+		return dbVo;
+		
 	}
 
 	public int enrollProduct(Connection conn, EnrollProductVo vo) throws Exception{
 		String sql = "INSERT INTO PRODUCTS(NO, BRAND_NO, CATEGORY_NO, NAME, NAME_KO, MODEL_NUMBER, RELEASE_PRICE, RELEASE_DATE, DEL_YN) VALUES(SEQ_PRODUCTS_NO.NEXTVAL, ?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
+		System.out.println(vo.getBrandNo());
 		pstmt.setString(1, vo.getBrandNo());
 		pstmt.setString(2, vo.getCategoryNo());
 		pstmt.setString(3, vo.getProductName());
@@ -72,6 +97,10 @@ public class AdminEnrollProductDao {
 		
 		
 		int result = pstmt.executeUpdate();
+		
+		
+		
+		
 		
 		JDBCTemplate.close(pstmt);
 		
