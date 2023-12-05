@@ -49,16 +49,24 @@ public class ReviewService {
 		
 		return reviewVoList;
 	}
-	
+
 
 //	//전체 리뷰 갯수 조회
-//	public int selectReviewCount() {
-//		//conn
-//		
-//		//dao
-//		
-//		//close
-//	}
+//	public int selectBoardCount() throws Exception {
+//	      
+//      // conn
+//      Connection conn = JDBCTemplate.getConnection();
+//      
+//      // dao
+//      ReviewDao dao = new ReviewDao();
+//      int cnt = dao.selectReviewCount(conn);
+//      
+//      // close
+//      JDBCTemplate.close(conn);
+//      
+//      return cnt;
+      
+//   }//selectReviewCount
 
 //	//카테고리 리스트 조회
 //	public List<CategoryVo> getCategoryList() {
@@ -75,6 +83,15 @@ public class ReviewService {
 //	   
 //	   return voList;
 //	}
+
+	public List<ReviewVo> selectReviewList(PageVo pvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
 
 	
 	
