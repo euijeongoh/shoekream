@@ -2,10 +2,10 @@ package com.shoekream.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.SecureRandom;
 import java.util.Properties;
 
 import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -29,12 +29,11 @@ public class EmailSendController extends HttpServlet{
 		try {
 			// data
 			String inputEmail = req.getParameter("email");
-			
-			// email server 설정
-			String emailTitle = "[SHOEKREAM] 회원가입 이메일 인증";
+			// email server
 			String emailFrom = "shoekream@naver.com";
-			String fromName = "관리자";
-			// email client 설정
+			String username = "shoekream";
+			String userPwd = "shoe!kream4";
+			// email client
 			String emailTo = inputEmail;
 			
 			// smtp server 정보
@@ -42,29 +41,40 @@ public class EmailSendController extends HttpServlet{
 			props.put("mail.smtp.host", "smtp.naver.com"); // host 정보 네이버에서 갖고 오기
 			props.put("mail.smtp.port", 465);
 			props.put("mail.smtp.auth", "true");
-			props.put("mail.smtp.ssl.enabel", "true");
+			props.put("mail.smtp.ssl.enable", "true");
+			props.put("mail.smtp.ssl.trust", "smtp.naver.com");
 			
 			// 인증번호 생성
-			SecureRandom random = SecureRandom.getInstance("NativePRNG");
+//			SecureRandom random = SecureRandom.getInstance();
 			
-			String AuthenticationKey = random.toString();
-			System.out.println(AuthenticationKey);
+			String AuthenticationKey = "12345";
 			
+			// email 내용
+			String emailTitle = "[SHOEKREAM] 회원가입 이메일 인증";
+			String emailContent = "회원가입 이메일 인증번호 : " + AuthenticationKey;
 			
 			// session 생성
-			Session session = Session.getDefaultInstance(props, null);
+			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username,
+                            userPwd);
+                }
+            });
+			
+			session.setDebug(true);
+			
+			System.out.println("g");
 			// 이메일 전송
-			MimeMessage msg = new MimeMessage(session);
-			InternetAddress from = new InternetAddress(emailFrom, "SHOEKREAM");
+			MimeMessage mail = new MimeMessage(session);
+			InternetAddress from = new InternetAddress(emailFrom, "shoekream@naver.com");
 			InternetAddress to = new InternetAddress(emailTo);
 			
-			msg.setFrom(from);
-			msg.addRecipient(Message.RecipientType.TO, to);
 			// email 정보
-			msg.setSubject(emailTitle);
-			msg.setText("회원가입 이메일 인증번호 : " + AuthenticationKey);
-			
-			Transport.send(msg);
+			mail.setSubject(emailTitle);
+			mail.setFrom(from);
+			mail.setRecipient(Message.RecipientType.TO, to);
+			mail.setText(emailContent);
+			Transport.send(mail);
 			System.out.println("이메일 전송 완료");
 			
 			// 인증번호 session에 저장
@@ -74,7 +84,7 @@ public class EmailSendController extends HttpServlet{
 			// 응답
 			out.write("{\"reply\" : \"ok\"}");
 		} catch(Exception e) {
-			out.write("{\"replay\" : \"no\"}");
+			out.write("{\"reply\" : \"no\"}");
 			e.printStackTrace();
 		}
 		

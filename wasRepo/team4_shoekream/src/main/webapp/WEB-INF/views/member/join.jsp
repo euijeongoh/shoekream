@@ -54,7 +54,7 @@
                     <div class="input_title">이메일*</div>
                     <div class="email_area">
 	                    <input class="input_txt" type="text" name="email" placeholder="예) shoekream@kream.co.kr">
-	                    <input type="button" value="인증하기" onclick="sendEmail();" disabled>                    
+	                    <input type="button" value="인증하기" onclick="sendEmail()" disabled>                    
                     </div>
                     <div id="email_check"></div>
                     <div class="approval_area">
