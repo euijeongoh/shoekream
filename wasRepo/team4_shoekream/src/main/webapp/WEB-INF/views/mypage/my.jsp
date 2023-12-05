@@ -78,12 +78,6 @@
                         <div>0</div>
                     </div>
                 </div>
-                <div class="my-list">
-                    <div class="none">거래 내역이 없습니다.</div>
-                    <div class="item_list">
-                    	
-          			</div>
-                </div>
 
 
                 <div class="mypage-title">
@@ -107,12 +101,6 @@
                         <div>종료</div>
                         <div>0</div>
                     </div>
-                </div>
-                <div class="my-list">
-                    <div class="none">거래 내역이 없습니다.</div>
-                    <div class="item_list">
-                    	
-          			</div>
                 </div>
 
 
