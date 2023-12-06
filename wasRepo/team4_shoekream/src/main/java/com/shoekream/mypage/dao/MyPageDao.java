@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
-import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.HistoryCntVo;
-import com.shoekream.mypage.vo.OrdersHistoryVo;
+import com.shoekream.mypage.vo.WishListVo;
 import com.shoekream.orders.vo.OrdersVo;
 
 public class MyPageDao {
@@ -318,10 +318,51 @@ public class MyPageDao {
 		
 		return finishedList;
 	}
-	
-	// 관심상품 정보 조회(List)
-	
 
-	
-	// 즉시구매가
+	// 관심상품 정보 조회(List)
+	public List<WishListVo> getWishProductsInfo(Connection conn, MemberVo loginMember) throws Exception {
+		// sql
+		String productSql = "SELECT BR.BRAND_NAME 브랜드 , P.NO 상품번호 , P.NAME 상품명 , IMG.THUMBNAIL 썸네일 FROM WISHLIST W LEFT JOIN PRODUCTS P ON W.PRODUCTS_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BRAND BR ON P.BRAND_NO = BR.NO WHERE W.MEMBER_NO = ?";
+		String priceSql = "SELECT MIN(B.PRICE) 즉시구매가 FROM BIDDING B WHERE B.BIDDING_POSITION_NO = 2 AND B.PRODUCTS_NO = ?";
+		PreparedStatement pstmt1 = conn.prepareStatement(productSql);
+		pstmt1.setString(1, loginMember.getNo());
+		ResultSet rs = pstmt1.executeQuery();
+		
+		List<WishListVo> productList = new ArrayList<WishListVo>();
+		while(rs.next()) {
+			String brandName = rs.getString("브랜드");
+			String productNo = rs.getString("상품번호");
+			String productName = rs.getString("상품명");
+			String productImg = rs.getString("썸네일");
+			
+			WishListVo wishVo = new WishListVo();
+			
+			wishVo.setBrandName(brandName);
+			wishVo.setProductName(productName);
+			wishVo.setProductNo(productNo);
+			wishVo.setProductImg(productImg);
+			
+			productList.add(wishVo);
+		}
+		
+		for(int i = 0; i<productList.size(); ++i) {
+			PreparedStatement pstmt2 = conn.prepareStatement(priceSql);
+			pstmt2.setString(1, productList.get(i).getProductNo());
+			ResultSet rs2 = pstmt2.executeQuery();
+			
+			if(rs2.next()) {
+				String immediatePrice = rs2.getString("즉시구매가");
+				
+				if(immediatePrice == null) {
+					immediatePrice = "-";
+				}
+				
+				productList.get(i).setImmediatePrice(immediatePrice);
+			}
+		}
+		
+		return productList;
+		
+	}
+		
 }

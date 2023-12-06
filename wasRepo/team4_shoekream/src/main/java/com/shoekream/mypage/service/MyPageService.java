@@ -1,9 +1,11 @@
 package com.shoekream.mypage.service;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
@@ -11,6 +13,7 @@ import com.shoekream.mypage.dao.MyPageDao;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.HistoryCntVo;
 import com.shoekream.mypage.vo.OrdersHistoryVo;
+import com.shoekream.mypage.vo.WishListVo;
 import com.shoekream.orders.vo.OrdersVo;
 
 public class MyPageService {
@@ -97,6 +100,22 @@ public class MyPageService {
 //		
 //		return map;
 //	}
+	
+	// 관심상품 목록 조회
+	public List<WishListVo> viewWishListInfo(MemberVo loginMember) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		List<WishListVo> wishList = dao.getWishProductsInfo(conn, loginMember);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return wishList;
+	}
+
 	
 	
 }
