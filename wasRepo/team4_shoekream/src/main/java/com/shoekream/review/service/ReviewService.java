@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.shoekream.db.util.JDBCTemplate;
-import com.shoekream.page.vo.PageVo;
 import com.shoekream.review.dao.ReviewDao;
-import com.shoekream.review.vo.CategoryVo;
 import com.shoekream.review.vo.ReviewVo;
 
 public class ReviewService {
@@ -49,24 +47,43 @@ public class ReviewService {
 		
 		return myreviewVoList;
 	}
+	
+	
+	//전체 리뷰목록 조회
+	public List<ReviewVo> selectReviewList() throws Exception {
+		
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		ReviewDao dao = new ReviewDao();
+		List<ReviewVo> reviewVoList = dao.ReviewList(conn);
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return reviewVoList;
+	}
 
 
-	//전체 리뷰 갯수 조회
-	public int selectReviewCount() throws Exception {
-	      
-      // conn
-      Connection conn = JDBCTemplate.getConnection();
-      
-      // dao
-      ReviewDao dao = new ReviewDao();
-      int cnt = dao.selectReviewCount(conn);
-      
-      // close
-      JDBCTemplate.close(conn);
-      
-      return cnt;
-      
-   }//selectReviewCount
+//	//전체 리뷰 갯수 조회
+//	public int selectReviewCount() throws Exception {
+//	      
+//      // conn
+//      Connection conn = JDBCTemplate.getConnection();
+//      
+//      // dao
+//      ReviewDao dao = new ReviewDao();
+//      int cnt = dao.selectReviewCount(conn);
+//      
+//      // close
+//      JDBCTemplate.close(conn);
+//      
+//      return cnt;
+//      
+//   }//selectReviewCount
+
+	
 	
 
 //	//카테고리 리스트 조회

@@ -192,12 +192,13 @@ header .main_list li {
 
 
  .request_wrap{
-    width: 720px;
-    height: 500px;
-    display: block;
+    width: 760px;
+    height: 700px;
+    /* display: block;
+    justify-content: space-evenly; */
     margin-left: 250px;
     margin-bottom: 400px;
-    /* background-color: aqua; */
+    background-color: aqua;
 }
 .product_list_board{
     /* display: flex;

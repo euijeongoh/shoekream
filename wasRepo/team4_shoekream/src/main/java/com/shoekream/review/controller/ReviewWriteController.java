@@ -23,13 +23,13 @@ public class ReviewWriteController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			//로그인 안되어있으면 에러페이지로 보내기
-			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
-	        if(loginMember == null) {
-//	        	resp.sendRedirect("/member/login");
-	           req.setAttribute("errorMsg" , "로그인이 필요한 페이지 입니다.");
-	           req.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(req, resp);
-	        }
+//			로그인 안되어있으면 로그인페이지로 보내기
+//			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+//	        if(loginMember == null) {
+////	        	resp.sendRedirect("/member/login");
+//	           req.setAttribute("errㄴorMsg" , "로그인이 필요한 페이지 입니다.");
+//	           req.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(req, resp);
+//	        }
 			
 			//service
 			ReviewService rs = new ReviewService();
