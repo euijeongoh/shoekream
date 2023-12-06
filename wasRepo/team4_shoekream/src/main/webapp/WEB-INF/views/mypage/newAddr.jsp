@@ -37,7 +37,7 @@
 							<!-- 여기 내용 -->
 							<h4 class="input_title">이름</h4>
 							<div class="input_item">
-								<input type="text" placeholder="수령인 이름" class="input_txt">
+								<input type="text" placeholder="수령인 이름" class="input_txt" name="name">
 							</div>
 							<!-- <p class="input_error">올바른 이름을 입력해주세요. (2-50자)</p> -->
 						</div>
@@ -45,14 +45,14 @@
 							<!-- 여기 내용 -->
 							<h4 class="input_title">휴대폰 번호</h4>
 							<div class="input_item">
-								<input type="text" placeholder="-없이 입력" class="input_txt">
+								<input type="text" placeholder="-없이 입력" class="input_txt" name="phone_num">
 							</div>
 						</div>
 						<div class="input_box">
 							<!-- 여기 내용 -->
 							<h4 class="input_title">우편번호</h4>
 							<div class="input_item" id="map">
-								<input type="text" placeholder="우편 번호를 검색하세요" class="input_txt" id="sample6_postcode" readonly>
+								<input type="text" placeholder="우편 번호를 검색하세요" class="input_txt" id="sample6_postcode" name="post_code" readonly>
 								<input type="button" class="btn btn_zipcode outline small" onclick="sample6_execDaumPostcode()"  value="우편번호">
 							</div>
 						</div>
@@ -60,7 +60,7 @@
 							<!-- 여기 내용 -->
 							<h4 class="input_title">주소</h4>
 							<div class="input_item">
-								<input type="text" id="sample6_address" placeholder="우편 번호 검색 후, 자동입력 됩니다"
+								<input type="text" id="sample6_address" id="sample6_extraAddress" name="addr" placeholder="우편 번호 검색 후, 자동입력 됩니다"
 									class="input_txt" readonly>
 							</div>
 						</div>
@@ -69,11 +69,12 @@
 							<h4 class="input_title">상세 주소</h4>
 							<div class="input_item">
 								<input type="text" id="sample6_detailAddress" placeholder="건물, 아파트, 동/호수 이력"
-									class="input_txt">
+									class="input_txt" name="detail_addr">
+								<input type="hidden" id="sample6_extraAddress" >
 							</div>
 							<div class="delivery_check">
 								<div class="checkbox_item" data-v-4be3d37a="">
-									<input id="check1" type="checkbox" name="" class="blind">
+									<input id="check1" type="checkbox" name="" class="blind" name="default_addr">
 									<label for="check1" class="check_label"> <span
 										class="label_txt">기본 배송지로 설정</span>
 									</label>
@@ -136,11 +137,12 @@
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
+                document.getElementById("sample6_address").value = addr + extraAddr;
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("sample6_detailAddress").focus();
             }
         }).open();
     }
+    
 </script>
 </html>

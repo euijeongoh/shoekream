@@ -1,5 +1,11 @@
+<%@page import="com.shoekream.mypage.vo.AddrBookVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<% 
+		List<AddrBookVo> addressVoList = (List<AddrBookVo>) request.getAttribute("addressVoList");
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
+
 <link rel="stylesheet"
 	href="/shoekream/resources/css/common/mypage_side.css">
 <link rel="stylesheet"
@@ -16,58 +22,10 @@
 
 <body>
 
-	<header>
-		<div class="header_inner">
-			<div class="top_list">
-				<ul>
-					<li><a href="">고객센터</a></li>
-					<li><a href="">마이페이지</a></li>
-					<li><a href="">관심</a></li>
-					<li><a>알림</a></li>
-					<li><a href="">로그인</a></li>
-				</ul>
-			</div>
-			<div class="main_list">
-				<div class="logo_area">
-					<a href=""> <img src="/user/common/logo.svg">
-					</a>
-				</div>
-				<div class="head_list">
-					<ul>
-						<li><a href="">HOME</a></li>
-						<li><a href="">SHOP</a></li>
-						<li id="search_btn"><a><img
-								src="/user/common/searchIcon.png"></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
+	<%@ include file = "/WEB-INF/views/common/header.jsp" %>
 
 	<div class="mypage_container">
-		<div class="menu_container">
-			<div class="menu_title">마이 페이지</div>
-			<nav>
-				<div class="shop_menu">
-					<div id="title">쇼핑 정보</div>
-					<ul>
-						<li><a href="">구매 내역</a></li>
-						<li><a href="">판매 내역</a></li>
-						<li><a href="">관심</a></li>
-					</ul>
-				</div>
-				<div class="my_menu">
-					<div id="title">내 정보</div>
-					<ul>
-						<li><a href="">로그인 정보</a></li>
-						<li><a href="">주소록</a></li>
-						<li><a href="">결제 정보</a></li>
-						<li><a href="">정산 계좌</a></li>
-						<li><a href="">포인트</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
+	<%@ include file = "/WEB-INF/views/common/mypage_side.jsp" %>
 		<div class="content_area">
 			<div class="my_adderssbock">
 				<div class="content_title">
@@ -126,38 +84,8 @@
 		</div>
 	</div>
 
-	<footer>
-		<div class="box1"></div>
-		<div class="box2">
-			<div></div>
-			<div>고객센터 1588-4444</div>
-		</div>
-		<div class="box3">
-			<div class="left_bar">
-				<div>고객지원</div>
-				<div>공지사항</div>
-				<div>1:1문의</div>
-				<div>상품 등록 문의</div>
-			</div>
-			<div class="icons">
-				<div>
-					<img src="/user/common/footer_img/인별.png" alt="인별">
-				</div>
-				<div>
-					<img src="/user/common/footer_img/페북.png" alt="페북">
-				</div>
-				<div>
-					<img src="/user/common/footer_img/카톡.png" alt="카톡">
-				</div>
-			</div>
-			<div></div>
-			<div class="faq">
-				<button>자주 묻는 질문</button>
-			</div>
-		</div>
-		<div class="box4"></div>
-	</footer>
-
+	<%@ include file = "/WEB-INF/views/common/footer.jsp" %>
+	
 </body>
 
 <script>
