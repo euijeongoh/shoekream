@@ -4,7 +4,10 @@
 	pageEncoding="UTF-8"%>
 	
 	<% 
-		List<AddrBookVo> addressVoList = (List<AddrBookVo>) request.getAttribute("addressVoList");
+		AddrBookVo vo = (AddrBookVo) request.getAttribute("vo");
+		String first = vo.getPhoneNumber().substring(1, 3);
+		String middle = vo.getPhoneNumber().substring(4, 4);
+		String last = vo.getPhoneNumber().substring(9, 12);
 	%>
 <!DOCTYPE html>
 <html>
@@ -57,16 +60,15 @@
 							<div class="info_bind">
 								<div class="address_info">
 									<div class="name_box">
-										<span class="name">***</span> <span class="mark">기본 배송지</span>
+										<span class="name"><%=vo.getMemberName() %></span> <span class="mark">기본 배송지</span>
 									</div>
 									<p class="phone">
-										"010" <span class="hyphen"></span> "9" <span class="dot"></span>
+										<%=first %> <span class="hyphen"></span> <%=middle %> <span class="dot"></span>
 										<span class="dot"></span> <span class="dot"></span> <span
-											class="hyphen"></span> <span class="dot"></span> "339"
+											class="hyphen"></span> <span class="dot"></span> <%=last %>
 									</p>
 									<div class="address_box">
-										<span class="zipcode">(00000)</span> <span class="adderss">서울시
-											강남구 테해란로어딘가</span>
+										<span class="zipcode">(<%=vo.getPostCode() %>)</span> <span class="adderss"><%=vo.getAddres() %></span>
 									</div>
 								</div>
 							</div>

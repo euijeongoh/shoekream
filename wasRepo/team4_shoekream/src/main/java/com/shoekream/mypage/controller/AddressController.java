@@ -23,9 +23,10 @@ public class AddressController extends HttpServlet{
 			String no = req.getParameter("no");
 			
 			AddressService as = new AddressService();
-			List<AddrBookVo> addressVoList = as.selectAddrList(no);
-
-			req.setAttribute("addressVoList", addressVoList);
+			AddrBookVo vo = as.selectAddrList(no);
+			
+			
+			req.setAttribute("vo", vo);
 			req.getRequestDispatcher("/WEB-INF/views/mypage/addr.jsp").forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
