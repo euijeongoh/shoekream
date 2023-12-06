@@ -38,7 +38,7 @@ public class ReviewListController extends HttpServlet {
          req.getRequestDispatcher("/WEB-INF/views/review/list.jsp").forward(req, resp);
 
       } catch (Exception e) {
-         System.out.println("[ERROR-B001] ReviewList 조회 중 에러 발생...");
+         System.out.println("조회 실패");
          e.printStackTrace();
          req.getRequestDispatcher("/WEB-INF/views/review/list.jsp").forward(req, resp);
       }
