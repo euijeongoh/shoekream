@@ -126,6 +126,7 @@ header .main-list li {
     width: 200px;
     margin: 15px 60px;
     display: block;
+    border: 1px solid lightgray;
 }
 .jordan{
     display: block;
@@ -147,7 +148,7 @@ header .main-list li {
 }
 .star{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     height: 80px;
     /* background-color: yellow; */
 }
@@ -156,17 +157,29 @@ header .main-list li {
     /* background-color: aqua; */
 }
 #wstar{
-    margin: 25px 100px;
+    margin: 30px 80px;
     font-size: large;
 }
 .starjom{ 
+    /* margin: auto;
+    width: 50px; */
     margin: auto;
+    /* margin-right: 150px; */
     /* background-color: salmon; */
 }
-#starjom{
-    margin: 15px 60px;
-    height: 60px;
-    width: 160px;
+.stars {
+    display: inline-block;
+    font-size: 24px;
+    cursor: pointer;
+    /* margin-top: 0px; */
+}
+
+.stars:hover {
+    color: orange;
+}
+
+.selected {
+    color: orange;
 }
 .ignition{
     display: flex;
@@ -190,7 +203,7 @@ header .main-list li {
     height: 60%;
     border-radius: 20px;
     border: 1px solid lightgray;
-    margin: 20px 40px;
+    margin: 20px 0px;
 }
 .ignition li{
     display: block;

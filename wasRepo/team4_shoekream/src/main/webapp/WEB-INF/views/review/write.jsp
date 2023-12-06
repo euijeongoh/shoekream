@@ -20,7 +20,7 @@
         <br>
         <div class="picjor">
             <div class="picture">
-                <img src="./img/tage_img.png" alt="상품이미지" class="picture_img">
+                <img src="/resources/img/review/tage_img.png" alt="상품이미지" class="picture_img">
             </div>
             <div class="jordan">
                 <p class="jordan_eg"><b>(W) Jordan 1 Low White Wolf Grey</b></p>
@@ -30,10 +30,16 @@
         <div class="ggg">
             <div class="star">
                 <div class="wstar">
-                    <p id="wstar"><b>별점</b></p>
+                    <p id="wstar"><b>별 점</b></p>
                 </div>
                 <div class="starjom">
-                    <img src="./img/nstar.png" alt="별점" id="starjom">
+                    <div class="stars" data-rating="1">&#9733;</div>
+                    <div class="stars" data-rating="2">&#9733;</div>
+                    <div class="stars" data-rating="3">&#9733;</div>
+                    <div class="stars" data-rating="4">&#9733;</div>
+                    <div class="stars" data-rating="5">&#9733;</div>
+                
+                  	<p> </p><span id="selectedRating"></span>
                 </div>
             </div>
             <div class="ignition">
@@ -62,12 +68,7 @@
             <div class="upload_picture">
                 <img src="./img/picture.png" alt="리뷰사진" id="reviewpng">
                 <a href="" id="reviewpng"><div >이미지업로드</div></a>
-                <!-- <img src="" alt="리뷰사진" id="reviewpng">
-                <img src="" alt="리뷰사진" id="reviewpng"> -->
             </div>
-            <!-- <div>
-                <img src="" alt="리뷰사진" id="reviewpng">
-            </div> -->
         </div>
         <div class="update">
            <ul>
@@ -79,3 +80,44 @@
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+function previewImage(event) {
+    const fileInput = event.target;
+    
+    const pictureimg = document.getElementsByClassName('picture_img');
+
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            Array.from(pictureimg).forEach(function(img) {
+                img.src = e.target.result;
+            });
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+//별점코드
+// DOM 요소 가져오기
+    const stars = document.querySelectorAll('.stars');
+
+    // 각 별표에 이벤트 리스너 추가
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            // 클릭한 별표까지 강조 효과 추가
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('selected');
+            }
+
+            // 클릭한 별표 이후의 별표에는 강조 효과 제거
+            for (let i = index + 1; i < stars.length; i++) {
+                stars[i].classList.remove('selected');
+            }
+        });
+    });
+</script>
