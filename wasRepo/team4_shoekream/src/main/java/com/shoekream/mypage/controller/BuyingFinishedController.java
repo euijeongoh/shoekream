@@ -2,7 +2,6 @@ package com.shoekream.mypage.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,16 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.MyPageService;
-import com.shoekream.mypage.vo.BiddingHistoryVo;
-import com.shoekream.mypage.vo.HistoryCntVo;
+import com.shoekream.mypage.vo.OrdersHistoryVo;
 
-@WebServlet("/mypage/buying/bidding")
+@WebServlet("/mypage/buying/finished")
 
-public class BuyingBiddingController extends HttpServlet{
+public class BuyingFinishedController extends HttpServlet{
 
-	// 마이페이지 구매내역 구매입찰 화면
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		try {
 			// 로그인 여부 체크
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
@@ -41,17 +39,16 @@ public class BuyingBiddingController extends HttpServlet{
 			
 			// service 호출
 			MyPageService service = new MyPageService();
-			BiddingHistoryVo historyVo = service.viewBuyingBiddingList(loginMember, map);
+			OrdersHistoryVo historyVo = service.viewBuyingFinishedList(loginMember, map);
 			
 			// result (==view)
-			req.setAttribute("buyList", historyVo.getBidList());
+			req.setAttribute("buyList", historyVo.getOrderList());
 			req.setAttribute("cntVo", historyVo.getCntVo());
 			
-			req.getRequestDispatcher("/WEB-INF/views/mypage/buy_buying.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/mypage/buy_finished.jsp").forward(req, resp);
 		} catch(Exception e) {
 			
 		}
+		
 	}
-	
-	
 }

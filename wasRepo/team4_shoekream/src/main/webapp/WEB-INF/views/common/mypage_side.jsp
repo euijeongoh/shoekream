@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+	<link rel="stylesheet" href="/shoekream/resources/css/common/mypage_side.css">
+
 </head>
 <body>
       <div class="menu_container">
@@ -14,7 +17,7 @@
                   <div id="title">쇼핑 정보</div>
                   <ul>
                       <li><a href="/shoekream/mypage/buying?tab=bidding">구매 내역</a></li>
-                      <li><a href="/shoekream/mypage/selling">판매 내역</a></li>
+                      <li><a href="/shoekream/mypage/selling?tab=bidding">판매 내역</a></li>
                       <li><a href="/shoekream/mypage/wishlist">관심</a></li>
                   </ul>
               </div>
