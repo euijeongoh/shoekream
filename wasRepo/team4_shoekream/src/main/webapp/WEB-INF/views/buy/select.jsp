@@ -16,7 +16,7 @@
 
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/select.css">
-	<link rel="stylesheet" href="../../../common/footer.css">
+	<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 	
 	<script defer src="/shoekream/resources/js/bidding/buy/select.js"></script>
 	
@@ -121,13 +121,13 @@
             </div>
             <div class="icons">
                 <div>
-                    <img src="./img/인별.png" alt="인별">
+                    <img src="/shoekream/resources/img/footer/인별.png" alt="인별">
                 </div>
                 <div>
-                    <img src="./img/페북.png" alt="페북">
+                    <img src="/shoekream/resources/img/footer/페북.png" alt="페북">
                 </div>
                 <div>
-                    <img src="./img/카톡.png" alt="카톡">
+                    <img src="/shoekream/resources/img/footer//카톡.png" alt="카톡">
                 </div>
             </div>
             <div></div>
