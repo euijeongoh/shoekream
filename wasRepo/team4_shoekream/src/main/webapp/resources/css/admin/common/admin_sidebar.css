@@ -1,0 +1,29 @@
+@charset "UTF-8";
+.sidebar{
+    display: flex;
+    width: 1200px;
+    justify-content: space-between;
+    margin-left: auto;/*필요시 제거*/
+    margin-right: 20px; /* 오른쪽 여백 추가 */
+    width: 180px;
+    font-size: 22px;
+}
+
+ .sidebar :link, .sidebar :hover, .sidebar :active{
+    text-decoration: none;
+    color: black;
+}
+.sidebar a{
+    font-family: 'Pretendard';
+} 
+.sidenav_menu{
+    list-style: none;
+    padding-left: 0px;
+}
+.sidenav_list{
+    font-size: 20px;
+}
+.menu_link{
+    font-size: 16px;
+    color: rgb(141, 141, 141);
+}

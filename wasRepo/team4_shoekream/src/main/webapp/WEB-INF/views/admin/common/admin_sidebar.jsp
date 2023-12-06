@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/shoekream/resources/css/admin/commmon/admin_sidebar.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/admin"><h2>관리자 페이지</h2></a>
+        <br>
+        <nav class="sidenav">
+            <div class="sidenav_list">
+                <strong class="sidenav_title">주문관리</strong>
+                <ul class="sidenav_menu">
+                    <li class="menu_item">
+                        <a href="" class="menu_link">입고 현황</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">검수진행 현황</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">배송 현황</a>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div class="sidenav_list">
+                <strong class="sidenav_title">상품 관리</strong>
+                <ul class="sidenav_menu">
+                    <li class="menu_item">
+                        <a href="" class="menu_link"><b><u>상품등록</u></b></a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">상품 수정</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">상품 삭제</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">상품 목록</a>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div class="sidenav_list">
+                <strong class="sidenav_title">고객 센터</strong>
+                <ul class="sidenav_menu">
+                    <li class="menu_item">
+                        <a href="" class="menu_link">공지사항</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">FAQ</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">Q&A</a>
+                    </li>
+                </ul>
+            </div>
+        </div> 
+        </nav>
+    </div>
+</body>
+</html>
