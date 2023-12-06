@@ -26,13 +26,12 @@
     width: 332px;
     height: 68px;
     cursor: pointer;
-    border-bottom: 2px solid #222222;
 }
 
-.tab #count {
+.tab #bidCount, #pendCount, #finishedCount {
     font-size: 20px;
-    color: #F15746;
-    font-weight: 700;
+    color: #222222;
+    font-weight: 700;	
 }
 
 .tab #stage {
