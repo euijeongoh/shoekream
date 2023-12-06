@@ -9,19 +9,19 @@ import com.shoekream.notice.dao.NoticeDao;
 
 public class NoticeService {
 
-	public List<NoticeVo> NoticeList() {
+	public List<NoticeVo> NoticeList() throws Exception{
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
 		NoticeDao dao = new NoticeDao();
-		List<NoticeVo> voList = dao.NoticeList(conn);
+		List<NoticeVo> noticeVoList = dao.NoticeList(conn);
 		
 		//close
 		JDBCTemplate.close(conn);
 		
-		return voList;
+		return noticeVoList;
 	}
 
 	
