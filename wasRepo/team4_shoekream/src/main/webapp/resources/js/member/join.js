@@ -94,7 +94,6 @@ function checkValidation(){
 		const strEmail = joinInputTagArr[4].value;
 		const regEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 		const emailChecked = regEmail.test(strEmail);
-		console.log(emailChecked);
 		const emailCheckDiv = document.querySelector("#email_check");
 		const emailBtn = document.querySelector("input[type=button]");
 		
@@ -138,18 +137,14 @@ function checkValidation(){
 
 function sendEmail(){
 	const emailInputValue = document.querySelector("input[name=email]").value;
-	const approvalArea = document.querySelector(".approval_area");
-	if(approvalArea.style.visibility==='hidden'){ 		
-            approvalArea.style.visibility = 'visible'; 	
-    }else{ 		
-            approvalArea.style.visibility = 'hidden'; 	
-    }
+	const approvalArea = document.querySelector(".approval_area");		
+    approvalArea.style.visibility = 'visible'; 	
  
- 	fetch("/shoekream/send/email?email=" + emailInputValue)
+ 	fetch("/shoekream/send/email?email=" + emailInputValue, {method : "POST"})
  	.then( (resp) => { return resp.json() })
  	.then( (data) => {
 		 const result = (data.reply == "ok")
-		 
+		 console.log(data.reply);
 		 if(result === false){
 			 alert("이메일 전송에 실패했습니다.");
 		 }

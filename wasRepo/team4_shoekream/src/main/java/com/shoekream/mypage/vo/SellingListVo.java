@@ -1,30 +1,31 @@
 package com.shoekream.mypage.vo;
 
-public class BuyingListVo {
-	// 공통	
+public class SellingListVo {
+	
+	// 공통
 	private String productName;
 	private String productImg;
 	private String productSize;
 	
-	// 구매입찰
+	// 판매입찰
 	private int bidPrice;
 	private String bidStatus;
 	private String bidExpireDate;
 	private String bidEnrollDate;
 	
-	// 주문
-	private int orderPrice; // 주문금액
-	private int finalPrice; // 결제금액(구매자 수수료 3%, 배송비 3000원 - 포인트)
+	// 거래
+	private int orderPrice; // 거래금액
+	private int finalPrice; // 정산금액(판매자 수수료 5%)
 	private String orderStatus;
 	private String orderDate;
 	
 	
-	public BuyingListVo() {
+	public SellingListVo() {
 		
 	}
 
 
-	public BuyingListVo(int cntAll, int cntBidding, int cntPending, int cntFinished, String productName,
+	public SellingListVo(int cntAll, int cntBidding, int cntPending, int cntFinished, String productName,
 			String productImg, String productSize, int bidPrice, String bidStatus, String bidExpireDate,
 			String bidEnrollDate, int orderPrice, int finalPrice, String orderStatus, String orderDate) {
 		super();
@@ -40,7 +41,6 @@ public class BuyingListVo {
 		this.orderStatus = orderStatus;
 		this.orderDate = orderDate;
 	}
-
 
 	public String getProductName() {
 		return productName;
@@ -154,13 +154,12 @@ public class BuyingListVo {
 
 	@Override
 	public String toString() {
-		return "BuyingListVo [productName=" + productName + ", productImg=" + productImg
+		return "SellingListVo [productName=" + productName + ", productImg=" + productImg
 				+ ", productSize=" + productSize + ", bidPrice=" + bidPrice + ", bidStatus=" + bidStatus
 				+ ", bidExpireDate=" + bidExpireDate + ", bidEnrollDate=" + bidEnrollDate + ", orderPrice=" + orderPrice
 				+ ", finalPrice=" + finalPrice + ", orderStatus=" + orderStatus + ", orderDate=" + orderDate + "]";
 	}
-
-
+	
 	
 	
 	
