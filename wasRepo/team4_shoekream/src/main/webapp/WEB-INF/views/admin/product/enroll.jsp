@@ -7,50 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/shoekream/resources/css/admin/product/enroll.css">
+    <link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
+    <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
     <script src="/frontRepo/admin/js/msh/enrollProduct.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header-inner">
-            <div class="top-list">
-                <ul>
-                    <li><a href="">고객센터</a></li>
-                    <li><a href="">마이페이지</a></li>
-                    <li><a href="">관심</a></li>
-                    <li><a>알림</a></li>
-                    <li><a href="">로그인</a></li>
-                </ul>
-            </div>
-            <div class="main-list">
-                <div class="logo-area">
-                    <a href="">
-                    <img src="/shoekream/resources/img/admin/header/logo.svg">
-                    <span>관리자</span>
-                    </a>
-                </div>
-                <div class="head-list">
-                    <ul>
-                        <li><a href="">HOME</a></li>
-                        <li><a href="">SHOP</a></li>
-                        <li id="search-btn"><a><img src=" /shoekream/resources/img/admin/header/searchIcon.png"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <br>        
+	<%@ include file = "/WEB-INF/views/common/header.jsp" %>
+        <br>
         <div class="header-list">
-            <a href=""><b><u>상품등록</u></b></a>
-            <a href="">상품수정</a>
-            <a href="">상품삭제</a>
-            <a href="">상품목록</a>
-        </div>
-    </header>
+            <a href="/shoekream/admin/product/enroll"><b><u>상품등록</u></b></a>
+            <a href="/shoekream/admin/product/edit">상품수정</a>
+            <a href="/shoekream/admin/product/delete">상품삭제</a>
+            <a href="/shoekream/admin/product/list">상품목록</a>
+        </div>        
     <br><br>
     <hr>
     <br><br><br>
     <div class="side-body">
         <div class="sidebar">
-            <a href="/admin"><h2>관리자 페이지</h2></a>
+            <a href="/admin"><h3>관리자 페이지</h3></a>
             <br>
             <nav class="sidenav">
                 <div class="sidenav_list">
@@ -72,16 +47,16 @@
                     <strong class="sidenav_title"><a href="">상품 관리</a></strong>
                     <ul class="sidenav_menu">
                         <li class="menu_item">
-                            <a href="" class="menu_link"><b><u>상품등록</u></b></a>
+                            <a href="/shoekream/admin/product/enroll" class="menu_link"><b><u>상품등록</u></b></a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">상품 수정</a>
+                            <a href="/shoekream/admin/product/edit" class="menu_link">상품 수정</a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">상품 삭제</a>
+                            <a href="/shoekream/admin/product/delete" class="menu_link">상품 삭제</a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">상품 목록</a>
+                            <a href="/shoekream/admin/product/list" class="menu_link">상품 목록</a>
                         </li>
                     </ul>
                 </div>
@@ -155,23 +130,7 @@
             </div>
         </div>
   <br><br><br><br><br><hr>
-        <div class="service-container">
-            <div class="menu-container">
-                <div class="service-title">고객센터</div>
-                    <div class="first">
-                        <ul>
-                            <div><li><a href="">공지사항</a></li></div>
-                            <div><li><a href="">자주 묻는 질문</a></li></div>
-                            <div><li><a href="">Q&A</a></li></div>
-                            <div><li><a href="">상품등록 요청</a></li></div>
-                        </ul>
-                        <main>
-                            
-                        </main>
-                    </div>
-                   
-            </div>
-        </div>
+        <%@ include file = "/WEB-INF/views/common/footer.jsp" %>
 
 
 </body>
