@@ -35,6 +35,7 @@ public class ReviewDao {
       return result;
       
    }
+	
 
 	//내 리뷰 목록 조회
 	public List<ReviewVo> myReviewList(Connection conn) throws Exception {
@@ -69,6 +70,42 @@ public class ReviewDao {
 		
 		return myreviewVoList;
 	}
+	
+	
+	
+	//전체 리뷰 목록 조회
+	public List<ReviewVo> ReviewList(Connection conn) throws Exception {
+		
+		//sql
+		String sql = "SELECT MEMBER_NO AS  REVIEW_IMAGE , PROFILE_IMAGE , LIKE_BTN FROM REVIEW";		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		
+		//rs
+		List<ReviewVo> reviewVoList = new ArrayList<ReviewVo>();
+		while(rs.next()) {
+			
+			String no = rs.getString("NO");
+			String reviewImage = rs.getString("REVIEW_IMAGE");
+			String profileImage = rs.getString("PROFILE_IMAGE");
+			String likeBtn = rs.getString("LIKE_BTN");
+			
+			ReviewVo vo = new ReviewVo();
+			vo.setNo(no);
+			vo.setReviewImage(reviewImage);
+			vo.setProfileImage(profileImage);
+			vo.setLikeBtn(likeBtn);
+			
+			reviewVoList.add(vo);
+			
+		}
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		return reviewVoList;
+	}
 
 	
 	public int selectReviewCount(Connection conn) throws Exception {
@@ -94,7 +131,6 @@ public class ReviewDao {
          
      }
 
-	
 
 //	//카테고리 리스트 조회
 //	public List<CategoryVo> getCategoryList(Connection conn) {

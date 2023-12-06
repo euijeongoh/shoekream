@@ -107,57 +107,15 @@ header .main-list li {
     height: 40px;
 }
 
-.user_top{
-    display: flex;
-    justify-content: space-between;
-    width: 1200px;
-    margin: auto;
-    /* align-items: center; */
-    padding: 0;   
-    text-decoration: none;
-    /* background-color: red; */
-}
-.profile_img{
-    display: flex;
-    justify-content: flex-start;
-    width: 120px;
-    height: 120px;
-    border-radius: 70%;
-    /* border: 1px solid lightgray; */
-}
-.profile_info_box{
-    display: flex;
-    justify-content: space-between;
-    width: 990px;
-    height: 100px;
-    margin: 17% 30%;
-    /* padding: 30% 30%; */
-    /* background-color: aqua; */
-}
-/* .profile_info_box li{
-    text-decoration: none;
-} */
-/* .info01{
-    display: flex;
-    justify-content: flex-start;
-    padding: 150% 40%;
-    text-decoration: none;
-}
-.info02{
-    display: flex;
-    justify-content: flex-start;
-    padding: 200% 0%;
-} */
-
-.review-container {
+.style_wrap{
     display: flex;
     justify-content: center;
     width: 1200px;
     margin: auto;
     flex-direction: column;
+    /* background-color: aliceblue; */
 }
-
-.boardtap{
+.style_header{
     display: flex;
     justify-content: space-around;
     width: 1200px;
@@ -168,14 +126,6 @@ header .main-list li {
     border-bottom: 1px solid lightgray;
     /* background-color: aqua; */
 }
-.board h3{
-    display: block;
-    justify-content: flex-start;
-    width: 990px;
-    height: 30px;
-    /* padding: 90% 30%; */
-}
-
 .feed {
     width: 1200px;
     height: 200%;
@@ -220,10 +170,6 @@ header .main-list li {
     justify-content: space-between;
     width: 94%;
 }
-/* .likenum{
-    display: ;
-    justify-content: flex-end;
-} */
 .likebox{
     display: inline-flex;
     justify-content: space-evenly;
@@ -235,17 +181,6 @@ header .main-list li {
     height: 25%;
     /* background-color: skyblue; */
 }
-/* .photo04{
-    width: 25%;
-    height: 20%;
-    padding: 0% 0%;
-} */
-/* .tap{
-    width: 65.6px;
-    height: 20px;
-    padding: 80% 90%;
-} */
-
 
 
 
