@@ -31,15 +31,15 @@
                     구매 내역
                 </div>
                 <div class="tab-container">
-                    <div class="tab" onclick="location.href='/shoekream/mypage/buying?tab=bidding'">
+                    <div class="tab" id="bidTab" onclick="location.href='/shoekream/mypage/buying?tab=bidding'">
                         <div id="count">0</div>
                         <div id="stage">구매 입찰</div>
                     </div>
-                    <div class="tab" onclick="location.href='/shoekream/mypage/buying?tab=pending'">
+                    <div class="tab" id="pendTab" onclick="location.href='/shoekream/mypage/buying?tab=pending'">
                         <div id="count">0</div>
                         <div id="stage">진행 중</div>
                     </div>
-                    <div class="tab" onclick="location.href='/shoekream/mypage/buying?tab=finished'">
+                    <div class="tab" id="finishTab" onclick="location.href='/shoekream/mypage/buying?tab=finished'">
                         <div id="count">0</div>
                         <div id="stage">종료</div>
                     </div>
