@@ -5,97 +5,105 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.vo.BuyingListVo;
+import com.shoekream.mypage.vo.HistoryCntVo;
 import com.shoekream.mypage.vo.SellingListVo;
 
 public class MyPageDao {
 
-	// 구매입찰 cnt 구하기
-	public int getBuyBiddingCnt(Connection conn, MemberVo loginMember) throws Exception {
+	// 구매내역 관련 cnt값들
+	public HistoryCntVo getBuyingCnts(Connection conn, MemberVo loginMember) throws Exception {
 		// sql
-		String sql = "SELECT COUNT(*) CNT FROM BIDDING WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 1 AND BIDDING_STATUS_NO = 1";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, loginMember.getNo());
-		ResultSet rs = pstmt.executeQuery();
+		String bidCntSql = "SELECT COUNT(*) CNT FROM BIDDING WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 1 AND BIDDING_STATUS_NO = 1";
+		String pendCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND NOT O.ORDERS_STATUS_NO=5";
+		String finishedCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND O.ORDERS_STATUS_NO=5";
+		
+		PreparedStatement bidCntPstmt = conn.prepareStatement(bidCntSql);
+		PreparedStatement pendCntPstmt = conn.prepareStatement(pendCntSql);
+		PreparedStatement finishedCntPstmt = conn.prepareStatement(finishedCntSql);
+		
+		bidCntPstmt.setString(1, loginMember.getNo());
+		pendCntPstmt.setString(1, loginMember.getNo());
+		finishedCntPstmt.setString(1, loginMember.getNo());
+		
+		ResultSet rs1 = bidCntPstmt.executeQuery();
+		ResultSet rs2 = pendCntPstmt.executeQuery();
+		ResultSet rs3 = finishedCntPstmt.executeQuery();
 		
 		// rs
 		int bidCnt = 0;
-		if(rs.next()) {
-			bidCnt = rs.getInt("CNT");
-		}
-		
-		// close
-		JDBCTemplate.close(rs);
-		JDBCTemplate.close(pstmt);
-		
-		return bidCnt;
-	}
-	
-	// 구매 진행중 cnt 구하기
-	public int getBuyPendingCnt(Connection conn, MemberVo loginMember) throws Exception {
-		// sql
-		String sql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND NOT O.ORDERS_STATUS_NO=5";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, loginMember.getNo());
-		ResultSet rs = pstmt.executeQuery();
-		
-		// rs
 		int pendCnt = 0;
-		if(rs.next()) {
-			pendCnt = rs.getInt("CNT");
+		int finishedCnt = 0;
+		if(rs1.next()) {
+			bidCnt = rs1.getInt("CNT");
 		}
 		
-		// close
-		JDBCTemplate.close(rs);
-		JDBCTemplate.close(pstmt);
+		if(rs2.next()) {
+			pendCnt = rs2.getInt("CNT");
+		}
 		
-		return pendCnt;
+		if(rs3.next()) {
+			finishedCnt = rs3.getInt("CNT");
+		}
+		
+		HistoryCntVo cntVo = new HistoryCntVo();
+		cntVo.setCntBid(bidCnt);
+		cntVo.setCntPend(pendCnt);
+		cntVo.setCntFinished(finishedCnt);
+		
+		return cntVo;
 	}
 	
-	// 구매 완료 cnt 구하기
-	public int getBuyFinishedCnt(Connection conn, MemberVo loginMember) throws Exception {
+	// 판매내역 관련 cnt값들
+	public HistoryCntVo getSellingCnts(Connection conn, MemberVo loginMember) throws Exception {
 		// sql
-		String sql = "SELECT COUNT(*) FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND O.ORDERS_STATUS_NO=5";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, loginMember.getNo());
-		ResultSet rs = pstmt.executeQuery();
+		String bidCntSql = "SELECT COUNT(*) CNT FROM BIDDING WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 2 AND BIDDING_STATUS_NO = 1";
+		String pendCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND NOT O.ORDERS_STATUS_NO=5";
+		String finishedCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND O.ORDERS_STATUS_NO=5";
+		
+		PreparedStatement bidCntPstmt = conn.prepareStatement(bidCntSql);
+		PreparedStatement pendCntPstmt = conn.prepareStatement(pendCntSql);
+		PreparedStatement finishedCntPstmt = conn.prepareStatement(finishedCntSql);
+		
+		bidCntPstmt.setString(1, loginMember.getNo());
+		pendCntPstmt.setString(1, loginMember.getNo());
+		finishedCntPstmt.setString(1, loginMember.getNo());
+		
+		ResultSet rs1 = bidCntPstmt.executeQuery();
+		ResultSet rs2 = pendCntPstmt.executeQuery();
+		ResultSet rs3 = finishedCntPstmt.executeQuery();
 		
 		// rs
+		int bidCnt = 0;
+		int pendCnt = 0;
 		int finishedCnt = 0;
-		if(rs.next()) {
-			finishedCnt = rs.getInt("CNT");
+		if(rs1.next()) {
+			bidCnt = rs1.getInt("CNT");
 		}
 		
-		// close
-		JDBCTemplate.close(rs);
-		JDBCTemplate.close(pstmt);
+		if(rs2.next()) {
+			pendCnt = rs2.getInt("CNT");
+		}
 		
-		return finishedCnt;
+		if(rs3.next()) {
+			finishedCnt = rs3.getInt("CNT");
+		}
+		
+		HistoryCntVo cntVo = new HistoryCntVo();
+		cntVo.setCntBid(bidCnt);
+		cntVo.setCntPend(pendCnt);
+		cntVo.setCntFinished(finishedCnt);
+		
+		return cntVo;
 	}
 	
-	// 판매입찰 cnt 구하기
-	public int getSellBiddingCnt(Connection conn, MemberVo loginMember) throws Exception {
-		
-		return 0;
-	}
-	
-	// 판매 진행중 cnt 구하기
-	public int getSellPendingCnt(Connection conn, MemberVo loginMember) throws Exception {
-		
-		return 0;
-	}
-	
-	// 판매 완료 cnt 구하기
-	public int getSellFinishedCnt(Connection conn, MemberVo loginMember) throws Exception {
-		
-		return 0;
-	}
 	
 	// 구매입찰 정보 조회(List)
-	public List<BuyingListVo> getBuyBiddingInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<BuyingListVo> getBuyBiddingInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
 		// sql
 		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , B.PRICE 입찰희망가 , BS.BIDDING_STATUS 입찰상태 , B.EXPIRE_DATE 입찰마감기한 , B.ENROLL_DATE 입찰생성일 FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 1 ORDER BY B.ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -132,7 +140,7 @@ public class MyPageDao {
 	}
 	
 	// 진행중인 구매내역 정보 조회(List)
-	public List<BuyingListVo> getBuyPendingInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<BuyingListVo> getBuyPendingInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
 		// sql
 		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 1 AND NOT O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -166,7 +174,7 @@ public class MyPageDao {
 	}
 	
 	// 완료된 구매내역 정보 조회(List)
-	public List<BuyingListVo> getBuyFinishedInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<BuyingListVo> getBuyFinishedInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
 		// sql
 		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 , O.TOTAL_PRICE 결제금액 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 1 AND O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);

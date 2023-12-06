@@ -1,10 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <%
-    
-    
-    %>
     
 <!DOCTYPE html>
 <html>
@@ -12,10 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
 <link rel="stylesheet" href="/shoekream/resources/css/common/mypage_side.css">
 <link rel="stylesheet" href="/shoekream/resources/css/mypage/buying.css">
 
+<script defer src="/shoekream/resources/js/mypage/buying.js"></script>
 </head>
 <body>
 	
@@ -32,15 +28,15 @@
                 </div>
                 <div class="tab-container">
                     <div class="tab" id="bidTab" onclick="location.href='/shoekream/mypage/buying?tab=bidding'">
-                        <div id="count">0</div>
+                        <div id="bidCount">0</div>
                         <div id="stage">구매 입찰</div>
                     </div>
                     <div class="tab" id="pendTab" onclick="location.href='/shoekream/mypage/buying?tab=pending'">
-                        <div id="count">0</div>
+                        <div id="pendCount">0</div>
                         <div id="stage">진행 중</div>
                     </div>
                     <div class="tab" id="finishTab" onclick="location.href='/shoekream/mypage/buying?tab=finished'">
-                        <div id="count">0</div>
+                        <div id="finishedCount">0</div>
                         <div id="stage">종료</div>
                     </div>
 
@@ -48,12 +44,13 @@
 
 
                 <div class="period-search">
-                    <form>
+                    <form action="/shoekream/mypage/buying" method="get">
                         <div>
                         <div class="month" onclick="">최근 2개월</div>
                         <div class="month" onclick="">4개월</div>
                         <div class="month" onclick="">6개월</div>
                         </div>
+                        <input type="text" name="tab" hidden>
                         <input type="date" name="startDate">
                         <span>~</span>
                         <input type="date" name="endDate">
