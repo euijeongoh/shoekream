@@ -10,7 +10,7 @@
 
 <link rel="stylesheet" href="/shoekream/resources/css/mypage/buy_buying.css">
 
-<script defer src="/shoekream/resources/js/mypage/buy_buying.js"></script>
+<script defer src="/shoekream/resources/js/mypage/buying.js"></script>
 </head>
 <body>
 	
@@ -27,15 +27,15 @@
                 </div>
                 <div class="tab-container">
                     <div class="tab" id="bidTab" onclick="location.href='/shoekream/mypage/buying/bidding?pno=1'">
-                        <div id="bidCount">0</div>
+                        <div id="bidCount">${cntVo.cntBid}</div>
                         <div id="stage">구매 입찰</div>
                     </div>
                     <div class="tab" id="pendTab" onclick="location.href='/shoekream/mypage/buying/pending?pno=1'">
-                        <div id="pendCount">0</div>
+                        <div id="pendCount">${cntVo.cntPend}</div>
                         <div id="stage">진행 중</div>
                     </div>
                     <div class="tab" id="finishTab" onclick="location.href='/shoekream/mypage/buying/finished?pno=1">
-                        <div id="finishedCount">0</div>
+                        <div id="finishedCount">${cntVo.cntFinished}</div>
                         <div id="stage">종료</div>
                     </div>
 
@@ -43,7 +43,7 @@
 
 
                 <div class="period-search">
-                    <form action="/shoekream/mypage/buying" method="get">
+                    <form action="/shoekream/mypage/buying/bidding" method="get">
                         <div>
                         <div class="month" id="2mths" onclick="set2Mths();">최근 2개월</div>
                         <div class="month" id="4mths" onclick="set4Mths();">4개월</div>

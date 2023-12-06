@@ -32,7 +32,9 @@ public class BuyingBiddingController extends HttpServlet{
 			
 			// parameter값 받아오기
 			String startDate = req.getParameter("startDate");
+			System.out.println(startDate);
 			String endDate = req.getParameter("endDate");
+			System.out.println(endDate);
 			
 			// 데이터 뭉치기 - map
 			Map<String, String> map = new HashMap<String, String>();
