@@ -75,11 +75,48 @@ public class AdminEnrollProductService {
 			JDBCTemplate.rollback(conn);
 		}
 		
+		
+		
+		
 		//close
 		JDBCTemplate.close(conn);
 		
 		return result;
 	}
 
+	public EnrollProductVo getEnrolledProductNo(EnrollProductVo vo)throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		AdminEnrollProductDao dao = new AdminEnrollProductDao();
+		
+		EnrollProductVo dbVo = dao.getEnrolledProductNo(conn, vo);
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return dbVo;
+	}
+
+	public int enrollProductSize(EnrollProductVo productSizesVo) throws Exception{
+		//Conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		AdminEnrollProductDao dao = new AdminEnrollProductDao();
+		
+		int result = dao.enrollProductSize(conn, productSizesVo);
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		JDBCTemplate.close(conn);
+		return result;
+	}
 	
 }
