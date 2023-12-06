@@ -79,12 +79,11 @@ button {
     width: 110px;
     height: 50px
 }
-
 a{
 	text-decoration: none;
 	color:black;
 }
 
 button>a{
-    color:white
+	color:white;
 }

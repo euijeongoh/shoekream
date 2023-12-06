@@ -15,35 +15,47 @@
 		</div>
 		<div class="box3">
 			<div class="left_bar">
-				<div>고객지원</div>
-				<div>공지사항</div>
-				<div>1:1문의</div>
-				<div>상품 등록 문의</div>
+				<div>
+					<a href="">고객지원</a>
+				</div>
+				<div>
+					<a href="">공지사항</a>
+				</div>
+				<div>
+					<a href="">1:1문의</a>
+				</div>
+				<div>
+					<a href="">상품 등록 문의</a>
+				</div>
 			</div>
 			<div class="icons">
 				<div>
-                    <a href="">
-                        <img src="/shoekream/resources/img/footer/인별.png" alt="인별">
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="/shoekream/resources/img/footer/페북.png" alt="페북">
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="/shoekream/resources/img/footer/카톡.png" alt="카톡">
-                    </a>
-                </div>
+					<a href=""> <img src="/shoekream/resources/img/footer/카톡.png"
+						alt="카톡">
+					</a>
+				</div>
+				<div>
+					<a href=""> <img src="/shoekream/resources/img/footer/페북.png"
+						alt="페북">
+					</a>
+				</div>
+				<div>
+					<a href=""> <img src="/shoekream/resources/img/footer/페북.png"
+						alt="페북">
+					</a>
+				</div>
 			</div>
 			<div></div>
 			<div class="faq">
-				<button>자주 묻는 질문</button>
+				<button>
+					<a href="">자주 묻는 질문</a>
+				</button>
 			</div>
 		</div>
 		<div class="box4"></div>
 	</footer>
+
+
 
 </body>
 </html>
