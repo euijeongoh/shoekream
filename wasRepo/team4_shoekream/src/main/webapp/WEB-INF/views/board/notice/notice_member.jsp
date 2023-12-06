@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
+<link rel="stylesheet" href="/shoekream/resources/css/board/notice/notice.css">
+<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 </head>
 <body>
 
@@ -136,5 +139,6 @@
 			</div>
 		</div>
 	</div>
+				<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>
