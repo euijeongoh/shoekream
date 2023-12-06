@@ -14,11 +14,13 @@
 <body>
 	<%@ include file = "/WEB-INF/views/common/header.jsp" %>
         <br>
+        <div class="header-inner">
         <div class="header-list">
             <a href="/shoekream/admin/product/enroll"><b><u>상품등록</u></b></a>
             <a href="/shoekream/admin/product/edit">상품수정</a>
             <a href="/shoekream/admin/product/delete">상품삭제</a>
-            <a href="/shoekream/admin/product/list">상품목록</a>
+            <a href="/shoekream/admin/product/list?pno=1">상품목록</a>
+        </div>
         </div>        
     <br><br>
     <hr>
@@ -50,13 +52,7 @@
                             <a href="/shoekream/admin/product/enroll" class="menu_link"><b><u>상품등록</u></b></a>
                         </li>
                         <li class="menu_item">
-                            <a href="/shoekream/admin/product/edit" class="menu_link">상품 수정</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="/shoekream/admin/product/delete" class="menu_link">상품 삭제</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="/shoekream/admin/product/list" class="menu_link">상품 목록</a>
+                            <a href="/shoekream/admin/product/list?pno=1" class="menu_link">상품 목록</a>
                         </li>
                     </ul>
                 </div>
@@ -121,7 +117,7 @@
 
                         </div>
                         <input type="submit" value="저장">
-                        <button>취소</button>
+                        <button onclick="resetForm()">취소</button>
                     </form>
                 </div>
                 <br>
@@ -154,4 +150,17 @@ function previewImage(event) {
     }
 }
 
+function resetForm(event) {
+    // 기본 동작 막기
+    event.preventDefault();
+
+    // form 요소를 ID로 찾아옴
+    var form = document.querySelector('#product-information form');
+    
+    // form을 리셋 (내용 초기화)
+    form.reset();
+    
+    // 이미지 미리보기도 초기화
+    document.getElementById('image-preview').src = '#';
+}
 </script>
