@@ -22,28 +22,58 @@ public class MyPageDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
-		int bidcnt = 0;
+		int bidCnt = 0;
 		if(rs.next()) {
-			bidcnt = rs.getInt("CNT");
+			bidCnt = rs.getInt("CNT");
 		}
 		
 		// close
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
 		
-		return bidcnt;
+		return bidCnt;
 	}
 	
 	// 구매 진행중 cnt 구하기
 	public int getBuyPendingCnt(Connection conn, MemberVo loginMember) throws Exception {
+		// sql
+		String sql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND NOT O.ORDERS_STATUS_NO=5";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		ResultSet rs = pstmt.executeQuery();
 		
-		return 0;
+		// rs
+		int pendCnt = 0;
+		if(rs.next()) {
+			pendCnt = rs.getInt("CNT");
+		}
+		
+		// close
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return pendCnt;
 	}
 	
 	// 구매 완료 cnt 구하기
 	public int getBuyFinishedCnt(Connection conn, MemberVo loginMember) throws Exception {
+		// sql
+		String sql = "SELECT COUNT(*) FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND O.ORDERS_STATUS_NO=5";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		ResultSet rs = pstmt.executeQuery();
 		
-		return 0;
+		// rs
+		int finishedCnt = 0;
+		if(rs.next()) {
+			finishedCnt = rs.getInt("CNT");
+		}
+		
+		// close
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return finishedCnt;
 	}
 	
 	// 판매입찰 cnt 구하기
