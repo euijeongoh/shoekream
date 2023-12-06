@@ -1,5 +1,12 @@
+<%@page import="com.shoekream.notice.controller.NoticeVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+	<%
+		List<NoticeVo> noticeVoList = (List<NoticeVo>)request.getAttribute("noticeVoList");
+	%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +14,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
 <link rel="stylesheet" href="/shoekream/resources/css/board/notice/notice.css">
-<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 </head>
 <body>
 
@@ -53,74 +59,12 @@
 					<div>검색</div>
 				</div>
 				<ul class="dropdown_list">
+					<%for(NoticeVo vo : noticeVoList) {%>
 					<li><a href="">
-							<div class="dropdown">글1</div>
-							<div class="date">2023.11.15</div>
+							<div class="dropdown"><%= vo.getTitle() %></div>
+							<div class="date"><%= vo.getEnrollDate() %></div>
 					</a></li>
-					<li><a href="">
-							<div class="dropdown">글2</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글3</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글4</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글5</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글6</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글7</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글8</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글9</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글10</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글11</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글12</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글13</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글14</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글15</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글16</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
-					<li><a href="">
-							<div class="dropdown">글17</div>
-							<div class="date">2023.11.15</div>
-					</a></li>
+					<% } %>
 				</ul>
 				<div class="pagination">
 					<div class="pagination_box">

@@ -3,6 +3,7 @@ package com.shoekream.notice.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.shoekream.db.util.JDBCTemplate;
@@ -18,14 +19,25 @@ public class NoticeDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		//rs
-		List<NoticeVo> voList = null;
+		List<NoticeVo> noticeVoList = new ArrayList<NoticeVo>();
 		while(rs.next()) {
+			String title = rs.getString("TITLE");
+			String enrollDate = rs.getString("ENROLL_DATE");
 			
+			NoticeVo nv = new NoticeVo();
+			
+			nv.setTitle(title);
+			nv.setEnrollDate(enrollDate);
+			
+			noticeVoList.add(nv);
 		}
 		
 		//close
 		JDBCTemplate.close(pstmt);
 		JDBCTemplate.close(rs);
+		
+		System.out.println("테스트 : " + noticeVoList);
+		return noticeVoList;
 		
 	}
 
