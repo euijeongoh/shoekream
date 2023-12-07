@@ -82,13 +82,13 @@
                             <li class="check_item">
                                 <a class="check_area">
                                     <div class="notice_group">
-                                        <label for="undefined" class="check_label">
+                                        <label for="undefined_box1" class="check_label">
                                         	<p class="notice_maintext">구매하려는 상품이 맞습니다.</p>
                                         	<p class="notice_subtext">상품이미지, 모델번호, 출시일, 상품명, 사이즈를 한 번 더 확인했습니다. 단, 상품의 이미지는 촬영 환경에 따라 실제와 다를 수 있습니다.</p>
                                        	</label>
                                     </div>
                                     <div class="checkbox_item">
-                                        <input id="undefined" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
+                                        <input id="undefined_box1" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
                                         <label for="" class="check_label">
                                             
                                         </label>
@@ -98,11 +98,13 @@
                             <li class="check_item">
                                 <a class="check_area">
                                     <div class="notice_group">
-                                        <p class="notice_maintext">국내/해외에서 발매한 정품, 새상품입니다.</p>
-                                        <p class="notice_subtext">모든 구성품이 그대로이며, 한 번도 착용하지 않은 정품, 새상품입니다. 국내 발매 상품 여부는 확인드리지 않습니다.</p>
+                                    	<label for="undefined_box2" class="check_label">
+	                                        <p class="notice_maintext">국내/해외에서 발매한 정품, 새상품입니다.</p>
+	                                        <p class="notice_subtext">모든 구성품이 그대로이며, 한 번도 착용하지 않은 정품, 새상품입니다. 국내 발매 상품 여부는 확인드리지 않습니다.</p>
+                                        </label>
                                     </div>
                                     <div class="checkbox_item">
-                                        <input id="undefined" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
+                                        <input id="undefined_box2" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
                                         <label for="" class="check_label">
                                             
                                         </label>
@@ -112,11 +114,13 @@
                             <li class="check_item">
                                 <a class="check_area">
                                     <div class="notice_group">
-                                        <p class="notice_maintext">제조사에서 볼량으로 인정하지 않는 기준은 하자로 판단하지 않습니다.</p>
-                                        <p class="notice_subtext">박스/패키지와 상품 컨디션에 민감하시다면 검수 기준을 반드시 확인하시기 바랍니다.</p>
+                                         <label for="undefined_box3" class="check_label">
+	                                        <p class="notice_maintext">제조사에서 볼량으로 인정하지 않는 기준은 하자로 판단하지 않습니다.</p>
+	                                        <p class="notice_subtext">박스/패키지와 상품 컨디션에 민감하시다면 검수 기준을 반드시 확인하시기 바랍니다.</p>
+                                        </label>
                                     </div>
                                     <div class="checkbox_item">
-                                        <input id="undefined" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
+                                        <input id="undefined_box3" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
                                         <label for="" class="check_label">
                                             
                                         </label>
@@ -126,12 +130,14 @@
                             <li class="check_item">
                                 <a class="check_area">
                                     <div class="notice_group">
-                                        <p class="notice_maintext">SHOEKREAM의 최신 이용정책을 모두 확인하였으며, 구매를 계속합니다.</p>
-                                        <p class="notice_subtext">건전하고 안전한 거래를 위해 반드시 숙지해야 할 미입고, 페널티, 부정거래 등의 이용정책을 확인했습니다.</p>
+                                        <label for="undefined_box4" class="check_label">
+	                                        <p class="notice_maintext">SHOEKREAM의 최신 이용정책을 모두 확인하였으며, 구매를 계속합니다.</p>
+	                                        <p class="notice_subtext">건전하고 안전한 거래를 위해 반드시 숙지해야 할 미입고, 페널티, 부정거래 등의 이용정책을 확인했습니다.</p>
+                                        </label>
                                     </div>
                                     <div class="checkbox_item">
-                                        <input id="undefined" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
-                                        <label fㄴor="" class="check_label">
+                                        <input id="undefined_box4" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
+                                        <label for="" class="check_label">
                                             
                                         </label>
                                     </div>
