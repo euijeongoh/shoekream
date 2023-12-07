@@ -2,10 +2,10 @@ package com.shoekream.mypage.vo;
 
 public class HistoryCntVo {
 	
-	private int cntAll;
-	private int cntBid;
-	private int cntPend;
-	private int cntFinished;
+	private int cntAll; // 전체: cntBid + cntPend + cntFinished
+	private int cntBid; // 입찰 중
+	private int cntPend; // 진행 중
+	private int cntFinished; // 완료
 	
 	public HistoryCntVo() {
 		
