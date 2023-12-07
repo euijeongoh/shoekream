@@ -7,21 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/shoekream/resources/css/admin/product/enroll.css">
-    <link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
-    <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+    <link rel="stylesheet" href="/shoekream/resources/css/common/admin_header.css">
+    <link rel="stylesheet" href="/shoekream/resources/css/common/admin_sidebar.css">
     <script src="/frontRepo/admin/js/msh/enrollProduct.js"></script>
 </head>
 <body>
-	<%@ include file = "/WEB-INF/views/common/header.jsp" %>
-        <br>
+    <header>
         <div class="header-inner">
-        <div class="header-list">
-            <a href="/shoekream/admin/product/enroll"><b><u>상품등록</u></b></a>
-            <a href="/shoekream/admin/product/edit">상품수정</a>
-            <a href="/shoekream/admin/product/delete">상품삭제</a>
-            <a href="/shoekream/admin/product/list?pno=1">상품목록</a>
+            <div class="top-list">
+                <ul>
+                    <li><a href="">고객센터</a></li>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">관심</a></li>
+                    <li><a>알림</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </div>
+            <div class="main-list">
+                <div class="logo-area">
+                    <a href="">
+                    <img src="/shoekream/resources/img/admin/header/logo.svg">
+                    <span>관리자</span>
+                    </a>
+                </div>
+                <div class="head-list">
+                    <ul>
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li id="search-btn"><a><img src="/shoekream/resources/img/admin/header/searchIcon.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header_list">
+                <a href="/shoekream/admin/product/enroll"><b><u><span>상품등록</span></u></b></a>
+                <a href="/shoekream/admin/product/list"><span>상품목록</span></a>
+            </div>        
         </div>
-        </div>        
+        </header>
+
+        <br>
     <br><br>
     <hr>
     <br><br><br>
@@ -73,9 +97,10 @@
                 </div>
             </div> 
             </nav>
+            
             <div class="enroll-area">
+                <div id="product-image-container">
                 <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
-                <div>
                     <div id="image-preview-container" >
                         <img id="image-preview" src="#" alt="이미지 미리보기">
                     </div>
@@ -95,21 +120,21 @@
                         <input type="date" name="releaseDate" placeholder="출시일">
                         <span>사이즈</span>
                         <div>
-                            <input type="checkbox" name="size" value="210">210
+                          
                             <input type="checkbox" name="size" value="215">215
                             <input type="checkbox" name="size" value="220">220
                             <input type="checkbox" name="size" value="225">225
                             <input type="checkbox" name="size" value="230">230
                             <input type="checkbox" name="size" value="235">235
-                            <input type="checkbox" name="size" value="240">240<br>  
-                            <input type="checkbox" name="size" value="245">245
+                            <input type="checkbox" name="size" value="240">240  
+                            <input type="checkbox" name="size" value="245">245<br>
                             <input type="checkbox" name="size" value="250">250
                             <input type="checkbox" name="size" value="255">255
                             <input type="checkbox" name="size" value="260">260
                             <input type="checkbox" name="size" value="265">265
                             <input type="checkbox" name="size" value="270">270
-                            <input type="checkbox" name="size" value="275">275<br>
-                            <input type="checkbox" name="size" value="280">280
+                            <input type="checkbox" name="size" value="275">275
+                            <input type="checkbox" name="size" value="280">280<br>
                             <input type="checkbox" name="size" value="285">285
                             <input type="checkbox" name="size" value="290">290
                             <input type="checkbox" name="size" value="295">295
@@ -125,8 +150,7 @@
                 
             </div>
         </div>
-  <br><br><br><br><br><hr>
-        <%@ include file = "/WEB-INF/views/common/footer.jsp" %>
+  <br><br><br><br><br>
 
 
 </body>

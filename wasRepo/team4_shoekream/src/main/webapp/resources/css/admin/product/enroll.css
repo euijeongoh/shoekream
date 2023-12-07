@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 /*헤더*/
 header{
     width: 1280px;
@@ -87,13 +93,13 @@ header .main-list li {
     height: 24px;
 }
 
-.header-list {
+.header_list {
     display: inline-block;
     width: 100%;
     font-size: 16px; /* 예시로 16px로 설정, 필요에 따라 조절 가능 */
     margin-left: 30px;
 }
-.header-list :visited, .header-list :link, .header-list :hover, .header-list :active{
+.header_list :visited, .header_list :link, .header_list :hover, .header_list :active{
     text-decoration: none;
     color: black;
 }
@@ -136,6 +142,9 @@ header .main-list li {
     align-items: center;
     width: 800px;
     margin: auto;
+}
+#product-image-container{
+	padding: 40px;
 }
 #image-preview-container {
     width: 300px;
@@ -217,56 +226,3 @@ header .main-list li {
     background-color: #44484a;
 }
 
-/*footer*/
-
-li a{
-    list-style: none;
-    text-decoration: none;
-    color: gray;
-}
-
-.service-container {
-    padding: 40px 40px 160px 40px;
-}
-
-.menu-container {
-    width: 200px;
-    margin: 0px 20px 0px 0px;
-    
-}
-
-.service-title {
-    font-family: 'Pretendard';
-    font-weight: 650;
-    font-size: 24px;
-    padding: 0px 0px 30px;
-    color: rgba(34, 34, 34);
-}
-
-.notice{
-    font-size: 18px;
-    font-family: 'Pretendard';
-    font-weight: 650;
-    margin: 0px 0px 12px;
-    color: rgba(34, 34, 34);
-}
-
-.faq {
-    font-size: 18px;
-    font-family: 'Pretendard';
-    font-weight: 650;
-    margin: 0px 0px 12px;
-    color: rgba(34, 34, 34);
-}
-
-
-.qna {
-    font-size: 18px;
-    font-family: 'Pretendard';
-    font-weight: 650;
-    margin: 0px 0px 12px;
-    color: rgba(34, 34, 34);
-}
-.first{
-    display: flex;
-}
