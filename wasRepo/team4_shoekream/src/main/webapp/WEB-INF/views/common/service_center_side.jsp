@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/shoekream/resources/css/common/service_center_side.css">
 </head>
 <body>
 <div class="service-container">
