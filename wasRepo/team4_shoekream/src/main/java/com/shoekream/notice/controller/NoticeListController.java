@@ -20,6 +20,7 @@ public class NoticeListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		NoticeService ns = new NoticeService();
+
 		try {
 		//data
 		int listCount = ns.selectNoticeCount();
@@ -32,15 +33,13 @@ public class NoticeListController extends HttpServlet{
 		int boardLimit = 10;
 		PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
-		
 		//service
 		List<NoticeVo> noticeVoList = ns.NoticeList(pvo);
-		
 		
 		//result == view
 		req.setAttribute("noticeVoList", noticeVoList);
 		req.setAttribute("pvo", pvo);
-		req.getRequestDispatcher("/WEB-INF/views/board/notice/notice_member.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/board/notice/list.jsp").forward(req, resp);
 		
 		}catch(Exception e) {
 			req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp").forward(req, resp);
