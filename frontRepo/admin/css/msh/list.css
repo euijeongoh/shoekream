@@ -96,33 +96,18 @@ header .main-list li {
 .main-list img{
     height: 24px;
 }
-
-/*side-bar*/
-.side-body {
-    display: flex;
-    width: 1200px;
-    justify-content: space-between;
-}
-.sidebar{
-    margin-right: 20px; /* 오른쪽 여백 추가 */
-    width: 180px;
-    font-size: 22px;
-}
- .sidebar :link, .sidebar :hover, .sidebar :active{
-    text-decoration: none;
+.header_list a{
     color: black;
+    font-family: 'Pretendard Light';
 }
-.sidebar a{
-    font-family: 'Pretendard';
-} 
-.sidenav_menu{
-    list-style: none;
-    padding-left: 0px;
+.header_list :link, .header_list:hover, .header_list :active a{
+    text-decoration: none;
 }
-.sidenav_list{
-    font-size: 20px;
-}
-.menu_link{
-    font-size: 16px;
-    color: rgb(141, 141, 141);
+
+
+.main_body {
+    display: flex;
+    width: 1280px;
+    margin: auto;
+    justify-content: space-evenly;
 }

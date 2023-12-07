@@ -1,12 +1,23 @@
+<!-- <%@page import="java.util.Map"%>
+<%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.shoekream.page.vo.PageVo"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+  <%
+    	List<EnrollProductVo> boardVoList = (List<EnrollProductVo>) request.getAttribute("enrollProductList");
+    	PageVo pvo = (PageVo)request.getAttribute("pvo");
+    	
+    	Map<String, String>searchMap = (Map<String, String>)request.getAttribute("searchMap");
+    %> -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/frontRepo/admin/css/msh/list.css"">
-
-    <script src="/frontRepo/admin/js/msh/enrollProduct.js"></script>
+    <link rel="stylesheet" href="/frontRepo/admin/common/admin-sidebar.css  ">
+    <link rel="stylesheet" href="/frontRepo/admin/common/adminheader.css">
 </head>
 <body>
     <header>
@@ -35,77 +46,107 @@
                     </ul>
                 </div>
             </div>
+            <div class="header_list">
+                <a href="/shoekream/admin/product/enroll"><b><u>상품등록</u></b></a>
+                <a href="/shoekream/admin/product/list">상품목록</a>
+            </div>        
         </div>
         </header>
-        <hr>
-        <div class="sidebar" >
-            <a href="/admin"><h2>관리자 페이지</h2></a>
+	<!-- <%@ include file = "/WEB-INF/views/common/header.jsp" %> -->
+        <br>
+    <br><br>
+    <hr>
+    <br><br><br>
+    <div class="main_body">
+        <div class="side_body">
+            <div class="sidebar">
+            <a href="/admin"><h3>관리자 페이지</h3></a>
             <br>
-            <nav class="sidenav">
-                <div class="sidenav_list">
-                    <strong class="sidenav_title">주문관리</strong>
-                    <ul class="sidenav_menu">
-                        <li class="menu_item">
+                 <nav class="sidenav">
+                    <div class="sidenav_list">
+                         <strong class="sidenav_title"><a href="">주문관리</a></strong>
+                            <ul class="sidenav_menu">
+                            <li class="menu_item">    
                             <a href="" class="menu_link">입고 현황</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="" class="menu_link">검수진행 현황</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="" class="menu_link">배송 현황</a>
-                        </li>
-                    </ul>
-                </div>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">검수진행 현황</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">배송 현황</a>
+                            </li>
+                        </ul>
+                    </div>
                 <br>
-                <div class="sidenav_list">
-                    <strong class="sidenav_title">상품 관리</strong>
+                    <div class="sidenav_list">
+                    <strong class="sidenav_title"><a href="">상품 관리</a></strong>
                     <ul class="sidenav_menu">
                         <li class="menu_item">
-                            <a href="" class="menu_link"><b><u>상품등록</u></b></a>
+                            <a href="/shoekream/admin/product/enroll" class="menu_link"><b><u>상품등록</u></b></a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">상품 수정</a>
+                            <a href="/shoekream/admin/product/edit" class="menu_link">상품 수정</a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">상품 삭제</a>
+                            <a href="/shoekream/admin/product/delete" class="menu_link">상품 삭제</a>
                         </li>
                         <li class="menu_item">
-                            <a href="" class="menu_link">상품 목록</a>
+                            <a href="/shoekream/admin/product/list" class="menu_link">상품 목록</a>
                         </li>
                     </ul>
-                </div>
+                    </div>
                 <br>
-                <div class="sidenav_list">
-                    <strong class="sidenav_title">고객 센터</strong>
-                    <ul class="sidenav_menu">
-                        <li class="menu_item">
-                            <a href="" class="menu_link">공지사항</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="" class="menu_link">FAQ</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="" class="menu_link">Q&A</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div> 
-            <div>
-                <form action="">
-                    <table border="1">
-                        <tbody>
-                            <tr>
-                                <td>[상품목록]</td>
-                                <td><img src="./logo.svg" alt="씀네일"></td>
-                                <td><a href="editProduct.html">한글이름/모델남바</a></td>
-                                <td><input type="checkbox" name="모델명" id=""></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <input type="submit" value="삭제하기">
-                </form>
+                    <div class="sidenav_list">
+                    <strong class="sidenav_title"><a href="">고객 센터</a></strong>
+                        <ul class="sidenav_menu">
+                            <li class="menu_item">
+                                <a href="" class="menu_link">공지사항</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">FAQ</a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="" class="menu_link">Q&A</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
+            <div class="list_body">
+               <form action="">
+                   <table border="1">
+                       <tbody>
+                           <tr>
+                               <td>[상품목록]</td>
+                               <td><img src="./logo.svg" alt="씀네일"></td>
+                               <td><a href="editProduct.html">한글이름/모델남바</a></td>
+                               <td><input type="checkbox" name="모델명" id=""></td>
+                           </tr>
+                           <tr>
+                            <td>[상품목록]</td>
+                            <td><img src="./logo.svg" alt="씀네일"></td>
+                            <td><a href="editProduct.html">한글이름/모델남바ddddddddddddddddddddddddddddddddddddddddddd</a></td>
+                            <td><input type="checkbox" name="모델명" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>[상품목록]</td>
+                            <td><img src="./logo.svg" alt="씀네일"></td>
+                            <td><a href="editProduct.html">한글이름/모델남바</a></td>
+                            <td><input type="checkbox" name="모델명" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>[상품목록]</td>
+                            <td><img src="./logo.svg" alt="씀네일"></td>
+                            <td><a href="editProduct.html">한글이름/모델남바</a></td>
+                            <td><input type="checkbox" name="모델명" id=""></td>
+                        </tr>
+                        </tbody>
+                   </table>
+                   <input type="submit" value="삭제하기">
+               </form>
+           </div>
         </div>
-    </body>
+    </div>
+
+</body>
 </html>
