@@ -203,7 +203,7 @@ header .main-list li {
     justify-content: space-around;
     /* align-items: center; */
     width: 95%;
-    height: 60%;
+    height: 80%;
     border-radius: 20px;
     border: 1px solid lightgray;
     margin: 20px 30px;
@@ -213,13 +213,19 @@ header .main-list li {
     justify-content: center;
     margin: 10px 10px;
 }
-.three li button{
+.comfort-button{
     background-color: white;
     color: lightgray;
     border: none;
     height: 30px;
     width: 40px;
     display: block;
+    cursor: pointer;
+}
+
+.selected {
+    color: black;
+    font-weight: bold;
 }
 /* .ignition button:nth-child(3){
     width: 900px;
@@ -227,11 +233,11 @@ header .main-list li {
 /* .ignition button :hover{
     color: black;
     /* background-color: black; */
-} */
-.content{
+/* }  */
+/* .content{ */
     /* background-color: antiquewhite; */
     /* display: ; */
-}
+/* } */
 #wcontent{
     margin: 10px 20px;
 }
@@ -254,13 +260,44 @@ header .main-list li {
     border-radius: 30px;
     width: 700px;
     height: 300px;
+    overflow: hidden;
 }
+/* width: 300px;
+    height: 300px;
+    border: 2px solid lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; */
 #reviewpng{
     width: 200px;
     height: 200px;
     border: 1px solid lightgray;
     margin: auto;
     text-align: center;
+    object-fit: cover;
+}
+/* ax-width: 100%;
+    max-height: 100%;
+    object-fit: cover; */
+#file-input{
+    display: none;
+}
+#file-input-label{
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    border: solid 1px ;
+    border-radius: 5px;
+    height: 25px;
+    /* background-color: orange; */
+}
+.img_label{
+    display: inline-block;
+    width: 100px;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
 }
 .update{
     display: flex;

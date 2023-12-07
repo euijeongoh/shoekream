@@ -16,11 +16,11 @@ import com.shoekream.review.vo.ReviewVo;
 public class ReviewDao {
 	
 	
-	//리뷰작성 //sql 수정
+	//리뷰작성                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 	public int write(Connection conn, ReviewVo vo) throws Exception {
 		
 	 //SQL
-	  String sql = "INSERT INTO REVIEW(NO, MEMBER_NO, PRODUCT_NO, COMFORT_NO, FIVE_STAR_RATING, CONTENT)VALUES (SEQ_REVIEW_NO.NEXTVAL, ?, ?, ?, ?, ?)";
+	  String sql = "INSERT INTO REVIEW(NO ,MEMBER_NO ,PRODUCT_NO ,COMFORT_NO ,FIVE_STAR_RATING ,CONTENT ,LIKE_BTN ,REVIEW_IMAGE ,PROFILE_IMAGE) VALUES(SEQ_REVIEW_NO.NEXTVAL, ? ,? ,? ,? ,? ,? ,? ,?)";
       PreparedStatement pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, vo.getNo());
       pstmt.setString(2, vo.getMemberNo());
@@ -28,6 +28,9 @@ public class ReviewDao {
       pstmt.setString(4, vo.getComfortNo());
       pstmt.setString(5, vo.getFiveStarRating());
       pstmt.setString(6, vo.getContent());
+      pstmt.setString(7, vo.getLikeBtn());
+      pstmt.setString(8, vo.getReviewImage());
+      pstmt.setString(9, vo.getProfileImage());
       int result = pstmt.executeUpdate();
       
       //close
@@ -41,7 +44,7 @@ public class ReviewDao {
 	public List<ReviewVo> myReviewList(Connection conn) throws Exception {
 		
 		//sql
-		String sql = "SELECT MEMBER_NO AS  REVIEW_IMAGE , PROFILE_IMAGE , LIKE_BTN FROM REVIEW";		
+		String sql = "SELECT MEMBER_NO, PROFILE_IMAGE , LIKE_BTN FROM REVIEW";		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -49,14 +52,12 @@ public class ReviewDao {
 		List<ReviewVo> myreviewVoList = new ArrayList<ReviewVo>();
 		while(rs.next()) {
 			
-			String no = rs.getString("NO");
-			String reviewImage = rs.getString("REVIEW_IMAGE");
+			String memberNo = rs.getString("MEMBER_NO");
 			String profileImage = rs.getString("PROFILE_IMAGE");
 			String likeBtn = rs.getString("LIKE_BTN");
 			
 			ReviewVo vo = new ReviewVo();
-			vo.setNo(no);
-			vo.setReviewImage(reviewImage);
+			vo.setNo(memberNo);
 			vo.setProfileImage(profileImage);
 			vo.setLikeBtn(likeBtn);
 			

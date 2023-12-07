@@ -9,7 +9,7 @@ import com.shoekream.review.vo.ReviewVo;
 
 public class ReviewService {
 	
-	//리뷰 작성
+	//리뷰작성
 	public int write(ReviewVo vo) throws Exception {
 	      
       // conn
