@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard';
+}
+.modal_quit {
+    background-color: #ebebeb;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);
+    left: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 448px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.btn_layer_close{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    font-size: 25px;
+}
+.layer_header{
+    background-color: #ebebeb;
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.27px;
+    letter-spacing: -.15px;
+    line-height: 22px;
+    min-height: 44px;
+    padding: 18px 50px;
+    text-align: center;
+}
+
+.layer_header div {
+    font-size: 20px;
+    padding: 40px 50px 18px;
+}
+
+.layer_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.layer_content .input-title {
+    font-size: 13px;
+    color: rgba(34, 34, 34);
+    padding: 0px 14px;
+}
+
+
+.layer_btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 32px 32px;
+}
+
+.layer_btn button {
+    height: 36px;
+    width: 100px;
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.layer_btn a {
+    font-size: 12px;
+    margin: 14px;
+    color: rgba(34, 34, 34, 0.8);
+    cursor: pointer;
+    text-decoration: underline;
+}
+

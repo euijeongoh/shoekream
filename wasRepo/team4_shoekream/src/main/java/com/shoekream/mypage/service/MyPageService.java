@@ -1,11 +1,9 @@
 package com.shoekream.mypage.service;
 
 import java.sql.Connection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
@@ -135,6 +133,24 @@ public class MyPageService {
 		
 		return wishList;
 	}
+
+//	public HistoryCntVo getBuyingCnts(MemberVo loginMember) {
+//		// conn
+//		Connection conn = JDBCTemplate.getConnection();
+//		
+//		// dao
+//		MyPageDao dao = new MyPageDao();
+//		int bidCnt = dao.getBiddingCnt(conn, loginMember);
+////		int pendCnt = dao.getPendingCnt(conn, loginMember);
+////		int finishedCnt = dao.getFinishedCnt(conn, loginMember);
+//		
+////		HistoryCntVeo cntVo = new HistoryCntVo(bidCnt, pendCnt, finishedCnt);
+//		
+//		// close
+//		JDBCTemplate.close(conn);
+//		
+////		return cntVo;
+//	}
 
 	
 	

@@ -402,5 +402,21 @@ public class MyPageDao {
 		return productList;
 		
 	}
+
+	public int getBiddingCnt(Connection conn, MemberVo loginMember) throws Exception {
+		// sql
+		String bidCntSql = "SELECT COUNT(*) CNT FROM BIDDING WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 1 AND BIDDING_STATUS_NO = 1";
+		PreparedStatement bidCntPstmt = conn.prepareStatement(bidCntSql);
+		bidCntPstmt.setString(1, loginMember.getNo());
+		ResultSet rs = bidCntPstmt.executeQuery();
+		
+		// rs
+		int bidCnt = 0;
+		if(rs.next()) {
+			bidCnt = rs.getInt("CNT");
+		}
+		
+		return bidCnt;
+	}
 		
 }

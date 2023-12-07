@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="/shoekream/resources/css/mypage/buy_buying.css">
+<link rel="stylesheet" href="/shoekream/resources/css/mypage/buying.css">
 
 <script defer src="/shoekream/resources/js/mypage/buying.js"></script>
 </head>
@@ -43,12 +43,13 @@
 
 
                 <div class="period-search">
-                    <form action="/shoekream/mypage/buying/bidding" method="get">
+                    <form action="/shoekream/mypage/buying" method="get">
                         <div>
                         <div class="month" id="2mths" onclick="set2Mths();">최근 2개월</div>
                         <div class="month" id="4mths" onclick="set4Mths();">4개월</div>
                         <div class="month" id="6mths" onclick="set6Mths();">6개월</div>
                         </div>
+                        <input type="text" name="tab" hidden>
                         <input type="date" name="startDate">
                         <span>~</span>
                         <input type="date" name="endDate">
