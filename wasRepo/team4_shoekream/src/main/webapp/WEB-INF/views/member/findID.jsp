@@ -12,7 +12,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	<link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/member/findID.css">
 	
 </head>

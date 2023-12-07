@@ -13,7 +13,7 @@
 	
 	<div class="modal_quit">
         <!-- a 태그 삭제 버튼 -->
-        <a href="#" class="btn_layer_close">
+        <a href="/shoekream/member/quit" class="btn_layer_close">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
                     viewBox="0 0 16 16"w>
@@ -30,13 +30,14 @@
             <!-- 여기 내용 -->
             <div class="input_title">
                 <div>탈퇴하기 클릭 시 바로 탈퇴 처리됩니다.<br><br>
-                <input type="checkbox" name="quit_yn" value="yes"> ShoeKream 회원을 탈퇴하겠습니다.
                 </div>
             </div>
             <div class="layer_btn">
                 <!-- 여기 하단(풋터) -->
-                <button type="button">탈퇴 안 할래요</button>
-                <a>탈퇴하기</a>
+                <button type="button" onclick="location.href='/shoekream/member/quit'">탈퇴 안 할래요</button>
+                <form action="/shoekream/member/quit" method="post">
+                <input type="submit" value="탈퇴하기">
+                </form>
             </div>
         </div>
     </div>

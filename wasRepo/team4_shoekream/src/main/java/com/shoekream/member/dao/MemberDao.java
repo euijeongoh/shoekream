@@ -84,14 +84,17 @@ public class MemberDao {
 		return isDup;
 	}
 
-	public int deleteInfo(Connection conn, MemberVo loginMember) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int updateStatus(Connection conn, MemberVo loginMember) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateStatus(Connection conn, MemberVo loginMember) throws Exception {
+		// sql
+		String sql = "UPDATE MEMBER SET DEL_YN='Y' WHERE NO=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		int result = pstmt.executeUpdate();
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
 	}
 
 	public MemberVo searchId(Connection conn, String email) throws Exception {
@@ -111,6 +114,28 @@ public class MemberDao {
 		}
 		
 		return vo;
+	}
+
+	// 패널티 여부 확인
+	public boolean checkPenaltyYn(Connection conn, MemberVo loginMember) throws Exception {
+		// sql
+		String sql = "SELECT PENALTY_YN FROM MEMBER WHERE NO=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		ResultSet rs = pstmt.executeQuery();
+		
+		// rs
+		String penaltyYn = null;
+		if(rs.next()) {
+			penaltyYn = rs.getString("PENALTY_YN");
+		}
+		
+		boolean canQuit = false;
+		if(penaltyYn.equals('N')) {
+			canQuit = true;
+		}
+		
+		return canQuit;
 	}
 
 }
