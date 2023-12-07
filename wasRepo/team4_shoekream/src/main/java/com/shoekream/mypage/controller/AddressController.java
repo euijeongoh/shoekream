@@ -24,7 +24,7 @@ public class AddressController extends HttpServlet{
 			
 			AddressService as = new AddressService();
 			AddrBookVo vo = as.selectAddrList(no);
-			
+			System.out.println(vo);
 			
 			req.setAttribute("vo", vo);
 			req.getRequestDispatcher("/WEB-INF/views/mypage/addr.jsp").forward(req, resp);
