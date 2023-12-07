@@ -78,7 +78,6 @@
                             <ul class="select_list grid_3">
                             	<% for(int i = 0; i < voList.size(); i++){ 
                             		BiddingVo vo = voList.get(i);
-                            	
                             	%>
 	                            	<li id="select_item">
 	                                    <button class="select_link buy" onclick="f01(<%= vo.getPrice()%>)">
