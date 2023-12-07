@@ -157,7 +157,7 @@ header .main-list li {
     /* background-color: aqua; */
 }
 #wstar{
-    margin: 30px 80px;
+    margin: 30px 50px;
     font-size: large;
 }
 .starjom{ 
@@ -195,22 +195,25 @@ header .main-list li {
     margin: 30px 80px;
     font-size: large;
 }
-.ignition ul{
+.three{
+    /* background-color: aqua; */
+}
+.three ul{
     display: flex;
     justify-content: space-around;
     /* align-items: center; */
-    width: 90%;
+    width: 95%;
     height: 60%;
     border-radius: 20px;
     border: 1px solid lightgray;
-    margin: 20px 0px;
+    margin: 20px 30px;
 }
-.ignition li{
+.three li{
     display: block;
     justify-content: center;
     margin: 10px 10px;
 }
-.ignition button{
+.three li button{
     background-color: white;
     color: lightgray;
     border: none;
@@ -221,10 +224,10 @@ header .main-list li {
 /* .ignition button:nth-child(3){
     width: 900px;
 } */
-.ignition button :hover{
+/* .ignition button :hover{
     color: black;
     /* background-color: black; */
-}
+} */
 .content{
     /* background-color: antiquewhite; */
     /* display: ; */
@@ -296,12 +299,15 @@ header .main-list li {
     margin: auto;
     /* background-color: aliceblue; */
 }
-.update button{
-    justify-content:space-evenly;
+/* .update button{ */
+    /* justify-content:space-evenly;
     background-color: white;
     color: black;
-    font-size: medium;
+    font-size: medium; */
     /* display: block; */
+/* } */
+.update input{
+    background-color: white;
 }
 #update_detail{
     text-align: center;

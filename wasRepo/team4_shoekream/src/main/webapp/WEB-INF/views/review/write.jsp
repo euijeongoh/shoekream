@@ -1,5 +1,12 @@
+<%@page import="com.shoekream.review.vo.ReviewVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	List<ReviewVo> categoryVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,14 +73,14 @@
         <div class="upload">
             <p id="wupload"><b>사진 업로드</b></p>
             <div class="upload_picture">
-                <img src="./img/picture.png" alt="리뷰사진" id="reviewpng">
-                <a href="" id="reviewpng"><div >이미지업로드</div></a>
+                <img src="/resources/img/review/picture01.png" alt="리뷰사진" id="reviewpng">
+                <a href="/resources/img/review/reviewlist01.png" id="reviewpng"><div>이미지업로드</div></a>
             </div>
         </div>
         <div class="update">
            <ul>
-            <li id="update_detail"><button>올리기</button></li>
-            <li id="update_detail"><button>취소</button></li>
+            <li id="update_detail"><input type="submit" value="올리기"></li>
+            <li id="update_detail"><input type="submit" value="취소"></li>
            </ul>
         </div>
             
@@ -82,6 +89,7 @@
 </html>
 
 <script type="text/javascript">
+
 function previewImage(event) {
     const fileInput = event.target;
     
@@ -102,22 +110,24 @@ function previewImage(event) {
     }
 }
 
-//별점코드
-// DOM 요소 가져오기
-    const stars = document.querySelectorAll('.stars');
 
-    // 각 별표에 이벤트 리스너 추가
-    stars.forEach((star, index) => {
-        star.addEventListener('click', () => {
-            // 클릭한 별표까지 강조 효과 추가
-            for (let i = 0; i <= index; i++) {
-                stars[i].classList.add('selected');
-            }
 
-            // 클릭한 별표 이후의 별표에는 강조 효과 제거
-            for (let i = index + 1; i < stars.length; i++) {
-                stars[i].classList.remove('selected');
-            }
-        });
-    });
+	//별점코드
+  // DOM 요소 가져오기
+   const stars = document.querySelectorAll('.stars');
+
+   // 각 별표에 이벤트 리스너 추가
+   stars.forEach((star, index) => {
+       star.addEventListener('click', () => {
+           // 클릭한 별표까지 강조 효과 추가
+           for (let i = 0; i <= index; i++) {
+               stars[i].classList.add('selected');
+           }
+
+           // 클릭한 별표 이후의 별표에는 강조 효과 제거
+           for (let i = index + 1; i < stars.length; i++) {
+               stars[i].classList.remove('selected');
+           }
+       });
+   });
 </script>
