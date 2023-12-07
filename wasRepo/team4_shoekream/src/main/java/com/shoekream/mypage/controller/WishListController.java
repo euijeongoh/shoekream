@@ -31,7 +31,7 @@ public class WishListController extends HttpServlet{
 			MyPageService service = new MyPageService();
 			List<WishListVo> wishList = service.viewWishListInfo(loginMember);
 			
-			
+			System.out.println(wishList);
 			
 			// result (== view)
 			req.setAttribute("wishList", wishList);

@@ -1,0 +1,90 @@
+.quit-title {
+    width: 1000px;
+
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -.27px;
+    color: rgba(34, 34, 34);
+}
+
+.quit-title div {
+    width: 1000px;
+    height: 3px;
+    background-color: rgba(34, 34, 34);
+    margin: 14px 0px; 
+}
+
+.quit-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: rgba(34, 34, 34);
+    padding: 15px 0px;
+}
+
+.quit-body {
+	border: 1px solid #ebebeb;
+	border-radius: 12px;
+}
+
+.quit-body form {
+	padding: 20px;
+}
+
+form .quit_term {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.quit_term .main_term {
+	padding-bottom: 10px;
+}
+
+.quit_term .main_term span{
+	font-weight: 600;
+	font-size: 18px;
+	padding-bottom: 10px;
+}
+
+.quit_term .detail {
+	padding-left: 20px;
+	color: rgba(34, 34, 34, 0.8);
+	font-size: 14px;
+}
+
+.btn_area {
+	display: flex;
+	justify-content: center;
+	padding-top: 40px;
+}
+
+.btn_area input {
+	margin: 10px;
+}
+
+.btn_area :first-child {
+	width: 100px;
+	height: 36px;
+	color: #222222;
+	background-color: white;
+	border: 1px solid #222222;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+.btn_area :nth-child(2) {
+	width: 100px;
+	height: 36px;
+	color: white;
+	background-color: black;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+#background {
+	width: 100vw;
+	height: 100vw;
+	position: absolute;
+	background-color: rgba(34, 34, 34, 0.8);
+}

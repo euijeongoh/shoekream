@@ -6,8 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	<link rel="stylesheet" href="/shoekream/resources/css/mypage/buying.css">
+	<link rel="stylesheet" href="/shoekream/resources/css/mypage/buy_pending.css">
 
+<script defer src="/shoekream/resources/js/mypage/buying.js"></script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -23,15 +24,15 @@
                 </div>
                 <div class="tab-container">
                     <div class="tab" id="bidTab" onclick="location.href='/shoekream/mypage/buying/bidding?pno=1'">
-                        <div id="bidCount">0</div>
+                        <div id="bidCount">${cntVo.cntBid}</div>
                         <div id="stage">구매 입찰</div>
                     </div>
                     <div class="tab" id="pendTab" onclick="location.href='/shoekream/mypage/buying/pending?pno=1'">
-                        <div id="pendCount">0</div>
+                        <div id="pendCount">${cntVo.cntPend}</div>
                         <div id="stage">진행 중</div>
                     </div>
-                    <div class="tab" id="finishTab" onclick="location.href='/shoekream/mypage/buying/finished?pno=1">
-                        <div id="finishedCount">0</div>
+                    <div class="tab" id="finishTab" onclick="location.href='/shoekream/mypage/buying/finished?pno=1'">
+                        <div id="finishedCount">${cntVo.cntFinished}</div>
                         <div id="stage">종료</div>
                     </div>
 
@@ -45,7 +46,6 @@
                         <div class="month" id="4mths" onclick="set4Mths();">4개월</div>
                         <div class="month" id="6mths" onclick="set6Mths();">6개월</div>
                         </div>
-                        <input type="text" name="tab" hidden>
                         <input type="date" name="startDate">
                         <span>~</span>
                         <input type="date" name="endDate">
@@ -67,9 +67,9 @@
 					       </div>
 					   </div>
 					   <div class="purchase-detail">
-					  		<div>등록일</div>
-					  		<div>입찰마감일</div>
-					  		<div>입찰희망가</div>
+					  		<div></div>
+					  		<div>주문상태</div>
+					  		<div></div>
 					   </div>
 					</div>
                 </div>

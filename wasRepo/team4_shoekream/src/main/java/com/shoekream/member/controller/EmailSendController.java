@@ -64,7 +64,7 @@ public class EmailSendController extends HttpServlet{
 			session.setDebug(true);
 			
 			System.out.println("g");
-			// 이메일 전송
+			// 이메일 전송0
 			MimeMessage mail = new MimeMessage(session);
 			InternetAddress from = new InternetAddress(emailFrom, "shoekream@naver.com");
 			InternetAddress to = new InternetAddress(emailTo);

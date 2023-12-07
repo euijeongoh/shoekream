@@ -16,8 +16,8 @@
               <div class="shop_menu">
                   <div id="title">쇼핑 정보</div>
                   <ul>
-                      <li><a href="/shoekream/mypage/buying?tab=bidding">구매 내역</a></li>
-                      <li><a href="/shoekream/mypage/selling?tab=bidding">판매 내역</a></li>
+                      <li><a href="/shoekream/mypage/buying">구매 내역</a></li>
+                      <li><a href="/shoekream/mypage/selling">판매 내역</a></li>
                       <li><a href="/shoekream/mypage/wishlist">관심</a></li>
                   </ul>
               </div>

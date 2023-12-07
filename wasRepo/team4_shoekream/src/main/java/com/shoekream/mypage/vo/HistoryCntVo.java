@@ -2,7 +2,7 @@ package com.shoekream.mypage.vo;
 
 public class HistoryCntVo {
 	
-	private int cntAll; // 전체: cntBid + cntPend + cntFinished
+//	private int cntAll; // 전체: cntBid + cntPend + cntFinished
 	private int cntBid; // 입찰 중
 	private int cntPend; // 진행 중
 	private int cntFinished; // 완료
@@ -11,20 +11,15 @@ public class HistoryCntVo {
 		
 	}
 	
-	public HistoryCntVo(int cntAll, int cntBid, int cntPend, int cntFinished) {
+	public HistoryCntVo(int cntBid, int cntPend, int cntFinished) {
 		super();
-		this.cntAll = cntBid + cntPend + cntFinished;
 		this.cntBid = cntBid;
 		this.cntPend = cntPend;
 		this.cntFinished = cntFinished;
 	}
-
+	
 	public int getCntAll() {
-		return cntAll;
-	}
-
-	public void setCntAll(int cntAll) {
-		this.cntAll = cntAll;
+		return cntBid + cntPend + cntFinished;
 	}
 
 	public int getCntBid() {
@@ -53,7 +48,7 @@ public class HistoryCntVo {
 
 	@Override
 	public String toString() {
-		return "HistoryCntVo [cntAll=" + cntAll + ", cntBid=" + cntBid + ", cntPend=" + cntPend + ", cntFinished="
+		return "HistoryCntVo [cntBid=" + cntBid + ", cntPend=" + cntPend + ", cntFinished="
 				+ cntFinished + "]";
 	}
 	
