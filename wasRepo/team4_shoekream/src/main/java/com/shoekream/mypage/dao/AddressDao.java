@@ -13,7 +13,7 @@ public class AddressDao {
 
 	public AddrBookVo selectAddrList(Connection conn, String no) throws Exception{
 		
-		String spl = "SELECT A.NO ,M.NAME AS MEMBER_NO ,A.MEMBER_NO ,A.ADDRES_NAME ,A.ADDRES ,A.DETAIL_ADDRES ,A.PHONE_NUMBER ,A.POST_CODE ,A.DEFAULT_ADDRESS_YN ,A.DEL_YN ,A.ENROLL_DATE FROM ADDERSS_BOOK A JOIN MEMBER M ON (A.MEMBER_NO = M.NO) WHERE A.MEMBER_NO = ? AND A.DEFAULT_ADDRESS_YN = 'Y'";
+		String spl = "SELECT * FROM ADDERSS_BOOK WHERE MEMBER_NO = ? AND DEFAULT_ADDRESS_YN = 'Y' AND DEL_YN = 'N' ORDER BY NO DESC";
 		PreparedStatement pstmt = conn.prepareStatement(spl);
 		pstmt.setString(1, no);
 		ResultSet rs = pstmt.executeQuery();
@@ -22,7 +22,6 @@ public class AddressDao {
 		while (rs.next()) {
 			String No = rs.getString("NO");
 			String memberNo = rs.getString("MEMBER_NO");
-			String memberName = rs.getString("MEMBER_Name");
 			String addressName = rs.getString("ADDRES_NAME");
 			String addres = rs.getString("ADDRES");
 			String detailAddres = rs.getString("DETAIL_ADDRES");
@@ -35,7 +34,6 @@ public class AddressDao {
 			vo = new AddrBookVo();
 			vo.setNo(No);
 			vo.setMemberNo(memberNo);
-			vo.setMemberName(memberName);
 			vo.setAddersName(addressName);
 			vo.setAddres(addres);
 			vo.setDetailAddres(detailAddres);
@@ -51,6 +49,48 @@ public class AddressDao {
 		JDBCTemplate.close(pstmt);
 		
 		return vo;
+	}
+
+	public List<AddrBookVo> selectExtraAddrList(Connection conn, String no) throws Exception{
+		
+		String spl = "SELECT * FROM ADDERSS_BOOK WHERE MEMBER_NO = ? AND DEFAULT_ADDRESS_YN = 'N' AND DEL_YN = 'N' ORDER BY NO DESC";
+		PreparedStatement pstmt = conn.prepareStatement(spl);
+		pstmt.setString(1, no);
+		ResultSet rs = pstmt.executeQuery();
+		
+		List<AddrBookVo> extraVoList = new ArrayList<AddrBookVo>();
+		while (rs.next()) {
+			String No = rs.getString("NO");
+			String memberNo = rs.getString("MEMBER_NO");
+			String addressName = rs.getString("ADDRES_NAME");
+			String addres = rs.getString("ADDRES");
+			String detailAddres = rs.getString("DETAIL_ADDRES");
+			String phoneNumber = rs.getString("PHONE_NUMBER");
+			String postCode = rs.getString("POST_CODE");
+			String defaultAddressYn = rs.getString("DEFAULT_ADDRESS_YN");
+			String delYn = rs.getString("DEL_YN");
+			String enrollDate = rs.getString("ENROLL_DATE");
+			
+			AddrBookVo extraVo = new AddrBookVo();
+			extraVo.setNo(No);
+			extraVo.setMemberNo(memberNo);
+			extraVo.setAddersName(addressName);
+			extraVo.setAddres(addres);
+			extraVo.setDetailAddres(detailAddres);
+			extraVo.setPhoneNumber(phoneNumber);
+			extraVo.setPostCode(postCode);
+			extraVo.setDefaultAddrYn(defaultAddressYn);
+			extraVo.setDelYn(delYn);
+			extraVo.setEnrollDate(enrollDate);
+			
+			extraVoList.add(extraVo);
+			
+		}
+		
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return extraVoList;
 	}
 
 }
