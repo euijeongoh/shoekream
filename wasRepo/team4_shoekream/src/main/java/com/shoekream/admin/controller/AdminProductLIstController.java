@@ -20,7 +20,7 @@ public class AdminProductLIstController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			AdminProductListService ps = new AdminProductListService();
-			int listCount = ps.selectProductCount();
+			int listCount = ps.selectProductCount(); 
 			String currentPage_ = req.getParameter("pno");
 			if(currentPage_ == null) {
 				currentPage_ = "1";
@@ -32,10 +32,10 @@ public class AdminProductLIstController extends HttpServlet{
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, productLimit);
 			
 			List<EnrollProductVo> productVoList = ps.selectProductList(pvo);
-			
 			req.setAttribute("productVoList", productVoList);
 			req.setAttribute("pvo", pvo);
 			req.getRequestDispatcher("/WEB-INF/views/admin/product/list.jsp").forward(req, resp);
+			
 			
 				
 		}catch(Exception e) {

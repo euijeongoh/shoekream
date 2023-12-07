@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.page.vo.PageVo;
 
 public class AdminEnrollProductDao {
 
@@ -130,6 +131,27 @@ public class AdminEnrollProductDao {
 		}else {
 			return 0;
 		}
+	}
+	//제품 목록 조회
+	public List<EnrollProductVo> selectProductList(Connection conn, PageVo pvo) throws Exception{
+		//sql
+		String sql = "SELECT NAME_KO, MODEL_NUMBER FROM PRODUCTS";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		List<EnrollProductVo> voList = new ArrayList<EnrollProductVo>();
+		while(rs.next()) {
+			String nameKo = rs.getString("NAME_KO");
+			String modelNumber = rs.getString("MODEL_NUMBER");
+			EnrollProductVo dbVo = new EnrollProductVo();
+			dbVo.setProductNameKo(nameKo);
+			dbVo.setModelNumber(modelNumber);
+			
+			voList.add(dbVo);
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return voList;
 	}
 	
 }
