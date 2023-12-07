@@ -54,7 +54,7 @@ public class ManagerDao {
 		if(rs.next()) {
 			id = rs.getString("ID");
 		}
-		
+		System.out.println(id);
 		return id;
 	}
 

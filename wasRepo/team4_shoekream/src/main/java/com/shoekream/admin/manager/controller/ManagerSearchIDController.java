@@ -45,7 +45,9 @@ public class ManagerSearchIDController extends HttpServlet {
 				throw new Exception("일치하는 회원정보 찾을 수 없음");
 			}
 			
-			req.setAttribute("idSearched", id);
+			String searchResult = id.replaceAll(id.substring(2, 4), "**");
+			
+			req.setAttribute("searchResult", searchResult);			
 			req.getRequestDispatcher("/WEB-INF/views/admin/member/admin_findID.jsp").forward(req, resp);
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
