@@ -233,6 +233,9 @@ body {
                 letter-spacing: -.16px;
                 width: 100%;
             }
+                /* #btn1 {
+                    cursor: pointer;
+                } */
 
     .order_btn_area{
         border-top: 1px solid #ebebeb;
