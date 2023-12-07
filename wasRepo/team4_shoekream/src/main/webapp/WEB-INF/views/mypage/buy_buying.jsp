@@ -61,20 +61,23 @@
                 </div>
 
                 <div class="purchase-body">
-					<div class="purchase">
-					   <div class="product-detail">
+                
+                	<c:forEach items="bidList" var="bidVo">
+                		<div class="purchase" onclick="">
+					   	<div class="product-detail">
 					       <img class="product_img" src="/shoekream/resources/img/product/logo.svg">
 					       <div class="detail">
-					           <div id="product">dkfsjldkjflwkejfidlsjfkdsfj</div>
+					           <div id="product">sdfsdfsdf</div>
 					           <div id="size">250</div>
 					       </div>
-					   </div>
-					   <div class="purchase-detail">
-					  		<div>등록일</div>
-					  		<div>입찰마감일</div>
-					  		<div>입찰희망가</div>
-					   </div>
+ 					   	</div>
+					   	<ul class="purchase-detail">
+					  		<li>등록일 2023. 10. 23</li>
+					  		<li>마감일 2023. 12. 23</li>
+					  		<li>145,000원</li>
+					   	</ul>
 					</div>
+                	</c:forEach>
                 </div>
             </div>
         </div>

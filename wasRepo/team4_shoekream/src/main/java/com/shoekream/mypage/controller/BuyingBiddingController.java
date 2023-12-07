@@ -46,7 +46,7 @@ public class BuyingBiddingController extends HttpServlet{
 			BiddingHistoryVo historyVo = service.viewBuyingBiddingList(loginMember, map);
 			
 			// result (==view)
-			req.setAttribute("buyList", historyVo.getBidList());
+			req.setAttribute("bidList", historyVo.getBidList());
 			req.setAttribute("cntVo", historyVo.getCntVo());
 			
 			req.getRequestDispatcher("/WEB-INF/views/mypage/buy_buying.jsp").forward(req, resp);
