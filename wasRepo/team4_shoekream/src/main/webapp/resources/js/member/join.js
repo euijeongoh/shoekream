@@ -110,7 +110,8 @@ function checkValidation(){
 		fetch("/shoekream/member/check/email?email=" + strEmail, { method: "POST" })
 		.then((resp)=>{ return resp.json() })
 		.then((data)=>{
-			const result = data.msg;
+			const result = data.reply;
+			console.log(result);
 			const isDup = (result == "no");
 			const emailCheckDiv = document.querySelector("#email_check");
 			if(isDup === true) {

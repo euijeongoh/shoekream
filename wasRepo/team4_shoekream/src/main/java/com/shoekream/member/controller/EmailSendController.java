@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
 
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -43,6 +44,8 @@ public class EmailSendController extends HttpServlet{
 			props.put("mail.smtp.auth", "true");
 			props.put("mail.smtp.ssl.enable", "true");
 			props.put("mail.smtp.ssl.trust", "smtp.naver.com");
+			props.put("mail.user", username);
+			props.put("mail.password", userPwd);
 			
 			// 인증번호 생성
 //			SecureRandom random = SecureRandom.getInstance();
@@ -54,7 +57,8 @@ public class EmailSendController extends HttpServlet{
 			String emailContent = "회원가입 이메일 인증번호 : " + AuthenticationKey;
 			
 			// session 생성
-			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+			
+			Session session = Session.getInstance(props, new Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication(username,
                             userPwd);
