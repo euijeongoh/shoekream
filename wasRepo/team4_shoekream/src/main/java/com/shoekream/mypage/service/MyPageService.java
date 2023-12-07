@@ -39,6 +39,26 @@ public class MyPageService {
 		return historyVo;
 	}
 	
+	public BiddingHistoryVo viewBuyingBiddingList(MemberVo loginMember) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		HistoryCntVo cntVo = dao.getBuyingCnts(conn, loginMember);
+		List<BiddingVo> bidList = dao.getBuyBiddingInfo(conn, loginMember);			
+
+		
+		// dto(BiddingHistoryVo)로 데이터 뭉치기
+		BiddingHistoryVo historyVo = new BiddingHistoryVo(bidList, cntVo);
+		
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return historyVo;
+	}
+	
 	// 구매내역 cnt값, 구매진행중 내역
 	public OrdersHistoryVo viewBuyingPendingList(MemberVo loginMember, Map<String, String> map) throws Exception {
 		// conn
