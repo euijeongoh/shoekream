@@ -200,11 +200,5 @@
         <div class="box4"></div>
     </footer>
 
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
-
 </body>
 </html>

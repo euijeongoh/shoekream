@@ -93,6 +93,8 @@
                         <div class="order_btn_area">
                             <button class="btn_order order_buy buy clickable">
                                 <div class="box">
+                                    <input type="hidden" name="size" value="">
+                                    <input type="hidden" name="price" value="">
                                     <div class="order_price">180,000</div>
                                     <div class="order_desc">5-7일소요</div>
                                 </div>

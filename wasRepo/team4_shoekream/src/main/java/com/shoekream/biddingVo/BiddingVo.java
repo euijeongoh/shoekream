@@ -10,6 +10,7 @@ public class BiddingVo {
 	private String productsSizesNo;
 		private String shoesSizes;
 		private String products;
+		private String productsThumbnail;
 	private String biddingStatusNo;
 		private String biddingStatus;
 	private String biddingPositionNo;
@@ -20,8 +21,9 @@ public class BiddingVo {
 	public BiddingVo() {
 	}
 	public BiddingVo(String no, String memberNo, String memberNick, String productsNo, String productsName,
-			String productsSizesNo, String shoesSizes, String products, String biddingStatusNo, String biddingStatus,
-			String biddingPositionNo, String biddingPosition, String price, String enrollDate, String expireDate) {
+			String productsSizesNo, String shoesSizes, String products, String productsThumbnail,
+			String biddingStatusNo, String biddingStatus, String biddingPositionNo, String biddingPosition,
+			String price, String enrollDate, String expireDate) {
 		this.no = no;
 		this.memberNo = memberNo;
 		this.memberNick = memberNick;
@@ -30,6 +32,7 @@ public class BiddingVo {
 		this.productsSizesNo = productsSizesNo;
 		this.shoesSizes = shoesSizes;
 		this.products = products;
+		this.productsThumbnail = productsThumbnail;
 		this.biddingStatusNo = biddingStatusNo;
 		this.biddingStatus = biddingStatus;
 		this.biddingPositionNo = biddingPositionNo;
@@ -86,6 +89,12 @@ public class BiddingVo {
 	public void setProducts(String products) {
 		this.products = products;
 	}
+	public String getProductsThumbnail() {
+		return productsThumbnail;
+	}
+	public void setProductsThumbnail(String productsThumbnail) {
+		this.productsThumbnail = productsThumbnail;
+	}
 	public String getBiddingStatusNo() {
 		return biddingStatusNo;
 	}
@@ -132,12 +141,10 @@ public class BiddingVo {
 	public String toString() {
 		return "BiddingVo [no=" + no + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", productsNo="
 				+ productsNo + ", productsName=" + productsName + ", productsSizesNo=" + productsSizesNo
-				+ ", shoesSizes=" + shoesSizes + ", products=" + products + ", biddingStatusNo=" + biddingStatusNo
-				+ ", biddingStatus=" + biddingStatus + ", biddingPositionNo=" + biddingPositionNo + ", biddingPosition="
-				+ biddingPosition + ", price=" + price + ", enrollDate=" + enrollDate + ", expireDate=" + expireDate
-				+ "]";
+				+ ", shoesSizes=" + shoesSizes + ", products=" + products + ", productsThumbnail=" + productsThumbnail
+				+ ", biddingStatusNo=" + biddingStatusNo + ", biddingStatus=" + biddingStatus + ", biddingPositionNo="
+				+ biddingPositionNo + ", biddingPosition=" + biddingPosition + ", price=" + price + ", enrollDate="
+				+ enrollDate + ", expireDate=" + expireDate + "]";
 	}
-
-	
-	
+		
 }

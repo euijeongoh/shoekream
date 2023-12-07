@@ -22,7 +22,7 @@ public class BuySelectController extends HttpServlet{
 			List<BiddingVo> voList = bs.buySelect();
 			
 			if (voList == null) {
-				throw new Exception("예와발생 : voList == null");
+				throw new Exception("예외발생 : voList == null");
 			}
 			req.setAttribute("voList", voList);
 			req.getRequestDispatcher("/WEB-INF/views/buy/select.jsp").forward(req, resp);

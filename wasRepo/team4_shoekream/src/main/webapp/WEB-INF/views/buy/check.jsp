@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/check.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+
+    <script defer src="/shoekream/resources/js/bidding/buy/check.js"></script>
 <body>
     <div class="wrap">
         <header>
@@ -78,78 +80,86 @@
                         </div>
                     </div>
                     <div class="buy">
-                        <ul class="check_list">
-                            <li class="check_item">
-                                <a class="check_area">
-                                    <div class="notice_group">
-                                        <label for="undefined" class="check_label">
-                                        	<p class="notice_maintext">구매하려는 상품이 맞습니다.</p>
-                                        	<p class="notice_subtext">상품이미지, 모델번호, 출시일, 상품명, 사이즈를 한 번 더 확인했습니다. 단, 상품의 이미지는 촬영 환경에 따라 실제와 다를 수 있습니다.</p>
-                                       	</label>
+                        <form action="/shoekream/buy/now">
+                            <ul class="check_list">
+                                <li class="check_item">
+                                    <a class="check_area">
+                                        <div class="notice_group">
+                                            <label for="undefined_box1" class="check_label">
+                                                <p class="notice_maintext">구매하려는 상품이 맞습니다.</p>
+                                                <p class="notice_subtext">상품이미지, 모델번호, 출시일, 상품명, 사이즈를 한 번 더 확인했습니다. 단, 상품의 이미지는 촬영 환경에 따라 실제와 다를 수 있습니다.</p>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox_item">
+                                            <input id="undefined_box1" type="checkbox" name="checklist" onclick="f01()" class="blind" style="width: 100%; height: 100%;" >
+                                            <label for="" class="check_label">
+                                                
+                                            </label>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="check_item">
+                                    <a class="check_area">
+                                        <div class="notice_group">
+                                            <label for="undefined_box2" class="check_label">
+                                                <p class="notice_maintext">국내/해외에서 발매한 정품, 새상품입니다.</p>
+                                                <p class="notice_subtext">모든 구성품이 그대로이며, 한 번도 착용하지 않은 정품, 새상품입니다. 국내 발매 상품 여부는 확인드리지 않습니다.</p>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox_item">
+                                            <input id="undefined_box2" type="checkbox" name="checklist" onclick="f01()" class="blind" style="width: 100%; height: 100%;" >
+                                            <label for="" class="check_label">
+                                                
+                                            </label>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="check_item">
+                                    <a class="check_area">
+                                        <div class="notice_group">
+                                            <label for="undefined_box3" class="check_label">
+                                                <p class="notice_maintext">제조사에서 볼량으로 인정하지 않는 기준은 하자로 판단하지 않습니다.</p>
+                                                <p class="notice_subtext">박스/패키지와 상품 컨디션에 민감하시다면 검수 기준을 반드시 확인하시기 바랍니다.</p>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox_item">
+                                            <input id="undefined_box3" type="checkbox" name="checklist" onclick="f01()" class="blind" style="width: 100%; height: 100%;" >
+                                            <label for="" class="check_label">
+                                                
+                                            </label>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="check_item">
+                                    <a class="check_area">
+                                        <div class="notice_group">
+                                            <label for="undefined_box4" class="check_label">
+                                                <p class="notice_maintext">SHOEKREAM의 최신 이용정책을 모두 확인하였으며, 구매를 계속합니다.</p>
+                                                <p class="notice_subtext">건전하고 안전한 거래를 위해 반드시 숙지해야 할 미입고, 페널티, 부정거래 등의 이용정책을 확인했습니다.</p>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox_item">
+                                            <input id="undefined_box4" type="checkbox" name="checklist" onclick="f01()" class="blind" style="width: 100%; height: 100%;" >
+                                            <label for="" class="check_label">
+                                                
+                                            </label>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="btn_confirm">
+                            <!-- <div class="order_btn_area"> -->
+                                <a disabled="disabled" class="blindAgree">동의버튼</a>
+                                <button id="btn1" disabled="disabled" type="submit" class="button">구매 계속</button>
+                                <!-- <button class="btn_order order_buy buy clickable">
+                                    <div class="box">
+                                        <div class="order_price">180,000</div>
+                                        <div class="order_desc">5-7일소요</div>
                                     </div>
-                                    <div class="checkbox_item">
-                                        <input id="undefined" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
-                                        <label for="" class="check_label">
-                                            
-                                        </label>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="check_item">
-                                <a class="check_area">
-                                    <div class="notice_group">
-                                        <p class="notice_maintext">국내/해외에서 발매한 정품, 새상품입니다.</p>
-                                        <p class="notice_subtext">모든 구성품이 그대로이며, 한 번도 착용하지 않은 정품, 새상품입니다. 국내 발매 상품 여부는 확인드리지 않습니다.</p>
-                                    </div>
-                                    <div class="checkbox_item">
-                                        <input id="undefined" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
-                                        <label for="" class="check_label">
-                                            
-                                        </label>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="check_item">
-                                <a class="check_area">
-                                    <div class="notice_group">
-                                        <p class="notice_maintext">제조사에서 볼량으로 인정하지 않는 기준은 하자로 판단하지 않습니다.</p>
-                                        <p class="notice_subtext">박스/패키지와 상품 컨디션에 민감하시다면 검수 기준을 반드시 확인하시기 바랍니다.</p>
-                                    </div>
-                                    <div class="checkbox_item">
-                                        <input id="undefined" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
-                                        <label for="" class="check_label">
-                                            
-                                        </label>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="check_item">
-                                <a class="check_area">
-                                    <div class="notice_group">
-                                        <p class="notice_maintext">SHOEKREAM의 최신 이용정책을 모두 확인하였으며, 구매를 계속합니다.</p>
-                                        <p class="notice_subtext">건전하고 안전한 거래를 위해 반드시 숙지해야 할 미입고, 페널티, 부정거래 등의 이용정책을 확인했습니다.</p>
-                                    </div>
-                                    <div class="checkbox_item">
-                                        <input id="undefined" type="checkbox" name="checklist" class="blind" style="width: 100%; height: 100%;" >
-                                        <label fㄴor="" class="check_label">
-                                            
-                                        </label>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="btn_confirm">
-                        <!-- <div class="order_btn_area"> -->
-                            <a disabled="disabled" class="blindAgree">동의버튼</a>
-                            <button disabled="disabled" class="button">구매 계속</button>
-                            <!-- <button class="btn_order order_buy buy clickable">
-                                <div class="box">
-                                    <div class="order_price">180,000</div>
-                                    <div class="order_desc">5-7일소요</div>
-                                </div>
-                            </button> -->
+                                </button> -->
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
