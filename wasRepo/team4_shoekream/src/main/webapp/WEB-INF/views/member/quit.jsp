@@ -35,7 +35,7 @@
 	                            <input type="checkbox">
 	                            <span>SHOEKREAM을 탈퇴하면 회원 정보 및 서비스 이용 기록이 삭제됩니다.</span>
                         	</div>
-                            <div class="detail">내 프로필, 거래내역, 관심상품, 리뷰 게시물, 미사용 보유 포인트 등의 정보가 사라지게 되며 재가입을 하더라도 복구가 불가능합니다.</div>
+                            <div class="detail">재가입 시에도 복구 불가능하며, 탈퇴한 아이디, 이메일로는 재가입이 불가능합니다</div>
                         </div>
                         <div class="quit_term">
                         	<div class="main_term">
@@ -53,7 +53,7 @@
 
 						<div class="btn_area">
                         <input type="button" value="탈퇴하기">
-                        <input type="button" onclick="location.href='/member/info'" value="취소하기">						
+                        <input type="button" onclick="location.href='/shoekream/member/info'" value="취소하기">						
 						</div>
 						
 						<%@ include file="/WEB-INF/views/member/quit_modal.jsp" %>
