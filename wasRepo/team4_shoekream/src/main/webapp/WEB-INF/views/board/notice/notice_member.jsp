@@ -1,10 +1,12 @@
+<%@page import="com.shoekream.page.vo.PageVo"%>
 <%@page import="com.shoekream.notice.controller.NoticeVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-	<%
+<%
 		List<NoticeVo> noticeVoList = (List<NoticeVo>)request.getAttribute("noticeVoList");
+		PageVo pvo = (PageVo)request.getAttribute("pvo");
 	%>
 
 <!DOCTYPE html>
@@ -13,44 +15,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
-<link rel="stylesheet" href="/shoekream/resources/css/board/notice/notice.css">
+<link rel="stylesheet"
+	href="/shoekream/resources/css/common/service_center_side.css">
+<link rel="stylesheet"
+	href="/shoekream/resources/css/board/notice/notice.css">
+
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 	<div class="wrap">
 		<div class="wrap_inner">
-			<!-- 레프트 사이드바 -->
-			<div class="service-container">
-				<div class="menu-container">
-					<div class="service-title">
-						<h2>고객센터</h2>
-					</div>
-					<nav>
-						<div class="notice">
-							<div id="title">
-								<a href="">공지사항</a>
-							</div>
-						</div>
-						<div class="faq">
-							<div id="title">
-								<a href="">자주 묻는 질문</a>
-							</div>
-						</div>
-						<div class="qna">
-							<div id="title">
-								<a href="">Q&A</a>
-							</div>
-						</div>
-						<div class="request">
-							<div id="title">
-								<a href="">상품 등록 요청</a>
-							</div>
-						</div>
-					</nav>
-				</div>
-			</div>
+			<%@ include file="/WEB-INF/views/common/service_center_side.jsp"%>
 
 			<!-- 본문 -->
 			<div class="board_wrap">
@@ -69,20 +46,36 @@
 				<div class="pagination">
 					<div class="pagination_box">
 						<div class="prev_btn">
-							<a href="">--</a> <a href="">-</a>
+							<a href="">--</a>
+							<% if(pvo.getStartPage() != 1) { %>
+							<a
+								href="/shoekream/notice/list?pno=<%= pvo.getStartPage() - 1 %>"><-</a>
+							<% } %>
 						</div>
-						<div class="page_bind">
-							<a href="">6</a> <a href="">7</a> <a href="">8</a> <a href="">9</a>
-							<a href="">10</a>
-						</div>
+
+						<% for(int i = pvo.getStartPage(); i <= pvo.getEndPage(); i++) { %>
+							<% if(i == pvo.getCurrentPage()) { %>
+<%-- 								<span><%= i %></span> --%>
+								<div class="page_bind">
+								<a href=""><%= i %></a>
+								</div>
+							<% }else {%>
+								<a href="/shoekream/notice/list?pno=<%= i %>"><%= i %></a>
+							<% } %>
+						<% } %>
+						
 						<div class="next_btn_box">
-							<a href="">-</a> <a href="">--</a>
+						<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+							<a href="/shoekream/notice/list?pno=<%= pvo.getEndPage() + 1 %>">-</a>
+							<% } %>
+							 <a href="">--</a>
+						
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-				<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>
