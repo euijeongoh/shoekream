@@ -14,7 +14,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/shoekream/resources/css/common/header.css">
 <link rel="stylesheet"
 	href="/shoekream/resources/css/common/service_center_side.css">
 <link rel="stylesheet"
@@ -46,29 +45,31 @@
 				<div class="pagination">
 					<div class="pagination_box">
 						<div class="prev_btn">
-							<a href="">--</a>
 							<% if(pvo.getStartPage() != 1) { %>
-							<a
-								href="/shoekream/notice/list?pno=<%= pvo.getStartPage() - 1 %>"><-</a>
+							<a href="/shoekream/notice/list?pno=1">《 </a>
+							<% } %>
+							<% if(pvo.getStartPage() != 1) { %>
+							<a href="/shoekream/notice/list?pno=<%= pvo.getStartPage() - 1 %>">〈 </a>
 							<% } %>
 						</div>
 
+								<div class="page_bind">
 						<% for(int i = pvo.getStartPage(); i <= pvo.getEndPage(); i++) { %>
 							<% if(i == pvo.getCurrentPage()) { %>
-<%-- 								<span><%= i %></span> --%>
-								<div class="page_bind">
-								<a href=""><%= i %></a>
-								</div>
+								<a href="/shoekream/notice/list?pno=<%= i %>"><%= i %></a>
 							<% }else {%>
 								<a href="/shoekream/notice/list?pno=<%= i %>"><%= i %></a>
 							<% } %>
 						<% } %>
+								</div>
 						
 						<div class="next_btn_box">
-						<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
-							<a href="/shoekream/notice/list?pno=<%= pvo.getEndPage() + 1 %>">-</a>
+							<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+							<a href="/shoekream/notice/list?pno=<%= pvo.getEndPage() + 1 %>"> 〉</a>
 							<% } %>
-							 <a href="">--</a>
+							<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+							 <a href="/shoekream/notice/list?pno=<%= pvo.getMaxPage() %>"> 》</a>
+							 <% } %>
 						
 						</div>
 					</div>

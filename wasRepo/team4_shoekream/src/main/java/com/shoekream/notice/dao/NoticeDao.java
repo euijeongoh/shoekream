@@ -39,8 +39,6 @@ public class NoticeDao {
 		JDBCTemplate.close(pstmt);
 		JDBCTemplate.close(rs);
 		
-		System.out.println("테스트 : " + noticeVoList);
-		
 		return noticeVoList;
 		
 	}
@@ -61,6 +59,8 @@ public class NoticeDao {
 		JDBCTemplate.close(rs);
 		
 		return count;
+		
+	
 	}
 
 }
