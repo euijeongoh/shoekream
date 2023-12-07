@@ -24,25 +24,16 @@ public class AddressController extends HttpServlet{
 			
 			AddressService as = new AddressService();
 			AddrBookVo vo = as.selectAddrList(no);
-			System.out.println(vo);
-			
 			req.setAttribute("vo", vo);
+			
+			List<AddrBookVo> extraVo = as.selectExtraAddrList(no);
+			req.setAttribute("extraVo", extraVo);
+			
 			req.getRequestDispatcher("/WEB-INF/views/mypage/addr.jsp").forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("[ERROR-A001] 주소록 조회에서 오류남");
 		}
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String name = req.getParameter("name");
-		String phoneNum = req.getParameter("phone_num");
-		String postCode = req.getParameter("post_code");
-		String addr = req.getParameter("addr");
-		String detailAddr = req.getParameter("detail_addr");
-		String defaultAddr = req.getParameter("default_addr");
-	
 	}
 
 }

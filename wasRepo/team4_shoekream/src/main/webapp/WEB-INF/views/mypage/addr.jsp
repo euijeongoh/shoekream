@@ -5,9 +5,25 @@
 	
 	<% 
 		AddrBookVo vo = (AddrBookVo) request.getAttribute("vo");
-		String first = vo.getPhoneNumber().substring(1, 3);
-		String middle = vo.getPhoneNumber().substring(4, 4);
-		String last = vo.getPhoneNumber().substring(9, 12);
+		String first = null;
+		String middle = null;
+		String last = null;
+		if(vo != null){
+		first = vo.getPhoneNumber().substring(0, 3);
+		middle = vo.getPhoneNumber().substring(3, 4);
+		last = vo.getPhoneNumber().substring(8, 11);
+		}
+		
+		List<AddrBookVo> extraVo = (List<AddrBookVo>) request.getAttribute("extraVo");
+		String extraFirst = null;
+		String extraMiddle = null;
+		String extraLast = null;
+		
+		for(AddrBookVo av : extraVo){
+		extraFirst = av.getPhoneNumber().substring(0, 3);
+		extraMiddle = av.getPhoneNumber().substring(3, 4);
+		extraLast = av.getPhoneNumber().substring(8, 11);
+		}
 	%>
 <!DOCTYPE html>
 <html>
@@ -16,11 +32,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 
-
 <link rel="stylesheet"
 	href="/shoekream/resources/css/common/mypage_side.css">
 <link rel="stylesheet"
 	href="/shoekream/resources/css/mypage/Adderss.css">
+
 </head>
 
 <body>
@@ -54,13 +70,17 @@
 					<div id="overlay" class="overlay"></div>
 
 				</div>
+				<% if(vo == null){ %>
+					</script>
+				<% } %>
+				<% if(vo != null){ %>
 				<div class="my_list">
 					<div class="basic">
 						<div class="my_item">
 							<div class="info_bind">
 								<div class="address_info">
 									<div class="name_box">
-										<span class="name"><%=vo.getMemberName() %></span> <span class="mark">기본 배송지</span>
+										<span class="name"><%=vo.getAddersName() %></span> <span class="mark">기본 배송지</span>
 									</div>
 									<p class="phone">
 										<%=first %> <span class="hyphen"></span> <%=middle %> <span class="dot"></span>
@@ -73,15 +93,47 @@
 								</div>
 							</div>
 							<div class="btn_bind">
-								<a href="#" class="btn outlinegrey small"> 수정</a> <a href="#"
-									class="btn outlinegrey small"> 삭제</a>
+								<a href="#" class="btn outlinegrey small" id="openModal"><span
+							class="btn_txt">수정</span></a> 
+							
+							<a href="#" class="btn outlinegrey small"> <span
+							class="btn_txt">삭제</span></a>
 							</div>
 						</div>
 					</div>
-					<div class="other">
-						<div class="other_list"></div>
+				</div>
+				
+				<% for(AddrBookVo av : extraVo){ %>
+				<div class="my_list">
+					<div class="basic">
+						<div class="my_item">
+							<div class="info_bind">
+								<div class="address_info">
+									<div class="name_box">
+										<span class="name"><%=av.getAddersName() %></span>
+									</div>
+									<p class="phone">
+										<%=extraFirst %> <span class="hyphen"></span> <%=extraMiddle %> <span class="dot"></span>
+										<span class="dot"></span> <span class="dot"></span> <span
+											class="hyphen"></span> <span class="dot"></span> <%=extraLast %>
+									</p>
+									<div class="address_box">
+										<span class="zipcode">(<%=av.getPostCode() %>)</span> <span class="adderss"><%=av.getAddres() %></span>
+									</div>
+								</div>
+							</div>
+							<div class="btn_bind">
+								<a href="#" class="btn outlinegrey small" id="openModal"><span
+							class="btn_txt">수정</span></a> 
+								
+								<a href="#" class="btn outlinegrey small"><span
+							class="btn_txt">삭제</span></a>
+							</div>
+						</div>
 					</div>
 				</div>
+				<%} %>
+			<%} %>
 			</div>
 		</div>
 	</div>
