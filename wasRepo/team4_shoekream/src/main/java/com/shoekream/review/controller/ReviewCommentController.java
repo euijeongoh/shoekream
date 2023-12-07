@@ -11,43 +11,43 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shoekream.member.MemberVo;
+import com.shoekream.review.service.ReviewCommentService;
 import com.shoekream.review.service.ReviewService;
-import com.shoekream.review.vo.CategoryVo;
+import com.shoekream.review.vo.ReviewCommentVo;
 import com.shoekream.review.vo.ReviewVo;
 
-@WebServlet("/review/write")
-public class ReviewWriteController extends HttpServlet {
+@WebServlet("/review/comment")
+public class ReviewCommentController extends HttpServlet {
 	
-
-	//리뷰작성화면
+	//댓글 작성화면
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	    try {
-	        // 사용자 로그인 여부 확인
+	        //사용자 로그인 여부 확인
 	        MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 	        if (loginMember == null) {
 	            req.setAttribute("errorMsg", "로그인이 필요한 페이지입니다.");
 	            // 선택적으로 로그인 페이지로 리다이렉트하거나 다른 방식으로 처리할 수 있습니다.
-	            // resp.sendRedirect("/mesmber/login");
+	            // resp.sendRedirect("/member/login");
 	        }
 
 	        // 서비스 호출
-	        ReviewService rs = new ReviewService();
-	        List<ReviewVo> reviewVoList = rs.myReviewList();
-	        req.setAttribute("reviewVoList", reviewVoList);
-	        req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp);
+	        ReviewCommentService cs = new ReviewCommentService();
+	        List<ReviewCommentVo> reviewCommentVoList = cs.reviewCommentList();
+	        req.setAttribute("reviewCommnetVoList", reviewCommentVoList);
+	        req.getRequestDispatcher("/WEB-INF/views/review/comment.jsp").forward(req, resp);
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        req.setAttribute("errorMsg", "리뷰 작성 에러");
-	        req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp); //여기를 list로 고치기
+	        req.getRequestDispatcher("/WEB-INF/views/review/commnet.jsp").forward(req, resp); //여기를 board 로 고치기
 	    }
 
 	}
 
 	
-	// 게시글 작성 로직
+	// 댓글 작성 로직
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       
