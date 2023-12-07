@@ -10,6 +10,8 @@ public class OrdersVo {
 	private String biddingNo;
 	private String productNo;
 		private String productName;
+		private String shoesSizes;
+		private String productsThumbnail;
 	private String inspectionNo;
 		private String inspection;
 	private String ordersDate;
@@ -23,9 +25,9 @@ public class OrdersVo {
 	public OrdersVo() {
 	}
 	public OrdersVo(String no, String memberNo, String memberName, String ordersStatusNo, String ordersStatus,
-			String biddingNo, String productNo, String productName, String inspectionNo, String inspection,
-			String ordersDate, String paymentType, String paymentDate, String storageDate, String checkDate,
-			String returnDAte, String sendDate, String totalPrice) {
+			String biddingNo, String productNo, String productName, String shoesSizes, String productsThumbnail,
+			String inspectionNo, String inspection, String ordersDate, String paymentType, String paymentDate,
+			String storageDate, String checkDate, String returnDAte, String sendDate, String totalPrice) {
 		this.no = no;
 		this.memberNo = memberNo;
 		this.memberName = memberName;
@@ -34,6 +36,8 @@ public class OrdersVo {
 		this.biddingNo = biddingNo;
 		this.productNo = productNo;
 		this.productName = productName;
+		this.shoesSizes = shoesSizes;
+		this.productsThumbnail = productsThumbnail;
 		this.inspectionNo = inspectionNo;
 		this.inspection = inspection;
 		this.ordersDate = ordersDate;
@@ -92,6 +96,18 @@ public class OrdersVo {
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+	public String getShoesSizes() {
+		return shoesSizes;
+	}
+	public void setShoesSizes(String shoesSizes) {
+		this.shoesSizes = shoesSizes;
+	}
+	public String getProductsThumbnail() {
+		return productsThumbnail;
+	}
+	public void setProductsThumbnail(String productsThumbnail) {
+		this.productsThumbnail = productsThumbnail;
 	}
 	public String getInspectionNo() {
 		return inspectionNo;
@@ -157,10 +173,11 @@ public class OrdersVo {
 	public String toString() {
 		return "OrdersVo [no=" + no + ", memberNo=" + memberNo + ", memberName=" + memberName + ", ordersStatusNo="
 				+ ordersStatusNo + ", ordersStatus=" + ordersStatus + ", biddingNo=" + biddingNo + ", productNo="
-				+ productNo + ", productName=" + productName + ", inspectionNo=" + inspectionNo + ", inspection="
-				+ inspection + ", ordersDate=" + ordersDate + ", paymentType=" + paymentType + ", paymentDate="
-				+ paymentDate + ", storageDate=" + storageDate + ", checkDate=" + checkDate + ", returnDAte="
-				+ returnDAte + ", sendDate=" + sendDate + ", totalPrice=" + totalPrice + "]";
+				+ productNo + ", productName=" + productName + ", shoesSizes=" + shoesSizes + ", productsThumbnail="
+				+ productsThumbnail + ", inspectionNo=" + inspectionNo + ", inspection=" + inspection + ", ordersDate="
+				+ ordersDate + ", paymentType=" + paymentType + ", paymentDate=" + paymentDate + ", storageDate="
+				+ storageDate + ", checkDate=" + checkDate + ", returnDAte=" + returnDAte + ", sendDate=" + sendDate
+				+ ", totalPrice=" + totalPrice + "]";
 	}
-	
+		
 }
