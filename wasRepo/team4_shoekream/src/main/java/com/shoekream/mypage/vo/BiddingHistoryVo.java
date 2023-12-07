@@ -1,44 +1,81 @@
 package com.shoekream.mypage.vo;
 
-import java.util.List;
-
-import com.shoekream.biddingVo.BiddingVo;
 
 public class BiddingHistoryVo {
 
-	// fields
-	private List<BiddingVo> bidList; // 입찰내역 리스트
-	private HistoryCntVo cntVo; // 입찰 및 주문 cnt값들
+	private String shoeName;
+	private String shoeImg;
+	private String shoeSize;
+	private String bidPrice;
+	private String bidStatus;
+	private String expireDate;
+	private String enrollDate;
 	
-	// constructor
 	public BiddingHistoryVo() {
-	
+		
 	}
 	
-	public BiddingHistoryVo(List<BiddingVo> bidList, HistoryCntVo cntVo) {
+	public BiddingHistoryVo(String shoeName, String shoeImg, String shoeSize, String bidPrice, String bidStatus,
+			String expireDate, String enrollDate) {
 		super();
-		this.bidList = bidList;
-		this.cntVo = cntVo;
+		this.shoeName = shoeName;
+		this.shoeImg = shoeImg;
+		this.shoeSize = shoeSize;
+		this.bidPrice = bidPrice;
+		this.bidStatus = bidStatus;
+		this.expireDate = expireDate;
+		this.enrollDate = enrollDate;
 	}
 	
-	// getter setter
-	public List<BiddingVo> getBidList() {
-		return bidList;
+	public String getShoeName() {
+		return shoeName;
 	}
-	public void setBidList(List<BiddingVo> bidList) {
-		this.bidList = bidList;
+	public void setShoeName(String shoeName) {
+		this.shoeName = shoeName;
 	}
-	public HistoryCntVo getCntVo() {
-		return cntVo;
+	public String getShoeImg() {
+		return shoeImg;
 	}
-	public void setCntVo(HistoryCntVo cntVo) {
-		this.cntVo = cntVo;
+	public void setShoeImg(String shoeImg) {
+		this.shoeImg = shoeImg;
+	}
+	public String getShoeSize() {
+		return shoeSize;
+	}
+	public void setShoeSize(String shoeSize) {
+		this.shoeSize = shoeSize;
+	}
+	public String getBidPrice() {
+		return bidPrice;
+	}
+	public void setBidPrice(String bidPrice) {
+		this.bidPrice = bidPrice;
+	}
+	public String getBidStatus() {
+		return bidStatus;
+	}
+	public void setBidStatus(String bidStatus) {
+		this.bidStatus = bidStatus;
+	}
+	public String getExpireDate() {
+		return expireDate;
+	}
+	public void setExpireDate(String expireDate) {
+		this.expireDate = expireDate;
+	}
+	public String getEnrollDate() {
+		return enrollDate;
+	}
+	public void setEnrollDate(String enrollDate) {
+		this.enrollDate = enrollDate;
 	}
 	
-	// toString
+	
 	@Override
 	public String toString() {
-		return "BiddingHistoryVo [bidList=" + bidList + ", cntVo=" + cntVo + "]";
+		return "BiddingHistoryVo [shoeName=" + shoeName + ", shoeImg=" + shoeImg + ", shoeSize=" + shoeSize
+				+ ", bidPrice=" + bidPrice + ", bidStatus=" + bidStatus + ", expireDate=" + expireDate + ", enrollDate="
+				+ enrollDate + "]";
 	}
 	
 	

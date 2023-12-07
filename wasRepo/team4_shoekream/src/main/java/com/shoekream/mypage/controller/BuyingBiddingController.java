@@ -1,6 +1,7 @@
 package com.shoekream.mypage.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,18 +12,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.MyPageService;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
-import com.shoekream.mypage.vo.HistoryCntVo;
 
-@WebServlet("/mypage/buying/bidding")
+@WebServlet("/mypage/buying/bidList")
 
 public class BuyingBiddingController extends HttpServlet{
 
-	// 마이페이지 구매내역 구매입찰 화면
+	// 구매입찰 내역
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			// 로그인 여부 체크
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
@@ -31,25 +33,33 @@ public class BuyingBiddingController extends HttpServlet{
 			}
 			
 			// parameter값 받아오기
-//			String startDate = req.getParameter("startDate");
-//			System.out.println(startDate);
-//			String endDate = req.getParameter("endDate");
-//			System.out.println(endDate);
+			String startDate = req.getParameter("startDate");
+			System.out.println(startDate);
+			String endDate = req.getParameter("endDate");
+			System.out.println(endDate);
 			
 			// 데이터 뭉치기 - map
-//			Map<String, String> map = new HashMap<String, String>();
-//			map.put("startDate", startDate);
-//			map.put("endDate", endDate);
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("startDate", startDate);
+			map.put("endDate", endDate);
 			
 			// service 호출
 			MyPageService service = new MyPageService();
-			BiddingHistoryVo historyVo = service.viewBuyingBiddingList(loginMember);
+			List<BiddingHistoryVo> bidList = service.viewBuyingBiddingList(loginMember, map);
 			
 			// result (==view)
-			req.setAttribute("bidList", historyVo.getBidList());
-			req.setAttribute("cntVo", historyVo.getCntVo());
+
+			ObjectMapper mapper = new ObjectMapper();
+			 
+			// result.json 파일로 저장
 			
-			req.getRequestDispatcher("/WEB-INF/views/mypage/buy_buying.jsp").forward(req, resp);
+			PrintWriter out = resp.getWriter();
+			String bidListJson = mapper.writeValueAsString(bidList);
+			System.out.println(bidListJson);
+			out.write(bidListJson);
+			
+			out.close();
+			
 		} catch(Exception e) {
 			
 		}
