@@ -35,5 +35,39 @@ public class AddressController extends HttpServlet{
 			System.out.println("[ERROR-A001] 주소록 조회에서 오류남");
 		}
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		try {
+			String name = req.getParameter("name");
+			String phoneNum = req.getParameter("phone_num");
+			String postCode = req.getParameter("post_code");
+			String addr = req.getParameter("addr");
+			String detailAddr = req.getParameter("detail_addr");
+			String defaultAddr = req.getParameter("default_addr");
+			
+			AddrBookVo vo = new AddrBookVo();
+			vo.setMemberNo("1");
+			vo.setAddersName(name);
+			vo.setPhoneNumber(phoneNum);
+			vo.setAddres(addr);
+			vo.setDetailAddres(detailAddr);
+			vo.setPostCode(postCode);
+			vo.setDefaultAddrYn(defaultAddr);
+			System.out.println(vo);
+			
+			AddressService as = new AddressService();
+			int result = as.insertAddr(vo);
+			
+			if(result != 1) {
+				throw new Exception("주소 추가에서 오류");
+			}
+			resp.sendRedirect("/shoekream/mypage/addr?no=1");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

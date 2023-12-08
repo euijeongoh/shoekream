@@ -70,9 +70,6 @@
 					<div id="overlay" class="overlay"></div>
 
 				</div>
-				<% if(vo == null){ %>
-					</script>
-				<% } %>
 				<% if(vo != null){ %>
 				<div class="my_list">
 					<div class="basic">
