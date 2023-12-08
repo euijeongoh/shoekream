@@ -29,6 +29,8 @@ public class BuyingController extends HttpServlet{
 			// service 호출
 			MyPageService service = new MyPageService();
 			HistoryCntVo cntVo = service.getBuyingCnts(loginMember);
+			
+			req.setAttribute("cntVo", cntVo);
 			req.getRequestDispatcher("/WEB-INF/views/mypage/buying.jsp").forward(req, resp);
 		} catch(Exception e) {
 			e.printStackTrace();

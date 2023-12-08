@@ -2,51 +2,268 @@ const tabBidding = document.querySelector("#bidTab");
 const tabPending = document.querySelector("#pendTab");
 const tabFinished = document.querySelector("#finishTab");
 
+const bidCount = document.querySelector("#bidCount");
+const pendCount = document.querySelector("#pendCount");
+const finishedCount = document.querySelector("#finishedCount");
 
-
-tabBidding.addEventListener('click', ()=>{
+function chooseAjax() {
+	if(bidCount.style.color==="#F15746") {
+		bidTabAjax();
+	}
 	
-	const bidCount = document.querySelector("#bidCount");
+	if(pendCount.style.color==="#F15746") {
+		pendTabAjax();
+	} 
+	
+	if(finishedCount.style.color==="#F15746") {
+		finishTabAjax();
+	}
+}
+
+
+function bidTabAjax() {
+	
 	bidCount.style.color="#F15746";
 	tabBidding.style.borderBottom="2px solid #222222";
+	pendCount.style.color="#222222";
+	tabPending.style.borderBottom="none";	
+	finishedCount.style.color="#222222";
+	tabFinished.style.borderBottom="none";
 	
 	set2Mths();
 	
-	// formData 객체 생성
-	const form = document.querySelector(".period-search form");
-	const formData = new FormData(form);
-	
+	// json 형태로 데이터 보내기
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
+
+	const jsonObj = {
+		startDate : startDateValue,
+		endDate : endDateValue
+	}
 	
-	fetch("/shoekream/mypage/buying/bidList?startDate=" + startDateValue + "&endDate=" + endDateValue,
-		{method: "POST", body: formData})
+	const jsonStr = JSON.stringify(jsonObj);
+	
+	// ajax 요청
+	fetch("/shoekream/mypage/buying/bidList",
+		{method: "POST", body: jsonStr})
 	.then( (resp)=>{return resp.json()} )
 	.then( (data) => {
-		console.log(data);
-		
-		
+
+		const purchaseBody = document.querySelector(".purchase-body");
+		purchaseBody.innerHTML="";
+		for(let i=0; i<data.length; ++i) {
+			const purchase = document.createElement("div");
+			purchaseBody.appendChild(purchase);
+			purchase.className = "purchase";
+			
+			const productDetail = document.createElement("div");
+			purchase.appendChild(productDetail);
+			productDetail.className = "product-detail";
+						
+			const productImg = document.createElement("div");
+			productDetail.appendChild(productImg);
+			productImg.className = "product_img";
+			const img = document.createElement("img");
+			productImg.appendChild(img);
+			img.src="/shoekream/resources/img/product/logo.svg";
+			
+			
+			const detail = document.createElement("div");
+			productDetail.appendChild(detail);
+			detail.className = "detail";
+			
+			const product = document.createElement("div");
+			detail.appendChild(product);
+			product.id="product";
+			product.innerHTML=data[i].shoeName;
+			
+			const size = document.createElement("div");
+			detail.appendChild(size);
+			size.id="size";
+			size.innerHTML=data[i].shoeSize;
+			
+			const purchaseDetail = document.createElement("ul");
+			purchaseDetail.className = "purchase-detail";
+			purchase.appendChild(purchaseDetail);
+			
+			const li1 = document.createElement("li");
+			const li2 = document.createElement("li");
+			const li3 = document.createElement("li");
+
+			purchaseDetail.appendChild(li1);
+			purchaseDetail.appendChild(li2);
+			purchaseDetail.appendChild(li3);
+			li1.innerHTML=data[i].enrollDate;
+			li2.innerHTML=data[i].expireDate;
+			li3.innerHTML=data[i].bidPrice + "원";
+		}
 		
 	});
 	
-});
 
-tabPending.addEventListener('click', ()=>{
+}
+
+function pendTabAjax() {
 	
-	const pendCount = document.querySelector("#pendCount");
+	bidCount.style.color="#222222";
+	tabBidding.style.borderBottom="none";
 	pendCount.style.color="#F15746";
 	tabPending.style.borderBottom="2px solid #222222";
+	finishedCount.style.color="#222222";
+	tabFinished.style.borderBottom="none";
 	
-})
+	set2Mths();
+	
+	// json 형태로 데이터 보내기
+	const startDateValue = document.querySelector("input[name=startDate]").value;
+	const endDateValue = document.querySelector("input[name=endDate]").value;
+
+	const jsonObj = {
+		startDate : startDateValue,
+		endDate : endDateValue
+	}
+	
+	const jsonStr = JSON.stringify(jsonObj);
+	
+	// ajax 요청
+	fetch("/shoekream/mypage/buying/pendList",
+		{method: "POST", body: jsonStr})
+	.then( (resp)=>{return resp.json()} )
+	.then( (data) => {
+		const purchaseBody = document.querySelector(".purchase-body");
+		purchaseBody.innerHTML="";		
+		for(let i=0; i<data.length; ++i) {
+			const purchase = document.createElement("div");
+			purchaseBody.appendChild(purchase);
+			purchase.className = "purchase";
+			
+			const productDetail = document.createElement("div");
+			purchase.appendChild(productDetail);
+			productDetail.className = "product-detail";
+						
+			const productImg = document.createElement("div");
+			productDetail.appendChild(productImg);
+			productImg.className = "product_img";
+			productImg.src="/shoekream/resources/img/product/logo.svg";
+			
+			
+			const detail = document.createElement("div");
+			productDetail.appendChild(detail);
+			detail.className = "detail";
+			
+			const product = document.createElement("div");
+			detail.appendChild(product);
+			product.id="product";
+			product.innerHTML=data[i].shoeName;
+			
+			const size = document.createElement("div");
+			detail.appendChild(size);
+			size.id="size";
+			size.innerHTML=data[i].shoeSize;
+			
+			const purchaseDetail = document.createElement("ul");
+			purchaseDetail.className = "purchase-detail";
+			purchase.appendChild(purchaseDetail);
+			
+			const li1 = document.createElement("li");
+			const li2 = document.createElement("li");
+			const li3 = document.createElement("li");
+
+			purchaseDetail.appendChild(li1);
+			purchaseDetail.appendChild(li2);
+			purchaseDetail.appendChild(li3);
+			li1.innerHTML=data[i].enrollDate;
+			li2.innerHTML=data[i].expireDate;
+			li3.innerHTML=data[i].bidPrice + "원";
+		}
+		
+	});
+}
 
 
-tabFinished.addEventListener('click', ()=>{
-	
-	const finishedCount = document.querySelector("#finishedCount");
+function finishTabAjax() {
+	bidCount.style.color="#222222";
+	tabBidding.style.borderBottom="none";
+	pendCount.style.color="#222222";
+	tabPending.style.borderBottom="none";	
 	finishedCount.style.color="#F15746";
 	tabFinished.style.borderBottom="2px solid #222222";
 	
-})
+	set2Mths();
+	
+	// json 형태로 데이터 보내기
+	const startDateValue = document.querySelector("input[name=startDate]").value;
+	const endDateValue = document.querySelector("input[name=endDate]").value;
+
+	const jsonObj = {
+		startDate : startDateValue,
+		endDate : endDateValue
+	}
+	
+	const jsonStr = JSON.stringify(jsonObj);
+	
+	// ajax 요청
+	fetch("/shoekream/mypage/buying/pendList",
+		{method: "POST", body: jsonStr})
+	.then( (resp)=>{return resp.json()} )
+	.then( (data) => {
+		const purchaseBody = document.querySelector(".purchase-body");
+		purchaseBody.innerHTML="";		
+		for(let i=0; i<data.length; ++i) {
+			const purchase = document.createElement("div");
+			purchaseBody.appendChild(purchase);
+			purchase.className = "purchase";
+			
+			const productDetail = document.createElement("div");
+			purchase.appendChild(productDetail);
+			productDetail.className = "product-detail";
+						
+			const productImg = document.createElement("div");
+			productDetail.appendChild(productImg);
+			productImg.className = "product_img";
+			productImg.src="/shoekream/resources/img/product/logo.svg";
+			
+			
+			const detail = document.createElement("div");
+			productDetail.appendChild(detail);
+			detail.className = "detail";
+			
+			const product = document.createElement("div");
+			detail.appendChild(product);
+			product.id="product";
+			product.innerHTML=data[i].shoeName;
+			
+			const size = document.createElement("div");
+			detail.appendChild(size);
+			size.id="size";
+			size.innerHTML=data[i].shoeSize;
+			
+			const purchaseDetail = document.createElement("ul");
+			purchaseDetail.className = "purchase-detail";
+			purchase.appendChild(purchaseDetail);
+			
+			const li1 = document.createElement("li");
+			const li2 = document.createElement("li");
+			const li3 = document.createElement("li");
+
+			purchaseDetail.appendChild(li1);
+			purchaseDetail.appendChild(li2);
+			purchaseDetail.appendChild(li3);
+			li1.innerHTML=data[i].enrollDate;
+			li2.innerHTML=data[i].expireDate;
+			li3.innerHTML=data[i].bidPrice + "원";
+		}
+		
+	});	
+}
+
+
+
+
+
+
+
+
 
 // 날짜값 지정
 function formatDate(date) {

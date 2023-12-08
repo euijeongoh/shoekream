@@ -12,6 +12,7 @@ import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.HistoryCntVo;
+import com.shoekream.mypage.vo.OrdersHistoryVo;
 import com.shoekream.mypage.vo.WishListVo;
 import com.shoekream.orders.vo.OrdersVo;
 
@@ -103,7 +104,7 @@ public class MyPageDao {
 	}
 	
 	// 진행중인 구매내역 정보 조회(List)
-	public List<OrdersVo> getBuyPendingInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
+	public List<OrdersHistoryVo> getBuyPendingInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
 		// sql
 		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 1 AND NOT O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -111,7 +112,7 @@ public class MyPageDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
-		List<OrdersVo> pendList = new ArrayList<OrdersVo>();
+		List<OrdersHistoryVo> pendList = new ArrayList<OrdersHistoryVo>();
 		while(rs.next()) {
 			String productName = rs.getString("상품명");
 			String productImg = rs.getString("썸네일");
@@ -119,12 +120,12 @@ public class MyPageDao {
 			String orderStatus = rs.getString("주문상태");
 			String orderDate = rs.getString("주문일자");
 			
-			OrdersVo pendVo = new OrdersVo();
+			OrdersHistoryVo pendVo = new OrdersHistoryVo();
 			pendVo.setProductName(productName);
-//			pendVo.setProductImg(productImg);
-//			pendVo.setProductSize(productSize);
-			pendVo.setOrdersStatus(orderStatus);
-			pendVo.setOrdersDate(orderDate);
+			pendVo.setProductImg(productImg);
+			pendVo.setProductSize(productSize);
+			pendVo.setOrderStatus(orderStatus);
+			pendVo.setOrderDate(orderDate);
 			
 			pendList.add(pendVo);
 		}
@@ -137,7 +138,7 @@ public class MyPageDao {
 	}
 	
 	// 완료된 구매내역 정보 조회(List)
-	public List<OrdersVo> getBuyFinishedInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
+	public List<OrdersHistoryVo> getBuyFinishedInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
 		// sql
 		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 , O.TOTAL_PRICE 결제금액 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 1 AND O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -145,22 +146,22 @@ public class MyPageDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
-		List<OrdersVo> finishedList = new ArrayList<OrdersVo>();
+		List<OrdersHistoryVo> finishedList = new ArrayList<OrdersHistoryVo>();
 		while(rs.next()) {
 			String productName = rs.getString("상품명");
 			String productImg = rs.getString("썸네일");
 			String productSize = rs.getString("사이즈");
 			String orderState = rs.getString("주문상태");
 			String orderDate = rs.getString("주문일자");
-			int finalPrice = rs.getInt("결제금액");
+			String finalPrice = rs.getString("결제금액");
 			
-			OrdersVo finishedVo = new OrdersVo();
-//			finishedVo.setProductName(productName);
-//			finishedVo.setProductImg(productImg);
-//			finishedVo.setProductSize(productSize);
-//			finishedVo.setOrderStatus(orderState);
-//			finishedVo.setOrderDate(orderDate);
-//			finishedVo.setFinalPrice(finalPrice);
+			OrdersHistoryVo finishedVo = new OrdersHistoryVo();
+			finishedVo.setProductName(productName);
+			finishedVo.setProductImg(productImg);
+			finishedVo.setProductSize(productSize);
+			finishedVo.setOrderStatus(orderState);
+			finishedVo.setOrderDate(orderDate);
+			finishedVo.setFinalPrice(finalPrice);
 			
 			finishedList.add(finishedVo);
 		}
