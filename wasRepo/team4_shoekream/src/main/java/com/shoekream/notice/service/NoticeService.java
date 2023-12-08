@@ -40,6 +40,23 @@ public class NoticeService {
 		return listCount;
 	}
 
+	public NoticeVo selectNoticeListByNo(String no) throws Exception{
+		
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		NoticeDao dao = new NoticeDao();
+		NoticeVo vo = dao.selectNoticeByNo(conn, no);
+		
+		//tx
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return vo;
+	}
+
 	
 
 }

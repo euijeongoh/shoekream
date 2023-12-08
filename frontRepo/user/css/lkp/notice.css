@@ -15,7 +15,7 @@
 .wrap_inner{
     display: flex;
     width: 1200px;
-    height: 1220px;
+    height: 750px;
     /* margin-left: auto; *
     /* margin-right:auto; */
     padding-left :40px;
@@ -29,7 +29,7 @@
 .board_wrap{
    display: flex;
    width: 1000px;
-   height: 1220px;
+   height: 750px;
    flex-direction: column;
    /* background-color:antiquewhite; */
 }
