@@ -23,13 +23,7 @@ public class ReviewListController extends HttpServlet {
       try {
          ReviewService rs = new ReviewService();
 
-         // data
-         String currentPage_ = req.getParameter("pno");
-         int currentPage = (currentPage_ == null) ? 1 : Integer.parseInt(currentPage_); // 현재 페이지
-         int pageLimit = 5;
-         int reviewLimit = 10;
          
-
          // service(layer 호출)
          List<ReviewVo> reviewVoList = rs.selectReviewList();
 

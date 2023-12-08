@@ -102,6 +102,8 @@ header .main-list li {
     padding: 10px 30px;
 }
 
+
+/* review_list */
 .abcd{
     display: flex;
     height: 40px;
@@ -134,21 +136,24 @@ header .main-list li {
 
 .listphoto{
     width: 1200px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: antiquewhite; */
 }
 .listphoto2{
     width: 1200px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: blue; */
 }
 .listphoto3{
     width: 1200px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
-    /* background-color: white; */
+    /* background-color: aqua; */
 }
 .listphoto4{
     width: 1200px;
@@ -156,14 +161,15 @@ header .main-list li {
     justify-content: space-evenly;
     /* background-color: green; */
 }
-.photo{
+#photo{
     width: 95%;
-    padding: 15px 0px;
+    /* padding: 15px 0px; */
     height: 100%;
     border-radius: 10%
 }
 .wave{
     border-radius: 70%;
+    border: 1px solid lightgray;
 }
 .detail{
     display: flex;
@@ -181,9 +187,27 @@ header .main-list li {
     height: 25%;
     /* background-color: skyblue; */
 }
+.two{
+    display: block;
+    width: 25%;
+    height: 25%;
+    /* background-color: bisque; */
+}
+.three{
+    display: block;
+    width: 25%;
+    height: 25%;
+    /* background-color: hotpink; */
+}
+.four{
+    display: block;
+    width: 25%;
+    height: 25%;
+    /* background-color: gold; */
+}
 
 
-
+/* footer */
 footer {
     /* background-color: gray; */
     width: 1280px;

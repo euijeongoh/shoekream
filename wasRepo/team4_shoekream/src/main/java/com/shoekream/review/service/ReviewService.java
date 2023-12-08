@@ -19,7 +19,7 @@ public class ReviewService {
       ReviewDao dao = new ReviewDao();
       int result = dao.write(conn, vo);
       
-      // tx
+      // txs
       if(result == 1) {
          JDBCTemplate.commit(conn);
       }else {
