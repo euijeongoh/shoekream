@@ -10,13 +10,13 @@ import com.shoekream.db.util.JDBCTemplate;
 public class BuySelectService {
 	
 	// 로그인
-	public List<BiddingVo> buySelect() throws Exception {
+	public List<BiddingVo> buySelect(String productsNo) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		BuySelectDao dao = new BuySelectDao();
-		List<BiddingVo> voList = dao.buySelect(conn);
+		List<BiddingVo> voList = dao.buySelect(conn, productsNo);
 	
 		// close
 		JDBCTemplate.close(conn);

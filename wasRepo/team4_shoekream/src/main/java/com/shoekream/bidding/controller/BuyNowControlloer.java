@@ -18,4 +18,17 @@ public class BuyNowControlloer extends HttpServlet{
 		
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String productsNo = req.getParameter("productsNo");
+		String price = req.getParameter("price");
+		String size = req.getParameter("size");
+		
+		System.out.println(productsNo);
+		System.out.println(price);
+		System.out.println(size);
+		
+	}
+	
 }
