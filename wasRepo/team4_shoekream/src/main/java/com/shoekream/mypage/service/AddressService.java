@@ -34,4 +34,16 @@ public class AddressService {
 		return extraVo;
 	}
 
+	public int insertAddr(AddrBookVo vo) throws Exception{
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		AddressDao ad = new AddressDao();
+		int result = ad.insertAddr(conn, vo);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
 }

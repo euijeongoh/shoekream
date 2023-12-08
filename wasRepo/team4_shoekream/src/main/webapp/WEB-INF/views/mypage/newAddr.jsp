@@ -74,7 +74,9 @@
 							</div>
 							<div class="delivery_check">
 								<div class="checkbox_item" data-v-4be3d37a="">
-									<input id="check1" type="checkbox" name="" class="blind" name="default_addr">
+									<input id="check1" type="checkbox" class="blind" name="default_addr" onchange="updateDefaultAddress()">
+									<input type="hidden" id="defaultAddressHiddenInput" name="default_addr" value="N">
+									
 									<label for="check1" class="check_label"> <span
 										class="label_txt">기본 배송지로 설정</span>
 									</label>
@@ -144,5 +146,12 @@
         }).open();
     }
     
+    function updateDefaultAddress() {
+        var checkbox = document.getElementById("check1");
+        var hiddenInput = document.getElementById("defaultAddressHiddenInput");
+
+        // 체크박스가 선택된 경우, 숨겨진 입력 필드 값을 'Y'로 설정하고 그렇지 않은 경우 'N'으로 설정합니다.
+        hiddenInput.value = checkbox.checked ? 'Y' : 'N';
+    }
 </script>
 </html>

@@ -13,11 +13,11 @@ div {
     margin-left: auto;
     margin-right: auto;
     width: 1280px;
-    padding: 40px 40px 160px
+    padding: 40px 40px 40px
 }
 .content_area {
     flex: 1;
-    height: 380px;
+    height: 500px;
     overflow: hidden;
 }
 .my_adderssbock{
