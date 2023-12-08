@@ -1,11 +1,10 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="com.shoekream.biddingVo.BiddingVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%
-    	List<BiddingVo> voList = (List<BiddingVo>)request.getAttribute("voList");
-    %>
+
     
 <!DOCTYPE html>
 <html>
@@ -54,8 +53,6 @@
         </header>
     </div>
 
-    
-
     <div class="container buy lg">
         <div class="content_area">
             <div class="buy_before">
@@ -76,25 +73,24 @@
                     <div class="buy_before_select">
                         <div class="select_area md">
                             <ul class="select_list grid_3">
-                            	<% for(int i = 0; i < voList.size(); i++){ 
-                            		BiddingVo vo = voList.get(i);
-                            	%>
+								<c:forEach items="${ voList }" var="vo">
 	                            	<li id="select_item">
-	                                    <button class="select_link buy" onclick="f01(<%= vo.getPrice()%>)">
+	                                    <button class="select_link buy" onclick="f01(46, ${vo.getPrice()},${vo.getShoesSizes()})">
 	                                        <div class="link_inner">
-	                                            <div class="size"><%= vo.getShoesSizes() %></div>
-	                                            <div class="price"><%= vo.getPrice() %></div>
+	                                            <div class="size">${ vo.getShoesSizes() }</div>
+	                                            <div class="price">${ vo.getPrice() }</div>
 	                                        </div>
 	                                    </button>
 	                                </li>
-                            	<% } %>
+                                </c:forEach>
                             </ul>
                         </div>
                         <div class="order_btn_area">
                             <button class="btn_order order_buy buy clickable">
                                 <div class="box">
-                                    <input type="hidden" name="size" value="">
-                                    <input type="hidden" name="price" value="">
+                                    <input class="productsNo" type="hidden" name="productsNo">
+                                    <input class="price" type="hidden" name="price">
+                                    <input class="size" type="hidden" name="size">
                                     <div class="order_price">180,000</div>
                                     <div class="order_desc">5-7일소요</div>
                                 </div>
@@ -105,7 +101,6 @@
             </div>
         </div>
     </div>
-        
 
     <footer>
         <div class="box1"></div>

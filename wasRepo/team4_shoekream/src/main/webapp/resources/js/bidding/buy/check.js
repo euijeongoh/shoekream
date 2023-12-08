@@ -18,6 +18,7 @@ function f01() {
     } else {
         btn1.style.backgroundColor = "#ebebeb";
         btn1.disabled = true;
+        btn1.style.cursor = 'default';
     }
     
 }
