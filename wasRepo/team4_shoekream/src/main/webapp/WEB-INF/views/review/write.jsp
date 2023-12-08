@@ -80,7 +80,7 @@
                 <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
                 <div>
                     <div class="upload_picture">
-                        <img src="/resources/img/review/picture01.png" alt="리뷰사진" id="reviewpng">
+                        <img src="shoekream/resources/img/review/picture01.png" alt="리뷰사진" id="reviewpng">
                     </div>
                     <div class="img_label">
                         <label for="file-input" id="file-input-label">이미지 선택</label>
@@ -141,32 +141,59 @@ comfortButtons.forEach(button => {
     });
 });
 
-
 //별점코드
-//DOM 요소 가져오기
-const stars = document.querySelectorAll('.stars > .stars');
+// JavaScript를 사용하여 각 별 버튼의 클릭 이벤트를 처리합니다
+const starsContainer = document.querySelector('.starjom');
+const stars = starsContainer.querySelectorAll('.stars');
 
-//각 별표에 이벤트 리스너 추가
-stars.forEach((star, index) => {
- star.addEventListener('click', () => {
-     console.log('별을 클릭했습니다.');
+starsContainer.addEventListener('click', (event) => {
+    const selectedStar = event.target;
 
-     // 클릭한 별표까지 강조 효과 추가
-     for (let i = 0; i <= index; i++) {
-         stars[i].classList.toggle('selected');
-     }
+    if (selectedStar.classList.contains('stars')) {
+        // 클릭한 별의 인덱스를 찾습니다
+        const clickedIndex = Array.from(stars).indexOf(selectedStar);
 
-     // 클릭한 별표 이후의 별표에는 강조 효과 제거
-     for (let i = index + 1; i < stars.length; i++) {
-         stars[i].classList.remove('selected');
-     }
+        // 클릭한 별부터 강조 효과를 추가합니다
+        for (let i = 0; i <= clickedIndex; i++) {
+            stars[i].classList.add('selected');
+        }
 
-     // 선택된 별의 값을 얻어옵니다.
-     const selectedRating = index + 1;
-     console.log(`선택된 별점: ${selectedRating}`);
- });
+        // 클릭한 별 이후의 별에는 강조 효과를 제거합니다
+        for (let i = clickedIndex + 1; i < stars.length; i++) {
+            stars[i].classList.remove('selected');
+        }
+
+        // 선택된 별의 값을 업데이트합니다
+        const selectedRating = clickedIndex + 1;
+        document.getElementById('selectedRating').textContent = `별 점: ${selectedRating}`;
+    }
 });
 
+// 별점 코드
+// DOM에서 별 요소를 가져옵니다
+const stars = document.querySelectorAll('.stars > .stars');
 
+// 각 별 버튼에 이벤트 리스너를 추가합니다
+stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        console.log('별을 클릭했습니다.');
 
-</script>
+        // 클릭한 별의 인덱스를 찾습니다
+        const clickedIndex = Array.from(stars).indexOf(star);
+
+        // 클릭한 별부터 강조 효과를 추가합니다
+        for (let i = 0; i <= clickedIndex; i++) {
+            stars[i].classList.add('selected');
+        }
+
+        // 클릭한 별 이후의 별에는 강조 효과를 제거합니다
+        for (let i = clickedIndex + 1; i < stars.length; i++) {
+            stars[i].classList.remove('selected');
+        }
+
+        // 선택된 별의 값을 얻어와서 콘솔에 출력합니다
+        const selectedRating = clickedIndex + 1;
+        document.getElementById('selectedRating').textContent = `별 점: ${selectedRating}`;
+    });
+});
+

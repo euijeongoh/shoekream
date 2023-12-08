@@ -43,7 +43,7 @@ public class ReviewWriteController extends HttpServlet {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        req.setAttribute("errorMsg", "리뷰 작성 에러");
-	        req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp); //여기를 list로 고치기
+	        req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp); //여기를 member/login로 고치기
 	    }
 
 	}
@@ -60,6 +60,7 @@ public class ReviewWriteController extends HttpServlet {
          HttpSession session = req.getSession();
          
          // data //이미지는 어떤 타입?
+//         String memberNo = req.getParameter("memberNo");
          String comfortNo = req.getParameter("comfortNo");
          String fiveStarRating = req.getParameter("fiveStarRating");
          String content = req.getParameter("content");
