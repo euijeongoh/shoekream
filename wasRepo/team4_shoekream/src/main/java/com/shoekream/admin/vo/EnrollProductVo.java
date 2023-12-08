@@ -8,6 +8,7 @@ public class EnrollProductVo {
 	private String category;
 	private String productName;
 	private String productNameKo;
+	private String[] modelNumbers;
 	private String modelNumber;
 	private String releasePrice;
 	private String releaseDate;
@@ -16,9 +17,9 @@ public class EnrollProductVo {
 	private String delYn;
 	private String categoryNo;
 	private String brandNo;
-	private String[] sizeNo;
 	private String[] size;
 	private String sizeStr;
+	private String[] sizeNo;
 	private String sizeNoStr;
 	public EnrollProductVo() {
 		super();
@@ -27,22 +28,25 @@ public class EnrollProductVo {
 	@Override
 	public String toString() {
 		return "EnrollProductVo [productNo=" + productNo + ", brand=" + brand + ", category=" + category
-				+ ", productName=" + productName + ", productNameKo=" + productNameKo + ", modelNumber=" + modelNumber
-				+ ", releasePrice=" + releasePrice + ", releaseDate=" + releaseDate + ", enrollDate=" + enrollDate
-				+ ", modifyDate=" + modifyDate + ", delYn=" + delYn + ", categoryNo=" + categoryNo + ", brandNo="
-				+ brandNo + ", sizeNo=" + Arrays.toString(sizeNo) + ", size=" + Arrays.toString(size) + ", sizeStr="
-				+ sizeStr + ", sizeNoStr=" + sizeNoStr + "]";
+				+ ", productName=" + productName + ", productNameKo=" + productNameKo + ", modelNumbers="
+				+ Arrays.toString(modelNumbers) + ", modelNumber=" + modelNumber + ", releasePrice=" + releasePrice
+				+ ", releaseDate=" + releaseDate + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate
+				+ ", delYn=" + delYn + ", categoryNo=" + categoryNo + ", brandNo=" + brandNo + ", sizeNo="
+				+ Arrays.toString(sizeNo) + ", size=" + Arrays.toString(size) + ", sizeStr=" + sizeStr + ", sizeNoStr="
+				+ sizeNoStr + "]";
 	}
+	
 	public EnrollProductVo(String productNo, String brand, String category, String productName, String productNameKo,
-			String modelNumber, String releasePrice, String releaseDate, String enrollDate, String modifyDate,
-			String delYn, String categoryNo, String brandNo, String[] sizeNo, String[] size, String sizeStr,
-			String sizeNoStr) {
+			String[] modelNumbers, String modelNumber, String releasePrice, String releaseDate, String enrollDate,
+			String modifyDate, String delYn, String categoryNo, String brandNo, String[] sizeNo, String[] size,
+			String sizeStr, String sizeNoStr) {
 		super();
 		this.productNo = productNo;
 		this.brand = brand;
 		this.category = category;
 		this.productName = productName;
 		this.productNameKo = productNameKo;
+		this.modelNumbers = modelNumbers;
 		this.modelNumber = modelNumber;
 		this.releasePrice = releasePrice;
 		this.releaseDate = releaseDate;
@@ -86,12 +90,7 @@ public class EnrollProductVo {
 	public void setProductNameKo(String productNameKo) {
 		this.productNameKo = productNameKo;
 	}
-	public String getModelNumber() {
-		return modelNumber;
-	}
-	public void setModelNumber(String modelNumber) {
-		this.modelNumber = modelNumber;
-	}
+	
 	public String getReleasePrice() {
 		return releasePrice;
 	}
@@ -134,6 +133,7 @@ public class EnrollProductVo {
 	public void setBrandNo(String brandNo) {
 		this.brandNo = brandNo;
 	}
+	
 	public String[] getSizeNo() {
 		return sizeNo;
 	}
@@ -145,6 +145,18 @@ public class EnrollProductVo {
 		this.sizeNo = sizeNo;
 		this.sizeNoStr = String.join(",", sizeNo);
 	}
+	
+	public String getSizeNoStr() {
+		if(sizeNo == null) {
+			return "";
+		}
+		return String.join(",", sizeNo);
+	}
+	public void setSizeNoStr(String sizeNoStr) {
+		this.sizeNoStr = sizeNoStr;
+	}
+	
+	
 	public String[] getSize() {
 		return size;
 	}
@@ -165,17 +177,26 @@ public class EnrollProductVo {
 	public void setSizeStr(String sizeStr) {
 		this.sizeStr = sizeStr;
 	}
-	public String getSizeNoStr() {
-		if(sizeNo == null) {
-			return "";
+	
+	
+	public String[] getModelNumbers() {
+		return modelNumbers;
+	}
+
+	public void setModelNumbers(String[] modelNumbers) {
+		
+		if(modelNumbers == null) {
+			this.modelNumber = "";
+			return;
 		}
-		return String.join(",", sizeNo);
+		this.modelNumbers = modelNumbers;
+		this.modelNumber = String.join(",", modelNumbers);
 	}
-	public void setSizeNoStr(String sizeNoStr) {
-		this.sizeNoStr = sizeNoStr;
+	public String getModelNumber() {
+		return modelNumber;
 	}
-	
-	
-	
+	public void setModelNumber(String modelNumber) {
+		this.modelNumber = modelNumber;
+	}
 	
 }

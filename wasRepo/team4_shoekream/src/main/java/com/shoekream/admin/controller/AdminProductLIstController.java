@@ -30,7 +30,6 @@ public class AdminProductLIstController extends HttpServlet{
 			int productLimit = 7;
 			
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, productLimit);
-			
 			List<EnrollProductVo> productVoList = ps.selectProductList(pvo);
 			req.setAttribute("productVoList", productVoList);
 			req.setAttribute("pvo", pvo);
@@ -52,7 +51,32 @@ public class AdminProductLIstController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String modelNumber = req.getParameter("modelNumber");
+		try {
+			//data
+			String[] selectedProducts = req.getParameterValues("modelNumber"); 
+			
+			//삭제할 대상을 vo에 setting
+			EnrollProductVo vo = new EnrollProductVo();
+			vo.setModelNumbers(selectedProducts);
+			
+			//service
+			AdminProductListService ps = new AdminProductListService();
+			int result = ps.delete(vo);
+			
+			//result
+			if(result != 1) {
+				throw new Exception("상품 삭제 중 에러 발생");
+			}
+			resp.sendRedirect("/shoekream/admin/product/list");
+			
+			
+		}catch(Exception e) {
+			System.out.println("[ERROR-P004]상품 삭제 중 에러 발생");
+			e.printStackTrace();
+			req.setAttribute("errorMsg", "상품 삭제 중 에러 발생");
+		}
+		
+		
 	}
 	
 }
