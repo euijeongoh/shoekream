@@ -6,18 +6,18 @@
     	String searchResult = (String) request.getAttribute("searchResult");
     
     %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-	<link rel="stylesheet" href="/shoekream/resources/css/member/findID.css">
-	
 </head>
+
+<link rel="stylesheet" href="/shoekream/resources/css/member/findID.css">
+
 <body>
-	
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp" %>
 	
 	<div class="result-area">
             <div class="result-title">
@@ -33,14 +33,13 @@
                 </div>
             </div>
             <div class="btn-area">
-                <button type="button" onclick="location.href='/shoekream/member/searchPwd'">
+                <button type="button" onclick="location.href='/shoekream/admin/searchPwd'">
                     비밀번호 찾기
                 </button>
-                <button type="button" onclick="location.href='/shoekream/member/login'">
+                <button type="button" onclick="location.href='/shoekream/admin/login'">
                     로그인
                 </button>
             </div>
         </div>
-        
 </body>
 </html>

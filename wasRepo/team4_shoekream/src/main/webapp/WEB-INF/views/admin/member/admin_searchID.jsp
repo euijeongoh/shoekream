@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	<link rel="stylesheet" href="/shoekream/resources/css/admin/common/admin_header.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/admin/member/admin_searchID.css">	
 	
 	<script defer src="/shoekream/resources/js/admin/member/admin_searchID.js"></script>
@@ -23,7 +22,7 @@
                 아이디 찾기
                 <div></div>
             </div>
-            <form action="/shoekream/member/searchID" method="post">
+            <form action="/shoekream/admin/searchID" method="post">
                 <div id="guide">
                     관리자 이름과 휴대폰 번호를 입력하시면<br>
                     아이디의 일부를 알려드립니다.
@@ -37,7 +36,7 @@
                     <input id="input-txt" type="text" name="adminPhone" placeholder="가입하신 휴대폰 번호">
                 </div>
                 
-                <input type="submit" value="아이디 찾기" disabled>
+                <input type="submit" value="아이디 찾기">
             </form>
         </div>
     </div>

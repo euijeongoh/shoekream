@@ -29,14 +29,20 @@ public class MemberQuitController extends HttpServlet{
 		try {
 			// 데이터
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
-			
+			if(loginMember==null) {
+				resp.sendRedirect("/shoekream/home");
+			}
 			// service
 			MemberService ms = new MemberService();
 			int result = ms.quit(loginMember);
 			
 			// result == view
-			if(result != 1) {
+			if(result == -2) {
 				throw new Exception("탈퇴할 수 없는 회원");
+			}
+			
+			if(result == -1) {
+				throw new Exception("탈퇴 실패");
 			}
 			
 			// 로그아웃
