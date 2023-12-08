@@ -5,10 +5,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   <%
-    	List<EnrollProductVo> boardVoList = (List<EnrollProductVo>) request.getAttribute("enrollProductList");
+    	List<EnrollProductVo> productVoList = (List<EnrollProductVo>) request.getAttribute("productVoList");
     	PageVo pvo = (PageVo)request.getAttribute("pvo");
-    	
-    	Map<String, String>searchMap = (Map<String, String>)request.getAttribute("searchMap");
     %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -112,35 +110,40 @@
                <form action="">
                    <table border="1">
                        <tbody>
+                       
+                       		<%for(EnrollProductVo vo : productVoList) {%>
                            <tr>
                                <td>[상품목록]</td>
-                               <td><img src="./logo.svg" alt="씀네일"></td>
-                               <td><a href="editProduct.html">한글이름/모델남바</a></td>
-                               <td><input type="checkbox" name="모델명" id=""></td>
+                               <td><img src="/shoekream/resources/img/admin/header/logo.svg" alt="씀네일"></td>
+                               <td><a href="editProduct.html"><%=vo.getProductNameKo()+vo.getModelNumber()%></a></td>
+                               <td><input type="checkbox" name="modelNumber" value="<%vo.getModelNumber(); %>"></td>
                            </tr>
-                           <tr>
-                            <td>[상품목록]</td>
-                            <td><img src="./logo.svg" alt="씀네일"></td>
-                            <td><a href="editProduct.html">한글이름/모델남바ddddddddddddddddddddddddddddddddddddddddddd</a></td>
-                            <td><input type="checkbox" name="모델명" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>[상품목록]</td>
-                            <td><img src="./logo.svg" alt="씀네일"></td>
-                            <td><a href="editProduct.html">한글이름/모델남바</a></td>
-                            <td><input type="checkbox" name="모델명" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>[상품목록]</td>
-                            <td><img src="./logo.svg" alt="씀네일"></td>
-                            <td><a href="editProduct.html">한글이름/모델남바</a></td>
-                            <td><input type="checkbox" name="모델명" id=""></td>
-                        </tr>
+                       		
+                       		<%} %>
+                          
                         </tbody>
                    </table>
+             <div class="page-area">
+				<% if(pvo.getStartPage() != 1){%>
+					<a href="/shoekream/admin/product/list?pno=<%=pvo.getStartPage()-1%>">이전</a>
+				<% }%>
+				
+				<% for(int i = pvo.getStartPage(); i <=pvo.getEndPage(); i++){%>
+				
+						<% if( i == pvo.getCurrentPage()){%>
+						<span><%=i %></span>
+						<% }else{%>
+						<a href="/shoekream/admin/product/list?pno=<%= i %>"><%= i %></a>
+						<% }%>
+				
+				<% }%>
+				
+				<%if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+				<a href="/shoekream/admin/product/list?pno=<%= pvo.getEndPage()+1%>">다음</a>
+				<% }%>
                    <input type="submit" value="삭제하기">
                </form>
-           </div>
+           	</div>
         </div>
     </div>
 

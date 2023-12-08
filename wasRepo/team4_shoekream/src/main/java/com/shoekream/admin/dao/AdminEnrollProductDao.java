@@ -153,5 +153,19 @@ public class AdminEnrollProductDao {
 		
 		return voList;
 	}
+
+	public int selectProductCount(Connection conn) throws Exception {
+		String sql = "SELECT COUNT(*) FROM PRODUCTS WHERE DEL_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		int cnt = 0;
+		if(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return cnt;
+	}
 	
 }

@@ -23,9 +23,14 @@ public class AdminProductListService {
 		
 	}
 
-	public int selectProductCount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectProductCount() throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		AdminEnrollProductDao dao = new AdminEnrollProductDao();
+		int result = dao.selectProductCount(conn);
+		JDBCTemplate.close(conn);
+		return result;
+				
+		
 	}
 
 }

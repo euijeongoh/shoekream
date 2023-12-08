@@ -27,7 +27,7 @@ public class AdminProductLIstController extends HttpServlet{
 			}
 			int currentPage = Integer.parseInt(currentPage_);
 			int pageLimit = 5;
-			int productLimit = 10;
+			int productLimit = 7;
 			
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, productLimit);
 			
@@ -46,6 +46,13 @@ public class AdminProductLIstController extends HttpServlet{
 			
 		}
 		
+	}
+	
+	
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String modelNumber = req.getParameter("modelNumber");
 	}
 	
 }
