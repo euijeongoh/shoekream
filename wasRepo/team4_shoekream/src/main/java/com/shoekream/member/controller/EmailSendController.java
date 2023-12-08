@@ -70,6 +70,7 @@ public class EmailSendController extends HttpServlet{
 			System.out.println("g");
 			// 이메일 전송0
 			MimeMessage mail = new MimeMessage(session);
+			mail.setContent(emailContent, "text/plain; charset=utf-8");
 			InternetAddress from = new InternetAddress(emailFrom, "shoekream@naver.com");
 			InternetAddress to = new InternetAddress(emailTo);
 			

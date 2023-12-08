@@ -7,49 +7,84 @@ import com.shoekream.orders.vo.OrdersVo;
 public class OrdersHistoryVo {
 	
 	// fields
-	private List<OrdersVo> orderList;
-	private HistoryCntVo cntVo;
+	private String productName;
+	private String productImg;
+	private String productSize;
+	private String orderStatus;
+	private String orderDate;
+	private String finalPrice;
 	
 	// constructor
 	public OrdersHistoryVo() {
 		
 	}
-	
-	
 
-	public OrdersHistoryVo(List<OrdersVo> orderList, HistoryCntVo cntVo) {
+	public OrdersHistoryVo(String productName, String productImg, String productSize, String orderStatus,
+			String orderDate, String finalPrice) {
 		super();
-		this.orderList = orderList;
-		this.cntVo = cntVo;
+		this.productName = productName;
+		this.productImg = productImg;
+		this.productSize = productSize;
+		this.orderStatus = orderStatus;
+		this.orderDate = orderDate;
+		this.finalPrice = finalPrice;
 	}
 
-
-
-	// getter setter
-	public List<OrdersVo> getOrderList() {
-		return orderList;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setOrderList(List<OrdersVo> orderList) {
-		this.orderList = orderList;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
-	public HistoryCntVo getCntVo() {
-		return cntVo;
+	public String getProductImg() {
+		return productImg;
 	}
 
-	public void setCntVo(HistoryCntVo cntVo) {
-		this.cntVo = cntVo;
+	public void setProductImg(String productImg) {
+		this.productImg = productImg;
 	}
 
-	// toString
+	public String getProductSize() {
+		return productSize;
+	}
+
+	public void setProductSize(String productSize) {
+		this.productSize = productSize;
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public String getFinalPrice() {
+		return finalPrice;
+	}
+
+	public void setFinalPrice(String finalPrice) {
+		this.finalPrice = finalPrice;
+	}
+
 	@Override
 	public String toString() {
-		return "OrdersHistoryVo [orderList=" + orderList + ", cntVo=" + cntVo + "]";
+		return "OrdersHistoryVo [productName=" + productName + ", productImg=" + productImg + ", productSize="
+				+ productSize + ", orderStatus=" + orderStatus + ", orderDate=" + orderDate + ", finalPrice="
+				+ finalPrice + "]";
 	}
 
-
-	
 	
 	
 }

@@ -51,6 +51,26 @@ public class MyPageService {
 		return bidList;
 	}
 
+	// 구매 진행중 내역 정보
+	public List<OrdersHistoryVo> viewBuyingPendingList(MemberVo loginMember, Map<String, String> map) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		List<OrdersHistoryVo> pendList = dao.getBuyPendingInfo(conn, loginMember, map);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return pendList;
+		
+	}
+	
+	// 구매완료 내역 조회
+	public List<OrdersHistoryVo> viewBuyingFinishedList(MemberVo loginMember, Map<String, String> map) throws Exception {
+		return null;
+	}
 
 	// 관심상품 목록 조회
 	public List<WishListVo> viewWishListInfo(MemberVo loginMember) throws Exception {
@@ -66,6 +86,19 @@ public class MyPageService {
 		
 		return wishList;
 	}
+
+	// 마이페이지 메인
+	public Map<String, Object> getMyPageMainInfo(MemberVo loginMember) {
+		
+		
+		
+		return null;
+	}
+
+
+	
+
+
 		
 
 }

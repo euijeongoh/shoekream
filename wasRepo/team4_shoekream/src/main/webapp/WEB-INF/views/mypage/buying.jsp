@@ -26,15 +26,15 @@
                     구매 내역
                 </div>
                 <div class="tab-container">
-                    <div class="tab" id="bidTab">
+                    <div class="tab" id="bidTab" onclick="bidTabAjax();">
                         <div id="bidCount">${cntVo.cntBid}</div>
                         <div id="stage">구매 입찰</div>
                     </div>
-                    <div class="tab" id="pendTab">
+                    <div class="tab" id="pendTab" onclick="pendTabAjax();">
                         <div id="pendCount">${cntVo.cntPend}</div>
                         <div id="stage">진행 중</div>
                     </div>
-                    <div class="tab" id="finishTab">
+                    <div class="tab" id="finishTab" onclick="finishTabAjax();">
                         <div id="finishedCount">${cntVo.cntFinished}</div>
                         <div id="stage">종료</div>
                     </div>
@@ -52,7 +52,9 @@
                         <input type="date" name="startDate" id="startDate">
                         <span>~</span>
                         <input type="date" name="endDate" id="endDate">
-                        <input type="submit" value="조회">
+                        <input type="text" name="tab" id="tab" hidden>
+                        <input type="button" value="조회" onclick="chooseAjax();">
+>
                     </form>
                 </div>
 
