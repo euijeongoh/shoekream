@@ -120,7 +120,6 @@
                         <input type="date" name="releaseDate" placeholder="출시일">
                         <span>사이즈</span>
                         <div>
-                          
                             <input type="checkbox" name="size" value="215">215
                             <input type="checkbox" name="size" value="220">220
                             <input type="checkbox" name="size" value="225">225
@@ -139,7 +138,6 @@
                             <input type="checkbox" name="size" value="290">290
                             <input type="checkbox" name="size" value="295">295
                             <input type="checkbox" name="size" value="300">300
-
                         </div>
                         <input type="submit" value="저장">
                         <button onclick="resetForm()">취소</button>
