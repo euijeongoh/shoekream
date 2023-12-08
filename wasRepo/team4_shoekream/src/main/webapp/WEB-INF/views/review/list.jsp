@@ -22,7 +22,7 @@
             <div class="feed"> 
                 <div class="listphoto">
                     <div class="one">
-                        <img src="../ouj/img/reviewlist02.png" alt="사진02" class="photo">
+                        <img src="/resources/img/review/reviewlist01" alt="사진02" class="photo">
                         <div class="detail">
                             <div>
                                 <img src="../ouj/img/물결.png" alt="물결프사" class="wave">

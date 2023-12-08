@@ -295,7 +295,8 @@ header .main-list li {
 .img_label{
     display: inline-block;
     width: 100px;
-    margin-top: 10px;
+    margin-top: 13px;
+    margin-left: 30px;
     background-color: white;
     color: black;
 }

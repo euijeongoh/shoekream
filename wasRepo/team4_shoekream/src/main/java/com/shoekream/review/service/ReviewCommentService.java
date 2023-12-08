@@ -11,20 +11,45 @@
 //
 //public class ReviewCommentService {
 //
-//	//댓글 목록
-//	public List<ReviewCommentVo> reviewCommentList() throws Exception{
+//	
+//	//댓글작성
+//	public int reviewCommentwrite(ReviewCommentVo vo) throws Exception {
+//	      
+//      // conn
+//      Connection conn = JDBCTemplate.getConnection();
+//      
+//      // dao
+//      ReviewCommentDao dao = new ReviewCommentDao();
+//      int result = dao.reviewCommentwrite(conn, vo);
+//      
+//      // txs
+//      if(result == 1) {
+//         JDBCTemplate.commit(conn);
+//      }else {
+//         JDBCTemplate.rollback(conn);
+//      }
+//      
+//      // close
+//      JDBCTemplate.close(conn);
+//      
+//      return result;
+//   }
+//	
 //		
-//		//conn
-//		Connection conn = JDBCTemplate.getConnection();
-//		
-//		//dao
-//		ReviewCommentDao dao = new ReviewCommentDao();
-//		List<ReviewCommentVo> reviewCommnetVoList = dao.ReviewCommentList(conn);
-//		
-//		//close
-//		JDBCTemplate.close(conn);
-//		
-//		return reviewCommentList();
-//	}
-//
+////	//댓글 목록
+////	public List<ReviewCommentVo> reviewCommentList() throws Exception{
+////		
+////		//conn
+////		Connection conn = JDBCTemplate.getConnection();
+////		
+////		//dao
+////		ReviewCommentDao dao = new ReviewCommentDao();
+////		List<ReviewCommentVo> reviewCommnetVoList = dao.ReviewCommentList(conn);
+////		
+////		//close
+////		JDBCTemplate.close(conn);
+////		
+////		return reviewCommentList();
+////	}
+////
 //}

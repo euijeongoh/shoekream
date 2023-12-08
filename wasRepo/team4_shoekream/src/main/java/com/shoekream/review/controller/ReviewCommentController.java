@@ -27,7 +27,8 @@
 //	        //사용자 로그인 여부 확인
 //	        MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 //	        if (loginMember == null) {
-//	            req.setAttribute("errorMsg", "로그인이 필요한 페이지입니다.");
+//	        	req.setAttribute("errorMsg", "로그인이 필요한 페이지입니다.");
+//	            req.getRequestDispatcher("/WEB-INF/views/member/login.jsp"); //일단 주석처리 로그인 안되어있으면 로그인 페이지로 보내기
 //	            // 선택적으로 로그인 페이지로 리다이렉트하거나 다른 방식으로 처리할 수 있습니다.
 //	            // resp.sendRedirect("/member/login");
 //	        }
@@ -35,12 +36,13 @@
 //	        // 서비스 호출
 //	        ReviewCommentService cs = new ReviewCommentService();
 //	        List<ReviewCommentVo> reviewCommentVoList = cs.reviewCommentList();
+//	        
 //	        req.setAttribute("reviewCommnetVoList", reviewCommentVoList);
 //	        req.getRequestDispatcher("/WEB-INF/views/review/comment.jsp").forward(req, resp);
 //
 //	    } catch (Exception e) {
 //	        e.printStackTrace();
-//	        req.setAttribute("errorMsg", "리뷰 작성 에러");
+//	        req.setAttribute("errorMsg", "댓글 작성 에러");
 //	        req.getRequestDispatcher("/WEB-INF/views/review/commnet.jsp").forward(req, resp); //여기를 board 로 고치기
 //	    }
 //
@@ -58,25 +60,25 @@
 //         
 //         HttpSession session = req.getSession();
 //         
-//         // data //이미지는 어떤 타입?
-//         String fiveStarRating = req.getParameter("fiveStarRating");
-//         String comfortNO = req.getParameter("comfortNO");
+//         // data
+////         String memberNo = req.getParameter("memberNo");
 //         String content = req.getParameter("content");
+//         String likeBtn = req.getParameter("likeBtn");
 //         MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
 //         
 //         if(loginMember == null) {
 //            throw new Exception("로그인 안했음");
 //         }
 //         
-//         ReviewVo vo = new ReviewVo();
-//         vo.setFiveStarRating(fiveStarRating);
-//         vo.setComfortNo(comfortNO);
+//         ReviewCommentVo vo = new ReviewCommentVo();
+////         vo.setMemberNo(memberNo);
 //         vo.setContent(content);
+//         vo.setLikeBtn(likeBtn);
 //         vo.setMemberNo(loginMember.getNo());
 //         
 //         // service
-//         ReviewService bs = new ReviewService();
-//         int result = bs.write(vo);
+//         ReviewCommentService bs = new ReviewCommentService();
+//         int result = bs.reviewCommentwrite(vo);
 //         
 //         // result == view
 //         if(result != 1) {
