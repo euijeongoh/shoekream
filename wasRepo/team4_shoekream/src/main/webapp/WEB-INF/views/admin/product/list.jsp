@@ -107,7 +107,7 @@
                 </nav>
             </div>
             <div class="list_body">
-               <form action="">
+               <form action="/shoekream/admin/product/list" method="post">
                    <table border="1">
                        <tbody>
                        
@@ -116,13 +116,15 @@
                                <td>[상품목록]</td>
                                <td><img src="/shoekream/resources/img/admin/header/logo.svg" alt="씀네일"></td>
                                <td><a href="editProduct.html"><%=vo.getProductNameKo()+vo.getModelNumber()%></a></td>
-                               <td><input type="checkbox" name="modelNumber" value="<%vo.getModelNumber(); %>"></td>
+                               <td><input type="checkbox" name="modelNumber" value="<%=vo.getModelNumber() %>"></td>
                            </tr>
                        		
                        		<%} %>
                           
                         </tbody>
                    </table>
+                  <input type="submit" value="삭제하기">
+               </form>
              <div class="page-area">
 				<% if(pvo.getStartPage() != 1){%>
 					<a href="/shoekream/admin/product/list?pno=<%=pvo.getStartPage()-1%>">이전</a>
@@ -141,8 +143,6 @@
 				<%if(pvo.getEndPage() != pvo.getMaxPage()){ %>
 				<a href="/shoekream/admin/product/list?pno=<%= pvo.getEndPage()+1%>">다음</a>
 				<% }%>
-                   <input type="submit" value="삭제하기">
-               </form>
            	</div>
         </div>
     </div>
