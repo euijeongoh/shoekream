@@ -75,10 +75,10 @@
                             <ul class="select_list grid_3">
 								<c:forEach items="${ voList }" var="vo">
 	                            	<li id="select_item">
-	                                    <button class="select_link buy" onclick="f01(46, ${vo.getPrice()},${vo.getShoesSizes()})">
+	                                    <button type="button" class="select_link buy" onclick="f01('46', '${ vo.price }', '${ vo.shoesSizes }' )">
 	                                        <div class="link_inner">
-	                                            <div class="size">${ vo.getShoesSizes() }</div>
-	                                            <div class="price">${ vo.getPrice() }</div>
+	                                            <div class="size">${ vo.shoesSizes }</div>
+	                                            <div class="price">${ vo.price }</div>
 	                                        </div>
 	                                    </button>
 	                                </li>
@@ -86,15 +86,17 @@
                             </ul>
                         </div>
                         <div class="order_btn_area">
-                            <button class="btn_order order_buy buy clickable">
-                                <div class="box">
-                                    <input class="productsNo" type="hidden" name="productsNo">
-                                    <input class="price" type="hidden" name="price">
-                                    <input class="size" type="hidden" name="size">
-                                    <div class="order_price">180,000</div>
-                                    <div class="order_desc">5-7일소요</div>
-                                </div>
-                            </button>
+                            <form action="/shoekream/buy/select" method="post">
+                                <button class="btn_order order_buy buy clickable">
+                                    <div class="box">
+                                        <input class="products_No" value="" type="hidden" name="productsNo">
+                                        <input class="products_price" value="" type="hidden" name="price">
+                                        <input class="products_size" type="hidden" name="size">
+                                        <div class="order_price">180,000</div>
+                                        <div class="order_desc">5-7일소요</div>
+                                    </div>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

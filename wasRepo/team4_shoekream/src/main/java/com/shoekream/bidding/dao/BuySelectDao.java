@@ -10,22 +10,21 @@ import com.shoekream.biddingVo.BiddingVo;
 
 public class BuySelectDao {
 
-	public List<BiddingVo> buySelect(Connection conn) throws Exception{
+	public List<BiddingVo> buySelect(Connection conn, String productsNo) throws Exception{
 		
 		// sql
-		String sql = "SELECT B.PRODUCTS_SIZES_NO , MIN(PRICE) AS PRICE ,SS.SHOES_SIZES FROM BIDDING B JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE B.BIDDING_STATUS_NO = 1 AND B.BIDDING_POSITION_NO = 2 AND B.EXPIRE_DATE >= SYSDATE GROUP BY SS.SHOES_SIZES, B.PRODUCTS_SIZES_NO";
+		String sql = "SELECT SHOES_SIZES, MIN(PRICE) AS PRICE FROM ( SELECT B.NO ,B.MEMBER_NO ,B.PRODUCTS_NO ,B.PRODUCTS_SIZES_NO ,SS.SHOES_SIZES ,B.BIDDING_STATUS_NO ,BS.BIDDING_STATUS ,B.BIDDING_POSITION_NO ,BP.BIDDING_POSITION ,B.PRICE ,B.ENROLL_DATE ,B.EXPIRE_DATE FROM BIDDING B JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO JOIN BIDDING_POSITION BP ON B.BIDDING_POSITION_NO = BP.NO JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE PRODUCTS_NO = ? AND BIDDING_STATUS = '진행중' AND BIDDING_POSITION = '판매입찰' AND B.EXPIRE_DATE >= SYSDATE ) GROUP BY SHOES_SIZES";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productsNo);
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
 		List<BiddingVo> voList = new ArrayList<BiddingVo>();
 		while(rs.next()) {
 			BiddingVo dbVo = new BiddingVo();
-			dbVo.setProductsSizesNo(rs.getString("PRODUCTS_SIZES_NO"));
 			dbVo.setShoesSizes(rs.getString("SHOES_SIZES"));
 			dbVo.setPrice(rs.getString("PRICE"));
 			voList.add(dbVo);
-//			System.out.println("에러확인 PRODUCTS_SIZES_NO : "+rs.getString("PRODUCTS_SIZES_NO"));
 //			System.out.println("에러확인 SHOES_SIZES : "+rs.getString("SHOES_SIZES"));
 //			System.out.println("에러확인 PRICE : "+rs.getString("PRICE"));
 		}
