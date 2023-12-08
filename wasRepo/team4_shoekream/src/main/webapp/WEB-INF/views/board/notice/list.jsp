@@ -17,7 +17,7 @@
 <link rel="stylesheet"
 	href="/shoekream/resources/css/common/service_center_side.css">
 <link rel="stylesheet"
-	href="/shoekream/resources/css/board/notice/notice.css">
+	href="/shoekream/resources/css/board/notice/list.css">
 
 </head>
 <body>
@@ -36,10 +36,13 @@
 				</div>
 				<ul class="dropdown_list">
 					<%for(NoticeVo vo : noticeVoList) {%>
-					<li><a href="">
+<%-- 				list조건	onclick = "f01(<%= vo.getNo() %>);" --%>
+					<li>
+					<a href="/shoekream/notice/detail?no=<%= vo.getNo() %>">
 							<div class="dropdown"><%= vo.getTitle() %></div>
 							<div class="date"><%= vo.getEnrollDate() %></div>
-					</a></li>
+					</a>
+					</li>
 					<% } %>
 				</ul>
 				<div class="pagination">
@@ -78,5 +81,11 @@
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	
+	<script> 
+		function f01(no){
+			location.href = '/shoekream/notice/detail?no=' + no;
+		}
+	</script>
 </body>
 </html>
