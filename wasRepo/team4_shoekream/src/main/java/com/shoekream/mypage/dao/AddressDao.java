@@ -100,12 +100,24 @@ public class AddressDao {
 		String sql = "INSERT INTO ADDERSS_BOOK (NO ,MEMBER_NO ,ADDRES_NAME ,ADDRES ,DETAIL_ADDRES ,PHONE_NUMBER ,POST_CODE ,DEFAULT_ADDRESS_YN) VALUES (SEQ_ADDERSS_BOOK_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getMemberNo());
-		pstmt.setString(1, vo.getAddersName());
-		pstmt.setString(2, vo.getAddres());
-		pstmt.setString(3, vo.getDetailAddres());
-		pstmt.setString(4, vo.getPhoneNumber());
-		pstmt.setString(5, vo.getPostCode());
-		pstmt.setString(6, vo.getDefaultAddrYn());
+		pstmt.setString(2, vo.getAddersName());
+		pstmt.setString(3, vo.getAddres());
+		pstmt.setString(4, vo.getDetailAddres());
+		pstmt.setString(5, vo.getPhoneNumber());
+		pstmt.setString(6, vo.getPostCode());
+		pstmt.setString(7, vo.getDefaultAddrYn());
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+	public int addrDelete(Connection conn, String no) throws Exception{
+		
+		String sql = "UPDATE ADDERSS_BOOK SET DEL_YN = 'Y' WHERE NO = ? AND DEFAULT_ADDRESS_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
 		int result = pstmt.executeUpdate();
 		
 		JDBCTemplate.close(pstmt);
