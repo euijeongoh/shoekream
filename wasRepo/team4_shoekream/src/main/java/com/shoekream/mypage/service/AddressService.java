@@ -46,4 +46,16 @@ public class AddressService {
 		return result;
 	}
 
+	public int addrDelete(String no) throws Exception{
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		AddressDao ad = new AddressDao();
+		int result = ad.addrDelete(conn , no);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
 }
