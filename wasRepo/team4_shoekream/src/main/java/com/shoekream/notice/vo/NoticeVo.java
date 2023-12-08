@@ -1,4 +1,4 @@
-package com.shoekream.notice.controller;
+package com.shoekream.notice.vo;
 
 public class NoticeVo {
 

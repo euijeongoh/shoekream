@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shoekream.db.util.JDBCTemplate;
-import com.shoekream.notice.controller.NoticeVo;
+import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
 
 public class NoticeDao {
@@ -68,7 +68,7 @@ public class NoticeDao {
 	public NoticeVo selectNoticeByNo(Connection conn, String no) throws Exception{
 		
 		//SQL
-		String sql = "SELECT NO, TITLE, CONTENT, ENROLL_DATE FROM NOTICE_BOARD WHERE NO = ? AND DEL_YN = 'N'";
+		String sql = "SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM NOTICE_BOARD WHERE NO = ? AND DEL_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, no);
 		ResultSet rs = pstmt.executeQuery();

@@ -1,8 +1,8 @@
-<%@page import="com.shoekream.notice.controller.NoticeVo"%>
+<%@page import="com.shoekream.notice.vo.NoticeVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<% NoticeVo vo = (NoticeVo)request.getAttribute("no"); %>
+<% NoticeVo vo = (NoticeVo)request.getAttribute("vo"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +21,12 @@
 			<div class="board_wrap">
 				<div class="board_title">공지사항</div>
 				<div class="dropdown_head">
-					<div class="date">2023.11.28</div>
-					<div class="notice_title"> <%= vo.getTitle()%></div>
+					<div class="date"><%= vo.getEnrollDate() %></div>
+					<div class="notice_title"> <%= vo.getTitle()%> </div>
 				</div>
 				<div class="dropdown_content">
 					<div class="content">
-					  <textarea name="content" placeholder="내용을 입력하세요" rows="30" cols="50">
+					  <textarea name="contents" id="contents" cols="50" rows="30" readonly><%= vo.getContent() %></textarea>
 					</div>
 				</div>
 				<div class="btn_list">
