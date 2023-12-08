@@ -1,5 +1,5 @@
 <%@page import="com.shoekream.page.vo.PageVo"%>
-<%@page import="com.shoekream.notice.controller.NoticeVo"%>
+<%@page import="com.shoekream.notice.vo.NoticeVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -32,11 +32,12 @@
 			<div class="board_wrap">
 				<div class="board_title">공지사항</div>
 				<div class="board_search">
-					<div>검색</div>
+					<div>	
+					검색: <input class="search" type="text">
+					</div>
 				</div>
 				<ul class="dropdown_list">
 					<%for(NoticeVo vo : noticeVoList) {%>
-<%-- 				list조건	onclick = "f01(<%= vo.getNo() %>);" --%>
 					<li>
 					<a href="/shoekream/notice/detail?no=<%= vo.getNo() %>">
 							<div class="dropdown"><%= vo.getTitle() %></div>
@@ -82,10 +83,10 @@
 	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	
-	<script> 
-		function f01(no){
-			location.href = '/shoekream/notice/detail?no=' + no;
-		}
-	</script>
+<!-- 	<script>  -->
+// 		function f01(no){
+// 			location.href = '/shoekream/notice/detail?no=' + no;
+// 		}
+<!-- 	</script> -->
 </body>
 </html>

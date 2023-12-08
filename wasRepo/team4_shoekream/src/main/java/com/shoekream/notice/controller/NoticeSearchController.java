@@ -1,6 +1,7 @@
 package com.shoekream.notice.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,28 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 import com.shoekream.notice.service.NoticeService;
 import com.shoekream.notice.vo.NoticeVo;
 
-@WebServlet("/notice/detail")
-public class NoticeDetailController extends HttpServlet{
+
+@WebServlet("/notice/search")
+public class NoticeSearchController extends HttpServlet {
+	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		try {
-			//data
-			String no = req.getParameter("no");
-			
-			//service
-			NoticeService ns = new NoticeService();
-			NoticeVo vo = ns.selectNoticeListByNo(no);
-			System.out.println(vo);
-			
-			//result ==view
-			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/WEB-INF/views/board/notice/detail.jsp").forward(req, resp);
+		//data
+		String title = req.getParameter("title");
 		
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+		//service
+		NoticeService ns = new NoticeService();
+		List<NoticeVo> noticeVoList = ns.noticeSearch(title);
+		
+		
+		//result == view
+
 	}
 
-}//class
+}

@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.shoekream.db.util.JDBCTemplate;
-import com.shoekream.notice.controller.NoticeVo;
 import com.shoekream.notice.dao.NoticeDao;
+import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
 
 public class NoticeService {
@@ -57,6 +57,19 @@ public class NoticeService {
 		return vo;
 	}
 
-	
+	public List<NoticeVo> noticeSearch(String title) {
+		
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		NoticeDao dao = new NoticeDao();
+		List<NoticeVo> noticeVoList = dao.noticeSearch(conn, title);
+		
+		//tx
+		
+		//close
+		JDBCTemplate.close(conn);
+	}
 
 }

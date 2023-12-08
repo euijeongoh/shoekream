@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.notice.service.NoticeService;
+import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
 
 @WebServlet("/notice/list")
