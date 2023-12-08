@@ -44,7 +44,7 @@ public class ReviewDao {
 	public List<ReviewVo> myReviewList(Connection conn) throws Exception {
 		
 		//sql
-		String sql = "SELECT MEMBER_NO, PROFILE_IMAGE , LIKE_BTN FROM REVIEW";		
+		String sql = "SELECT NO, LIKE_BTN, REVIEW_IMAGE, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM REVIEW WHERE DEL_YN = 'N' ORDER BY ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -52,14 +52,18 @@ public class ReviewDao {
 		List<ReviewVo> myreviewVoList = new ArrayList<ReviewVo>();
 		while(rs.next()) {
 			
-			String memberNo = rs.getString("MEMBER_NO");
-			String profileImage = rs.getString("PROFILE_IMAGE");
+			String no = rs.getString("NO");
 			String likeBtn = rs.getString("LIKE_BTN");
+			String reviewImage = rs.getString("REVIEW_IMAGE");
+			String profileImage = rs.getString("PROFILE_IMAGE");
+			String enrollDate = rs.getString("ENROLL_DATE");
 			
 			ReviewVo vo = new ReviewVo();
-			vo.setNo(memberNo);
-			vo.setProfileImage(profileImage);
+			vo.setNo(no);
 			vo.setLikeBtn(likeBtn);
+			vo.setReviewImage(reviewImage);
+			vo.setProfileImage(profileImage);
+			vo.setEnrollDate(enrollDate);
 			
 			myreviewVoList.add(vo);
 			

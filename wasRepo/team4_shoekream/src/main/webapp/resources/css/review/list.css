@@ -134,18 +134,21 @@ header .main-list li {
 
 .listphoto{
     width: 1200px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: antiquewhite; */
 }
 .listphoto2{
     width: 1200px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: blue; */
 }
 .listphoto3{
     width: 1200px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
     /* background-color: white; */
@@ -158,12 +161,13 @@ header .main-list li {
 }
 .photo{
     width: 95%;
-    padding: 15px 0px;
+    /* padding: 15px 0px; */
     height: 100%;
     border-radius: 10%
 }
 .wave{
     border-radius: 70%;
+    border: 1px solid lightgray;
 }
 .detail{
     display: flex;

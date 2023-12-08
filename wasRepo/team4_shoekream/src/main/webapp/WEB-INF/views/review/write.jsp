@@ -123,6 +123,7 @@ function previewImage(event) {
     }
 }
 
+
 //JavaScript를 사용하여 각 버튼의 클릭 이벤트를 처리합니다
 const comfortButtons = document.querySelectorAll('.comfort-button');
 
@@ -139,22 +140,33 @@ comfortButtons.forEach(button => {
         console.log(`선택된 착화감: ${selectedComfort}`);
     });
 });
-	//별점코드
-  // DOM 요소 가져오기
-   const stars = document.querySelectorAll('.stars');
 
-   // 각 별표에 이벤트 리스너 추가
-   stars.forEach((star, index) => {
-       star.addEventListener('click', () => {
-           // 클릭한 별표까지 강조 효과 추가
-           for (let i = 0; i <= index; i++) {
-               stars[i].classList.add('selected');
-           }
 
-           // 클릭한 별표 이후의 별표에는 강조 효과 제거
-           for (let i = index + 1; i < stars.length; i++) {
-               stars[i].classList.remove('selected');
-           }
-       });
-   });
+//별점코드
+//DOM 요소 가져오기
+const stars = document.querySelectorAll('.stars > .stars');
+
+//각 별표에 이벤트 리스너 추가
+stars.forEach((star, index) => {
+ star.addEventListener('click', () => {
+     console.log('별을 클릭했습니다.');
+
+     // 클릭한 별표까지 강조 효과 추가
+     for (let i = 0; i <= index; i++) {
+         stars[i].classList.toggle('selected');
+     }
+
+     // 클릭한 별표 이후의 별표에는 강조 효과 제거
+     for (let i = index + 1; i < stars.length; i++) {
+         stars[i].classList.remove('selected');
+     }
+
+     // 선택된 별의 값을 얻어옵니다.
+     const selectedRating = index + 1;
+     console.log(`선택된 별점: ${selectedRating}`);
+ });
+});
+
+
+
 </script>
