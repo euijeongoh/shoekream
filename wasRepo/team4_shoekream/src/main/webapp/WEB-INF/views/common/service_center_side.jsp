@@ -13,7 +13,7 @@
             <div class="service-title"><h2>고객센터</h2></div>
             <nav>
                 <div class="notice">
-                    <div id="title"><a href="">공지사항</a></div>
+                    <div id="title"><a href="/notice/list">공지사항</a></div>
                 </div>
                 <div class="faq">
                     <div id="title"><a href="">자주 묻는 질문</a></div>

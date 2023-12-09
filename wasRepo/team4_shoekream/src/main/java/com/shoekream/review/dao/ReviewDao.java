@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.review.vo.ReviewVo;
 
 public class ReviewDao {
@@ -108,6 +109,45 @@ public class ReviewDao {
 		JDBCTemplate.close(rs);
 		
 		return reviewVoList;
+	}
+
+
+	//리뷰 상세조회
+	public ReviewVo selectReviewByNo(Connection conn, String no) throws Exception {
+		
+		//sql
+		String sql = "SELECT NO, MEMBER_NO, PRODUCT_NO, COMFORT_NO, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, MODIFY_DATE FROM REVIEW WHERE NO = ? AND DEL_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		ResultSet rs = pstmt.executeQuery();
+		
+		//rs
+		ReviewVo vo = null;
+		if(rs.next()) {
+			vo = new ReviewVo();
+			String No = rs.getString("NO");
+			String memberNo = rs.getString("MEMBER_NO");
+			String productNo = rs.getString("PRODUCT_NO");
+			String comfortNo = rs.getString("COMFORT_NO");
+			String content = rs.getString("CONTENT");
+			String enrollDate = rs.getString("ENROLL_DATE");
+			String ModifyDate = rs.getString("MODIFY_DATE");
+			
+			vo.setNo(No);
+			vo.setMemberNo(memberNo);
+			vo.setProductNo(productNo);
+			vo.setComfortNo(comfortNo);
+			vo.setContent(content);
+			vo.setEnrollDate(enrollDate);
+			vo.setModifyDate(ModifyDate);
+		}
+		
+		//close
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return vo;
+		
 	}
 
 

@@ -160,13 +160,13 @@ header .main-list li {
     margin: 30px 50px;
     font-size: large;
 }
-.starjom{ 
+/* .starjom{ 
     /* margin: auto;
     width: 50px; */
-    margin: auto;
+    /* margin: auto; */
     /* margin-right: 150px; */
     /* background-color: salmon; */
-}
+/* } */
 .stars {
     display: inline-block;
     font-size: 24px;
@@ -180,11 +180,12 @@ header .main-list li {
 
 .selected {
     color: orange;
-}
+} */
 .ignition{
     display: flex;
     justify-content: space-around;
     height: 80px;
+    /* margin-top: 50px; */
     /* background-color: greenyellow; */
 }
 /* .wignition{
@@ -194,6 +195,7 @@ header .main-list li {
 #wignition{
     margin: 30px 80px;
     font-size: large;
+    text-align: center;
 }
 .three{
     /* background-color: aqua; */

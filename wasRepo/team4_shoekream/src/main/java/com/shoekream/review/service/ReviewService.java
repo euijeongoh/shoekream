@@ -1,7 +1,9 @@
 package com.shoekream.review.service;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.review.dao.ReviewDao;
@@ -64,9 +66,26 @@ public class ReviewService {
 		
 		return reviewVoList;
 	}
-
 	
 	
+	//리뷰 상세조회
+	public ReviewVo selectReviewByNo(String no) throws Exception {
+	    
+		// conn
+	    Connection conn = JDBCTemplate.getConnection();
 
+	    // dao
+	    ReviewDao dao = new ReviewDao();
+	    ReviewVo vo = dao.selectReviewByNo(conn, no);
 
-}
+	    // tx
+//	    JDBCTemplate.close(conn);
+//	    Map<String, Object> map = new HashMap<String, Object>();
+//	    map.put("vo", vo);
+
+	    return vo;
+	    
+		}
+		
+	}
+
