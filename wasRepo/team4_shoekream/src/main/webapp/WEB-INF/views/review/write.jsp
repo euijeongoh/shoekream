@@ -27,7 +27,7 @@
             <br>
             <div class="picjor">
                 <div class="picture">
-                    <img src="/resources/img/review/tage_img.png" alt="상품이미지" class="picture_img">
+                    <img src="/shoekream/resources/img/review/tage_img.png" alt="상품이미지" class="picture_img">
                 </div>
                 <div class="jordan">
                     <p class="jordan_eg"><b>(W) Jordan 1 Low White Wolf Grey</b></p>
@@ -37,20 +37,20 @@
 
         <form action="" class="aaa">
             <div class="ggg">
-                <div class="star">
+                <!-- <div class="star">
                     <div class="wstar">
                         <p id="wstar"><b>별 점</b></p>
                     </div>
                     <div class="starjom">
-                        <div class="stars" data-rating="1">&#9733;</div>
-                        <div class="stars" data-rating="2">&#9733;</div>
-                        <div class="stars" data-rating="3">&#9733;</div>
-                        <div class="stars" data-rating="4">&#9733;</div>
-                        <div class="stars" data-rating="5">&#9733;</div>
+                        <div class="stars" data-rating="1"><i class="rating__star far fa-star"></i></div>
+                        <div class="stars" data-rating="2"><i class="rating__star far fa-star"></i></div>
+                        <div class="stars" data-rating="3"><i class="rating__star far fa-star"></i></div>
+                        <div class="stars" data-rating="4"><i class="rating__star far fa-star"></i></div>
+                        <div class="stars" data-rating="5"><i class="rating__star far fa-star"></i></div>
                     
                           <p> </p><span id="selectedRating"></span>
                     </div>
-                </div>
+                </div> -->
                 <div class="ignition">
                     <div class="wignition">
                         <p id="wignition"><b>착화감</b></p>
@@ -80,7 +80,7 @@
                 <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
                 <div>
                     <div class="upload_picture">
-                        <img src="shoekream/resources/img/review/picture01.png" alt="리뷰사진" id="reviewpng">
+                        <img src="/resources/img/review/picture01.png" alt="리뷰사진" id="reviewpng">
                     </div>
                     <div class="img_label">
                         <label for="file-input" id="file-input-label">이미지 선택</label>
@@ -96,7 +96,6 @@
         </form>
             
         </div>
-
 
     
     <%@ include file="/WEB-INF/views/common/footer.jsp"%>

@@ -21,12 +21,11 @@ public class ReviewListController extends HttpServlet {
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	   
       try {
+    	  
+    	 //service
          ReviewService rs = new ReviewService();
-         
-         // service(layer 호출)
          List<ReviewVo> reviewVoList = rs.selectReviewList();
 
-         // result(==view)
          req.setAttribute("reviewVoList", reviewVoList);
          req.getRequestDispatcher("/WEB-INF/views/review/list.jsp").forward(req, resp);
 
@@ -37,4 +36,31 @@ public class ReviewListController extends HttpServlet {
          req.getRequestDispatcher("/WEB-INF/views/review/list.jsp").forward(req, resp);
       }
    }
+	
+//	// 리뷰(스타일) 목록 화면
+//	   @Override
+//	   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		   
+//	      try {
+//	    	  
+//	    	 //service
+//	         ReviewService rs = new ReviewService();
+//	         List<ReviewVo> reviewVoList = rs.selectReviewList();
+//	         
+//	         for(ReviewVo reviewVo : reviewVoList) {
+//	        	 System.out.println(reviewVo);
+//	         }
+//
+//	         //result
+//	         req.setAttribute("reviewVoList", reviewVoList);
+//	         req.getRequestDispatcher("/WEB-INF/views/review/list.jsp").forward(req, resp);
+//
+//	      } catch (Exception e) {
+//	         System.out.println("조회 실패");
+//	         e.printStackTrace();
+//	         req.setAttribute("errorMsg", "게시글 목록 조회 에러");
+//	         req.getRequestDispatcher("/WEB-INF/views/review/list.jsp").forward(req, resp);
+//	      }
+//	   }
+	   
 }

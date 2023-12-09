@@ -119,21 +119,28 @@ header .main-list li {
 }
 .profile_img{
     display: flex;
+    justify-content: space-around;
+}
+.profile_img02{
+    display: flex;
     justify-content: flex-start;
     width: 120px;
     height: 120px;
     border-radius: 70%;
-    /* border: 1px solid lightgray; */
+    margin-left: 40px;
+    border: 1px solid lightgray;
+    /* background-color: antiquewhite; */
 }
 .profile_info_box{
     display: flex;
     justify-content: space-between;
-    width: 990px;
-    height: 100px;
-    margin: 17% 30%;
-    /* padding: 30% 30%; */
+    width: 150px;
+    height: 90px;
+    margin-left: 100px;
+    margin-top: 30px;
     /* background-color: aqua; */
 }
+
 /* .profile_info_box li{
     text-decoration: none;
 } */
@@ -184,6 +191,7 @@ header .main-list li {
 
 .listphoto{
     width: 1200px;
+    /* height: 500px; */
     display: flex;
     justify-content: space-evenly;
     /* background-color: antiquewhite; */
@@ -192,33 +200,48 @@ header .main-list li {
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
+    margin-top: 50px;
     /* background-color: blue; */
 }
 .listphoto3{
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
+    margin-top: 50px;
     /* background-color: white; */
 }
 .listphoto4{
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
+    margin-top: 50px;
     /* background-color: green; */
 }
 .photo{
-    width: 95%;
-    padding: 15px 0px;
-    height: 100%;
+    width: 280px;
+    height: 300px;
+    border: 1px solid lightgray;
     border-radius: 10%
 }
 .wave{
+    height: 35px;
+    width: 35px;
     border-radius: 70%;
+    border: 1px solid lightgray;
+    margin-left: 20px;
+}
+.likey{
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
 }
 .detail{
     display: flex;
     justify-content: space-between;
     width: 94%;
+    height: 35px;
+    margin-bottom: 25px;
+    /* background-color: aqua; */
 }
 /* .likenum{
     display: ;
@@ -232,7 +255,8 @@ header .main-list li {
 .one{
     display: block;
     width: 25%;
-    height: 25%;
+    justify-content: space-between;
+    /* height: 250px; */
     /* background-color: skyblue; */
 }
 /* .photo04{

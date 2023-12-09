@@ -1,51 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/ouj/review_board.css">
-    <link rel="stylesheet" href="../../common/userheader.css">
-    <link rel="stylesheet" href="../../common/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-Pzjw8+uaq2LXRzkuBCqJzFWJB5CtR4r8X9+f8+fb4pK5K8R4jBtuxuX1CW5MlJD93" crossorigin="anonymous">
-    <title>리뷰게시글</title>
-   
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/shoekream/resources/css/common/header.css"> 
+<link rel="stylesheet" href="/shoekream/resources/css/review/detail.css">
 </head>
 <body>
-    <header>
-        <div class="header-inner">
-            <div class="top-list">
-                <ul>
-                    <li><a href="">고객센터</a></li>
-                    <li><a href="">마이페이지</a></li>
-                    <li><a href="">관심</a></li>
-                    <li><a>알림</a></li>
-                    <li><a href="">로그인</a></li>
-                </ul>
-            </div>
-            <div class="main-list">
-                <div class="logo-area">
-                    <a href="">
-                    <img src="../../common/logo.svg">
-                    </a>
-                </div>
-                <div class="head-list">
-                    <ul>
-                        <li><a href="">HOME</a></li>
-                        <li><a href="">SHOP</a></li>
-                        <li id="search-btn"><a><img src="../../common/searchIcon.png"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </header>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-        <br>
-
-    <div class="review_wrap">
+<div class="review_wrap">
         <div class="profile_state">
             <div class="profile">
                 <div class="kitty">
-                        <img href="" src="../ouj/img/물결.png" alt="kitty" class="profile_kitty">
+                        <img href="" src="/shoekream/resources/img/review/wave.png" alt="kitty" class="profile_kitty">
                 </div>
                 <div class="profile_detail">
                     <div>
@@ -64,12 +34,13 @@
                 <a href="#"><p id="click">삭제</p></a>
             </div>
 
+
         </div>
 
         <br>
         
         <div class="picture">
-            <img src="../ouj/img/pice.png" alt="리뷰이미지" class="main_picture">
+            <img src="/shoekream/resources/img/review/picture.png" alt="리뷰이미지" class="main_picture">
         </div>
         
         <div class="tage01">
@@ -78,7 +49,7 @@
             <div class="tage_img">
                 <div> 
                     <a href="">
-                        <img src="../ouj/img/tage_g.png" alt="상품태그" class="pink_tag">
+                        <img src="/shoekream/resources/img/review/tage_img.png" alt="상품태그" class="pink_tag">
                     </a>
                 </div>
                 <div class="jordan">
@@ -90,8 +61,8 @@
         <br>
         <div class="test">
             <div class="licom">
-                <a href=""><img src="../ouj/img/like.png" alt="좋아요" class="likeimg"></a>
-                <a href=""><img src="../ouj/img/comment.png" alt="댓글" class="commentimg"></a>
+                <a href=""><img src="/shoekream/resources/img/review/like.png" alt="좋아요" class="likeimg"></a>
+                <a href="shoekream/review/comment"><img src="/shoekream/resources/img/review/comment.png" alt="댓글" class="commentimg"></a>
             </div>
         </div>
         
@@ -129,7 +100,7 @@
             <div class="comment">
                 <div>
                     <a href="#">
-                        <img src="../ouj/img/kitty.png" alt="profile_img"  class="profile_img02">
+                        <img src="/shoekream/resources/img/review/kitty.png" alt="profile_img"  class="profile_img02">
                     </a>
                 </div>
                 <div>
@@ -150,7 +121,7 @@
                 <div class="comment">
                     <div>
                         <a href="#">
-                            <img src="../ouj/img/kitty.png" alt="profile_img"  class="profile_img02">
+                            <img src="/shoekream/resources/img/review/kitty.png" alt="profile_img"  class="profile_img02">
                         </a>
                     </div>
                     <div>
@@ -167,49 +138,11 @@
                         <p class="date002">2023년11월10일</p>
                     </div>
                 <div class="more">
-                    <a href=""><p class="morecom">댓글 더 보기</p></a>
+                    <a href="/shoekream/review/comment"><p class="morecom">댓글 더 보기</p></a>
                 </div>
             </div>
         </div>
     
     </div>
-
-
-
-    <footer>
-        <div class="box1"></div>
-        <div class="box2">
-            <div></div>
-            <div>고객센터 1588-4444</div>
-        </div>
-        <div class="box3">
-            <div class="left_bar">
-                <div>고객지원</div>
-                <div>공지사항</div>
-                <div>1:1문의</div>
-                <div>상품 등록 문의</div>
-            </div>
-            <div class="icons">
-                <div>
-                    <img src="../../common/footer_img/인별.png"  alt="인별">
-                </div>
-                <div>
-                    <img src="../../common/footer_img/페북.png" alt="페북">
-                </div>
-                <div>
-                    <img src="../../common/footer_img/인별.png" alt="카톡">
-                </div>
-            </div>
-            <div></div>
-            <div class="faq">
-                <button>자주 묻는 질문</button>
-            </div>
-        </div>
-        <div class="box4"></div>
-    </footer>
-    
 </body>
 </html>
-<script>
-    const searchBtn = document.querySelector("#search-btn");
-</script>
