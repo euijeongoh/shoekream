@@ -167,5 +167,19 @@ public class AdminEnrollProductDao {
 		
 		return cnt;
 	}
+
+	public int delete(Connection conn, EnrollProductVo vo) throws Exception{
+		
+		
+		for (EnrollProductVo vo : enrollProductVo) {
+			
+		}
+		String sql = "UPDATE PRODUCTS SET DEL_YN = 'Y' WHERE MODEL_NUMBER = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getModelNumber());
+		
+		
+		
+	}
 	
 }

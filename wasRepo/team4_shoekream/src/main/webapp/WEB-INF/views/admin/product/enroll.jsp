@@ -7,16 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/shoekream/resources/css/admin/product/enroll.css">
-    <link rel="stylesheet" href="/shoekream/resources/css/common/admin_header.css">
-    <link rel="stylesheet" href="/shoekream/resources/css/common/admin_sidebar.css">
-    <script src="/frontRepo/admin/js/msh/enrollProduct.js"></script>
+    <link rel="stylesheet" href="/shoekream/resources/css/admin/common/admin_header.css">
+    <link rel="stylesheet" href="/shoekream/resources/css/admin/common/admin_sidebar.css">
 </head>
 <body>
     <header>
         <div class="header-inner">
             <div class="top-list">
                 <ul>
-                    <li><a href="">고객센터</a></li>
+                    <li><a href="/shoekream/notice/list">고객센터</a></li>
                     <li><a href="">마이페이지</a></li>
                     <li><a href="">관심</a></li>
                     <li><a>알림</a></li>
@@ -25,7 +24,7 @@
             </div>
             <div class="main-list">
                 <div class="logo-area">
-                    <a href="">
+                    <a href="/shoekream/admin/home">
                     <img src="/shoekream/resources/img/admin/header/logo.svg">
                     <span>관리자</span>
                     </a>
@@ -99,18 +98,19 @@
             </nav>
             
             <div class="enroll-area">
-                <div id="product-image-container">
-                <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
-                    <div id="image-preview-container" >
-                        <img id="image-preview" src="#" alt="이미지 미리보기">
-                    </div>
-                    <div>
-                        <label for="file-input" id="file-input-label" >이미지 선택</label>
-                    </div>
-                </div>
                 <br>
                 <div id="product-information">
-                    <form action="" method="post" >
+                    <form action="/shoekream/admin/product/enroll" method="post" enctype="multipart/form-data">
+	                <div id="product-image-container">
+	                <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)" name="f">
+	                    <div id="image-preview-container" >
+	                        <img id="image-preview" src="#" alt="이미지 미리보기">
+	                    </div>
+	                    <div>
+	                        <label for="file-input" id="file-input-label" >이미지 선택</label>
+	                    </div>
+	                </div>
+	                
                         <input type="text" name="productName" placeholder="제품명">
                         <input type="text" name="productNameKo" placeholder="한글명">
                         <input type="text" name="modelNumber" placeholder="모델 번호">
@@ -140,7 +140,7 @@
                             <input type="checkbox" name="size" value="300">300
                         </div>
                         <input type="submit" value="저장">
-                        <button onclick="resetForm()">취소</button>
+                        <input type="reset" onclick="resetForm(event)">
                     </form>
                 </div>
                 <br>
