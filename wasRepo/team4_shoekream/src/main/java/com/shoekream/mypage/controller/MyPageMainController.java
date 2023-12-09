@@ -27,25 +27,25 @@ public class MyPageMainController extends HttpServlet{
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 			
 			if(loginMember == null) {
-				resp.sendRedirect("/shoekream/member/login");
+				throw new Exception();
 			}
 			
 			// service
 			MyPageService mps = new MyPageService(); 
 			
 			// 구매내역 cnt , 판매내역 cnt, 관심상품 list
-			Map<String, Object> map = mps.getMyPageMainInfo(loginMember);
+			Map<String, Object> myMainMap = mps.getMyPageMainInfo(loginMember);
 			
 			// result == view
-			if(map == null) {
-				throw new Exception("마이페이지 화면 오류");
-			}
-			
+			req.setAttribute("buyCntVo", myMainMap.get("buyCntVo"));
+			req.setAttribute("sellCntVo", myMainMap.get("sellCntVo"));
+			req.setAttribute("wishList", myMainMap.get("wishList"));
+			System.out.println(myMainMap.get("wishList"));
 			
 			req.getRequestDispatcher("/WEB-INF/views/mypage/my.jsp").forward(req, resp);
 		} catch(Exception e) {
 			e.printStackTrace();
-			resp.sendRedirect("/shoekream/home");
+			resp.sendRedirect("/shoekream/member/login");
 		}
 		
 	}

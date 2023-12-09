@@ -23,7 +23,7 @@ import com.shoekream.mypage.vo.OrdersHistoryVo;
 public class BuyingPendingController extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			// 로그인 여부 체크
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
@@ -37,7 +37,9 @@ public class BuyingPendingController extends HttpServlet{
 			while( (str = br.readLine()) != null ) {
 				jsonStr = str;
 			}
-
+			
+			System.out.println(jsonStr);
+			
 			// json to map
 			ObjectMapper mapper = new ObjectMapper();
 			TypeReference<Map<String, String>> typeReference = new TypeReference<Map<String, String>>() {};
@@ -55,7 +57,6 @@ public class BuyingPendingController extends HttpServlet{
 			
 			out.close();
 			
-			req.getRequestDispatcher("/WEB-INF/views/mypage/buy_pending.jsp").forward(req, resp);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

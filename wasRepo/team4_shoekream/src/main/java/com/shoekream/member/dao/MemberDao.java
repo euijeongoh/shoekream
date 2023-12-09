@@ -25,7 +25,7 @@ public class MemberDao {
 			String id = rs.getString("ID");
 			String pwd = rs.getString("PWD");
 			String nickname = rs.getString("NICKNAME");
-			String phone = rs.getString("EMAIL");
+			String email = rs.getString("EMAIL");
 			String joinDate = rs.getString("JOIN_DATE");
 			String delYn = rs.getString("DEL_YN");
 			String profileImage = rs.getString("PROFILE_IMAGE");
@@ -38,7 +38,7 @@ public class MemberDao {
 			loginMember.setId(id);
 			loginMember.setPwd(pwd);
 			loginMember.setNickname(nickname);
-			loginMember.setPhone(phone);
+			loginMember.setEmail(email);
 			loginMember.setJoinDate(joinDate);
 			loginMember.setDelYn(delYn);
 			loginMember.setProfileImage(profileImage);
@@ -136,6 +136,23 @@ public class MemberDao {
 		}
 		
 		return canQuit;
+	}
+
+	public int join(Connection conn, MemberVo vo) throws Exception {
+		// sql
+		String sql = "INSERT INTO MEMBER(ID, PWD, NICKNAME, EMAIL) VALUES(?, ?, ?, ?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getId());
+		pstmt.setString(2, vo.getPwd());
+		pstmt.setString(3, vo.getNickname());
+		pstmt.setString(4, vo.getEmail());
+		
+		int result = pstmt.executeUpdate();
+		
+		// close
+		JDBCTemplate.close(pstmt);
+	
+		return result;
 	}
 
 }

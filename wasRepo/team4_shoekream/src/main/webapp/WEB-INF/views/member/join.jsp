@@ -46,22 +46,20 @@
                     <div id="pwd2_check"></div>
                 </div>
                 <div class="input_box">
-                    <div class="input_title">닉네임*</div>
-                    <input class="input_txt" type="text" name="memberNick" placeholder="한글 3-5자">
-                    <div id="nick_check"></div>
+	                <div class="input_title">닉네임*</div>
+	                <input class="input_txt" type="text" name="memberNick" placeholder="한글 3-5자">
+	                <div id="nick_check"></div>
                 </div>
                 <div class="input_box">
                     <div class="input_title">이메일*</div>
                     <div class="email_area">
 	                    <input class="input_txt" type="text" name="email" placeholder="예) shoekream@kream.co.kr">
-	                    <input type="button" value="인증하기" onclick="sendEmail()" disabled>                    
+	                    <input type="button" value="인증하기" onclick="sendEmail();" disabled>                    
                     </div>
                     <div id="email_check"></div>
                     <div class="approval_area">
                     	<input class="input_txt" type="text" name="appr_no" placeholder="인증번호 입력">
-                    	<input type="button" name="appr_btn" value="입력" onclick="authenticateEmail()" disabled>
-                    	<span> 타이머 </span>
-                    	<span> 재전송 </span>
+                    	<input type="button" name="appr_btn" value="입력" onclick="authenticateEmail();" disabled>
                     </div>
                 </div>
                 <div class="join_btn_box">

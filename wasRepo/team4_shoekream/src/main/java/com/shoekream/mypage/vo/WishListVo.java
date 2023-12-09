@@ -1,10 +1,5 @@
 package com.shoekream.mypage.vo;
 
-import java.util.List;
-import java.util.Map;
-
-import com.shoekream.admin.vo.EnrollProductVo;
-
 public class WishListVo {
 
 	private String brandName;

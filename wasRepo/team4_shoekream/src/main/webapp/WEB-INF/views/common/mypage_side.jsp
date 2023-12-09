@@ -28,7 +28,6 @@
                       <li><a href="/shoekream/mypage/addr">주소록</a></li>
                       <li><a href="/shoekream/mypage/payInfo">결제 정보</a></li>
                       <li><a href="/shoekream/mypage/ACCOUNT">정산 계좌</a></li>
-                      <li><a href="/shoekream/mypage/point">포인트</a></li>
                   </ul>
               </div>
           </nav>

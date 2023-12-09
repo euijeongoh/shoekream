@@ -1,10 +1,10 @@
 package com.shoekream.mypage.service;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.dao.MyPageDao;
@@ -12,7 +12,6 @@ import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.HistoryCntVo;
 import com.shoekream.mypage.vo.OrdersHistoryVo;
 import com.shoekream.mypage.vo.WishListVo;
-import com.shoekream.orders.vo.OrdersVo;
 
 public class MyPageService {
 	
@@ -69,7 +68,17 @@ public class MyPageService {
 	
 	// 구매완료 내역 조회
 	public List<OrdersHistoryVo> viewBuyingFinishedList(MemberVo loginMember, Map<String, String> map) throws Exception {
-		return null;
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		List<OrdersHistoryVo> finishedList = dao.getBuyFinishedInfo(conn, loginMember, map);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return finishedList;
 	}
 
 	// 관심상품 목록 조회
@@ -88,11 +97,41 @@ public class MyPageService {
 	}
 
 	// 마이페이지 메인
-	public Map<String, Object> getMyPageMainInfo(MemberVo loginMember) {
+	public Map<String, Object> getMyPageMainInfo(MemberVo loginMember) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		//구매내역 cnt
+		int buyBidCnt = dao.getBuyingBidCnt(conn, loginMember);
+		int buyPendCnt = dao.getBuyingPendCnt(conn, loginMember);
+		int buyFinishCnt = dao.getBuyingFinishedCnt(conn, loginMember);
+		
+		HistoryCntVo buyCntVo = new HistoryCntVo(buyBidCnt, buyPendCnt, buyFinishCnt);
+		
+		//판매내역 cnt
+		int sellBidCnt = dao.getSellingBidCnt(conn, loginMember);
+		int sellPendCnt = dao.getSellingPendCnt(conn, loginMember);
+		int sellFinishCnt = dao.getSellingFinishedCnt(conn, loginMember);
+		
+		HistoryCntVo sellCntVo = new HistoryCntVo(sellBidCnt, sellPendCnt, sellFinishCnt);
+		
+		// 관심상품 리스트
+		List<WishListVo> wishList = dao.getWishProductsInfo(conn, loginMember);
 		
 		
+		// 데이터 뭉치기
+		Map<String, Object> myMainMap = new HashMap<String, Object>();
+		myMainMap.put("buyCntVo", buyCntVo);
+		myMainMap.put("sellCntVo", sellCntVo);
+		myMainMap.put("wishList", wishList);
 		
-		return null;
+		// close
+		JDBCTemplate.close(conn);
+		
+		
+		return myMainMap;
 	}
 
 

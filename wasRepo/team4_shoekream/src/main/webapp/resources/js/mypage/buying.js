@@ -118,12 +118,16 @@ function pendTabAjax() {
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
 
+	console.log(startDateValue);
+	console.log(endDateValue);
+
 	const jsonObj = {
 		startDate : startDateValue,
 		endDate : endDateValue
 	}
 	
 	const jsonStr = JSON.stringify(jsonObj);
+	console.log(jsonStr);
 	
 	// ajax 요청
 	fetch("/shoekream/mypage/buying/pendList",
@@ -154,12 +158,12 @@ function pendTabAjax() {
 			const product = document.createElement("div");
 			detail.appendChild(product);
 			product.id="product";
-			product.innerHTML=data[i].shoeName;
+			product.innerHTML=data[i].productName;
 			
 			const size = document.createElement("div");
 			detail.appendChild(size);
 			size.id="size";
-			size.innerHTML=data[i].shoeSize;
+			size.innerHTML=data[i].productSize;
 			
 			const purchaseDetail = document.createElement("ul");
 			purchaseDetail.className = "purchase-detail";
@@ -172,9 +176,12 @@ function pendTabAjax() {
 			purchaseDetail.appendChild(li1);
 			purchaseDetail.appendChild(li2);
 			purchaseDetail.appendChild(li3);
-			li1.innerHTML=data[i].enrollDate;
-			li2.innerHTML=data[i].expireDate;
-			li3.innerHTML=data[i].bidPrice + "원";
+			
+			const btn = document.createElement("button");
+			li1.appendChild(btn);
+			btn.value="상세 보기";
+			li2.innerHTML=data[i].orderStatus;
+			li3.innerHTML=data[i].orderDate;
 		}
 		
 	});
@@ -203,7 +210,7 @@ function finishTabAjax() {
 	const jsonStr = JSON.stringify(jsonObj);
 	
 	// ajax 요청
-	fetch("/shoekream/mypage/buying/pendList",
+	fetch("/shoekream/mypage/buying/finishList",
 		{method: "POST", body: jsonStr})
 	.then( (resp)=>{return resp.json()} )
 	.then( (data) => {
@@ -249,9 +256,12 @@ function finishTabAjax() {
 			purchaseDetail.appendChild(li1);
 			purchaseDetail.appendChild(li2);
 			purchaseDetail.appendChild(li3);
-			li1.innerHTML=data[i].enrollDate;
-			li2.innerHTML=data[i].expireDate;
-			li3.innerHTML=data[i].bidPrice + "원";
+			
+			const btn = document.createElement("button");
+			li1.appendChild(btn);
+			btn.value="상세 보기";
+			li2.innerHTML=data[i].orderStatus;
+			li3.innerHTML=data[i].finalPrice;
 		}
 		
 	});	
