@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.shoekream.notice.service.NoticeService;
 import com.shoekream.notice.vo.NoticeVo;
 
-@WebServlet("/notice/detail")
-public class NoticeDetailController extends HttpServlet{
-	
+@WebServlet("/admin/notice/detail")
+public class AdminNoticeDetailController extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -27,7 +27,7 @@ public class NoticeDetailController extends HttpServlet{
 			
 			//result ==view
 			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/WEB-INF/views/board/notice/detail.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/admin/board/notice/adminDetail.jsp").forward(req, resp);
 		
 		}catch(Exception e) {
 			System.out.println("[ERROR-002] 게시글 상세 조회 중 에러 발생..");
@@ -35,5 +35,4 @@ public class NoticeDetailController extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
-
-}//class
+}

@@ -13,13 +13,11 @@ import com.shoekream.notice.service.NoticeService;
 import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
 
-@WebServlet("/notice/list")
-public class NoticeListController extends HttpServlet{
-
-	//화면출력
+@WebServlet("/admin/notice/list")
+public class AdminNoticeListController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		NoticeService ns = new NoticeService();
 
 		try {
@@ -40,7 +38,7 @@ public class NoticeListController extends HttpServlet{
 		//result == view
 		req.setAttribute("noticeVoList", noticeVoList);
 		req.setAttribute("pvo", pvo);
-		req.getRequestDispatcher("/WEB-INF/views/board/notice/list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/board/notice/adminList.jsp").forward(req, resp);
 		
 		}catch(Exception e) {
 			System.out.println("[ERROR-001] 게시글 조회 중 에러 발생..");
@@ -48,5 +46,5 @@ public class NoticeListController extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
-	
+
 }
