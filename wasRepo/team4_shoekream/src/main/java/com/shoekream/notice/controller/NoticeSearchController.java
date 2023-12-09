@@ -11,25 +11,47 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.notice.service.NoticeService;
 import com.shoekream.notice.vo.NoticeVo;
+import com.shoekream.page.vo.PageVo;
 
 
 @WebServlet("/notice/search")
 public class NoticeSearchController extends HttpServlet {
 	
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		//data
-		String title = req.getParameter("title");
-		
-		//service
+	
 		NoticeService ns = new NoticeService();
-		List<NoticeVo> noticeVoList = ns.noticeSearch(title);
-		
-		
-		//result == view
-
+		try {
+			//data
+			String title = req.getParameter("search");
+			int listCount = ns.selectSearchNoticeCount(title);
+			String currentPage_ = req.getParameter("pno");
+			if(currentPage_ == null) {
+				currentPage_ = "1";
+			}
+			int currentPage = Integer.parseInt(currentPage_);
+			int pageLimit = 5;
+			int boardLimit = 10;
+			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
+//			System.out.println("title값 확인 : " + title);
+			
+			//service
+			List<NoticeVo> noticeVoList = ns.noticeSearch(title, pvo);
+//			System.out.println("notice값 확인 : " + noticeVoList);
+			
+			
+			//result == view
+			
+			req.setAttribute("noticeVoList", noticeVoList);
+			req.setAttribute("pvo", pvo);
+			req.getRequestDispatcher("/WEB-INF/views/board/notice/list.jsp").forward(req, resp);
+			
+			
+		}catch(Exception e) {
+			System.out.println("[ERROR-003] 게시글 검색 중 에러 발생..");
+			e.printStackTrace();
+			req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp");
+		}
 	}
 
 }

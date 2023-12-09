@@ -39,6 +39,21 @@ public class NoticeService {
 		
 		return listCount;
 	}
+	
+	public int selectSearchNoticeCount(String title) throws Exception{
+		
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		NoticeDao dao = new NoticeDao();
+		int listCount = dao.selectSearchNoticeCount(conn, title);
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return listCount;
+	}
 
 	public NoticeVo selectNoticeListByNo(String no) throws Exception{
 		
@@ -57,19 +72,44 @@ public class NoticeService {
 		return vo;
 	}
 
-	public List<NoticeVo> noticeSearch(String title) {
+	public List<NoticeVo> noticeSearch(String title, PageVo pvo) throws Exception {
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
 		NoticeDao dao = new NoticeDao();
-		List<NoticeVo> noticeVoList = dao.noticeSearch(conn, title);
+		List<NoticeVo> noticeVoList = dao.noticeSearch(conn, title, pvo);
 		
 		//tx
 		
 		//close
 		JDBCTemplate.close(conn);
+		
+		return noticeVoList;
+	}
+	
+	//게시글 작성
+	public int noticeWrite(NoticeVo vo) throws Exception{
+		
+		//conn 
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		NoticeDao dao = new NoticeDao();
+		int result = dao.noticeWrite(conn, vo);
+		
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 }

@@ -1,0 +1,58 @@
+package com.shoekream.notice.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.shoekream.notice.service.NoticeService;
+import com.shoekream.notice.vo.NoticeVo;
+
+@WebServlet("/admin/notice/write")
+public class AdminNoticeWriteController extends HttpServlet{
+	
+	//게시글 작성 화면
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/WEB-INF/views/admin/board/notice/adminWrite.jsp").forward(req, resp);
+	}
+	
+	//게시글 작성 로직
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		try {
+			//data
+			String title = req.getParameter("title");
+			String content = req.getParameter("contents");
+			
+			NoticeVo vo = new NoticeVo();
+			vo.setTitle(title);
+			vo.setContent(content);
+			
+			System.out.println(vo);
+			
+			//service
+			NoticeService ns = new NoticeService();
+			int result = ns.noticeWrite(vo);
+			
+			//result == view
+			if(result != 1) {
+				throw new Exception("result값이 1이 아님...");
+			}
+			
+			req.getSession().setAttribute("alertMsg", "게시글 작성 성공!");
+			resp.sendRedirect("/shoekream/admin/notice/list");
+			
+		}catch(Exception e) {
+			System.out.println("[ERROR-M001] 공지사항 게시판 생성 중 에러 발생");
+			e.printStackTrace();
+			req.setAttribute("errorMsg", "게시글 작성 실패...");
+			req.getRequestDispatcher("/WEB-INF/views/common.fail.jsp").forward(req, resp);
+		}
+	}
+}

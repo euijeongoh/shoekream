@@ -12,6 +12,8 @@ import com.shoekream.page.vo.PageVo;
 
 public class NoticeDao {
 
+	
+	//게시글 전체 조회
 	public List<NoticeVo> NoticeList(Connection conn, PageVo pvo) throws Exception{
 		
 		//sql
@@ -45,6 +47,7 @@ public class NoticeDao {
 		
 	}
 
+	//전체 게시글 갯수
 	public int selectNoticeCount(Connection conn) throws Exception{
 		
 		String sql = "SELECT COUNT(*) AS COUNT FROM NOTICE_BOARD WHERE DEL_YN = 'N'";
@@ -64,7 +67,30 @@ public class NoticeDao {
 		
 	
 	}
+	
+	//검색 게시글 갯수
+		public int selectSearchNoticeCount(Connection conn, String title) throws Exception{
+			
+			String sql = "SELECT COUNT(*) FROM NOTICE_BOARD WHERE DEL_YN = 'N' AND TITLE LIKE '%' || ?|| '%'";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			int count = 0;
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+			
+			return count;
+			
+		
+		}
 
+	//게시글 상세 조회
 	public NoticeVo selectNoticeByNo(Connection conn, String no) throws Exception{
 		
 		//SQL
@@ -94,5 +120,53 @@ public class NoticeDao {
 		
 		return vo;
 	}
+
+	//게시글 검색(제목)
+	public List<NoticeVo> noticeSearch(Connection conn, String title, PageVo pvo) throws Exception{
+		
+		//SQL
+		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM NOTICE_BOARD WHERE DEL_YN = 'N' AND TITLE LIKE '%' || ?|| '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, title);
+ 		pstmt.setInt(2, pvo.getStartRow());
+ 		pstmt.setInt(3, pvo.getLastRow());
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		//rs
+		List<NoticeVo> noticeVoList = new ArrayList<NoticeVo>();
+		while(rs.next()) {
+			
+			NoticeVo vo = new NoticeVo();
+			
+			vo.setNo(rs.getString("NO"));
+			vo.setTitle(rs.getString("TITLE"));
+			vo.setEnrollDate(rs.getString("ENROLL_DATE"));
+			
+			noticeVoList.add(vo);
+			
+		}
+		
+		return noticeVoList;
+		
+		//close
+	}
+
+	public int noticeWrite(Connection conn, NoticeVo vo) throws Exception{
+		
+		//SQL
+		String sql = "INSERT INTO NOTICE_BOARD ( NO, MANAGER_NO, TITLE, CONTENT ) VALUES (SEQ_NOTICE_BOARD_NO.NEXTVAL, 1, ?, ?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getTitle());
+		pstmt.setString(2, vo.getContent());
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+		
+	}
+	
 
 }
