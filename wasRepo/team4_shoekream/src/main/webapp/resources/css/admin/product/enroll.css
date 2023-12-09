@@ -145,6 +145,12 @@ header .main-list li {
 }
 #product-image-container{
 	padding: 40px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 #image-preview-container {
     width: 300px;
@@ -226,3 +232,11 @@ header .main-list li {
     background-color: #44484a;
 }
 
+#product-image-container div{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

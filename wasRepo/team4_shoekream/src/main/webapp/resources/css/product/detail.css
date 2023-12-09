@@ -1,0 +1,289 @@
+/* 전역 스타일 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 메인 래퍼 스타일 */
+#wrap {
+    width: 100vw;
+    background-color: wheat;
+}
+
+/* 메인 콘텐츠 영역 스타일 */
+main {
+    margin: 0 auto;
+    max-width: 1280px;
+    overflow: hidden;
+    padding: 30px 40px 120px;
+}
+
+/* 컨테이너 및 컬럼 레이아웃 스타일 */
+.container {
+    display: flex;
+}
+
+.column_2 {
+    float: right;
+    padding-left: 40px;
+    position: relative;
+    align-items: stretch;
+    width: 600px;
+    border-left: 1px solid lightgray;
+    flex-wrap: wrap;
+}
+
+/* 이미지 슬라이더 관련 스타일 */
+.slider_container {
+    width: 100%;
+    padding-right: 40px;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 33%;
+    box-sizing: border-box;
+}
+
+/* 이미지 스타일 설정 */
+img {
+    width: 100%;
+    height: 500px;
+}
+
+/* 제품 가격 및 상세 정보 스타일 */
+.product_price {
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.product_detail_info {
+    padding-left: 3.334%;
+}
+
+.price_container span {
+    align-items: center;
+    justify-content: left;
+    display: flex;
+}
+
+.main_title_container {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.product_size_select,
+.select_box {
+    width: 80%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.product_detail_box {
+    display: flex;
+}
+
+.detail-product-container {
+    display: flex;
+    margin-bottom: 20px;
+    overflow: visible;
+}
+
+.detail-product-container>div {
+    flex: 1;
+}
+
+.detail-product-container {
+    -webkit-overflow-scrolling: touch;
+    min-height: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    white-space: nowrap;
+}
+
+/* 버튼 박스 스타일 */
+.division_btn_box {
+    display: flex;
+    height: 60px;
+}
+
+.division_btn_box .btn_action {
+    align-items: center;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    flex: 1;
+    position: relative;
+}
+
+.division_btn_box .btn_action:before {
+    background-color: rgba(34, 34, 34, 0.1);
+    bottom: 0;
+    content: "";
+    left: 55px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+}
+
+.division_btn_box .btn_action+.btn_action {
+    margin-left: 10px;
+}
+
+.division_btn_box .title {
+    font-size: 18px;
+    letter-spacing: -0.27px;
+    text-align: center;
+    width: 55px;
+}
+
+.division_btn_box .price {
+    line-height: 15px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.division_btn_box .amount {
+    display: block;
+    font-size: 0;
+}
+
+.division_btn_box .num,
+.division_btn_box .won {
+    display: inline-block;
+    font-weight: 700;
+    vertical-align: top;
+}
+
+.division_btn_box .won {
+    font-size: 14px;
+    letter-spacing: -0.21px;
+}
+
+.division_btn_box .desc {
+    color: hsla(0, 0%, 100%, 0.8);
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* 입찰 및 탭 스타일 */
+.wrap_bids {
+    position: relative;
+}
+
+.wrap_bids table {
+    margin: auto;
+}
+
+.wrap_bids th,
+.wrap_bids td {
+    text-align: center;
+}
+
+.tab_area {
+    display: flex;
+    margin: auto;
+}
+
+.tab_list {
+    width: 50%;
+    justify-content: space-evenly;
+    height: 40px;
+    margin: auto;
+}
+
+.tab_area ul {
+    justify-content: center;
+    align-items: center;
+}
+
+.tab_area,
+.tab_list {
+    display: flex;
+    background-color: #cccbcb;
+    height: 50px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.tab_list {
+    width: 50%;
+    justify-content: space-evenly;
+    height: 40px;
+}
+
+.tab_list li a {
+    border-radius: 10px;
+    list-style: none;
+    font-size: 22px;
+    color: black;
+    background-color: white;
+}
+
+li a:visited,
+li a:hover,
+li a {
+    text-decoration: none;
+}
+
+/* 가격 테이블 스타일 */
+.price_table table,
+.price_table tbody,
+.price_table thead {
+    display: inline;
+    display: initial;
+    table-layout: auto;
+    width: 100% !important;
+}
+
+.price_table .table_td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.price_table tr {
+    display: flex;
+}
+
+/* 리뷰 이미지 갤러리 스타일 */
+.listpoto {
+    width: 1280px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.one {
+    width: calc(25% - 12px); 
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.one img {
+    height: auto;
+    border-radius: 12px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* 추가 스타일 필요시 여기에 작성... */
+
