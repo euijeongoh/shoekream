@@ -35,6 +35,12 @@ a{
     right: 20px;
     font-size: 25px;
 }
+.btn_layer_close_edit{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    font-size: 25px;
+}
 .layer_header{
     background-color: #fff;
     color: #000;

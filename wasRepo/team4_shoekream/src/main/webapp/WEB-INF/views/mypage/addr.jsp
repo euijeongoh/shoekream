@@ -68,6 +68,7 @@
 
 					<!-- 비활성화된 요소를 나타내는 오버레이 -->
 					<div id="overlay" class="overlay"></div>
+					
 
 				</div>
 				<% if(vo != null){ %>
@@ -90,20 +91,10 @@
 								</div>
 							</div>
 							<div class="btn_bind">
-								<a href="#" class="btn outlinegrey small" id="openModal_edit"><span
+								<a href="#" class="btn outlinegrey small openModal_edit" id="openModal_edit"><span
 							class="btn_txt">수정</span></a> 
 							
-							<!-- 모달 -->
-					<div id="myModal_edit" class="modal_edit">
-						<div class="modal-content_edit">
-							<!-- 모달 내용을 여기에 추가하세요 -->
-							<p><%@ include file="/WEB-INF/views/mypage/newAddr.jsp"%></p>
-							<button id="closeModal_edit">모달 닫기</button>
-						</div>
-					</div>
-
-					<!-- 비활성화된 요소를 나타내는 오버레이 -->
-					<div id="overlay_edit" class="overlay_edit"></div>
+							
 							
 							<a href="/shoekream/mypage/addr/delete?no=<%=vo.getNo() %>" class="btn outlinegrey small"> <span
 							class="btn_txt">삭제</span></a>
@@ -132,7 +123,7 @@
 								</div>
 							</div>
 							<div class="btn_bind">
-								<a href="#" class="btn outlinegrey small" id="openModal"><span
+								<a href="#" class="btn outlinegrey small openModal_edit" id="openModal_edit"><span
 							class="btn_txt">수정</span></a> 
 								
 								<a href="/shoekream/mypage/addr/delete?no=<%=av.getNo() %>" class="btn outlinegrey small"><span
@@ -143,6 +134,17 @@
 				</div>
 				<%} %>
 			<%} %>
+			<!-- 모달 -->
+					<div id="myModal_edit" class="modal_edit">
+						<div class="modal-content_edit">
+							<!-- 모달 내용을 여기에 추가하세요 -->
+							<p><%@ include file="/WEB-INF/views/mypage/editAddr.jsp"%></p>
+							<button id="closeModal_edit">모달 닫기</button>
+						</div>
+					</div>
+
+					<!-- 비활성화된 요소를 나타내는 오버레이 -->
+					<div id="overlay_edit" class="overlay_edit"></div>
 			</div>
 		</div>
 	</div>
@@ -210,17 +212,18 @@
 	const modal_edit = document.getElementById("myModal_edit");
 	const overlay_edit = document.getElementById("overlay_edit");
 
-	// 모달을 열기 위한 버튼 가져오기
-	const btn_edit = document.getElementById("openModal_edit");
 
 	// 모달을 닫기 위한 버튼 가져오기
 	const closeModalBtn_edit = document.getElementById("closeModal_edit");
 
-	// 사용자가 버튼을 클릭하면 모달 열기
-	btn_edit.onclick = function() {
-		modal_edit.style.display = "block";
-		overlay_edit.style.display = "block";
-	}
+	const btns_edit = document.querySelectorAll(".openModal_edit");
+
+	btns_edit.forEach(btn_edit => {
+	    btn_edit.onclick = function() {
+	        modal_edit.style.display = "block";
+	        overlay_edit.style.display = "block";
+	    }
+	});
 	
 
 	// 사용자가 닫기 버튼을 클릭하면 모달 닫기
@@ -238,15 +241,15 @@
 	}
 	document.addEventListener("DOMContentLoaded", function() {
 		// 닫기 버튼에 대한 이벤트 리스너 추가
-		document.querySelector('.btn_layer_close').addEventListener('click',
+		document.querySelector('.btn_layer_close_edit').addEventListener('click',
 				function() {
-					closeModal_edit();
+			closeModal_edit();
 				});
 
 		// 취소 버튼에 대한 이벤트 리스너 추가
-		document.querySelector('.btn_delete').addEventListener('click',
+		document.querySelector('.btn_delete_edit').addEventListener('click',
 				function() {
-					closeModal_edit();
+			closeModal_edit();
 				});
 	});
 
