@@ -2,11 +2,11 @@ package com.shoekream.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.Properties;
 
-import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/send/email")
 
@@ -30,45 +32,61 @@ public class EmailSendController extends HttpServlet{
 		try {
 			// data
 			String inputEmail = req.getParameter("email");
+			System.out.println(inputEmail);
 			// email server
-			String emailFrom = "shoekream@naver.com";
+			String emailFrom = "shoekream4@gmail.com";
 			String username = "shoekream";
-			String userPwd = "shoe!kream4";
+//			String userPwd = "shoe!kream0821";
 			// email client
 			String emailTo = inputEmail;
 			
+			final String smtpEmail = "shoekream4@gmail.com";
+			final String password = "tlqkmvllkldryzck";
 			// smtp server 정보
-			Properties props = new Properties(); 
-			props.put("mail.smtp.host", "smtp.naver.com"); // host 정보 네이버에서 갖고 오기
-			props.put("mail.smtp.port", 465);
+			Properties props = new Properties();
+			props.put("mail.transport.protocal", "smtp");
+			props.put("mail.smtp.host", "smtp.gmail.com"); // host 정보 네이버에서 갖고 오기
+			props.put("mail.smtp.port", 587);
 			props.put("mail.smtp.auth", "true");
-			props.put("mail.smtp.ssl.enable", "true");
-			props.put("mail.smtp.ssl.trust", "smtp.naver.com");
-			props.put("mail.user", username);
-			props.put("mail.password", userPwd);
+			props.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
+			props.put("mail.smtp.quitwait", "false");
+			props.put("mail.smtp.socketFactory.port", "587");
+			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			props.put("mail.smtp.socketFactory.fallback", "true");
+			props.put("mail.smtp.starttls.enable", "true");
 			
-			// 인증번호 생성
-//			SecureRandom random = SecureRandom.getInstance();
+//			props.put("mail.smtps.ssl.protocals", "TLSv1.2");
+//			props.put("mail.smtp.ssl.enable", "true");
+//			props.put("mail.smtp.ssl.trust", "smtp.naver.com");
+//			props.put("mail.user", username);
+//			props.put("mail.password", userPwd);
+//			props.put("mail.smtp.starttls.required", "true");
 			
-			String AuthenticationKey = "12345";
+			// 인증번호 생성(일단 이메일 가는 거 보고)
+			SecureRandom random = SecureRandom.getInstanceStrong();
+			
+			byte[] randomBytes = new byte[6];
+			// 바이트 배열을 Base64로 인코딩하여 문자열로 반환
+			String AuthenticationKey = Base64.getEncoder().encodeToString(randomBytes);
+			System.out.println(AuthenticationKey);
 			
 			// email 내용
 			String emailTitle = "[SHOEKREAM] 회원가입 이메일 인증";
 			String emailContent = "회원가입 이메일 인증번호 : " + AuthenticationKey;
 			
 			// session 생성
+//			Session session = Session.getInstance(props, new Authenticator() {
+//                protected PasswordAuthentication getPasswordAuthentication() {
+//                    return new PasswordAuthentication(username,
+//                            userPwd);
+//                }
+//            });
 			
-			Session session = Session.getInstance(props, new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(username,
-                            userPwd);
-                }
-            });
-			
+			Session session = Session.getInstance(props);
 			session.setDebug(true);
 			
 			System.out.println("g");
-			// 이메일 전송0
+			
 			MimeMessage mail = new MimeMessage(session);
 			mail.setContent(emailContent, "text/plain; charset=utf-8");
 			InternetAddress from = new InternetAddress(emailFrom, "shoekream@naver.com");
@@ -79,17 +97,22 @@ public class EmailSendController extends HttpServlet{
 			mail.setFrom(from);
 			mail.setRecipient(Message.RecipientType.TO, to);
 			mail.setText(emailContent);
-			Transport.send(mail);
+			
+			// email 전송
+			Transport t = session.getTransport("smtp");
+			t.connect(smtpEmail, password);
+			t.sendMessage(mail, mail.getAllRecipients());
+			t.close();
 			System.out.println("이메일 전송 완료");
 			
-			// 인증번호 session에 저장
+			// 인증번호 session에 담기
 			HttpSession saveAuthKey = req.getSession();
 			saveAuthKey.setAttribute("AuthenticationKey", AuthenticationKey);
 			
 			// 응답
-			out.write("{\"reply\" : \"ok\"}");
+			out.write("{\"mail\" : \"ok\"}");
 		} catch(Exception e) {
-			out.write("{\"reply\" : \"no\"}");
+			out.write("{\"mail\" : \"no\"}");
 			e.printStackTrace();
 		}
 		

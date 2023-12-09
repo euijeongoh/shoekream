@@ -144,8 +144,9 @@ function sendEmail(){
  	fetch("/shoekream/send/email?email=" + emailInputValue, {method : "POST"})
  	.then( (resp) => { return resp.json() })
  	.then( (data) => {
-		 const result = (data.reply == "ok")
-		 console.log(data.reply);
+		 const result = (data.mail == "ok");
+		 console.log(result);
+		 
 		 if(result === false){
 			 alert("이메일 전송에 실패했습니다.");
 		 }

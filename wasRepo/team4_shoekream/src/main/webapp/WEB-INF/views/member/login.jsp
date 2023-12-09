@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     
     <%
+    	String joinSuccess = (String)session.getAttribute("joinSuccess");
+    	session.removeAttribute("joinSuccess");
     	String loginError = (String) session.getAttribute("loginError");
     	session.removeAttribute("loginError");
     	String searchIdFailed = (String) session.getAttribute("searchIdFailed");
@@ -25,6 +27,10 @@
 <script>
 	<%if(searchIdFailed != null ){ %>
 		alert("<%= searchIdFailed %>");
+	<%} %>
+	
+	<%if(joinSuccess != null ){ %>
+	alert("<%= joinSuccess %>");
 	<%} %>
 </script>		
 	

@@ -45,9 +45,6 @@ public class MemberService {
 		// dao
 		MemberDao dao = new MemberDao();
 		// 탈퇴 가능 여부 확인
-		
-		// 내 프로필, 거래내역, 관심상품, 리뷰 게시물, 미사용 보유 포인트 등의 정보가 사라지게 되며 
-		// 재가입을 하더라도 복구가 불가능합니다.
 		boolean canQuit = dao.checkPenaltyYn(conn, loginMember);
 		
 		int quitNo = 0;
@@ -99,6 +96,40 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		
 		return vo;
+	}
+
+	public int join(MemberVo vo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// business logic
+		// 아이디 중복 체크
+		
+		// 아이디 6자 이상
+		
+		// 비밀번호 정규표현식 검사
+		
+		// 닉네임 3-5자 사이 한글
+		
+		// 이메일 중복 체크
+		
+		// 이메일 유효성 체크
+		
+		// dao
+		MemberDao dao = new MemberDao();
+		int result = dao.join(conn, vo);
+		
+		// tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 }
