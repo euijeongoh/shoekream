@@ -1,5 +1,14 @@
+<%@page import="com.shoekream.mypage.vo.WishListVo"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    
+    List<WishListVo> wishList = (List<WishListVo>) request.getAttribute("wishList");
+    
+    %>
     
 <!DOCTYPE html>
 <html>
@@ -27,25 +36,17 @@
             <div class="mypage-home">
                 <div class="profile">
                     <div class="user-detail">
-                        <div><img id="profile-img" src=""></div>
+                        <div><img id="profile-img" src="${ loginMember.profileImage }" onclick="openPopup();"></div>
                         <div class="user-info">
                             <div><%= loginMember.getNickname() %></div>
                             <div><%= loginMember.getId() %></div>
                             <div>
-                            	<input id="img_upload" type="file" accept="image/*" style="display:none">
+<!--                             	<input id="img_upload" type="file" style="display:none"> -->
                             	<button type="button" onclick="location.href='/shoekream/review/boardlist'">내 리뷰</button>
                             </div>
                         </div>
                     </div>
                     <div class="user-menu">
-                        <div class="icon">
-                            <div>
-                                <a>
-                                <img href="/shoekream/mypage/point" src="/shoekream/resources/img/mypage/pointicon.png">
-                                <div>0 P</div>      
-                                </a>
-                            </div>
-                        </div>  
                         <div class="icon">
                             <div>
                                 <a>
@@ -63,19 +64,19 @@
                 <div class="count-box">
                     <div class="tab">
                         <div>전체</div>
-                        <div>0</div>
+                        <div>${ buyCntVo.cntAll }</div>
                     </div>
                     <div class="tab">
                         <div>입찰 중</div>
-                        <div>0</div>
+                        <div>${ buyCntVo.cntBid }</div>
                     </div>
                     <div class="tab">
                         <div>진행 중</div>
-                        <div>0</div>
+                        <div>${ buyCntVo.cntPend }</div>
                     </div>
                     <div class="tab">
                         <div>종료</div>
-                        <div>0</div>
+                        <div>${ buyCntVo.cntFinished }</div>
                     </div>
                 </div>
 
@@ -87,19 +88,19 @@
                 <div class="count-box">
                     <div class="tab">
                         <div>전체</div>
-                        <div>0</div>
+                        <div>${ sellCntVo.cntAll }</div>
                     </div>
                     <div class="tab">
                         <div>입찰 중</div>
-                        <div>0</div>
+                        <div>${ sellCntVo.cntBid }</div>
                     </div>
                     <div class="tab">
                         <div>진행 중</div>
-                        <div>0</div>
+                        <div>${ sellCntVo.cntPend }</div>
                     </div>
                     <div class="tab">
                         <div>종료</div>
-                        <div>0</div>
+                        <div>${ sellCntVo.cntFinished }</div>
                     </div>
                 </div>
 
@@ -109,46 +110,21 @@
                     <span class="more">더보기</span>
                 </div>
                 <ul class="product-list-wrap">
-                    <li>
+                	<%for( WishListVo vo : wishList) { %>
+                		<li>
                         <div id="product-img">
                             <img src="./resources/product1.webp">
                         </div>
                         <div class="info-box">
-                            <div id="brand">Nike</div>
-                            <div id="model-name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                            <div id="price">250,000원</div>
+                            <div id="brand"><%= vo.getBrandName() %></div>
+                            <div id="model-name"><%= vo.getProductName() %> </div>
+                            <div id="price"><%= vo.getImmediatePrice() %></div>
                         </div>
-                    </li>
-                    <li>
-                        <div id="product-img">
-                            <img src="./resources/product1.webp">
-                        </div>
-                        <div class="info-box">
-                            <div id="brand">Nike</div>
-                            <div id="model-name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                            <div id="price">250,000원</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div id="product-img">
-                            <img src="./resources/product1.webp">
-                        </div>
-                        <div class="info-box">
-                            <div id="brand">Nike</div>
-                            <div id="model-name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                            <div id="price">250,000원</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div id="product-img">
-                            <img src="./resources/product1.webp">
-                        </div>
-                        <div class="info-box">
-                            <div id="brand">Nike</div>
-                            <div id="model-name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                            <div id="price">250,000원</div>
-                        </div>
-                    </li>
+                   		</li>
+                	<%} %>
+                	<c:forEach items=" ${ wishList }" var="wishVo">
+                		
+                	</c:forEach>
                 </ul>
              </div>
         </div>

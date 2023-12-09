@@ -17,52 +17,6 @@ import com.shoekream.mypage.vo.WishListVo;
 import com.shoekream.orders.vo.OrdersVo;
 
 public class MyPageDao {
-
-	
-	
-	
-	// 판매내역 관련 cnt값들
-	public HistoryCntVo getSellingCnts(Connection conn, MemberVo loginMember) throws Exception {
-		// sql
-		String bidCntSql = "SELECT COUNT(*) FROM BIDDING B WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 1";
-		String pendCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND NOT O.ORDERS_STATUS_NO=5";
-		String finishedCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND O.ORDERS_STATUS_NO=5";
-		
-		PreparedStatement bidCntPstmt = conn.prepareStatement(bidCntSql);
-		PreparedStatement pendCntPstmt = conn.prepareStatement(pendCntSql);
-		PreparedStatement finishedCntPstmt = conn.prepareStatement(finishedCntSql);
-		
-		bidCntPstmt.setString(1, loginMember.getNo());
-		pendCntPstmt.setString(1, loginMember.getNo());
-		finishedCntPstmt.setString(1, loginMember.getNo());
-		
-		ResultSet rs1 = bidCntPstmt.executeQuery();
-		ResultSet rs2 = pendCntPstmt.executeQuery();
-		ResultSet rs3 = finishedCntPstmt.executeQuery();
-		
-		// rs
-		int bidCnt = 0;
-		int pendCnt = 0;
-		int finishedCnt = 0;
-		if(rs1.next()) {
-			bidCnt = rs1.getInt("CNT");
-		}
-		
-		if(rs2.next()) {
-			pendCnt = rs2.getInt("CNT");
-		}
-		
-		if(rs3.next()) {
-			finishedCnt = rs3.getInt("CNT");
-		}
-		
-		HistoryCntVo cntVo = new HistoryCntVo();
-		cntVo.setCntBid(bidCnt);
-		cntVo.setCntPend(pendCnt);
-		cntVo.setCntFinished(finishedCnt);
-		
-		return cntVo;
-	}
 	
 	// 구매입찰 정보 조회(List) - 기간
 	public List<BiddingHistoryVo> getBuyBiddingInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
@@ -373,6 +327,90 @@ public class MyPageDao {
 		return finishedCnt;
 	}
 	
+	// 판매내역 관련 cnt값들
+		public HistoryCntVo getSellingCnts(Connection conn, MemberVo loginMember) throws Exception {
+			// sql
+			String bidCntSql = "SELECT COUNT(*) FROM BIDDING B WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 1";
+			String pendCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND NOT O.ORDERS_STATUS_NO=5";
+			String finishedCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND O.ORDERS_STATUS_NO=5";
+			
+			PreparedStatement bidCntPstmt = conn.prepareStatement(bidCntSql);
+			PreparedStatement pendCntPstmt = conn.prepareStatement(pendCntSql);
+			PreparedStatement finishedCntPstmt = conn.prepareStatement(finishedCntSql);
+			
+			bidCntPstmt.setString(1, loginMember.getNo());
+			pendCntPstmt.setString(1, loginMember.getNo());
+			finishedCntPstmt.setString(1, loginMember.getNo());
+			
+			ResultSet rs1 = bidCntPstmt.executeQuery();
+			ResultSet rs2 = pendCntPstmt.executeQuery();
+			ResultSet rs3 = finishedCntPstmt.executeQuery();
+			
+			// rs
+			int bidCnt = 0;
+			int pendCnt = 0;
+			int finishedCnt = 0;
+			if(rs1.next()) {
+				bidCnt = rs1.getInt("CNT");
+			}
+			
+			if(rs2.next()) {
+				pendCnt = rs2.getInt("CNT");
+			}
+			
+			if(rs3.next()) {
+				finishedCnt = rs3.getInt("CNT");
+			}
+			
+			HistoryCntVo cntVo = new HistoryCntVo();
+			cntVo.setCntBid(bidCnt);
+			cntVo.setCntPend(pendCnt);
+			cntVo.setCntFinished(finishedCnt);
+			
+			return cntVo;
+		}
 		
 	// 판매내역 관련 cnt값들
+	public int getSellingBidCnt(Connection conn, MemberVo loginMember) throws Exception {
+		String sql ="SELECT COUNT(*) FROM BIDDING B WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 2";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		ResultSet rs = pstmt.executeQuery();
+		
+		int bidCnt = -1;
+		if(rs.next()) {
+			bidCnt = rs.getInt("COUNT(*)");
+		}
+		
+		return bidCnt;
+	}
+
+	public int getSellingPendCnt(Connection conn, MemberVo loginMember) throws Exception {
+		String sql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND NOT O.ORDERS_STATUS_NO=5";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		ResultSet rs = pstmt.executeQuery();
+		
+		int pendCnt = -1;
+		if(rs.next()) {
+			pendCnt = rs.getInt("CNT");
+		}
+		
+		return pendCnt;
+	}
+
+	public int getSellingFinishedCnt(Connection conn, MemberVo loginMember) throws Exception {
+		String sql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND O.ORDERS_STATUS_NO=5";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		ResultSet rs = pstmt.executeQuery();
+		
+		int finishCnt = -1;
+		if(rs.next()) {
+			finishCnt = rs.getInt("CNT");
+		}
+		
+		return finishCnt;
+	}
+
 }

@@ -23,7 +23,7 @@ import com.shoekream.mypage.vo.OrdersHistoryVo;
 public class BuyingFinishedController extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
 			// 로그인 여부 체크
@@ -57,7 +57,6 @@ public class BuyingFinishedController extends HttpServlet{
 			
 			out.close();
 			
-			req.getRequestDispatcher("/WEB-INF/views/mypage/buy_finished.jsp").forward(req, resp);
 		} catch(Exception e) {
 			
 		}
