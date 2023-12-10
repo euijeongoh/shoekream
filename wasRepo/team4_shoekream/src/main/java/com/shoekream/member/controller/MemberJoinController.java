@@ -28,13 +28,14 @@ public class MemberJoinController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			// data
+			String memberName = req.getParameter("memberName");
 			String memberId = req.getParameter("memberId");
 			String memberPwd = req.getParameter("memberPwd");
 			String memberPwd2 = req.getParameter("memberPwd2");
 			String memberNick = req.getParameter("memberNick");
 			String email = req.getParameter("email");
 			
-			MemberVo vo = new MemberVo(memberId, memberPwd, memberPwd2, memberNick, email);
+			MemberVo vo = new MemberVo(memberName, memberId, memberPwd, memberPwd2, memberNick, email);
 			
 			// service
 			MemberService service = new MemberService();
