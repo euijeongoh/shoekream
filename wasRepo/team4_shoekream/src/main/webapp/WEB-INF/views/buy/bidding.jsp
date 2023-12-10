@@ -76,14 +76,14 @@
                         <li class="list_item">
                             <p class="title">즉시 구매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">171,000</span>
+                                <span class="price_a">${ buyPrVo.price }</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
                         <li class="list_item">
                             <p class="title">즉시 판매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">163,000</span>
+                                <span class="price_a">${ sellPrVo.price }</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
@@ -91,14 +91,22 @@
 
                     <div class="instant_group">
                         <div class="tab_area">
-                            <ul class="tab_list">
-                                <li class="item">
-                                    <a item_link_color class="item_link">구매 입찰</a>
-                                </li>
-                                <li class="item_on">
-                                    <a class="item_link">즉시 구매</a>
-                                </li>
-                            </ul>
+                        	<form action="/shoekream/buy/now">
+                        		<input class="productsNo" type="hidden" name="productsNo" value="${ productsNo }">
+                        		<input class="buyPrice" type="hidden" name="price" value="${ buyPrVo.price }">
+                                <input class="buySize" type="hidden" name="size" value="${ buyPrVo.shoesSizes }">
+<%--                                 <input class="sellPrice" type="hidden" name="sellPrice" value="${ sellPrVo.price }"> --%>
+<%--                                 <input class="sellSize" type="hidden" name="sellSize" value="${ sellPrVo.shoesSizes }"> --%>
+	                            <ul class="tab_list">
+	                                <li class="item">
+	                                    <a item_link_color class="item_link">구매 입찰</a>
+	                                </li>
+	                                <li class="item_on">
+<!-- 	                                    <a class="item_link">즉시 구매</a> -->
+	                                    <button id="btn1" type="submit" >즉시 구매</button>
+	                                </li>
+	                            </ul>
+                            </form>
                         </div>
                         <div class="price_now">
                             <dl class="price_now_box">

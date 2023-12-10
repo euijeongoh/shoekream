@@ -92,7 +92,7 @@
                                         <input class="products_No" value="" type="hidden" name="productsNo">
                                         <input class="products_price" value="" type="hidden" name="price">
                                         <input class="products_size" type="hidden" name="size">
-                                        <div class="order_price">180,000</div>
+                                        <div class="order_price">-</div>
                                         <div class="order_desc">5-7일소요</div>
                                     </div>
                                 </button>
