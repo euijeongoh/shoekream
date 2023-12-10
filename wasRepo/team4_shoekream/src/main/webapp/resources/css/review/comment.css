@@ -68,6 +68,7 @@
 }
 .hashtag a{
     text-decoration: none;
+    color: black;
 }
 /* #brand{
     display: block;
@@ -87,6 +88,22 @@
     margin-top: 5px;
     width: 100%;
     /* background-color: orange; */
+}
+
+.uploadid{
+    /* display: flex;
+    justify-content: center; */
+    /* margin-left: 20px; */
+    margin-right: 40px;
+    margin-top: 20px;
+    /* background-color: red; */
+}
+#uploadid{
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
 }
 .exprofile{
     width: 30px;
