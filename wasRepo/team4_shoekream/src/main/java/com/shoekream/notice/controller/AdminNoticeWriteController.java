@@ -34,7 +34,7 @@ public class AdminNoticeWriteController extends HttpServlet{
 			vo.setTitle(title);
 			vo.setContent(content);
 			
-			System.out.println(vo);
+			// System.out.println(vo);
 			
 			//service
 			NoticeService ns = new NoticeService();
@@ -45,13 +45,13 @@ public class AdminNoticeWriteController extends HttpServlet{
 				throw new Exception("result값이 1이 아님...");
 			}
 			
-			req.getSession().setAttribute("alertMsg", "게시글 작성 성공!");
+			req.getSession().setAttribute("alarm", "게시글 작성 성공!");
 			resp.sendRedirect("/shoekream/admin/notice/list");
 			
 		}catch(Exception e) {
 			System.out.println("[ERROR-M001] 공지사항 게시판 생성 중 에러 발생");
 			e.printStackTrace();
-			req.setAttribute("errorMsg", "게시글 작성 실패...");
+			req.setAttribute("error", "게시글 작성 실패...");
 			req.getRequestDispatcher("/WEB-INF/views/common.fail.jsp").forward(req, resp);
 		}
 	}

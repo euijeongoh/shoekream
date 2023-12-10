@@ -12,7 +12,7 @@
 	href="/shoekream/resources/css/admin/board/notice/admin_detail.css">
 </head>
 <body>
-
+<%-- 	${ vo }; --%>
 	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp"%>
 
 	<div class="wrap">
@@ -36,10 +36,11 @@
                     </div>
                     <div class="btn_rightbox">
                         <div class="btn_editbox">
-                            <a href="">수정</a>
+                        <a href="/shoekream/admin/notice/edit?no=<%=vo.getNo()%>">수정</a>
+<%--                             <a href="/shoekream/admin/notice/edit?no=<%=vo.getNo()%>&title=<%=vo.getTitle()%>&content=<%=vo.getContent()%>">수정</a> --%>
                         </div>
                         <div class="btn_deletebox">
-                            <a href="">삭제</a>
+                            <a href="/shoekream/admin/notice/delete?no=<%= vo.getNo() %>">삭제</a>
                         </div>
                     </div>
                 </div>

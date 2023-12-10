@@ -152,6 +152,7 @@ public class NoticeDao {
 		//close
 	}
 
+	//게시글 작성
 	public int noticeWrite(Connection conn, NoticeVo vo) throws Exception{
 		
 		//SQL
@@ -166,6 +167,70 @@ public class NoticeDao {
 		
 		return result;
 		
+	}
+
+	//게시글 삭제
+	public int noticeDelete(Connection conn, String no) throws Exception{
+		//SQL
+		String sql = "UPDATE NOTICE_BOARD SET DEL_YN = 'Y' WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		
+		int result = pstmt.executeUpdate();
+		//rs
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+		
+	}
+	
+	//no로 DB받아오기
+	public NoticeVo getNoticeByNo(Connection conn, String no) throws Exception{
+		//SQL
+		String sql = "SELECT TITLE, CONTENT FROM NOTICE_BOARD WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		//rs
+		NoticeVo vo = null;
+		if(rs.next()) {
+			vo = new NoticeVo();
+			
+			vo.setNo(no);
+			vo.setTitle(rs.getString("TITLE")); 
+			vo.setContent(rs.getString("CONTENT"));
+			
+		}
+		//close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		return vo;
+		
+	}
+
+	//게시글 수정
+	public int noticeEdit(Connection conn, NoticeVo vo) throws Exception{
+		
+		//SQL
+		String sql = "UPDATE NOTICE_BOARD SET TITLE = ? , CONTENT = ? , MODIFY_DATE = SYSDATE WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getTitle());
+		pstmt.setString(2, vo.getContent());
+		pstmt.setString(3, vo.getNo());
+		
+		int result = pstmt.executeUpdate();
+		
+		//rs
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
 	}
 	
 

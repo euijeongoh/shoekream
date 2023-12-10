@@ -1,4 +1,4 @@
-package com.shoekream.notice.service;
+package com.shoekream.qna.service;
 
 import java.sql.Connection;
 import java.util.List;
@@ -7,27 +7,26 @@ import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.notice.dao.NoticeDao;
 import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
+import com.shoekream.qna.vo.QnaVo;
 
-public class NoticeService {
-	
-	//게시글 전체 목록 조회
-	public List<NoticeVo> NoticeList(PageVo pvo) throws Exception{
+public class QnaService {
+
+public List<QnaVo> QnaList(PageVo pvo) throws Exception{
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
 		NoticeDao dao = new NoticeDao();
-		List<NoticeVo> noticeVoList = dao.NoticeList(conn, pvo);
+		List<QnaVo> qnaVoList = dao.QnaList(conn, pvo);
 		
 		//close
 		JDBCTemplate.close(conn);
 		
-		return noticeVoList;
+		return qnaVoList;
 	}
 
-	//게시글 전체 갯수 조회
-	public int selectNoticeCount() throws Exception{
+	public int selectQnaCount() throws Exception{
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
@@ -42,7 +41,6 @@ public class NoticeService {
 		return listCount;
 	}
 	
-	//게시글 검색 갯수 조회
 	public int selectSearchNoticeCount(String title) throws Exception{
 		
 		//conn
@@ -58,7 +56,6 @@ public class NoticeService {
 		return listCount;
 	}
 
-	//게시글 상세 조회
 	public NoticeVo selectNoticeListByNo(String no) throws Exception{
 		
 		//conn
@@ -76,7 +73,6 @@ public class NoticeService {
 		return vo;
 	}
 
-	//게시글 검색
 	public List<NoticeVo> noticeSearch(String title, PageVo pvo) throws Exception {
 		
 		//conn
@@ -117,7 +113,6 @@ public class NoticeService {
 		return result;
 	}
 
-	//게시글 삭제
 	public int noticeDelete(String no) throws Exception{
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
@@ -154,7 +149,6 @@ public class NoticeService {
 		return vo;
 	}
 
-	//게시글 수정
 	public int noticeEdit(NoticeVo vo) throws Exception{
 		
 		//conn
@@ -176,6 +170,4 @@ public class NoticeService {
 		
 		return result;
 	}
-	
-
 }
