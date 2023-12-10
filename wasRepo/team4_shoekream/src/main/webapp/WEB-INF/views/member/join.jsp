@@ -29,7 +29,12 @@
             <div class="join_title">
                 회원가입
             </div>
-            <form action="/member/join" method="post" onsubmit="return activateJoinBtn();")>
+            <form action="/shoekream/member/join" method="post" onsubmit="return checkValidation();")>
+            	<div class="input_box">
+                    <div class="input_title">이름(실명)*</div>
+                    <input class="input_txt" type="text" name="memberName" placeholder="이름">
+                    <div id="name_check"></div>
+                </div>
                 <div class="input_box">
                     <div class="input_title">아이디*</div>
                     <input class="input_txt" type="text" name="memberId" placeholder="아이디">
@@ -59,11 +64,11 @@
                     <div id="email_check"></div>
                     <div class="approval_area">
                     	<input class="input_txt" type="text" name="appr_no" placeholder="인증번호 입력">
-                    	<input type="button" name="appr_btn" value="입력" onclick="authenticateEmail();" disabled>
+                    	<span id="auth_check"></span>
                     </div>
                 </div>
                 <div class="join_btn_box">
-                	<input type="submit" disabled id="join_btn" value="가입하기">
+                	<input type="submit" id="join_btn" value="가입하기">
                 </div>
             </form>
         </div>

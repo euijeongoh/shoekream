@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -16,7 +18,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -67,12 +68,12 @@ public class EmailSendController extends HttpServlet{
 			
 			byte[] randomBytes = new byte[6];
 			// 바이트 배열을 Base64로 인코딩하여 문자열로 반환
-			String AuthenticationKey = Base64.getEncoder().encodeToString(randomBytes);
-			System.out.println(AuthenticationKey);
+			String authenticationKey = Base64.getEncoder().encodeToString(randomBytes);
+			System.out.println(authenticationKey);
 			
 			// email 내용
 			String emailTitle = "[SHOEKREAM] 회원가입 이메일 인증";
-			String emailContent = "회원가입 이메일 인증번호 : " + AuthenticationKey;
+			String emailContent = "회원가입 이메일 인증번호 : " + authenticationKey;
 			
 			// session 생성
 //			Session session = Session.getInstance(props, new Authenticator() {
@@ -105,12 +106,18 @@ public class EmailSendController extends HttpServlet{
 			t.close();
 			System.out.println("이메일 전송 완료");
 			
-			// 인증번호 session에 담기
-			HttpSession saveAuthKey = req.getSession();
-			saveAuthKey.setAttribute("AuthenticationKey", AuthenticationKey);
+			// 인증번호 json형태의 문자열로 담아서 응답하기
 			
-			// 응답
-			out.write("{\"mail\" : \"ok\"}");
+			req.getSession().setAttribute("AuthenticationKey", authenticationKey);
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("authKey", authenticationKey);
+			map.put("mail", "ok");
+			
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonData = mapper.writeValueAsString(map);
+			
+			out.write(jsonData);
+			
 		} catch(Exception e) {
 			out.write("{\"mail\" : \"no\"}");
 			e.printStackTrace();
