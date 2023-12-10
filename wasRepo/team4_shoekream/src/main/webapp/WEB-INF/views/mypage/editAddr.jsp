@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 
 <head>
@@ -37,7 +39,8 @@
 							<!-- 여기 내용 -->
 							<h4 class="input_title">이름</h4>
 							<div class="input_item">
-								<input type="text" placeholder="수령인 이름" class="input_txt" name="name">
+								<input type="text" placeholder="수령인 이름" class="input_txt" name="name" value="${avo.addersName }">
+								<input type="hidden" class="input_txt" name="no" value="${avo.no }">
 							</div>
 							<!-- <p class="input_error">올바른 이름을 입력해주세요. (2-50자)</p> -->
 						</div>
@@ -45,14 +48,14 @@
 							<!-- 여기 내용 -->
 							<h4 class="input_title">휴대폰 번호</h4>
 							<div class="input_item">
-								<input type="text" placeholder="-없이 입력" class="input_txt" name="phone_num">
+								<input type="text" placeholder="-없이 입력" class="input_txt" name="phone_num" value="${avo.phoneNumber }">
 							</div>
 						</div>
 						<div class="input_box">
 							<!-- 여기 내용 -->
 							<h4 class="input_title">우편번호</h4>
 							<div class="input_item" id="map">
-								<input type="text" placeholder="우편 번호를 검색하세요" class="input_txt" id="sample6_postcode" name="post_code" readonly>
+								<input type="text" placeholder="우편 번호를 검색하세요" class="input_txt" id="sample6_postcode" name="post_code" readonly value="${avo.postCode }">
 								<input type="button" class="btn btn_zipcode outline small" onclick="sample6_execDaumPostcode()"  value="우편번호">
 							</div>
 						</div>
@@ -61,7 +64,7 @@
 							<h4 class="input_title">주소</h4>
 							<div class="input_item">
 								<input type="text" id="sample6_address" id="sample6_extraAddress" name="addr" placeholder="우편 번호 검색 후, 자동입력 됩니다"
-									class="input_txt" readonly>
+									class="input_txt" readonly value="${avo.addres }">
 							</div>
 						</div>
 						<div class="input_box">
@@ -69,12 +72,16 @@
 							<h4 class="input_title">상세 주소</h4>
 							<div class="input_item">
 								<input type="text" id="sample6_detailAddress" placeholder="건물, 아파트, 동/호수 이력"
-									class="input_txt" name="detail_addr">
+									class="input_txt" name="detail_addr" value="${avo.detailAddres }">
 								<input type="hidden" id="sample6_extraAddress" >
 							</div>
 							<div class="delivery_check">
-								<div class="checkbox_item" data-v-4be3d37a="">
-									<input id="check1" type="checkbox" class="blind" name="default_addr" onchange="updateDefaultAddress()">
+								<div class="checkbox_item">
+								<c:if test="${avo.defaultAddrYn }.equals(Y)">
+									<input id="check1" type="checkbox" class="blind" name="default_addr" onchange="updateDefaultAddress()" value="Y" checked>
+									</c:if><c:if test="${avo.defaultAddrYn }.equals(N)">
+									<input id="check1" type="checkbox" class="blind" name="default_addr" onchange="updateDefaultAddress()" value="N">
+									</c:if>
 									<input type="hidden" id="defaultAddressHiddenInput" name="default_addr" value="N">
 									
 									<label for="check1" class="check_label"> <span
