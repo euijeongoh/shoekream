@@ -8,7 +8,7 @@
 </head>
 
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
-	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/nowpayment.css">
+	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/order.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 <body>
     <div class="wrap">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="center">
                         <h2 class="h2_buy">
-                            <span>배송/결제</span>
+                            <span>${ trade } 진행 중</span>
                         </h2>
                     </div>
                     <div class="right">
@@ -49,6 +49,16 @@
     <div class="container">
         <div class="content">
             <div class="buy_immediate">
+                <!-- 주문번호  -->
+                <div class="order_area">
+                    <div class="area_number">
+                        <dt class="title">주문번호</dt>
+                        <dd class="desc">어쩌구일련번호</dd>
+                    </div>
+                </div>
+                <!-- 주문번호  -->
+
+                <div class="display_separator"></div>
 
                 <!-- 상품 정보 -->
                 <div class="product_info_area">
@@ -72,13 +82,91 @@
 
                 <div class="display_separator"></div>
 
+                <!-- 진행 상황 -->
+                <div class="order_area">
+                    <div class="status_process">진행상황</div>
+                    <div class="status_area">
+                        <div class="order_status" id="success">발송완료</div>
+                        <div class="order_status" id="success">입고완료</div>
+                        <div class="order_status">검수합격(반송처리)</div>
+                        <div class="order_status">배송완료</div>
+                    </div>
+                </div>
+                <!-- 진행 상황 -->
+
+                <div class="display_separator"></div>
+                
+                <!-- 최종 주문정보 -->
+                <div class="section_orderinfo">
+                    <div class="orderinfo_area">
+                        <div class="title_wrap">
+                            <div>
+                                <p class="wrap_title">결제 내역</p>
+                            </div>
+                        </div>
+                        <div class="title_description" id="totalAmount">
+                            <p class="line_title title_txt">총 결제금액</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em class="title_txt" style="color:inherit;">
+                                        ${ totalAmount }원
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">즉시 구매가</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        ${ dbVo.price }원
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">검수비</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        무료
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">수수료</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        ${ commission }원
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">배송비</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        ${ deliveryCharge }원
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 최종 주문정보 -->
+
+                <div class="display_separator"></div>
+
                 <form action="/shoekream/buy/order" method="post">
                     <!-- 배송 주소 -->
                     <section>
                         <div class="section_unit">
                             <div class="section_title">
                                 <h3 class="title_txt">배송 주소</h3>
-                                <a class="add_more_btn">+ 새 주소 추가</a>
+                                <!-- <a class="add_more_btn">+ 새 주소 추가</a> -->
                             </div>
                             <div class="section_content">
                                 <div class="delivery_info">
@@ -98,7 +186,7 @@
                                             </div>
                                         </dl>
                                     </div>
-                                    <a class="btn_edit">변경</a>
+                                    <!-- <a class="btn_edit">변경</a> -->
                                 </div>
                             </div>
                         </div>
@@ -111,16 +199,16 @@
                     <div class="section_payment">
                         <div class="payment_area">
                             <div class="payment_title">
-                                <h3 class="payment_title_txt">결제 방법</h3>
+                                <h3 class="payment_title_txt">결제 정보</h3>
                             </div>
                             <div>
                                 <div class="payment_account">
-                                    <h4 class="method_title">
+                                    <!-- <h4 class="method_title">
                                         <div class="main_title">
-                                            <p>계좌 간편결제</p>
+                                            <p>계좌</p>
                                         </div>
                                         <a class="btn_card_add">새 계좌 추가</a>
-                                    </h4>
+                                    </h4> -->
                                     <div>
                                         <div class="payment_detail">
                                             <div class="payment_item">
@@ -135,7 +223,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="payment_card">
+                                <!-- <div class="payment_card">
                                     <h4 class="method_title">
                                         <div class="main_title">
                                             <p>카드 간편결제</p>
@@ -150,68 +238,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                     <!-- 결제 방법 -->
 
-                    <div class="display_separator"></div>
-
-                    <!-- 최종 주문정보 -->
-                    <div class="section_orderinfo">
-                        <div class="orderinfo_area">
-                            <div class="title_wrap">
-                                <div>
-                                    <p class="wrap_title">최종 주문정보</p>
-                                </div>
-                            </div>
-                            <div class="title_description">
-                                <p class="line_title">즉시 구매가</p>
-                                <div class="description_wrap">
-                                    <p class="line_description">
-                                        <em style="color:inherit;">
-                                            ${ dbVo.price }원
-                                        </em>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="title_description">
-                                <p class="line_title">검수비</p>
-                                <div class="description_wrap">
-                                    <p class="line_description">
-                                        <em style="color:inherit;">
-                                            무료
-                                        </em>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="title_description">
-                                <p class="line_title">수수료</p>
-                                <div class="description_wrap">
-                                    <p class="line_description">
-                                        <em style="color:inherit;">
-                                            ${ commission }원
-                                        </em>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="title_description">
-                                <p class="line_title">배송비</p>
-                                <div class="description_wrap">
-                                    <p class="line_description">
-                                        <em style="color:inherit;">
-                                            ${ deliveryCharge }원
-                                        </em>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 최종 주문정보 -->
 
                     <!-- 결제하기 -->
-                    <div class="buy_total_confirm">
+                    <!-- <div class="buy_total_confirm">
                         <div class="price_total">
                             <dl class="price_box">
                                 <dt class="price_title">총 결제금액</dt>
@@ -227,8 +262,9 @@
                             <a blind class="blind_full_solid_false">계속하기</a>
                             <button class="blind_full_solid_false">결제하기</button>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
+
             </div>
         </div>
     </div>
