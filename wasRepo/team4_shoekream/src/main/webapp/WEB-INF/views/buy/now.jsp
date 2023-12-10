@@ -138,10 +138,13 @@
                             <em></em>
                         </span>
                     </div>
-                    <form action="">
+                    <form action="/shoekream/buy/nowpayment" method="get">
                         <div class="btn_confirm">
+                            <input type="hidden" name="productsNo" value="${ productsNo }">
+                            <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
+                            <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
                             <a blind class="blind_full_solid_false">계속하기</a>
-                            <button class="blind_full_solid_false">즉시 구매 계속</button>
+                            <button type="submit" class="blind_full_solid_false">즉시 구매 계속</button>
                         </div>
                     </form>
                 </div>

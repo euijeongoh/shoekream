@@ -26,13 +26,13 @@ public class BuySelectController extends HttpServlet{
 			List<BiddingVo> voList = bs.buySelect(productsNo);
 			
 			if (voList == null) {
-				throw new Exception("예외발생 : voList == null");
+				throw new Exception("예외 발생 : voList == null");
 			}
 			
 			req.setAttribute("voList", voList);
 			req.getRequestDispatcher("/WEB-INF/views/buy/select.jsp").forward(req, resp);
 		} catch (Exception e) {
-			System.out.println("에러발생 : buySelect 중 예외발생");
+			System.out.println("buySelect 중 예외 발생");
 			e.printStackTrace();
 		}
 		
@@ -40,18 +40,6 @@ public class BuySelectController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String productsNo = req.getParameter("productsNo");
-		String price = req.getParameter("price");
-		String size = req.getParameter("size");
-		
-		BiddingVo dbVo = new BiddingVo();
-		dbVo.setProductsNo(productsNo);
-		dbVo.setPrice(price);
-		dbVo.setShoesSizes(size);
-		
-		req.setAttribute("dbVo", dbVo);
-		req.getRequestDispatcher("/WEB-INF/views/buy/check.jsp").forward(req, resp);
 		
 	}
 

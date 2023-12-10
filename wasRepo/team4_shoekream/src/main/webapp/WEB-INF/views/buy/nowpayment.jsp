@@ -170,7 +170,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        171,000원
+                                        ${ }
                                     </em>
                                 </p>
                             </div>

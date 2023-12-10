@@ -18,11 +18,21 @@ public class BuyNowControlloer extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			BiddingVo dbVo = (BiddingVo)req.getAttribute("dbVo");
+			System.out.println("BuyNowCheckController 에러확인 dbVo : " + dbVo);
+			
 			String productsNo = req.getParameter("productsNo");
 			String price = req.getParameter("price");
 			String size = req.getParameter("size");
+			System.out.println("BuyNowController 에러확인 productsNo : " + productsNo);
+			System.out.println("BuyNowController 에러확인 price : " + price);
+			System.out.println("BuyNowController 에러확인 size : " + size);
 			
 			BiddingVo vo = new BiddingVo();
 			vo.setProductsNo(productsNo);
@@ -32,7 +42,7 @@ public class BuyNowControlloer extends HttpServlet{
 			BiddingService bs = new BiddingService();
 			Map<String, Object> m = bs.productList(vo);
 			if (m == null) {
-				throw new Exception("예외발생 : voList == null");
+				throw new Exception("예외 발생 : voList == null");
 			}
 			BiddingVo buyPrVo = (BiddingVo)m.get("buyPrVo");
 			BiddingVo sellPrVo = (BiddingVo)m.get("sellPrVo");
@@ -43,15 +53,9 @@ public class BuyNowControlloer extends HttpServlet{
 			req.setAttribute("sellPrVo", sellPrVo);
 			req.getRequestDispatcher("/WEB-INF/views/buy/now.jsp").forward(req, resp);
 		} catch (Exception e) {
-			System.out.println("에러발생 : buyNow 중 예외발생");
+			System.out.println("buyNow 중 예외 발생");
 			e.printStackTrace();
 		}
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		
 	}
 	
 }

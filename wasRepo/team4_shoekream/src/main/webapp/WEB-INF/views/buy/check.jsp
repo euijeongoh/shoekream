@@ -146,8 +146,9 @@
 	                        </li>
 	                    </ul>
 	                    <div class="btn_confirm">
-		                    <form action="/shoekream/buy/now">
+		                    <form action="/shoekream/buy/now" method="post">
 		                         <a disabled="disabled" class="blindAgree">동의버튼</a>
+		                         <input type="hidden" name="dbVo" value="${dbVo}">
 		                         <input type="hidden" name="productsNo" value="${dbVo.productsNo}">
 		                         <input type="hidden" name="price" value="${dbVo.price}">
 		                         <input type="hidden" name="size" value="${dbVo.shoesSizes}">

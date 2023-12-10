@@ -86,8 +86,8 @@
                             </ul>
                         </div>
                         <div class="order_btn_area">
-                            <form action="/shoekream/buy/select" method="post">
-                                <button class="btn_order order_buy buy clickable">
+                            <form action="/shoekream/buy/check" method="post">
+                                <button class="btn_order order_buy buy clickable" disabled="disabled">
                                     <div class="box">
                                         <input class="products_No" value="" type="hidden" name="productsNo">
                                         <input class="products_price" value="" type="hidden" name="price">

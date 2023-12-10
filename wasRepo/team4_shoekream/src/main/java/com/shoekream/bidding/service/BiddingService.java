@@ -29,6 +29,11 @@ public class BiddingService {
 	}
 
 	
+	
+	
+	
+	
+	
 	// 구매 상품 정보(판매입찰)
 	public Map<String, Object> productList(BiddingVo vo) throws Exception{
 		// conn
@@ -55,4 +60,26 @@ public class BiddingService {
 		return m;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	// 상품 정보 조회
+	public BiddingVo productInfo(BiddingVo vo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		BiddingVo dbVo = dao.productInfo(conn, vo);
+	
+		// close
+		JDBCTemplate.close(conn);
+		
+		return dbVo;
+	}
 }
