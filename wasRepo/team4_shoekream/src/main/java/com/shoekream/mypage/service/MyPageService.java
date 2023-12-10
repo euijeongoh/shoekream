@@ -96,6 +96,42 @@ public class MyPageService {
 		return wishList;
 	}
 
+	// 판매 관련 cnt값들
+	public HistoryCntVo getSellingCnts(MemberVo loginMember) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		int bidCnt = dao.getSellingBidCnt(conn, loginMember);
+		int pendCnt = dao.getSellingPendCnt(conn, loginMember);
+		int finishedCnt = dao.getSellingFinishedCnt(conn, loginMember);
+		
+		HistoryCntVo cntVo = new HistoryCntVo(bidCnt, pendCnt, finishedCnt);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return cntVo;
+	}
+
+	// 판매입찰 내역
+	public List<BiddingHistoryVo> viewSellingBiddingList(MemberVo loginMember, Map<String, String> map) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		List<BiddingHistoryVo> bidList = dao.getSellBiddingInfo(conn, loginMember, map);			
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return bidList;
+	}
+
+	
+	
 	// 마이페이지 메인
 	public Map<String, Object> getMyPageMainInfo(MemberVo loginMember) throws Exception {
 		// conn
@@ -133,6 +169,32 @@ public class MyPageService {
 		
 		return myMainMap;
 	}
+
+	// 프로필 이미지 DB에 저장
+	public Map<String, Object> saveImgSrcInDB(MemberVo loginMember, String src) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		Map<String, Object> map = dao.saveImgSrcInDB(conn, loginMember, src);
+		
+		int result = (int) map.get("result");
+		// tx
+		if( result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return map;
+	}
+
+
+
 
 
 	
