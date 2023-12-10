@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/now.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+
+    <script defer src="/shoekream/resources/js/bidding/buy/now.js"></script>
 <body>
     <div class="wrap">
         <header>
@@ -49,7 +51,6 @@
     <div class="container">
         <div class="content">
             <div class="buy_immediate">
-
                 <!-- 상품 정보 -->
                 <div class="product_info_area">
                     <div class="product_info">
@@ -77,14 +78,14 @@
                         <li class="list_item">
                             <p class="title">즉시 구매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">171,000</span>
+                                <span class="price_a">${ buyPrVo.price }</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
                         <li class="list_item">
                             <p class="title">즉시 판매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">163,000</span>
+                                <span class="price_a">${ sellPrVo.price }</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
@@ -93,9 +94,17 @@
                     <div class="instant_group">
                         <div class="tab_area">
                             <ul class="tab_list">
-                                <li class="item">
-                                    <a class="item_link">구매 입찰</a>
-                                </li>
+                                <form action="/shoekream/buy/bidding" style="height: 50%; width: 50%;">
+                                    <li class="item">
+                                        <button class="item_link" id="btn1" type="submit" >구매 입찰</button>
+                                        <!-- <a class="item_link">구매 입찰</a> -->
+                                        <input type="hidden" name="productsNo" value="${ productsNo }">
+                                        <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
+                                        <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
+                                        <input class="sellPrice" type="hidden" name="sellPrice" value="${ sellPrVo.price }">
+                                        <input class="sellSize" type="hidden" name="sellSize" value="${ sellPrVo.price }">
+                                    </li>
+                                </form>
                                 <li class="item_on">
                                     <a color class="item_link">즉시 구매</a>
                                 </li>
@@ -105,7 +114,7 @@
                             <dl class="price_now_box">
                                 <dt class="price_now_title">즉시구매가</dt>
                                 <dd class="price">
-                                    <span class="amount_b">171,000</span>
+                                    <span class="amount_b">${ buyPrVo.price }</span>
                                     <span class="unit_b">원</span>
                                 </dd>
                             </dl>
@@ -129,10 +138,15 @@
                             <em></em>
                         </span>
                     </div>
-                    <div class="btn_confirm">
-                        <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">즉시 구매 계속</button>
-                    </div>
+                    <form action="/shoekream/buy/nowpayment" method="get">
+                        <div class="btn_confirm">
+                            <input type="hidden" name="productsNo" value="${ productsNo }">
+                            <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
+                            <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
+                            <a blind class="blind_full_solid_false">계속하기</a>
+                            <button type="submit" class="blind_full_solid_false">즉시 구매 계속</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

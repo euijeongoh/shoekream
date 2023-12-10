@@ -47,8 +47,6 @@
         </header>
     </div>
 
-    
-
     <div class="container">
         <div class="content">
             <div class="buy_before">
@@ -148,19 +146,13 @@
 	                        </li>
 	                    </ul>
 	                    <div class="btn_confirm">
-	                    <!-- <div class="order_btn_area"> -->
 		                    <form action="/shoekream/buy/now" method="post">
 		                         <a disabled="disabled" class="blindAgree">동의버튼</a>
+		                         <input type="hidden" name="dbVo" value="${dbVo}">
 		                         <input type="hidden" name="productsNo" value="${dbVo.productsNo}">
 		                         <input type="hidden" name="price" value="${dbVo.price}">
 		                         <input type="hidden" name="size" value="${dbVo.shoesSizes}">
 		                         <button id="btn1" disabled="disabled" type="submit" class="button">구매 계속</button>
-		                         <!-- <button class="btn_order order_buy buy clickable">
-		                             <div class="box">
-		                                 <div class="order_price">180,000</div>
-		                                 <div class="order_desc">5-7일소요</div>
-		                             </div>
-		                         </button> -->
 	                        </form>
 	                    </div>
 	                </div>
@@ -168,7 +160,6 @@
             </div>
         </div>
     </div>
-        
 
     <footer>
         <div class="box1"></div>
