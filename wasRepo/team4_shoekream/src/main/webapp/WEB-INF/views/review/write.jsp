@@ -35,36 +35,21 @@
                 </div>
             </div>
 
-        <form action="" class="aaa">
+        <form action="/shoekream/review/write" method="post" id="reviewForm" enctype="multipart/form-data">
             <div class="ggg">
-                <!-- <div class="star">
-                    <div class="wstar">
-                        <p id="wstar"><b>별 점</b></p>
-                    </div>
-                    <div class="starjom">
-                        <div class="stars" data-rating="1"><i class="rating__star far fa-star"></i></div>
-                        <div class="stars" data-rating="2"><i class="rating__star far fa-star"></i></div>
-                        <div class="stars" data-rating="3"><i class="rating__star far fa-star"></i></div>
-                        <div class="stars" data-rating="4"><i class="rating__star far fa-star"></i></div>
-                        <div class="stars" data-rating="5"><i class="rating__star far fa-star"></i></div>
-                    
-                          <p> </p><span id="selectedRating"></span>
-                    </div>
-                </div> -->
                 <div class="ignition">
                     <div class="wignition">
                         <p id="wignition"><b>착화감</b></p>
                     </div>
                     <div class="three">
                         <ul>
-                            <li><input type="radio" name="comfort_btn"  class="comfort-button" data-comfort="comfortable">편함</li>
-                            <li><input type="radio" name="comfort_btn" class="comfort-button" data-comfort="normal">보통</li>
-                            <li><input type="radio" name="comfort_btn" class="comfort-button" data-comfort="uncomfortable">불편함</li>
+                            <li><input type="radio" name="comfort_btn" class="comfort-button" id="comfort-button" data-comfort="comfortable" value="1">편함</li>
+                            <li><input type="radio" name="comfort_btn" class="comfort-button" id="comfort-button" data-comfort="normal" value="2">보통</li>
+                            <li><input type="radio" name="comfort_btn" class="comfort-button" id="comfort-button" data-comfort="uncomfortable" value="3">불편함</li>
                         </ul>
                     </div>
                 </div>
             </div>
-       
             
             <br><br>
             <div class="content">
@@ -80,7 +65,7 @@
                 <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
                 <div>
                     <div class="upload_picture">
-                        <img src="/resources/img/review/picture01.png" alt="리뷰사진" id="reviewpng">
+                        <img src="" alt="리뷰사진" id="reviewpng">
                     </div>
                     <div class="img_label">
                         <label for="file-input" id="file-input-label">이미지 선택</label>
@@ -90,7 +75,7 @@
             <div class="update">
                 <ul>
                     <li id="update_detail"><input type="submit" value="올리기"></li>
-                    <li id="update_detail"><input type="submit" value="취소"></li>
+                    <li id="update_detail"><input type="reset" value="초기화" onclick="resetForm(event)"></li>
                 </ul>
             </div>
         </form>
@@ -102,97 +87,64 @@
 </body>
 </html>
 
+<!-- 파일 선택 시 이미지 미리보기 -->
 <script type="text/javascript">
 
-// 이미지 미리보기 함수
-function previewImage(event) {
-    const fileInput = event.target;
-    const reviewpng = document.getElementById('reviewpng');
+    // 파일 선택 시 미리보기 함수
+    function previewImage(event) {
+        var reader = new FileReader();
+        var imgElement = document.getElementById('reviewpng');
 
-    const file = fileInput.files[0];
-
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            reviewpng.src = e.target.result;
+        reader.onload = function () {
+            imgElement.src = reader.result;
         };
 
-        reader.readAsDataURL(file);
+        // 선택한 파일이 이미지인 경우에만 미리보기를 표시
+        if (event.target.files && event.target.files[0]) {
+            var fileType = event.target.files[0].type;
+            if (fileType.indexOf('image') !== -1) {
+                reader.readAsDataURL(event.target.files[0]);
+            } else {
+                alert('이미지 파일을 선택해주세요.');
+            }
+        }
     }
-}
 
-
-//JavaScript를 사용하여 각 버튼의 클릭 이벤트를 처리합니다
-const comfortButtons = document.querySelectorAll('.comfort-button');
-
-comfortButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // 모든 버튼의 클래스를 초기화합니다
-        comfortButtons.forEach(btn => btn.classList.remove('selected'));
-
-        // 클릭된 버튼에 'selected' 클래스를 추가하여 스타일을 변경합니다
-        button.classList.add('selected');
-
-        // 선택된 착화감 값을 서버로 전송하거나 다른 작업을 수행할 수 있습니다.
-        const selectedComfort = button.getAttribute('data-comfort');
-        console.log(`선택된 착화감: ${selectedComfort}`);
-    });
-});
-
-//별점코드
-// JavaScript를 사용하여 각 별 버튼의 클릭 이벤트를 처리합니다
-const starsContainer = document.querySelector('.starjom');
-const stars = starsContainer.querySelectorAll('.stars');
-
-starsContainer.addEventListener('click', (event) => {
-    const selectedStar = event.target;
-
-    if (selectedStar.classList.contains('stars')) {
-        // 클릭한 별의 인덱스를 찾습니다
-        const clickedIndex = Array.from(stars).indexOf(selectedStar);
-
-        // 클릭한 별부터 강조 효과를 추가합니다
-        for (let i = 0; i <= clickedIndex; i++) {
-            stars[i].classList.add('selected');
-        }
-
-        // 클릭한 별 이후의 별에는 강조 효과를 제거합니다
-        for (let i = clickedIndex + 1; i < stars.length; i++) {
-            stars[i].classList.remove('selected');
-        }
-
-        // 선택된 별의 값을 업데이트합니다
-        const selectedRating = clickedIndex + 1;
-        document.getElementById('selectedRating').textContent = `별 점: ${selectedRating}`;
+    // 폼 제출 함수
+    function submitReviewForm() {
+        var form = document.getElementById('reviewForm');
+        form.submit();
     }
-});
 
-// 별점 코드
-// DOM에서 별 요소를 가져옵니다
-const stars = document.querySelectorAll('.stars > .stars');
-
-// 각 별 버튼에 이벤트 리스너를 추가합니다
-stars.forEach((star, index) => {
-    star.addEventListener('click', () => {
-        console.log('별을 클릭했습니다.');
-
-        // 클릭한 별의 인덱스를 찾습니다
-        const clickedIndex = Array.from(stars).indexOf(star);
-
-        // 클릭한 별부터 강조 효과를 추가합니다
-        for (let i = 0; i <= clickedIndex; i++) {
-            stars[i].classList.add('selected');
-        }
-
-        // 클릭한 별 이후의 별에는 강조 효과를 제거합니다
-        for (let i = clickedIndex + 1; i < stars.length; i++) {
-            stars[i].classList.remove('selected');
-        }
-
-        // 선택된 별의 값을 얻어와서 콘솔에 출력합니다
-        const selectedRating = clickedIndex + 1;
-        document.getElementById('selectedRating').textContent = `별 점: ${selectedRating}`;
+    // 착화감 버튼 클릭 이벤트 처리
+    const comfortButtons = document.querySelectorAll('.comfort-button');
+    comfortButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            comfortButtons.forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+            const selectedComfort = this.getAttribute('data-comfort');
+            console.log(`선택된 착화감: ${selectedComfort}`);
+        });
     });
-});
+
+    function resetForm(event) {
+        // 기본 동작 막기
+        event.preventDefault();
+
+        // form 요소를 ID로 찾아옴
+        var form = document.getElementById('reviewForm');
+        
+        // form을 리셋 (내용 초기화)
+        form.reset();
+        
+        // 이미지 미리보기도 초기화
+        document.getElementById('reviewpng').src = '#';
+    }
+</script>
+
+
+
+</script>
+
+
 

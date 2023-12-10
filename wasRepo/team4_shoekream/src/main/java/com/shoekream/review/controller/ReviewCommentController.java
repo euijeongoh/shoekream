@@ -35,9 +35,9 @@ public class ReviewCommentController extends HttpServlet {
 
 	        // 서비스 호출
 	        ReviewCommentService cs = new ReviewCommentService();
-	        List<ReviewCommentVo> reviewCommentVoList = cs.reviewCommentList();
+//	        List<ReviewCommentVo> reviewCommentVoList = cs.reviewCommentList();
 	        
-	        req.setAttribute("reviewCommnetVoList", reviewCommentVoList);
+//	        req.setAttribute("reviewCommnetVoList", reviewCommentVoList);
 	        req.getRequestDispatcher("/WEB-INF/views/review/comment.jsp").forward(req, resp);
 
 	    } catch (Exception e) {
@@ -66,9 +66,9 @@ public class ReviewCommentController extends HttpServlet {
          String likeBtn = req.getParameter("likeBtn");
          MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
          
-         if(loginMember == null) {
-            throw new Exception("로그인 안했음");
-         }
+//         if(loginMember == null) {
+//            throw new Exception("로그인 안했음");
+//         }
          
          ReviewCommentVo vo = new ReviewCommentVo();
 //         vo.setMemberNo(memberNo);
@@ -86,13 +86,13 @@ public class ReviewCommentController extends HttpServlet {
          }
          
          req.getSession().setAttribute("alertMsg", "댓글 작성 성공 !");
-         resp.sendRedirect("/shoekream/review/mylist");
+         resp.sendRedirect("/shoekream/review/comment");
          
       }catch(Exception e) {
-         System.out.println("[ERROR-B002] 게시글 작성 실패 ...");
+         System.out.println("[ERROR-B002] 댓글 작성 실패 ...");
          e.printStackTrace();
          req.setAttribute("errorMsg", "댓글 작성 실패 ...");
-         req.getRequestDispatcher("/WEB-INF/views/review/mylist").forward(req, resp);
+         req.getRequestDispatcher("/WEB-INF/views/review/comment.jsp").forward(req, resp);
       }
       
    }

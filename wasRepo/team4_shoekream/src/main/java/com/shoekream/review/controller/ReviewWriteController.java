@@ -48,24 +48,72 @@ public class ReviewWriteController extends HttpServlet {
 
 	}
 
+//	@Override
+//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
+//	    try {
+//	        HttpSession session = req.getSession();
+//
+//	        // 데이터
+//	        String no = req.getParameter("no");
+//	        String memberNo = req.getParameter("memberNo");
+//	        String productNo = req.getParameter("productNo");
+//	        String comfortNo = req.getParameter("comfortNo");
+//	        String content = req.getParameter("content");
+//	        MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
+//
+//	        // 로그인하지 않은 경우, 기본값 또는 익명 값을 사용
+//	        if (loginMember == null) {
+//	            memberNo = "anonymous"; // 기본값 또는 익명 값으로 설정
+//	        } else {
+//	            memberNo = loginMember.getNo();
+//	        }
+////	        
+////	        if(loginMember == null) {
+////				throw new Exception("로그인 안했음");
+////			}
+//
+//	        ReviewVo vo = new ReviewVo();
+//	        vo.setNo(no);
+//	        vo.setMemberNo(memberNo);
+//	        vo.setProductNo(productNo);
+//	        vo.setComfortNo(comfortNo);
+//	        vo.setContent(content);
+//
+//	        // 서비스
+//	        ReviewService rs = new ReviewService();
+//	        int result = rs.write(vo);
+//
+//	        // 결과에 따른 뷰
+//	        if (result != 1) {
+//	            throw new Exception("result 가 1이 아님 ,,,,");
+//	        }
+//
+//	        req.getSession().setAttribute("alertMsg", "리뷰 작성 성공 !");
+//	        resp.sendRedirect("/shoekream/review/mylist.jsp");
+//
+//	    } catch (Exception e) {
+//	        System.out.println("[ERROR-B002] 리뷰 작성 실패");
+//	        e.printStackTrace();
+//	        req.setAttribute("errorMsg", "리뷰 작성 실패 ...");
+//	        req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp); //로그인 창으로 바꾸기
+//	    }
+//	}
+
 	
 	//리뷰작성 로직
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       
       try {
-    	  //인코딩
-//	      req.setCharacterEncoding("UTF-8");   //필터에서 인코딩 처리 해줌
-         
          HttpSession session = req.getSession();
          
          // data //이미지는 어떤 타입?
-//         String memberNo = req.getParameter("memberNo");
+         String no = req.getParameter("no");
+         String memberNo = req.getParameter("memberNo");
+         String productNo = req.getParameter("productNo");
          String comfortNo = req.getParameter("comfortNo");
-         String fiveStarRating = req.getParameter("fiveStarRating");
          String content = req.getParameter("content");
-         String likeBtn = req.getParameter("likeBtn");
-         String reviewImage = req.getParameter("reviewImage");
          MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
          
          if(loginMember == null) {
@@ -73,16 +121,16 @@ public class ReviewWriteController extends HttpServlet {
          }
          
          ReviewVo vo = new ReviewVo();
+         vo.setNo(no);
+         vo.setMemberNo(memberNo);
+         vo.setProductNo(productNo);
          vo.setComfortNo(comfortNo);
-         vo.setFiveStarRating(fiveStarRating);
          vo.setContent(content);
-         vo.setFiveStarRating(fiveStarRating);
-         vo.setReviewImage(reviewImage);
          vo.setMemberNo(loginMember.getNo());
          
          // service
-         ReviewService bs = new ReviewService();
-         int result = bs.write(vo);
+         ReviewService rs = new ReviewService();
+         int result = rs.write(vo);
          
          // result == view
          if(result != 1) {
@@ -90,13 +138,13 @@ public class ReviewWriteController extends HttpServlet {
          }
          
          req.getSession().setAttribute("alertMsg", "리뷰 작성 성공 !");
-         resp.sendRedirect("/shoekream//review/mylist");
+         resp.sendRedirect("/shoekream//review/mylist.jsp");
          
       }catch(Exception e) {
          System.out.println("[ERROR-B002] 리뷰 작성 실패 ...");
          e.printStackTrace();
          req.setAttribute("errorMsg", "리뷰 작성 실패 ...");
-         req.getRequestDispatcher("/WEB-INF/views/review/mylist").forward(req, resp);
+         req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp);
       }
       
    }

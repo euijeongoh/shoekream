@@ -11,6 +11,7 @@ import com.shoekream.review.vo.ReviewVo;
 
 public class ReviewService {
 	
+	
 	//리뷰작성
 	public int write(ReviewVo vo) throws Exception {
 	      
@@ -33,8 +34,9 @@ public class ReviewService {
       
       return result;
    }
+
 	
-	//내 리뷰 목록 조회
+	//내 리뷰 목록 조회 (리뷰 리스트)
 	public List<ReviewVo> myReviewList() throws Exception {
 		
 		//conn
@@ -51,7 +53,7 @@ public class ReviewService {
 	}
 	
 	
-	//전체 리뷰목록 조회
+	//전체 리뷰목록 조회 (리뷰 리스트)
 	public List<ReviewVo> selectReviewList() throws Exception {
 		
 		//conn
@@ -86,6 +88,55 @@ public class ReviewService {
 	    return vo;
 	    
 		}
+
+
+	//리뷰삭제
+	public int delete(String no, String memberNo) throws Exception {
+		 //conn
+	      Connection conn = JDBCTemplate.getConnection();
+	      
+	      //dao
+	      ReviewDao dao = new ReviewDao();
+	      int result = dao.delete(conn , no , memberNo);
+	      
+	      //tx
+	      if(result == 1) {
+	         JDBCTemplate.commit(conn);
+	      }else {
+	         JDBCTemplate.rollback(conn);
+	      }
+	      
+	      //close
+	      JDBCTemplate.close(conn);
+
+	      return result;
+	   }//delete
+
+
+	//리뷰 수정
+	public int edit(ReviewVo vo) throws Exception {
+		
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		ReviewDao dao = new ReviewDao();
+		int result = dao.updateReviewByNo(conn, vo);
+		
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+	
+	
 		
 	}
 

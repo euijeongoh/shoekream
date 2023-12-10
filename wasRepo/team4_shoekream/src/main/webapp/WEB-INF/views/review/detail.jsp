@@ -20,7 +20,7 @@
                 <div class="profile_detail">
                     <div>
                         <a href="#">
-                            <h4>nickname</h4>
+                            <h4>helloprofile</h4>
                         </a>
                     </div>
                     <div>
@@ -95,7 +95,7 @@
 
         <div class="kitty_box">
             <div class="one_comment">
-                <br><br><p class="commentnum"><b>댓글 5개</b></p><br>
+                <br><br><p class="commentnum"><b>댓글 2개</b></p><br>
             </div>
             <div class="comment">
                 <div>
@@ -115,18 +115,18 @@
 
             <div>
                 <div class="date02">
-                    <p class="date002">2023년11월09일</p>
+                    <p class="date002">2023년02월13일</p>
                 </div>
                 <br>
                 <div class="comment">
                     <div>
                         <a href="#">
-                            <img src="/shoekream/resources/img/review/kitty.png" alt="profile_img"  class="profile_img02">
+                            <img src="/shoekream/resources/img/review/profile_img.png" alt="profile_img"  class="profile_img02">
                         </a>
                     </div>
                     <div>
                         <div class="ejeong">
-                            <p><h4>ejeong</h4></p>
+                            <p><h4>melomance</h4></p>
                         </div>
                         <div class="airforce">
                             <p>나도 이거 살 걸..</p>
@@ -135,7 +135,9 @@
                 </div>
                 <div>
                     <div class="date02">
-                        <p class="date002">2023년11월10일</p>
+                        <p class="date002">2023년04월17일</p>
+                    </div>
+                    <div class="abcd">
                     </div>
                 <div class="more">
                     <a href="/shoekream/review/comment"><p class="morecom">댓글 더 보기</p></a>

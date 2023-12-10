@@ -15,7 +15,7 @@ import com.shoekream.review.vo.ReviewVo;
 @WebServlet("/review/mylist")
 public class MyReviewListController extends HttpServlet {
 
-    //내 리뷰게시글 목록화면
+    //내 리뷰 목록
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
