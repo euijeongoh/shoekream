@@ -91,7 +91,7 @@
 								</div>
 							</div>
 							<div class="btn_bind">
-								<a href="#" class="btn outlinegrey small openModal_edit" id="openModal_edit"><span
+								<a href="/shoekream/mypage/addr/edit?no=<%=vo.getNo() %>" class="btn outlinegrey small openModal_edit" id="openModal_edit"><span
 							class="btn_txt">수정</span></a> 
 							
 							
@@ -123,7 +123,7 @@
 								</div>
 							</div>
 							<div class="btn_bind">
-								<a href="#" class="btn outlinegrey small openModal_edit" id="openModal_edit"><span
+								<a href="/shoekream/mypage/addr/edit?no=<%=av.getNo() %>" class="btn outlinegrey small openModal_edit"  id="openModal_edit"><span
 							class="btn_txt">수정</span></a> 
 								
 								<a href="/shoekream/mypage/addr/delete?no=<%=av.getNo() %>" class="btn outlinegrey small"><span
