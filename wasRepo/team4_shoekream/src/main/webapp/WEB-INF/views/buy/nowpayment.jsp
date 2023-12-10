@@ -71,163 +71,164 @@
                 <!-- 상품 정보 -->
 
                 <div class="display_separator"></div>
-                
-                <!-- 배송 주소 -->
-                <section>
-                    <div class="section_unit">
-                        <div class="section_title">
-                            <h3 class="title_txt">배송 주소</h3>
-                            <a class="add_more_btn">+ 새 주소 추가</a>
-                        </div>
-                        <div class="section_content">
-                            <div class="delivery_info">
-                                <div class="address_info">
-                                    <dl class="info_list">
-                                        <div class="info_box">
-                                            <dt class="title">받는 분</dt>
-                                            <dd class="desc">곽태윤</dd>
-                                        </div>
-                                        <div class="info_box">
-                                            <dt class="title">연락처</dt>
-                                            <dd class="desc">010-9740-4885</dd>
-                                        </div>
-                                        <div class="info_box">
-                                            <dt class="title">배송 주소</dt>
-                                            <dd class="desc">인천 연수구 함박뫼로 100 (연수동, 문남마을아파트) 109-505</dd>
-                                        </div>
-                                    </dl>
+
+                <form action="/shoekream/bidding/order" method="post">
+                    <!-- 배송 주소 -->
+                    <section>
+                        <div class="section_unit">
+                            <div class="section_title">
+                                <h3 class="title_txt">배송 주소</h3>
+                                <a class="add_more_btn">+ 새 주소 추가</a>
+                            </div>
+                            <div class="section_content">
+                                <div class="delivery_info">
+                                    <div class="address_info">
+                                        <dl class="info_list">
+                                            <div class="info_box">
+                                                <dt class="title">받는 분</dt>
+                                                <dd class="desc">곽태윤${loginMember.name}</dd>
+                                            </div>
+                                            <div class="info_box">
+                                                <dt class="title">연락처</dt>
+                                                <dd class="desc">010-9740-4885${loginMember.name}</dd>
+                                            </div>
+                                            <div class="info_box">
+                                                <dt class="title">배송 주소</dt>
+                                                <dd class="desc">인천 연수구 함박뫼로 100 (연수동, 문남마을아파트) 109-505${loginMember.name}</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                    <a class="btn_edit">변경</a>
                                 </div>
-                                <a class="btn_edit">변경</a>
                             </div>
                         </div>
-                    </div>
-                </section>
-                <!-- 배송 주소 -->
-                
-                <div class="display_separator"></div>
+                    </section>
+                    <!-- 배송 주소 -->
+                    
+                    <div class="display_separator"></div>
 
-                <!-- 결제 방법 -->
-                <div class="section_payment">
-                    <div class="payment_area">
-                        <div class="payment_title">
-                            <h3 class="payment_title_txt">결제 방법</h3>
-                        </div>
-                        <div>
-                            <div class="payment_account">
-                                <h4 class="method_title">
-                                    <div class="main_title">
-                                        <p>계좌 간편결제</p>
-                                    </div>
-                                    <a class="btn_card_add">새 계좌 추가</a>
-                                </h4>
-                                <div>
-                                    <div class="payment_detail">
-                                        <div class="payment_item">
-                                            <div class="info_wrap">
-                                                <div class="bank_info">
-                                                    <span class="bank_name">KEB하나은행</span>
-                                                    <div class="account_number">630-910560-19107</div>
+                    <!-- 결제 방법 -->
+                    <div class="section_payment">
+                        <div class="payment_area">
+                            <div class="payment_title">
+                                <h3 class="payment_title_txt">결제 방법</h3>
+                            </div>
+                            <div>
+                                <div class="payment_account">
+                                    <h4 class="method_title">
+                                        <div class="main_title">
+                                            <p>계좌 간편결제</p>
+                                        </div>
+                                        <a class="btn_card_add">새 계좌 추가</a>
+                                    </h4>
+                                    <div>
+                                        <div class="payment_detail">
+                                            <div class="payment_item">
+                                                <div class="info_wrap">
+                                                    <div class="bank_info">
+                                                        <span class="bank_name">KEB하나은행</span>
+                                                        <div class="account_number">630-910560-19107</div>
+                                                    </div>
+                                                    <!-- <a class="regist_link">계좌를 등록하세요</a> -->
                                                 </div>
-                                                <!-- <a class="regist_link">계좌를 등록하세요</a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="payment_card">
+                                    <h4 class="method_title">
+                                        <div class="main_title">
+                                            <p>카드 간편결제</p>
+                                        </div>
+                                    </h4>
+                                    <div>
+                                        <div class="card_list">
+                                            <div class="main_card">
+                                                <a class="regist_link">
+                                                    <span class="regist_text">카드를 등록하세요</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="payment_card">
-                                <h4 class="method_title">
-                                    <div class="main_title">
-                                        <p>카드 간편결제</p>
-                                    </div>
-                                </h4>
+                        </div>
+                    </div>
+                    <!-- 결제 방법 -->
+
+                    <div class="display_separator"></div>
+
+                    <!-- 최종 주문정보 -->
+                    <div class="section_orderinfo">
+                        <div class="orderinfo_area">
+                            <div class="title_wrap">
                                 <div>
-                                    <div class="card_list">
-                                        <div class="main_card">
-                                            <a class="regist_link">
-                                                <span class="regist_text">카드를 등록하세요</span>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    <p class="wrap_title">최종 주문정보</p>
+                                </div>
+                            </div>
+                            <div class="title_description">
+                                <p class="line_title">즉시 구매가</p>
+                                <div class="description_wrap">
+                                    <p class="line_description">
+                                        <em style="color:inherit;">
+                                            ${ dbVo.price }원
+                                        </em>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="title_description">
+                                <p class="line_title">검수비</p>
+                                <div class="description_wrap">
+                                    <p class="line_description">
+                                        <em style="color:inherit;">
+                                            무료
+                                        </em>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="title_description">
+                                <p class="line_title">수수료</p>
+                                <div class="description_wrap">
+                                    <p class="line_description">
+                                        <em style="color:inherit;">
+                                            ${ commission }원
+                                        </em>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="title_description">
+                                <p class="line_title">배송비</p>
+                                <div class="description_wrap">
+                                    <p class="line_description">
+                                        <em style="color:inherit;">
+                                            ${ deliveryCharge }원
+                                        </em>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- 결제 방법 -->
+                    <!-- 최종 주문정보 -->
 
-                <div class="display_separator"></div>
-
-                <!-- 최종 주문정보 -->
-                <div class="section_orderinfo">
-                    <div class="orderinfo_area">
-                        <div class="title_wrap">
-                            <div>
-                                <p class="wrap_title">최종 주문정보</p>
-                            </div>
+                    <!-- 결제하기 -->
+                    <div class="buy_total_confirm">
+                        <div class="price_total">
+                            <dl class="price_box">
+                                <dt class="price_title">총 결제금액</dt>
+                                <dd class="price_empty_desc">
+                                    <span class="amount">${ totalAmount }원</span>
+                                </dd>
+                            </dl>
+                            <span class="price_warning">
+                                <em></em>
+                            </span>
                         </div>
-                        <div class="title_description">
-                            <p class="line_title">즉시 구매가</p>
-                            <div class="description_wrap">
-                                <p class="line_description">
-                                    <em style="color:inherit;">
-                                        ${ }
-                                    </em>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="title_description">
-                            <p class="line_title">검수비</p>
-                            <div class="description_wrap">
-                                <p class="line_description">
-                                    <em style="color:inherit;">
-                                        무료
-                                    </em>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="title_description">
-                            <p class="line_title">수수료</p>
-                            <div class="description_wrap">
-                                <p class="line_description">
-                                    <em style="color:inherit;">
-                                        5,000원
-                                    </em>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="title_description">
-                            <p class="line_title">배송비</p>
-                            <div class="description_wrap">
-                                <p class="line_description">
-                                    <em style="color:inherit;">
-                                        3,000원
-                                    </em>
-                                </p>
-                            </div>
+                        <div class="btn_confirm">
+                            <a blind class="blind_full_solid_false">계속하기</a>
+                            <button class="blind_full_solid_false">결제하기</button>
                         </div>
                     </div>
-                </div>
-                <!-- 최종 주문정보 -->
-
-                <!-- 결제하기 -->
-                <div class="buy_total_confirm">
-                    <div class="price_total">
-                        <dl class="price_box">
-                            <dt class="price_title">총 결제금액</dt>
-                            <dd class="price_empty_desc">
-                                <span class="amount">179,000</span>
-                                <span class="unit">원</span>
-                            </dd>
-                        </dl>
-                        <span class="price_warning">
-                            <em></em>
-                        </span>
-                    </div>
-                    <div class="btn_confirm">
-                        <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">결제하기</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

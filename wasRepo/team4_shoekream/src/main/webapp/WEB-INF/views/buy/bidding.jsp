@@ -91,7 +91,7 @@
 
                     <div class="instant_group">
                         <div class="tab_area">
-                        	<form action="/shoekream/buy/now">
+                        	<form action="/shoekream/buy/now" method="post" >
                         		<input class="productsNo" type="hidden" name="productsNo" value="${ productsNo }">
                         		<input class="buyPrice" type="hidden" name="price" value="${ buyPrVo.price }">
                                 <input class="buySize" type="hidden" name="size" value="${ buyPrVo.shoesSizes }">

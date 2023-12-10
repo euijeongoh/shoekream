@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shoekream.biddingVo.BiddingVo;
+import com.shoekream.biddingVo.TestVo;
+import com.shoekream.mypage.vo.AddrBookVo;
 
 public class BiddingDao {
 
@@ -123,5 +125,73 @@ public class BiddingDao {
 			System.out.println("dao에러확인 dbVo : " + dbVo);
 		}
 		return dbVo;
+	}
+
+
+
+
+	// 주소록 조회
+	public AddrBookVo addInfo(Connection conn, String loginMemberNo) throws Exception{
+
+		// sql
+		String sql = "SELECT * FROM ADDERSS_BOOK WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMemberNo);
+		ResultSet rs = pstmt.executeQuery();
+
+		// rs
+		AddrBookVo addInfo = null;
+		if(rs.next()) {
+			addInfo = new AddrBookVo();
+			addInfo.setNo(rs.getString(1));
+			addInfo.setMemberNo(rs.getString(2));
+			addInfo.setAddersName(rs.getString(3));
+			addInfo.setAddres(rs.getString(4));
+			addInfo.setDetailAddres(rs.getString(5));
+			addInfo.setPhoneNumber(rs.getString(6));
+			addInfo.setPostCode(rs.getString(7));
+			addInfo.setDefaultAddrYn(rs.getString(8));
+			addInfo.setDelYn(rs.getString(9));
+			addInfo.setEnrollDate(rs.getString(10));
+			System.out.println("addInfo : 주소록 조회");
+			System.out.println("dao에러확인 addInfo : " + addInfo);
+		}
+		return addInfo;
+	}
+	// 계좌 조회
+	public TestVo accInfo(Connection conn, String loginMemberNo) throws Exception {
+
+		// sql
+		String sql = "SELECT A.NO ,A.MEMBER_NO ,A.BANK_AGENT_NO ,A.ACCOUNT_NUMBER ,A.DEPOSITOR ,A.ENROLL_DATE ,BA.NO ,BA.BANK_COMPANY_NAME FROM ACCOUNT A JOIN BANK_AGENT BA ON A.NO = BA.NO WHERE A.NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMemberNo);
+		ResultSet rs = pstmt.executeQuery();
+
+		// rs
+		TestVo accInfo = null;
+		if(rs.next()) {
+			accInfo = new TestVo();
+			System.out.println("accInfo : 계좌 조회");
+			System.out.println("dao에러확인 accInfo : " + accInfo);
+		}
+		return accInfo;
+	}
+	// 카드 조회
+	public TestVo cardInfo(Connection conn, String loginMemberNo) throws Exception {
+
+		// sql
+		String sql = "SELECT C.NO ,C.MEMBER_NO ,C.CARD_COMPANY_NO ,C.CARD_NUMBER ,C.EXPIRATION_DATE ,C.CVC_NUMBER ,C.ENROLL_DATE ,C.DEL_YN ,CC.NO ,CC.CARD_COMPANY_NAME FROM CARD C JOIN CARD_COMPANY CC ON C.NO = CC.NO WHERE C.NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMemberNo);
+		ResultSet rs = pstmt.executeQuery();
+
+		// rs
+		TestVo cardInfo = null;
+		if(rs.next()) {
+			cardInfo = new TestVo();
+			System.out.println("cardInfo : 카드 조회");
+			System.out.println("dao에러확인 cardInfo : " + cardInfo);
+		}
+		return cardInfo;
 	}
 }

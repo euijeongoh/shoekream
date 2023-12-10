@@ -94,7 +94,7 @@
                     <div class="instant_group">
                         <div class="tab_area">
                             <ul class="tab_list">
-                                <form action="/shoekream/buy/bidding" style="height: 50%; width: 50%;">
+                                <form action="/shoekream/buy/bidding" method="post" style="height: 50%; width: 50%;">
                                     <li class="item">
                                         <button class="item_link" id="btn1" type="submit" >구매 입찰</button>
                                         <!-- <a class="item_link">구매 입찰</a> -->
@@ -102,7 +102,7 @@
                                         <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
                                         <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
                                         <input class="sellPrice" type="hidden" name="sellPrice" value="${ sellPrVo.price }">
-                                        <input class="sellSize" type="hidden" name="sellSize" value="${ sellPrVo.price }">
+                                        <input class="sellSize" type="hidden" name="sellSize" value="${ sellPrVo.shoesSizes }">
                                     </li>
                                 </form>
                                 <li class="item_on">
@@ -138,9 +138,10 @@
                             <em></em>
                         </span>
                     </div>
-                    <form action="/shoekream/buy/nowpayment" method="get">
+                    <form action="/shoekream/buy/nowpayment">
                         <div class="btn_confirm">
-                            <input type="hidden" name="productsNo" value="${ productsNo }">
+                            <input 					type="hidden" name="loginMemberNo" value="${ loginMember.no }">
+                            <input 					type="hidden" name="productsNo" value="${ productsNo }">
                             <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
                             <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
                             <a blind class="blind_full_solid_false">계속하기</a>

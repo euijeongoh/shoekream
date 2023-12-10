@@ -8,7 +8,9 @@ import java.util.Map;
 
 import com.shoekream.bidding.dao.BiddingDao;
 import com.shoekream.biddingVo.BiddingVo;
+import com.shoekream.biddingVo.TestVo;
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.mypage.vo.AddrBookVo;
 
 public class BiddingService {
 	
@@ -28,7 +30,6 @@ public class BiddingService {
 		return voList;
 	}
 
-	
 	
 	
 	
@@ -64,10 +65,7 @@ public class BiddingService {
 	
 	
 	
-	
-	
-	
-	
+		
 	// 상품 정보 조회
 	public BiddingVo productInfo(BiddingVo vo) throws Exception {
 		// conn
@@ -82,4 +80,38 @@ public class BiddingService {
 		
 		return dbVo;
 	}
+
+
+
+
+
+
+	// 최종 주문 정보 조회
+	public Map<String, Object> resultInfo(String loginMemberNo) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		// 주소록, 계좌, 카드 정보
+		AddrBookVo addInfo = dao.addInfo(conn, loginMemberNo);
+		TestVo accInfo = dao.accInfo(conn, loginMemberNo);
+		TestVo cardInfo = dao.cardInfo(conn, loginMemberNo);
+		result.put("addInfo", addInfo);
+		result.put("accInfo", accInfo);
+		result.put("cardInfo", cardInfo);
+			
+		// close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+
+
+
+
 }

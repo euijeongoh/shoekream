@@ -44,7 +44,7 @@ public class BuyCheckController extends HttpServlet{
 				throw new Exception("예외 발생 : dbVo == null");
 			}
 			
-//			req.getSession().setAttribute("BuyProductInfo", dbVo);
+			req.getSession().setAttribute("BuyProductInfo", dbVo);
 			req.setAttribute("dbVo", dbVo);
 			req.getRequestDispatcher("/WEB-INF/views/buy/check.jsp").forward(req, resp);
 		} catch (Exception e) {
