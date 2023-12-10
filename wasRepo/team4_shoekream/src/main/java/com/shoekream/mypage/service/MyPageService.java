@@ -194,6 +194,36 @@ public class MyPageService {
 	}
 
 
+	public List<OrdersHistoryVo> viewSellingPendingList(MemberVo loginMember, Map<String, String> map) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		List<OrdersHistoryVo> pendList = dao.getSellPendingInfo(conn, loginMember, map);			
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return pendList;
+	}
+
+
+	public List<OrdersHistoryVo> viewSellingFinishedList(MemberVo loginMember, Map<String, String> map) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		List<OrdersHistoryVo> finishList = dao.getSellFinishedInfo(conn, loginMember, map);			
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return finishList;
+	}
+
+
 
 
 

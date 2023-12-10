@@ -19,7 +19,7 @@ public class MyPageDao {
 	// 구매입찰 정보 조회(List) - 기간
 	public List<BiddingHistoryVo> getBuyBiddingInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
 		// sql
-		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , B.PRICE 입찰희망가 , BS.BIDDING_STATUS 입찰상태 , B.EXPIRE_DATE 입찰마감기한 , B.ENROLL_DATE 입찰생성일 FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND B.ENROLL_DATE BETWEEN ? AND ? ORDER BY B.ENROLL_DATE DESC";
+		String sql = "SELECT P.NAME NAME , IMG.THUMBNAIL THUMBNAIL , SS.SHOES_SIZES  SIZES , BS.BIDDING_STATUS BIDSTATUS , B.PRICE PRICE , B.ENROLL_DATE ENROLL_DATE , B.EXPIRE_DATE EXPIRE_DATE FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_POSITION_NO=1 AND B.ENROLL_DATE>= ? AND B.ENROLL_DATE<=? ORDER BY B.ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
 		pstmt.setString(2, periodMap.get("startDate"));
@@ -28,13 +28,13 @@ public class MyPageDao {
 		
 		List<BiddingHistoryVo> bidList = new ArrayList<BiddingHistoryVo>();
 		while(rs.next()) {
-			String shoeName = rs.getString("상품명");
-			String shoeImg = rs.getString("썸네일");
-			String shoeSize = rs.getString("사이즈");
-			String bidPrice = rs.getString("입찰희망가");
-			String bidStatus = rs.getString("입찰상태");
-			String bidExpireDate = rs.getString("입찰마감기한");
-			String bidEnrollDate = rs.getString("입찰생성일");
+			String shoeName = rs.getString("NAME");
+			String shoeImg = rs.getString("THUMBNAIL");
+			String shoeSize = rs.getString("SIZES");
+			String bidPrice = rs.getString("PRICE");
+			String bidStatus = rs.getString("BIDSTATUS");
+			String bidExpireDate = rs.getString("EXPIRE_DATE");
+			String bidEnrollDate = rs.getString("ENROLL_DATE");
 			
 			BiddingHistoryVo bidVo = new BiddingHistoryVo();
 			bidVo.setShoeName(shoeName);
@@ -44,6 +44,10 @@ public class MyPageDao {
 			bidVo.setBidStatus(bidStatus);
 			bidVo.setExpireDate(bidExpireDate);
 			bidVo.setEnrollDate(bidEnrollDate);
+			
+			System.out.println("-----");
+			System.out.println(bidVo);
+			System.out.println("-----");
 			
 			bidList.add(bidVo);
 		}
@@ -58,19 +62,21 @@ public class MyPageDao {
 	// 진행중인 구매내역 정보 조회(List)
 	public List<OrdersHistoryVo> getBuyPendingInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
 		// sql
-		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 1 AND NOT O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
+		String sql = "SELECT P.NAME NAME , IMG.THUMBNAIL THUMBNAIL , SS.SHOES_SIZES  SIZES , OS.ORDERS_STATUS ORDER_STATUS , O.TOTAL_PRICE PRICE, O.ORDERS_DATE ORDERS_DATE FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON OS.NO = O.ORDERS_STATUS_NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND B.BIDDING_STATUS_NO = 3 AND NOT O.ORDERS_STATUS_NO = 5 AND O.ORDERS_DATE>= ? AND O.ORDERS_DATE<=? ORDER BY O.ORDERS_DATE";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
+		pstmt.setString(2, periodMap.get("startDate"));
+		pstmt.setString(3, periodMap.get("endDate"));
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
 		List<OrdersHistoryVo> pendList = new ArrayList<OrdersHistoryVo>();
 		while(rs.next()) {
-			String productName = rs.getString("상품명");
-			String productImg = rs.getString("썸네일");
-			String productSize = rs.getString("사이즈");
-			String orderStatus = rs.getString("주문상태");
-			String orderDate = rs.getString("주문일자");
+			String productName = rs.getString("NAME");
+			String productImg = rs.getString("THUMBNAIL");
+			String productSize = rs.getString("SIZES");
+			String orderStatus = rs.getString("ORDER_STATUS");
+			String orderDate = rs.getString("ORDERS_DATE");
 			
 			OrdersHistoryVo pendVo = new OrdersHistoryVo();
 			pendVo.setProductName(productName);
@@ -92,20 +98,22 @@ public class MyPageDao {
 	// 완료된 구매내역 정보 조회(List)
 	public List<OrdersHistoryVo> getBuyFinishedInfo(Connection conn, MemberVo loginMember, Map<String, String> periodMap) throws Exception {
 		// sql
-		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 , O.TOTAL_PRICE 결제금액 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 1 AND O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
+		String sql = "SELECT P.NAME NAME , IMG.THUMBNAIL THUMBNAIL , SS.SHOES_SIZES  SIZES , OS.ORDERS_STATUS ORDER_STATUS , O.ORDERS_DATE ORDERS_DATE, O.TOTAL_PRICE PRICE FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON OS.NO = O.ORDERS_STATUS_NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND B.BIDDING_STATUS_NO = 3 AND O.ORDERS_STATUS_NO = 5 AND O.ORDERS_DATE>= ? AND O.ORDERS_DATE<=? ORDER BY O.ORDERS_DATE";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
+		pstmt.setString(2, periodMap.get("startDate"));
+		pstmt.setString(3, periodMap.get("endDate"));
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
 		List<OrdersHistoryVo> finishedList = new ArrayList<OrdersHistoryVo>();
 		while(rs.next()) {
-			String productName = rs.getString("상품명");
-			String productImg = rs.getString("썸네일");
-			String productSize = rs.getString("사이즈");
-			String orderState = rs.getString("주문상태");
-			String orderDate = rs.getString("주문일자");
-			String finalPrice = rs.getString("결제금액");
+			String productName = rs.getString("NAME");
+			String productImg = rs.getString("THUMBNAIL");
+			String productSize = rs.getString("SIZES");
+			String orderState = rs.getString("ORDER_STATUS");
+			String orderDate = rs.getString("ORDERS_DATE");
+			String finalPrice = rs.getString("PRICE");
 			
 			OrdersHistoryVo finishedVo = new OrdersHistoryVo();
 			finishedVo.setProductName(productName);
@@ -128,7 +136,7 @@ public class MyPageDao {
 	// 판매입찰 정보 조회(List)
 	public List<BiddingHistoryVo> getSellBiddingInfo(Connection conn, MemberVo loginMember, Map<String, String> map) throws Exception {
 		// sql
-		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , B.PRICE 입찰희망가 , BS.BIDDING_STATUS 입찰상태 , B.EXPIRE_DATE 입찰마감기한 , B.ENROLL_DATE 입찰생성일 FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = 1 AND B.BIDDING_POSITION_NO = 2 AND B.ENROLL_DATE>=? AND B.EXPIRE_DATE<=? ORDER BY B.ENROLL_DATE DESC";
+		String sql = "SELECT P.NAME NAME , IMG.THUMBNAIL THUMBNAIL , SS.SHOES_SIZES  SIZES , BS.BIDDING_STATUS BID_STATUS , B.PRICE PRICE, B.EXPIRE_DATE EXPIRE_DATE, B.ENROLL_DATE ENROLL_DATE FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_POSITION_NO=2 AND B.ENROLL_DATE>= ? AND B.ENROLL_DATE<=? ORDER BY B.ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
 		pstmt.setString(2, map.get("startDate"));
@@ -138,13 +146,13 @@ public class MyPageDao {
 		// rs
 		List<BiddingHistoryVo> sellList = new ArrayList<BiddingHistoryVo>();
 		while(rs.next()) {
-			String productName = rs.getString("상품명");
-			String productImg = rs.getString("썸네일");
-			String productSize = rs.getString("사이즈");
-			String bidPrice = rs.getString("입찰희망가");
-			String bidStatus = rs.getString("입찰상태");
-			String bidExpireDate = rs.getString("입찰마감기한");
-			String bidEnrollDate = rs.getString("입찰생성일");
+			String productName = rs.getString("NAME");
+			String productImg = rs.getString("THUMBNAIL");
+			String productSize = rs.getString("SIZES");
+			String bidPrice = rs.getString("PRICE");
+			String bidStatus = rs.getString("BID_STATUS");
+			String bidExpireDate = rs.getString("EXPIRE_DATE");
+			String bidEnrollDate = rs.getString("ENROLL_DATE");
 			
 			BiddingHistoryVo sellVo = new BiddingHistoryVo();
 			sellVo.setShoeName(productName);
@@ -166,21 +174,23 @@ public class MyPageDao {
 	}
 
 	// 진행중인 판매내역 정보 조회(List)
-	public List<OrdersHistoryVo> getSellPendingInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<OrdersHistoryVo> getSellPendingInfo(Connection conn, MemberVo loginMember, Map<String, String> map) throws Exception {
 		// sql
-		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 2 AND NOT O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
+		String sql = "SELECT P.NAME NAME , IMG.THUMBNAIL THUMBNAIL , SS.SHOES_SIZES  SIZES , OS.ORDERS_STATUS ORDER_STATUS , O.TOTAL_PRICE PRICE, O.ORDERS_DATE ORDERS_DATE FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON OS.NO = O.ORDERS_STATUS_NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND B.BIDDING_STATUS_NO = 3 AND NOT O.ORDERS_STATUS_NO = 5 AND O.ORDERS_DATE>= ? AND O.ORDERS_DATE<=? ORDER BY O.ORDERS_DATE";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
+		pstmt.setString(2, map.get("startDate"));
+		pstmt.setString(3, map.get("endDate"));
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
 		List<OrdersHistoryVo> pendList = new ArrayList<OrdersHistoryVo>();
 		while(rs.next()) {
-			String productName = rs.getString("상품명");
-			String productImg = rs.getString("썸네일");
-			String productSize = rs.getString("사이즈");
-			String orderStatus = rs.getString("주문상태");
-			String orderDate = rs.getString("주문일자");
+			String productName = rs.getString("NAME");
+			String productImg = rs.getString("THUMBNAIL");
+			String productSize = rs.getString("SIZES");
+			String orderStatus = rs.getString("ORDER_STATUS");
+			String orderDate = rs.getString("ORDERS_DATE");
 			
 			OrdersHistoryVo pendVo = new OrdersHistoryVo();
 			pendVo.setProductName(productName);
@@ -200,22 +210,24 @@ public class MyPageDao {
 	}
 		
 	// 완료된 판매내역 정보 조회(List)
-	public List<OrdersHistoryVo> getFinishedInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<OrdersHistoryVo> getSellFinishedInfo(Connection conn, MemberVo loginMember, Map<String, String> map) throws Exception {
 		// sql
-		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 2 AND O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
+		String sql = "SELECT P.NAME NAME , IMG.THUMBNAIL THUMBNAIL , SS.SHOES_SIZES  SIZES , OS.ORDERS_STATUS ORDERSTATUS , O.ORDERS_DATE ORDERS_DATE, O.TOTAL_PRICE PRICE FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON OS.NO = O.ORDERS_STATUS_NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND B.BIDDING_STATUS_NO = 3 AND O.ORDERS_STATUS_NO = 5 AND O.ORDERS_DATE>= ? AND O.ORDERS_DATE<=? ORDER BY O.ORDERS_DATE";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
+		pstmt.setString(2, map.get("startDate"));
+		pstmt.setString(3, map.get("endDate"));
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
 		List<OrdersHistoryVo> finishedList = new ArrayList<OrdersHistoryVo>();
 		while(rs.next()) {
-			String productName = rs.getString("상품명");
-			String productImg = rs.getString("썸네일");
-			String productSize = rs.getString("사이즈");
-			String orderState = rs.getString("주문상태");
-			String orderDate = rs.getString("주문일자");
-			String finalPrice = rs.getString("결제금액");
+			String productName = rs.getString("NAME");
+			String productImg = rs.getString("THUMBNAIL");
+			String productSize = rs.getString("SIZES");
+			String orderState = rs.getString("ORDERSTATUS");
+			String orderDate = rs.getString("ORDERS_DATE");
+			String finalPrice = rs.getString("PRICE");
 			
 			OrdersHistoryVo finishedVo = new OrdersHistoryVo();
 			finishedVo.setProductName(productName);
@@ -292,7 +304,7 @@ public class MyPageDao {
 	// 구매내역 관련 cnt값들
 	public int getBuyingBidCnt(Connection conn, MemberVo loginMember) throws Exception {
 		// sql
-		String bidCntSql = "SELECT COUNT(*) CNT FROM BIDDING WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 1 AND BIDDING_STATUS_NO = 1";
+		String bidCntSql = "SELECT COUNT(*) CNT FROM BIDDING B WHERE B.MEMBER_NO = ? AND BIDDING_POSITION_NO=1";
 		PreparedStatement bidCntPstmt = conn.prepareStatement(bidCntSql);
 		bidCntPstmt.setString(1, loginMember.getNo());
 		ResultSet rs = bidCntPstmt.executeQuery();
@@ -303,6 +315,7 @@ public class MyPageDao {
 			bidCnt = rs.getInt("CNT");
 		}
 		
+		System.out.println(bidCnt);
 		// close
 		JDBCTemplate.close(bidCntPstmt);
 		
@@ -311,7 +324,7 @@ public class MyPageDao {
 
 	public int getBuyingPendCnt(Connection conn, MemberVo loginMember) throws Exception {
 		// sql
-		String pendCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND NOT O.ORDERS_STATUS_NO=5";
+		String pendCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND B.BIDDING_STATUS_NO = 3 AND NOT O.ORDERS_STATUS_NO = 5";
 		PreparedStatement pstmt = conn.prepareStatement(pendCntSql);
 		pstmt.setString(1, loginMember.getNo());
 		ResultSet rs = pstmt.executeQuery();
@@ -321,6 +334,8 @@ public class MyPageDao {
 			pendCnt = rs.getInt("CNT");
 		}
 		
+		System.out.println(pendCnt);
+		
 		// close
 		JDBCTemplate.close(pstmt);
 		
@@ -328,7 +343,7 @@ public class MyPageDao {
 	}
 
 	public int getBuyingFinishedCnt(Connection conn, MemberVo loginMember) throws Exception {
-		String finishedCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND O.ORDERS_STATUS_NO=5";
+		String finishedCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 1 AND B.BIDDING_STATUS_NO = 3 AND O.ORDERS_STATUS_NO = 5";
 		PreparedStatement pstmt = conn.prepareStatement(finishedCntSql);
 		pstmt.setString(1, loginMember.getNo());
 		ResultSet rs = pstmt.executeQuery();
@@ -346,14 +361,14 @@ public class MyPageDao {
 		
 	// 판매내역 관련 cnt값들
 	public int getSellingBidCnt(Connection conn, MemberVo loginMember) throws Exception {
-		String sql ="SELECT COUNT(*) FROM BIDDING B WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 2";
+		String sql ="SELECT COUNT(*) CNT FROM BIDDING B WHERE B.MEMBER_NO = ? AND BIDDING_POSITION_NO=2";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
 		ResultSet rs = pstmt.executeQuery();
 		
 		int bidCnt = -1;
 		if(rs.next()) {
-			bidCnt = rs.getInt("COUNT(*)");
+			bidCnt = rs.getInt("CNT");
 		}
 		
 		// close
@@ -363,7 +378,7 @@ public class MyPageDao {
 	}
 
 	public int getSellingPendCnt(Connection conn, MemberVo loginMember) throws Exception {
-		String sql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND NOT O.ORDERS_STATUS_NO=5";
+		String sql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND B.BIDDING_STATUS_NO = 3 AND NOT O.ORDERS_STATUS_NO = 5";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
 		ResultSet rs = pstmt.executeQuery();
@@ -380,7 +395,7 @@ public class MyPageDao {
 	}
 
 	public int getSellingFinishedCnt(Connection conn, MemberVo loginMember) throws Exception {
-		String sql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND O.ORDERS_STATUS_NO=5";
+		String sql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND B.BIDDING_STATUS_NO = 3 AND O.ORDERS_STATUS_NO = 5";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
 		ResultSet rs = pstmt.executeQuery();
