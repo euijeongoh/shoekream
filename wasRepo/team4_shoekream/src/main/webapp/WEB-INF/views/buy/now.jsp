@@ -52,23 +52,7 @@
         <div class="content">
             <div class="buy_immediate">
                 <!-- 상품 정보 -->
-                <div class="product_info_area">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                            <div class="model_desc">
-                                <p class="size_txt">250</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                 <!-- 상품 정보 -->
                 
 

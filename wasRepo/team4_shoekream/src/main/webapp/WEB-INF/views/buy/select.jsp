@@ -57,18 +57,7 @@
         <div class="content_area">
             <div class="buy_before">
                 <div id="buy_before_check">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                        </div>
-                    </div>
+                    <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                     <div><div></div></div>
                     <div class="buy_before_select">
                         <div class="select_area md">

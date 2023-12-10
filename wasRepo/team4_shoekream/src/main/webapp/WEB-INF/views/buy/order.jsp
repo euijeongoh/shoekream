@@ -31,7 +31,7 @@
                     </div>
                     <div class="center">
                         <h2 class="h2_buy">
-                            <span>${ trade } 진행 중</span>
+                            <span>${ trade }${ process }</span>
                         </h2>
                     </div>
                     <div class="right">
@@ -61,23 +61,7 @@
                 <div class="display_separator"></div>
 
                 <!-- 상품 정보 -->
-                <div class="product_info_area">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                            <div class="model_desc">
-                                <p class="size_txt">250</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                 <!-- 상품 정보 -->
 
                 <div class="display_separator"></div>
@@ -111,6 +95,7 @@
                                     <em class="title_txt" style="color:inherit;">
                                         ${ totalAmount }원
                                     </em>
+                                    <input class="totalAmount" type="hidden" name="totalAmount" value="${ totalAmount }">
                                 </p>
                             </div>
                         </div>
@@ -119,8 +104,9 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        ${ dbVo.price }원
+                                        ${ price }원
                                     </em>
+                                    <input class="price" type="hidden" name="price" value="${ dbVo.price }">
                                 </p>
                             </div>
                         </div>
@@ -141,6 +127,7 @@
                                     <em style="color:inherit;">
                                         ${ commission }원
                                     </em>
+                                    <input class="commission" type="hidden" name="commission" value="${ commission }">
                                 </p>
                             </div>
                         </div>
@@ -151,6 +138,18 @@
                                     <em style="color:inherit;">
                                         ${ deliveryCharge }원
                                     </em>
+                                    <input class="deliveryCharge" type="hidden" name="deliveryCharge" value="${ deliveryCharge }">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description" id="expire_date">
+                            <p class="line_title">입찰 마감기한</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        까지
+                                    </em>
+                                    <input class="111" type="hidden" name="1111" value="${ totalAmount }">
                                 </p>
                             </div>
                         </div>
@@ -174,15 +173,15 @@
                                         <dl class="info_list">
                                             <div class="info_box">
                                                 <dt class="title">받는 분</dt>
-                                                <dd class="desc">곽태윤${loginMember.name}</dd>
+                                                <dd class="desc">${addInfo.addersName}</dd>
                                             </div>
                                             <div class="info_box">
                                                 <dt class="title">연락처</dt>
-                                                <dd class="desc">010-9740-4885${loginMember.name}</dd>
+                                                <dd class="desc">${addInfo.phoneNumber}</dd>
                                             </div>
                                             <div class="info_box">
                                                 <dt class="title">배송 주소</dt>
-                                                <dd class="desc">인천 연수구 함박뫼로 100 (연수동, 문남마을아파트) 109-505${loginMember.name}</dd>
+                                                <dd class="desc">${addInfo.addres}${addInfo.detailAddres}</dd>
                                             </div>
                                         </dl>
                                     </div>

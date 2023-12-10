@@ -11,6 +11,7 @@ import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.biddingVo.TestVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.mypage.vo.AddrBookVo;
+import com.shoekream.product.vo.ProductInfoVo;
 
 public class BiddingService {
 	
@@ -66,7 +67,7 @@ public class BiddingService {
 	
 	
 		
-	// 상품 정보 조회
+	// 입찰 상품 정보 조회
 	public BiddingVo productInfo(BiddingVo vo) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
@@ -80,6 +81,22 @@ public class BiddingService {
 		
 		return dbVo;
 	}
+	// 상품 정보 조회
+	public ProductInfoVo productInfo(String no) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		ProductInfoVo infoVo = dao.productInfo(conn, no);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return infoVo;
+	}
+	
+	
 
 
 

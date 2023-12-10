@@ -51,23 +51,7 @@
             <div class="buy_immediate">
 
                 <!-- 상품 정보 -->
-                <div class="product_info_area">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                            <div class="model_desc">
-                                <p class="size_txt">250</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                 <!-- 상품 정보 -->
 
                 <div class="display_separator"></div>
@@ -86,15 +70,17 @@
                                         <dl class="info_list">
                                             <div class="info_box">
                                                 <dt class="title">받는 분</dt>
-                                                <dd class="desc">곽태윤${loginMember.name}</dd>
+                                                <dd class="desc">${addInfo.addersName}</dd>
+                                                <input class="addNo" type="hidden" name="addNo" value="${ addInfo.no }">
+                                                <input class="addMemberNo" type="hidden" name="addMemberNo" value="${ addInfo.memberNo }">
                                             </div>
                                             <div class="info_box">
                                                 <dt class="title">연락처</dt>
-                                                <dd class="desc">010-9740-4885${loginMember.name}</dd>
+                                                <dd class="desc">${addInfo.phoneNumber}</dd>
                                             </div>
                                             <div class="info_box">
                                                 <dt class="title">배송 주소</dt>
-                                                <dd class="desc">인천 연수구 함박뫼로 100 (연수동, 문남마을아파트) 109-505${loginMember.name}</dd>
+                                                <dd class="desc">${addInfo.addres}${addInfo.detailAddres}</dd>
                                             </div>
                                         </dl>
                                     </div>
@@ -128,6 +114,8 @@
                                                     <div class="bank_info">
                                                         <span class="bank_name">KEB하나은행</span>
                                                         <div class="account_number">630-910560-19107</div>
+<%--                                                 <input class="accNo" type="hidden" name="accNo" value="${ accInfo.no }"> --%>
+<%--                                                 <input class="accMemberNo" type="hidden" name="accMemberNo" value="${ accInfo.memberNo }"> --%>
                                                     </div>
                                                     <!-- <a class="regist_link">계좌를 등록하세요</a> -->
                                                 </div>
@@ -146,6 +134,8 @@
                                             <div class="main_card">
                                                 <a class="regist_link">
                                                     <span class="regist_text">카드를 등록하세요</span>
+<%--                                                 <input class="cardNo" type="hidden" name="cardNo" value="${ cardInfo.no }"> --%>
+<%--                                                 <input class="cardMemberNo" type="hidden" name="cardMemberNo" value="${ cardInfo.memberNo }"> --%>
                                                 </a>
                                             </div>
                                         </div>
@@ -173,6 +163,7 @@
                                         <em style="color:inherit;">
                                             ${ dbVo.price }원
                                         </em>
+                                        <input class="price" type="hidden" name="price" value="${ dbVo.price }">
                                     </p>
                                 </div>
                             </div>
@@ -193,6 +184,7 @@
                                         <em style="color:inherit;">
                                             ${ commission }원
                                         </em>
+                                        <input class="commission" type="hidden" name="commission" value="${ commission }">
                                     </p>
                                 </div>
                             </div>
@@ -203,6 +195,7 @@
                                         <em style="color:inherit;">
                                             ${ deliveryCharge }원
                                         </em>
+                                        <input class="deliveryCharge" type="hidden" name="deliveryCharge" value="${ deliveryCharge }">
                                     </p>
                                 </div>
                             </div>
@@ -217,6 +210,7 @@
                                 <dt class="price_title">총 결제금액</dt>
                                 <dd class="price_empty_desc">
                                     <span class="amount">${ totalAmount }원</span>
+                                    <input class="totalAmount" type="hidden" name="totalAmount" value="${ totalAmount }">
                                 </dd>
                             </dl>
                             <span class="price_warning">
@@ -229,6 +223,7 @@
                         </div>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>

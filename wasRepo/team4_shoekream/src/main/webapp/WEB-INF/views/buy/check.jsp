@@ -62,7 +62,8 @@
                                 꼭 확인하세요.
                             </h2>
                         </div>
-                        <div class="buy_product_area">
+                        <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
+                        <!-- <div class="buy_product_area">
                             <div class="product_thumb">
                                 <div class="porduct">
                                     <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
@@ -76,7 +77,7 @@
                                     <p class="size_txt">250</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="buy">
 	                    <ul class="check_list">

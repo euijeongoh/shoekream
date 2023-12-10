@@ -8,7 +8,9 @@ import java.util.List;
 
 import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.biddingVo.TestVo;
+import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.mypage.vo.AddrBookVo;
+import com.shoekream.product.vo.ProductInfoVo;
 
 public class BiddingDao {
 
@@ -33,6 +35,10 @@ public class BiddingDao {
 			//			System.out.println("에러확인 PRICE : "+rs.getString("PRICE"));
 		}
 
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
 		return voList;
 	}
 
@@ -64,6 +70,11 @@ public class BiddingDao {
 						System.out.println("dao에러확인 SHOES_SIZES : "+rs.getString("SHOES_SIZES"));
 						System.out.println("dao에러확인 PRICE : "+rs.getString("PRICE"));
 		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
 		return buyPrVo;
 	}
 	// 판매 상품 정보(즉시 판매가 : 구매입찰)
@@ -87,6 +98,11 @@ public class BiddingDao {
 						System.out.println("dao에러확인 SHOES_SIZES : "+rs.getString("SHOES_SIZES"));
 						System.out.println("dao에러확인 PRICE : "+rs.getString("PRICE"));
 		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
 		return sellPrVo;
 	}
 
@@ -94,7 +110,7 @@ public class BiddingDao {
 	
 	
 	
-	// 상품 정보 조회
+	// 입찰 상품 정보 조회
 	public BiddingVo productInfo(Connection conn, BiddingVo vo) throws Exception{
 
 		// sql
@@ -124,11 +140,43 @@ public class BiddingDao {
 			System.out.println("productInfo : 상품 정보 조회");
 			System.out.println("dao에러확인 dbVo : " + dbVo);
 		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
 		return dbVo;
+	}
+	// 제품 정보
+	public ProductInfoVo productInfo(Connection conn, String no) throws Exception{
+
+		// sql
+		String sql = "SELECT NO ,BRAND_NO ,CATEGORY_NO ,NAME ,NAME_KO ,MODEL_NUMBER ,RELEASE_PRICE ,RELEASE_DATE ,ENROLL_DATE ,MODIFY_DATE ,DEL_YN FROM PRODUCTS WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,  no);
+		ResultSet rs = pstmt.executeQuery();
+
+		// rs
+		ProductInfoVo infoVo = null;
+		if(rs.next()) {
+			infoVo = new ProductInfoVo();
+			infoVo.setProductName(rs.getString(4));;
+			infoVo.setProductKoName(rs.getString(5));;
+			infoVo.setImmediatePrice(rs.getString(6));;
+			System.out.println("infoVo : 제품 정보");
+			System.out.println("dao에러확인 infoVo : " + infoVo);
+		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		return infoVo;
 	}
 
 
-
+	
+	
 
 	// 주소록 조회
 	public AddrBookVo addInfo(Connection conn, String loginMemberNo) throws Exception{
@@ -156,6 +204,11 @@ public class BiddingDao {
 			System.out.println("addInfo : 주소록 조회");
 			System.out.println("dao에러확인 addInfo : " + addInfo);
 		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
 		return addInfo;
 	}
 	// 계좌 조회
@@ -174,6 +227,11 @@ public class BiddingDao {
 			System.out.println("accInfo : 계좌 조회");
 			System.out.println("dao에러확인 accInfo : " + accInfo);
 		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
 		return accInfo;
 	}
 	// 카드 조회
@@ -192,6 +250,11 @@ public class BiddingDao {
 			System.out.println("cardInfo : 카드 조회");
 			System.out.println("dao에러확인 cardInfo : " + cardInfo);
 		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
 		return cardInfo;
 	}
 }
