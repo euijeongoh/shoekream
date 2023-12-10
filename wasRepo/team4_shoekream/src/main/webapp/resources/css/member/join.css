@@ -85,7 +85,7 @@
 }
 
 
-#id_check, #pwd_check, #pwd2_check, #nick_check, #email_check {
+#name_check, #id_check, #pwd_check, #pwd2_check, #nick_check, #email_check, #auth_check {
 	color: #f15746;
 	font-size: 11px;
 	padding-top: 3px;
@@ -99,10 +99,11 @@
     width: 400px;
     height: 52px;
     border-radius: 12px;
-    background-color: #ebebeb;
+    background-color: balck;
     color: white;
     font-family: 'Pretendard';
     font-weight: 700;
     font-size: 16px;
     text-align: center;
+    cursor: pointer;
 }

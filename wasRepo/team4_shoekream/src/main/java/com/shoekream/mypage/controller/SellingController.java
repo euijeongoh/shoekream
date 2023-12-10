@@ -9,23 +9,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.member.MemberVo;
+import com.shoekream.mypage.service.MyPageService;
+import com.shoekream.mypage.vo.HistoryCntVo;
 
 @WebServlet("/mypage/selling")
 
 public class SellingController extends HttpServlet{
 
+	// 판매내역 화면 띄우기
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		// data
-		MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
-		
-		if(loginMember==null) {
+		try {
+			// 로그인 여부 체크
+			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+			if(loginMember == null) {
+				resp.sendRedirect("/shoekream/member/login");
+			}
 			
-		}
-		
-		
-		
+			// service 호출
+			MyPageService service = new MyPageService();
+			HistoryCntVo cntVo = service.getSellingCnts(loginMember);
+			
+			req.setAttribute("cntVo", cntVo);
+			req.getRequestDispatcher("/WEB-INF/views/mypage/selling.jsp").forward(req, resp);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}		
 	}
 	
 }

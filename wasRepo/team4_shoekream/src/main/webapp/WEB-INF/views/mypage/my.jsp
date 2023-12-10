@@ -122,9 +122,6 @@
                         </div>
                    		</li>
                 	<%} %>
-                	<c:forEach items=" ${ wishList }" var="wishVo">
-                		
-                	</c:forEach>
                 </ul>
              </div>
         </div>

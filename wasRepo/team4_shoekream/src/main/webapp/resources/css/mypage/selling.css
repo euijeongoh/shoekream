@@ -1,4 +1,4 @@
-.shoplist-title {
+.selllist-title {
     width: 1000px;
     display: flex;
     justify-content: space-between;
@@ -30,13 +30,13 @@
 
 .tab #bidCount, #pendCount, #finishedCount {
     font-size: 20px;
-    color: #222222;
+    color: rgba(34, 34, 34, 0.5);
     font-weight: 700;	
 }
 
 .tab #stage {
     font-size: 13px;
-    color: #222222;
+    color: rgba(34, 34, 34, 0.5);
     font-weight: 600;
 }
 
@@ -96,7 +96,7 @@
     padding: 12px 0px;
 }
 
-.purchase-head {
+.sell-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -105,7 +105,7 @@
     border-bottom: 1px solid #ebebeb;
 }
 
-.purchase-head select {
+.sell-head select {
     height: 37px;
     width: 100px;
     border-radius: 10px;
@@ -116,8 +116,8 @@
     color: rgba(34, 34, 34, 0.8);
 }
 
-.purchase-body {
-    display: flex;
+.sell-body {
+    display: block;
     justify-content: center;
     align-items: center;
     padding: 12px;
@@ -125,7 +125,7 @@
     font-size: 13px;
 }
 
-.purchase {
+.sell {
     display: flex;
     width: 1000px;
     height: 80px;
@@ -167,7 +167,7 @@
 	color: #222222;
 }
 
-.purchase-detail {
+.sell-detail {
     display: flex;
     flex-direction: column;
     height: 54px;
@@ -175,26 +175,26 @@
     align-items: flex-start;
 }
 
-.purchase-detail li {
+.sell-detail li {
     padding-bottom: 3px;
 }
 
 
-.purchase-detail :first-child {
+.sell-detail :first-child {
     font-size: 13px;
     color:rgba(34, 34, 34, 0.8);
     display: block;
     margin: 0px 18px;
 }
 
-.purchase-detail :nth-child(2) {
+.sell-detail :nth-child(2) {
     font-size: 13px;
     color:#F17545;
     display: block;
     margin: 2px 18px;
 }
 
-.purchase-detail :nth-child(3) {
+.sell-detail :nth-child(3) {
     font-size: 15px;
     color:#222222;
     display: block;

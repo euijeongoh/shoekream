@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Pretendard';
+}
+
+
+.change_title {
+	padding-left: 65px;
+	padding-top: 100px;
+	padding-bottom: 10px;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.change_area {
+	margin: auto;
+}
+.input_area {
+	margin: auto;
+	padding-left: 40px;
+	padding-right: 40px;
+	width: 300px;
+	height: 50px;
+	border: 1px solid #ebebeb;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.change_area input[type=file] {
+	padding-top: 10px;
+	width: 200px;
+	height: 36px;
+	padding-left: 0;
+}
+
+#upload_profile {
+	width: 80px;
+	height: 26px;
+	background-color: #ebebeb;
+	font-size: 13px;
+	font-weight: 500;
+	border-radius: 10px;
+}

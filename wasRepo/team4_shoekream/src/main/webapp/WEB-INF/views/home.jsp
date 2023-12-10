@@ -1,14 +1,23 @@
+<%@page import="com.shoekream.product.vo.ProductInfoVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    
+    	List<ProductInfoVo> enrollList = (List<ProductInfoVo>) request.getAttribute("enrollList");
+    	List<ProductInfoVo> immediatePriceList = (List<ProductInfoVo>) request.getAttribute("immediatePriceList");
+    
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="/shoekream/resources/css/common/header.css"> 
 <link rel="stylesheet" href="/shoekream/resources/css/home.css"> 
-<link rel="stylesheet" href="/shoekream/resources/css/common/homemenu.css"> 
+
 
 <script defer src="/shoekream/resources/js/common/homemenu.js"></script>
 
@@ -31,56 +40,18 @@
             <div id="more"><a href="">더보기</a></div>
         </div>
         <ul class="product_list_wrap">
-            <li>
+        	<%for( ProductInfoVo vo : enrollList ) { %>
+               	<li>
                 <div id="product_img">
                     <img src="./resources/product1.webp">
                 </div>
                 <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
+                    <div id="brand"><%= vo.getBrandName() %></div>
+                    <div id="model_name"><%= vo.getProductName() %></div>
+                    <div id="price"><%= vo.getImmediatePrice() %></div>
                 </div>
-            </li>
-            <li>
-                <div id="product_img">
-                    <img src="./resources/product1.webp">
-                </div>
-                <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
-                </div>
-            </li>
-            <li>
-                <div id="product_img">
-                    <img src="./resources/product1.webp">
-                </div>
-                <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
-                </div>
-            </li>
-            <li>
-                <div id="product_img">
-                    <img src="./resources/product1.webp">
-                </div>
-                <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
-                </div>
-            </li>
-            <li>
-                <div id="product_img">
-                    <img src="./resources/product1.webp">
-                </div>
-                <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
-                </div>
-            </li>
+            	</li>
+            <% }%>
         </ul>
     </div>
 
@@ -95,61 +66,19 @@
             <div id="more"><a href="">더보기</a></div>
         </div>
         <ul class="product_list_wrap">
-            <li>
+        	<%for( ProductInfoVo priceVo : immediatePriceList ) { %>
+               	<li>
                 <div id="product_img">
                     <img src="./resources/product1.webp">
                 </div>
                 <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
+                    <div id="brand"><%= priceVo.getBrandName() %></div>
+                    <div id="model_name"><%= priceVo.getProductName() %></div>
+                    <div id="price"><%= priceVo.getImmediatePrice() %></div>
                 </div>
-            </li>
-            <li>
-                <div id="product_img">
-                    <img src="./resources/product1.webp">
-                </div>
-                <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
-                </div>
-            </li>
-            <li>
-                <div id="product_img">
-                    <img src="./resources/product1.webp">
-                </div>
-                <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
-                </div>
-            </li>
-            <li>
-                <div id="product_img">
-                    <img src="./resources/product1.webp">
-                </div>
-                <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
-                </div>
-            </li>
-            <li>
-                <div id="product_img">
-                    <img src="./resources/product1.webp">
-                </div>
-                <div class="info_box">
-                    <div id="brand">Nike</div>
-                    <div id="model_name">Nike x Ambush Air More Uptempo Low Black and White</div>
-                    <div id="price">250,000원</div>
-                </div>
-            </li>
+            	</li>
+            <% }%>
         </ul>
     </div>
 </body>
-
-<script>
-
-</script>
 </html>

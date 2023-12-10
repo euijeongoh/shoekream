@@ -138,14 +138,16 @@ public class MemberDao {
 		return canQuit;
 	}
 
+	// 회원가입
 	public int join(Connection conn, MemberVo vo) throws Exception {
 		// sql
-		String sql = "INSERT INTO MEMBER(ID, PWD, NICKNAME, EMAIL) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO MEMBER(NO, NAME, ID, PWD, NICKNAME, EMAIL) VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, vo.getId());
-		pstmt.setString(2, vo.getPwd());
-		pstmt.setString(3, vo.getNickname());
-		pstmt.setString(4, vo.getEmail());
+		pstmt.setString(1, vo.getName());
+		pstmt.setString(2, vo.getId());
+		pstmt.setString(3, vo.getPwd());
+		pstmt.setString(4, vo.getNickname());
+		pstmt.setString(5, vo.getEmail());
 		
 		int result = pstmt.executeUpdate();
 		

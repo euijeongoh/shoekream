@@ -5,13 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="/shoekream/resources/css/common/homemenu.css"> 
+
 </head>
 <body>
 	
 	<div id="menutab">
         <ul>
             <span id="main"><a href="/shoekream/home">메인</a></span>
-            <span id="ranking"><a href="/shoekream/ranking">랭킹</a></span>
         </ul>
     </div>
 	
