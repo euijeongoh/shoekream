@@ -135,7 +135,7 @@ public class AdminEnrollProductDao {
 	//제품 목록 조회
 	public List<EnrollProductVo> selectProductList(Connection conn, PageVo pvo) throws Exception{
 		//sql
-		String sql = "SELECT NAME_KO, MODEL_NUMBER FROM PRODUCTS";
+		String sql = "SELECT NAME_KO, MODEL_NUMBER FROM PRODUCTS WHERE DEL_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		List<EnrollProductVo> voList = new ArrayList<EnrollProductVo>();
@@ -170,14 +170,25 @@ public class AdminEnrollProductDao {
 
 	public int delete(Connection conn, EnrollProductVo vo) throws Exception{
 		
-		
-		for (EnrollProductVo vo : enrollProductVo) {
-			
-		}
 		String sql = "UPDATE PRODUCTS SET DEL_YN = 'Y' WHERE MODEL_NUMBER = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, vo.getModelNumber());
+		int result = 0;
 		
+		String[] modelNumbers = vo.getModelNumbers();
+		for(String modelNumber : modelNumbers) {
+			pstmt.setString(1, modelNumber);
+			result += pstmt.executeUpdate();
+					
+		}
+		if(result == modelNumbers.length) {
+			result = 1;
+			JDBCTemplate.close(pstmt);
+			return result;
+		}else {
+			result = 0;
+			JDBCTemplate.close(pstmt);
+			return result;
+		}
 		
 		
 	}

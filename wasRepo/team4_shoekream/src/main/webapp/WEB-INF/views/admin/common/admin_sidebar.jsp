@@ -32,16 +32,10 @@
                 <strong class="sidenav_title">상품 관리</strong>
                 <ul class="sidenav_menu">
                     <li class="menu_item">
-                        <a href="" class="menu_link"><b><u>상품등록</u></b></a>
+                        <a href="/shoekream/admin/product/enroll" class="menu_link">상품등록</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">상품 수정</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="" class="menu_link">상품 삭제</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="" class="menu_link">상품 목록</a>
+                        <a href="/shoekream/admin/product/list" class="menu_link">상품 목록</a>
                     </li>
                 </ul>
             </div>
