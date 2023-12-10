@@ -54,7 +54,7 @@ public class MainProfileImageController extends HttpServlet {
 			String path = req.getServletContext().getRealPath(sep + "resources" + sep + "img" + sep + "profile");
 			
 			// 새 파일명 지정
-			String randomName = System.currentTimeMillis() + "_" + UUID.randomUUID();
+			String randomName = loginMember.getId() + "_" + System.currentTimeMillis() + "_" + UUID.randomUUID();
 			
 			// 확장자 가져오기
 			String submittedFileName = f.getSubmittedFileName();
@@ -62,6 +62,7 @@ public class MainProfileImageController extends HttpServlet {
 			String fileName = sep + randomName + ext;
 			
 			String src = path + fileName;
+			System.out.println(src);
 			
 			File target = new File(src);
 			FileOutputStream out = new FileOutputStream(target);
