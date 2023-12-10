@@ -31,7 +31,7 @@ public class BuySelectController extends HttpServlet{
 			}
 			
 			ProductInfoVo infoVo = bs.productInfo(productsNo);
-				System.out.println("BuyCheckController 에러확인 infoVo : " + infoVo);
+				System.out.println("BuySelectController 에러확인 infoVo : " + infoVo);
 			req.getSession().setAttribute("infoVo", infoVo);
 			
 			req.setAttribute("voList", voList);

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.coyote.RequestGroupInfo;
 
+import com.shoekream.bidding.service.BiddingService;
+import com.shoekream.orders.vo.OrdersVo;
+
 @WebServlet("/buy/order")
 public class orderController extends HttpServlet{
 	
@@ -31,16 +34,35 @@ public class orderController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String name = "곽태윤";
-		String dataName = getHiddenData(name, 1);
-		req.setAttribute("trade","구매");
-		req.setAttribute("process", " 진행 중");
 		
-		req.setAttribute("price", req.getParameter("price"));
-		req.setAttribute("commission", req.getParameter("commission"));
-		req.setAttribute("deliveryCharge", req.getParameter("deliveryCharge"));
-		req.setAttribute("totalAmount", req.getParameter("totalAmount"));
-		req.getRequestDispatcher("/WEB-INF/views/buy/order.jsp").forward(req, resp);
+		try {
+			String name = "곽태윤";
+			String dataName = getHiddenData(name, 1);
+			req.setAttribute("trade","구매");
+			req.setAttribute("process", " 진행 중");
+			
+			BiddingService bs = new BiddingService();
+			OrdersVo ordersVo = bs.ordersInfo(req.getParameter("memberNo"),req.getParameter("biddingNo"),req.getParameter("productsNo"));
+				System.out.println("orderController 에러확인 memberNo : + " + req.getParameter("memberNo"));
+				System.out.println("orderController 에러확인 biddingNo : + " + req.getParameter("biddingNo"));
+				System.out.println("orderController 에러확인 productsNo : + " + req.getParameter("productsNo"));
+			if (ordersVo == null) {
+				throw new Exception("예외 발생 : ordersVo == null");
+			}
+			
+			
+			req.setAttribute("ordersVo", ordersVo);
+			
+			req.setAttribute("price", req.getParameter("price"));
+			req.setAttribute("commission", req.getParameter("commission"));
+			req.setAttribute("deliveryCharge", req.getParameter("deliveryCharge"));
+			req.setAttribute("totalAmount", req.getParameter("totalAmount"));
+			
+			req.getRequestDispatcher("/WEB-INF/views/buy/order.jsp").forward(req, resp);
+		} catch (Exception e) {
+			System.out.println("order 중 예외 발생");
+			e.printStackTrace();
+		}
 		
 	}	
 	

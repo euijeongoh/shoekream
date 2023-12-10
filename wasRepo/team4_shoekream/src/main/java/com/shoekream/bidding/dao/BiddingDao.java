@@ -10,6 +10,7 @@ import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.biddingVo.TestVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.mypage.vo.AddrBookVo;
+import com.shoekream.orders.vo.OrdersVo;
 import com.shoekream.product.vo.ProductInfoVo;
 
 public class BiddingDao {
@@ -257,4 +258,76 @@ public class BiddingDao {
 		
 		return cardInfo;
 	}
+
+
+
+
+	// 주문 정보 조회
+	public OrdersVo ordersInfo(Connection conn, String memberNo, String biddingNo, String productsNo) throws Exception{
+
+		// sql
+		String sql = "SELECT O.NO ,O.MEMBER_NO ,O.ORDERS_STATUS_NO ,OS.ORDERS_STATUS ,O.BIDDING_NO ,O.PRODUCT_NO ,O.INSPECTION_NO ,I.CHECK_RESULT ,O.ORDERS_DATE ,O.PAYMENT_TYPE ,O.PAYMENT_DATE ,O.STORAGE_DATE ,O.CHECK_DATE ,O.RETURN_DATE ,O.SEND_DATE ,O.TOTAL_PRICE ,P.NAME FROM ORDERS O JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO JOIN INSPECTION I ON O.INSPECTION_NO = I.NO JOIN MEMBER M ON O.MEMBER_NO = M.NO JOIN BIDDING B ON O.BIDDING_NO = B.NO JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO WHERE O.MEMBER_NO = ? AND O.BIDDING_NO = ? AND O.PRODUCT_NO = ? ORDER BY NO DESC";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, memberNo);
+		pstmt.setString(2, biddingNo);
+		pstmt.setString(3, productsNo);
+			System.out.println("에러확인 ordersInfo Dao");
+		ResultSet rs = pstmt.executeQuery();
+			System.out.println("에러확인 ordersInfo Dao executeQuery()");
+
+		// rs
+		OrdersVo ordersVo = null;
+		if(rs.next()) {
+				System.out.println("에러확인 ordersInfo Dao if(rs.next())");
+				System.out.println("조회하는 biddingNo 가 일치하지 않음.. INSERT 먼저 할 것.");
+			ordersVo = new OrdersVo();
+			ordersVo.setNo(rs.getString(1));
+			ordersVo.setMemberNo(rs.getString(2));
+			ordersVo.setOrdersStatusNo(rs.getString(3));
+			ordersVo.setOrdersStatus(rs.getString(4));
+			ordersVo.setBiddingNo(rs.getString(5));
+			ordersVo.setProductNo(rs.getString(6));
+			ordersVo.setInspectionNo(rs.getString(7));
+			ordersVo.setInspection(rs.getString(8));
+			ordersVo.setOrdersDate(rs.getString(9));
+			ordersVo.setPaymentType(rs.getString(10));
+			ordersVo.setPaymentDate(rs.getString(11));
+			ordersVo.setStorageDate(rs.getString(12));
+			ordersVo.setCheckDate(rs.getString(13));
+			ordersVo.setReturnDAte(rs.getString(14));
+			ordersVo.setSendDate(rs.getString(15));
+			ordersVo.setTotalPrice(rs.getString(16));
+				System.out.println("ordersVo : 주문 조회");
+				System.out.println("dao에러확인 ordersVo : " + ordersVo);
+		}
+			System.out.println("에러확인 ordersInfo Dao before close()");
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		return ordersVo;
+	}
+
+
+
+
+
+	public int orders(Connection conn, String loginMemberNo, String biddngNo, String productsNo) throws Exception{
+
+		// sql
+		String sql = "";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMemberNo);
+		pstmt.setString(2, loginMemberNo);
+		pstmt.setString(3, loginMemberNo);
+		int result = pstmt.executeUpdate();
+
+		// rs
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
 }

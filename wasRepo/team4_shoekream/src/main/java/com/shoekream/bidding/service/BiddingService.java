@@ -11,6 +11,7 @@ import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.biddingVo.TestVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.mypage.vo.AddrBookVo;
+import com.shoekream.orders.vo.OrdersVo;
 import com.shoekream.product.vo.ProductInfoVo;
 
 public class BiddingService {
@@ -123,6 +124,47 @@ public class BiddingService {
 			
 		// close
 		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+
+
+
+
+	// 주문 정보 조회
+	public OrdersVo ordersInfo(String memberNo, String biddingNo, String productsNo) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		System.out.println("에러확인 ordersInfo Service");
+		OrdersVo ordersVo = dao.ordersInfo(conn, memberNo, biddingNo, productsNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		System.out.println("에러확인 ordersInfo Dao -> Service");
+		return ordersVo;
+	}
+
+
+
+
+
+	// 주문 정보 입력
+	public int orders(String loginMemberNo, String biddngNo, String productsNo) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		System.out.println("에러확인 orders Service");
+		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		System.out.println("에러확인 orders Dao -> Service");
 		
 		return result;
 	}

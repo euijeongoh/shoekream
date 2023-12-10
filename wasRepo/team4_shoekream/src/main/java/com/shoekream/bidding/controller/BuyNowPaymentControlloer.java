@@ -1,7 +1,6 @@
 package com.shoekream.bidding.controller;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -9,13 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.shoekream.bidding.service.BiddingService;
 import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.biddingVo.TestVo;
-import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.vo.AddrBookVo;
+import com.shoekream.orders.vo.OrdersVo;
 
 @WebServlet("/buy/nowpayment")
 public class BuyNowPaymentControlloer extends HttpServlet{
@@ -41,8 +39,14 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 				
 			BiddingService bs = new BiddingService();
 			BiddingVo dbVo = bs.productInfo(vo);
+				System.out.println("BuyNowPaymentController 에러확인 dbVo : " + dbVo);
 			if (dbVo == null) {
 				throw new Exception("예외 발생 : dbVo == null");
+			}
+			
+			int ordersResult = bs.orders(loginMemberNo, dbVo.getNo() ,productsNo);
+			if (ordersResult != 1) {
+				throw new Exception("예외 발생 : ordersResult != 1");
 			}
 			
 			Map<String, Object> result = bs.resultInfo(loginMemberNo);
