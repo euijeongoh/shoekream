@@ -4,17 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
-import com.shoekream.mypage.vo.HistoryCntVo;
 import com.shoekream.mypage.vo.OrdersHistoryVo;
 import com.shoekream.mypage.vo.WishListVo;
-import com.shoekream.orders.vo.OrdersVo;
 
 public class MyPageDao {
 	
@@ -128,32 +126,34 @@ public class MyPageDao {
 	}
 
 	// 판매입찰 정보 조회(List)
-	public List<BiddingVo> getSellBiddingInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<BiddingHistoryVo> getSellBiddingInfo(Connection conn, MemberVo loginMember, Map<String, String> map) throws Exception {
 		// sql
-		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , B.PRICE 입찰희망가 , BS.BIDDING_STATUS 입찰상태 , B.EXPIRE_DATE 입찰마감기한 , B.ENROLL_DATE 입찰생성일 FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 2 ORDER BY B.ENROLL_DATE DESC";
+		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , B.PRICE 입찰희망가 , BS.BIDDING_STATUS 입찰상태 , B.EXPIRE_DATE 입찰마감기한 , B.ENROLL_DATE 입찰생성일 FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE B.MEMBER_NO = 1 AND B.BIDDING_POSITION_NO = 2 AND B.ENROLL_DATE>=? AND B.EXPIRE_DATE<=? ORDER BY B.ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMember.getNo());
+		pstmt.setString(2, map.get("startDate"));
+		pstmt.setString(3, map.get("endDate"));
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
-		List<BiddingVo> sellList = new ArrayList<BiddingVo>();
+		List<BiddingHistoryVo> sellList = new ArrayList<BiddingHistoryVo>();
 		while(rs.next()) {
 			String productName = rs.getString("상품명");
 			String productImg = rs.getString("썸네일");
 			String productSize = rs.getString("사이즈");
-			int bidPrice = rs.getInt("입찰희망가");
+			String bidPrice = rs.getString("입찰희망가");
 			String bidStatus = rs.getString("입찰상태");
 			String bidExpireDate = rs.getString("입찰마감기한");
 			String bidEnrollDate = rs.getString("입찰생성일");
 			
-			BiddingVo sellVo = new BiddingVo();
-//			sellVo.setProductName(productName);
-//			sellVo.setProductImg(productImg);
-//			sellVo.setProductSize(productSize);
-//			sellVo.setBidPrice(bidPrice);
-//			sellVo.setBidStatus(bidStatus);
-//			sellVo.setBidExpireDate(bidExpireDate);
-//			sellVo.setBidEnrollDate(bidEnrollDate);
+			BiddingHistoryVo sellVo = new BiddingHistoryVo();
+			sellVo.setShoeName(productName);
+			sellVo.setShoeImg(productImg);
+			sellVo.setShoeSize(productSize);
+			sellVo.setBidPrice(bidPrice);
+			sellVo.setBidStatus(bidStatus);
+			sellVo.setExpireDate(bidExpireDate);
+			sellVo.setEnrollDate(bidEnrollDate);
 			
 			sellList.add(sellVo);
 		}
@@ -166,7 +166,7 @@ public class MyPageDao {
 	}
 
 	// 진행중인 판매내역 정보 조회(List)
-	public List<OrdersVo> getSellPendingInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<OrdersHistoryVo> getSellPendingInfo(Connection conn, MemberVo loginMember) throws Exception {
 		// sql
 		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 2 AND NOT O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -174,7 +174,7 @@ public class MyPageDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
-		List<OrdersVo> pendList = new ArrayList<OrdersVo>();
+		List<OrdersHistoryVo> pendList = new ArrayList<OrdersHistoryVo>();
 		while(rs.next()) {
 			String productName = rs.getString("상품명");
 			String productImg = rs.getString("썸네일");
@@ -182,12 +182,12 @@ public class MyPageDao {
 			String orderStatus = rs.getString("주문상태");
 			String orderDate = rs.getString("주문일자");
 			
-			OrdersVo pendVo = new OrdersVo();
-//			pendVo.setProductName(productName);
-//			pendVo.setProductImg(productImg);
-//			pendVo.setProductSize(productSize);
-//			pendVo.setOrderStatus(orderStatus);
-//			pendVo.setOrderDate(orderDate);
+			OrdersHistoryVo pendVo = new OrdersHistoryVo();
+			pendVo.setProductName(productName);
+			pendVo.setProductImg(productImg);
+			pendVo.setProductSize(productSize);
+			pendVo.setOrderStatus(orderStatus);
+			pendVo.setOrderDate(orderDate);
 			
 			pendList.add(pendVo);
 		}
@@ -200,7 +200,7 @@ public class MyPageDao {
 	}
 		
 	// 완료된 판매내역 정보 조회(List)
-	public List<OrdersVo> getFinishedInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<OrdersHistoryVo> getFinishedInfo(Connection conn, MemberVo loginMember) throws Exception {
 		// sql
 		String sql = "SELECT P.NAME 상품명 , IMG.THUMBNAIL 썸네일 , SS.SHOES_SIZES 사이즈 , OS.ORDERS_STATUS 주문상태 , O.ORDERS_DATE 주문일자 FROM ORDERS O LEFT JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON PS.PRODUCT_NO = P.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE O.MEMBER_NO = ? AND B.BIDDING_STATUS_NO = 2 AND O.ORDERS_STATUS_NO = 5 ORDER BY O.ORDERS_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -208,22 +208,22 @@ public class MyPageDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
-		List<OrdersVo> finishedList = new ArrayList<OrdersVo>();
+		List<OrdersHistoryVo> finishedList = new ArrayList<OrdersHistoryVo>();
 		while(rs.next()) {
 			String productName = rs.getString("상품명");
 			String productImg = rs.getString("썸네일");
 			String productSize = rs.getString("사이즈");
 			String orderState = rs.getString("주문상태");
 			String orderDate = rs.getString("주문일자");
-			int finalPrice = rs.getInt("결제금액");
+			String finalPrice = rs.getString("결제금액");
 			
-			OrdersVo finishedVo = new OrdersVo();
-//			finishedVo.setProductName(productName);
-//			finishedVo.setProductImg(productImg);
-//			finishedVo.setProductSize(productSize);
-//			finishedVo.setOrderStatus(orderState);
-//			finishedVo.setOrderDate(orderDate);
-//			finishedVo.setFinalPrice(finalPrice);
+			OrdersHistoryVo finishedVo = new OrdersHistoryVo();
+			finishedVo.setProductName(productName);
+			finishedVo.setProductImg(productImg);
+			finishedVo.setProductSize(productSize);
+			finishedVo.setOrderStatus(orderState);
+			finishedVo.setOrderDate(orderDate);
+			finishedVo.setFinalPrice(finalPrice);
 			
 			finishedList.add(finishedVo);
 		}
@@ -261,6 +261,9 @@ public class MyPageDao {
 			productList.add(wishVo);
 		}
 		
+		// close
+		JDBCTemplate.close(pstmt1);
+		
 		for(int i = 0; i<productList.size(); ++i) {
 			PreparedStatement pstmt2 = conn.prepareStatement(priceSql);
 			pstmt2.setString(1, productList.get(i).getProductNo());
@@ -275,7 +278,12 @@ public class MyPageDao {
 				
 				productList.get(i).setImmediatePrice(immediatePrice);
 			}
+			
+			// close
+			JDBCTemplate.close(pstmt2);
 		}
+		
+		
 		
 		return productList;
 		
@@ -295,6 +303,9 @@ public class MyPageDao {
 			bidCnt = rs.getInt("CNT");
 		}
 		
+		// close
+		JDBCTemplate.close(bidCntPstmt);
+		
 		return bidCnt;
 	}
 
@@ -310,6 +321,9 @@ public class MyPageDao {
 			pendCnt = rs.getInt("CNT");
 		}
 		
+		// close
+		JDBCTemplate.close(pstmt);
+		
 		return pendCnt;
 	}
 
@@ -323,52 +337,12 @@ public class MyPageDao {
 		if(rs.next()) {
 			finishedCnt = rs.getInt("CNT");
 		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
 	
 		return finishedCnt;
 	}
-	
-	// 판매내역 관련 cnt값들
-		public HistoryCntVo getSellingCnts(Connection conn, MemberVo loginMember) throws Exception {
-			// sql
-			String bidCntSql = "SELECT COUNT(*) FROM BIDDING B WHERE MEMBER_NO = ? AND BIDDING_POSITION_NO = 1";
-			String pendCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND NOT O.ORDERS_STATUS_NO=5";
-			String finishedCntSql = "SELECT COUNT(*) CNT FROM ORDERS O LEFT JOIN BIDDING B ON B.NO = O.BIDDING_NO WHERE O.MEMBER_NO = ? AND B.BIDDING_POSITION_NO = 2 AND O.ORDERS_STATUS_NO=5";
-			
-			PreparedStatement bidCntPstmt = conn.prepareStatement(bidCntSql);
-			PreparedStatement pendCntPstmt = conn.prepareStatement(pendCntSql);
-			PreparedStatement finishedCntPstmt = conn.prepareStatement(finishedCntSql);
-			
-			bidCntPstmt.setString(1, loginMember.getNo());
-			pendCntPstmt.setString(1, loginMember.getNo());
-			finishedCntPstmt.setString(1, loginMember.getNo());
-			
-			ResultSet rs1 = bidCntPstmt.executeQuery();
-			ResultSet rs2 = pendCntPstmt.executeQuery();
-			ResultSet rs3 = finishedCntPstmt.executeQuery();
-			
-			// rs
-			int bidCnt = 0;
-			int pendCnt = 0;
-			int finishedCnt = 0;
-			if(rs1.next()) {
-				bidCnt = rs1.getInt("CNT");
-			}
-			
-			if(rs2.next()) {
-				pendCnt = rs2.getInt("CNT");
-			}
-			
-			if(rs3.next()) {
-				finishedCnt = rs3.getInt("CNT");
-			}
-			
-			HistoryCntVo cntVo = new HistoryCntVo();
-			cntVo.setCntBid(bidCnt);
-			cntVo.setCntPend(pendCnt);
-			cntVo.setCntFinished(finishedCnt);
-			
-			return cntVo;
-		}
 		
 	// 판매내역 관련 cnt값들
 	public int getSellingBidCnt(Connection conn, MemberVo loginMember) throws Exception {
@@ -381,6 +355,9 @@ public class MyPageDao {
 		if(rs.next()) {
 			bidCnt = rs.getInt("COUNT(*)");
 		}
+		
+		// close
+		JDBCTemplate.close(pstmt);
 		
 		return bidCnt;
 	}
@@ -396,6 +373,9 @@ public class MyPageDao {
 			pendCnt = rs.getInt("CNT");
 		}
 		
+		// close
+		JDBCTemplate.close(pstmt);
+		
 		return pendCnt;
 	}
 
@@ -410,7 +390,36 @@ public class MyPageDao {
 			finishCnt = rs.getInt("CNT");
 		}
 		
+		// close
+		JDBCTemplate.close(pstmt);
+		
 		return finishCnt;
 	}
+
+	public Map<String, Object> saveImgSrcInDB(Connection conn, MemberVo loginMember, String src) throws Exception {
+		// sql
+		String sql = "INSERT INTO MEMBER(PROFILE_IMAGE) VALUES(?) WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, src);
+		pstmt.setString(2, loginMember.getNo());
+		
+		int result = pstmt.executeUpdate();
+		
+		// loginMember에 src 넣어주기
+		if(result == 1) {
+			loginMember.setProfileImage(src);
+		}
+		
+		// 데이터 가공
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("loginMember", loginMember);
+		map.put("result", result);
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		
+		return map;
+	}
+
 
 }
