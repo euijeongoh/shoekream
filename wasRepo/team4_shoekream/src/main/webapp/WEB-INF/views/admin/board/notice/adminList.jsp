@@ -33,7 +33,7 @@
 				<div class="board_title">공지사항</div>
 				<div class="board_search">
 					<div>	
-					<form action="/shoekream/notice/search" method="get">
+					<form action="/shoekream/admin/notice/search" method="get">
 						검색: <input class="search" name="search" type="text">
 						<input type="submit" value="검색하기">
 					</div>
@@ -90,9 +90,9 @@
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	
 <!-- 	<script>  -->
-// 		function f01(no){
-// 			location.href = '/shoekream/notice/detail?no=' + no;
-// 		}
+<!--  		function f01(no){ -->
+<!--  			location.href = '/shoekream/notice/detail?no=' + no; -->
+<!-- 		} -->
 <!-- 	</script> -->
 </body>
 </html>

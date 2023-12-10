@@ -1,30 +1,32 @@
-package com.shoekream.notice.vo;
+package com.shoekream.qna.vo;
 
-public class NoticeVo {
+public class QnaVo {
 
 	private String no;
 	private String managerNo;
+	private String memberNo;
 	private String title;
 	private String content;
 	private String enrollDate;
-	private String modifyDate;
-	private String delYn;
 	private String hit;
-	public NoticeVo() {
+	private String reply;
+	private String replyEnrollDate;
+	public QnaVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public NoticeVo(String no, String managerNo, String title, String content, String enrollDate, String modifyDate,
-			String delYn, String hit) {
+	public QnaVo(String no, String managerNo, String memberNo, String title, String content, String enrollDate,
+			String hit, String reply, String replyEnrollDate) {
 		super();
 		this.no = no;
 		this.managerNo = managerNo;
+		this.memberNo = memberNo;
 		this.title = title;
 		this.content = content;
 		this.enrollDate = enrollDate;
-		this.modifyDate = modifyDate;
-		this.delYn = delYn;
 		this.hit = hit;
+		this.reply = reply;
+		this.replyEnrollDate = replyEnrollDate;
 	}
 	public final String getNo() {
 		return no;
@@ -37,6 +39,12 @@ public class NoticeVo {
 	}
 	public final void setManagerNo(String managerNo) {
 		this.managerNo = managerNo;
+	}
+	public final String getMemberNo() {
+		return memberNo;
+	}
+	public final void setMemberNo(String memberNo) {
+		this.memberNo = memberNo;
 	}
 	public final String getTitle() {
 		return title;
@@ -56,30 +64,31 @@ public class NoticeVo {
 	public final void setEnrollDate(String enrollDate) {
 		this.enrollDate = enrollDate;
 	}
-	public final String getModifyDate() {
-		return modifyDate;
-	}
-	public final void setModifyDate(String modifyDate) {
-		this.modifyDate = modifyDate;
-	}
-	public final String getDelYn() {
-		return delYn;
-	}
-	public final void setDelYn(String delYn) {
-		this.delYn = delYn;
-	}
 	public final String getHit() {
 		return hit;
 	}
 	public final void setHit(String hit) {
 		this.hit = hit;
 	}
+	public final String getReply() {
+		return reply;
+	}
+	public final void setReply(String reply) {
+		this.reply = reply;
+	}
+	public final String getReplyEnrollDate() {
+		return replyEnrollDate;
+	}
+	public final void setReplyEnrollDate(String replyEnrollDate) {
+		this.replyEnrollDate = replyEnrollDate;
+	}
 	@Override
 	public String toString() {
-		return "NoticeVo [no=" + no + ", managerNo=" + managerNo + ", title=" + title + ", content=" + content
-				+ ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", delYn=" + delYn + ", hit=" + hit
-				+ "]";
+		return "QnaVo [no=" + no + ", managerNo=" + managerNo + ", memberNo=" + memberNo + ", title=" + title
+				+ ", content=" + content + ", enrollDate=" + enrollDate + ", hit=" + hit + ", reply=" + reply
+				+ ", replyEnrollDate=" + replyEnrollDate + "]";
 	}
-	
 
+	
 }
+

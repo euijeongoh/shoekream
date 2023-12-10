@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String msg = (String) session.getAttribute("alarm"); session.removeAttribute("alarm"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 </head>
 <body>
+<%-- <h1><%= alarm %></h1> --%>
 	<footer>
 		<div class="box1"></div>
 		<div class="box2">
@@ -55,7 +57,14 @@
 		</div>
 		<div class="box4"></div>
 	</footer>
-
+	
+	<script>
+		<% if (msg != null){ %>
+			alert("<%= msg %>");
+		<% } %>
+	</script>
+<!-- 1.값 넘어오는지 확인 -->
+<!-- 2.다른 include에서 중복 확인  -->
 
 
 </body>
