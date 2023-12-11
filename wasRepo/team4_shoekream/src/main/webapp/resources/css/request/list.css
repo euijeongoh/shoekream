@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wrap{
+    display: flex;
+    width: 100%;
+    height: 850px;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+
+.wrap_inner{
+    display: flex;
+    width: 1200px;
+    height: 750px;
+    /* margin-left: auto; *
+    /* margin-right:auto; */
+    padding-left :40px;
+    padding-top : 40px;
+    padding-right: 40px;
+    padding-bottom: 160px;;
+    /* background-color: blue; */
+    justify-content: center;
+}
+
+.board_wrap{
+   display: flex;
+   width: 1000px;
+   height: 750px;
+   flex-direction: column;
+   /* background-color:antiquewhite; */
+}
+
+.board_title{
+    display: flex;
+    width: 1000px;
+    height: 28.980px;
+    border-bottom: 3px solid black;
+    padding-bottom: 16px;
+    font-size:24px;
+    font-weight: bolder;
+    font-family: 'pretendard';
+
+}
+
+.board_search{
+    display: flex;
+    width: 1000px;
+    height: 30px;
+    margin-top: 5px;
+    font-size:20px;
+    border-radius: 15px;
+    background-color: lightgray;
+    align-items: center;
+}
+
+.board_search>div{
+    margin-left:10px;
+    color:gray
+}
+.board_search{
+    display:flex;
+    align-items: center;
+}
+.search{
+    box-sizing: border-box;
+    width: 300px;
+    height:25px;
+    background-color: lightgray;
+    border:none;
+}
+
+
+
+.dropdown_list>li>a {
+    display: flex;
+    justify-content: space-between;
+    border-bottom:1px solid gray;
+    align-items: center;
+    padding-top: 17px;
+    padding-bottom: 19px;
+}
+
+.dropdown{
+    display: flex;
+    width: 1000px;
+    height: 17.477px;
+    cursor: pointer;
+    /* background-color: aqua; */
+}
+
+.pagination{
+    display: block;
+    width: 1000px;
+    height: 21.969px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    /* background-color: aqua; */
+    font-size: 20px;
+}
+
+.pagination_box{
+    display: block;
+    width: 1000px;
+    height: 21.992px;
+    position: relative;
+    text-align: center;
+    /* background-color: blue; */
+}
+
+.prev_btn{
+    display: inline-block;
+    margin-right: 25px;
+    width: 52.930px;
+    height: 21.992px;
+    vertical-align: top;
+    /* background-color: red; */
+}
+
+.page_bind{
+    display: inline-block;
+    vertical-align: top;
+    width: 183.066px;
+    height: 18.750px;
+    /* background-color: yellow; */
+}
+
+.next_btn_box{
+    display: inline-block;
+    vertical-align: top;
+    width: 52.930px;
+    height: 21.992px;
+    margin-left: 25px;
+    /* background-color: green; */
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}

@@ -137,46 +137,77 @@ header .main-list li {
 
 .listphoto{
     width: 1200px;
-    margin-bottom: 20px;
+    /* height: 500px; */
     display: flex;
     justify-content: space-evenly;
-    /* background-color: antiquewhite; */
+    background-color: antiquewhite;
 }
 .listphoto2{
     width: 1200px;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
-    /* background-color: blue; */
+    margin-top: 70px;
+    background-color: blue;
 }
 .listphoto3{
     width: 1200px;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
-    /* background-color: aqua; */
+    margin-top: 70px;
+
+    background-color: white;
 }
 .listphoto4{
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
-    /* background-color: green; */
+    margin-top: 70px;
+    background-color: green;
 }
-#photo{
-    width: 95%;
-    /* padding: 15px 0px; */
-    height: 100%;
+.photo{
+    width: 280px;
+    height: 300px;
+    border: 1px solid lightgray;
+    border-radius: 10%
+}
+.photo2{
+    /* margin-top: 20px; */
+    width: 280px;
+    height: 390px;
+    border: 1px solid lightgray;
+    border-radius: 10%
+}
+.photo3{
+    margin-top: 100px;
+    width: 280px;
+    height: 340px;
+    border: 1px solid lightgray;
     border-radius: 10%
 }
 .wave{
+    height: 35px;
+    width: 35px;
     border-radius: 70%;
     border: 1px solid lightgray;
+    margin-left: 20px;
+}
+.likey{
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
 }
 .detail{
     display: flex;
     justify-content: space-between;
     width: 94%;
+    height: 35px;
+    margin-bottom: 25px;
+    /* background-color: aqua; */
 }
+/* .likenum{
+    display: ;
+    justify-content: flex-end;
+} */
 .likebox{
     display: inline-flex;
     justify-content: space-evenly;
@@ -185,26 +216,9 @@ header .main-list li {
 .one{
     display: block;
     width: 25%;
-    height: 25%;
+    justify-content: space-between;
+    /* height: 250px; */
     /* background-color: skyblue; */
-}
-.two{
-    display: block;
-    width: 25%;
-    height: 25%;
-    /* background-color: bisque; */
-}
-.three{
-    display: block;
-    width: 25%;
-    height: 25%;
-    /* background-color: hotpink; */
-}
-.four{
-    display: block;
-    width: 25%;
-    height: 25%;
-    /* background-color: gold; */
 }
 
 

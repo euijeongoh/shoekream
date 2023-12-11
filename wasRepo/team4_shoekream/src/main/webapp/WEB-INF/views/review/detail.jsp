@@ -15,11 +15,11 @@
         <div class="profile_state">
             <div class="profile">
                 <div class="kitty">
-                        <img href="" src="/shoekream/resources/img/review/wave.png" alt="kitty" class="profile_kitty">
+                        <img href="/shoekream/review/mylist" src="/shoekream/resources/img/review/wave.png" alt="kitty" class="profile_kitty">
                 </div>
                 <div class="profile_detail">
                     <div>
-                        <a href="#">
+                        <a href="/shoekream/review/mylist">
                             <h4>helloprofile</h4>
                         </a>
                     </div>
@@ -61,8 +61,8 @@
         <br>
         <div class="test">
             <div class="licom">
-                <a href=""><img src="/shoekream/resources/img/review/like.png" alt="좋아요" class="likeimg"></a>
-                <a href="shoekream/review/comment"><img src="/shoekream/resources/img/review/comment.png" alt="댓글" class="commentimg"></a>
+                <a href="/shoekream/review/detail"><img src="/shoekream/resources/img/review/like.png" alt="좋아요" class="likeimg"></a>
+                <a href="/shoekream/review/comment"><img src="/shoekream/resources/img/review/comment.png" alt="댓글" class="commentimg"></a>
             </div>
         </div>
         

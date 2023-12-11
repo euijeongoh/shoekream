@@ -192,17 +192,39 @@ header .main_list li {
 
 
  .request_wrap{
-    width: 760px;
-    height: 700px;
-    /* display: block;
-    justify-content: space-evenly; */
-    margin-left: 250px;
-    margin-bottom: 400px;
-    background-color: aqua;
+    width: 720px;
+    height: 550px;
+    display: block;
+    margin-right: 200px;
+    /* margin-bottom: 100px; */
+    /* background-color: aqua; */
+}
+
+.wrap{
+    display: flex;
+    width: 100%;
+    height: 750px;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+
+.wrap_inner{
+    display: flex;
+    width: 1200px;
+    height: 750px;
+    /* margin-left: auto; *
+    /* margin-right:auto; */
+    padding-left :40px;
+    padding-top : 40px;
+    padding-right: 40px;
+    padding-bottom: 160px;;
+    /* background-color: blue; */
+    justify-content: center;
 }
 .product_list_board{
-    /* display: flex;
-    justify-content: space-between; */
+    height: 56px;
+    display: block;
+    justify-content: space-between;
     margin-bottom: 0px;
     margin-right: 30px;
     border-bottom: 3px solid lightgray;
@@ -224,15 +246,31 @@ header .main_list li {
 .search{
     display: inline-flex;
     justify-content: end;
-    margin-left: 500px;
+    margin-left: 5000px;
     /* background-color: red; */
+}
+#buttoni{
+    margin-right: 40px;
+    margin-bottom: 10px;
+}
+#buttoni button{
+    width: 20px;
+    height: 20px;
+    /* background-color: white; */
+}
+.dbg{
+    color: black;
 }
 .onebox{
     width: 10px;
 }
 #search{
     height: 20px;
-    border: none;
+    border: none
+}
+#searchi{
+    margin-right: 90px;
+    background-color: brown;
 }
 .product_list{
     height: 40px;
@@ -387,4 +425,3 @@ button {
     width: 110px;
     height: 50px
 }
-
