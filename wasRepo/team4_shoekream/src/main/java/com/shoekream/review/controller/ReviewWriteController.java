@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.member.MemberVo;
+import com.shoekream.product.service.ProductDetailService;
+import com.shoekream.review.service.ReviewProductService;
 import com.shoekream.review.service.ReviewService;
-import com.shoekream.review.vo.CategoryVo;
 import com.shoekream.review.vo.ReviewVo;
 
 @WebServlet("/review/write")
@@ -32,7 +34,13 @@ public class ReviewWriteController extends HttpServlet {
 	            // 선택적으로 로그인 페이지로 리다이렉트하거나 다른 방식으로 처리할 수 있습니다.
 	            // resp.sendRedirect("/member/login");
 	        }
-
+	        String productNo = req.getParameter("productNo");
+	        EnrollProductVo productVo = new EnrollProductVo();
+	        ReviewProductService ps = new ReviewProductService();
+	        productVo = ps.getProductInfo(productNo);
+	        req.setAttribute("productVo", productVo);
+	        
+	        System.out.println(productNo);
 	        // 서비스 호출
 	        ReviewService rs = new ReviewService();
 	        List<ReviewVo> reviewVoList = rs.myReviewList();
@@ -43,7 +51,7 @@ public class ReviewWriteController extends HttpServlet {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        req.setAttribute("errorMsg", "리뷰 작성 에러");
-	        req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp); //여기를 member/login로 고치기
+	        req.getRequestDispatcher("/WEB-INF/views/review/error.jsp").forward(req, resp); //여기를 member/login로 고치기
 	    }
 
 	}
@@ -65,9 +73,11 @@ public class ReviewWriteController extends HttpServlet {
        String productNo = req.getParameter("productNo");
        String comfortNo = req.getParameter("comfortNo");
        String content = req.getParameter("content");
-       String likeBtn = req.getParameter("likeBtn");
+//       String likeBtn = req.getParameter("likeBtn");
        MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-         
+       
+       
+       
        if(loginMember == null) {
             throw new Exception("로그인 안했음");
          }
@@ -78,7 +88,7 @@ public class ReviewWriteController extends HttpServlet {
 	     vo.setProductNo(productNo);
 	     vo.setComfortNo(comfortNo);
 	     vo.setContent(content);
-	     vo.setLikeBtn(likeBtn);
+//	     vo.setLikeBtn(likeBtn);
 	     vo.setMemberNo(loginMember.getNo());
 	     
          
@@ -90,6 +100,7 @@ public class ReviewWriteController extends HttpServlet {
          if(result != 1) {
             throw new Exception("result 가 1이 아님 ,,,,");
          }
+         
          
          req.getSession().setAttribute("alertMsg", "리뷰 작성 성공 !");
          resp.sendRedirect("/shoekream//review/mylist");

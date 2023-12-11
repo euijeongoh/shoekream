@@ -40,7 +40,7 @@ public class ReviewCommentController extends HttpServlet {
 //	        req.setAttribute("reviewCommnetVoList", reviewCommentVoList);
 	        req.getRequestDispatcher("/WEB-INF/views/review/comment.jsp").forward(req, resp);
 
-	    } catch (Exception e) {
+	    	} catch (Exception e) {
 	        e.printStackTrace();
 	        req.setAttribute("errorMsg", "댓글 작성 에러");
 	        req.getRequestDispatcher("/WEB-INF/views/review/comment.jsp").forward(req, resp); //여기를 board 로 고치기
@@ -73,7 +73,7 @@ public class ReviewCommentController extends HttpServlet {
          ReviewCommentVo vo = new ReviewCommentVo();
 //         vo.setMemberNo(memberNo);
          vo.setContent(content);
-//         vo.setLikeBtn(likeBtn);
+         vo.setLikeBtn(likeBtn);
          vo.setMemberNo(loginMember.getNo());
          
          // service

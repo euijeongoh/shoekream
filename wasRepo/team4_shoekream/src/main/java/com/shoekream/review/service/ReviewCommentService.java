@@ -36,21 +36,20 @@ public class ReviewCommentService {
    }
 
 	
-		
-	//댓글 목록
-	public List<ReviewCommentVo> reviewCommentList() throws Exception{
-		
-		//conn
-		Connection conn = JDBCTemplate.getConnection();
-		
-		//dao
-		ReviewCommentDao dao = new ReviewCommentDao();
-		List<ReviewCommentVo> reviewCommnetVoList = dao.ReviewCommentList(conn);
-		
-		//close
-		JDBCTemplate.close(conn);
-		
-		return reviewCommentList();
-	}
+//	//댓글 목록
+//	public List<ReviewCommentVo> reviewCommentList() throws Exception{
+//		
+//		//conn
+//		Connection conn = JDBCTemplate.getConnection();
+//		
+//		//dao
+//		ReviewCommentDao dao = new ReviewCommentDao();
+//		List<ReviewCommentVo> reviewCommnetVoList = dao.ReviewCommentList(conn);
+//		
+//		//close
+//		JDBCTemplate.close(conn);
+//		
+//		return reviewCommentList();
+//	}
 
 }

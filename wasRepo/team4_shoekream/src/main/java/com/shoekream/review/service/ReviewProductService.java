@@ -43,7 +43,7 @@ public class ReviewProductService {
 			
 		}
 		
-		public EnrollProductVo getReviewProductNo(ReviewProductVo vo)throws Exception {
+		public ReviewProductVo getReviewProductNo(ReviewProductVo vo)throws Exception {
 			//conn
 			Connection conn = JDBCTemplate.getConnection();
 			
@@ -51,6 +51,20 @@ public class ReviewProductService {
 			ReviewDao dao = new ReviewDao();
 			
 			ReviewProductVo dbVo = dao.getReviewProductNo(conn, vo);
+			
+			//close
+			JDBCTemplate.close(conn);
+			
+			return dbVo;
+		}
+
+		public EnrollProductVo getProductInfo(String productNo) throws Exception{
+			//conn
+			Connection conn = JDBCTemplate.getConnection();
+			//dao
+			ReviewDao dao = new ReviewDao();
+			
+			EnrollProductVo dbVo = dao.getProductInfo(conn, productNo);
 			
 			//close
 			JDBCTemplate.close(conn);
