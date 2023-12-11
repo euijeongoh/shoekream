@@ -16,17 +16,6 @@
     padding: 60px 0px 160px;
 }
 
-.searchPwd-title {
-    padding: 0px 0px 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Pretendard';
-    font-size: 32px;
-    letter-spacing: -.48px;
-    font-weight: 700;
-}
 
 .searchPwd-title div {
     width: 400px;

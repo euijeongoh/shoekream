@@ -6,19 +6,18 @@ public class ManagerVo {
 	private String name;
 	private String id;
 	private String pwd;
-	private String phone;
+	private String email;
 	private String delYn;
 	public ManagerVo() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
-	public ManagerVo(String no, String name, String id, String pwd, String phone, String delYn) {
+	public ManagerVo(String no, String name, String id, String pwd, String email, String delYn) {
 		super();
 		this.no = no;
 		this.name = name;
 		this.id = id;
 		this.pwd = pwd;
-		this.phone = phone;
+		this.email = email;
 		this.delYn = delYn;
 	}
 	public String getNo() {
@@ -45,11 +44,11 @@ public class ManagerVo {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getPhone() {
-		return phone;
+	public String getEmail() {
+		return email;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getDelYn() {
 		return delYn;
@@ -59,7 +58,7 @@ public class ManagerVo {
 	}
 	@Override
 	public String toString() {
-		return "ManagerVo [no=" + no + ", name=" + name + ", id=" + id + ", pwd=" + pwd + ", phone=" + phone
+		return "ManagerVo [no=" + no + ", name=" + name + ", id=" + id + ", pwd=" + pwd + ", email=" + email
 				+ ", delYn=" + delYn + "]";
 	}
 	

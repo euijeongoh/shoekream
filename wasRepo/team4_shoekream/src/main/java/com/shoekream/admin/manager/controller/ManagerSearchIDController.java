@@ -34,7 +34,7 @@ public class ManagerSearchIDController extends HttpServlet {
 			
 			ManagerVo vo = new ManagerVo();
 			vo.setName(adminName);
-			vo.setPhone(adminPhone);
+			vo.setEmail(adminPhone);
 			
 			// service
 			ManagerService ms = new ManagerService();
