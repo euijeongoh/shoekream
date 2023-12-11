@@ -38,8 +38,6 @@ public class BuyingPendingController extends HttpServlet{
 				jsonStr = str;
 			}
 			
-			System.out.println(jsonStr);
-			
 			// json to map
 			ObjectMapper mapper = new ObjectMapper();
 			TypeReference<Map<String, String>> typeReference = new TypeReference<Map<String, String>>() {};

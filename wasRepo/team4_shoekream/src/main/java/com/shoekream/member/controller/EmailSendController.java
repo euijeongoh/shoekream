@@ -65,11 +65,10 @@ public class EmailSendController extends HttpServlet{
 			
 			// 인증번호 생성(일단 이메일 가는 거 보고)
 			SecureRandom random = SecureRandom.getInstanceStrong();
-			
 			byte[] randomBytes = new byte[6];
+			random.nextBytes(randomBytes);
 			// 바이트 배열을 Base64로 인코딩하여 문자열로 반환
 			String authenticationKey = Base64.getEncoder().encodeToString(randomBytes);
-			System.out.println(authenticationKey);
 			
 			// email 내용
 			String emailTitle = "[SHOEKREAM] 회원가입 이메일 인증";

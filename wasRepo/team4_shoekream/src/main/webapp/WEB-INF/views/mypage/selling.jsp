@@ -22,8 +22,8 @@
             <%@ include file="/WEB-INF/views/common/mypage_side.jsp" %>
             
             <div class="sell-container">
-                <div class="shoplist-title">
-                    구매 내역
+                <div class="selllist-title">
+                    판매 내역
                 </div>
                 <div class="tab-container">
                     <div class="tab" id="bidTab" onclick="bidTabAjax();">

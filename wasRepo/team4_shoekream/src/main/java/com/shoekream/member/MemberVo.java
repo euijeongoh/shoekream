@@ -34,7 +34,7 @@ public class MemberVo {
 		this.point = point;
 		this.penaltyYn = penaltyYn;
 	}
-	public MemberVo(String id, String pwd, String pwd2, String nickname, String email) {
+	public MemberVo(String name, String id, String pwd, String pwd2, String nickname, String email) {
 		super();
 		this.id = id;
 		this.pwd = pwd;

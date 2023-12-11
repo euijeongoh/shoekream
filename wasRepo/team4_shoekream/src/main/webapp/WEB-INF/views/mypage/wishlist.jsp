@@ -38,7 +38,6 @@
                            <div class="product-info">
                                <div id="brand">${ wishVo.brandName }</div>
                                <div id="model">${ wishVo.productName }</div>
-                               <div id="release">250</div>
                            </div>
                        </div>
                        <div class="wish-price">
@@ -49,7 +48,8 @@
                                    <br><span>즉시구매가</span>
                                </div>
                            </button>
-                           <div id="a"><a>삭제</a></div>
+                           <input type="text" value="${ wishVo.productNo }" hidden>
+                           <div id="a"><a onclick="deleteWish();">삭제</a></div>
                        </div>
                    </div>
                	</c:forEach>

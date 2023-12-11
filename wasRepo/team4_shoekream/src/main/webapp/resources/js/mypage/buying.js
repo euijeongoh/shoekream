@@ -134,6 +134,7 @@ function pendTabAjax() {
 		{method: "POST", body: jsonStr})
 	.then( (resp)=>{return resp.json()} )
 	.then( (data) => {
+		console.log(data);
 		const purchaseBody = document.querySelector(".purchase-body");
 		purchaseBody.innerHTML="";		
 		for(let i=0; i<data.length; ++i) {

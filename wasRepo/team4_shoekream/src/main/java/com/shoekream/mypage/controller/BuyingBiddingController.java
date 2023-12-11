@@ -26,6 +26,7 @@ public class BuyingBiddingController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			System.out.println("dskjflsdjk");
 			// 로그인 여부 체크
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 			if(loginMember == null) {
@@ -38,7 +39,7 @@ public class BuyingBiddingController extends HttpServlet{
 			while( (str = br.readLine()) != null ) {
 				jsonStr = str;
 			}
-
+			System.out.println(jsonStr);
 			// json to map
 			ObjectMapper mapper = new ObjectMapper();
 			TypeReference<Map<String, String>> typeReference = new TypeReference<Map<String, String>>() {};

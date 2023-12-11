@@ -43,10 +43,10 @@ public class ManagerDao {
 
 	public String searchId(Connection conn, ManagerVo vo) throws Exception {
 		// sql
-		String sql = "SELECT ID FROM MANAGER WHERE NAME = ? AND PHONE = ?";
+		String sql = "SELECT ID FROM MANAGER WHERE NAME = ? AND EMAIL = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getName());
-		pstmt.setString(2, vo.getPhone());
+		pstmt.setString(2, vo.getEmail());
 		ResultSet rs = pstmt.executeQuery();
 		
 		// rs
@@ -56,6 +56,21 @@ public class ManagerDao {
 		}
 		System.out.println(id);
 		return id;
+	}
+
+	public boolean searchManagerByIdEmail(Connection conn, ManagerVo vo) throws Exception {
+		// sql
+		String sql = "SELECT * FROM MANAGER WHERE ID = ? AND EMAIL = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getName());
+		pstmt.setString(2, vo.getEmail());
+		ResultSet rs = pstmt.executeQuery();
+		
+		boolean managerExists = false;
+		if(rs.next()) {
+			managerExists = true;
+		}
+		return managerExists;
 	}
 
 }
