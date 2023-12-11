@@ -157,4 +157,39 @@ public class MemberDao {
 		return result;
 	}
 
+	public boolean searchMemberByIdEmail(Connection conn, MemberVo vo) throws Exception {
+		// sql 
+		String sql = "SELECT * FROM MEMBER WHERE ID=? AND EMAIL=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getId());
+		pstmt.setString(2, vo.getEmail());
+		ResultSet rs = pstmt.executeQuery();
+		
+		// rs
+		boolean memberExists=false;
+		if(rs.next()) {
+			memberExists = true;
+		}
+		
+		
+		return memberExists;
+	}
+
+	public int updatePwd(Connection conn, MemberVo vo, String tempPwd_) throws Exception {
+		// sql
+		String sql = "UPDATE MEMBER SET PWD=? WHERE ID=? AND EMAIL=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, tempPwd_);
+		pstmt.setString(2, vo.getId());
+		pstmt.setString(3, vo.getEmail());
+		
+		int result = pstmt.executeUpdate();
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		
+		
+		return result;
+	}
+
 }

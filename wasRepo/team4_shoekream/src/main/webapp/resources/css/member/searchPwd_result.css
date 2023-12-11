@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: none;
+    font-family: 'Pretendard';
+}
+
+.content{
+    width: 100vw;
+}
+
+.content .result-area {
+    flex-direction: column;
+    margin: auto;
+    width: 400px;
+    padding: 60px 0px 160px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.result-area button {
+    width: 100px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    height: 36px;
+    margin: 20px;
+}
+
