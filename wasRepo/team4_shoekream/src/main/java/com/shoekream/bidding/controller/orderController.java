@@ -43,9 +43,9 @@ public class orderController extends HttpServlet{
 			
 			BiddingService bs = new BiddingService();
 			OrdersVo ordersVo = bs.ordersInfo(req.getParameter("memberNo"),req.getParameter("biddingNo"),req.getParameter("productsNo"));
-				System.out.println("orderController 에러확인 memberNo : + " + req.getParameter("memberNo"));
-				System.out.println("orderController 에러확인 biddingNo : + " + req.getParameter("biddingNo"));
-				System.out.println("orderController 에러확인 productsNo : + " + req.getParameter("productsNo"));
+				System.out.println("orderController 에러확인 memberNo : " + req.getParameter("memberNo"));
+				System.out.println("orderController 에러확인 biddingNo : " + req.getParameter("biddingNo"));
+				System.out.println("orderController 에러확인 productsNo : " + req.getParameter("productsNo"));
 			if (ordersVo == null) {
 				throw new Exception("예외 발생 : ordersVo == null");
 			}

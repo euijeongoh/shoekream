@@ -311,15 +311,21 @@ public class BiddingDao {
 
 
 
-
-	public int orders(Connection conn, String loginMemberNo, String biddngNo, String productsNo) throws Exception{
+	// 주문 정보 입력
+	public int orders(Connection conn, String loginMemberNo, String biddngNo, String productsNo, String totalAmount) throws Exception{
 
 		// sql
-		String sql = "";
+		String sql = "INSERT INTO ORDERS VALUES(SEQ_ORDERS_NO.NEXTVAL, ?, 4, ?, ?, 1, SYSDATE, '카드', SYSDATE, NULL, NULL, NULL, NULL, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+			System.out.println("orders : 주문 정보 입력");
+			System.out.println("dao에러확인 loginMemberNo : " + loginMemberNo);
+			System.out.println("dao에러확인 biddngNo : " + biddngNo);
+			System.out.println("dao에러확인 productsNo : " + productsNo);
+			System.out.println("dao에러확인 totalAmount : " + totalAmount);
 		pstmt.setString(1, loginMemberNo);
-		pstmt.setString(2, loginMemberNo);
-		pstmt.setString(3, loginMemberNo);
+		pstmt.setString(2, biddngNo);
+		pstmt.setString(3, productsNo);
+		pstmt.setString(4, totalAmount);
 		int result = pstmt.executeUpdate();
 
 		// rs

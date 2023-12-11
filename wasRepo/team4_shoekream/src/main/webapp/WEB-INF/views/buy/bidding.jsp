@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/bidding.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+
+    <script defer src="/shoekream/resources/js/bidding/buy/bidding.js"></script>
 </head>
 
 

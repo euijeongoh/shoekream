@@ -22,6 +22,8 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
+			int totalAmount = 0;
+			
 			String loginMemberNo = req.getParameter("loginMemberNo");
 			String productsNo = req.getParameter("productsNo");
 			String buyPrice = req.getParameter("buyPrice");
@@ -44,7 +46,7 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 				throw new Exception("예외 발생 : dbVo == null");
 			}
 			
-			int ordersResult = bs.orders(loginMemberNo, dbVo.getNo() ,productsNo);
+			int ordersResult = bs.orders(loginMemberNo, dbVo.getNo() ,productsNo, totalAmount);
 			if (ordersResult != 1) {
 				throw new Exception("예외 발생 : ordersResult != 1");
 			}
@@ -65,7 +67,7 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 				System.out.println("BuyNowPaymentController 에러확인 deliveryCharge : " + deliveryCharge);
 			int price = Integer.parseInt(dbVo.getPrice());
 				System.out.println("BuyNowPaymentController 에러확인 price : " + price);
-			int totalAmount = commission + deliveryCharge + price;
+			totalAmount = commission + deliveryCharge + price;
 				System.out.println("BuyNowPaymentController 에러확인 totalAmount : " + totalAmount);
 			
 			

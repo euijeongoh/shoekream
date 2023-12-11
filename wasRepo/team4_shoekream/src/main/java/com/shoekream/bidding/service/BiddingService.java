@@ -153,14 +153,21 @@ public class BiddingService {
 
 
 	// 주문 정보 입력
-	public int orders(String loginMemberNo, String biddngNo, String productsNo) throws Exception{
+	public int orders(String loginMemberNo, String biddngNo, String productsNo, int totalAmount) throws Exception{
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		BiddingDao dao = new BiddingDao();
 		System.out.println("에러확인 orders Service");
-		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo);
+		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo, String.valueOf(totalAmount));
+		
+		// tx
+		if (result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}		
 		
 		// close
 		JDBCTemplate.close(conn);
@@ -168,9 +175,5 @@ public class BiddingService {
 		
 		return result;
 	}
-
-
-
-
 
 }

@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/order.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 
-    <script defer src="/shoekream/resources/js/bidding/buy/order.js"></script>
+    <script defer src="/shoekream/resources/js/bidding/order.js"></script>
 <body>
     <div class="wrap">
         <header>
@@ -73,10 +73,11 @@
                     <div class="status_process">진행상황</div>
                     <div class="status_area">
                         <input class="ordersStatus" type="hidden" name="ordersStatus" value="${ ordersVo.ordersStatus }">
-                        <div class="order_status_1" >거래체결</div>
-                        <div class="order_status_2" >입고완료</div>
-                        <div class="order_status_3" >검수완료</div>
-                        <div class="order_status_4" >배송완료</div>
+                        
+                        <div class="order_status order_status_1" >거래체결</div>
+                        <div class="order_status order_status_2" >입고완료</div>
+                        <div class="order_status order_status_3" >검수완료</div>
+                        <div class="order_status order_status_4" >배송완료</div>
                     </div>
                 </div>
                 <!-- 진행 상황 -->
