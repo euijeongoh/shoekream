@@ -18,7 +18,7 @@
 		<div class="wrap_inner">
 			<%@ include file="/WEB-INF/views/common/service_center_side.jsp"%>
 			<div class="board_wrap">
-				<div class="board_title">공지사항</div>
+				<div class="board_title">Q&A</div>
 				<div class="dropdown_head">
 					<form action="/shoekream/qna/write" method="post">
 						<div class="notice_title">   
@@ -34,7 +34,7 @@
                 <div class="btn_list">
                     <div class="btn_editbox">
 <!--                     <a href="">작성완료</a> -->
-					<input type="submit" value="작성하기">
+					<input type="submit" id="submit" value="작성하기">
 					</form>
                     </div>
                 </div>

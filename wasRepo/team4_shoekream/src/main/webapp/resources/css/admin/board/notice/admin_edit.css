@@ -112,6 +112,12 @@ textarea{
     resize:none;
 }
  
+#submit{
+	border: none;
+	background-color: white;
+	color: gray;
+}
+
 
 
  

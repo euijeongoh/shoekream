@@ -43,6 +43,7 @@
 					<li>
 					<a href="/shoekream/qna/detail?no=<%= vo.getNo() %>">
 							<div class="dropdown"><%= vo.getTitle() %></div>
+							<div class="nickname"><%= vo.getMemberNick() %></div>
 							<div class="date"><%= vo.getEnrollDate() %></div>
 					</a>
 					</li>

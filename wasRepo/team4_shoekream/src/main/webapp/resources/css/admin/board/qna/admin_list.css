@@ -7,15 +7,15 @@
 .wrap{
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 850px;
     justify-content: center;
     /* background-color: yellow; */
 }
 
 .wrap_inner{
     display: flex;
-    width: 1200px;
-/*    height: 750px;*/
+/*    width: 1200px;*/
+    height: 750px;
     /* margin-left: auto; *
     /* margin-right:auto; */
     padding-left :40px;
@@ -86,7 +86,7 @@
 
 .dropdown{
     display: flex;
-    width: 700px;
+    width: 1000px;
     height: 17.477px;
     cursor: pointer;
     /* background-color: aqua; */
@@ -135,20 +135,6 @@
     height: 21.992px;
     margin-left: 25px;
     /* background-color: green; */
-}
-
-.write_box{
-    display: flex;
-    width:1000px;
-    justify-content: end;
-    align-items: center;
-}
-.write_btn{
-    width: 100px;
-    height: 30px;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    text-align: center;
 }
 
 a{

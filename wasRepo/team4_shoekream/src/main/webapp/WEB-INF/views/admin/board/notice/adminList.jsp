@@ -1,13 +1,12 @@
-<%@page import="com.shoekream.page.vo.PageVo"%>
 <%@page import="com.shoekream.notice.vo.NoticeVo"%>
+<%@page import="com.shoekream.page.vo.PageVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
 <%
-		List<NoticeVo> noticeVoList = (List<NoticeVo>)request.getAttribute("noticeVoList");
+		List<NoticeVo> NoticeVoList = (List<NoticeVo>)request.getAttribute("noticeVoList");
 		PageVo pvo = (PageVo)request.getAttribute("pvo");
-%>
+	%>
 
 <!DOCTYPE html>
 <html>
@@ -20,7 +19,7 @@
 </head>
 <body>
 
-<%-- ${ pvo } 페이지 확인용--%>
+<%-- ${ pvo } --%>
 
 	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp"%>
 
@@ -30,7 +29,7 @@
 
 			<!-- 본문 -->
 			<div class="board_wrap">
-				<div class="board_title">공지사항</div>
+				<div class="board_title">Q&A</div>
 				<div class="board_search">
 					<div>	
 					<form action="/shoekream/admin/notice/search" method="get">
@@ -40,7 +39,7 @@
 					</form>
 				</div>
 				<ul class="dropdown_list">
-					<%for(NoticeVo vo : noticeVoList) {%>
+					<%for(NoticeVo vo : NoticeVoList) {%>
 					<li>
 					<a href="/shoekream/admin/notice/detail?no=<%= vo.getNo() %>">
 							<div class="dropdown"><%= vo.getTitle() %></div>
@@ -75,7 +74,7 @@
 							<a href="/shoekream/admin/notice/list?pno=<%= pvo.getEndPage() + 1 %>"> 〉</a>
 							<% } %>
 							<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
-							 <a href="/shoekream/admin/notice/list?pno=<%= pvo.getMaxPage() %>"> 》</a>
+							 <a href="/shoekream/notice/list?pno=<%= pvo.getMaxPage() %>"> 》</a>
 							 <% } %>
 						
 						</div>
@@ -84,15 +83,10 @@
 				<div class="write_box">
                     <div class="write_btn"><a href="/shoekream/admin/notice/write">글 작성</a></div>
                 </div>
+	           </div>
 			</div>
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-	
-<!-- 	<script>  -->
-<!--  		function f01(no){ -->
-<!--  			location.href = '/shoekream/notice/detail?no=' + no; -->
-<!-- 		} -->
-<!-- 	</script> -->
 </body>
 </html>
