@@ -55,6 +55,7 @@ main {
     font-size: 12px;
     font-family: 'Pretendard';
     color: rgba(34, 34, 34);
+    cursor: pointer;
 }
 
 .user-detail #img_upload {

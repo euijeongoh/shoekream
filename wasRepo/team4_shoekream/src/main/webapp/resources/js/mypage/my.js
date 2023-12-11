@@ -2,19 +2,31 @@
  * 
  */
 
-// 프로필 이미지 업로드 + 업로드 후에 프로필 영역에 사진 뜨게
-function openPopup() {
-	const url = "/shoekream/mypage/profile/upload";
-	const name = "프로필 이미지 바꾸기";
-	const option = "width = 600, height = 300, top = 100, left = 200, location = no"
-	window.open(url, name, option);
-}
+const imgInputTag = document.querySelector("#img_upload");
+const profileImg = document.querySelector("#profile-img");
 
-
-imgInputTag.addEventListener('change', ()=>{
-	const fileReader = new FileReader();
-	fileReader.onload = ({target}) => {
-		profileImg.src = target.result;
-	};
-	fileReader.readAsDataURL(imgInputTag.files[0]);
+profileImg.addEventListener('click', () => {
+	imgInputTag.click();
 })
+
+
+const changeProfile = document.querySelector("#change_profile");
+
+changeProfile.addEventListener('click', () => {
+	
+	const file = imgInputTag.files[0];
+	
+	const imgForm = document.querySelector("#img_form");
+	const formData = new FormData(imgForm);
+	formData.set('file', file);
+	
+
+		fetch("/shoekream/mypage/profile/upload"
+		, {method: "POST", body: formData})
+		.then((resp) => { return resp.json() })
+		.then((data) => {
+			alert("잘 됐음");
+			
+		});
+	
+});
