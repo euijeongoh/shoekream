@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.UUID;
 
@@ -52,7 +53,6 @@ public class MainProfileImageController extends HttpServlet {
 			String sep = File.separator;
 			// 경로
 			String path = req.getServletContext().getRealPath(sep + "resources" + sep + "img" + sep + "profile");
-			
 			// 새 파일명 지정
 			String randomName = loginMember.getId() + "_" + System.currentTimeMillis() + "_" + UUID.randomUUID();
 			
@@ -89,8 +89,11 @@ public class MainProfileImageController extends HttpServlet {
 			
 			loginMember = (MemberVo) map.get("loginMember");
 			req.getSession().setAttribute("loginMember", loginMember);
+			
+			resp.sendRedirect("/shoekream/mypage/main");
 		} catch(Exception e) {
 			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		
 		

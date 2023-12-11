@@ -3,6 +3,7 @@ package com.shoekream.mypage.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.MyPageService;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
+import com.shoekream.mypage.vo.HistoryCntVo;
+import com.shoekream.page.vo.PageVo;
 
 @WebServlet("/mypage/buying/bidList")
 
@@ -24,9 +27,11 @@ public class BuyingBiddingController extends HttpServlet{
 
 	// 구매입찰 내역
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			System.out.println("dskjflsdjk");
+			//
+			resp.setCharacterEncoding("UTF-8");
+			
 			// 로그인 여부 체크
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 			if(loginMember == null) {
@@ -47,7 +52,26 @@ public class BuyingBiddingController extends HttpServlet{
 			
 			// service 호출
 			MyPageService service = new MyPageService();
-			List<BiddingHistoryVo> bidList = service.viewBuyingBiddingList(loginMember, map);
+			
+			// 페이징 처리
+			HistoryCntVo cntVo = service.getBuyingCnts(loginMember);
+			
+			int listCount = cntVo.getCntBid();
+			String currentPage_ = req.getParameter("pno");
+			if(currentPage_ == null) {
+				currentPage_ = "1";
+			}
+			int currentPage = Integer.parseInt(currentPage_);
+			int pageLimit = 5;
+			int boardLimit = 10;
+			
+			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);		
+			List<BiddingHistoryVo> bidList = service.viewBuyingBiddingList(loginMember, map); // pvo에 알맞게 service, dao 바꾸기 
+			
+			// 데이터 가공(map)
+			Map<String, Object> respMap = new HashMap<String, Object>();
+			respMap.put("pvo", pvo);
+			respMap.put("bidList", bidList);
 			
 			// result json으로 변환 후 응답
 			PrintWriter out = resp.getWriter();

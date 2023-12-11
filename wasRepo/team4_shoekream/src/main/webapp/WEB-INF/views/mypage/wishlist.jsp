@@ -49,7 +49,7 @@
                                </div>
                            </button>
                            <input type="text" value="${ wishVo.productNo }" hidden>
-                           <div id="a"><a onclick="deleteWish();">삭제</a></div>
+                           <div id="a"><a onclick="">삭제</a></div>
                        </div>
                    </div>
                	</c:forEach>
