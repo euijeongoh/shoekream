@@ -17,7 +17,7 @@ public class QnaDao {
 		public List<QnaVo> QnaList(Connection conn, PageVo pvo) throws Exception{
 			
 			//sql
-			String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM NOTICE_BOARD WHERE DEL_YN = 'N' ORDER BY NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
+			String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD ORDER BY NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pvo.getStartRow());
 			pstmt.setInt(2, pvo.getLastRow());
@@ -48,9 +48,9 @@ public class QnaDao {
 		}
 
 		//전체 게시글 갯수
-		public int selectNoticeCount(Connection conn) throws Exception{
+		public int selectQnaCount(Connection conn) throws Exception{
 			
-			String sql = "SELECT COUNT(*) AS COUNT FROM NOTICE_BOARD WHERE DEL_YN = 'N'";
+			String sql = "SELECT COUNT(*) AS COUNT FROM QNA_BOARD";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
 			ResultSet rs = pstmt.executeQuery();
@@ -69,7 +69,7 @@ public class QnaDao {
 		}
 		
 		//검색 게시글 갯수
-			public int selectSearchNoticeCount(Connection conn, String title) throws Exception{
+			public int selectSearchQnaCount(Connection conn, String title) throws Exception{
 				
 				String sql = "SELECT COUNT(*) FROM NOTICE_BOARD WHERE DEL_YN = 'N' AND TITLE LIKE '%' || ?|| '%'";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -91,24 +91,24 @@ public class QnaDao {
 			}
 
 		//게시글 상세 조회
-		public NoticeVo selectNoticeByNo(Connection conn, String no) throws Exception{
+		public QnaVo selectQnaByNo(Connection conn, String no) throws Exception{
 			
 			//SQL
-			String sql = "SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM NOTICE_BOARD WHERE NO = ? AND DEL_YN = 'N'";
+			String sql = "SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD WHERE NO = ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
 			ResultSet rs = pstmt.executeQuery();
 			
 			//rs
-			NoticeVo vo = null;
+			QnaVo vo = null;
 			if(rs.next()) {
-				vo = new NoticeVo();
-				String noticeNo = rs.getString("NO");
+				vo = new QnaVo();
+				String qnaNo = rs.getString("NO");
 				String title = rs.getString("TITLE");
 				String content = rs.getString("CONTENT");
 				String enrollDate = rs.getString("ENROLL_DATE");
 				
-				vo.setNo(noticeNo);
+				vo.setNo(qnaNo);
 				vo.setTitle(title);
 				vo.setContent(content);
 				vo.setEnrollDate(enrollDate);
@@ -122,10 +122,10 @@ public class QnaDao {
 		}
 
 		//게시글 검색(제목)
-		public List<NoticeVo> noticeSearch(Connection conn, String title, PageVo pvo) throws Exception{
+		public List<QnaVo> qnaSearch(Connection conn, String title, PageVo pvo) throws Exception{
 			
 			//SQL
-			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM NOTICE_BOARD WHERE DEL_YN = 'N' AND TITLE LIKE '%' || ?|| '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD WHERE TITLE LIKE '%' || ?|| '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
 	 		pstmt.setInt(2, pvo.getStartRow());
@@ -134,29 +134,29 @@ public class QnaDao {
 			ResultSet rs = pstmt.executeQuery();
 			
 			//rs
-			List<NoticeVo> noticeVoList = new ArrayList<NoticeVo>();
+			List<QnaVo> qnaVoList = new ArrayList<QnaVo>();
 			while(rs.next()) {
 				
-				NoticeVo vo = new NoticeVo();
+				QnaVo vo = new QnaVo();
 				
 				vo.setNo(rs.getString("NO"));
 				vo.setTitle(rs.getString("TITLE"));
 				vo.setEnrollDate(rs.getString("ENROLL_DATE"));
 				
-				noticeVoList.add(vo);
+				qnaVoList.add(vo);
 				
 			}
 			
-			return noticeVoList;
+			return qnaVoList;
 			
 			//close
 		}
 
 		//게시글 작성
-		public int noticeWrite(Connection conn, NoticeVo vo) throws Exception{
+		public int qnaWrite(Connection conn, QnaVo vo) throws Exception{
 			
 			//SQL
-			String sql = "INSERT INTO NOTICE_BOARD ( NO, MANAGER_NO, TITLE, CONTENT ) VALUES (SEQ_NOTICE_BOARD_NO.NEXTVAL, 1, ?, ?)";
+			String sql = "INSERT INTO QNA_BOARD ( NO, MANAGER_NO, TITLE, CONTENT ) VALUES (SEQ_NOTICE_BOARD_NO.NEXTVAL, 1, ?, ?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());

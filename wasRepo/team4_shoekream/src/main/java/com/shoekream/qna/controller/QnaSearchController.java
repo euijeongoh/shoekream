@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
 import com.shoekream.qna.service.QnaService;
 import com.shoekream.qna.vo.QnaVo;
 
-@WebServlet("/qna/list")
-public class QnaListController extends HttpServlet{
-
-	//화면출력
-		@Override
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
-			QnaService qs = new QnaService();
-
-			try {
+@WebServlet("/qna/search")
+public class QnaSearchController extends HttpServlet{
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		QnaService qs = new QnaService();
+		try {
 			//data
-			int listCount = qs.selectQnaCount();
+			String title = req.getParameter("search");
+			int listCount = qs.selectSearchQnaCount(title);
 			String currentPage_ = req.getParameter("pno");
 			if(currentPage_ == null) {
 				currentPage_ = "1";
@@ -33,20 +33,25 @@ public class QnaListController extends HttpServlet{
 			int pageLimit = 5;
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
+//			System.out.println("title값 확인 : " + title);
 			
 			//service
-			List<QnaVo> QnaVoList = qs.QnaList(pvo);
+			List<QnaVo> qnaVoList = qs.qnaSearch(title, pvo);
+//			System.out.println("notice값 확인 : " + noticeVoList);
+			
 			
 			//result == view
-			req.setAttribute("qnaVoList", QnaVoList);
+			
+			req.setAttribute("qnaVoList", qnaVoList);
 			req.setAttribute("pvo", pvo);
 			req.getRequestDispatcher("/WEB-INF/views/board/qna/list.jsp").forward(req, resp);
 			
-			}catch(Exception e) {
-				System.out.println("[ERROR-001] 게시글 조회 중 에러 발생..");
-				req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp").forward(req, resp);
-				e.printStackTrace();
-			}
+			
+		}catch(Exception e) {
+			System.out.println("[ERROR-003] 게시글 검색 중 에러 발생..");
+			e.printStackTrace();
+			req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp");
 		}
-	
+	}
+
 }
