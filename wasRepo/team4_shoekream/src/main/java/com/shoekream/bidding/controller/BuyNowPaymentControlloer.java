@@ -1,6 +1,7 @@
 package com.shoekream.bidding.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -22,8 +23,6 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			int totalAmount = 0;
-			
 			String loginMemberNo = req.getParameter("loginMemberNo");
 			String productsNo = req.getParameter("productsNo");
 			String buyPrice = req.getParameter("buyPrice");
@@ -46,7 +45,18 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 				throw new Exception("예외 발생 : dbVo == null");
 			}
 			
-			int ordersResult = bs.orders(loginMemberNo, dbVo.getNo() ,productsNo, totalAmount);
+			int commission = ((int)(Math.round(((Integer.parseInt(dbVo.getPrice()))*0.03)*0.01)*100));
+				System.out.println("BuyNowPaymentController 에러확인 commission : " + commission);
+			int price = Integer.parseInt(dbVo.getPrice());
+				System.out.println("BuyNowPaymentController 에러확인 price : " + price);
+			int totalAmount = commission + 3000 + price;
+				System.out.println("BuyNowPaymentController 에러확인 totalAmount : " + totalAmount);
+			
+			String commissionStr = String.valueOf(commission);
+			String totalAmountStr = String.valueOf(totalAmount);
+
+			
+			int ordersResult = bs.orders(loginMemberNo, dbVo.getNo() ,productsNo, commissionStr, totalAmountStr  );
 			if (ordersResult != 1) {
 				throw new Exception("예외 발생 : ordersResult != 1");
 			}
@@ -61,18 +71,12 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 			TestVo cardInfo = (TestVo)result.get("cardInfo");
 			
 			
-			int commission = ((int)(Math.round(((Integer.parseInt(dbVo.getPrice()))*0.03)*0.01)*100));
-				System.out.println("BuyNowPaymentController 에러확인 commission : " + commission);
-			int deliveryCharge = 3000;
-				System.out.println("BuyNowPaymentController 에러확인 deliveryCharge : " + deliveryCharge);
-			int price = Integer.parseInt(dbVo.getPrice());
-				System.out.println("BuyNowPaymentController 에러확인 price : " + price);
-			totalAmount = commission + deliveryCharge + price;
-				System.out.println("BuyNowPaymentController 에러확인 totalAmount : " + totalAmount);
+
+				
 			
+
 			
 			req.setAttribute("commission", commission);
-			req.setAttribute("deliveryCharge", deliveryCharge);
 			req.setAttribute("totalAmount", totalAmount);
 			
 			req.getSession().setAttribute("addInfo", addInfo);

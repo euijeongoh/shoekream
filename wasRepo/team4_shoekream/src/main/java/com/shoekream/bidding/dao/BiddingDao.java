@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.biddingVo.TestVo;
@@ -266,7 +267,7 @@ public class BiddingDao {
 	public OrdersVo ordersInfo(Connection conn, String memberNo, String biddingNo, String productsNo) throws Exception{
 
 		// sql
-		String sql = "SELECT O.NO ,O.MEMBER_NO ,O.ORDERS_STATUS_NO ,OS.ORDERS_STATUS ,O.BIDDING_NO ,O.PRODUCT_NO ,O.INSPECTION_NO ,I.CHECK_RESULT ,O.ORDERS_DATE ,O.PAYMENT_TYPE ,O.PAYMENT_DATE ,O.STORAGE_DATE ,O.CHECK_DATE ,O.RETURN_DATE ,O.SEND_DATE ,O.TOTAL_PRICE ,P.NAME FROM ORDERS O JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO JOIN INSPECTION I ON O.INSPECTION_NO = I.NO JOIN MEMBER M ON O.MEMBER_NO = M.NO JOIN BIDDING B ON O.BIDDING_NO = B.NO JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO WHERE O.MEMBER_NO = ? AND O.BIDDING_NO = ? AND O.PRODUCT_NO = ? ORDER BY NO DESC";
+		String sql = "SELECT O.NO ,O.MEMBER_NO ,O.ORDERS_STATUS_NO ,OS.ORDERS_STATUS ,O.BIDDING_NO ,O.PRODUCT_NO ,O.INSPECTION_NO ,I.CHECK_RESULT ,O.ORDERS_DATE ,O.PAYMENT_TYPE ,O.PAYMENT_DATE ,O.STORAGE_DATE ,O.CHECK_DATE ,O.RETURN_DATE ,O.SEND_DATE ,O.TOTAL_PRICE ,O.COMMISSION ,P.NAME ,B.PRICE FROM ORDERS O JOIN ORDERS_STATUS OS ON O.ORDERS_STATUS_NO = OS.NO JOIN INSPECTION I ON O.INSPECTION_NO = I.NO JOIN MEMBER M ON O.MEMBER_NO = M.NO JOIN BIDDING B ON O.BIDDING_NO = B.NO JOIN PRODUCTS P ON O.PRODUCT_NO = P.NO WHERE O.MEMBER_NO = ? AND O.BIDDING_NO = ? AND O.PRODUCT_NO = ? ORDER BY NO DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, memberNo);
 		pstmt.setString(2, biddingNo);
@@ -297,6 +298,8 @@ public class BiddingDao {
 			ordersVo.setReturnDAte(rs.getString(14));
 			ordersVo.setSendDate(rs.getString(15));
 			ordersVo.setTotalPrice(rs.getString(16));
+			ordersVo.setCommission(rs.getString(17));
+			ordersVo.setPrice(rs.getString(19));
 				System.out.println("ordersVo : 주문 조회");
 				System.out.println("dao에러확인 ordersVo : " + ordersVo);
 		}
@@ -312,20 +315,22 @@ public class BiddingDao {
 
 
 	// 주문 정보 입력
-	public int orders(Connection conn, String loginMemberNo, String biddngNo, String productsNo, String totalAmount) throws Exception{
-
+	public int orders(Connection conn, String loginMemberNo, String biddngNo, String productsNo, String commissionStr, String totalAmountStr) throws Exception{
+		
 		// sql
-		String sql = "INSERT INTO ORDERS VALUES(SEQ_ORDERS_NO.NEXTVAL, ?, 4, ?, ?, 1, SYSDATE, '카드', SYSDATE, NULL, NULL, NULL, NULL, ?)";
+		String sql = "INSERT INTO ORDERS VALUES(SEQ_ORDERS_NO.NEXTVAL, ?, 4, ?, ?, 1, SYSDATE, '카드', SYSDATE, NULL, NULL, NULL, NULL, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 			System.out.println("orders : 주문 정보 입력");
 			System.out.println("dao에러확인 loginMemberNo : " + loginMemberNo);
 			System.out.println("dao에러확인 biddngNo : " + biddngNo);
 			System.out.println("dao에러확인 productsNo : " + productsNo);
-			System.out.println("dao에러확인 totalAmount : " + totalAmount);
+			System.out.println("dao에러확인 totalAmount : " + totalAmountStr);
+			System.out.println("dao에러확인 commission : " + commissionStr);
 		pstmt.setString(1, loginMemberNo);
 		pstmt.setString(2, biddngNo);
 		pstmt.setString(3, productsNo);
-		pstmt.setString(4, totalAmount);
+		pstmt.setString(4, totalAmountStr);
+		pstmt.setString(5, commissionStr);
 		int result = pstmt.executeUpdate();
 
 		// rs
