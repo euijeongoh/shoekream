@@ -1,3 +1,4 @@
+/* header */
 * {
     margin: 0;
     padding: 0;
@@ -102,6 +103,8 @@ header .main-list li {
     padding: 10px 30px;
 }
 
+
+/* review_list */
 .abcd{
     display: flex;
     height: 40px;
@@ -134,46 +137,101 @@ header .main-list li {
 
 .listphoto{
     width: 1200px;
-    margin-bottom: 20px;
+    /* height: 500px; */
     display: flex;
     justify-content: space-evenly;
-    /* background-color: antiquewhite; */
 }
 .listphoto2{
     width: 1200px;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
-    /* background-color: blue; */
+    margin-top: 0px;
 }
 .listphoto3{
     width: 1200px;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
-    /* background-color: white; */
+    margin-top: 50px;
 }
 .listphoto4{
     width: 1200px;
     display: flex;
     justify-content: space-evenly;
-    /* background-color: green; */
+    margin-top: 30px;
 }
 .photo{
-    width: 95%;
-    /* padding: 15px 0px; */
-    height: 100%;
+    width: 280px;
+    height: 300px;
+    border: 1px solid lightgray;
     border-radius: 10%
 }
+.photo2{
+    /* margin-top: 20px; */
+    width: 280px;
+    height: 350px;
+    border: 1px solid lightgray;
+    border-radius: 10%
+}
+.photo3{
+    margin-top: 80px;
+    width: 280px;
+    height: 330px;
+    border: 1px solid lightgray;
+    border-radius: 10%
+}
+.photo4{
+    margin-top: 40px;
+    width: 280px;
+    height: 380px;
+    border: 1px solid lightgray;
+    border-radius: 10%
+}
+.photo5{
+    margin-top: 120px;
+    width: 280px;
+    height: 380px;
+    border: 1px solid lightgray;
+    border-radius: 10%
+}
+.text{
+	margin-top: 8px;
+	font-size: small;
+	margin-right: 40px;
+}
+.text2 p{
+	margin-top: 8px;
+	font-size: small;
+	margin-left: 2px;
+}
+.text3 p{
+	margin-top: 8px;
+	font-size: small;
+	margin-left: 0px;
+}
 .wave{
+    height: 35px;
+    width: 35px;
     border-radius: 70%;
     border: 1px solid lightgray;
+    margin-left: 20px;
+}
+.likey{
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
 }
 .detail{
     display: flex;
     justify-content: space-between;
     width: 94%;
+    height: 35px;
+    margin-bottom: 25px;
+    /* background-color: aqua; */
 }
+/* .likenum{
+    display: ;
+    justify-content: flex-end;
+} */
 .likebox{
     display: inline-flex;
     justify-content: space-evenly;
@@ -182,12 +240,13 @@ header .main-list li {
 .one{
     display: block;
     width: 25%;
-    height: 25%;
+    justify-content: space-between;
+    /* height: 250px; */
     /* background-color: skyblue; */
 }
 
 
-
+/* footer */
 footer {
     /* background-color: gray; */
     width: 1280px;

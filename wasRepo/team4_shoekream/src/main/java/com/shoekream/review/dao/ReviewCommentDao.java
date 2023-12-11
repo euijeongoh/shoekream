@@ -25,11 +25,11 @@ public class ReviewCommentDao {
 		return result;
 	}
 
-//	//댓글 목록
-//	public List<ReviewCommentVo> ReviewCommentList(Connection conn) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	//댓글 목록
+	public List<ReviewCommentVo> ReviewCommentList(Connection conn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 	

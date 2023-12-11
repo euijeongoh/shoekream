@@ -65,7 +65,7 @@
                 <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
                 <div>
                     <div class="upload_picture">
-                        <img src="" alt="리뷰사진" id="reviewpng">
+                        <img src="" alt="" id="reviewpng">
                     </div>
                     <div class="img_label">
                         <label for="file-input" id="file-input-label">이미지 선택</label>
