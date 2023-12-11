@@ -78,7 +78,7 @@ public class AdminEnrollProductDao {
 		return dbVo;
 
 	}
-
+	//상품 등록
 	public int enrollProduct(Connection conn, EnrollProductVo vo) throws Exception {
 		String sql = "INSERT INTO PRODUCTS(NO, BRAND_NO, CATEGORY_NO, NAME, NAME_KO, MODEL_NUMBER, RELEASE_PRICE, RELEASE_DATE, DEL_YN) VALUES(SEQ_PRODUCTS_NO.NEXTVAL, ?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -97,7 +97,7 @@ public class AdminEnrollProductDao {
 
 		return result;
 	}
-	
+	//상품 번호를 가져오기
 	public EnrollProductVo getEnrolledProductNo(Connection conn, EnrollProductVo vo) throws Exception{
 		String sql = "SELECT NO FROM PRODUCTS WHERE MODEL_NUMBER = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -112,7 +112,7 @@ public class AdminEnrollProductDao {
 		JDBCTemplate.close(pstmt);
 		return dbVo;
 	}
-
+	//사이즈 배열을 db에 등록하기
 	public int enrollProductSize(Connection conn, EnrollProductVo productSizesVo) throws Exception{
 		String[] sizeNo = productSizesVo.getSizeNo();
 		int result = 0;
@@ -135,8 +135,10 @@ public class AdminEnrollProductDao {
 	//제품 목록 조회
 	public List<EnrollProductVo> selectProductList(Connection conn, PageVo pvo) throws Exception{
 		//sql
-		String sql = "SELECT NAME_KO, MODEL_NUMBER FROM PRODUCTS WHERE DEL_YN = 'N'";
+		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NAME_KO, MODEL_NUMBER FROM PRODUCTS WHERE DEL_YN = 'N' ORDER BY MODEL_NUMBER DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, pvo.getStartRow());
+		pstmt.setInt(2, pvo.getLastRow());
 		ResultSet rs = pstmt.executeQuery();
 		List<EnrollProductVo> voList = new ArrayList<EnrollProductVo>();
 		while(rs.next()) {
@@ -153,7 +155,7 @@ public class AdminEnrollProductDao {
 		
 		return voList;
 	}
-
+	//상품의 갯수 출력(페이징을 위한)
 	public int selectProductCount(Connection conn) throws Exception {
 		String sql = "SELECT COUNT(*) FROM PRODUCTS WHERE DEL_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -167,7 +169,7 @@ public class AdminEnrollProductDao {
 		
 		return cnt;
 	}
-
+	//상품목록에서 상품 지우기
 	public int delete(Connection conn, EnrollProductVo vo) throws Exception{
 		
 		String sql = "UPDATE PRODUCTS SET DEL_YN = 'Y' WHERE MODEL_NUMBER = ?";
@@ -191,6 +193,112 @@ public class AdminEnrollProductDao {
 		}
 		
 		
+	}
+	//상품 정보수정을 위해 상품정보 불러오기
+	public EnrollProductVo getProductInfo(Connection conn, String modelNumber) throws Exception{
+		String sql = "SELECT * FROM PRODUCTS WHERE MODEL_NUMBER = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, modelNumber);
+		ResultSet rs = pstmt.executeQuery();
+		EnrollProductVo dbVo = null;
+		if(rs.next()) {
+			String productNo = rs.getString("NO");
+			String name = rs.getString("NAME");
+			String nameKo = rs.getString("NAME_KO");
+			String releasePrice = rs.getString("RELEASE_PRICE");
+			String releaseDate = rs.getString("RELEASE_DATE");
+			String categoryNo = rs.getString("CATEGORY_NO");
+			String brandNo = rs.getString("BRAND_NO");
+			
+			dbVo = new EnrollProductVo();
+			
+			dbVo.setProductNo(productNo);
+			dbVo.setProductName(name);
+			dbVo.setProductNameKo(nameKo);
+			dbVo.setReleaseDate(releaseDate);
+			dbVo.setReleasePrice(releasePrice);
+			dbVo.setCategoryNo(categoryNo);
+			dbVo.setBrandNo(brandNo);
+			
+		}
+		
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return dbVo;
+	}
+	//상품 정보수정을 위해 사이즈배열 가져오기
+	public List<String> getProductSizesInfo(Connection conn, String productNo) throws Exception{
+		String sql = "SELECT PS.PRODUCT_NO AS PRODUCT_NO, SS.SHOES_SIZES AS SIZES FROM PRODUCT_SIZES PS JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE PS.PRODUCT_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productNo);
+		ResultSet rs = pstmt.executeQuery();
+		List<String> sizes = new ArrayList<>();
+		while(rs.next()) {
+			String size = rs.getString("SIZES");
+			sizes.add(size);
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return sizes;
+		
+	}
+	//상품 정보 수정을 위해 카테고리 이름 가져오기
+	public EnrollProductVo getProductCategoryInfo(Connection conn, String categoryNo) throws Exception{
+		String sql = "SELECT CATEGORY_NAME FROM CATEGORY WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, categoryNo);
+		ResultSet rs = pstmt.executeQuery();
+		EnrollProductVo dbVo = null;
+		if(rs.next()) {
+			String categoryName = rs.getString("CATEGORY_NAME");
+			dbVo = new EnrollProductVo();
+			dbVo.setCategory(categoryName);
+		}
+		
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return dbVo;
+	}
+	//브랜드 번호로 브랜드명 가져오기
+	public EnrollProductVo getProductBrandInfo(Connection conn, String brandNo) throws Exception{
+		String sql = "SELECT BRAND_NAME FROM BRAND WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, brandNo);
+		ResultSet rs = pstmt.executeQuery();
+		EnrollProductVo dbVo = null;
+		if(rs.next()) {
+			String brandName = rs.getString("BRAND_NAME");
+			dbVo = new EnrollProductVo();
+			
+			dbVo.setBrand(brandName);
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return dbVo;
+	}
+
+	public List<EnrollProductVo> getProductList(Connection conn) throws Exception{
+		String sql = "SELECT P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, B.BRAND_NAME AS BRAND_NAME FROM PRODUCTS p JOIN BRAND B ON B.NO = P.BRAND_NO"	;
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		List<EnrollProductVo> dbVo = new ArrayList<EnrollProductVo>();
+		EnrollProductVo vo = null;
+		while(rs.next()) {
+			String name = rs.getString("NAME");
+			String releasePrice= rs.getString("RELEASE_PRICE");
+			String brandName = rs.getString("BRAND_NAME");
+			vo = new EnrollProductVo();
+			vo.setProductName(name);
+			vo.setReleasePrice(releasePrice);
+			vo.setBrand(brandName);
+			
+			dbVo.add(vo);
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return dbVo;
 	}
 	
 }

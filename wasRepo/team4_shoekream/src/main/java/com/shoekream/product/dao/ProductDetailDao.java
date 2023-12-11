@@ -45,18 +45,25 @@ public class ProductDetailDao {
 	
 	//SHOES_SIZES테이블에서 데이터 추출
 	public EnrollProductVo getShoesSizesDetail(Connection conn, EnrollProductVo productDetailVo) throws Exception{
-		
-		String sql = "SELECT PS.PRODUCT_NO, SS.SHOES_SIZES FROM PRODUCT_SIZES PS JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE PS.PRODUCT_NO = ?";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, productDetailVo.getProductNo());
-		
-		
-		JDBCTemplate.close(rs);
-		JDBCTemplate.close(pstmt);
-		
-		return  dbVo;
+	    String sql = "SELECT PS.PRODUCT_NO, SS.SHOES_SIZES FROM PRODUCT_SIZES PS JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE PS.PRODUCT_NO = ?";
+	    PreparedStatement pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1, productDetailVo.getProductNo());
+	    ResultSet rs = pstmt.executeQuery();
+	    EnrollProductVo dbVo = new EnrollProductVo();
+	    List<String> shoesSizesList = new ArrayList<>();
+	    while(rs.next()) {
+	        String shoesSizes = rs.getString("SS.SHOES_SIZES");
+	        shoesSizesList.add(shoesSizes);
+	    }
+	    // 조회한 사이즈 정보를 EnrollProductVo 객체에 설정
+	    String[] shoesSizesArray = shoesSizesList.toArray(new String[0]);
+	    dbVo.setSize(shoesSizesArray);
+
+	    JDBCTemplate.close(rs);
+	    JDBCTemplate.close(pstmt);
+
+	    return dbVo;
 	}
-	
 	
 	//BIDDING테이블에서 데이터 추출
 

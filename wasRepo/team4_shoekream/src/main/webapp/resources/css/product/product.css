@@ -1,0 +1,290 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#wrap {
+    width: 100vw;
+    background-color: wheat;
+}
+
+header{
+    width: 1280px;
+    height: 86px;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 22px 64px;
+}
+
+header .top_list {
+    display: flex;
+    justify-content: end;
+    padding-top: 8px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+header .top_list ul {
+    display: flex;
+    align-items: center;
+    padding: 0;   
+    text-decoration: none;
+}
+
+header .top_list ul li {
+    align-items: center;
+    margin-left: 20px;
+    font-size: 12px;
+    font-family: 'Pretendard';
+}
+
+.top_list ul li a {
+    text-decoration: none;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+#search_btn {
+    width: 24px;
+    cursor: pointer;
+}
+
+header .main_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+}
+.main_title{
+    font-family: 'Pretendard';
+    font-size: 20px;
+}
+
+.main_list .logo_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+}
+
+.main_list .logo_area img {
+    width: 120px;
+    height: 24px;
+}
+
+.main_list .head_list ul {
+    display: flex;
+    align-items: center;
+}
+
+header .main_list li {
+    width: 90px;
+}
+
+.main_list li a {
+    font-family: 'Pretendard Light';
+    font-size: 18px;
+    text-decoration: none;
+    color: rgba(34, 34, 34);
+}
+
+.main_list img {
+    height: 24px;
+}
+.content {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1280px;
+        padding: 0 40px 80px;
+        position: relative
+}
+.content .search_content{
+    flex : 1;
+}
+.search_title {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    position: relative;
+    border-bottom: 1px solid lightgray;
+}
+.title_txt {
+    color: #000;
+    cursor: pointer;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -.12px;
+
+    
+}
+.search_filter {
+    -ms-overflow-style: none;
+    margin-right: 10px;
+    max-height: calc(100vh - var(--global-header-height) - 84px);
+    overflow-x: hidden;
+    padding-right: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    scrollbar-width: none;
+    top: calc(var(--global-header-height) + 44px);
+    width: 210px
+}
+.filter_status {
+    justify-content: space-between;
+    padding: 20px 0 16px
+}
+
+.filter_status, .status_box {
+    align-items: center;
+    display: flex
+}
+.status_txt {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -.21px
+}
+
+.btn_delete {
+    color: rgba(34,34,34,.5);
+    font-size: 13px;
+    letter-spacing: -.07px
+}
+
+.btn_delete, .btn_delete :hover {
+    -webkit-text-decoration: underline;
+    text-decoration: underline
+}
+.category {
+    font-size: 16px;
+    font-family: 'Pretendard';
+}
+.category_select {
+    height: 180px;
+    margin-bottom: 20px;
+}
+.category_select > span{
+    margin-left: 10px;
+}
+.brand_select {
+    font-family: 'Pretendard';
+    -webkit-mask-image: linear-gradient(0deg,transparent,#000),linear-gradient(270deg,transparent 17px,#000 0);
+    mask-image: linear-gradient(0deg,transparent,#000),linear-gradient(270deg,transparent 17px,#000 0);
+    -webkit-mask-position: left bottom;
+    mask-position: left bottom;
+    -webkit-mask-size: 100% 20000px;
+    mask-size: 100% 20000px;
+    max-height: 315px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: -webkit-mask-position .3s;
+    transition: mask-position .3s;
+    transition: mask-position .3s,-webkit-mask-position .3s
+}
+.brand_select :hover {
+    -webkit-mask-position: left top;
+    mask-position: left top
+}
+.price{
+    font-family: 'Pretendard';
+}
+.search_content{
+    flex: 1;
+}
+.shop_counts{
+    margin-top : 20px;
+}
+.shop_counts{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.sorting_title{
+    color: #222;
+    font-size: 14px;
+}
+.sorting_title{
+    align-items: center;
+    cursor: pointer;
+    display:flex;
+    font-size: 13px;
+    border: none;
+    background-color: white;
+}
+.sorting_title:after{
+    content: "";
+    display:inline-flex;
+    height: 12px;
+    margin-left: 2px;
+    width: 13px;
+}
+.sorting_title::after{
+    background: url(/frontRepo/user/html/msh/sorting.svg);
+    height: 24px;
+    width: 24px;
+}
+.search_product_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 20px; 
+    row-gap: 40px;
+    flex-wrap: wrap;
+
+}
+.product_list_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product_list_wrap li{
+    width: 30%;
+    margin-right: 6px;
+    
+}
+
+.product_list_wrap li #product_img {
+    background-color: rgba(235, 240, 245);
+    width: 100%;
+    height: 234px;
+    border-radius: 12px;
+}
+
+.product_list_wrap li #product_img img {
+    width: 100%;
+    height: 234px;
+    border-radius: 12px;
+}
+
+.info_box {
+    padding-top: 9px;
+    font-family: 'Pretendard';
+    width: 100%;
+}
+
+#brand {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#model-name {
+    font-size: 13px;
+    margin-bottom: 2px;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+#price {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 12px;
+    color: rgba(34, 34, 34);
+}
+
