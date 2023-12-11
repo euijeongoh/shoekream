@@ -32,5 +32,6 @@ btnoutlinegreyArr.forEach( (x) =>{ x.addEventListener("click" , handleClick )});
 function handleClick(){
     btnoutlinegreyArr.forEach( (x)=>{x.classList.remove('btnoutlinegrey_color')});
     this.classList.add('btnoutlinegrey_color');
+    console.log(this.innerHTML);
     alert("성공");
 }
