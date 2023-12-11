@@ -1,3 +1,4 @@
+<%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
 <%@page import="com.shoekream.review.vo.ReviewVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
     
     <%
     	List<ReviewVo> reviewVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
+    	EnrollProductVo productVo = (EnrollProductVo) request.getAttribute("productVo");
     %>
     
 <!DOCTYPE html>
@@ -30,8 +32,8 @@
                     <img src="/shoekream/resources/img/review/tage_img.png" alt="상품이미지" class="picture_img">
                 </div>
                 <div class="jordan">
-                    <p class="jordan_eg"><b>(W) Jordan 1 Low White Wolf Grey</b></p>
-                    <p class="jordan_ko">(W) 조던 1 로우 화이트 울프 그레이</p>
+                    <p class="jordan_eg"><b><%=productVo.getProductName() %></b></p>
+                    <p class="jordan_ko"><%= productVo.getProductNameKo() %></p>
                 </div>
             </div>
 

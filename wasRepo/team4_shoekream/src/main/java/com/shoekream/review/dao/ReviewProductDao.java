@@ -69,12 +69,12 @@ public class ReviewProductDao {
 		return result;
 	}
 	
-	public EnrollProductVo getEnrolledProductNo(Connection conn, EnrollProductVo vo) throws Exception{
+	public ReviewProductVo getReviewProductNo(Connection conn, EnrollProductVo vo) throws Exception{
 		String sql = "SELECT NO FROM PRODUCTS WHERE MODEL_NUMBER = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getModelNumber());
 		ResultSet rs = pstmt.executeQuery();
-		EnrollProductVo dbVo = new EnrollProductVo();
+		ReviewProductVo dbVo = new ReviewProductVo();
 		if(rs.next()) {
 			int productNo = rs.getInt(1);
 			dbVo.setProductNo(String.valueOf(productNo));

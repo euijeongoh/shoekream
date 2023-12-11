@@ -49,12 +49,13 @@
                     <!-- <a href=""><p id="brand">#나이키</p></a> -->
                 </div>
             </div>
-   <form action="/shoekream/review/comment" method="post" onsubmit="submitComment(event)">
+   
         <div class="comment_box">
             <div class="wcomment_profile">
                 <img src="/shoekream/resources/img/review/profile_img.png" alt="임시프사" class="exprofile">
             </div>
             <div class="wcomment">
+            <form action="/shoekream/review/comment" method="post" onsubmit="submitComment(event)">
                 <textarea name="comment" id="write_comment"
                 placeholder="   댓글을 남겨주세요!"></textarea>
             </div>
@@ -127,7 +128,6 @@
 </body>
 </html>
 
-// comment.jsp (아래에 추가)
 <script>
     function submitComment(event) {
         event.preventDefault(); // 기본 form 제출 방지

@@ -17,14 +17,14 @@ public class ReviewDao {
 	public int write(Connection conn, ReviewVo vo) throws Exception {
 		
 	 //SQL
-	  String sql = "INSERT INTO REVIEW(NO, MEMBER_NO, PRODUCT_NO, COMFORT_NO, CONTENT , LIKE_BTN) VALUES(SEQ_REVIEW_NO.NEXTVAL, ?, ?, ?, ?, ?)";
+	  String sql = "INSERT INTO REVIEW(NO, MEMBER_NO, PRODUCT_NO, COMFORT_NO, CONTENT) VALUES(SEQ_REVIEW_NO.NEXTVAL, ?, ?, ?, ?)";
       PreparedStatement pstmt = conn.prepareStatement(sql);
 //      pstmt.setString(1, vo.getNo());
       pstmt.setString(1, vo.getMemberNo());
       pstmt.setString(2, vo.getProductNo());
       pstmt.setString(3, vo.getComfortNo());
       pstmt.setString(4, vo.getContent());
-      pstmt.setString(5, vo.getLikeBtn());
+//      pstmt.setString(5, vo.getLikeBtn());
 //      pstmt.setString(6,  vo.getReviewImage());
       int result = pstmt.executeUpdate();
       
@@ -34,7 +34,6 @@ public class ReviewDao {
       
    }
 	
-
 
 	//내 리뷰 목록조회 (리스트)
 	public List<ReviewVo> myReviewList(Connection conn) throws Exception {
@@ -51,14 +50,14 @@ public class ReviewDao {
 			String no = rs.getString("NO");
 			String likeBtn = rs.getString("LIKE_BTN");
 //			String reviewImage = rs.getString("REVIEW_IMAGE");
-			String profileImage = rs.getString("PROFILE_IMAGE");
+//			String profileImage = rs.getString("PROFILE_IMAGE");
 			String enrollDate = rs.getString("ENROLL_DATE");
 			
 			ReviewVo vo = new ReviewVo();
 			vo.setNo(no);
 			vo.setLikeBtn(likeBtn);
 //			vo.setReviewImage(reviewImage);
-			vo.setProfileImage(profileImage);
+//			vo.setProfileImage(profileImage);
 			vo.setEnrollDate(enrollDate);
 			
 			myreviewVoList.add(vo);
@@ -251,6 +250,7 @@ public class ReviewDao {
 	      
 	   }//delete
 	
+	
 	//리뷰 수정
 	 public int updateReviewByNo(Connection conn, ReviewVo vo) throws Exception {
 		   // SQL
@@ -266,6 +266,29 @@ public class ReviewDao {
 		   
 		   return result; 
 	   }
+
+
+	public EnrollProductVo getProductInfo(Connection conn, String productNo) throws Exception{
+		String sql = "SELECT NAME, NAME_KO FROM PRODUCTS WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productNo);
+		ResultSet rs = pstmt.executeQuery();
+		
+		EnrollProductVo dbVo = null;
+		if(rs.next()) {
+			String name = rs.getString("NAME");
+			String nameKo = rs.getString("NAME_KO");
+			dbVo = new EnrollProductVo();
+			
+			dbVo.setProductName(name);
+			dbVo.setProductNameKo(nameKo);
+			
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return dbVo;
+	}
 
 
 }//class
