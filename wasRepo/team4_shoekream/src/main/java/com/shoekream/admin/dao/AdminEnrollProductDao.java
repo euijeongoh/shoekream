@@ -279,26 +279,6 @@ public class AdminEnrollProductDao {
 		return dbVo;
 	}
 
-	public List<EnrollProductVo> getProductList(Connection conn) throws Exception{
-		String sql = "SELECT P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, B.BRAND_NAME AS BRAND_NAME FROM PRODUCTS p JOIN BRAND B ON B.NO = P.BRAND_NO"	;
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		ResultSet rs = pstmt.executeQuery();
-		List<EnrollProductVo> dbVo = new ArrayList<EnrollProductVo>();
-		EnrollProductVo vo = null;
-		while(rs.next()) {
-			String name = rs.getString("NAME");
-			String releasePrice= rs.getString("RELEASE_PRICE");
-			String brandName = rs.getString("BRAND_NAME");
-			vo = new EnrollProductVo();
-			vo.setProductName(name);
-			vo.setReleasePrice(releasePrice);
-			vo.setBrand(brandName);
-			
-			dbVo.add(vo);
-		}
-		JDBCTemplate.close(rs);
-		JDBCTemplate.close(pstmt);
-		return dbVo;
-	}
+	
 	
 }

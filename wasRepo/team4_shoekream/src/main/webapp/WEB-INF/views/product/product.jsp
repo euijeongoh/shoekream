@@ -1,8 +1,10 @@
+<%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%
-    	
+    List<EnrollProductVo> productVoList = (List<EnrollProductVo>) request.getAttribute("productVoList");
     %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -101,17 +103,17 @@
                     </div>
                     <div class="search_product_content">
                         <ul class="product_list_wrap">
-                           <%for(ProductVo vo : voList){ %>	
+                           <%for(EnrollProductVo vo : productVoList){ %>	
                             <li>
-                            <a href="/shoekream/product/modelNumber=<%=vo.getModelNumber()%>">
+                            <a href="/shoekream/product/detail?modelNumber=" + <%=vo.getModelNumber()%>>
                                 <div class="product">
                                     <div id="product_img">
                                         <img src="./resources/product1.webp">
                                     </div>
                                     <div class="info_box">
-                                        <div id="brand"><%= vo.getProductBrand()%></div>
-                                        <div id="model_name"><%= vo.getProductName %></div>
-                                        <div id="price"><%=vo.getProductPrice() %></div>
+                                        <div id="brand"><%= vo.getBrand()%></div>
+                                        <div id="model_name"><%= vo.getProductName() %></div>
+                                        <div id="price"><%=vo.getReleasePrice() %></div>
                                     </div>
                                 </div>
                             </a>

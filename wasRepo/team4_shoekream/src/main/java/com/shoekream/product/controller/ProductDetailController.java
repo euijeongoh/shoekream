@@ -1,6 +1,7 @@
 package com.shoekream.product.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,24 +26,27 @@ public class ProductDetailController extends HttpServlet{
 			
 			//객체에 담긴 modelNumber를 통해 해당 model의 상세정보 조회
 			ProductDetailService ps = new ProductDetailService();
+			
+			System.out.println(modelNumber);
+			
+			
 			//PRODUCTS테이블 쪽 데이터(bidding을 위해 productNo도 가져옴)
-			EnrollProductVo productDetailVo = ps.getProductDetail(enrolledProductVo);
+			EnrollProductVo productDetailVo = ps.getProductDetail(modelNumber);
+			if(productDetailVo == null) {
+				throw new Exception("상품 상세조회 중 에러 발생");
+			}
 			// 제품번호(PRODUCTS테이블의 NO)를 넘겨서 그에 해당하는 사이즈를 가져오기위해 PRODUCT_SIZES테이블에 접근해서
 			// 해당 제품이 가질 수 있는 SHOES_SIZES_NO의 배열을 가져오고 SHOES_SIZES테이블에서 배열 원소에 해당하는 사이즈 값을 반환
 			EnrollProductVo shoesSizesDetailVo = ps.getShoesSizesDetail(productDetailVo);
 			//BIDDING 테이블 쪽 데이터
-			BiddingVo biddingVo = new BiddingVo();
-			biddingVo = ps.getBiddingDetail();
-			if(productDetailVo == null) {
-				throw new Exception("상품 상세조회 중 에러 발생");
-			}
-			//가져온걸 담아주기
-			//PRODUCTS테이블
+			List<BiddingVo> biddingList = ps.getBiddingDetail(productDetailVo.getProductNo());
+//			가져온걸 담아주기
+//			PRODUCTS테이블
 			req.setAttribute("productDetailVo", productDetailVo);
 			//SHOES_SIZES테이블
 			req.setAttribute("shoesSizesDetailVo", shoesSizesDetailVo);
 			//BIDDING테이블
-			req.setAttribute("biddingVo", biddingVo);
+			req.setAttribute("biddingList", biddingList);
 			req.getRequestDispatcher("/WEB-INF/views/product/detail.jsp").forward(req, resp);
 			
 		}catch(Exception e) {
