@@ -8,8 +8,10 @@
 </head>
 
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
-	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/nowpayment.css">
+	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/order.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+
+    <script defer src="/shoekream/resources/js/bidding/order.js"></script>
 <body>
     <div class="wrap">
         <header>
@@ -31,7 +33,7 @@
                     </div>
                     <div class="center">
                         <h2 class="h2_buy">
-                            <span>배송/결제</span>
+                            <span>${ trade }${ process }</span>
                         </h2>
                     </div>
                     <div class="right">
@@ -49,10 +51,115 @@
     <div class="container">
         <div class="content">
             <div class="buy_immediate">
+                <!-- 주문번호  -->
+                <div class="order_area">
+                    <div class="area_number">
+                        <dt class="title">주문번호</dt>
+                        <dd class="desc">어쩌구일련번호</dd>
+                    </div>
+                </div>
+                <!-- 주문번호  -->
+
+                <div class="display_separator"></div>
 
                 <!-- 상품 정보 -->
                 <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                 <!-- 상품 정보 -->
+
+                <div class="display_separator"></div>
+
+                <!-- 진행 상황 -->
+                <div class="order_area">
+                    <div class="status_process">진행상황</div>
+                    <div class="status_area">
+                        <input class="ordersStatus" type="hidden" name="ordersStatus" value="${ ordersVo.ordersStatus }">
+                        
+                        <div class="order_status order_status_1" >거래체결</div>
+                        <div class="order_status order_status_2" >입고완료</div>
+                        <div class="order_status order_status_3" >검수완료</div>
+                        <div class="order_status order_status_4" >배송완료</div>
+                    </div>
+                </div>
+                <!-- 진행 상황 -->
+
+                <div class="display_separator"></div>
+                
+                <!-- 최종 주문정보 -->
+                <div class="section_orderinfo">
+                    <div class="orderinfo_area">
+                        <div class="title_wrap">
+                            <div>
+                                <p class="wrap_title">결제 내역</p>
+                            </div>
+                        </div>
+                        <div class="title_description" id="totalAmount">
+                            <p class="line_title title_txt">총 결제금액</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em class="title_txt" style="color:inherit;">
+                                        ${ totalAmount }원
+                                    </em>
+                                    <input class="totalAmount" type="hidden" name="totalAmount" value="${ totalAmount }">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">즉시 구매가</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        ${ price }원
+                                    </em>
+                                    <input class="price" type="hidden" name="price" value="${ dbVo.price }">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">검수비</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        무료
+                                    </em>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">수수료</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        ${ commission }원
+                                    </em>
+                                    <input class="commission" type="hidden" name="commission" value="${ commission }">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description">
+                            <p class="line_title">배송비</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        ${ deliveryCharge }원
+                                    </em>
+                                    <input class="deliveryCharge" type="hidden" name="deliveryCharge" value="${ deliveryCharge }">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="title_description" id="expire_date">
+                            <p class="line_title">입찰 마감기한</p>
+                            <div class="description_wrap">
+                                <p class="line_description">
+                                    <em style="color:inherit;">
+                                        까지
+                                    </em>
+                                    <input class="111" type="hidden" name="1111" value="${ totalAmount }">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 최종 주문정보 -->
 
                 <div class="display_separator"></div>
 
@@ -62,20 +169,15 @@
                         <div class="section_unit">
                             <div class="section_title">
                                 <h3 class="title_txt">배송 주소</h3>
-                                <a class="add_more_btn">+ 새 주소 추가</a>
+                                <!-- <a class="add_more_btn">+ 새 주소 추가</a> -->
                             </div>
                             <div class="section_content">
                                 <div class="delivery_info">
                                     <div class="address_info">
                                         <dl class="info_list">
                                             <div class="info_box">
-                                                <input class="memberNo" type="hidden" name="memberNo" value="${ loginMember.no }">
-                                                <input class="biddingNo" type="hidden" name="biddingNo" value="${ BuyProductInfo.no }">
-                                                <input class="productsNo" type="hidden" name="productsNo" value="${ BuyProductInfo.productsNo }">
                                                 <dt class="title">받는 분</dt>
                                                 <dd class="desc">${addInfo.addersName}</dd>
-                                                <input class="addNo" type="hidden" name="addNo" value="${ addInfo.no }">
-                                                <input class="addMemberNo" type="hidden" name="addMemberNo" value="${ addInfo.memberNo }">
                                             </div>
                                             <div class="info_box">
                                                 <dt class="title">연락처</dt>
@@ -87,7 +189,7 @@
                                             </div>
                                         </dl>
                                     </div>
-                                    <a class="btn_edit">변경</a>
+                                    <!-- <a class="btn_edit">변경</a> -->
                                 </div>
                             </div>
                         </div>
@@ -100,16 +202,16 @@
                     <div class="section_payment">
                         <div class="payment_area">
                             <div class="payment_title">
-                                <h3 class="payment_title_txt">결제 방법</h3>
+                                <h3 class="payment_title_txt">결제 정보</h3>
                             </div>
                             <div>
                                 <div class="payment_account">
-                                    <h4 class="method_title">
+                                    <!-- <h4 class="method_title">
                                         <div class="main_title">
-                                            <p>계좌 간편결제</p>
+                                            <p>계좌</p>
                                         </div>
                                         <a class="btn_card_add">새 계좌 추가</a>
-                                    </h4>
+                                    </h4> -->
                                     <div>
                                         <div class="payment_detail">
                                             <div class="payment_item">
@@ -117,8 +219,6 @@
                                                     <div class="bank_info">
                                                         <span class="bank_name">KEB하나은행</span>
                                                         <div class="account_number">630-910560-19107</div>
-<%--                                                 <input class="accNo" type="hidden" name="accNo" value="${ accInfo.no }"> --%>
-<%--                                                 <input class="accMemberNo" type="hidden" name="accMemberNo" value="${ accInfo.memberNo }"> --%>
                                                     </div>
                                                     <!-- <a class="regist_link">계좌를 등록하세요</a> -->
                                                 </div>
@@ -126,7 +226,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="payment_card">
+                                <!-- <div class="payment_card">
                                     <h4 class="method_title">
                                         <div class="main_title">
                                             <p>카드 간편결제</p>
@@ -137,83 +237,24 @@
                                             <div class="main_card">
                                                 <a class="regist_link">
                                                     <span class="regist_text">카드를 등록하세요</span>
-<%--                                                 <input class="cardNo" type="hidden" name="cardNo" value="${ cardInfo.no }"> --%>
-<%--                                                 <input class="cardMemberNo" type="hidden" name="cardMemberNo" value="${ cardInfo.memberNo }"> --%>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                     <!-- 결제 방법 -->
 
-                    <div class="display_separator"></div>
-
-                    <!-- 최종 주문정보 -->
-                    <div class="section_orderinfo">
-                        <div class="orderinfo_area">
-                            <div class="title_wrap">
-                                <div>
-                                    <p class="wrap_title">최종 주문정보</p>
-                                </div>
-                            </div>
-                            <div class="title_description">
-                                <p class="line_title">즉시 구매가</p>
-                                <div class="description_wrap">
-                                    <p class="line_description">
-                                        <em style="color:inherit;">
-                                            ${ dbVo.price }원
-                                        </em>
-                                        <input class="price" type="hidden" name="price" value="${ dbVo.price }">
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="title_description">
-                                <p class="line_title">검수비</p>
-                                <div class="description_wrap">
-                                    <p class="line_description">
-                                        <em style="color:inherit;">
-                                            무료
-                                        </em>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="title_description">
-                                <p class="line_title">수수료</p>
-                                <div class="description_wrap">
-                                    <p class="line_description">
-                                        <em style="color:inherit;">
-                                            ${ commission }원
-                                        </em>
-                                        <input class="commission" type="hidden" name="commission" value="${ commission }">
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="title_description">
-                                <p class="line_title">배송비</p>
-                                <div class="description_wrap">
-                                    <p class="line_description">
-                                        <em style="color:inherit;">
-                                            ${ deliveryCharge }원
-                                        </em>
-                                        <input class="deliveryCharge" type="hidden" name="deliveryCharge" value="${ deliveryCharge }">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 최종 주문정보 -->
 
                     <!-- 결제하기 -->
-                    <div class="buy_total_confirm">
+                    <!-- <div class="buy_total_confirm">
                         <div class="price_total">
                             <dl class="price_box">
                                 <dt class="price_title">총 결제금액</dt>
                                 <dd class="price_empty_desc">
                                     <span class="amount">${ totalAmount }원</span>
-                                    <input class="totalAmount" type="hidden" name="totalAmount" value="${ totalAmount }">
                                 </dd>
                             </dl>
                             <span class="price_warning">
@@ -224,9 +265,9 @@
                             <a blind class="blind_full_solid_false">계속하기</a>
                             <button class="blind_full_solid_false">결제하기</button>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
-                
+
             </div>
         </div>
     </div>

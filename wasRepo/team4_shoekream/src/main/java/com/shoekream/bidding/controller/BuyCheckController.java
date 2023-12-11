@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.shoekream.bidding.service.BiddingService;
 import com.shoekream.biddingVo.BiddingVo;
+import com.shoekream.product.vo.ProductInfoVo;
 
 @WebServlet("/buy/check")
 public class BuyCheckController extends HttpServlet{
@@ -19,6 +20,8 @@ public class BuyCheckController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		req.getRequestDispatcher("/WEB-INF/views/buy/check.jsp").forward(req, resp);
+		
 	}
 	
 	@Override
@@ -38,13 +41,15 @@ public class BuyCheckController extends HttpServlet{
 			
 			BiddingService bs = new BiddingService();
 			BiddingVo dbVo = bs.productInfo(vo);
-			
-			System.out.println("BuyCheckController 에러확인 dbVo : " + dbVo);
+
+				System.out.println("BuyCheckController 에러확인 dbVo : " + dbVo);
+				
 			if (dbVo == null) {
 				throw new Exception("예외 발생 : dbVo == null");
 			}
 			
-//			req.getSession().setAttribute("BuyProductInfo", dbVo);
+			req.getSession().setAttribute("BuyProductInfo", dbVo);
+			
 			req.setAttribute("dbVo", dbVo);
 			req.getRequestDispatcher("/WEB-INF/views/buy/check.jsp").forward(req, resp);
 		} catch (Exception e) {

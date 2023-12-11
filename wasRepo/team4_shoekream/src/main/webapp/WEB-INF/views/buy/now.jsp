@@ -52,23 +52,7 @@
         <div class="content">
             <div class="buy_immediate">
                 <!-- 상품 정보 -->
-                <div class="product_info_area">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                            <div class="model_desc">
-                                <p class="size_txt">250</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                 <!-- 상품 정보 -->
                 
 
@@ -94,7 +78,7 @@
                     <div class="instant_group">
                         <div class="tab_area">
                             <ul class="tab_list">
-                                <form action="/shoekream/buy/bidding" style="height: 50%; width: 50%;">
+                                <form action="/shoekream/buy/bidding" method="post" style="height: 50%; width: 50%;">
                                     <li class="item">
                                         <button class="item_link" id="btn1" type="submit" >구매 입찰</button>
                                         <!-- <a class="item_link">구매 입찰</a> -->
@@ -102,7 +86,7 @@
                                         <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
                                         <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
                                         <input class="sellPrice" type="hidden" name="sellPrice" value="${ sellPrVo.price }">
-                                        <input class="sellSize" type="hidden" name="sellSize" value="${ sellPrVo.price }">
+                                        <input class="sellSize" type="hidden" name="sellSize" value="${ sellPrVo.shoesSizes }">
                                     </li>
                                 </form>
                                 <li class="item_on">
@@ -138,9 +122,10 @@
                             <em></em>
                         </span>
                     </div>
-                    <form action="/shoekream/buy/nowpayment" method="get">
+                    <form action="/shoekream/buy/nowpayment">
                         <div class="btn_confirm">
-                            <input type="hidden" name="productsNo" value="${ productsNo }">
+                            <input 					type="hidden" name="loginMemberNo" value="${ loginMember.no }">
+                            <input 					type="hidden" name="productsNo" value="${ productsNo }">
                             <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
                             <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
                             <a blind class="blind_full_solid_false">계속하기</a>

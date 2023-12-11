@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/bidding.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+
+    <script defer src="/shoekream/resources/js/bidding/buy/bidding.js"></script>
 </head>
 
 
@@ -91,7 +93,7 @@
 
                     <div class="instant_group">
                         <div class="tab_area">
-                        	<form action="/shoekream/buy/now">
+                        	<form action="/shoekream/buy/now" method="post" >
                         		<input class="productsNo" type="hidden" name="productsNo" value="${ productsNo }">
                         		<input class="buyPrice" type="hidden" name="price" value="${ buyPrVo.price }">
                                 <input class="buySize" type="hidden" name="size" value="${ buyPrVo.shoesSizes }">

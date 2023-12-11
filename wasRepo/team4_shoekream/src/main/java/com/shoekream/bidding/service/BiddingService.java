@@ -8,7 +8,11 @@ import java.util.Map;
 
 import com.shoekream.bidding.dao.BiddingDao;
 import com.shoekream.biddingVo.BiddingVo;
+import com.shoekream.biddingVo.TestVo;
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.mypage.vo.AddrBookVo;
+import com.shoekream.orders.vo.OrdersVo;
+import com.shoekream.product.vo.ProductInfoVo;
 
 public class BiddingService {
 	
@@ -28,7 +32,6 @@ public class BiddingService {
 		return voList;
 	}
 
-	
 	
 	
 	
@@ -64,11 +67,8 @@ public class BiddingService {
 	
 	
 	
-	
-	
-	
-	
-	// 상품 정보 조회
+		
+	// 입찰 상품 정보 조회
 	public BiddingVo productInfo(BiddingVo vo) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
@@ -82,4 +82,98 @@ public class BiddingService {
 		
 		return dbVo;
 	}
+	// 상품 정보 조회
+	public ProductInfoVo productInfo(String no) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		ProductInfoVo infoVo = dao.productInfo(conn, no);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return infoVo;
+	}
+	
+	
+
+
+
+
+
+
+	// 최종 주문 정보 조회
+	public Map<String, Object> resultInfo(String loginMemberNo) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		// 주소록, 계좌, 카드 정보
+		AddrBookVo addInfo = dao.addInfo(conn, loginMemberNo);
+		TestVo accInfo = dao.accInfo(conn, loginMemberNo);
+		TestVo cardInfo = dao.cardInfo(conn, loginMemberNo);
+		result.put("addInfo", addInfo);
+		result.put("accInfo", accInfo);
+		result.put("cardInfo", cardInfo);
+			
+		// close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+
+
+
+
+	// 주문 정보 조회
+	public OrdersVo ordersInfo(String memberNo, String biddingNo, String productsNo) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		System.out.println("에러확인 ordersInfo Service");
+		OrdersVo ordersVo = dao.ordersInfo(conn, memberNo, biddingNo, productsNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		System.out.println("에러확인 ordersInfo Dao -> Service");
+		return ordersVo;
+	}
+
+
+
+
+
+	// 주문 정보 입력
+	public int orders(String loginMemberNo, String biddngNo, String productsNo, int totalAmount) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		System.out.println("에러확인 orders Service");
+		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo, String.valueOf(totalAmount));
+		
+		// tx
+		if (result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}		
+		
+		// close
+		JDBCTemplate.close(conn);
+		System.out.println("에러확인 orders Dao -> Service");
+		
+		return result;
+	}
+
 }

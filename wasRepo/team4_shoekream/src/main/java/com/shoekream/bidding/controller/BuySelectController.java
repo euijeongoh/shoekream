@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.bidding.service.BiddingService;
 import com.shoekream.biddingVo.BiddingVo;
+import com.shoekream.product.vo.ProductInfoVo;
 
 @WebServlet("/buy/select")
 public class BuySelectController extends HttpServlet{
@@ -28,6 +29,10 @@ public class BuySelectController extends HttpServlet{
 			if (voList == null) {
 				throw new Exception("예외 발생 : voList == null");
 			}
+			
+			ProductInfoVo infoVo = bs.productInfo(productsNo);
+				System.out.println("BuySelectController 에러확인 infoVo : " + infoVo);
+			req.getSession().setAttribute("infoVo", infoVo);
 			
 			req.setAttribute("voList", voList);
 			req.getRequestDispatcher("/WEB-INF/views/buy/select.jsp").forward(req, resp);
