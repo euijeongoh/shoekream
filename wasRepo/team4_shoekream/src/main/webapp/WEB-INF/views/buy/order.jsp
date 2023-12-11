@@ -140,9 +140,9 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        ${ deliveryCharge }원
+                                        3000원
                                     </em>
-                                    <input class="deliveryCharge" type="hidden" name="deliveryCharge" value="${ deliveryCharge }">
+                                    <input class="deliveryCharge" type="hidden" name="deliveryCharge" value="3000">
                                 </p>
                             </div>
                         </div>
@@ -304,12 +304,6 @@
         </div>
         <div class="box4"></div>
     </footer>
-
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
 
 </body>
 </html>

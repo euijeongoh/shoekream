@@ -28,6 +28,7 @@ public class BuyBiddingControlloer extends HttpServlet{
 		String buySize = req.getParameter("buySize");
 		buyPrVo.setPrice(buyPrice);
 		buyPrVo.setShoesSizes(buySize);
+			System.out.println("-----------------구매입찰-----------------");
 			System.out.println("BuyBiddingController 에러확인 buyPrice : " + buyPrice );
 			System.out.println("BuyBiddingController 에러확인 buySize : " + buySize );
 		
