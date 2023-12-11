@@ -113,9 +113,10 @@
                        
                        		<%for(EnrollProductVo vo : productVoList) {%>
                            <tr>
-                               <td>[상품목록]</td>
+                               <td>상품</td>
                                <td><img src="/shoekream/resources/img/admin/header/logo.svg" alt="씀네일"></td>
-                               <td><a href="editProduct.html"><%=vo.getProductNameKo()+vo.getModelNumber()%></a></td>
+								<td><a href="/shoekream/admin/product/edit/modelNumber=<%=vo.getModelNumber()%>"><%=vo.getProductNameKo() + " " + vo.getModelNumber()%></a></td>
+
                                <td><input type="checkbox" name="modelNumber" value="<%=vo.getModelNumber() %>"></td>
                            </tr>
                        		
@@ -123,27 +124,38 @@
                           
                         </tbody>
                    </table>
+                   <br>
+                   
                   <input type="submit" value="삭제하기">
                </form>
+               <br>
              <div class="page-area">
-				<% if(pvo.getStartPage() != 1){%>
-					<a href="/shoekream/admin/product/list?pno=<%=pvo.getStartPage()-1%>">이전</a>
-				<% }%>
-				
-				<% for(int i = pvo.getStartPage(); i <=pvo.getEndPage(); i++){%>
-				
-						<% if( i == pvo.getCurrentPage()){%>
-						<span><%=i %></span>
-						<% }else{%>
-						<a href="/shoekream/admin/product/list?pno=<%= i %>"><%= i %></a>
-						<% }%>
-				
-				<% }%>
-				
-				<%if(pvo.getEndPage() != pvo.getMaxPage()){ %>
-				<a href="/shoekream/admin/product/list?pno=<%= pvo.getEndPage()+1%>">다음</a>
-				<% }%>
-           	</div>
+        <% 
+            PageVo pvoVo = (PageVo)request.getAttribute("pvo");
+            int startPage = pvoVo.getStartPage();
+            int endPage = pvoVo.getEndPage();
+            int maxPage = pvoVo.getMaxPage();
+            int currentPage = pvoVo.getCurrentPage();
+
+            if(startPage > 1){ 
+        %>
+            <a href="/shoekream/admin/product/list?pno=<%=startPage-1%>">이전</a>
+        <% 
+            }
+
+            for(int i = startPage; i <= endPage; i++) { 
+        %>
+            <a href="/shoekream/admin/product/list?pno=<%=i%>"><%=i%></a>
+        <% 
+            }
+
+            if(endPage < maxPage){ 
+        %>
+            <a href="/shoekream/admin/product/list?pno=<%=endPage+1%>">다음</a>
+        <% 
+            } 
+        %>
+    </div>
         </div>
     </div>
 

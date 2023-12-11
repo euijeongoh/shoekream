@@ -116,7 +116,7 @@ header .main-list li {
 .side-body {
     display: flex;
     width: 1200px;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .sidebar{
     margin-left: auto;
@@ -141,4 +141,32 @@ header .main-list li {
 .menu_link{
     font-size: 16px;
     color: rgb(141, 141, 141);
+}
+.list_body {
+    width: 100%; /* 예시 너비, 실제 필요한 값으로 조정 */
+    overflow: hidden; /* 넘치는 내용 숨김 */
+    text-overflow: ellipsis; /* 넘치는 텍스트 처리 */
+    white-space: nowrap; /* 줄바꿈 없앰 */
+    /* 필요에 따라 padding, margin 등 추가 조정 */
+}
+/* 테이블 스타일 */
+table {
+    width: 100%; /* 전체 너비 고정 */
+    border-collapse: collapse; /* 테이블 셀 간격 제거 */
+}
+
+table th, table td {
+    width: auto; /* 각 열의 너비, 필요에 따라 조정 */
+    text-align: left; /* 텍스트 정렬 */
+    padding: 8px; /* 셀 패딩 */
+}
+
+/* 링크 스타일 */
+a {
+    color: #000; /* 링크 색상 검은색으로 변경 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+a:hover {
+    text-decoration: underline; /* 마우스 오버시 밑줄 표시, 필요에 따라 변경 */
 }
