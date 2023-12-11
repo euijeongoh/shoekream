@@ -49,7 +49,7 @@ public class AdminNoticeWriteController extends HttpServlet{
 			resp.sendRedirect("/shoekream/admin/notice/list");
 			
 		}catch(Exception e) {
-			System.out.println("[ERROR-M001] 공지사항 게시판 생성 중 에러 발생");
+			System.out.println("[ERROR-M001] 공지사항 게시글 생성 중 에러 발생");
 			e.printStackTrace();
 			req.setAttribute("error", "게시글 작성 실패...");
 			req.getRequestDispatcher("/WEB-INF/views/common.fail.jsp").forward(req, resp);

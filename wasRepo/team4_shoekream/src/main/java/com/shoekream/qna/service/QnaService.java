@@ -7,6 +7,7 @@ import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.notice.dao.NoticeDao;
 import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
+import com.shoekream.qna.dao.QnaDao;
 import com.shoekream.qna.vo.QnaVo;
 
 public class QnaService {
@@ -17,7 +18,7 @@ public List<QnaVo> QnaList(PageVo pvo) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		NoticeDao dao = new NoticeDao();
+		QnaDao dao = new QnaDao();
 		List<QnaVo> qnaVoList = dao.QnaList(conn, pvo);
 		
 		//close
@@ -32,8 +33,8 @@ public List<QnaVo> QnaList(PageVo pvo) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		NoticeDao dao = new NoticeDao();
-		int listCount = dao.selectNoticeCount(conn);
+		QnaDao dao = new QnaDao();
+		int listCount = dao.selectQnaCount(conn);
 		
 		//close
 		JDBCTemplate.close(conn);
@@ -41,14 +42,14 @@ public List<QnaVo> QnaList(PageVo pvo) throws Exception{
 		return listCount;
 	}
 	
-	public int selectSearchNoticeCount(String title) throws Exception{
+	public int selectSearchQnaCount(String title) throws Exception{
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		NoticeDao dao = new NoticeDao();
-		int listCount = dao.selectSearchNoticeCount(conn, title);
+		QnaDao dao = new QnaDao();
+		int listCount = dao.selectSearchQnaCount(conn, title);
 		
 		//close
 		JDBCTemplate.close(conn);
@@ -56,14 +57,14 @@ public List<QnaVo> QnaList(PageVo pvo) throws Exception{
 		return listCount;
 	}
 
-	public NoticeVo selectNoticeListByNo(String no) throws Exception{
+	public QnaVo selectQnaListByNo(String no) throws Exception{
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		NoticeDao dao = new NoticeDao();
-		NoticeVo vo = dao.selectNoticeByNo(conn, no);
+		QnaDao dao = new QnaDao();
+		QnaVo vo = dao.selectQnaByNo(conn, no);
 		
 		//tx
 		
@@ -73,32 +74,32 @@ public List<QnaVo> QnaList(PageVo pvo) throws Exception{
 		return vo;
 	}
 
-	public List<NoticeVo> noticeSearch(String title, PageVo pvo) throws Exception {
+	public List<QnaVo> qnaSearch(String title, PageVo pvo) throws Exception {
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		NoticeDao dao = new NoticeDao();
-		List<NoticeVo> noticeVoList = dao.noticeSearch(conn, title, pvo);
+		QnaDao dao = new QnaDao();
+		List<QnaVo> qnaVoList = dao.qnaSearch(conn, title, pvo);
 		
 		//tx
 		
 		//close
 		JDBCTemplate.close(conn);
 		
-		return noticeVoList;
+		return qnaVoList;
 	}
 	
 	//게시글 작성
-	public int noticeWrite(NoticeVo vo) throws Exception{
+	public int qnaWrite(QnaVo vo) throws Exception{
 		
 		//conn 
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		NoticeDao dao = new NoticeDao();
-		int result = dao.noticeWrite(conn, vo);
+		QnaDao dao = new QnaDao();
+		int result = dao.qnaWrite(conn, vo);
 		
 		//tx
 		if(result == 1) {
