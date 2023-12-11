@@ -56,7 +56,7 @@
 
                 <div class="display_separator"></div>
 
-                <form action="/shoekream/buy/order" method="post">
+                <form action="/shoekream/buy/order" method="get">
                     <!-- 배송 주소 -->
                     <section>
                         <div class="section_unit">
@@ -196,7 +196,7 @@
                                 <div class="description_wrap">
                                     <p class="line_description">
                                         <em style="color:inherit;">
-                                            ${ deliveryCharge }원
+                                            3000원
                                         </em>
                                         <input class="deliveryCharge" type="hidden" name="deliveryCharge" value="${ deliveryCharge }">
                                     </p>

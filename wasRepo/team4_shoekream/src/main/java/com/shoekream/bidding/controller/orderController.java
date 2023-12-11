@@ -27,13 +27,6 @@ public class orderController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		req.getRequestDispatcher("/WEB-INF/views/buy/order.jsp").forward(req, resp);
-		
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
 			String name = "곽태윤";
@@ -53,16 +46,30 @@ public class orderController extends HttpServlet{
 			
 			req.setAttribute("ordersVo", ordersVo);
 			
-			req.setAttribute("price", req.getParameter("price"));
-			req.setAttribute("commission", req.getParameter("commission"));
+//			req.setAttribute("price", req.getParameter("price"));
+//			req.setAttribute("commission", req.getParameter("commission"));
+//			req.setAttribute("deliveryCharge", req.getParameter("deliveryCharge"));
+//			req.setAttribute("totalAmount", req.getParameter("totalAmount"));
+			
+			int commission = ((int)(Math.round(((Integer.parseInt(ordersVo.getPrice()))*0.03)*0.01)*100));
+			req.setAttribute("price", ordersVo.getPrice());
+			req.setAttribute("commission", commission);
 			req.setAttribute("deliveryCharge", req.getParameter("deliveryCharge"));
-			req.setAttribute("totalAmount", req.getParameter("totalAmount"));
+			req.setAttribute("totalAmount", ordersVo.getTotalPrice());
 			
 			req.getRequestDispatcher("/WEB-INF/views/buy/order.jsp").forward(req, resp);
 		} catch (Exception e) {
 			System.out.println("order 중 예외 발생");
 			e.printStackTrace();
 		}
+		
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		req.getRequestDispatcher("/WEB-INF/views/buy/order.jsp").forward(req, resp);
 		
 	}	
 	

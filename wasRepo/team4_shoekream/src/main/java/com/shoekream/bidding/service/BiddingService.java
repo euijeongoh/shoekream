@@ -139,12 +139,12 @@ public class BiddingService {
 		
 		// dao
 		BiddingDao dao = new BiddingDao();
-		System.out.println("에러확인 ordersInfo Service");
+			System.out.println("에러확인 ordersInfo Service");
 		OrdersVo ordersVo = dao.ordersInfo(conn, memberNo, biddingNo, productsNo);
 		
 		// close
 		JDBCTemplate.close(conn);
-		System.out.println("에러확인 ordersInfo Dao -> Service");
+			System.out.println("에러확인 ordersInfo Dao -> Service");
 		return ordersVo;
 	}
 
@@ -153,14 +153,14 @@ public class BiddingService {
 
 
 	// 주문 정보 입력
-	public int orders(String loginMemberNo, String biddngNo, String productsNo, int totalAmount) throws Exception{
+	public int orders(String loginMemberNo, String biddngNo, String productsNo, String commissionStr, String totalAmountStr) throws Exception{
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		BiddingDao dao = new BiddingDao();
 		System.out.println("에러확인 orders Service");
-		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo, String.valueOf(totalAmount));
+		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo, commissionStr, totalAmountStr);
 		
 		// tx
 		if (result == 1) {
