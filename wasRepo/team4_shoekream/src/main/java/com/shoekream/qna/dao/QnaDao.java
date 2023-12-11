@@ -17,7 +17,7 @@ public class QnaDao {
 		public List<QnaVo> QnaList(Connection conn, PageVo pvo) throws Exception{
 			
 			//sql
-			String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD ORDER BY NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
+			String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT Q.NO, M.NICKNAME, Q.TITLE, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO ORDER BY Q.NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pvo.getStartRow());
 			pstmt.setInt(2, pvo.getLastRow());
@@ -27,16 +27,18 @@ public class QnaDao {
 			List<QnaVo> qnaVoList = new ArrayList<QnaVo>();
 			while(rs.next()) {
 				String no = rs.getString("NO");
+				String nickname = rs.getString("NICKNAME");
 				String title = rs.getString("TITLE");
 				String enrollDate = rs.getString("ENROLL_DATE");
 				
-				QnaVo qv = new QnaVo();
+				QnaVo vo = new QnaVo();
 				
-				qv.setNo(no);
-				qv.setTitle(title);
-				qv.setEnrollDate(enrollDate);
+				vo.setNo(no);
+				vo.setMemberNick(nickname);
+				vo.setTitle(title);
+				vo.setEnrollDate(enrollDate);
 				
-				qnaVoList.add(qv);
+				qnaVoList.add(vo);
 			}
 			
 			//close
@@ -94,7 +96,7 @@ public class QnaDao {
 		public QnaVo selectQnaByNo(Connection conn, String no) throws Exception{
 			
 			//SQL
-			String sql = "SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD WHERE NO = ? ";
+			String sql = "SELECT Q.NO, M.NICKNAME, Q.TITLE, Q.CONTENT, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO WHERE Q.NO = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
 			ResultSet rs = pstmt.executeQuery();
@@ -104,11 +106,13 @@ public class QnaDao {
 			if(rs.next()) {
 				vo = new QnaVo();
 				String qnaNo = rs.getString("NO");
+				String nickname = rs.getString("NICKNAME");
 				String title = rs.getString("TITLE");
 				String content = rs.getString("CONTENT");
 				String enrollDate = rs.getString("ENROLL_DATE");
 				
 				vo.setNo(qnaNo);
+				vo.setMemberNick(nickname);
 				vo.setTitle(title);
 				vo.setContent(content);
 				vo.setEnrollDate(enrollDate);
@@ -156,7 +160,7 @@ public class QnaDao {
 		public int qnaWrite(Connection conn, QnaVo vo) throws Exception{
 			
 			//SQL
-			String sql = "INSERT INTO QNA_BOARD ( NO, MANAGER_NO, TITLE, CONTENT ) VALUES (SEQ_NOTICE_BOARD_NO.NEXTVAL, 1, ?, ?)";
+			String sql = "INSERT INTO QNA_BOARD ( NO, MEMBER_NO, MANAGER_NO, TITLE, CONTENT) VALUES  (SEQ_QNA_BOARD_NO.NEXTVAL, 1, 2, ?, ?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());

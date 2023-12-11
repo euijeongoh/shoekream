@@ -7,7 +7,7 @@
 <%
 		List<NoticeVo> noticeVoList = (List<NoticeVo>)request.getAttribute("noticeVoList");
 		PageVo pvo = (PageVo)request.getAttribute("pvo");
-	%>
+%>
 
 <!DOCTYPE html>
 <html>

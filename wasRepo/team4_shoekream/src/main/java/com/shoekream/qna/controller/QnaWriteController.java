@@ -24,7 +24,6 @@ public class QnaWriteController extends HttpServlet {
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
-			
 			try {
 				//data
 				String title = req.getParameter("title");
@@ -34,7 +33,7 @@ public class QnaWriteController extends HttpServlet {
 				vo.setTitle(title);
 				vo.setContent(content);
 				
-				// System.out.println(vo);
+//				System.out.println(vo);
 				
 				//service
 				QnaService qs = new QnaService();

@@ -5,6 +5,7 @@ public class QnaVo {
 	private String no;
 	private String managerNo;
 	private String memberNo;
+	private String memberNick;
 	private String title;
 	private String content;
 	private String enrollDate;
@@ -15,12 +16,13 @@ public class QnaVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public QnaVo(String no, String managerNo, String memberNo, String title, String content, String enrollDate,
-			String hit, String reply, String replyEnrollDate) {
+	public QnaVo(String no, String managerNo, String memberNo, String memberNick, String title, String content,
+			String enrollDate, String hit, String reply, String replyEnrollDate) {
 		super();
 		this.no = no;
 		this.managerNo = managerNo;
 		this.memberNo = memberNo;
+		this.memberNick = memberNick;
 		this.title = title;
 		this.content = content;
 		this.enrollDate = enrollDate;
@@ -45,6 +47,12 @@ public class QnaVo {
 	}
 	public final void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
+	}
+	public final String getMemberNick() {
+		return memberNick;
+	}
+	public final void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
 	}
 	public final String getTitle() {
 		return title;
@@ -84,11 +92,9 @@ public class QnaVo {
 	}
 	@Override
 	public String toString() {
-		return "QnaVo [no=" + no + ", managerNo=" + managerNo + ", memberNo=" + memberNo + ", title=" + title
-				+ ", content=" + content + ", enrollDate=" + enrollDate + ", hit=" + hit + ", reply=" + reply
-				+ ", replyEnrollDate=" + replyEnrollDate + "]";
+		return "QnaVo [no=" + no + ", managerNo=" + managerNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick
+				+ ", title=" + title + ", content=" + content + ", enrollDate=" + enrollDate + ", hit=" + hit
+				+ ", reply=" + reply + ", replyEnrollDate=" + replyEnrollDate + "]";
 	}
 
-	
 }
-

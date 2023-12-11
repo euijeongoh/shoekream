@@ -35,7 +35,7 @@
                 <div class="btn_list">
                     <div class="btn_editbox">
 <!--                     <a href="">작성완료</a> -->
-					<input type="submit" value="작성하기">
+					<input type="submit" id="submit" value="작성하기">
 					</form>
                     </div>
                 </div>

@@ -46,13 +46,24 @@
  }
 
  .dropdown_head {
+/*	display: flex;*/
     width: 1000px;
-    height: 30px;
+/*    height: 100px;*/
     padding-top: 17px;
     padding-bottom: 19px;
     /* border-bottom: 1px solid gray; */
  }
 
+.date_box{
+	width: 100%;
+	height: 20px;	
+}
+.qna_box{
+	display: flex;
+	width: 1000px;
+/*	height: 50px;*/
+	justify-content: space-between;
+}
  .date {
 
     width: 100px;
@@ -63,6 +74,10 @@
 
  .qna_title{
     font-size: 20px;
+ }
+ 
+ .qna_nick{
+	 font-size: 20px;
  }
 
  .dropdown_content{
@@ -109,7 +124,7 @@
  
  .dropdown_reply{
 	 width: 940px;
-     height: 350px;
+     height: 300px;
      padding: 30px;
      border-bottom: 1px solid;
  }
@@ -145,3 +160,4 @@
  .reply_title{
     font-size: 20px;
  }
+
