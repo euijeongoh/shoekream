@@ -110,15 +110,6 @@ public class AdminProductListService {
 		
 		return dbVo;
 	}
-	public List<EnrollProductVo> getProductList() throws Exception{
-		//conn
-		Connection conn = JDBCTemplate.getConnection();
-		//dao
-		AdminEnrollProductDao dao = new AdminEnrollProductDao();
-		List<EnrollProductVo> productVoList = dao.getProductList(conn);
-		//close
-		JDBCTemplate.close(conn);
-		return productVoList;
-	}
+
 
 }

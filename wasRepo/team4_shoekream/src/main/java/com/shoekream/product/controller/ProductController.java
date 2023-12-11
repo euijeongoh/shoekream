@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shoekream.admin.service.AdminProductListService;
 import com.shoekream.admin.vo.EnrollProductVo;
+import com.shoekream.product.service.ProductDetailService;
 
 @WebServlet("/product")
 public class ProductController extends HttpServlet{
@@ -22,7 +22,7 @@ public class ProductController extends HttpServlet{
 		try {
 			//db에서 전체 다 가져오기
 			List<EnrollProductVo> productVoList = new ArrayList<EnrollProductVo>();
-			AdminProductListService ps = new AdminProductListService();
+			ProductDetailService ps = new ProductDetailService();
 			productVoList = ps.getProductList();
 			
 			if(productVoList == null) {

@@ -1,7 +1,12 @@
+<%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
+<%@page import="com.shoekream.biddingVo.BiddingVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    	
+    EnrollProductVo productDetailVo = (EnrollProductVo) request.getAttribute("productDetailVo");
+    EnrollProductVo shoesSizesDetailVo = (EnrollProductVo) request.getAttribute("shoesSizesDetailVo");
+    List<BiddingVo> biddingList = (List<BiddingVo>) request.getAttribute("biddingList");
     %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -31,27 +36,14 @@
                             <div class="product_price"><span >116,000원</span></div>
                         </div>
                         <div class="main_title_container">
-                            <div><span>Nike Air Force 1 '07 Low White</span></div>
-                            <div><span>나이키 에어포스 1'07로우 화이트</span></div>
+                            <div><span><%= productDetailVo.getProductName() %></span></div>
+                            <div><span><%= productDetailVo.getProductNameKo() %></span></div>
                         </div>
                         <div class="product_size_select">
                             <select name="product_size" class="select_box">
                                 <option value="all_size">모든 사이즈</option>
+								<%for(EnrollProductVo vo: shoesSizesDetailVo) %>	
                                 <option value="230">230</option>
-                                <option value="235">235</option>
-                                <option value="240">240</option>
-                                <option value="245">245</option>
-                                <option value="250">250</option>
-                                <option value="255">255</option>
-                                <option value="260">260</option>
-                                <option value="265">265</option>
-                                <option value="270">270</option>
-                                <option value="275">275</option>
-                                <option value="280">280</option>
-                                <option value="285">285</option>
-                                <option value="290">290</option>
-                                <option value="295">295</option>
-                                <option value="300">300</option>
                             </select>
                         </div>
                         <dl  class="detail-product-container">
@@ -70,15 +62,15 @@
                             </div>
                             <div class="detail-box">
                                 <div class="product_title">발매가</div>
-                                <div class="product_info"> ¥33,000 (약 288,800원) </div>
+                                <div class="product_info"><%= productDetailVo.getReleasePrice() %>원</div>
                             </div>
                             <div class="detail-box">
                                 <div class="product_title">모델번호</div>
-                                <div class="product_info"> A01FW702-BLACK </div>
+                                <div class="product_info"><%= productDetailVo.getModelNumber() %></div>
                             </div>
                             <div class="detail-box">
                                 <div class="product_title">출시일</div>
-                                <div class="product_info">22/07/30</div>
+                                <div class="product_info"><%= productDetailVo.getReleaseDate() %></div>
                             </div>
                             
                         </dl>
