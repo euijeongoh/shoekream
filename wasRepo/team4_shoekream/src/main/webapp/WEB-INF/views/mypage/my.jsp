@@ -36,14 +36,15 @@
             <div class="mypage-home">
                 <div class="profile">
                     <div class="user-detail">
-                        <div><img id="profile-img" src="${ loginMember.profileImage }" onclick="openPopup();"></div>
+                        <div><img id="profile-img" src="${ loginMember.profileImage }"></div>
                         <div class="user-info">
                             <div><%= loginMember.getNickname() %></div>
                             <div><%= loginMember.getId() %></div>
-                            <div>
-<!--                             	<input id="img_upload" type="file" style="display:none"> -->
+                            <form id="img_form">
+                            	<input id="img_upload" name="f" type="file">
+                            	<button type="button" id="change_profile">프로필 사진 변경</button>
                             	<button type="button" onclick="location.href='/shoekream/review/boardlist'">내 리뷰</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <div class="user-menu">

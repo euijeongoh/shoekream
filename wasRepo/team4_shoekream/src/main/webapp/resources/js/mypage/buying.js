@@ -6,48 +6,57 @@ const bidCount = document.querySelector("#bidCount");
 const pendCount = document.querySelector("#pendCount");
 const finishedCount = document.querySelector("#finishedCount");
 
+let inputTabValue = document.querySelector("#tab").value;
+
 function chooseAjax() {
-	if(bidCount.style.color==="#F15746") {
+	if(inputTabValue === "bidding") {
 		bidTabAjax();
 	}
 	
-	if(pendCount.style.color==="#F15746") {
+	if(inputTabValue === "pending") {
 		pendTabAjax();
 	} 
 	
-	if(finishedCount.style.color==="#F15746") {
+	if(inputTabValue === "finished") {
 		finishTabAjax();
 	}
 }
 
 
 function bidTabAjax() {
-	
+	// css 변경
 	bidCount.style.color="#F15746";
 	tabBidding.style.borderBottom="2px solid #222222";
 	pendCount.style.color="#222222";
 	tabPending.style.borderBottom="none";	
 	finishedCount.style.color="#222222";
 	tabFinished.style.borderBottom="none";
-	
-	set2Mths();
+	// hidden input 값 설정(chooseAjax메소드 실행을 위해)
+	inputTabValue = "bidding";
 	
 	// json 형태로 데이터 보내기
+	
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
-
+	
+	if(startDateValue==="" || endDateValue === "") {
+		set2Mths();
+	}
+	
 	const jsonObj = {
 		startDate : startDateValue,
-		endDate : endDateValue
+		endDate : endDateValue,
 	}
 	
 	const jsonStr = JSON.stringify(jsonObj);
 	
 	// ajax 요청
-	fetch("/shoekream/mypage/buying/bidList",
-		{method: "POST", body: jsonStr})
+	fetch("/shoekream/mypage/buying/bidList", {method: "POST", body: jsonStr})
 	.then( (resp)=>{return resp.json()} )
 	.then( (data) => {
+		// 받아온 map 데이터 변수에 저장
+		const pvo = data.pvo;
+		const bidList = data.bidList;
 
 		const purchaseBody = document.querySelector(".purchase-body");
 		purchaseBody.innerHTML="";
@@ -75,12 +84,12 @@ function bidTabAjax() {
 			const product = document.createElement("div");
 			detail.appendChild(product);
 			product.id="product";
-			product.innerHTML=data[i].shoeName;
+			product.innerHTML=bidList[i].shoeName;
 			
 			const size = document.createElement("div");
 			detail.appendChild(size);
 			size.id="size";
-			size.innerHTML=data[i].shoeSize;
+			size.innerHTML=bidList[i].shoeSize;
 			
 			const purchaseDetail = document.createElement("ul");
 			purchaseDetail.className = "purchase-detail";
@@ -93,9 +102,19 @@ function bidTabAjax() {
 			purchaseDetail.appendChild(li1);
 			purchaseDetail.appendChild(li2);
 			purchaseDetail.appendChild(li3);
-			li1.innerHTML=data[i].enrollDate;
-			li2.innerHTML=data[i].expireDate;
-			li3.innerHTML=data[i].bidPrice + "원";
+			
+			const detailBtn = document.createElement("button");
+			li1.appendChild(detailBtn);
+			detailBtn.innerHTML="상세내역";
+			detailBtn.onclick="location.href='/shoekream/buy/order'";
+			
+			li2.innerHTML=bidList[i].bidStatus;
+			li3.innerHTML=bidList[i].bidPrice + "원";
+			
+			
+			// 페이징 영역
+			const pageArea = document.createElement("div");
+			
 		}
 		
 	});
@@ -112,18 +131,20 @@ function pendTabAjax() {
 	finishedCount.style.color="#222222";
 	tabFinished.style.borderBottom="none";
 	
-	set2Mths();
+	inputTabValue = "pending";
 	
 	// json 형태로 데이터 보내기
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
-
-	console.log(startDateValue);
-	console.log(endDateValue);
+	
+	if(startDateValue==="" || endDateValue === "") {
+		set2Mths();
+	}
+	
 
 	const jsonObj = {
 		startDate : startDateValue,
-		endDate : endDateValue
+		endDate : endDateValue,
 	}
 	
 	const jsonStr = JSON.stringify(jsonObj);
@@ -197,11 +218,15 @@ function finishTabAjax() {
 	finishedCount.style.color="#F15746";
 	tabFinished.style.borderBottom="2px solid #222222";
 	
-	set2Mths();
+	inputTabValue = "finished";
 	
 	// json 형태로 데이터 보내기
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
+
+	if(startDateValue==="" || endDateValue === "") {
+		set2Mths();
+	}
 
 	const jsonObj = {
 		startDate : startDateValue,

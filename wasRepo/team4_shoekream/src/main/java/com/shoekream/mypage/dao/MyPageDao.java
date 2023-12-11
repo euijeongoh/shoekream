@@ -413,7 +413,7 @@ public class MyPageDao {
 
 	public Map<String, Object> saveImgSrcInDB(Connection conn, MemberVo loginMember, String src) throws Exception {
 		// sql
-		String sql = "INSERT INTO MEMBER(PROFILE_IMAGE) VALUES(?) WHERE NO = ?";
+		String sql = "UPDATE MEMBER SET PROFILE_IMAGE = ? WHERE NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, src);
 		pstmt.setString(2, loginMember.getNo());

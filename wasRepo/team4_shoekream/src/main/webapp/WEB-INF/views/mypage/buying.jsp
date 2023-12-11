@@ -66,6 +66,11 @@
                 
                 	
                 </div>
+                
+                
+          		<div class="page-area">
+          		
+          		</div>
             </div>
         </div>
 	</main>
