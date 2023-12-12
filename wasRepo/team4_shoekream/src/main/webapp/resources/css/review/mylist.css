@@ -87,31 +87,21 @@
 
 .listphoto{
     width: 1200px;
-    /* height: 500px; */
-    display: flex;
-    justify-content: space-evenly;
+    height: 370px;
+    display: block;
+    justify-content: space-between;
     /* background-color: antiquewhite; */
 }
-.listphoto2{
-    width: 1200px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 50px;
-    /* background-color: blue; */
+.profile_like{
+	width: 1200px;
+	height: 10px;
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 60px;
 }
-.listphoto3{
-    width: 1200px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 50px;
-    /* background-color: white; */
-}
-.listphoto4{
-    width: 1200px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 50px;
-    /* background-color: green; */
+.mylist{
+	width: 300px;
+	height: 400px;
 }
 .photo{
     width: 280px;
@@ -132,10 +122,10 @@
 .detail{
     display: flex;
     justify-content: space-between;
-    width: 94%;
     height: 35px;
-    margin-bottom: 25px;
-    margin-top: 10px;
+    width: 35px;
+     border-radius: 70%;
+    border: solid 1px lightgray;
     /* background-color: aqua; */
 }
 
@@ -143,12 +133,12 @@
     display: ;
     justify-content: flex-end;
 } */
-.likebox{
+/*.likebox{
     display: inline-flex;
     justify-content: space-evenly;
     margin: 10px;
-}
-.one{
+}*/
+.profileimgae{
     display: block;
     width: 25%;
     justify-content: space-between;

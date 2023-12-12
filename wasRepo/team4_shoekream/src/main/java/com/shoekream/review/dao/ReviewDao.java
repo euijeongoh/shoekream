@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.member.MemberVo;
 import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.review.vo.ReviewVo;
 
@@ -75,29 +76,32 @@ public class ReviewDao {
 	
 	
 	//전체 리뷰 목록 조회
-		public List<ReviewVo> ReviewList(Connection conn) throws Exception {
+		public List<ReviewVo> ReviewList(Connection conn, MemberVo loginMember) throws Exception {
 			
 			//sql
-			String sql = "SELECT NO, REVIEW_NO, MEMBER_NO, ENROLL_DATE, MODIFY_DATE FROM REVIEW WHERE DEL_YN = 'N' ORDER BY ENROLL_DATE DESC";
+			String sql = "SELECT R.NO    REVIEW_NO , M.NICKNAME    NICK , M.PROFILE_IMAGE   PROFILE , R.ENROLL_DATE REVIEW_ENROLL , R.MODIFY_DATE REVIEW_MODIFY , RIMG.FILE_PATH    REVIEW_IMAGE FROM REVIEW R LEFT JOIN MEMBER M ON R.MEMBER_NO = M.NO LEFT JOIN REVIEW_IMAGE RIMG ON R.NO = RIMG.REVIEW_NO WHERE R.MEMBER_NO = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, loginMember.getNo());
 			ResultSet rs = pstmt.executeQuery();
 			
 			//rs
 			List<ReviewVo> reviewVoList = new ArrayList<ReviewVo>();
 			while(rs.next()) {
 				
-				String no = rs.getString("NO");
-		        String reviewNo = rs.getString("REVIEW_NO");
-		        String memberNo = rs.getString("MEMBER_NO");
-		        String enrollDate = rs.getString("ENROLL_DATE");
-		        String modifyDate = rs.getString("MODIFY_DATE");
+				String reviewNo = rs.getString("REVIEW_NO");
+				String memberNick = rs.getString("NICK");
+				String memberProfile = rs.getString("PROFILE");
+				String enrollDate = rs.getString("REVIEW_ENROLL");
+				String modifyDate = rs.getString("REVIEW_MODIFY");
+				String reviewImage = rs.getString("REVIEW_IMAGE");
 				
 				ReviewVo vo = new ReviewVo();
-				vo.setNo(no);
-				vo.setReviewNo(reviewNo);
-				vo.setMemberNo(memberNo);
+				vo.setNo(reviewNo);
+				vo.setMemberNick(memberNick);
+				vo.setProfileImage(memberProfile);
 				vo.setEnrollDate(enrollDate);
 				vo.setModifyDate(modifyDate);
+				vo.setReviewImage(reviewImage);
 				
 				reviewVoList.add(vo);
 				

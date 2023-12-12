@@ -80,7 +80,7 @@
 					</div>
 				</div>
 				<div class="write_box">
-                    <div class="write_btn"><a href="/shoekream/request/write">글 작성</a></div>
+                    <div class="write_btn"><a href="/shoekream/request/write">글 작성하기</a></div>
                 </div>
 			</div>
 		</div>

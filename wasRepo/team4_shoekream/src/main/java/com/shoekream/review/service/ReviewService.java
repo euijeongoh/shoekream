@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.member.MemberVo;
 import com.shoekream.notice.dao.NoticeDao;
 import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.review.dao.ReviewDao;
@@ -56,14 +57,14 @@ public class ReviewService {
 	
 	
 	//전체 리뷰목록 조회 (리뷰 리스트)
-	public List<ReviewVo> selectReviewList() throws Exception {
+	public List<ReviewVo> selectReviewList(MemberVo loginMember) throws Exception {
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
 		ReviewDao dao = new ReviewDao();
-		List<ReviewVo> reviewVoList = dao.ReviewList(conn);
+		List<ReviewVo> reviewVoList = dao.ReviewList(conn, loginMember);
 		
 		//close
 		JDBCTemplate.close(conn);
