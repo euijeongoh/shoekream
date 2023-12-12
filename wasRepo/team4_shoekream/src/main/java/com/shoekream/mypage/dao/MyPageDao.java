@@ -13,6 +13,7 @@ import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.OrdersHistoryVo;
 import com.shoekream.mypage.vo.WishListVo;
+import com.shoekream.page.vo.PageVo;
 
 public class MyPageDao {
 	
@@ -248,26 +249,30 @@ public class MyPageDao {
 	}
 
 	// 관심상품 정보 조회(List)
-	public List<WishListVo> getWishProductsInfo(Connection conn, MemberVo loginMember) throws Exception {
+	public List<WishListVo> getWishProductsInfo(Connection conn, MemberVo loginMember, PageVo pvo) throws Exception {
 		// sql
-		String productSql = "SELECT BR.BRAND_NAME 브랜드 , P.NO 상품번호 , P.NAME 상품명 , IMG.THUMBNAIL 썸네일 FROM WISHLIST W LEFT JOIN PRODUCTS P ON W.PRODUCTS_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BRAND BR ON P.BRAND_NO = BR.NO WHERE W.MEMBER_NO = ?";
+		String productSql = "SELECT * FROM ( SELECT ROWNUM , A.* FROM ( SELECT BR.BRAND_NAME BRAND_NAME , P.NO PRODUCT_NO , P.MODEL_NUMBER MODEL_NUMBER , P.NAME PRODUCT_NAME , IMG.THUMBNAIL THUMBNAIL FROM WISHLIST W LEFT JOIN PRODUCTS P ON W.PRODUCTS_NO = P.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BRAND BR ON P.BRAND_NO = BR.NO WHERE W.MEMBER_NO = ? ORDER BY W.WISH_DATE DESC ) A ) WHERE ROWNUM BETWEEN ? AND ?";
 		String priceSql = "SELECT MIN(B.PRICE) 즉시구매가 FROM BIDDING B WHERE B.BIDDING_POSITION_NO = 2 AND B.PRODUCTS_NO = ?";
 		PreparedStatement pstmt1 = conn.prepareStatement(productSql);
 		pstmt1.setString(1, loginMember.getNo());
+		pstmt1.setInt(2, pvo.getStartRow());
+		pstmt1.setInt(3, pvo.getLastRow());
 		ResultSet rs = pstmt1.executeQuery();
 		
 		List<WishListVo> productList = new ArrayList<WishListVo>();
 		while(rs.next()) {
-			String brandName = rs.getString("브랜드");
-			String productNo = rs.getString("상품번호");
-			String productName = rs.getString("상품명");
-			String productImg = rs.getString("썸네일");
+			String brandName = rs.getString("BRAND_NAME");
+			String productNo = rs.getString("PRODUCT_NO");
+			String modelNumber = rs.getString("MODEL_NUMBER");
+			String productName = rs.getString("PRODUCT_NAME");
+			String productImg = rs.getString("THUMBNAIL");
 			
 			WishListVo wishVo = new WishListVo();
 			
 			wishVo.setBrandName(brandName);
-			wishVo.setProductName(productName);
 			wishVo.setProductNo(productNo);
+			wishVo.setModelNumber(modelNumber);
+			wishVo.setProductName(productName);
 			wishVo.setProductImg(productImg);
 			
 			productList.add(wishVo);
@@ -276,8 +281,9 @@ public class MyPageDao {
 		// close
 		JDBCTemplate.close(pstmt1);
 		
+		PreparedStatement pstmt2 = null;
 		for(int i = 0; i<productList.size(); ++i) {
-			PreparedStatement pstmt2 = conn.prepareStatement(priceSql);
+			pstmt2 = conn.prepareStatement(priceSql);
 			pstmt2.setString(1, productList.get(i).getProductNo());
 			ResultSet rs2 = pstmt2.executeQuery();
 			
@@ -291,10 +297,10 @@ public class MyPageDao {
 				productList.get(i).setImmediatePrice(immediatePrice);
 			}
 			
-			// close
-			JDBCTemplate.close(pstmt2);
 		}
 		
+		// close
+		JDBCTemplate.close(pstmt2);
 		
 		
 		return productList;
@@ -434,6 +440,36 @@ public class MyPageDao {
 		JDBCTemplate.close(pstmt);
 		
 		return map;
+	}
+
+	public int deleteWishItem(Connection conn, MemberVo loginMember, String productNo) throws Exception {
+		// sql
+		String sql = "DELETE FROM WISHLIST WHERE PRODUCTS_NO = ? AND MEMBER_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productNo);
+		pstmt.setString(2, loginMember.getNo());
+		int result = pstmt.executeUpdate();
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+	public int getWishCnt(Connection conn, MemberVo loginMember) throws Exception {
+		// sql
+		String sql = "SELECT COUNT(*) CNT FROM WISHLIST WHERE MEMBER_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		ResultSet rs = pstmt.executeQuery();
+		
+		int wishCnt = -1;
+		if(rs.next()) {
+			wishCnt =  rs.getInt("CNT");
+		}
+		
+		
+		return wishCnt;
 	}
 
 

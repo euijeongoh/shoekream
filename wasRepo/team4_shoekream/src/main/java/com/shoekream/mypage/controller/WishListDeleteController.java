@@ -1,6 +1,7 @@
 package com.shoekream.mypage.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,32 +11,38 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.MyPageService;
-import com.shoekream.mypage.vo.HistoryCntVo;
 
-@WebServlet("/mypage/buying")
+@WebServlet("/mypage/wishlist/delete")
 
-public class BuyingController extends HttpServlet{
+public class WishListDeleteController extends HttpServlet {
 
-	// 구매내역 화면 띄우기
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		PrintWriter pw = resp.getWriter();
 		try {
-			// 로그인 여부 체크
+			// data
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
-			if(loginMember == null) {
-				resp.sendRedirect("/shoekream/member/login");
+			System.out.println("======");
+			System.out.println(loginMember);
+			System.out.println("--------");
+			String productNo = req.getParameter("productNo");
+			
+			// service
+			MyPageService service = new MyPageService();
+			int result = service.deleteWishItem(loginMember, productNo);
+			
+			// result == view
+			if(result != 1) {
+				throw new Exception("삭제 작업 오류");
 			}
 			
-			// service 호출
-			MyPageService service = new MyPageService();
-			HistoryCntVo cntVo = service.getBuyingCnts(loginMember);
-			
-			req.setAttribute("cntVo", cntVo);
-			req.getRequestDispatcher("/WEB-INF/views/mypage/buying.jsp").forward(req, resp);
+			pw.write("{\"msg\" : \"done\"}");
 		} catch(Exception e) {
 			e.printStackTrace();
+			pw.write("{\"msg\" : \"no\"}");			
 		}
-		
 	}
+	
 	
 }

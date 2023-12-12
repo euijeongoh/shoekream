@@ -71,22 +71,6 @@
                 <li><a href="/shoekream/member/searchPwd">비밀번호 찾기</a></li>
             </ul>
             
-<!--    연동 로그인 버튼 -->
-            <div class="social_login_area">
-                <div class="social_btn_box">
-                    
-                    <button id="social_btn">
-                        <img id="navericon" src="/shoekream/resources/img/member/navericon.png">
-                        네이버로 로그인
-                    </button>
-                </div>
-                <div class="social_btn_box">
-                    <button id="social_btn">
-                        <img id="kakaoicon" src="/shoekream/resources/img/member/kakaoicon.png">
-                        카카오로 로그인
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 	

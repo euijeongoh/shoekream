@@ -10,7 +10,7 @@
     height: 480px;
     display: flex;
     justify-content: center;
-    background: rgba(156, 156, 117);
+    background: white;
 }
 
 .main_img img {

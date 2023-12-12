@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.Map;
 import java.util.UUID;
 
@@ -46,25 +45,27 @@ public class MainProfileImageController extends HttpServlet {
 			
 			Part f = req.getPart("f");
 			
+			String fileUrl = null;
 			// 읽기 준비
 			InputStream in = f.getInputStream();
 			
 			// 내보내기 준비
-			String sep = File.separator;
-			// 경로
-			String path = req.getServletContext().getRealPath(sep + "resources" + sep + "img" + sep + "profile");
-			// 새 파일명 지정
-			String randomName = loginMember.getId() + "_" + System.currentTimeMillis() + "_" + UUID.randomUUID();
-			
-			// 확장자 가져오기
 			String submittedFileName = f.getSubmittedFileName();
 			String ext = submittedFileName.substring(submittedFileName.lastIndexOf("."));
+			String sep = File.separator;
+			// 경로
+			// 새 파일명 지정
+			String randomName = loginMember.getId() + "_" + System.currentTimeMillis() + "_" + UUID.randomUUID();
+			String path = sep + "resources" + sep + "img" + sep + "profile";
+			String realPath = req.getServletContext().getRealPath(path);
 			String fileName = sep + randomName + ext;
 			
-			String src = path + fileName;
+			// 확장자 가져오기
+			
+			String src = "/shoekream" + path + fileName;
 			System.out.println(src);
 			
-			File target = new File(src);
+			File target = new File(realPath+fileName);
 			FileOutputStream out = new FileOutputStream(target);
 			
 			byte[] buf = new byte[1024];
@@ -72,7 +73,7 @@ public class MainProfileImageController extends HttpServlet {
 			while( (size = in.read(buf)) != -1) {
 				out.write(buf, 0, size);
 			}
-	      
+				      
 			// 정리
 			in.close();
 			out.close();
@@ -87,7 +88,9 @@ public class MainProfileImageController extends HttpServlet {
 				throw new Exception();
 			}
 			
-			loginMember = (MemberVo) map.get("loginMember");
+			MemberVo newLoginMember = (MemberVo) map.get("loginMember");
+			loginMember.setProfileImage(newLoginMember.getProfileImage());
+
 			req.getSession().setAttribute("loginMember", loginMember);
 			
 			resp.sendRedirect("/shoekream/mypage/main");

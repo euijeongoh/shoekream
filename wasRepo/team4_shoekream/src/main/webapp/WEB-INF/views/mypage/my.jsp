@@ -16,8 +16,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="/shoekream/resources/css/common/header.css"> 
-<link rel="stylesheet" href="/shoekream/resources/css/common/mypage_side.css"> 
 <link rel="stylesheet" href="/shoekream/resources/css/mypage/my.css"> 
 
 <script defer src="/shoekream/resources/js/mypage/my.js"></script>
@@ -119,7 +117,6 @@
                         <div class="info-box">
                             <div id="brand"><%= vo.getBrandName() %></div>
                             <div id="model-name"><%= vo.getProductName() %> </div>
-                            <div id="price"><%= vo.getImmediatePrice() %></div>
                         </div>
                    		</li>
                 	<%} %>

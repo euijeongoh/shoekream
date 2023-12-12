@@ -1,8 +1,6 @@
 package com.shoekream.mypage.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.MyPageService;
+import com.shoekream.page.vo.PageVo;
 
 @WebServlet("/mypage/main")
 
@@ -33,8 +32,19 @@ public class MyPageMainController extends HttpServlet{
 			// service
 			MyPageService mps = new MyPageService(); 
 			
+			int listCount = mps.getWishCnt(loginMember);
+			String currentPage_ = req.getParameter("pno");
+			if(currentPage_== null) {
+				currentPage_ = "1";
+			}
+			int currentPage = Integer.parseInt(currentPage_);
+			int pageLimit = 5;
+			int boardLimit = 10;
+			
+			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
+			
 			// 구매내역 cnt , 판매내역 cnt, 관심상품 list
-			Map<String, Object> myMainMap = mps.getMyPageMainInfo(loginMember);
+			Map<String, Object> myMainMap = mps.getMyPageMainInfo(loginMember, pvo);
 			
 			// result == view
 			req.setAttribute("buyCntVo", myMainMap.get("buyCntVo"));

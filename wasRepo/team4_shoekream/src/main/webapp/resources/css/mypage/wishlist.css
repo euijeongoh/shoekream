@@ -127,6 +127,18 @@
     letter-spacing: -.06px;
     margin-top: 6px;
     text-decoration: underline;
+    cursor: pointer;
 }
 
+.page-container {
+	width: 1000px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}
 
+.page-area{
+	font-size: 'Pretendard';
+	padding-top: 30px;
+	font-weight: 600;
+}
