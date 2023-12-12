@@ -29,8 +29,9 @@ joinInputTagArr[1].addEventListener('keyup', ()=>{
 	
 	if(strId.length>=1 && strId.length < 6) {
 		idCheckDiv.innerHTML="6자 이상 입력해주세요";
-		idValid = false;
-	} else {
+	}
+	
+	if(strId.length>=6){
 		idCheckDiv.innerHTML="";
 		idValid = true;
 	}
@@ -54,6 +55,8 @@ joinInputTagArr[1].addEventListener('keyup', ()=>{
 		}
 	});	
 })
+
+console.log(idValid);
 
 // 비밀번호 유효성 체크
 // 비밀번호 영문, 숫자, 특수문자 조합 8-16자
@@ -87,6 +90,8 @@ joinInputTagArr[3].addEventListener('keyup', ()=>{
 		pwdValid = true;
 	}	
 })
+
+console.log(pwdValid);
 
 // 닉네임 유효성 체크
 let nickValid = false;
@@ -136,7 +141,7 @@ joinInputTagArr[5].addEventListener('keyup', ()=>{
 			emailCheckDiv.innerHTML = "이미 가입한 이메일입니다.";
 			emailBtn.disabled=true;	
 			emailBtn.style.backgroundColor="#ebebeb";	
-			emailBtn.style.cursor="default";	
+			emailBtn.style.cursor="default";
 			emailValid = false;	
 		} else {
 			if(emailChecked===true){
@@ -151,16 +156,15 @@ joinInputTagArr[5].addEventListener('keyup', ()=>{
 });	
 
 
+let emailAuthorized = false;
 function checkValidation() {
-	if(nameValid===true && idValid===true && pwdValid===true && nickValid===true && emailValid===true){
+	if(nameValid===true && idValid===true && pwdValid===true && nickValid===true && emailValid===true && emailAuthorized ===true){
 		return true;
 	} else {
 		alert("회원가입을 할 수 없습니다. 양식을 다시 확인해주세요.");
 		return false;
 	}
 }
-
-
 
 
 function sendEmail(){
@@ -187,8 +191,9 @@ function sendEmail(){
 			 apprNo.addEventListener('keyup', ()=>{
 				const apprNoValue = document.querySelector("input[name=appr_no]").value;
 				let isAuthorized = (apprNoValue === authKey);
-			 	if(isAuthorized) {
+			 	if(isAuthorized === true) {
 				 	authCheck.innerHTML="인증되었습니다."
+				 	emailAuthorized=true;
 			 	} else {
 				 	authCheck.innerHTML="인증번호가 일치하지 않습니다.";
 			 	} 		 
