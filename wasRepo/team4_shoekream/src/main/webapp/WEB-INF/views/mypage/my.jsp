@@ -41,7 +41,7 @@
                             <form id="img_form">
                             	<input id="img_upload" name="f" type="file">
                             	<button type="button" id="change_profile">프로필 사진 변경</button>
-                            	<button type="button" onclick="location.href='/shoekream/review/mylist'">내 리뷰</button>
+                            	<button type="button" onclick="location.href='/shoekream/review/boardlist'">내 리뷰</button>
                             </form>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <div class="icon">
                             <div>
                                 <a>
-                                <img onclick="location.href='/shoekream/notice/list'" src="/shoekream/resources/img/mypage/noticeicon.png">
+                                <img href="/shoekream/notice/main" src="/shoekream/resources/img/mypage/noticeicon.png">
                                 <div>공지사항</div>      
                                 </a>
                             </div>
@@ -112,7 +112,7 @@
                 	<%for( WishListVo vo : wishList) { %>
                 		<li>
                         <div id="product-img">
-                            <img src="./resources/product1.webp" href="location.href='/shoekream/product/detail?modelNo'">
+                            <img src="./resources/product1.webp">
                         </div>
                         <div class="info-box">
                             <div id="brand"><%= vo.getBrandName() %></div>
