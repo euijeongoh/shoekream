@@ -44,7 +44,7 @@ public class RequestService {
 		return listCount;
 	}
 
-	//게시글 상세조회
+	//게시글 상세조회 (+조회수 추가)
 	public RequestVo selectRequestListByNo(String no) throws Exception{
 		
 		//conn
@@ -52,7 +52,12 @@ public class RequestService {
 		
 		//dao
 		RequestDao dao = new RequestDao();
+		int result = dao.increaseHit(conn, no);
 		RequestVo vo = dao.selectRequestByNo(conn, no);
+//		RequestVo vo = null;
+		if(result == 1) {
+			vo = dao.selectRequestByNo(conn, no);
+		}
 		
 		//tx
 		

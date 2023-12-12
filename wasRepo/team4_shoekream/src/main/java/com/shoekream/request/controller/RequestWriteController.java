@@ -30,9 +30,7 @@ public class RequestWriteController extends HttpServlet {
 			}
 			
 			RequestService bs = new RequestService();
-//			List<CategoryVo> categoryVoList = bs.getCategoryList(); 
-//			req.setAttribute("categoryVoList", categoryVoList);
-			req.getRequestDispatcher("/WEB-INF/views/board/write.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/request/write.jsp").forward(req, resp);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -46,18 +44,13 @@ public class RequestWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-					
-			//인코딩
-//			req.setCharacterEncoding("UTF-8");	//필터에서 인코딩 처리 해줌
 			
 			HttpSession session = req.getSession();
 			
 			// data
-//			String category = req.getParameter("category");
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-			
 			
 			
 			RequestVo vo = new RequestVo();

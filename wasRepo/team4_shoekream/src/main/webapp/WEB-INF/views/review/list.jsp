@@ -1,5 +1,15 @@
+<%@page import="com.shoekream.review.vo.ReviewProductVo"%>
+<%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
+<%@page import="com.shoekream.review.vo.ReviewVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	List<ReviewVo> reviewVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
+    	EnrollProductVo productVo = (EnrollProductVo) request.getAttribute("productVo");
+    	ReviewProductVo reviewVo = (ReviewProductVo) request.getAttribute("reviewVo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>

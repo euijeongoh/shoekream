@@ -32,7 +32,7 @@ public class ReviewProductDao {
 	}
 	
 	
-	//브랜들 이름
+	//브랜들 이름                                                                                                                                                      
 	public ReviewProductVo brandCheck(Connection conn, ReviewProductVo vo) throws Exception{
 		String sql = "SELECT * FROM PRODUCTS WHERE NO = ? AND DEL_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);

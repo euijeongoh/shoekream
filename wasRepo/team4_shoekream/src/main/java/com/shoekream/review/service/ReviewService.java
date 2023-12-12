@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.notice.dao.NoticeDao;
+import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.review.dao.ReviewDao;
 import com.shoekream.review.vo.ReviewVo;
 
@@ -92,25 +94,25 @@ public class ReviewService {
 
 	//리뷰삭제
 	public int delete(String no, String memberNo) throws Exception {
-		 //conn
-	      Connection conn = JDBCTemplate.getConnection();
-	      
-	      //dao
-	      ReviewDao dao = new ReviewDao();
-	      int result = dao.delete(conn , no , memberNo);
-	      
-	      //tx
-	      if(result == 1) {
-	         JDBCTemplate.commit(conn);
-	      }else {
-	         JDBCTemplate.rollback(conn);
-	      }
-	      
-	      //close
-	      JDBCTemplate.close(conn);
+	 //conn
+      Connection conn = JDBCTemplate.getConnection();
+      
+      //dao
+      ReviewDao dao = new ReviewDao();
+      int result = dao.delete(conn , no , memberNo);
+      
+      //tx
+      if(result == 1) {
+         JDBCTemplate.commit(conn);
+      }else {
+         JDBCTemplate.rollback(conn);
+      }
+      
+      //close
+      JDBCTemplate.close(conn);
 
-	      return result;
-	   }//delete
+      return result;
+   }//delete
 
 
 	//리뷰 수정
@@ -134,6 +136,21 @@ public class ReviewService {
 		JDBCTemplate.close(conn);
 		
 		return result;
+	}
+	
+	//no로 DB받아오기
+	public ReviewVo getReviewByNo(String no) throws Exception{
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		ReviewDao dao = new ReviewDao();
+		ReviewVo vo = dao.getReviewByNo(conn, no);
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return vo;
 	}
 	
 	

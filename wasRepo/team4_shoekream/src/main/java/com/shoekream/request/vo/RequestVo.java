@@ -9,13 +9,13 @@ public class RequestVo {
 		private String enrollDate;
 		private String modifyDate;
 		private String delYn;
-		private String likeBtn;
+		private String hit;
 		public RequestVo() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
 		public RequestVo(String no, String memberNo, String title, String content, String enrollDate, String modifyDate,
-				String delYn, String likeBtn) {
+				String delYn, String hit) {
 			super();
 			this.no = no;
 			this.memberNo = memberNo;
@@ -24,13 +24,13 @@ public class RequestVo {
 			this.enrollDate = enrollDate;
 			this.modifyDate = modifyDate;
 			this.delYn = delYn;
-			this.likeBtn = likeBtn;
+			this.hit = hit;
 		}
 		@Override
 		public String toString() {
 			return "RequestVo [no=" + no + ", memberNo=" + memberNo + ", title=" + title + ", content=" + content
-					+ ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", delYn=" + delYn + ", likeBtn="
-					+ likeBtn + "]";
+					+ ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", delYn=" + delYn + ", hit=" + hit
+					+ "]";
 		}
 		public String getNo() {
 			return no;
@@ -74,12 +74,13 @@ public class RequestVo {
 		public void setDelYn(String delYn) {
 			this.delYn = delYn;
 		}
-		public String getLikeBtn() {
-			return likeBtn;
+		public String getHit() {
+			return hit;
 		}
-		public void setLikeBtn(String likeBtn) {
-			this.likeBtn = likeBtn;
+		public void setHit(String hit) {
+			this.hit = hit;
 		}
+		
 		
 		
 		

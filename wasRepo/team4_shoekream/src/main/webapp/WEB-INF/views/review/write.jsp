@@ -1,3 +1,4 @@
+<%@page import="com.shoekream.review.vo.ReviewProductVo"%>
 <%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
 <%@page import="com.shoekream.review.vo.ReviewVo"%>
 <%@page import="java.util.List"%>
@@ -7,6 +8,7 @@
     <%
     	List<ReviewVo> reviewVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
     	EnrollProductVo productVo = (EnrollProductVo) request.getAttribute("productVo");
+    	ReviewProductVo reviewVo = (ReviewProductVo) request.getAttribute("reviewVo");
     %>
     
 <!DOCTYPE html>
@@ -28,8 +30,9 @@
             </div>
             <br>
             <div class="picjor">
+             <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
                 <div class="picture">
-                    <img src="/shoekream/resources/img/review/tage_img.png" alt="상품이미지" class="picture_img">
+                    <img src="" alt="" class="picture_img">
                 </div>
                 <div class="jordan">
                     <p class="jordan_eg"><b><%=productVo.getProductName() %></b></p>
