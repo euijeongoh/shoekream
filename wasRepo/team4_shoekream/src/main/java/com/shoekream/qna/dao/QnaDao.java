@@ -65,6 +65,7 @@ public class QnaDao {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rs);
 			
+			
 			return count;
 			
 		
@@ -96,7 +97,7 @@ public class QnaDao {
 		public QnaVo selectQnaByNo(Connection conn, String no) throws Exception{
 			
 			//SQL
-			String sql = "SELECT Q.NO, M.NICKNAME, Q.TITLE, Q.CONTENT, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO WHERE Q.NO = ?";
+			String sql = "SELECT Q.NO, M.NICKNAME, Q.TITLE, Q.CONTENT, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, Q.REPLY_TITLE, Q.REPLY_CONTENT, TO_CHAR(Q.REPLY_ENROLL_DATE, 'YYYY.MM.DD') AS REPLY_ENROLL_DATE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO WHERE Q.NO = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
 			ResultSet rs = pstmt.executeQuery();
@@ -110,12 +111,20 @@ public class QnaDao {
 				String title = rs.getString("TITLE");
 				String content = rs.getString("CONTENT");
 				String enrollDate = rs.getString("ENROLL_DATE");
+				String replyTitle = rs.getString("REPLY_TITLE");
+				String replyContent = rs.getString("REPLY_CONTENT");
+				String replyEnrollDate = rs.getString("REPLY_ENROLL_DATE");
+				
 				
 				vo.setNo(qnaNo);
 				vo.setMemberNick(nickname);
 				vo.setTitle(title);
 				vo.setContent(content);
 				vo.setEnrollDate(enrollDate);
+				vo.setReplyTitle(replyTitle);
+				vo.setReplyContent(replyContent);
+				vo.setReplyEnrollDate(replyEnrollDate);
+				
 			}
 			
 			//close
@@ -129,7 +138,7 @@ public class QnaDao {
 		public List<QnaVo> qnaSearch(Connection conn, String title, PageVo pvo) throws Exception{
 			
 			//SQL
-			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD WHERE TITLE LIKE '%' || ?|| '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT Q.NO, Q.TITLE, Q.CONTENT, M.NICKNAME, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO WHERE Q.TITLE LIKE '%' || ? || '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
 	 		pstmt.setInt(2, pvo.getStartRow());
@@ -145,6 +154,7 @@ public class QnaDao {
 				
 				vo.setNo(rs.getString("NO"));
 				vo.setTitle(rs.getString("TITLE"));
+				vo.setMemberNick(rs.getString("NICKNAME"));
 				vo.setEnrollDate(rs.getString("ENROLL_DATE"));
 				
 				qnaVoList.add(vo);
@@ -233,6 +243,24 @@ public class QnaDao {
 			
 			//close
 			JDBCTemplate.close(pstmt);
+			
+			return result;
+		}
+
+		public int replyWrite(Connection conn, QnaVo vo) throws Exception{
+			//SQL
+			String sql = "UPDATE QNA_BOARD SET REPLY_TITLE = ? , REPLY_CONTENT = ? , REPLY_ENROLL_DATE = SYSDATE WHERE NO = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getReplyTitle());
+			pstmt.setString(2, vo.getReplyContent());
+			pstmt.setString(3, vo.getNo());
+			
+			int result = pstmt.executeUpdate();
+			
+			//rs
+			
+			//close
+			JDBCTemplate.close(conn);
 			
 			return result;
 		}

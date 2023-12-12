@@ -7,14 +7,14 @@
 .wrap{
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 750px;
     justify-content: center;
     /* background-color: yellow; */
 }
 
 .wrap_inner{
     display: flex;
-/*    width: 1200px;*/
+    width: 1200px;
     height: 1220px;
     /* margin-left: auto; *
     /* margin-right:auto; */
@@ -47,24 +47,13 @@
  }
 
  .dropdown_head {
-/*	display: flex;*/
     width: 1000px;
-/*    height: 100px;*/
+    height: 30px;
     padding-top: 17px;
     padding-bottom: 19px;
     /* border-bottom: 1px solid gray; */
  }
 
-.date_box{
-	width: 100%;
-	height: 20px;	
-}
-.qna_box{
-	display: flex;
-	width: 1000px;
-/*	height: 50px;*/
-	justify-content: space-between;
-}
  .date {
 
     width: 100px;
@@ -73,13 +62,10 @@
 
  }
 
- .qna_title{
+ .notice_title{
     font-size: 20px;
  }
- 
- .qna_nick{
-	 font-size: 20px;
- }
+
  .dropdown_content{
     
      width: 940px;
@@ -122,64 +108,9 @@
     color: black;
  }
  
-  .dropdown_reply{
-	 width: 940px;
-     height: 350px;
-     padding: 30px;
-     border-bottom: 1px solid;
- }
- 
-  .reply{
-    border: 1px solid darkgray;
-    max-width: 940px;
-    height: 200px;
-    background-color: lightgray;
- }
- 
-#contents {
+  textarea{
     width:100%;
     height: 100%;
     border:1px solid gray;
     resize:none;
-}
-
-#replys{
-	width: 940px;
-	height: 200px;
-	border:1px solid gray;
-	resize:none;
-	
-}
-
- .reply_date {
-    width: 100px;
-    height: 20px;
-    font-size: 15px;
- }
-
- .reply_title{
-    font-size: 20px;
-    margin-bottom: 20px;
- }
- 
- .reply_write{
-	 display: flex;
-	 justify-content: end;
- }
- 
- .reply_btn{
-	 display: flex;
-	 margin-top: 10px;
-	 width: 100px;
-	 height: 32px;
-	 border : 1px solid lightgray;
-	 border-radius: 10px;
-	 justify-content: center;
-	 align-items: center;
- }
- 
- #submit{
-	 font-size:15px;
-	 background-color: white;
-	 border:none;
  }

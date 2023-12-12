@@ -32,6 +32,7 @@
 					  <textarea name="contents" id="contents" cols="50" rows="30" readonly><%= vo.getContent() %></textarea>
 					</div>
 				</div>
+				<% if(vo.getReplyTitle()==null) {%>
 				<div class="dropdown_reply">
 					<div class="reply_date"></div>
 					<div class="reply_title"></div>
@@ -39,6 +40,18 @@
 						<textarea name="replys" id="replys" cols="50" rows="30" placeholder="작성된 답변이 없습니다." readonly></textarea>
 					</div>
 				</div>
+				<% }else{ %>
+					<div class="dropdown_reply">
+						<div class="reply_date"><%=vo.getReplyEnrollDate() %></div>
+						<div class="reply_title">
+							제목: <%=vo.getReplyTitle() %>
+						</div>
+						<div class="reply">
+							<textarea  id="replys" name="replyContent" cols="50" rows="30" readonly><%=vo.getReplyContent() %></textarea>
+						</div>
+						
+					</div>
+				<% } %>
 				<div class="btn_list">
 					<div class="btn_box">
 						<a href="/shoekream/qna/list">목록으로</a>
