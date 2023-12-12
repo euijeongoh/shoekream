@@ -29,7 +29,7 @@
 
 			<!-- 본문 -->
 			<div class="board_wrap">
-				<div class="board_title">Q&A</div>
+				<div class="board_title">공지사항</div>
 				<div class="board_search">
 					<div>	
 					<form action="/shoekream/admin/notice/search" method="get">

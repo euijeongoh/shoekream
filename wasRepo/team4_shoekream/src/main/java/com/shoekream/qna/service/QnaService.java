@@ -171,4 +171,25 @@ public List<QnaVo> QnaList(PageVo pvo) throws Exception{
 		
 		return result;
 	}
+
+	public int replyWrite(QnaVo vo) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		QnaDao dao = new QnaDao();
+		int result = dao.replyWrite(conn, vo);
+		
+		//tx
+		if(result==1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 }

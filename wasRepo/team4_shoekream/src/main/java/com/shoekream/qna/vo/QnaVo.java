@@ -10,14 +10,15 @@ public class QnaVo {
 	private String content;
 	private String enrollDate;
 	private String hit;
-	private String reply;
+	private String replyTitle;
+	private String replyContent;
 	private String replyEnrollDate;
 	public QnaVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public QnaVo(String no, String managerNo, String memberNo, String memberNick, String title, String content,
-			String enrollDate, String hit, String reply, String replyEnrollDate) {
+			String enrollDate, String hit, String replyTitle, String replyContent, String replyEnrollDate) {
 		super();
 		this.no = no;
 		this.managerNo = managerNo;
@@ -27,7 +28,8 @@ public class QnaVo {
 		this.content = content;
 		this.enrollDate = enrollDate;
 		this.hit = hit;
-		this.reply = reply;
+		this.replyTitle = replyTitle;
+		this.replyContent = replyContent;
 		this.replyEnrollDate = replyEnrollDate;
 	}
 	public final String getNo() {
@@ -78,11 +80,17 @@ public class QnaVo {
 	public final void setHit(String hit) {
 		this.hit = hit;
 	}
-	public final String getReply() {
-		return reply;
+	public final String getReplyTitle() {
+		return replyTitle;
 	}
-	public final void setReply(String reply) {
-		this.reply = reply;
+	public final void setReplyTitle(String replyTitle) {
+		this.replyTitle = replyTitle;
+	}
+	public final String getReplyContent() {
+		return replyContent;
+	}
+	public final void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
 	}
 	public final String getReplyEnrollDate() {
 		return replyEnrollDate;
@@ -94,7 +102,8 @@ public class QnaVo {
 	public String toString() {
 		return "QnaVo [no=" + no + ", managerNo=" + managerNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick
 				+ ", title=" + title + ", content=" + content + ", enrollDate=" + enrollDate + ", hit=" + hit
-				+ ", reply=" + reply + ", replyEnrollDate=" + replyEnrollDate + "]";
+				+ ", replyTitle=" + replyTitle + ", replyContent=" + replyContent + ", replyEnrollDate="
+				+ replyEnrollDate + "]";
 	}
-
+	
 }
