@@ -74,7 +74,7 @@
 							<a href="/shoekream/admin/notice/list?pno=<%= pvo.getEndPage() + 1 %>"> 〉</a>
 							<% } %>
 							<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
-							 <a href="/shoekream/notice/list?pno=<%= pvo.getMaxPage() %>"> 》</a>
+							 <a href="/shoekream/admin/notice/list?pno=<%= pvo.getMaxPage() %>"> 》</a>
 							 <% } %>
 						
 						</div>
