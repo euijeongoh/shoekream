@@ -25,7 +25,7 @@ function chooseAjax() {
 
 function bidTabAjax() {
 	
-	bidCount.style.color="#F15746";
+	bidCount.style.color="#31b46e";
 	tabBidding.style.borderBottom="2px solid #222222";
 	pendCount.style.color="#222222";
 	tabPending.style.borderBottom="none";	
@@ -94,7 +94,11 @@ function bidTabAjax() {
 			const li1 = document.createElement("li");
 			const li2 = document.createElement("li");
 			const li3 = document.createElement("li");
-
+	
+			sellDetail.appendChild(li1);
+			sellDetail.appendChild(li2);
+			sellDetail.appendChild(li3);
+			
 			const detailBtn = document.createElement("button");
 			li1.appendChild(detailBtn);
 			detailBtn.innerHTML="상세내역";
@@ -113,7 +117,7 @@ function pendTabAjax() {
 	
 	bidCount.style.color="#222222";
 	tabBidding.style.borderBottom="none";
-	pendCount.style.color="#F15746";
+	pendCount.style.color="#31b46e";
 	tabPending.style.borderBottom="2px solid #222222";
 	finishedCount.style.color="#222222";
 	tabFinished.style.borderBottom="none";
@@ -201,7 +205,7 @@ function finishTabAjax() {
 	tabBidding.style.borderBottom="none";
 	pendCount.style.color="#222222";
 	tabPending.style.borderBottom="none";	
-	finishedCount.style.color="#F15746";
+	finishedCount.style.color="#31b46e";
 	tabFinished.style.borderBottom="2px solid #222222";
 	
 	inputTabValue = "finished";
@@ -232,6 +236,7 @@ function finishTabAjax() {
 			const sell = document.createElement("div");
 			sellBody.appendChild(sell);
 			sell.className = "sell";
+			sell.innerHTML="";
 			
 			const productDetail = document.createElement("div");
 			sell.appendChild(productDetail);

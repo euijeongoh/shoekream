@@ -42,28 +42,33 @@ const myInfoTagArr = document.querySelectorAll(".myinfo li a");
 
 
 if(location.href.indexOf("/mypage/buying")>-1) {
-	shopTagArr[0].style.fontWeight= "600";
+	shopTagArr[0].style.fontWeight= "700";
 	shopTagArr[0].style.color="#222222";	
-} else if(location.href.indexOf("/mypage/selling")>-1) {
-	shopTagArr[1].style.fontWeight= "600";
+} 
+if(location.href.indexOf("/mypage/selling")>-1) {
+	shopTagArr[1].style.fontWeight= "700";
 	shopTagArr[1].style.color="#222222";
-} else if(location.href.indexOf("/mypage/wishlist")){
-	shopTagArr[2].style.fontWeight= "600";
+} 
+if(location.href.indexOf("/mypage/wishlist")>-1){
+	shopTagArr[2].style.fontWeight= "700";
 	shopTagArr[2].style.color="#222222";
 }
 
 if(location.href.indexOf("/mypage/info")>-1) {
-	myinfoTagArr[0].style.fontWeight= "600";
-	myinfoTagArr[0].style.color= "#222222";
-} else if(location.href.indexOf("/mypage/addr")>-1) {
-	myinfoTagArr[1].style.fontWeight= "600";
-	myinfoTagArr[1].style.color= "#222222";
-} else if(location.href.indexOf("/mypage/payInfo")>-1) {
-	myinfoTagArr[2].style.fontWeight= "600";
-	myinfoTagArr[2].style.color= "#222222";
-} else if(location.href.indexOf("/mypage/ACCOUNT")>-1){
-	myinfoTagArr[3].style.fontWeight= "600";
-	myinfoTagArr[3].style.color= "#222222";
+	myInfoTagArr[0].style.fontWeight= "700";
+	myInfoTagArr[0].style.color= "#222222";
+} 
+if(location.href.indexOf("/mypage/addr")>-1) {
+	myInfoTagArr[1].style.fontWeight= "700";
+	myInfoTagArr[1].style.color= "#222222";
+} 
+if(location.href.indexOf("/mypage/payInfo")>-1) {
+	myInfoTagArr[2].style.fontWeight= "700";
+	myInfoTagArr[2].style.color= "#222222";
+} 
+if(location.href.indexOf("/mypage/ACCOUNT")>-1){
+	myInfoTagArr[3].style.fontWeight= "700";
+	myInfoTagArr[3].style.color= "#222222";
 }
 </script>
 </html>

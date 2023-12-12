@@ -29,7 +29,7 @@
                		<div class="wish-item">
                        <div class="wish-product">
                            <div class="product-img">
-                               <img src="./resources/product1.webp">
+                               <img src=${ wishVo.productImg }>
                            </div>
                            <div class="product-info">
                                <div id="brand">${ wishVo.brandName }</div>

@@ -32,10 +32,9 @@
         <div class="header_inner">
             <div class="top_list">
                 <ul>
-                    <li><a href="/shoekream/notice/main">고객센터</a></li>
+                    <li><a href="/shoekream/notice/list">고객센터</a></li>
                     <li><a href="/shoekream/mypage/main?pno=1">마이페이지</a></li>
                     <li><a href="/shoekream/mypage/wishlist?pno=1">관심</a></li>
-                    <li><a>알림</a></li>
                     <%if(loginMember==null){%>
 	                    <li><a href="/shoekream/member/login">로그인</a></li>                	
                     <%} else {%>
