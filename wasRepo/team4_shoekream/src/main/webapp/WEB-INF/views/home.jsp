@@ -28,7 +28,7 @@
 	<%@ include file="/WEB-INF/views/common/homemenu.jsp" %>
 
     <div class="main_img">
-        <img src="./resources/mainimg.webp">
+        <img src="/shoekream/resources/img/main/mainimg.png" onclick="location.href='/shoekream/product/detail?modelNo=CJ9179-200'">
     </div>
 
     <div class="home_products">
