@@ -5,18 +5,23 @@ public class WishListVo {
 	private String brandName;
 	private String productNo;
 	private String productName;
+	private String modelNumber;
 	private String productImg;
 	private String immediatePrice;
+	
+	
 	public WishListVo() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
-	public WishListVo(String brandName, String productNo, String productName, String productImg,
+	
+	
+	public WishListVo(String brandName, String productNo, String productName, String modelNumber, String productImg,
 			String immediatePrice) {
 		super();
 		this.brandName = brandName;
 		this.productNo = productNo;
 		this.productName = productName;
+		this.modelNumber = modelNumber;
 		this.productImg = productImg;
 		this.immediatePrice = immediatePrice;
 	}
@@ -38,6 +43,12 @@ public class WishListVo {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+	public String getModelNumber() {
+		return modelNumber;
+	}
+	public void setModelNumber(String modelNumber) {
+		this.modelNumber = modelNumber;
+	}
 	public String getProductImg() {
 		return productImg;
 	}
@@ -53,11 +64,9 @@ public class WishListVo {
 	@Override
 	public String toString() {
 		return "WishListVo [brandName=" + brandName + ", productNo=" + productNo + ", productName=" + productName
-				+ ", productImg=" + productImg + ", immediatePrice=" + immediatePrice + "]";
+				+ ", modelNumber=" + modelNumber + ", productImg=" + productImg + ", immediatePrice=" + immediatePrice
+				+ "]";
 	}
-	
-	
-	
 	
 	
 }
