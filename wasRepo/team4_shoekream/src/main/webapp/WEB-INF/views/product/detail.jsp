@@ -5,8 +5,12 @@
     pageEncoding="UTF-8"%>
     <%
     EnrollProductVo productDetailVo = (EnrollProductVo) request.getAttribute("productDetailVo");
-    EnrollProductVo shoesSizesDetailVo = (EnrollProductVo) request.getAttribute("shoesSizesDetailVo");
+    List<EnrollProductVo> shoesSizesList = (List<EnrollProductVo>) request.getAttribute("shoesSizesList");
     List<BiddingVo> biddingList = (List<BiddingVo>) request.getAttribute("biddingList");
+    String sellingPrice = (String) request.getAttribute("sellingPrice");
+    String buyingPrice = (String) request.getAttribute("buyingPrice");
+    List<BiddingVo> sellBiddingList = (List<BiddingVo>) request.getAttribute("sellBiddingList");
+    List<BiddingVo> buyBiddingList = (List<BiddingVo>) request.getAttribute("buyBiddingList");
     %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -33,7 +37,7 @@
                     <div class="column_2">
                         <div class="price_container">
                             <div class="product_direct_purchase"><span >즉시 구매가</span></div>
-                            <div class="product_price"><span >116,000원</span></div>
+                            <div class="product_price"><span ><%=buyingPrice %></span></div>
                         </div>
                         <div class="main_title_container">
                             <div><span><%= productDetailVo.getProductName() %></span></div>
@@ -42,8 +46,10 @@
                         <div class="product_size_select">
                             <select name="product_size" class="select_box">
                                 <option value="all_size">모든 사이즈</option>
-								<%for(EnrollProductVo vo: shoesSizesDetailVo) %>	
-                                <option value="230">230</option>
+								<% for(EnrollProductVo vo : shoesSizesList){ %>    
+							    <option value="<%= vo.getSizeStr() %>"><%= vo.getSizeStr() %></option>
+								<% } %>
+
                             </select>
                         </div>
                         <dl  class="detail-product-container">
@@ -51,12 +57,10 @@
                                 <div class="title-text">최근 거래가</div>
                                 <div>
                                     <div class="amount">
-                                        <span class="price-info">289,000</span>
+                                        <span class="price-info"><%=biddingList.get(0).getPrice() %></span>
                                         <span class="price-info">원</span>
                                     </div>
                                     <div class="fluctuation decrease">
-                                        <span class="triangle">▼</span>
-                                        <span>10,000 (-3.3%)</span>
                                     </div>
                                 </div>
                             </div>
@@ -81,8 +85,8 @@
                                     <strong class="title">구매</strong>
                                     <div class="price">
                                         <span class="amount">
-                                            <em class="num">272,000</em>
-                                            <span class="won">원</span>
+                                            <em class="num"></em>
+                                            <span class="won"><%=buyingPrice %>원</span>
                                         </span>
                                         <span class="desc">즉시 구매가</span>
                                     </div>
@@ -91,8 +95,8 @@
                                     <strong class="title">판매</strong>
                                     <div class="price">
                                         <span class="amount">
-                                            <em class="num">294,000</em>
-                                                <span class="won">원</span>
+                                            <em class="num"></em>
+                                                <span class="won"><%=sellingPrice %>원</span>
                                         </span>
                                         <span class="desc">즉시 판매가</span>
                                     </div>
@@ -116,85 +120,38 @@
                         </ul>
                     </div>
                         <div>
-                            <table>
+                            <table border="1">
                                 <thead>
                                     <tr>
                                         <th>옵션</th>
-                                        <th>구매 희망가</th>
-                                        <th>수량</th>
+                                        <th>체결 가격</th>
+                                        <th>체결날짜</th>
                                     </tr>
                                 </thead>
+                                <thead>
+    <tr>
+        <th>이름</th>
+        <th>가격</th>
+        <th>날짜</th>
+    </tr>
+</thead>
                                 <tbody>
+                                <% for(BiddingVo vo : biddingList){%>
                                     <tr>
+                                        <td class="table_td align_right">
+                                            <div></div>
+                                            <span><%=vo.getShoesSizes() %></span>
+                                        </td>
                                         <td class="table_td">
                                             <div></div>
-                                            <span>230</span>
+                                            <span><%=vo.getPrice() %></span>
                                         </td>
                                         <td class="table_td align_right">
                                             <div></div>
-                                            <span>121,000원</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>23/12/01</span>
+                                            <span><%=vo.getExpireDate() %></span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="table_td">
-                                            <div></div>
-                                            <span>230</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>121,000원</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>23/12/01</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table_td">
-                                            <div></div>
-                                            <span>230</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>121,000원</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>23/12/01</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table_td">
-                                            <div></div>
-                                            <span>230</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>121,000원</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>23/12/01</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table_td">
-                                            <div></div>
-                                            <span>230</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>121,000원</span>
-                                        </td>
-                                        <td class="table_td align_right">
-                                            <div></div>
-                                            <span>23/12/01</span>
-                                        </td>
-                                    </tr>
+                            	 <%} %>
                                 </tbody>
                             </table>
                         </div>
@@ -255,6 +212,65 @@
                 </div>
             </div>
         </div>
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    document.querySelector('.slider_container button:nth-child(2)').addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlidePosition();
+    });
+
+    document.querySelector('.slider_container button:nth-child(1)').addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlidePosition();
+    });
+
+    function updateSlidePosition() {
+        for (let slide of slides) {
+            slide.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    }
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sellBidsLink = document.querySelector('.item_link:nth-child(2)'); // "판매 입찰" 링크
+
+        sellBidsLink.addEventListener('click', function(event) {
+            event.preventDefault(); // 기본 동작 방지
+            fetchSellBiddingList();
+        });
+
+        function fetchSellBiddingList() {
+            // 판매 입찰 데이터 요청
+            // 예시 URL: /bidding/sellList, 실제 URL은 서버 구현에 따라 달라질 수 있음
+            fetch('/product/detail')
+                .then(response => response.json())
+                .then(data => {
+                    displaySellBiddingList(data.sellBiddingList);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function displaySellBiddingList(sellBiddingList) {
+            const tableBody = document.querySelector('.wrap_bids table tbody');
+            tableBody.innerHTML = ''; // 기존 테이블 내용을 초기화
+
+            // 판매 입찰 데이터를 테이블로 생성
+            sellBiddingList.forEach(vo => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td class="table_td align_right"><span>${vo.getName()}</span></td>
+                                <td class="table_td"><span>${vo.getPrice()}</span></td>
+                                <td class="table_td align_right"><span>${vo.getDate()}</span></td>`;
+                tableBody.appendChild(tr);
+            });
+        }
+    });
+    </script>
+    
+    
+</script>
 
 </body>
 </html>

@@ -97,6 +97,7 @@ img {
     display: flex;
     margin-bottom: 20px;
     overflow: visible;
+    flex-wrap: wrap;
 }
 
 .detail-product-container>div {
