@@ -1,5 +1,17 @@
+<%@page import="com.shoekream.review.vo.ReviewProductVo"%>
+<%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
+<%@page import="com.shoekream.review.vo.ReviewVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	List<ReviewVo> reviewVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
+    	EnrollProductVo productVo = (EnrollProductVo) request.getAttribute("productVo");
+    	ReviewProductVo reviewProductVo = (ReviewProductVo) request.getAttribute("reviewProductVo");
+    	ReviewVo reviewVo = (ReviewVo) request.getAttribute("reviewVo");
+    	
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +42,8 @@
             </div>
             
             <div class="user_button">
-                <a href="#"><p id="click">수정</p></a>
-                <a href="#"><p id="click">삭제</p></a>
+                <button onclick="location.href='/shoekream/review/edit?no=<%= reviewVo.getReviewNo() %>'"><p id="click">수정</p></button>
+                <button onclick="location.href='/shoekream/review/delete?no=<%= reviewVo.getReviewNo() %>'"><p id="click">삭제</p></button>
             </div>
 
 
@@ -53,8 +65,14 @@
                     </a>
                 </div>
                 <div class="jordan">
-                    <p class="jordan_eg">(W) Jordan 1 Low White Wolf Grey</p>
-                    <p class="jordan_ko">(W) 조던 1 로우 화이트 울프 그레이</p>
+                    <% if(productVo != null) { %>
+				    <p class="jordan_eg"><b><%=productVo.getProductName()%></b></p>
+				    <p class="jordan_ko"><%=productVo.getProductNameKo()%></p>
+				<% } else { %>
+				    <!-- Handle the case where productVo is null -->
+				    <p>Product information is not available.</p>
+				<% } %>
+
                 </div>
             </div>
         </div>
@@ -74,15 +92,15 @@
         </div>
         <div class="content">
             <div class="review">
-                <h3>역시 예뻐요! 반사이즈 업 추천드려요!</h3>
+                <h3><%= reviewVo.getContent()%></h3>
             </div>
             <div class="abcd">
 
             </div>
-            <div class="hashtag">
+            <!-- <div class="hashtag">
                 <a href="#" class="ht">#조던</a>
                 <a href="#" class="ht">#나이키</a>
-            </div>
+            </div> -->
         </div>
         <br>
         <div class="ignition">

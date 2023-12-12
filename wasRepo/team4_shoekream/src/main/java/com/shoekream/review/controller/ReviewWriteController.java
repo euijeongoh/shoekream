@@ -35,6 +35,7 @@ public class ReviewWriteController extends HttpServlet {
 	            // resp.sendRedirect("/member/login");
 	        }
 	        String productNo = req.getParameter("productNo");
+	        
 	        EnrollProductVo productVo = new EnrollProductVo();
 	        ReviewProductService ps = new ReviewProductService();
 	        productVo = ps.getProductInfo(productNo);
@@ -51,7 +52,7 @@ public class ReviewWriteController extends HttpServlet {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        req.setAttribute("errorMsg", "리뷰 작성 에러");
-	        req.getRequestDispatcher("/WEB-INF/views/review/error.jsp").forward(req, resp); //여기를 member/login로 고치기
+	        req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp); //여기를 member/login로 고치기
 	    }
 
 	}

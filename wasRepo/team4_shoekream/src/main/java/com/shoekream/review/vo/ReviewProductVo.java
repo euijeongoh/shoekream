@@ -3,6 +3,7 @@ package com.shoekream.review.vo;
 public class ReviewProductVo {
 	private String productNo;
 	private String category;
+	private String reviewNo;
 	private String productName;
 	private String productNameko;
 	private String enrollDate;
@@ -10,15 +11,18 @@ public class ReviewProductVo {
 	private String delYn;
 	private String categoryNo;
 	private String brandNo;
+	
+	
 	public ReviewProductVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ReviewProductVo(String productNo, String category, String productName, String productNameko,
+	public ReviewProductVo(String productNo, String category, String reviewNo, String productName, String productNameko,
 			String enrollDate, String modifyDate, String delYn, String categoryNo, String brandNo) {
 		super();
 		this.productNo = productNo;
 		this.category = category;
+		this.reviewNo = reviewNo;
 		this.productName = productName;
 		this.productNameko = productNameko;
 		this.enrollDate = enrollDate;
@@ -29,9 +33,10 @@ public class ReviewProductVo {
 	}
 	@Override
 	public String toString() {
-		return "ReviewProductVo [productNo=" + productNo + ", category=" + category + ", productName=" + productName
-				+ ", productNameko=" + productNameko + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate
-				+ ", delYn=" + delYn + ", categoryNo=" + categoryNo + ", brandNo=" + brandNo + "]";
+		return "ReviewProductVo [productNo=" + productNo + ", category=" + category + ", reviewNo=" + reviewNo
+				+ ", productName=" + productName + ", productNameko=" + productNameko + ", enrollDate=" + enrollDate
+				+ ", modifyDate=" + modifyDate + ", delYn=" + delYn + ", categoryNo=" + categoryNo + ", brandNo="
+				+ brandNo + "]";
 	}
 	public String getProductNo() {
 		return productNo;
@@ -44,6 +49,12 @@ public class ReviewProductVo {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public String getReviewNo() {
+		return reviewNo;
+	}
+	public void setReviewNo(String reviewNo) {
+		this.reviewNo = reviewNo;
 	}
 	public String getProductName() {
 		return productName;
@@ -87,6 +98,7 @@ public class ReviewProductVo {
 	public void setBrandNo(String brandNo) {
 		this.brandNo = brandNo;
 	}
+
 	
 	
 

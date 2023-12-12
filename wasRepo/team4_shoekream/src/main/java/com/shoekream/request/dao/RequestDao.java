@@ -140,7 +140,6 @@ public class RequestDao {
 		pstmt.setString(1, vo.getNo());
 		pstmt.setString(2, vo.getTitle());
 		pstmt.setString(3, vo.getContent());
-		pstmt.setString(4, vo.getLikeBtn());
 		int result = pstmt.executeUpdate();
 		
 		//close
@@ -207,6 +206,21 @@ public class RequestDao {
 		
 		int result = pstmt.executeUpdate();
 		
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+	//조회수 증가
+	public int increaseHit(Connection conn, String no) throws Exception {
+		
+		//sql
+		String sql = "UPDATE PRODUCT_REGISTER_REQUEST_BOARD SET HIT = HIT +1 WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		int result = pstmt.executeUpdate();		
 		
 		//close
 		JDBCTemplate.close(pstmt);

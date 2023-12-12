@@ -41,6 +41,7 @@
 					<li>
 					<a href="/shoekream/request/detail?no=<%= vo.getNo() %>">
 							<div class="dropdown"><%= vo.getTitle() %></div>
+							<div class="hit"><%= vo.getHit() %></div>
 							<div class="date"><%= vo.getEnrollDate() %></div>
 					</a>
 					</li>
@@ -78,6 +79,9 @@
 						</div>
 					</div>
 				</div>
+				<div class="write_box">
+                    <div class="write_btn"><a href="/shoekream/request/write">글 작성</a></div>
+                </div>
 			</div>
 		</div>
 	</div>

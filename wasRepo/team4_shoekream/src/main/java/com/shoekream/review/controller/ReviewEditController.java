@@ -22,11 +22,8 @@ public class ReviewEditController extends HttpServlet {
 			try {
 				//data
 				String no = req.getParameter("no");
-				
-				//service
 				ReviewService rs = new ReviewService();
-				Map<String, Object> m = rs.edit(no);
-				ReviewVo vo = (ReviewVo) m.get("vo");
+				ReviewVo vo = rs.getReviewByNo(no);
 				
 				//result
 				if(vo == null) {

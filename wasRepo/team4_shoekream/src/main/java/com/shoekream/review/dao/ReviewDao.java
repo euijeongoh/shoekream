@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.review.vo.ReviewVo;
 
 public class ReviewDao {
@@ -289,6 +290,33 @@ public class ReviewDao {
 		
 		return dbVo;
 	}
+	
+	//no로 DB받아오기
+	public ReviewVo getReviewByNo(Connection conn, String no) throws Exception{
+		//SQL
+		String sql = "SELECT TITLE, CONTENT FROM REVIEW WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		//rs
+		ReviewVo vo = null;
+		if(rs.next()) {
+			vo = new ReviewVo();
+			
+			vo.setNo(no);
+			vo.setContent(rs.getString("CONTENT"));
+			
+		}
+		//close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		return vo;
+		
+	}
+
 
 
 }//class

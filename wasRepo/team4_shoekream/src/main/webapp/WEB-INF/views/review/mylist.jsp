@@ -1,5 +1,17 @@
+<%@page import="com.shoekream.review.vo.ReviewVo"%>
+<%@page import="com.shoekream.review.service.ReviewProductService"%>
+<%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
+<%@page import="com.shoekream.review.dao.ReviewDao"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+     <%
+    	List<ReviewDao> reviewVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
+    	EnrollProductVo productVo = (EnrollProductVo) request.getAttribute("productVo");
+    	ReviewProductService reviewVo = (ReviewProductVo) request.getAttribute("reviewVo");
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,10 +48,12 @@
             </div>
             <div class="abcd"> </div>
             <div class="feed">
-                <div class="listphoto">
+                <%for(ReviewVo vo : reviewVoList) { %>
+                <li>
+                <a href="/shoekream/review/detail?no=<%= vo.getNo() %>">
+                <div class="listphoto"><img src="${ vo.image }" alt=" ${vo.productNo }" class= "wave">
+                </div>
                     <div class="one">
-                        <a href="/shoekream/review/detail">
-                            <img src="/shoekream/resources/img/review/picture.png" alt="사진01" class="photo">
                         </a>
                         <div class="detail">
                                 <img src="/shoekream/resources/img/review/wave.png" alt="wave" class="wave">
