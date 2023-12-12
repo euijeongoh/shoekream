@@ -1,0 +1,166 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mypage-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding: 40px 40px 160px;
+}
+.container {
+    flex: 1;
+    min-height: 380px;
+    overflow: hidden;
+}
+.content_title {
+    display: flex;
+    border-bottom: 3px solid #222;
+    padding-bottom: 16px;
+}
+.title {
+    font-size: 24px;
+    letter-spacing: -.36px;
+}
+.title>h3 {
+    font-size: inherit;
+    line-height: 29px;
+}
+.sub_title {
+    color: rgba(34,34,34,.5);
+    font-size: 12px;
+    letter-spacing: -.005em;
+}
+.btn_box {
+    padding-top: 4px;
+}
+a, a:active, a:focus, a:hover {
+    text-decoration: none;
+}
+.btn {
+    align-items: center;
+    background-color: #fff;
+    color: rgba(34,34,34,.8);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+.btn_box {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    margin-left: 300px;
+    padding-left: 30px;
+}
+.btn_box .btn_add {
+    border: 1px solid #222;
+    border-radius: 10px;
+    font-size: 12px;
+    height: 34px;
+    letter-spacing: -.06px;
+    line-height: 32px;
+    margin-right: 0;
+    padding: 0 14px;
+}
+.my_payment .my_list .basic {
+    padding: 22px 0 29px;
+}
+.basic {
+    border-bottom: 2px solid #222;
+}
+.my_item {
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+.my_item .info_bind {
+    margin-right: 24px;
+}
+.my_payment .basic .card_info {
+    padding: 13px 0 1px;
+}
+.my_list .card_name, .other_card .card_name {
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    display: inline-block;
+    min-width: 52px;
+    padding: 9px;
+    text-align: center;
+}
+.card_name {
+    font-size: 15px;
+    letter-spacing: -.15px;
+}
+.card_num .num_bind {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card_num .dot {
+    white-space: nowrap;
+}
+.card_num .dot:after, .card_num .dot:before {
+    background-color: #222;
+    border-radius: 100%;
+    content: "";
+    display: inline-flex;
+    height: 5px;
+    margin-left: 2px;
+    width: 5px;
+}
+.card_num .hyphen {
+    background-color: #000;
+    display: inline-flex;
+    height: 1px;
+    margin-left: 4px;
+    margin-right: 2px;
+    width: 4px;
+}
+.last_num_box {
+    display: flex;
+}
+.mark {
+    background-color: #bbb;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 6px;
+    vertical-align: top;
+}
+.btn_bind .btn {
+    padding-left: 11px;
+    padding-right: 12px;
+}
+.btn_bind {
+    margin-left: auto;
+}
+.outlinegrey {
+    border: 1px solid #d3d3d3;
+    color: rgba(34,34,34,.8);
+}
+.small {
+    border-radius: 10px;
+    font-size: 12px;
+    height: 34px;
+    letter-spacing: -.06px;
+    padding: 0 14px;
+}
+.btn {
+    align-items: center;
+    background-color: #fff;
+    color: rgba(34,34,34,.8);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
