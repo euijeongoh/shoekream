@@ -163,7 +163,7 @@ public class BiddingDao {
 		if(rs.next()) {
 			infoVo = new ProductInfoVo();
 			infoVo.setProductName(rs.getString(4));;
-			infoVo.setProductKoName(rs.getString(5));;
+//			infoVo.setProductKoName(rs.getString(5));;
 			infoVo.setImmediatePrice(rs.getString(6));;
 			System.out.println("infoVo : 제품 정보");
 			System.out.println("dao에러확인 infoVo : " + infoVo);
