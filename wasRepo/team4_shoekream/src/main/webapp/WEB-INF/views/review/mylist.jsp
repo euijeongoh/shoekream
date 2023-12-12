@@ -49,7 +49,6 @@
             <div class="abcd"> </div>
             <div class="feed">
                 <%for(ReviewVo vo : reviewVoList) { %>
-                <li>
                 <a href="/shoekream/review/detail?no=<%= vo.getNo() %>">
                 <div class="listphoto"><img src="${ vo.image }" alt=" ${vo.productNo }" class= "wave">
                 </div>
@@ -250,9 +249,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
         <div class="abcd"> 
 
         </div>
