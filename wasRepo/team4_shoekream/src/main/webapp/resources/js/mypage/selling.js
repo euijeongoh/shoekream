@@ -6,16 +6,18 @@ const bidCount = document.querySelector("#bidCount");
 const pendCount = document.querySelector("#pendCount");
 const finishedCount = document.querySelector("#finishedCount");
 
+let inputTabValue = document.querySelector("#tab").value;
+
 function chooseAjax() {
-	if(bidCount.style.color==="#F15746") {
+	if(inputTabValue === "bidding") {
 		bidTabAjax();
 	}
 	
-	if(pendCount.style.color==="#F15746") {
+	if(inputTabValue === "pending") {
 		pendTabAjax();
 	} 
 	
-	if(finishedCount.style.color==="#F15746") {
+	if(inputTabValue === "finished") {
 		finishTabAjax();
 	}
 }
@@ -29,12 +31,16 @@ function bidTabAjax() {
 	tabPending.style.borderBottom="none";	
 	finishedCount.style.color="#222222";
 	tabFinished.style.borderBottom="none";
-	
-	set2Mths();
+	// hidden input 값 설정(chooseAjax메소드 실행을 위해)
+	inputTabValue = "bidding";
 	
 	// json 형태로 데이터 보내기
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
+
+	if(startDateValue==="" || endDateValue === "") {
+		set2Mths();
+	}
 
 	const jsonObj = {
 		startDate : startDateValue,
@@ -48,7 +54,6 @@ function bidTabAjax() {
 		{method: "POST", body: jsonStr})
 	.then( (resp)=>{return resp.json()} )
 	.then( (data) => {
-
 		const sellBody = document.querySelector(".sell-body");
 		sellBody.innerHTML="";
 		for(let i=0; i<data.length; ++i) {
@@ -90,11 +95,12 @@ function bidTabAjax() {
 			const li2 = document.createElement("li");
 			const li3 = document.createElement("li");
 
-			sellDetail.appendChild(li1);
-			sellDetail.appendChild(li2);
-			sellDetail.appendChild(li3);
-			li1.innerHTML=data[i].enrollDate;
-			li2.innerHTML=data[i].expireDate;
+			const detailBtn = document.createElement("button");
+			li1.appendChild(detailBtn);
+			detailBtn.innerHTML="상세내역";
+			detailBtn.onclick="location.href='/shoekream/sell/order'";
+			
+			li2.innerHTML=data[i].bidStatus;
 			li3.innerHTML=data[i].bidPrice + "원";
 		}
 		
@@ -112,14 +118,15 @@ function pendTabAjax() {
 	finishedCount.style.color="#222222";
 	tabFinished.style.borderBottom="none";
 	
-	set2Mths();
+	inputTabValue = "pending";
 	
 	// json 형태로 데이터 보내기
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
 
-	console.log(startDateValue);
-	console.log(endDateValue);
+	if(startDateValue==="" || endDateValue === "") {
+		set2Mths();
+	}
 
 	const jsonObj = {
 		startDate : startDateValue,
@@ -177,9 +184,10 @@ function pendTabAjax() {
 			sellDetail.appendChild(li2);
 			sellDetail.appendChild(li3);
 			
-			const btn = document.createElement("button");
-			li1.appendChild(btn);
-			btn.value="상세 보기";
+			const detailBtn = document.createElement("button");
+			li1.appendChild(detailBtn);
+			detailBtn.innerHTML="상세내역";
+			detailBtn.onclick="location.href='/shoekream/buy/order'";
 			li2.innerHTML=data[i].orderStatus;
 			li3.innerHTML=data[i].orderDate;
 		}
@@ -196,11 +204,15 @@ function finishTabAjax() {
 	finishedCount.style.color="#F15746";
 	tabFinished.style.borderBottom="2px solid #222222";
 	
-	set2Mths();
+	inputTabValue = "finished";
 	
 	// json 형태로 데이터 보내기
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
+
+	if(startDateValue==="" || endDateValue === "") {
+		set2Mths();
+	}
 
 	const jsonObj = {
 		startDate : startDateValue,
@@ -253,15 +265,17 @@ function finishTabAjax() {
 			const li2 = document.createElement("li");
 			const li3 = document.createElement("li");
 
-			sellDetail.appendChild(li1);
-			sellDetail.appendChild(li2);
-			sellDetail.appendChild(li3);
+			const detailBtn = document.createElement("button");
+			li1.appendChild(detailBtn);
+			detailBtn.innerHTML="상세내역";
+			detailBtn.onclick="location.href='/shoekream/buy/order'";
 			
-			const btn = document.createElement("button");
-			li1.appendChild(btn);
-			btn.value="상세 보기";
 			li2.innerHTML=data[i].orderStatus;
-			li3.innerHTML=data[i].finalPrice;
+
+			const reviewLink = document.createElement("a");
+			li3.appendChild(reviewBtn);
+			reviewLink.innerHTML="리뷰 작성하기";
+			reviewLink.href="location.href='/shoekream/review/write?productNo='" + data[i].shoeNo;
 		}
 		
 	});	

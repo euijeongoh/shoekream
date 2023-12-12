@@ -27,6 +27,8 @@ changeProfile.addEventListener('click', () => {
 		.then((data) => {
 			alert("잘 됐음");
 			
+			profileImg.src=""
+			
 		});
 	
 });

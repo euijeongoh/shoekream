@@ -18,7 +18,7 @@ public class BuyingController extends HttpServlet{
 
 	// 구매내역 화면 띄우기
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			// 로그인 여부 체크
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");

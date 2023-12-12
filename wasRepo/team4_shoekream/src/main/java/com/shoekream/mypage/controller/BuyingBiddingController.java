@@ -27,7 +27,7 @@ public class BuyingBiddingController extends HttpServlet{
 
 	// 구매입찰 내역
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			//
 			resp.setCharacterEncoding("UTF-8");
@@ -54,24 +54,23 @@ public class BuyingBiddingController extends HttpServlet{
 			MyPageService service = new MyPageService();
 			
 			// 페이징 처리
-			HistoryCntVo cntVo = service.getBuyingCnts(loginMember);
-			
-			int listCount = cntVo.getCntBid();
-			String currentPage_ = req.getParameter("pno");
-			if(currentPage_ == null) {
-				currentPage_ = "1";
-			}
-			int currentPage = Integer.parseInt(currentPage_);
-			int pageLimit = 5;
-			int boardLimit = 10;
-			
-			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);		
+//			HistoryCntVo cntVo = service.getBuyingCnts(loginMember);
+//			
+//			int listCount = cntVo.getCntBid();
+//			String currentPage_ = req.getParameter("pno");
+//			if(currentPage_ == null) {
+//				currentPage_ = "1";
+//			}
+//			int currentPage = Integer.parseInt(currentPage_);
+//			int pageLimit = 5;
+//			int boardLimit = 10;
+//			
 			List<BiddingHistoryVo> bidList = service.viewBuyingBiddingList(loginMember, map); // pvo에 알맞게 service, dao 바꾸기 
 			
 			// 데이터 가공(map)
-			Map<String, Object> respMap = new HashMap<String, Object>();
-			respMap.put("pvo", pvo);
-			respMap.put("bidList", bidList);
+//			Map<String, Object> respMap = new HashMap<String, Object>();
+//			respMap.put("pvo", pvo);
+//			respMap.put("bidList", bidList);
 			
 			// result json으로 변환 후 응답
 			PrintWriter out = resp.getWriter();

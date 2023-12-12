@@ -12,6 +12,7 @@ import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.HistoryCntVo;
 import com.shoekream.mypage.vo.OrdersHistoryVo;
 import com.shoekream.mypage.vo.WishListVo;
+import com.shoekream.page.vo.PageVo;
 
 public class MyPageService {
 	
@@ -82,13 +83,13 @@ public class MyPageService {
 	}
 
 	// 관심상품 목록 조회
-	public List<WishListVo> viewWishListInfo(MemberVo loginMember) throws Exception {
+	public List<WishListVo> viewWishListInfo(MemberVo loginMember, PageVo pvo) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		MyPageDao dao = new MyPageDao();
-		List<WishListVo> wishList = dao.getWishProductsInfo(conn, loginMember);
+		List<WishListVo> wishList = dao.getWishProductsInfo(conn, loginMember, pvo);
 		
 		// close
 		JDBCTemplate.close(conn);
@@ -133,7 +134,7 @@ public class MyPageService {
 	
 	
 	// 마이페이지 메인
-	public Map<String, Object> getMyPageMainInfo(MemberVo loginMember) throws Exception {
+	public Map<String, Object> getMyPageMainInfo(MemberVo loginMember, PageVo pvo) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -154,7 +155,7 @@ public class MyPageService {
 		HistoryCntVo sellCntVo = new HistoryCntVo(sellBidCnt, sellPendCnt, sellFinishCnt);
 		
 		// 관심상품 리스트
-		List<WishListVo> wishList = dao.getWishProductsInfo(conn, loginMember);
+		List<WishListVo> wishList = dao.getWishProductsInfo(conn, loginMember, pvo);
 		
 		
 		// 데이터 뭉치기
@@ -193,7 +194,7 @@ public class MyPageService {
 		return map;
 	}
 
-
+	// 판매 진행중 내역 조회
 	public List<OrdersHistoryVo> viewSellingPendingList(MemberVo loginMember, Map<String, String> map) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
@@ -208,7 +209,7 @@ public class MyPageService {
 		return pendList;
 	}
 
-
+	// 판매 완료 내역 조회
 	public List<OrdersHistoryVo> viewSellingFinishedList(MemberVo loginMember, Map<String, String> map) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
@@ -221,6 +222,43 @@ public class MyPageService {
 		JDBCTemplate.close(conn);
 		
 		return finishList;
+	}
+
+
+	public int deleteWishItem(MemberVo loginMember, String productNo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		int result = dao.deleteWishItem(conn, loginMember, productNo);
+		
+		// tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+
+	public int getWishCnt(MemberVo loginMember) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		int wishCnt = dao.getWishCnt(conn, loginMember);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return wishCnt;
 	}
 
 

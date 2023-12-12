@@ -15,15 +15,15 @@
           <nav>
               <div class="shop_menu">
                   <div id="title">쇼핑 정보</div>
-                  <ul>
+                  <ul class="shop">
                       <li><a href="/shoekream/mypage/buying">구매 내역</a></li>
                       <li><a href="/shoekream/mypage/selling">판매 내역</a></li>
-                      <li><a href="/shoekream/mypage/wishlist">관심</a></li>
+                      <li><a href="/shoekream/mypage/wishlist?pno=1">관심</a></li>
                   </ul>
               </div>
               <div class="my_menu">
                   <div id="title">내 정보</div>
-                  <ul>
+                  <ul class="myinfo">
                       <li><a href="/shoekream/mypage/info">로그인 정보</a></li>
                       <li><a href="/shoekream/mypage/addr">주소록</a></li>
                       <li><a href="/shoekream/mypage/payInfo">결제 정보</a></li>
@@ -33,4 +33,37 @@
           </nav>
       </div>
 </body>
+
+
+<script>
+
+const shopTagArr = document.querySelectorAll(".shop li a");
+const myInfoTagArr = document.querySelectorAll(".myinfo li a");
+
+
+if(location.href.indexOf("/mypage/buying")>-1) {
+	shopTagArr[0].style.fontWeight= "600";
+	shopTagArr[0].style.color="#222222";	
+} else if(location.href.indexOf("/mypage/selling")>-1) {
+	shopTagArr[1].style.fontWeight= "600";
+	shopTagArr[1].style.color="#222222";
+} else if(location.href.indexOf("/mypage/wishlist")){
+	shopTagArr[2].style.fontWeight= "600";
+	shopTagArr[2].style.color="#222222";
+}
+
+if(location.href.indexOf("/mypage/info")>-1) {
+	myinfoTagArr[0].style.fontWeight= "600";
+	myinfoTagArr[0].style.color= "#222222";
+} else if(location.href.indexOf("/mypage/addr")>-1) {
+	myinfoTagArr[1].style.fontWeight= "600";
+	myinfoTagArr[1].style.color= "#222222";
+} else if(location.href.indexOf("/mypage/payInfo")>-1) {
+	myinfoTagArr[2].style.fontWeight= "600";
+	myinfoTagArr[2].style.color= "#222222";
+} else if(location.href.indexOf("/mypage/ACCOUNT")>-1){
+	myinfoTagArr[3].style.fontWeight= "600";
+	myinfoTagArr[3].style.color= "#222222";
+}
+</script>
 </html>

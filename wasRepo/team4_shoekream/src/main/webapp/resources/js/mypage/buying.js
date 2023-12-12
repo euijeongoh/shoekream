@@ -54,10 +54,6 @@ function bidTabAjax() {
 	fetch("/shoekream/mypage/buying/bidList", {method: "POST", body: jsonStr})
 	.then( (resp)=>{return resp.json()} )
 	.then( (data) => {
-		// 받아온 map 데이터 변수에 저장
-		const pvo = data.pvo;
-		const bidList = data.bidList;
-
 		const purchaseBody = document.querySelector(".purchase-body");
 		purchaseBody.innerHTML="";
 		for(let i=0; i<data.length; ++i) {
@@ -84,12 +80,12 @@ function bidTabAjax() {
 			const product = document.createElement("div");
 			detail.appendChild(product);
 			product.id="product";
-			product.innerHTML=bidList[i].shoeName;
+			product.innerHTML=data[i].shoeName;
 			
 			const size = document.createElement("div");
 			detail.appendChild(size);
 			size.id="size";
-			size.innerHTML=bidList[i].shoeSize;
+			size.innerHTML=data[i].shoeSize;
 			
 			const purchaseDetail = document.createElement("ul");
 			purchaseDetail.className = "purchase-detail";
@@ -108,13 +104,8 @@ function bidTabAjax() {
 			detailBtn.innerHTML="상세내역";
 			detailBtn.onclick="location.href='/shoekream/buy/order'";
 			
-			li2.innerHTML=bidList[i].bidStatus;
-			li3.innerHTML=bidList[i].bidPrice + "원";
-			
-			
-			// 페이징 영역
-			const pageArea = document.createElement("div");
-			
+			li2.innerHTML=data[i].bidStatus;
+			li3.innerHTML=data[i].bidPrice + "원";
 		}
 		
 	});
@@ -199,9 +190,10 @@ function pendTabAjax() {
 			purchaseDetail.appendChild(li2);
 			purchaseDetail.appendChild(li3);
 			
-			const btn = document.createElement("button");
-			li1.appendChild(btn);
-			btn.value="상세 보기";
+			const detailBtn = document.createElement("button");
+			li1.appendChild(detailBtn);
+			detailBtn.innerHTML="상세내역";
+			detailBtn.onclick="location.href='/shoekream/buy/order'";
 			li2.innerHTML=data[i].orderStatus;
 			li3.innerHTML=data[i].orderDate;
 		}
@@ -283,9 +275,11 @@ function finishTabAjax() {
 			purchaseDetail.appendChild(li2);
 			purchaseDetail.appendChild(li3);
 			
-			const btn = document.createElement("button");
-			li1.appendChild(btn);
-			btn.value="상세 보기";
+			const detailBtn = document.createElement("button");
+			li1.appendChild(detailBtn);
+			detailBtn.innerHTML="상세내역";
+			detailBtn.onclick="location.href='/shoekream/buy/order'";
+			
 			li2.innerHTML=data[i].orderStatus;
 			li3.innerHTML=data[i].finalPrice;
 		}
