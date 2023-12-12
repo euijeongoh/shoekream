@@ -7,6 +7,7 @@ public class ReviewVo {
 	
 	private String no;
 	private String memberNo;
+	private String memberNick;
 	private String reviewNo;
 	private String productNo;
 	private String comfortNo;
@@ -27,20 +28,18 @@ public class ReviewVo {
 	
 	private List<ReviewImageVo> reviewImageVoList = new ArrayList<ReviewImageVo>();	//여기다가 attachment를 담아주면 됨 (attachment 변수를 만든 것)
 	private ReviewImageVo thumbnailVo;
-	
-	
-	
 	public ReviewVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ReviewVo(String no, String memberNo, String reviewNo, String productNo, String comfortNo,
+	public ReviewVo(String no, String memberNo, String memberNick, String reviewNo, String productNo, String comfortNo,
 			String fiveStarRating, String content, String likeBtn, String enrollDate, String modifyDate, String delYN,
 			String reviewImage, String profileImage, String imageNo, String reviewImageNo, String filePath,
 			String thumbnailYn, List<ReviewImageVo> reviewImageVoList, ReviewImageVo thumbnailVo) {
 		super();
 		this.no = no;
 		this.memberNo = memberNo;
+		this.memberNick = memberNick;
 		this.reviewNo = reviewNo;
 		this.productNo = productNo;
 		this.comfortNo = comfortNo;
@@ -59,15 +58,6 @@ public class ReviewVo {
 		this.reviewImageVoList = reviewImageVoList;
 		this.thumbnailVo = thumbnailVo;
 	}
-	@Override
-	public String toString() {
-		return "ReviewVo [no=" + no + ", memberNo=" + memberNo + ", reviewNo=" + reviewNo + ", productNo=" + productNo
-				+ ", comfortNo=" + comfortNo + ", fiveStarRating=" + fiveStarRating + ", content=" + content
-				+ ", likeBtn=" + likeBtn + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", delYN="
-				+ delYN + ", reviewImage=" + reviewImage + ", profileImage=" + profileImage + ", imageNo=" + imageNo
-				+ ", reviewImageNo=" + reviewImageNo + ", filePath=" + filePath + ", thumbnailYn=" + thumbnailYn
-				+ ", reviewImageVoList=" + reviewImageVoList + ", thumbnailVo=" + thumbnailVo + "]";
-	}
 	public String getNo() {
 		return no;
 	}
@@ -79,6 +69,12 @@ public class ReviewVo {
 	}
 	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
+	}
+	public String getMemberNick() {
+		return memberNick;
+	}
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
 	}
 	public String getReviewNo() {
 		return reviewNo;
@@ -182,6 +178,17 @@ public class ReviewVo {
 	public void setThumbnailVo(ReviewImageVo thumbnailVo) {
 		this.thumbnailVo = thumbnailVo;
 	}
+	@Override
+	public String toString() {
+		return "ReviewVo [no=" + no + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", reviewNo=" + reviewNo
+				+ ", productNo=" + productNo + ", comfortNo=" + comfortNo + ", fiveStarRating=" + fiveStarRating
+				+ ", content=" + content + ", likeBtn=" + likeBtn + ", enrollDate=" + enrollDate + ", modifyDate="
+				+ modifyDate + ", delYN=" + delYN + ", reviewImage=" + reviewImage + ", profileImage=" + profileImage
+				+ ", imageNo=" + imageNo + ", reviewImageNo=" + reviewImageNo + ", filePath=" + filePath
+				+ ", thumbnailYn=" + thumbnailYn + ", reviewImageVoList=" + reviewImageVoList + ", thumbnailVo="
+				+ thumbnailVo + "]";
+	}
+	
 	
 	
 	

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.review.service.ReviewService;
 import com.shoekream.review.vo.ReviewVo;
 
@@ -20,19 +21,29 @@ public class MyReviewListController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
+        	
+        	// 로그인 여부 체크
+        	MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+        	
+        	if(loginMember==null) {
+        		throw new Exception();
+        	}
+        	
             ReviewService rs = new ReviewService();
 
             // data
-            String currentPage_ = req.getParameter("pno");
-            int currentPage = (currentPage_ == null) ? 1 : Integer.parseInt(currentPage_); // 현재 페이지
-            int pageLimit = 5;
-            int reviewLimit = 10;
+//            String currentPage_ = req.getParameter("pno");
+//            int currentPage = (currentPage_ == null) ? 1 : Integer.parseInt(currentPage_); // 현재 페이지
+//            int pageLimit = 5;
+//            int reviewLimit = 10;
+//            
+//            PageVo pvo = new PageVo();
+            
 
          // service(layer 호출) - 이 부분을 주석 처리하거나 삭제
-//          List<ReviewVo> reviewVoList = rs.selectReviewList(currentPage, pageLimit, reviewLimit);
-
+          List<ReviewVo> reviewVoList = rs.selectReviewList(loginMember);
           // result(==view)
-//          req.setAttribute("reviewVoList", reviewVoList);
+          req.setAttribute("reviewVoList", reviewVoList);
             req.getRequestDispatcher("/WEB-INF/views/review/mylist.jsp").forward(req, resp);
 
         } catch (Exception e) {
