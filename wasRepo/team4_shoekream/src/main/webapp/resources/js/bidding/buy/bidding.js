@@ -26,7 +26,12 @@
     
 // }
 
-const btnoutlinegrey = document.querySelectorAll('.btnoutlinegrey');
-btnoutlinegrey.forEach( (x) =>{ x.addEventListener("click" , function(){
-    alert(123);
-}) } );
+const btnoutlinegreyArr = document.querySelectorAll('.btnoutlinegrey');
+btnoutlinegreyArr.forEach( (x) =>{ x.addEventListener("click" , handleClick )});
+
+function handleClick(){
+    btnoutlinegreyArr.forEach( (x)=>{x.classList.remove('btnoutlinegrey_color')});
+    this.classList.add('btnoutlinegrey_color');
+    console.log(this.innerHTML);
+    alert("성공");
+}

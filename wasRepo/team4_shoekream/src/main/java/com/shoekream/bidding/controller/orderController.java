@@ -54,7 +54,6 @@ public class orderController extends HttpServlet{
 			int commission = ((int)(Math.round(((Integer.parseInt(ordersVo.getPrice()))*0.03)*0.01)*100));
 			req.setAttribute("price", ordersVo.getPrice());
 			req.setAttribute("commission", commission);
-			req.setAttribute("deliveryCharge", req.getParameter("deliveryCharge"));
 			req.setAttribute("totalAmount", ordersVo.getTotalPrice());
 			
 			req.getRequestDispatcher("/WEB-INF/views/buy/order.jsp").forward(req, resp);

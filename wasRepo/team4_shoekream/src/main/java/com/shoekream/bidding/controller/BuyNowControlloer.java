@@ -18,8 +18,6 @@ public class BuyNowControlloer extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		req.getRequestDispatcher("/WEB-INF/views/buy/now.jsp").forward(req, resp);
 		
 	}
 	
@@ -29,6 +27,7 @@ public class BuyNowControlloer extends HttpServlet{
 //			BiddingVo dbVo = (BiddingVo)req.getParameter("dbVo");
 //			System.out.println("BuyNowController 에러확인 dbVo : " + dbVo);
 			BiddingVo BuyProductInfo = (BiddingVo) req.getSession().getAttribute("BuyProductInfo");
+				System.out.println("-----------------즉시구매-----------------");
 				System.out.println("BuyNowController 에러확인 BuyProductInfo : " + BuyProductInfo);
 			
 			String productsNo = req.getParameter("productsNo");

@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/now.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 
-    <script defer src="/shoekream/resources/js/bidding/buy/now.js"></script>
 <body>
     <div class="wrap">
         <header>

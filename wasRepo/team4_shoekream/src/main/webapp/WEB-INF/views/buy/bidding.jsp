@@ -54,7 +54,6 @@
         <div class="content">
             <div class="buy_immediate">
             
-			<form action="">
 				<%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
 
                 <div class="price_descision_box">
@@ -125,7 +124,7 @@
                                 <a class="btnoutlinegrey">3일</a>
                                 <a class="btnoutlinegrey">7일</a>
                                 <a class="btnoutlinegrey">30일</a>
-                                <a btnoutlinegrey_color class="btnoutlinegrey">60일</a>
+                                <a class="btnoutlinegrey" id="btnoutlinegrey_color">60일</a>
                             </div>
                         </div>
                     </div>
@@ -146,7 +145,6 @@
                         <button class="blind_full_solid_false">구매 입찰 계속</button>
                     </div>
                 </div>
-            </form>
             
             </div>
         </div>
