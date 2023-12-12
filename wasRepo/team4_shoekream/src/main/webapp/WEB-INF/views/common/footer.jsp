@@ -22,7 +22,7 @@
 					<a href="">고객지원</a>
 				</div>
 				<div>
-					<a href="/shoekream/notice/list?pno=1">공지사항</a>
+					<a href="/shoekream/notice/list">공지사항</a>
 				</div>
 				<div>
 					<a href="">1:1문의</a>

@@ -50,7 +50,9 @@
             <div class="feed">
             <ul class="review_mylist_wrap">
                 <%for(ReviewVo vo : reviewVoList) { %>
+
                <li>
+
                 <a href="/shoekream/review/detail?no=<%= vo.getNo() %>">
                 
                 	<div class="listphoto">

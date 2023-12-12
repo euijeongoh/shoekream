@@ -33,36 +33,7 @@ public class AdminEnrollProductController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			req.setCharacterEncoding("UTF-8");
-			Part f = req.getPart("f");
 			
-			InputStream in = f.getInputStream();
-			//내보내기 준비
-			String sep = File.separator;
-			String path = req.getServletContext().getRealPath(sep + "resources"+sep + "img"+sep+"product");
-			
-			String randomName = System.currentTimeMillis()+"_"+UUID.randomUUID();
-			//원본파일명
-			String submittedFileName = f.getSubmittedFileName();//f를 통해 제출된파일이름 가져오기
-			//
-			int index = submittedFileName.lastIndexOf(".");
-			String ext = submittedFileName.substring(index);
-			
-			String fileName = sep+ randomName + ext;
-			
-			File target = new File(path+fileName);
-			FileOutputStream out = new FileOutputStream(target);
-			
-			byte[] buf = new byte[1024];
-			int size = 0;
-			while((size = in.read(buf)) != -1) {
-				out.write(buf, 0, size);//사이즈 만큼 내보내 주는 역할
-				
-			}
-			
-			//정리
-			in.close();
-			out.close();
 			
 			//db에서 먼저 체크할 데이터들
 			String category = req.getParameter("category");
@@ -124,6 +95,35 @@ public class AdminEnrollProductController extends HttpServlet {
 				throw new Exception("result2 != 1");
 			}
 			
+			req.setCharacterEncoding("UTF-8");
+			Part f = req.getPart("f");
+			
+			InputStream in = f.getInputStream();
+			//내보내기 준비
+			String sep = File.separator;
+			String path = req.getServletContext().getRealPath(sep + "resources"+sep + "img"+sep+"product");
+			
+			//원본파일명
+			String submittedFileName = f.getSubmittedFileName();//f를 통해 제출된파일이름 가져오기
+			//
+			int index = submittedFileName.lastIndexOf(".");
+			String ext = submittedFileName.substring(index);
+			
+			String fileName = sep+ modelNumber + ext;
+			
+			File target = new File(path+fileName);
+			FileOutputStream out = new FileOutputStream(target);
+			
+			byte[] buf = new byte[1024];
+			int size = 0;
+			while((size = in.read(buf)) != -1) {
+				out.write(buf, 0, size);//사이즈 만큼 내보내 주는 역할
+				
+			}
+			
+			//정리
+			in.close();
+			out.close();
 			req.getSession().setAttribute("alertMsg", "제품 등록 성공!");
 			resp.sendRedirect("/shoekream/admin/product/enroll");
 		}catch(Exception e) {

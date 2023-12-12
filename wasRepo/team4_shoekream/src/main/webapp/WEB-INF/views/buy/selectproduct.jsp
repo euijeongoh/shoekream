@@ -19,7 +19,7 @@
 	     <div class="product_detail">
 	         <p class="code">${ infoVo.immediatePrice }</p>
 	         <p class="name">${ infoVo.productName }</p>
-	         <p class="translated_name">${ infoVo.productKoName }</p>
+<%-- 	         <p class="translated_name">${ infoVo.productKoName }</p> --%>
 	         <div class="model_desc">
 	             <p class="size_txt">${ BuyProductInfo.shoesSizes }</p>
 	         </div>
