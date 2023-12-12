@@ -1,4 +1,4 @@
-package com.shoekream.mypage.controller;
+package com.shoekream.mypage.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,11 +1,10 @@
-package com.shoekream.mypage.controller;
+package com.shoekream.mypage.service;
 
 import java.sql.Connection;
 
 import com.shoekream.db.util.JDBCTemplate;
-import com.shoekream.mypage.dao.AddressDao;
+import com.shoekream.mypage.dao.AccountDao;
 import com.shoekream.mypage.vo.AccountVo;
-import com.shoekream.mypage.vo.AddrBookVo;
 
 public class AccountService {
 
