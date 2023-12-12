@@ -133,9 +133,9 @@ public class MemberService {
 		}
 		
 		// 비밀번호 정규표현식 검사
-		boolean pwdOk = vo.getPwd().matches("[ㄱ-ㅣ가-힣]{2,5}");
+		boolean pwdOk = vo.getPwd().matches("(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,16}");
 		if(!pwdOk) {
-			throw new Exception("이름 형식");
+			throw new Exception("비밀번호 형식");
 		}
 		
 		// 비밀번호 일치 확인
@@ -157,7 +157,7 @@ public class MemberService {
 		}
 		
 		// 이메일 유효성 체크
-		boolean emailOk = vo.getNickname().matches("[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}");
+		boolean emailOk = vo.getEmail().matches("[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}");
 		if(!emailOk) {
 			throw new Exception("이메일 형식문제");
 		}
