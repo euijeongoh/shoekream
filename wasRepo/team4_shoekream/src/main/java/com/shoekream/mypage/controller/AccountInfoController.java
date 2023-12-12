@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shoekream.mypage.service.AccountService;
 import com.shoekream.mypage.vo.AccountVo;
 
 @WebServlet("/mypage/ACCOUNT")
