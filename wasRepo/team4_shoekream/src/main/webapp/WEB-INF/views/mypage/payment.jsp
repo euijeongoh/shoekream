@@ -8,6 +8,7 @@
 
 <link rel="stylesheet"
 	href="/shoekream/resources/css/mypage/payment.css">
+    
 </head>
 <body>
 
