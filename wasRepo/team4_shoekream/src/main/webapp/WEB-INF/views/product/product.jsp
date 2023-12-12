@@ -97,9 +97,6 @@
                         <div class="filter_result">
                             <span class="title">상품</span>
                         </div>
-                        <div class="filter_sorting">
-                            <button type="button" class="sorting_title">남성 인기순</button>
-                        </div>
                     </div>
                     <div class="search_product_content">
                         <ul class="product_list_wrap">
@@ -109,7 +106,11 @@
                             
                                 <div class="product">
                                     <div id="product_img">
-                                        <img src="./resources/product1.webp">
+                                    <%if(vo.getProductNo() => 52){ %>
+                                        <img src="/shoekream/resources/img/product/<%=vo.getModelNumber()%>.png">
+                                    
+                                    <%} %>
+                                        <img src="/shoekream/resources/img/product/<%=vo.getModelNumber()%>.webp">
                                     </div>
                                     <div class="info_box">
                                         <div id="brand"><%= vo.getBrand()%></div>
