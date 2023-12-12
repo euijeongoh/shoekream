@@ -20,14 +20,9 @@ public class ProductDetailController extends HttpServlet{
 		try {
 			//modelNumber 가져오기
 			String modelNumber = req.getParameter("modelNumber");
-			//가져온 modelNumber를 담아서 조회해 올 객체 생성
-			EnrollProductVo enrolledProductVo = new EnrollProductVo();
-			enrolledProductVo.setModelNumber(modelNumber);
 			
-			//객체에 담긴 modelNumber를 통해 해당 model의 상세정보 조회
 			ProductDetailService ps = new ProductDetailService();
 			
-			System.out.println(modelNumber);
 			
 			
 			//PRODUCTS테이블 쪽 데이터(bidding을 위해 productNo도 가져옴)
@@ -35,18 +30,40 @@ public class ProductDetailController extends HttpServlet{
 			if(productDetailVo == null) {
 				throw new Exception("상품 상세조회 중 에러 발생");
 			}
+			productDetailVo.setModelNumber(modelNumber);
+			System.out.println("productDetailVo's productNo = " + productDetailVo.getProductNo());
 			// 제품번호(PRODUCTS테이블의 NO)를 넘겨서 그에 해당하는 사이즈를 가져오기위해 PRODUCT_SIZES테이블에 접근해서
 			// 해당 제품이 가질 수 있는 SHOES_SIZES_NO의 배열을 가져오고 SHOES_SIZES테이블에서 배열 원소에 해당하는 사이즈 값을 반환
-			EnrollProductVo shoesSizesDetailVo = ps.getShoesSizesDetail(productDetailVo);
+			List<EnrollProductVo> shoesSizesList = ps.getShoesSizesDetail(productDetailVo);
+			System.out.println(shoesSizesList);
 			//BIDDING 테이블 쪽 데이터
 			List<BiddingVo> biddingList = ps.getBiddingDetail(productDetailVo.getProductNo());
 //			가져온걸 담아주기
+			//즉시구매가 가져오기..
+			String immediatelyBuyingPrice = ps.getBuyingPrice(productDetailVo.getProductNo());
+			//즉시판매가 가져오기..
+			String immediatelySellingPrice = ps.getSellingPrice(productDetailVo.getProductNo());
+			
+			//구매입찰목록 가져오기
+			List<BiddingVo> buyBiddingLIst = ps.getBuyBiddingList(productDetailVo.getProductNo());
+			List<BiddingVo> sellBiddingLIst = ps.getSellBiddingList(productDetailVo.getProductNo());
+			//판매입찰목록 가져오기
 //			PRODUCTS테이블
 			req.setAttribute("productDetailVo", productDetailVo);
 			//SHOES_SIZES테이블
-			req.setAttribute("shoesSizesDetailVo", shoesSizesDetailVo);
+			req.setAttribute("shoesSizesList", shoesSizesList);
 			//BIDDING테이블
 			req.setAttribute("biddingList", biddingList);
+			//구매입찰목록
+			req.setAttribute("buyBiddingList", buyBiddingLIst);
+			//판매입찰목록
+			req.setAttribute("sellBiddingList", sellBiddingLIst);
+			
+			
+			//즉시구매가 담아주기
+			req.setAttribute("buyingPrice", immediatelyBuyingPrice);
+			//즉시판매가 담아주기
+			req.setAttribute("sellingPrice", immediatelySellingPrice);
 			req.getRequestDispatcher("/WEB-INF/views/product/detail.jsp").forward(req, resp);
 			
 		}catch(Exception e) {

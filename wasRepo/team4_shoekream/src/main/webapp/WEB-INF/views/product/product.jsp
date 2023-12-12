@@ -105,7 +105,8 @@
                         <ul class="product_list_wrap">
                            <%for(EnrollProductVo vo : productVoList){ %>	
                             <li>
-                            <a href="/shoekream/product/detail?modelNumber=" + <%=vo.getModelNumber()%>>
+                            <a href="/shoekream/product/detail?modelNumber=<%=vo.getModelNumber()%>">
+                            
                                 <div class="product">
                                     <div id="product_img">
                                         <img src="./resources/product1.webp">

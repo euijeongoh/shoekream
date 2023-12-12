@@ -31,7 +31,7 @@ public class ProductDetailDao {
 			dbVo.setProductName(name);
 			dbVo.setProductNameKo(nameKo);
 			dbVo.setReleasePrice(releasePrice);
-			dbVo.setEnrollDate(releaseDate);
+			dbVo.setReleaseDate(releaseDate);
 			
 		}
 		
@@ -43,30 +43,30 @@ public class ProductDetailDao {
 
 	
 	//SHOES_SIZES테이블에서 데이터 추출
-	public EnrollProductVo getShoesSizesDetail(Connection conn, EnrollProductVo productDetailVo) throws Exception{
-	    String sql = "SELECT PS.PRODUCT_NO, SS.SHOES_SIZES FROM PRODUCT_SIZES PS JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE PS.PRODUCT_NO = ?";
+	public List<EnrollProductVo> getShoesSizesDetail(Connection conn, EnrollProductVo productDetailVo) throws Exception {
+	    String sql = "SELECT PS.PRODUCT_NO AS PRODUCT_NO, SS.SHOES_SIZES AS SHOES_SIZES FROM PRODUCT_SIZES PS JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO WHERE PS.PRODUCT_NO = ?";
 	    PreparedStatement pstmt = conn.prepareStatement(sql);
 	    pstmt.setString(1, productDetailVo.getProductNo());
 	    ResultSet rs = pstmt.executeQuery();
-	    EnrollProductVo dbVo = new EnrollProductVo();
-	    List<String> shoesSizesList = new ArrayList<>();
-	    while(rs.next()) {
-	        String shoesSizes = rs.getString("SS.SHOES_SIZES");
-	        shoesSizesList.add(shoesSizes);
+
+	    List<EnrollProductVo> shoesSizesList = new ArrayList<>();
+	    while (rs.next()) {
+	        EnrollProductVo dbVo = new EnrollProductVo();
+	        dbVo.setProductNo(rs.getString("PRODUCT_NO"));
+	        dbVo.setSizeStr(rs.getString("SHOES_SIZES")); 
+	        shoesSizesList.add(dbVo);
 	    }
-	    // 조회한 사이즈 정보를 EnrollProductVo 객체에 설정
-	    String[] shoesSizesArray = shoesSizesList.toArray(new String[0]);
-	    dbVo.setSize(shoesSizesArray);
 
 	    JDBCTemplate.close(rs);
 	    JDBCTemplate.close(pstmt);
 
-	    return dbVo;
+	    return shoesSizesList;
 	}
+
 
 	//체결거래탭에서 가져오기
 	public List<BiddingVo> getBiddingDetail(Connection conn, String productNo) throws Exception {
-	    String sql = "SELECT * FROM ( SELECT B.PRICE, B.EXPIRE_DATE, SS.SHOES_SIZES FROM BIDDING B LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_NO=PS.PRODUCT_NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO= SS.NO WHERE B.PRODUCTS_NO = ? AND B.BIDDING_STATUS_NO= 3 ORDER BY B.EXPIRE_DATE DESC ) WHERE ROWNUM <= 5;";
+	    String sql = "SELECT * FROM ( SELECT B.PRICE, B.EXPIRE_DATE, SS.SHOES_SIZES FROM BIDDING B LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_NO=PS.PRODUCT_NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO= SS.NO WHERE B.PRODUCTS_NO = ? AND B.BIDDING_STATUS_NO= 3 ORDER BY B.EXPIRE_DATE DESC ) WHERE ROWNUM <= 5";
 	    PreparedStatement pstmt = conn.prepareStatement(sql);
 	    pstmt.setString(1, productNo);
 	    ResultSet rs = pstmt.executeQuery();
@@ -81,15 +81,61 @@ public class ProductDetailDao {
 	        biddingList.add(dbVo);
 	    }
 	    
-	    rs.close();
-	    pstmt.close();
+	    JDBCTemplate.close(rs);
+	    JDBCTemplate.close(pstmt);
 	    
 	    return biddingList;
 	}
 	
+	//특정 상품의 구매입찰 목록을 보여주기
+	public List<BiddingVo> getBuyBiddingList(Connection conn, String productNo) throws Exception{
+		String sql = "SELECT B.NO, B.PRODUCTS_NO, P.NAME, B.PRICE, B.ENROLL_DATE FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO WHERE B.PRODUCTS_NO = ? AND B.BIDDING_POSITION_NO = 1 ORDER BY B.ENROLL_DATE DESC";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productNo);
+		ResultSet rs = pstmt.executeQuery();
+		List<BiddingVo> biddingList = new ArrayList<BiddingVo>();
+		
+		while(rs.next()) {
+			BiddingVo dbVo = new BiddingVo();
+			dbVo.setNo(rs.getString("NO"));
+			dbVo.setProductsNo(rs.getString("PRODUCTS_NO"));
+			dbVo.setProductsName(rs.getString("NAME"));
+			dbVo.setPrice(rs.getString("PRICE"));
+			dbVo.setEnrollDate(rs.getString("ENROLL_DATE"));
+			biddingList.add(dbVo);
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return biddingList;
+	}
+	//특정 상품의 판매입찰 목록을 보여주기
+	public List<BiddingVo> getSellBiddingList(Connection conn, String productNo) throws Exception{
+		String sql = "SELECT B.NO, B.PRODUCTS_NO, P.NAME, B.PRICE, B.ENROLL_DATE FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO WHERE B.PRODUCTS_NO = ? AND B.BIDDING_POSITION_NO = 2 ORDER BY B.ENROLL_DATE DESC";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productNo);
+		ResultSet rs = pstmt.executeQuery();
+		List<BiddingVo> biddingList = new ArrayList<BiddingVo>();
+		
+		while(rs.next()) {
+			BiddingVo dbVo = new BiddingVo();
+			dbVo.setNo(rs.getString("NO"));
+			dbVo.setProductsNo(rs.getString("PRODUCTS_NO"));
+			dbVo.setProductsName(rs.getString("NAME"));
+			dbVo.setPrice(rs.getString("PRICE"));
+			dbVo.setEnrollDate(rs.getString("ENROLL_DATE"));
+			biddingList.add(dbVo);
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return biddingList;
+	}
+	
 	//BIDDING테이블에서 데이터 추출
+	
+	    
+	//
 	public List<EnrollProductVo> getProductList(Connection conn) throws Exception{
-		String sql = "SELECT P.NO AS NO, P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, B.BRAND_NAME AS BRAND_NAME FROM PRODUCTS P JOIN BRAND B ON B.NO = P.BRAND_NO";
+		String sql = "SELECT P.NO AS NO, P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, P.MODEL_NUMBER AS MODEL_NUMBER, B.BRAND_NAME AS BRAND_NAME FROM PRODUCTS P JOIN BRAND B ON B.NO = P.BRAND_NO";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		List<EnrollProductVo> dbVo = new ArrayList<EnrollProductVo>();
@@ -99,15 +145,47 @@ public class ProductDetailDao {
 			String name = rs.getString("NAME");
 			String releasePrice= rs.getString("RELEASE_PRICE");
 			String brandName = rs.getString("BRAND_NAME");
+			String modelNumber = rs.getString("MODEL_NUMBER");
 			vo = new EnrollProductVo();
 			vo.setProductNo(no);
 			vo.setProductName(name);
 			vo.setReleasePrice(releasePrice);
 			vo.setBrand(brandName);
+			vo.setModelNumber(modelNumber);
 			dbVo.add(vo);
 		}
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
 		return dbVo;
 	}
+
+	//즉시판매가 구하기
+	public String getBuyingPrice(Connection conn, String productNo) throws Exception{
+		String sql = "SELECT SHOES_SIZES , MAX(PRICE) AS PRICE FROM ( SELECT B.NO ,B.MEMBER_NO ,B.PRODUCTS_NO ,B.PRODUCTS_SIZES_NO ,SS.SHOES_SIZES ,B.BIDDING_STATUS_NO ,BS.BIDDING_STATUS ,B.BIDDING_POSITION_NO ,BP.BIDDING_POSITION ,B.PRICE ,B.ENROLL_DATE ,B.EXPIRE_DATE FROM BIDDING B JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO JOIN BIDDING_POSITION BP ON B.BIDDING_POSITION_NO = BP.NO JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE PRODUCTS_NO = ? AND BIDDING_STATUS = '진행중' AND BIDDING_POSITION = '구매입찰' AND B.EXPIRE_DATE >= SYSDATE ) GROUP BY SHOES_SIZES";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productNo);
+		ResultSet rs = pstmt.executeQuery();
+		String price = null;
+		if(rs.next()) {
+			price = rs.getString("PRICE");
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return price;
+	}
+
+	//즉시구매가 구하
+	public String getSellingPrice(Connection conn, String productNo) throws Exception{
+		String sql = "SELECT SHOES_SIZES , MIN(PRICE) AS PRICE FROM ( SELECT B.NO ,B.MEMBER_NO ,B.PRODUCTS_NO ,B.PRODUCTS_SIZES_NO ,SS.SHOES_SIZES ,B.BIDDING_STATUS_NO ,BS.BIDDING_STATUS ,B.BIDDING_POSITION_NO ,BP.BIDDING_POSITION ,B.PRICE ,B.ENROLL_DATE ,B.EXPIRE_DATE FROM BIDDING B JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO JOIN BIDDING_POSITION BP ON B.BIDDING_POSITION_NO = BP.NO JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE PRODUCTS_NO = ? AND BIDDING_STATUS = '진행중' AND BIDDING_POSITION = '판매입찰' AND B.EXPIRE_DATE >= SYSDATE ) GROUP BY SHOES_SIZES";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productNo);
+		ResultSet rs = pstmt.executeQuery();
+		String price = null;
+		if(rs.next()) {
+			price = rs.getString("PRICE");
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return price;
+	}	
 }

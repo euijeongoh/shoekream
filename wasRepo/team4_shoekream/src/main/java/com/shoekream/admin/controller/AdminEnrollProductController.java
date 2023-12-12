@@ -46,27 +46,16 @@ public class AdminEnrollProductController extends HttpServlet {
 			String submittedFileName = f.getSubmittedFileName();//f를 통해 제출된파일이름 가져오기
 			//
 			int index = submittedFileName.lastIndexOf(".");
-			String ext = submittedFileName.substring(index);//원본 파일명에서 마지막글자 몇개,,,,"."뒤에 있는 글자들이 확장자가 될 것임
-					//서브스트링으로 자르기 ->점찍힌 위치를 넣어줌 근데 뒤에서부터 탐색하니까 indexOf보단 
-			String fileName = sep+ randomName + ext;
+			String ext = submittedFileName.substring(index);
 			
-//			String fileName = sep+"abc.png";//저장 시 이 이름으로 저장/ 제출 된 그대로 저장하면 동일한 파일명으로 지정되서 다른사람이 같은이름으로 제출 시 덮어쓰기 됨
-			//중복되지않을 랜덤한 파일명으로 해야겠지? 
-			//sep+중복되지않는랜덤값+확장자 이렇게..
+			String fileName = sep+ randomName + ext;
 			
 			File target = new File(path+fileName);
 			FileOutputStream out = new FileOutputStream(target);
 			
-//			int data = 0;
-//			while((data = in.read()) != -1) {
-//				out.write(data);
-//			}//하나읽고 내보내고 계속 반복
-			//천글자 읽고 천글자 내보내기 어떰?
-			
 			byte[] buf = new byte[1024];
 			int size = 0;
 			while((size = in.read(buf)) != -1) {
-				//읽어온걸 바이트 배열에 담아주기;//내가 몇글자를 읽었는지 사이즈를 리턴해줌 읽을 게 없으면 -1리턴함
 				out.write(buf, 0, size);//사이즈 만큼 내보내 주는 역할
 				
 			}
@@ -74,6 +63,7 @@ public class AdminEnrollProductController extends HttpServlet {
 			//정리
 			in.close();
 			out.close();
+			
 			//db에서 먼저 체크할 데이터들
 			String category = req.getParameter("category");
 			String brand = req.getParameter("brand");
