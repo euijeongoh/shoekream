@@ -2,7 +2,7 @@
     <%@page import="java.util.List" %>
         <%@page import="com.shoekream.page.vo.PageVo" %>
             <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-                <% List<OrdersVo> OrderVoList = (List<OrdersVo>) request.getAttribute("OrderVoList");
+                <% List<OrdersVo> OrderVoList = (List<OrdersVo>) request.getAttribute("OrderStorageVoList");
                         PageVo pvo = (PageVo)request.getAttribute("pvo");
                         %>
                         <!DOCTYPE html>
@@ -11,7 +11,7 @@
                         <head>
                             <meta charset="UTF-8">
                             <title>Insert title here</title>
-                            <link rel="stylesheet" href="/shoekream/resources/css/admin/common/sidebar.css">
+                            <link rel="stylesheet" href="/shoekream/resources/css/admin/common/admin_sidebar.css">
                             <link rel="stylesheet" href="/shoekream/resources/css/admin/list/breakdown.css">
                         </head>
 
@@ -103,6 +103,7 @@
                                             </form>
                                             <form name="selectForm">
                                                 <table class="order-table" border="1">
+                                                	<h2>입고 현황</h2>
                                                     <thead>
                                                         <tr class="order">
                                                             <th class="checkbox-header"><input type="checkbox"></th>
@@ -146,16 +147,12 @@
                                                                 </td>
                                                                 <td class="inspection-progress">
                                                                     <select name="inspection" id="inspection">
-                                                                        <option value="inspection_ing">검수중</option>
-                                                                        <option value="inspection_Before">입고필요</option>
-                                                                        <option value="inspection_success">검수(합격)
-                                                                        </option>
-                                                                        <option value="inspection_fail">검수(불합격)</option>
+                                                                        <option value="inspection_ing" >입고필요</option>
+                                                                        <option value="inspection_ing" >검수중</option>
                                                                     </select>
                                                                 </td>
                                                                 <td class="status">
-                                                                    <input type="checkbox" value="inspection-completed"
-                                                                        checked="checked">입고완료<br>
+                                                                    <input type="checkbox" value="inspection-completed">입고완료<br>
                                                                     <input type="checkbox"
                                                                         value="requires-warehousing">검수완료<br>
                                                                     <input type="checkbox"
@@ -170,7 +167,7 @@
                                             <div class="page-area">
 
                                                 <% if(pvo.getStartPage()> 1){%>
-                                                    <a href="/app99/board/list?pno=<%=pvo.getStartPage()-1%>">이전</a>
+                                                    <a href="/shoekream/admin/order/storage/list?pno=<%=pvo.getStartPage()-1%>">이전</a>
                                                     <%} %>
                                                         <%for(int i=pvo.getStartPage(); i <=pvo.getEndPage(); i++){ %>
                                                             <%if( i==pvo.getCurrentPage()) {%>
@@ -178,7 +175,7 @@
                                                                     <%= i %>
                                                                 </span>
                                                                 <% }else{ %>
-                                                                    <a href="/app99/board/list?pno=<%=i%>">
+                                                                    <a href="/shoekream/admin/order/storage/list?pno=<%=i%>">
                                                                         <%= i %>
                                                                     </a>
                                                                     <% } %>
@@ -186,7 +183,7 @@
                                                                             <% if( pvo.getEndPage() !=pvo.getMaxPage()){
                                                                                 %>
                                                                                 <a
-                                                                                    href="/app99/board/list?pno=<%=pvo.getEndPage()+1%>">다음</a>
+                                                                                    href="/shoekream/admin/order/storage/list?pno=<%=pvo.getEndPage()+1%>">다음</a>
                                                                                 <%} %>
                                             </div>
                                         </div>
@@ -194,5 +191,6 @@
 
 
                         </body>
+                        
 
                         </html>

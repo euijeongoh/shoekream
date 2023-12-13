@@ -20,6 +20,11 @@ public class AddressController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+			
+			if(loginMember == null) {
+				throw new Exception();
+			}
 			String no = req.getParameter("no");
 			
 			AddressService as = new AddressService();
@@ -34,6 +39,7 @@ public class AddressController extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("[ERROR-A001] 주소록 조회에서 오류남");
+			resp.sendRedirect("/shoekream/member/login");
 		}
 	}
 	

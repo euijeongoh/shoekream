@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.AddressService;
 import com.shoekream.mypage.vo.AddrBookVo;
 
@@ -21,6 +22,11 @@ public class AddrEditController extends HttpServlet{
 
 
 		try {
+			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+			
+			if(loginMember == null) {
+				throw new Exception();
+			}
 			//data
 			String no = req.getParameter("no");
 			
@@ -40,6 +46,7 @@ public class AddrEditController extends HttpServlet{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			resp.sendRedirect("/shoekream/member/login");
 		}
 	
 	}
