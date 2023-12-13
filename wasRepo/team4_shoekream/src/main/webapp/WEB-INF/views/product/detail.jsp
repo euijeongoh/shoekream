@@ -74,42 +74,44 @@
                             
                         </dl>
                         <div class="buttons">
-    <div class="division_btn_box lg">
-        <a class="buy_btn" href="/shoekream/buy/select?productsNo=<%= productDetailVo.getProductNo()%>">
-            <button class="btn_action" style="background-color: rgb(239, 98, 83);">
-                <strong class="title">구매</strong>
-                <div class="price">
-                    <span class="amount">
-                        <em class="num"></em>
-                        <span class="won"><%=buyingPrice %>원</span>
-                    </span>
-                    <span class="desc">즉시 구매가</span>
-                </div>
-            </button>
-        </a>
-        <!-- 관심 상품 등록 버튼 추가 -->
-        <button class="btn_action wishlist" style="background-color: rgb(100, 149, 237);">
-            <strong class="title">관심 상품 등록</strong>
-        </button>
-        <a href="/shoekream/sell/select?productsNo=?<%=productDetailVo.getProductNo() %>">
-            <button class="btn_action" style="background-color: rgb(65, 185, 121);">
-                <strong class="title">판매</strong>
-                <div class="price">
-                    <span class="amount">
-                        <em class="num"></em>
-                        <span class="won"><%=sellingPrice %>원</span>
-                    </span>
-                    <span class="desc">즉시 판매가</span>
-                </div>
-            </button>
-        </a>
-    </div>
-</div>
-
+						    <div class="division_btn_box lg">
+						        <a class="buy_btn" href="/shoekream/buy/select?productsNo=<%= productDetailVo.getProductNo()%>">
+						            <button class="btn_action" style="background-color: rgb(239, 98, 83);">
+						                <strong class="title">구매</strong>
+						                <div class="price">
+						                    <span class="amount">
+						                        <em class="num"></em>
+						                        <span class="won"><%=buyingPrice %>원</span>
+						                    </span>
+						                    <span class="desc">즉시 구매가</span>
+						                </div>
+						            </button>
+						        </a>
+						        <a href="/shoekream/sell/select?productsNo=?<%=productDetailVo.getProductNo() %>">
+						            <button class="btn_action" style="background-color: rgb(65, 185, 121);">
+						                <strong class="title">판매</strong>
+						                <div class="price">
+						                    <span class="amount">
+						                        <em class="num"></em>
+						                        <span class="won"><%=sellingPrice %>원</span>
+						                    </span>
+						                    <span class="desc">즉시 판매가</span>
+						                </div>
+						            </button>
+						        </a>
+						        <!-- 관심 상품 등록 버튼 추가 -->
+						        <form action="/shoekream/product/detail" method="post">
+						        <button class="btn_action wishlist" style="background-color: rgb(100, 149, 237);" >
+						            <input type=text name="productNo" value="<%= productDetailVo.getProductNo() %>"	hidden>
+						            <input type="submit" value="관심상품등록">
+						        </button>
+								</form>	
+						    </div>
+						</div>
                     </div>
                 </div>
                 <div class="wrap_bids">
-                                <a href="#" class="item_link">체결 거래</a>
+                     <a href="#" class="item_link">체결 거래</a>
                         <div>
                             <table border="1">
                                 <thead>
@@ -142,63 +144,6 @@
                         </div>
                 </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-        
-        
-<script>
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
 
-    document.querySelector('.slider_container button:nth-child(2)').addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlidePosition();
-    });
-
-    document.querySelector('.slider_container button:nth-child(1)').addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlidePosition();
-    });
-
-    function updateSlidePosition() {
-        for (let slide of slides) {
-            slide.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-    }
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const sellBidsLink = document.querySelector('.item_link:nth-child(2)'); // "판매 입찰" 링크
-
-        sellBidsLink.addEventListener('click', function(event) {
-            event.preventDefault(); // 기본 동작 방지
-            fetchSellBiddingList();
-        });
-
-        function fetchSellBiddingList() {
-            // 판매 입찰 데이터 요청
-            // 예시 URL: /bidding/sellList, 실제 URL은 서버 구현에 따라 달라질 수 있음
-            fetch('/product/detail')
-                .then(response => response.json())
-                .then(data => {
-                    displaySellBiddingList(data.sellBiddingList);
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        function displaySellBiddingList(sellBiddingList) {
-            const tableBody = document.querySelector('.wrap_bids table tbody');
-            tableBody.innerHTML = ''; // 기존 테이블 내용을 초기화
-
-            // 판매 입찰 데이터를 테이블로 생성
-            sellBiddingList.forEach(vo => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td class="table_td align_right"><span>${vo.getName()}</span></td>
-                                <td class="table_td"><span>${vo.getPrice()}</span></td>
-                                <td class="table_td align_right"><span>${vo.getDate()}</span></td>`;
-                tableBody.appendChild(tr);
-            });
-        }
-    });
-    </script>
 </body>
 </html>

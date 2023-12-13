@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.biddingVo.BiddingVo;
+import com.shoekream.member.MemberVo;
 import com.shoekream.product.service.ProductDetailService;
 
 @WebServlet("/product/detail")
@@ -29,7 +30,7 @@ public class ProductDetailController extends HttpServlet{
 			//PRODUCTS테이블 쪽 데이터(bidding을 위해 productNo도 가져옴)
 			EnrollProductVo productDetailVo = ps.getProductDetail(modelNumber);
 			if(productDetailVo == null) {
-				throw new Exception("상품 상세조회 중 에러 발생");
+				throw new Exception();
 			}
 			productDetailVo.setModelNumber(modelNumber);
 			// 제품번호(PRODUCTS테이블의 NO)를 넘겨서 그에 해당하는 사이즈를 가져오기위해 PRODUCT_SIZES테이블에 접근해서
@@ -75,6 +76,29 @@ public class ProductDetailController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+			if(loginMember == null) {
+				resp.sendRedirect("/shoekream/member/login");
+			}
+			String memberNo = loginMember.getNo();
+			System.out.println(memberNo);
+			String productNo = req.getParameter("productNo");
+			
+			System.out.println(productNo);
+			
+			
+			ProductDetailService ps = new ProductDetailService();
+			int result = ps.addWishList(memberNo, productNo);
+			if(result != 1) {
+				throw new Exception();
+			}
+			resp.sendRedirect("/shoekream/mypage/wishlist");
+		}catch(Exception e) {
+			e.printStackTrace();
+			req.setAttribute("errMsg", "관심상품등록 실패");
+			
+		}
 		
 	}
 }
