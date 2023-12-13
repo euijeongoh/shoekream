@@ -45,7 +45,7 @@
                                </div>
                            </button>
                            <div id="a">
-                           	<a onclick="deleteWish();">삭제</a>
+                           	<a>삭제</a>
                             <input type="text" name="productNo" value="${ wishVo.productNo }" hidden>
                            </div>
                        </div>
@@ -54,7 +54,7 @@
                 <div class="page-container">
                 	<div class="page-area">
 					    <c:if test="${pvo.startPage != 1}">
-					        <button type="button" onclick="location.href='/app99/board/list?pno=${pvo.startPage - 1}'">이전</button>
+					        <button type="button" onclick="location.href='/shoekream/mypage/wishlist?pno=${pvo.startPage - 1}'">이전</button>
 					    </c:if>
 					
 					    <c:forEach var="i" begin="${pvo.startPage}" end="${pvo.endPage}">
@@ -63,13 +63,13 @@
 					                <span>${i}</span>
 					            </c:when>
 					            <c:otherwise>
-					                <a href="/app99/board/list?pno=${i}">${i}</a>
+					                <a href="/shoekream/mypage/wishlist?pno=${i}">${i}</a>
 					            </c:otherwise>
 					        </c:choose>
 					    </c:forEach>
 					
 					    <c:if test="${pvo.endPage != pvo.maxPage}">
-					        <button type="button" onclick="location.href='/app99/board/list?pno=${pvo.endPage + 1}'">다음</button>
+					        <button type="button" onclick="location.href='/shoekream/mypage/wishlist?pno=${pvo.endPage + 1}'">다음</button>
 					    </c:if>
 
                 
@@ -96,6 +96,9 @@
        	</div>
        	</div>
      </main>
+
+
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 </body>
 </html>
