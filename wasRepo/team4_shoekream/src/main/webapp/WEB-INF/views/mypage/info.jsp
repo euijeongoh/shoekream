@@ -27,7 +27,10 @@
 
                    	<div class="myinfo-input">
                        <div>아이디</div>
-                       <input class="input-box" type="text" name="memberId" value="<%=loginMember.getId()%>">
+                       <div class="input-area">
+	                       	<input class="input-box" type="text" name="memberId" value="<%=loginMember.getId()%>" placeholder="6자 이상">
+<!-- 							<button onclick="updateId();">변경</button>                        -->
+                       </div>
                        <div id="id_check"></div>
                    	</div>
 
@@ -35,15 +38,21 @@
 
                    	<div class="myinfo-input">
                        <div>비밀번호</div>
-                       <input class="input-box" type="password" name="memberPwd" value="<%=loginMember.getPwd()%>">
+                       <div class="input-area">
+	                        <input class="input-box" type="password" name="memberPwd" value="<%=loginMember.getPwd()%>" placeholder="6자 이상">
+<!-- 							<button onclick="">변경</button>                        -->
+                       </div>
                        <div id="pwd_check"></div>
                    	</div>
 
 
 
                    	<div class="myinfo-input">
-                       <div>닉네임</div>
-                       <input class="input-box" type="text" name="memberNick" value="<%=loginMember.getNickname()%>">
+                       	<div>닉네임</div>
+                       	<div class="input-area">
+	                        <input class="input-box" type="text" name="memberNick" value="<%=loginMember.getNickname()%>">
+<!-- 							<button onclick="">변경</button>                        -->
+                       	</div>
                        <div id="nick_check"></div>
                    	</div>
 
@@ -51,12 +60,14 @@
 
                    <div class="myinfo-input">
                        	<div>이메일</div>
-                       	<input class="input-box" type="text" name="email" value="<%=loginMember.getEmail()%>">
+                       	<div class="input-area">
+	                        <input class="input-box" type="text" name="email" value="<%=loginMember.getEmail()%>">
+<!-- 							<button onclick="">변경</button>                        -->
+                       	</div>
 						<div id="email_check"></div>                       
-                       	<button disabled onclick="sendEmail();">인증하기</button>
-                       	<div class="approval_area">
-                    	<input class="input_txt" type="text" name="appr_no" placeholder="인증번호 입력">
-                    	<span id="auth_check"></span>
+<!--                        	<div class="approval_area"> -->
+<!--                     	<input class="input_txt" type="text" name="appr_no" placeholder="인증번호 입력"> -->
+<!--                     	<span id="auth_check"></span> -->
                     	</div>
 					</div>
 

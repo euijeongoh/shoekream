@@ -1,7 +1,25 @@
 const infoInputTagArr = document.querySelectorAll(".input-box");
 
+function updateId() {
+	const strId = infoInputTagArr[0].value;
+	
+	if(strId.length<6) {
+		alert("아이디는 6자 이상이어야 합니다.");
+	}
+	
+	
+	
+	fetch("/shoekream/member/update/id", {method: "POST"})
+	.then( (resp) => { return resp.json() })
+	.then( (data) => {
+		
+	})
+}
+
+
+
+
 let idValid = false;
-let idNotDup = true;
 infoInputTagArr[0].addEventListener('keyup', () => {
 	// 아이디 6자 이상 12자 이하
 	const strId = infoInputTagArr[0].value;
@@ -9,21 +27,26 @@ infoInputTagArr[0].addEventListener('keyup', () => {
 	
 	if((strId.length>=1 && strId.length < 6) || strId.length===0) {
 		idCheckDiv.innerHTML="6자 이상 입력해주세요";
-		idValid = false;
 	} else {
 		idCheckDiv.innerHTML="";
 		idValid = true;
 	}
+	
+	const jsonObj = {
+		strId : strId
+	}
+	
+	const jsonStr = JSON.stringify(jsonObj);
 
 	// 아이디 중복체크
-	fetch("/shoekream/member/check/id?memberId=" +  strId, {method: "POST"})
+	fetch("/shoekream/member/check/id" +  strId, 
+		{method: "POST", body: jsonStr})
 	.then((resp) => { return resp.json() })
 	.then((data) => { 
 		const result = data.msg;
 		const isDup = (result == "no");
 		console.log("isDup" + isDup);	
 		if(isDup===true) {
-			idValid = false;
 			idCheckDiv.innerHTML="사용할 수 없는 아이디입니다.(중복)";
 		} 
 		
@@ -32,8 +55,6 @@ infoInputTagArr[0].addEventListener('keyup', () => {
 			idCheckDiv.innerHTML="";
 		}
 	});	
-	console.log("idValid" + idValid);
-	console.log("idNotDup" + idNotDup);
 });
 
 let pwdValid = false;
@@ -45,12 +66,10 @@ infoInputTagArr[1].addEventListener('keyup', ()=>{
 	
 	if(strPwd.length>=1 && pwdChecked===false) {
 		pwdCheckDiv.innerHTML="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8-16자)";
-		pwdValid = false;
 	} else {
 		pwdCheckDiv.innerHTML="";
 		pwdValid = true;		
 	}
-	console.log(pwdValid);
 });
 
 let nickValid = false;
@@ -61,12 +80,10 @@ infoInputTagArr[2].addEventListener('keyup', ()=>{
 	const nickCheckDiv = document.querySelector("#nick_check");
 	if(nickChecked===false){
 		nickCheckDiv.innerHTML="닉네임을 올바른 형식으로 입력해주세요(한글 3-5자)";
-		nickValid = false;
 	} else {
 		nickCheckDiv.innerHTML="";			
 		nickValid = true;
 	}
-	console.log(nickValid);
 });
 
 let emailValid = false;	
@@ -76,14 +93,13 @@ infoInputTagArr[3].addEventListener('keyup', ()=>{
 	const regEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 	const emailChecked = regEmail.test(strEmail);
 	const emailCheckDiv = document.querySelector("#email_check");
-	const emailBtn = document.querySelector("input[type=button]");
+	const emailBtn = document.querySelector("#send_email");
 	
 	if(strEmail.length>=1 && emailChecked===false) {
 		emailCheckDiv.innerHTML="이메일 형식이 올바르지 않습니다.";
 		emailBtn.disabled=true;	
 		emailBtn.style.backgroundColor="#ebebeb";	
 		emailBtn.style.cursor="default";
-		emailValid = false;		
 	} else {
 		emailValid = true;	
 	}
@@ -112,14 +128,14 @@ infoInputTagArr[3].addEventListener('keyup', ()=>{
 			}
 		}
 	});
-	console.log(emailValid);
 });	
 
+let emailAuthorized = false;
 function checkValidation() {
-	if(idValid===true && pwdValid===true && nickValid===true && emailValid===true){
+	if(idValid===true && pwdValid===true && nickValid===true && emailValid===true && emailAuthorized===true){
 		return true;
 	} else {
-		alert("회원가입을 할 수 없습니다. 양식을 다시 확인해주세요.");
+		alert("회원정보 수정을 할 수 없습니다. 양식을 다시 확인해주세요.");
 		return false;
 	}
 }
@@ -153,6 +169,7 @@ function sendEmail(){
 			 	console.log(isAuthorized);
 			 	if(isAuthorized) {
 				 	authCheck.innerHTML="인증되었습니다."
+				 	emailAuthorized=true;
 			 	} else {
 				 	authCheck.innerHTML="인증번호가 일치하지 않습니다.";
 			 	} 		 

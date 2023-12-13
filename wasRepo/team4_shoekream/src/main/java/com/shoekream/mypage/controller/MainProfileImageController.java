@@ -80,20 +80,14 @@ public class MainProfileImageController extends HttpServlet {
 			
 			// service
 			MyPageService service = new MyPageService();
-			Map<String, Object> map = service.saveImgSrcInDB(loginMember, src);
-
-			int result = (int) map.get("result");
+			int result = service.saveImgSrcInDB(loginMember, req, src);
 			
 			if(result != 1) {
 				throw new Exception();
 			}
 			
-			MemberVo newLoginMember = (MemberVo) map.get("loginMember");
-			loginMember.setProfileImage(newLoginMember.getProfileImage());
-
-			req.getSession().setAttribute("loginMember", loginMember);
+			req.getRequestDispatcher("/WEB-INF/views/mypage/my_popup2.jsp").forward(req, resp);
 			
-			resp.sendRedirect("/shoekream/mypage/main");
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());

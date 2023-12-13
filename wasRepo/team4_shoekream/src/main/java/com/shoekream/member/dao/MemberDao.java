@@ -29,7 +29,6 @@ public class MemberDao {
 			String joinDate = rs.getString("JOIN_DATE");
 			String delYn = rs.getString("DEL_YN");
 			String profileImage = rs.getString("PROFILE_IMAGE");
-			String point = rs.getString("POINT");
 			String penaltyYn = rs.getString("PENALTY_YN");
 			
 			loginMember = new MemberVo();
@@ -42,7 +41,6 @@ public class MemberDao {
 			loginMember.setJoinDate(joinDate);
 			loginMember.setDelYn(delYn);
 			loginMember.setProfileImage(profileImage);
-			loginMember.setPoint(point);
 			loginMember.setPenaltyYn(penaltyYn);
 		}
 		

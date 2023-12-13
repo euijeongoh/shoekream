@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.dao.MyPageDao;
@@ -172,7 +174,7 @@ public class MyPageService {
 	}
 
 	// 프로필 이미지 DB에 저장
-	public Map<String, Object> saveImgSrcInDB(MemberVo loginMember, String src) throws Exception {
+	public int saveImgSrcInDB(MemberVo loginMember, HttpServletRequest req, String src) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -191,7 +193,12 @@ public class MyPageService {
 		// close
 		JDBCTemplate.close(conn);
 		
-		return map;
+		// session 업데이트
+		loginMember.setProfileImage(src);
+		req.getSession().setAttribute("loginMember", loginMember);
+		
+		
+		return result;
 	}
 
 	// 판매 진행중 내역 조회
@@ -259,6 +266,34 @@ public class MyPageService {
 		JDBCTemplate.close(conn);
 		
 		return wishCnt;
+	}
+
+
+	public int updateMemberInfo(HttpServletRequest req, MemberVo vo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		int result = dao.updateMemberInfo(conn, vo);
+		
+		// tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// session loginMember update
+		MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+		loginMember.setId(vo.getId());
+		loginMember.setPwd(vo.getPwd());
+		loginMember.setNickname(vo.getNickname());
+		loginMember.setEmail(vo.getEmail());
+		
+		req.getSession().setAttribute("loginMember", loginMember);
+		
+		return result;
 	}
 
 
