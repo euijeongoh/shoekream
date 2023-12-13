@@ -16,7 +16,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.MyPageService;
-import com.shoekream.mypage.vo.OrdersHistoryVo;
+import com.shoekream.mypage.vo.BuyingHistoryVo;
 
 @WebServlet("/mypage/buying/finishList")
 
@@ -48,7 +48,7 @@ public class BuyingFinishedController extends HttpServlet{
 			
 			// service 호출
 			MyPageService service = new MyPageService();
-			List<OrdersHistoryVo> finishedList = service.viewBuyingFinishedList(loginMember, map);
+			List<BuyingHistoryVo> finishedList = service.viewBuyingFinishedList(loginMember, map);
 			System.out.println(finishedList);
 			// result json으로 변환 후 응답
 			PrintWriter out = resp.getWriter();

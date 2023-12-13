@@ -4,6 +4,7 @@ public class ProductInfoVo {
 	
 	private String productNo;
 	private String productName;
+	private String productNameKo;
 	private String thumbnail;
 	private String brandName;
 	private String modelName;
@@ -15,29 +16,22 @@ public class ProductInfoVo {
 		
 	}
 
-	public ProductInfoVo(String productNo, String productName, String thumbnail, String brandName, String modelName,
-			String immediatePrice, String productEnrollDate) {
+	public ProductInfoVo(String productNo, String productName, String productNameKo, String thumbnail, String brandName,
+			String modelName, String immediatePrice, String bidEnrollDate, String productEnrollDate) {
 		super();
 		this.productNo = productNo;
 		this.productName = productName;
-		this.thumbnail = thumbnail;
-		this.brandName = brandName;
-		this.modelName = modelName;
-		this.immediatePrice = immediatePrice;
-		this.productEnrollDate = productEnrollDate;
-	}
-
-	public ProductInfoVo(String productName, String thumbnail, String brandName, String modelName,
-			String immediatePrice, String bidEnrollDate) {
-		super();
-		this.productName = productName;
+		this.productNameKo = productNameKo;
 		this.thumbnail = thumbnail;
 		this.brandName = brandName;
 		this.modelName = modelName;
 		this.immediatePrice = immediatePrice;
 		this.bidEnrollDate = bidEnrollDate;
+		this.productEnrollDate = productEnrollDate;
 	}
 
+	
+	
 	public String getProductNo() {
 		return productNo;
 	}
@@ -52,6 +46,14 @@ public class ProductInfoVo {
 
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+
+	public String getProductNameKo() {
+		return productNameKo;
+	}
+
+	public void setProductNameKo(String productNameKo) {
+		this.productNameKo = productNameKo;
 	}
 
 	public String getThumbnail() {
@@ -104,9 +106,10 @@ public class ProductInfoVo {
 
 	@Override
 	public String toString() {
-		return "ProductInfoVo [productNo=" + productNo + ", productName=" + productName + ", thumbnail=" + thumbnail
-				+ ", brandName=" + brandName + ", modelName=" + modelName + ", immediatePrice=" + immediatePrice
-				+ ", bidEnrollDate=" + bidEnrollDate + ", productEnrollDate=" + productEnrollDate + "]";
+		return "ProductInfoVo [productNo=" + productNo + ", productName=" + productName + ", productNameKo="
+				+ productNameKo + ", thumbnail=" + thumbnail + ", brandName=" + brandName + ", modelName=" + modelName
+				+ ", immediatePrice=" + immediatePrice + ", bidEnrollDate=" + bidEnrollDate + ", productEnrollDate="
+				+ productEnrollDate + "]";
 	}
 
 	

@@ -70,7 +70,7 @@ function bidTabAjax() {
 			productImg.className = "product_img";
 			const img = document.createElement("img");
 			productImg.appendChild(img);
-			img.src=data[i].shoeImg;
+			img.src=data[i].productImg;
 			
 			
 			const detail = document.createElement("div");
@@ -80,12 +80,12 @@ function bidTabAjax() {
 			const product = document.createElement("div");
 			detail.appendChild(product);
 			product.id="product";
-			product.innerHTML=data[i].shoeName;
+			product.innerHTML=data[i].productName;
 			
 			const size = document.createElement("div");
 			detail.appendChild(size);
 			size.id="size";
-			size.innerHTML=data[i].shoeSize;
+			size.innerHTML=data[i].productSize;
 			
 			const sellDetail = document.createElement("ul");
 			sellDetail.className = "sell-detail";

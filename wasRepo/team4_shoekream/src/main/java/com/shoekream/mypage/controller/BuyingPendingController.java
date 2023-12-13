@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.MyPageService;
 import com.shoekream.mypage.vo.HistoryCntVo;
-import com.shoekream.mypage.vo.OrdersHistoryVo;
+import com.shoekream.mypage.vo.BuyingHistoryVo;
 import com.shoekream.page.vo.PageVo;
 
 @WebServlet("/mypage/buying/pendList")
@@ -64,7 +64,7 @@ public class BuyingPendingController extends HttpServlet{
 			int boardLimit = 10;
 			
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);		
-			List<OrdersHistoryVo> pendList = service.viewBuyingPendingList(loginMember, map);
+			List<BuyingHistoryVo> pendList = service.viewBuyingPendingList(loginMember, map);
 			System.out.println(pendList);
 			// 데이터 가공(map)
 			Map<String, Object> respMap = new HashMap<String, Object>();
