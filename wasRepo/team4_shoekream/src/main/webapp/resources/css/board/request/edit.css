@@ -51,7 +51,7 @@
     height: 30px;
     padding-top: 17px;
     padding-bottom: 19px;
-    /* border-bottom: 1px solid gray; */
+/*     border-bottom: 1px solid gray; */
  }
 
  .date {
@@ -72,13 +72,13 @@
     height: 514px;
     padding: 30px;
     border-bottom: 1px solid gray;
-    /* background-color: red; */
+/*     background-color: red; */
     
 }
 
 .content{
-    border: 1px solid darkgray;
-    background-color: lightgray;
+/*    border: 1px solid darkgray;*/
+/*    background-color: lightgray;*/
     max-width: 940px;
     height: 514px;
    
@@ -93,7 +93,7 @@
 }
 
 .btn_editbox{
-    border : 1px solid lightgray;
+/*    border : 1px solid lightgray;*/
     border-radius: 10px;
     width: 100px;
     height: 30px;
@@ -118,8 +118,9 @@ textarea{
 	color: black;
 }
 
-
-
+.title_input{
+	width:300px;
+}
  
 
 

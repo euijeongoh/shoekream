@@ -1,14 +1,14 @@
-<%@page import="com.shoekream.qna.vo.QnaVo"%>
+<%@page import="com.shoekream.request.vo.RequestVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% QnaVo vo = (QnaVo)request.getAttribute("vo"); %>
+<% RequestVo vo = (RequestVo)request.getAttribute("vo"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="/shoekream/resources/css/board/qna/edit.css">
+	href="/shoekream/resources/css/board/request/edit.css">
 </head>
 <body>
 
@@ -18,9 +18,9 @@
 		<div class="wrap_inner">
 			<%@ include file="/WEB-INF/views/common/service_center_side.jsp"%>
 			<div class="board_wrap">
-				<div class="board_title">Q&A</div>
+				<div class="board_title">상품 등록 요청</div>
 				<div class="dropdown_head">
-					<form action="/shoekream/qna/write" method="post">
+					<form action="/shoekream/request/write" method="post">
 						<div class="notice_title">   
 						제목 : <input type="text" name="title"> 
 						</div>

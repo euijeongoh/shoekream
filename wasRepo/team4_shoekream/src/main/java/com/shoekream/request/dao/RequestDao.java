@@ -16,7 +16,7 @@ public class RequestDao {
 		public List<RequestVo> RequestList(Connection conn, PageVo pvo) throws Exception{
 			
 			//sql
-			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT P.NO, M.NICKNAME, P.TITLE, TO_CHAR(P.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, HIT FROM PRODUCT_REGISTER_REQUEST_BOARD P JOIN MEMBER M ON P.MEMBER_NO = M.NO ORDER BY P.NO DESC) T ) WHERE RNUM BETWEEN ? AND ?";
+			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT P.NO, M.NICKNAME, P.TITLE, TO_CHAR(P.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, HIT FROM PRODUCT_REGISTER_REQUEST_BOARD P JOIN MEMBER M ON P.MEMBER_NO = M.NO WHERE P.DEL_YN = 'N' ORDER BY P.NO DESC) T ) WHERE RNUM BETWEEN ? AND ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pvo.getStartRow());
 			pstmt.setInt(2, pvo.getLastRow());
@@ -179,7 +179,7 @@ public class RequestDao {
 		public int requestWrite(Connection conn, RequestVo vo) throws Exception{
 			
 			//SQL
-			String sql = "INSERT INTO Request_BOARD ( NO, MEMBER_NO, MANAGER_NO, TITLE, CONTENT) VALUES  (SEQ_Request_BOARD_NO.NEXTVAL, 1, 2, ?, ?)";
+			String sql = "INSERT INTO PRODUCT_REGISTER_REQUEST_BOARD ( NO, MEMBER_NO, TITLE, CONTENT) VALUES  (SEQ_PRODUCT_REGISTER_REQUEST_BOARD_NO.NEXTVAL, 1, ?, ?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());

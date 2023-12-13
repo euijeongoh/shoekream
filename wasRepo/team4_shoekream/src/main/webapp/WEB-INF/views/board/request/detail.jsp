@@ -45,7 +45,7 @@
                     </div>
                     <div class="btn_rightbox">
                         <div class="btn_editbox">
-                        <a href="/shoekream/request/edit?no=<%=vo.getNo()%>">수정</a>
+                       		 <a href="/shoekream/request/edit?no=<%=vo.getNo()%>">수정</a>
                         </div>
                         <div class="btn_deletebox">
                             <a href="/shoekream/request/delete?no=<%= vo.getNo() %>">삭제</a>
