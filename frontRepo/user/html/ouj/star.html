@@ -3,33 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>착화감 선택</title>
+    <link rel="stylesheet" href="../../css/ouj/star.css">
+    <title>Document</title>
 </head>
 <body>
-
-<!-- 각 버튼에는 착화감 값을 나타내는 데이터-속성을 추가합니다 -->
-<button class="comfort-button" data-comfort="comfortable">편함</button>
-<button class="comfort-button" data-comfort="normal">보통</button>
-<button class="comfort-button" data-comfort="uncomfortable">불편함</button>
-
-<!-- 선택된 착화감을 나타내는 메시지를 표시할 엘리먼트 -->
-<div id="selectedComfortMessage"></div>
-
-<script>
-    // JavaScript를 사용하여 각 버튼의 클릭 이벤트를 처리합니다
-    const comfortButtons = document.querySelectorAll('.comfort-button');
-    const selectedComfortMessage = document.getElementById('selectedComfortMessage');
-
-    comfortButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const selectedComfort = button.getAttribute('data-comfort');
-            selectedComfortMessage.textContent = `선택된 착화감: ${selectedComfort}`;
-
-            // 여기에서 선택된 착화감 값을 서버로 전송하려면 추가적인 작업이 필요합니다.
-            // 예를 들어, AJAX 요청을 사용하거나, 숨은 input 태그를 추가하여 form에 값을 넣을 수 있습니다.
-        });
-    });
-</script>
-
+    <div class="like-container">
+        <button id="likeButton" onclick="toggleLike()"></button>
+        <span id="likeCount"></span>
+      </div>
 </body>
 </html>

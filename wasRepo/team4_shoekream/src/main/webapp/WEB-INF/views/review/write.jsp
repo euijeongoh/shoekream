@@ -6,7 +6,10 @@
     pageEncoding="UTF-8"%>
     
     <%
+		List<ReviewVo> reviewVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
     	EnrollProductVo productVo = (EnrollProductVo) request.getAttribute("productVo");
+        List<EnrollProductVo> productVoList = (List<EnrollProductVo>) request.getAttribute("productVoList");
+        List<EnrollProductVo> filterProductList = (List<EnrollProductVo>) request.getAttribute("filterProductList");
     %>
     
 <!DOCTYPE html>
@@ -29,8 +32,11 @@
             <br>
             <div class="picjor">
              <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
+                <%for(EnrollProductVo vo : productVoList){ %>
                 <div class="picture">
-                    <img src="" alt="" class="picture_img">
+                 <%if(Integer.parseInt(vo.getProductNo()) >= 52){ %>
+                    <img src="/shoekeam/resources/img/review/write/<%=vo.getModelNumber() %>.png" alt="" class="picture_img">
+                 <%} %>
                 </div>
                 <div class="jordan">
                     <p class="jordan_eg"><b><%=productVo.getProductName() %></b></p>
