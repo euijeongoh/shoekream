@@ -9,52 +9,52 @@ import java.util.List;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
-import com.shoekream.qna.vo.QnaVo;
+import com.shoekream.request.vo.RequestVo;
 
 public class RequestDao {
 
 	//게시글 전체 조회
-		public List<QnaVo> QnaList(Connection conn, PageVo pvo) throws Exception{
+		public List<RequestVo> RequestList(Connection conn, PageVo pvo) throws Exception{
 			
 			//sql
-			String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT Q.NO, M.NICKNAME, Q.TITLE, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, REPLY_TITLE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO ORDER BY Q.NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
+			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT P.NO, M.NICKNAME, P.TITLE, TO_CHAR(P.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, HIT FROM PRODUCT_REGISTER_REQUEST_BOARD P JOIN MEMBER M ON P.MEMBER_NO = M.NO ORDER BY P.NO DESC) T ) WHERE RNUM BETWEEN ? AND ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pvo.getStartRow());
 			pstmt.setInt(2, pvo.getLastRow());
 			ResultSet rs = pstmt.executeQuery();
 			
 			//rs
-			List<QnaVo> qnaVoList = new ArrayList<QnaVo>();
+			List<RequestVo> requestVoList = new ArrayList<RequestVo>();
 			while(rs.next()) {
 				String no = rs.getString("NO");
 				String nickname = rs.getString("NICKNAME");
 				String title = rs.getString("TITLE");
 				String enrollDate = rs.getString("ENROLL_DATE");
-				String replyTitle = rs.getString("REPLY_TITLE");
+				String hit = rs.getString("HIT");
 				
-				QnaVo vo = new QnaVo();
+				RequestVo vo = new RequestVo();
 				
 				vo.setNo(no);
 				vo.setMemberNick(nickname);
 				vo.setTitle(title);
 				vo.setEnrollDate(enrollDate);
-				vo.setReplyTitle(replyTitle);
+				vo.setHit(hit);
 				
-				qnaVoList.add(vo);
+				requestVoList.add(vo);
 			}
 			
 			//close
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rs);
 			
-			return qnaVoList;
+			return requestVoList;
 			
 		}
 
 		//전체 게시글 갯수
-		public int selectQnaCount(Connection conn) throws Exception{
+		public int selectRequestCount(Connection conn) throws Exception{
 			
-			String sql = "SELECT COUNT(*) AS COUNT FROM QNA_BOARD";
+			String sql = "SELECT COUNT(*) AS COUNT FROM PRODUCT_REGISTER_REQUEST_BOARD";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
 			ResultSet rs = pstmt.executeQuery();
@@ -74,9 +74,9 @@ public class RequestDao {
 		}
 		
 		//검색 게시글 갯수
-			public int selectSearchQnaCount(Connection conn, String title) throws Exception{
+			public int selectSearchRequestCount(Connection conn, String title) throws Exception{
 				
-				String sql = "SELECT COUNT(*) FROM QNA_BOARD WHERE TITLE LIKE '%' || ?|| '%'";
+				String sql = "SELECT COUNT(*) FROM Request_BOARD WHERE TITLE LIKE '%' || ?|| '%'";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, title);
 				
@@ -96,36 +96,33 @@ public class RequestDao {
 			}
 
 		//게시글 상세 조회
-		public QnaVo selectQnaByNo(Connection conn, String no) throws Exception{
+		public RequestVo selectRequestByNo(Connection conn, String no) throws Exception{
 			
 			//SQL
-			String sql = "SELECT Q.NO, M.NICKNAME, Q.TITLE, Q.CONTENT, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, Q.REPLY_TITLE, Q.REPLY_CONTENT, TO_CHAR(Q.REPLY_ENROLL_DATE, 'YYYY.MM.DD') AS REPLY_ENROLL_DATE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO WHERE Q.NO = ?";
+			String sql = "SELECT P.NO, M.NICKNAME, P.TITLE, P.CONTENT, TO_CHAR(P.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, P.HIT FROM PRODUCT_REGISTER_REQUEST_BOARD P JOIN MEMBER M ON P.MEMBER_NO = M.NO WHERE P.NO = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
 			ResultSet rs = pstmt.executeQuery();
 			
 			//rs
-			QnaVo vo = null;
+			RequestVo vo = null;
 			if(rs.next()) {
-				vo = new QnaVo();
-				String qnaNo = rs.getString("NO");
+				vo = new RequestVo();
+				String requestNo = rs.getString("NO");
 				String nickname = rs.getString("NICKNAME");
 				String title = rs.getString("TITLE");
 				String content = rs.getString("CONTENT");
 				String enrollDate = rs.getString("ENROLL_DATE");
-				String replyTitle = rs.getString("REPLY_TITLE");
-				String replyContent = rs.getString("REPLY_CONTENT");
-				String replyEnrollDate = rs.getString("REPLY_ENROLL_DATE");
+				String hit = rs.getString("HIT");
+
 				
 				
-				vo.setNo(qnaNo);
+				vo.setNo(requestNo);
 				vo.setMemberNick(nickname);
 				vo.setTitle(title);
 				vo.setContent(content);
 				vo.setEnrollDate(enrollDate);
-				vo.setReplyTitle(replyTitle);
-				vo.setReplyContent(replyContent);
-				vo.setReplyEnrollDate(replyEnrollDate);
+				vo.setHit(hit);
 				
 			}
 			
@@ -137,10 +134,10 @@ public class RequestDao {
 		}
 
 		//게시글 검색(제목)
-		public List<QnaVo> qnaSearch(Connection conn, String title, PageVo pvo) throws Exception{
+		public List<RequestVo> requestSearch(Connection conn, String title, PageVo pvo) throws Exception{
 			
 			//SQL
-			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT Q.NO, Q.TITLE, Q.CONTENT, M.NICKNAME, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO WHERE Q.TITLE LIKE '%' || ? || '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT Q.NO, Q.TITLE, Q.CONTENT, M.NICKNAME, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM Request_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO WHERE Q.TITLE LIKE '%' || ? || '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
 	 		pstmt.setInt(2, pvo.getStartRow());
@@ -149,30 +146,30 @@ public class RequestDao {
 			ResultSet rs = pstmt.executeQuery();
 			
 			//rs
-			List<QnaVo> qnaVoList = new ArrayList<QnaVo>();
+			List<RequestVo> requestVoList = new ArrayList<RequestVo>();
 			while(rs.next()) {
 				
-				QnaVo vo = new QnaVo();
+				RequestVo vo = new RequestVo();
 				
 				vo.setNo(rs.getString("NO"));
 				vo.setTitle(rs.getString("TITLE"));
 				vo.setMemberNick(rs.getString("NICKNAME"));
 				vo.setEnrollDate(rs.getString("ENROLL_DATE"));
 				
-				qnaVoList.add(vo);
+				requestVoList.add(vo);
 				
 			}
 			
-			return qnaVoList;
+			return requestVoList;
 			
 			//close
 		}
 
 		//게시글 작성
-		public int qnaWrite(Connection conn, QnaVo vo) throws Exception{
+		public int requestWrite(Connection conn, RequestVo vo) throws Exception{
 			
 			//SQL
-			String sql = "INSERT INTO QNA_BOARD ( NO, MEMBER_NO, MANAGER_NO, TITLE, CONTENT) VALUES  (SEQ_QNA_BOARD_NO.NEXTVAL, 1, 2, ?, ?)";
+			String sql = "INSERT INTO Request_BOARD ( NO, MEMBER_NO, MANAGER_NO, TITLE, CONTENT) VALUES  (SEQ_Request_BOARD_NO.NEXTVAL, 1, 2, ?, ?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
@@ -249,21 +246,4 @@ public class RequestDao {
 			return result;
 		}
 
-		public int replyWrite(Connection conn, QnaVo vo) throws Exception{
-			//SQL
-			String sql = "UPDATE QNA_BOARD SET REPLY_TITLE = ? , REPLY_CONTENT = ? , REPLY_ENROLL_DATE = SYSDATE WHERE NO = ?";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getReplyTitle());
-			pstmt.setString(2, vo.getReplyContent());
-			pstmt.setString(3, vo.getNo());
-			
-			int result = pstmt.executeUpdate();
-			
-			//rs
-			
-			//close
-			JDBCTemplate.close(conn);
-			
-			return result;
-		}
 }

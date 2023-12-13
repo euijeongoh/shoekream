@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shoekream.notice.service.NoticeService;
-import com.shoekream.notice.vo.NoticeVo;
+import com.shoekream.request.service.RequestService;
+import com.shoekream.request.vo.RequestVo;
+
 
 @WebServlet("/request/edit")
 public class RequestEditController extends HttpServlet{
@@ -29,12 +30,12 @@ public class RequestEditController extends HttpServlet{
 //			}
 			
 			//service
-			NoticeService ns = new NoticeService();
-			NoticeVo vo = ns.getNoticeByNo(no);
+			RequestService ns = new RequestService();
+			RequestVo vo = ns.getRequestByNo(no);
 
 			//result
 			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/WEB-INF/views/admin/board/notice/adminEdit.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/admin/board/request/adminEdit.jsp").forward(req, resp);
 		}catch(Exception e) {
 			System.out.println("[ERROR-M003] 번호로 vo받아오는데 오류 발생!");
 			e.printStackTrace();
@@ -51,15 +52,15 @@ public class RequestEditController extends HttpServlet{
 			String title = req.getParameter("title");
 			String content = req.getParameter("contents");
 			
-			NoticeVo vo = new NoticeVo();
+			RequestVo vo = new RequestVo();
 			vo.setNo(no);
 			vo.setTitle(title);
 			vo.setContent(content);
 			
 			
 			//service
-			NoticeService ns =  new NoticeService();
-			int result = ns.noticeEdit(vo);
+			RequestService ns =  new RequestService();
+			int result = ns.requestEdit(vo);
 			
 			//result == view
 			if(result != 1) {
@@ -67,7 +68,7 @@ public class RequestEditController extends HttpServlet{
 			}
 			
 			req.getSession().setAttribute("alarm", "게시글 편집 성공!");
-			resp.sendRedirect("/shoekream/admin/notice/list");
+			resp.sendRedirect("/shoekream/admin/request/list");
 			
 		}catch(Exception e) {
 			System.out.println("[ERROR-M004] 게시글 편집 중 에러 발생!");
