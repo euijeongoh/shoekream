@@ -6,10 +6,7 @@
     pageEncoding="UTF-8"%>
     
     <%
-		List<ReviewVo> reviewVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
     	EnrollProductVo productVo = (EnrollProductVo) request.getAttribute("productVo");
-        List<EnrollProductVo> productVoList = (List<EnrollProductVo>) request.getAttribute("productVoList");
-        List<EnrollProductVo> filterProductList = (List<EnrollProductVo>) request.getAttribute("filterProductList");
     %>
     
 <!DOCTYPE html>
@@ -31,12 +28,9 @@
             </div>
             <br>
             <div class="picjor">
-             <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
-                <%for(EnrollProductVo vo : productVoList){ %>
+             <input type="file" accept="image/*" name="f">
                 <div class="picture">
-                 <%if(Integer.parseInt(vo.getProductNo()) >= 52){ %>
-                    <img src="/shoekeam/resources/img/review/write/<%=vo.getModelNumber() %>.png" alt="" class="picture_img">
-                 <%} %>
+                    <img src="" alt="" class="picture_img">
                 </div>
                 <div class="jordan">
                     <p class="jordan_eg"><b><%=productVo.getProductName() %></b></p>
@@ -45,7 +39,7 @@
             </div>
 
         <form action="/shoekream/review/write" method="post" id="reviewForm" enctype="multipart/form-data">
-            
+            <input type="hidden" name="productNo" value="<%= productVo.getProductNo() %>">
             <div class="ggg">
                 <div class="ignition">
                     <div class="wignition">
@@ -69,10 +63,10 @@
             </div>
         
             <br><br>
-        
+        <input type="file" id="file-input" name="f" accept="image/*" onchange="previewImage(event)">
             <div class="upload">
                 <p id="wupload"><b>사진 업로드</b></p>
-                <input type="file" id="file-input" name="f" accept="image/*" onchange="previewImage(event)">
+                
                 <div>
                     <div class="upload_picture">
                         <img src="" alt="" id="reviewpng">
@@ -155,5 +149,3 @@
         document.getElementById('reviewpng').src = '#';
     }
 </script>
-
-

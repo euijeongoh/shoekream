@@ -1,5 +1,9 @@
+<%@page import="com.shoekream.review.vo.ReviewVo"%>
+<%@page import="com.shoekream.review.vo.ReviewCommentVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% ReviewCommentVo vo = (ReviewCommentVo)request.getAttribute("vo"); 
+    ReviewVo reviewVo = (ReviewVo) request.getAttribute("reviewVo");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +59,8 @@
                 <img src="/shoekream/resources/img/review/profile_img.png" alt="임시프사" class="exprofile">
             </div>
             <div class="wcomment">
-            <form action="/shoekream/review/comment" method="post" onsubmit="submitComment(event)">
+            <% if(vo.getContent()== null) {%>
+            <form action="/shoekream/review/comment?no<%= vo.getNo() %>" method="post" onsubmit="submitComment(event)">
                 <textarea name="comment" id="write_comment"
                 placeholder="   댓글을 남겨주세요!"></textarea>
             </div>
@@ -64,6 +69,7 @@
             </div>
         </div>
     </form>
+    <% } %>
     
         <div class="comment_list_box">
     

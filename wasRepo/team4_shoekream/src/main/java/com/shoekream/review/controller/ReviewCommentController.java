@@ -24,6 +24,7 @@ public class ReviewCommentController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	    try {
+	    	String no = req.getParameter("no");
 	        //사용자 로그인 여부 확인
 	        MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 	        if (loginMember == null) {
@@ -35,6 +36,8 @@ public class ReviewCommentController extends HttpServlet {
 
 	        // 서비스 호출
 	        ReviewCommentService cs = new ReviewCommentService();
+//	        ReviewVo vo = rs.sele g(no);
+	        		
 //	        List<ReviewCommentVo> reviewCommentVoList = cs.reviewCommentList();
 	        
 //	        req.setAttribute("reviewCommnetVoList", reviewCommentVoList);
@@ -62,8 +65,8 @@ public class ReviewCommentController extends HttpServlet {
          
          // data
 //       String memberNo = req.getParameter("memberNo");
+         String No = req.getParameter("no");
          String content = req.getParameter("content");
-         String likeBtn = req.getParameter("likeBtn");
          MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
          
 //         if(loginMember == null) {
@@ -71,14 +74,13 @@ public class ReviewCommentController extends HttpServlet {
 //         }
          
          ReviewCommentVo vo = new ReviewCommentVo();
-//         vo.setMemberNo(memberNo);
+         vo.setNo(No);
          vo.setContent(content);
-         vo.setLikeBtn(likeBtn);
          vo.setMemberNo(loginMember.getNo());
          
          // service
-         ReviewCommentService bs = new ReviewCommentService();
-         int result = bs.reviewCommentwrite(vo);
+         ReviewCommentService cs = new ReviewCommentService();
+         int result = cs.reviewCommentwrite(vo);
          
          // result == view
          if(result != 1) {
