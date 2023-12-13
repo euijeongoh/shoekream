@@ -67,6 +67,7 @@ public class ReviewWriteController extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       
+	   String productNo = "xxxxx";
       try {
     	  //인코딩
 //	      req.setCharacterEncoding("UTF-8");   //필터에서 인코딩 처리 해줌
@@ -83,14 +84,15 @@ public class ReviewWriteController extends HttpServlet {
          InputStream in = f.getInputStream();
          String submittedFileName = f.getSubmittedFileName();
          System.out.println("-------");
-         System.out.println(submittedFileName);
+         System.out.println("f : " + f);
+         System.out.println("submittedFileName : " + submittedFileName);
          System.out.println("-------");
          
       // data //이미지는 어떤 타입?
        String no = req.getParameter("no");
        String memberNo = req.getParameter("memberNo");
-       String productNo = req.getParameter("productNo");
-       String comfortNo = req.getParameter("comfortNo");
+       productNo = req.getParameter("productNo");
+       String comfortNo = req.getParameter("comfort_btn");
        String content = req.getParameter("write");
        
        
@@ -139,6 +141,7 @@ public class ReviewWriteController extends HttpServlet {
          // service
          ReviewService bs = new ReviewService();
          int result = bs.write(vo);
+         System.out.println("result : " + result);
          
          // result == view
          if(result != 1) {
@@ -147,13 +150,13 @@ public class ReviewWriteController extends HttpServlet {
          
          
          req.getSession().setAttribute("alertMsg", "리뷰 작성 성공 !");
-         resp.sendRedirect("/shoekream//review/write");
+         resp.sendRedirect("/shoekream/home");
          
       }catch(Exception e) {
          System.out.println("[ERROR-B002] 리뷰 작성 실패 ...");
          e.printStackTrace();
          req.setAttribute("errorMsg", "리뷰 작성 실패 ...");
-         req.getRequestDispatcher("/WEB-INF/views/review/wirte").forward(req, resp);
+         req.getRequestDispatcher("/WEB-INF/views/review/write.jsp?productNo=" + productNo).forward(req, resp);
       }
       
    }

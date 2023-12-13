@@ -4,7 +4,7 @@ public class ReviewCommentVo {
 
 	private String no;
 	private String memberNo;
-	private String commentNO;
+	private String commentNo;
 	private String reviewNo;
 	private String content;
 	private String likeBtn;
@@ -18,7 +18,7 @@ public class ReviewCommentVo {
 		super();
 		this.no = no;
 		this.memberNo = memberNo;
-		this.commentNO = commentNO;
+		this.commentNo = commentNO;
 		this.reviewNo = reviewNo;
 		this.content = content;
 		this.likeBtn = likeBtn;
@@ -26,7 +26,7 @@ public class ReviewCommentVo {
 	}
 	@Override
 	public String toString() {
-		return "ReviewCommentVo [no=" + no + ", memberNo=" + memberNo + ", commentNO=" + commentNO + ", reviewNo="
+		return "ReviewCommentVo [no=" + no + ", memberNo=" + memberNo + ", commentNO=" + commentNo + ", reviewNo="
 				+ reviewNo + ", content=" + content + ", likeBtn=" + likeBtn + ", profileImage=" + profileImage + "]";
 	}
 	public String getNo() {
@@ -42,10 +42,10 @@ public class ReviewCommentVo {
 		this.memberNo = memberNo;
 	}
 	public String getCommentNO() {
-		return commentNO;
+		return commentNo;
 	}
 	public void setCommentNO(String commentNO) {
-		this.commentNO = commentNO;
+		this.commentNo = commentNO;
 	}
 	public String getReviewNo() {
 		return reviewNo;

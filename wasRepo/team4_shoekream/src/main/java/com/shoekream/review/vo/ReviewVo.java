@@ -19,6 +19,7 @@ public class ReviewVo {
 	private String delYN;
 	private String reviewImage;
 	private String profileImage;
+//	private String 
 
 	
 	private String imageNo;

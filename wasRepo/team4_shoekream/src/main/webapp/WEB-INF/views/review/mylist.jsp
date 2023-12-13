@@ -59,7 +59,7 @@
 
                <li>
 
-                <a href="/shoekream/review/detail?no=<%= vo.getNo() %>">
+                <a href="/shoekream/review/write?no=<%= productVo.getProductNo() %>">
                 
                 	<div class="listphoto">
                 		<div class="mylist">
@@ -85,4 +85,4 @@
       <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 </body>
-</html>
+</html> 

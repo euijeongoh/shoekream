@@ -41,7 +41,7 @@ public class ReviewDao {
 	public List<ReviewVo> myReviewList(Connection conn, MemberVo loginMember) throws Exception {
 		
 		//sql
-		String sql = "SELECT NO, LIKE_BTN, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM REVIEW WHERE DEL_YN = 'N' ORDER BY ENROLL_DATE DESC";
+		String sql = "SELECT NO, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM REVIEW WHERE DEL_YN = 'N' ORDER BY ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -50,17 +50,17 @@ public class ReviewDao {
 		while(rs.next()) {
 			
 			String no = rs.getString("NO");
-			String likeBtn = rs.getString("LIKE_BTN");
+			String enrollDate = rs.getString("ENROLL_DATE");
+//			String likeBtn = rs.getString("LIKE_BTN");
 //			String reviewImage = rs.getString("REVIEW_IMAGE");
 //			String profileImage = rs.getString("PROFILE_IMAGE");
-			String enrollDate = rs.getString("ENROLL_DATE");
 			
 			ReviewVo vo = new ReviewVo();
 			vo.setNo(no);
-			vo.setLikeBtn(likeBtn);
+			vo.setEnrollDate(enrollDate);
+//			vo.setLikeBtn(likeBtn);
 //			vo.setReviewImage(reviewImage);
 //			vo.setProfileImage(profileImage);
-			vo.setEnrollDate(enrollDate);
 			
 			myreviewVoList.add(vo);
 			
@@ -283,10 +283,12 @@ public class ReviewDao {
 		if(rs.next()) {
 			String name = rs.getString("NAME");
 			String nameKo = rs.getString("NAME_KO");
+//			String productNo = rs.getString("PRODUCT_NO");
 			dbVo = new EnrollProductVo();
 			
 			dbVo.setProductName(name);
 			dbVo.setProductNameKo(nameKo);
+			dbVo.setProductNo(productNo);
 			
 		}
 		JDBCTemplate.close(rs);

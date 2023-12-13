@@ -36,7 +36,7 @@ public class ReviewCommentService {
    }
 
 	
-//	//댓글 목록
+////	//댓글 목록
 //	public List<ReviewCommentVo> reviewCommentList() throws Exception{
 //		
 //		//conn
@@ -44,7 +44,7 @@ public class ReviewCommentService {
 //		
 //		//dao
 //		ReviewCommentDao dao = new ReviewCommentDao();
-//		List<ReviewCommentVo> reviewCommnetVoList = dao.ReviewCommentList(conn);
+//		List<ReviewCommentVo> reviewCommentVoList = dao.ReviewCommentList(conn);
 //		
 //		//close
 //		JDBCTemplate.close(conn);
