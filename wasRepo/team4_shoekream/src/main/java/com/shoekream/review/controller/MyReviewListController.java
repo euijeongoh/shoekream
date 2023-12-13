@@ -51,7 +51,7 @@ public class MyReviewListController extends HttpServlet {
             e.printStackTrace();
 //            req.setAttribute("errorMsg", "게시글 목록 조회 에러");
             req.setAttribute("errorMsg", "로그인이 필요한 페이지 입니다.");
-            req.getRequestDispatcher("/WEB-INF/views/member/mylist.jsp").forward(req, resp); //login.jsp로 바꾸기
+            req.getRequestDispatcher("/WEB-INF/views/review/mylist.jsp").forward(req, resp); //login.jsp로 바꾸기
         }
     }
 }

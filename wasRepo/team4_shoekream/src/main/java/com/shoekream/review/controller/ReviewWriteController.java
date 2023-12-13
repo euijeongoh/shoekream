@@ -1,21 +1,31 @@
 package com.shoekream.review.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
+import java.io.InputStream;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.member.MemberVo;
-import com.shoekream.product.service.ProductDetailService;
 import com.shoekream.review.service.ReviewProductService;
 import com.shoekream.review.service.ReviewService;
 import com.shoekream.review.vo.ReviewVo;
+
+@MultipartConfig(
+	maxFileSize = 1024*1024*50,
+	maxRequestSize = 1024*1024*5
+)
+
 
 @WebServlet("/review/write")
 public class ReviewWriteController extends HttpServlet {
@@ -35,18 +45,13 @@ public class ReviewWriteController extends HttpServlet {
 	            // resp.sendRedirect("/member/login");
 	        }
 	        String productNo = req.getParameter("productNo");
-	        
-	        EnrollProductVo productVo = new EnrollProductVo();
 	        ReviewProductService ps = new ReviewProductService();
-	        productVo = ps.getProductInfo(productNo);
+	        
+	        EnrollProductVo productVo = ps.getProductInfo(productNo);
+	        System.out.println(productVo);
 	        req.setAttribute("productVo", productVo);
 	        
-	        System.out.println(productNo);
-	        // 서비스 호출
-	        ReviewService rs = new ReviewService();
-	        List<ReviewVo> reviewVoList = rs.myReviewList();
 	        
-	        req.setAttribute("reviewVoList", reviewVoList);
 	        req.getRequestDispatcher("/WEB-INF/views/review/write.jsp").forward(req, resp);
 
 	    } catch (Exception e) {
@@ -67,31 +72,69 @@ public class ReviewWriteController extends HttpServlet {
 //	      req.setCharacterEncoding("UTF-8");   //필터에서 인코딩 처리 해줌
          
          HttpSession session = req.getSession();
+         MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+         
+
+         if(loginMember == null) {
+              throw new Exception("로그인 안했음");
+           }
+           
+         Part f = req.getPart("f");
+         InputStream in = f.getInputStream();
+         String submittedFileName = f.getSubmittedFileName();
+         System.out.println("-------");
+         System.out.println(submittedFileName);
+         System.out.println("-------");
          
       // data //이미지는 어떤 타입?
-//       String no = req.getParameter("no");
-//       String memberNo = req.getParameter("memberNo");
+       String no = req.getParameter("no");
+       String memberNo = req.getParameter("memberNo");
        String productNo = req.getParameter("productNo");
        String comfortNo = req.getParameter("comfortNo");
-       String content = req.getParameter("content");
+       String content = req.getParameter("write");
+       
+       
+       
+       // 읽기 준비
+       
+       // 내보내기 준비
+       
+       // DB에 저장될 이름을 만드는 작업
+       String sep = File.separator;
+       String path = sep + "resources" + sep + "img" + sep + "review";
+       String realPath = req.getServletContext().getRealPath(path);
+       String randomName = loginMember.getId() + "_" + productNo + "_" + System.currentTimeMillis() + "_" + UUID.randomUUID();
+       String ext = submittedFileName.substring(submittedFileName.lastIndexOf("."));
+       String fileName = sep + randomName + ext;
+       
+       // DB에 저장될 값
+       String url = "/shoekream" + path + fileName;
+       
+       
+       // 서버 업로드
+       File target = new File(realPath + fileName);
+       FileOutputStream out = new FileOutputStream(target);
+       
+       byte[] buf = new byte[1024];
+       int size = 0;
+       while((size = in.read(buf)) != -1) {
+    	   out.write(buf, 0, size);
+       }
+       
+       // 정리
+       in.close();
+       out.close();
+       
 //       String likeBtn = req.getParameter("likeBtn");
-       MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-       
-       
-       
-       if(loginMember == null) {
-            throw new Exception("로그인 안했음");
-         }
-         
-	       ReviewVo vo = new ReviewVo();
-	//     vo.setNo(no);
-	//     vo.setMemberNo(memberNo);
+	   
+	     ReviewVo vo = new ReviewVo();
+	     vo.setNo(no);
+	     vo.setMemberNo(loginMember.getNo());
 	     vo.setProductNo(productNo);
 	     vo.setComfortNo(comfortNo);
 	     vo.setContent(content);
+	     vo.setReviewImage(url);
 //	     vo.setLikeBtn(likeBtn);
-	     vo.setMemberNo(loginMember.getNo());
-	     
          
          // service
          ReviewService bs = new ReviewService();
@@ -104,13 +147,13 @@ public class ReviewWriteController extends HttpServlet {
          
          
          req.getSession().setAttribute("alertMsg", "리뷰 작성 성공 !");
-         resp.sendRedirect("/shoekream//review/mylist");
+         resp.sendRedirect("/shoekream//review/write");
          
       }catch(Exception e) {
          System.out.println("[ERROR-B002] 리뷰 작성 실패 ...");
          e.printStackTrace();
          req.setAttribute("errorMsg", "리뷰 작성 실패 ...");
-         req.getRequestDispatcher("/WEB-INF/views/review/mylist").forward(req, resp);
+         req.getRequestDispatcher("/WEB-INF/views/review/wirte").forward(req, resp);
       }
       
    }

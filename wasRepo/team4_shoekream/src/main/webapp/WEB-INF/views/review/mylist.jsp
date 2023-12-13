@@ -31,7 +31,13 @@
 
         <div class="user_top">
             <div class="profile_img">
-                <img src="/shoekream/resources/img/review/<%=vo.getReviewImage() %>" alt="프로필사진" class="profile_img02">
+            <%
+			    String reviewImage = "";
+			    if (reviewVoList != null && !reviewVoList.isEmpty()) {
+			        reviewImage = reviewVoList.get(0).getReviewImage();
+			    }
+			%>
+                <img src="/shoekream/resources/img/review/wave.png" alt="프로필사진" class="profile_img02">
                 <div class="profile_info_box">
                     <ul>
                         <li><h2>helloprofile</h2></li>

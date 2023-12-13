@@ -40,14 +40,14 @@ public class ReviewService {
 
 	
 	//내 리뷰 목록 조회 (리뷰 리스트)
-	public List<ReviewVo> myReviewList() throws Exception {
+	public List<ReviewVo> myReviewList(MemberVo loginMember) throws Exception {
 		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
 		ReviewDao dao = new ReviewDao();
-		List<ReviewVo> myreviewVoList = dao.myReviewList(conn);
+		List<ReviewVo> myreviewVoList = dao.myReviewList(conn, loginMember);
 		
 		//close
 		JDBCTemplate.close(conn);
@@ -64,7 +64,7 @@ public class ReviewService {
 		
 		//dao
 		ReviewDao dao = new ReviewDao();
-		List<ReviewVo> reviewVoList = dao.ReviewList(conn, loginMember);
+		List<ReviewVo> reviewVoList = dao.myReviewList(conn, loginMember);
 		
 		//close
 		JDBCTemplate.close(conn);
