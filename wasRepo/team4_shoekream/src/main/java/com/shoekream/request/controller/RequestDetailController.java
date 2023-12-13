@@ -8,13 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shoekream.notice.service.NoticeService;
-import com.shoekream.notice.vo.NoticeVo;
-import com.shoekream.request.service.RequestService;
-import com.shoekream.request.vo.RequestVo;
+import com.shoekream.qna.service.QnaService;
+import com.shoekream.qna.vo.QnaVo;
 
 @WebServlet("/request/detail")
 public class RequestDetailController extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -22,19 +21,24 @@ public class RequestDetailController extends HttpServlet{
 			//data
 			String no = req.getParameter("no");
 			
+//			HttpSession session = req.getSession();
+//			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+//			if(loginMember == null) {
+//				throw new Exception("로그인 안했음");
+//			}
+			
 			//service
-			RequestService ns = new RequestService();
-			RequestVo vo = ns.selectRequestListByNo(no);
+			QnaService qs = new QnaService();
+			QnaVo vo = qs.selectQnaListByNo(no);
 			
 			//result ==view
 			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/WEB-INF/views/board/request/detail.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/board/qna/detail.jsp").forward(req, resp);
 		
 		}catch(Exception e) {
 			System.out.println("[ERROR-002] 게시글 상세 조회 중 에러 발생..");
-			req.getRequestDispatcher("/WEB-INF/views/board/request/detail.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp").forward(req, resp);
 			e.printStackTrace();
 		}
 	}
-
-}//class
+}

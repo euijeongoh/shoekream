@@ -7,78 +7,56 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.shoekream.member.MemberVo;
-import com.shoekream.request.service.RequestService;
-import com.shoekream.request.vo.RequestVo;
-import com.shoekream.review.vo.ReviewVo;
+import com.shoekream.qna.service.QnaService;
+import com.shoekream.qna.vo.QnaVo;
 
 @WebServlet("/request/write")
 public class RequestWriteController extends HttpServlet {
 	
-	// 게시글 작성 화면
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
-
-			//로그인 안되어있으면 에러페이지로 보내기
-			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
-			if(loginMember == null) {
-				req.setAttribute("errorMsg"	, "잘못된 접근입니다. (로그인 하고 오세요)");
-				req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
-			}
-			
-			RequestService bs = new RequestService();
-			req.getRequestDispatcher("/WEB-INF/views/board/request/write.jsp").forward(req, resp);
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-			req.setAttribute("errorMsg", "게시글 작성하기 (화면) 에러 ...");
-			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
-		}
-	}
-	
-	// 게시글 작성 로직
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		try {
-			
-			HttpSession session = req.getSession();
-			
-			// data
-			String title = req.getParameter("title");
-			String content = req.getParameter("content");
-			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-			
-			
-			RequestVo vo = new RequestVo();
-			vo.setTitle(title);
-			vo.setContent(content);
-			vo.setMemberNo(loginMember.getNo());
-			
-			// service
-			RequestService qs = new RequestService();
-			int result = qs.requestWrite(vo);
-			
-			// result == view
-			if(result != 1) {
-				throw new Exception("result 가 1이 아님 ,,,,");
-			}
-			
-			req.getSession().setAttribute("alertMsg", "게시글 작성 성공 !");
-			resp.sendRedirect("/shoekream/request/list");
-			
-		}catch(Exception e) {
-			System.out.println("[ERROR-B002] 게시글 작성 실패 ...");
-			e.printStackTrace();
-			req.setAttribute("errorMsg", "게시글 작성 실패 ...");
-			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
+	//게시글 작성 화면
+		@Override
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			req.getRequestDispatcher("/WEB-INF/views/board/qna/write.jsp").forward(req, resp);
 		}
 		
-	}
-
-
+		//게시글 작성 로직
+		@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			
+			try {
+				//data
+				String title = req.getParameter("title");
+				String content = req.getParameter("contents");
+				
+				QnaVo vo = new QnaVo();
+				vo.setTitle(title);
+				vo.setContent(content);
+				
+//				HttpSession session = req.getSession();
+//				MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+//				if(loginMember == null) {
+//					throw new Exception("로그인 안했음");
+//				}
+				
+				//service
+				QnaService qs = new QnaService();
+				int result = qs.qnaWrite(vo);
+				
+				//result == view
+				if(result != 1) {
+					throw new Exception("result값이 1이 아님...");
+				}
+				
+				req.getSession().setAttribute("alarm", "게시글 작성 성공!");
+				resp.sendRedirect("/shoekream/qna/list");
+				
+			}catch(Exception e) {
+				System.out.println("[ERROR-M001] Q&A 게시글 생성 중 에러 발생");
+				e.printStackTrace();
+				req.setAttribute("error", "게시글 작성 실패...");
+				req.getRequestDispatcher("/WEB-INF/views/common.fail.jsp").forward(req, resp);
+			}
+		}
 
 }

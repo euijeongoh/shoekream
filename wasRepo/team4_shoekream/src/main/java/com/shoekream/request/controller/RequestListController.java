@@ -9,22 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shoekream.notice.service.NoticeService;
-import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
 import com.shoekream.request.service.RequestService;
 import com.shoekream.request.vo.RequestVo;
 
 @WebServlet("/request/list")
-public class RequestListController extends HttpServlet {
-	
-		//화면출력
+public class RequestListController extends HttpServlet{
+
+	//화면출력
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
 			RequestService qs = new RequestService();
 
 			try {
+			String x = req.getParameter("x");
 			//data
 			int listCount = qs.selectRequestCount();
 			String currentPage_ = req.getParameter("pno");
@@ -42,13 +41,14 @@ public class RequestListController extends HttpServlet {
 			//result == view
 			req.setAttribute("requestVoList", requestVoList);
 			req.setAttribute("pvo", pvo);
+			req.setAttribute("x", x);
 			req.getRequestDispatcher("/WEB-INF/views/board/request/list.jsp").forward(req, resp);
 			
 			}catch(Exception e) {
 				System.out.println("[ERROR-001] 게시글 조회 중 에러 발생..");
-				req.getRequestDispatcher("/WEB-INF/views/board/request/list.jsp").forward(req, resp); //에러페이지변경
+				req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp").forward(req, resp);
 				e.printStackTrace();
 			}
 		}
-		
-	}
+	
+}

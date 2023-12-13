@@ -1,4 +1,4 @@
-<%@page import="com.shoekream.qna.vo.QnaVo"%>
+<%@ page import="com.shoekream.qna.vo.QnaVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% QnaVo vo = (QnaVo)request.getAttribute("vo"); %>
@@ -8,16 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="/shoekream/resources/css/board/qna/detail.css">
+	href="/shoekream/resources/css/admin/board/qna/admin_detail.css">
 </head>
 <body>
-
-<%-- ${vo} --%>
-	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-
+	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp"%>
 	<div class="wrap">
 		<div class="wrap_inner">
-			<%@ include file="/WEB-INF/views/common/service_center_side.jsp"%>
+			<%@ include file="/WEB-INF/views/admin/common/admin_sidebar.jsp"%>
 			<div class="board_wrap">
 				<div class="board_title">Q&A</div>
 				<div class="dropdown_head">
@@ -35,13 +32,22 @@
 					</div>
 				</div>
 				<% if(vo.getReplyTitle()==null) {%>
-				<div class="dropdown_reply">
-					<div class="reply_date"></div>
-					<div class="reply_title"></div>
-					<div class="reply">
-						<textarea name="replys" id="replys" cols="50" rows="30" placeholder="작성된 답변이 없습니다." readonly></textarea>
+				<form action="/shoekream/admin/qna/detail?no=<%=vo.getNo()%>" method="post">
+					<div class="dropdown_reply">
+						<div class="reply_date">날짜</div>
+						<div class="reply_title">
+							제목: <input type="text" name="replyTitle" >
+						</div>
+						<div class="reply">
+							<textarea  id="replys" name="replyContent" cols="50" rows="30" placeholder ="작성된 답변이 없습니다."></textarea>
+						</div>
+						<div class="reply_write">
+							<div class="reply_btn">
+								<input type="submit" id="submit" value="답글 작성">
+							</div>
+						</div>
 					</div>
-				</div>
+				</form>
 				<% }else{ %>
 					<div class="dropdown_reply">
 						<div class="reply_date"><%=vo.getReplyEnrollDate() %></div>
@@ -56,13 +62,13 @@
 				<% } %>
 				<div class="btn_list">
 					<div class="btn_box">
-						<a href="/shoekream/qna/list">목록으로</a>
+						<a href="/shoekream/admin/qna/list">목록으로</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	<%@ include file="/WEB-INF/views/admin/common/admin_footer.jsp"%>
 </body>
 </html>

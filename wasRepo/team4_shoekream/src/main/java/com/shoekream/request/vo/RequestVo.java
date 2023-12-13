@@ -2,86 +2,108 @@ package com.shoekream.request.vo;
 
 public class RequestVo {
 
-		private String no;
-		private String memberNo;
-		private String title;
-		private String content;
-		private String enrollDate;
-		private String modifyDate;
-		private String delYn;
-		private String hit;
-		public RequestVo() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-		public RequestVo(String no, String memberNo, String title, String content, String enrollDate, String modifyDate,
-				String delYn, String hit) {
-			super();
-			this.no = no;
-			this.memberNo = memberNo;
-			this.title = title;
-			this.content = content;
-			this.enrollDate = enrollDate;
-			this.modifyDate = modifyDate;
-			this.delYn = delYn;
-			this.hit = hit;
-		}
-		@Override
-		public String toString() {
-			return "RequestVo [no=" + no + ", memberNo=" + memberNo + ", title=" + title + ", content=" + content
-					+ ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", delYn=" + delYn + ", hit=" + hit
-					+ "]";
-		}
-		public String getNo() {
-			return no;
-		}
-		public void setNo(String no) {
-			this.no = no;
-		}
-		public String getMemberNo() {
-			return memberNo;
-		}
-		public void setMemberNo(String memberNo) {
-			this.memberNo = memberNo;
-		}
-		public String getTitle() {
-			return title;
-		}
-		public void setTitle(String title) {
-			this.title = title;
-		}
-		public String getContent() {
-			return content;
-		}
-		public void setContent(String content) {
-			this.content = content;
-		}
-		public String getEnrollDate() {
-			return enrollDate;
-		}
-		public void setEnrollDate(String enrollDate) {
-			this.enrollDate = enrollDate;
-		}
-		public String getModifyDate() {
-			return modifyDate;
-		}
-		public void setModifyDate(String modifyDate) {
-			this.modifyDate = modifyDate;
-		}
-		public String getDelYn() {
-			return delYn;
-		}
-		public void setDelYn(String delYn) {
-			this.delYn = delYn;
-		}
-		public String getHit() {
-			return hit;
-		}
-		public void setHit(String hit) {
-			this.hit = hit;
-		}
-		
-		
-		
-		
+	private String no;
+	private String managerNo;
+	private String memberNo;
+	private String memberNick;
+	private String title;
+	private String content;
+	private String enrollDate;
+	private String hit;
+	private String replyTitle;
+	private String replyContent;
+	private String replyEnrollDate;
+	public RequestVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public RequestVo(String no, String managerNo, String memberNo, String memberNick, String title, String content,
+			String enrollDate, String hit, String replyTitle, String replyContent, String replyEnrollDate) {
+		super();
+		this.no = no;
+		this.managerNo = managerNo;
+		this.memberNo = memberNo;
+		this.memberNick = memberNick;
+		this.title = title;
+		this.content = content;
+		this.enrollDate = enrollDate;
+		this.hit = hit;
+		this.replyTitle = replyTitle;
+		this.replyContent = replyContent;
+		this.replyEnrollDate = replyEnrollDate;
+	}
+	public final String getNo() {
+		return no;
+	}
+	public final void setNo(String no) {
+		this.no = no;
+	}
+	public final String getManagerNo() {
+		return managerNo;
+	}
+	public final void setManagerNo(String managerNo) {
+		this.managerNo = managerNo;
+	}
+	public final String getMemberNo() {
+		return memberNo;
+	}
+	public final void setMemberNo(String memberNo) {
+		this.memberNo = memberNo;
+	}
+	public final String getMemberNick() {
+		return memberNick;
+	}
+	public final void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
+	}
+	public final String getTitle() {
+		return title;
+	}
+	public final void setTitle(String title) {
+		this.title = title;
+	}
+	public final String getContent() {
+		return content;
+	}
+	public final void setContent(String content) {
+		this.content = content;
+	}
+	public final String getEnrollDate() {
+		return enrollDate;
+	}
+	public final void setEnrollDate(String enrollDate) {
+		this.enrollDate = enrollDate;
+	}
+	public final String getHit() {
+		return hit;
+	}
+	public final void setHit(String hit) {
+		this.hit = hit;
+	}
+	public final String getReplyTitle() {
+		return replyTitle;
+	}
+	public final void setReplyTitle(String replyTitle) {
+		this.replyTitle = replyTitle;
+	}
+	public final String getReplyContent() {
+		return replyContent;
+	}
+	public final void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
+	}
+	public final String getReplyEnrollDate() {
+		return replyEnrollDate;
+	}
+	public final void setReplyEnrollDate(String replyEnrollDate) {
+		this.replyEnrollDate = replyEnrollDate;
+	}
+	@Override
+	public String toString() {
+		return "QnaVo [no=" + no + ", managerNo=" + managerNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick
+				+ ", title=" + title + ", content=" + content + ", enrollDate=" + enrollDate + ", hit=" + hit
+				+ ", replyTitle=" + replyTitle + ", replyContent=" + replyContent + ", replyEnrollDate="
+				+ replyEnrollDate + "]";
+	}
+	
 }
