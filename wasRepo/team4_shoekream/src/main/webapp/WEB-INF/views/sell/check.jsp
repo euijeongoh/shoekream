@@ -50,7 +50,6 @@
         <div class="content">
             <div class="buy_before">
                 <div id="buy_before_check">
-                    <div>
                         <div class="title_area">
                             <h2 class="check_title">
                                 <span class="accent_text">
@@ -61,22 +60,7 @@
                                 꼭 확인하세요.
                             </h2>
                         </div>
-                        <div class="buy_product_area">
-                            <div class="product_thumb">
-                                <div class="porduct">
-                                    <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                                </div>
-                            </div>
-                            <div class="product_detail">
-                                <p class="code">CJ9179-200</p>
-                                <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                                <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                                <div class="model_desc">
-                                    <p class="size_txt">250</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+					<%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                     <div class="buy">
                         <ul class="check_list">
                             <li class="check_item">
@@ -151,15 +135,14 @@
                             </li>
                         </ul>
                         <div class="btn_confirm">
-                        <!-- <div class="order_btn_area"> -->
-                            <a disabled="disabled" class="blindAgree">동의버튼</a>
-                            <button disabled="disabled" class="button">판매 계속</button>
-                            <!-- <button class="btn_order order_buy buy clickable">
-                                <div class="box">
-                                    <div class="order_price">180,000</div>
-                                    <div class="order_desc">5-7일소요</div>
-                                </div>
-                            </button> -->
+		                    <form action="/shoekream/sell/now" method="post">
+		                         <a disabled="disabled" class="blindAgree">동의버튼</a>
+		                         <input type="hidden" name="dbVo" value="${dbVo}">
+		                         <input type="hidden" name="productsNo" value="${dbVo.productsNo}">
+		                         <input type="hidden" name="price" value="${dbVo.price}">
+		                         <input type="hidden" name="size" value="${dbVo.shoesSizes}">
+		                         <button id="btn1" disabled="disabled" type="submit" class="button">구매 계속</button>
+	                        </form>
                         </div>
                     </div>
                 </div>

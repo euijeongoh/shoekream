@@ -32,20 +32,39 @@ public class BiddingOrderController extends HttpServlet{
 		try {
 			String name = "곽태윤";
 			String dataName = getHiddenData(name, 1);
+			System.out.println(dataName);
+			
 			req.setAttribute("trade","입찰이");
 			req.setAttribute("process", " 등록되었습니다.");
 			
-			String MemberNo = req.getParameter("MemberNo");
-			String biddingNo = req.getParameter("biddingNo");
+			String memberNo = req.getParameter("memberNo");
+			String productsNo = req.getParameter("productsNo");
+			String productsSizesNo = req.getParameter("productsSizesNo");
 			String biddingPrice = req.getParameter("biddingPrice");
-				System.out.println("-----------------입찰완료-----------------");
-				System.out.println("에러확인 MemberNo : " + MemberNo);
-				System.out.println("에러확인 biddingNo : " + biddingNo);
+			String deadline = req.getParameter("deadline");
+			
+				System.out.println("-----------------입찰등록-----------------");
+				System.out.println("에러확인 memberNo : " + memberNo);
+				System.out.println("에러확인 productsNo : " + productsNo);
+				System.out.println("에러확인 productsSizesNo : " + productsSizesNo);
 				System.out.println("에러확인 biddingPrice : " + biddingPrice);
+				System.out.println("에러확인 deadline : " + deadline);
 				
 			BiddingService bs = new BiddingService();
-			int result = bs.buyBidding(MemberNo, biddingNo, biddingPrice);
+			int result = bs.buyBidding(memberNo, productsNo, productsSizesNo, biddingPrice, deadline);
+			if (result != 1) {
+				throw new Exception("예외 발생 : result != 1");
+			}
 			
+			
+			int commission = ((int)(Math.round(((Integer.parseInt(biddingPrice))*0.03)*0.01)*100));
+			int price = Integer.parseInt(biddingPrice);
+			int totalAmount = price + commission + 3000;
+			
+			req.setAttribute("deadline", deadline);
+			req.setAttribute("commission", commission);
+			req.setAttribute("price", price);
+			req.setAttribute("totalAmount", totalAmount);
 			
 //			BiddingService bs = new BiddingService();
 //			OrdersVo ordersVo = bs.ordersInfo(req.getParameter("memberNo"),req.getParameter("biddingNo"),req.getParameter("productsNo"));
@@ -72,7 +91,7 @@ public class BiddingOrderController extends HttpServlet{
 			
 			req.getRequestDispatcher("/WEB-INF/views/buy/biddingorder.jsp").forward(req, resp);
 		} catch (Exception e) {
-			System.out.println("order 중 예외 발생");
+			System.out.println("입찰 등록 중 예외 발생");
 			e.printStackTrace();
 		}
 		

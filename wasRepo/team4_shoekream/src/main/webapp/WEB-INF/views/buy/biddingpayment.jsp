@@ -206,11 +206,14 @@
                             <a blind class="blind_full_solid_false">계속하기</a>
                             <button class="blind_full_solid_false">구매 입찰하기</button>
                             
-                            <input type="hidden" name="biddingNo" value="${ ${ dbVo.no } }">
-                            <input type="hidden" name="totalPrice" value="${ ${ totalAmount } }">
+                            <input type="hidden" name="memberNo" value="${ loginMember.no }">
+                            <input type="hidden" name="productsNo" value="${ dbVo.productsNo }">
+                         	<input type="hidden" name="productsSizesNo" value="${ dbVo.productsSizesNo }">
                          	<input type="hidden" name="biddingPrice" value="${ biddingPrice }">
-	                        <input type="hidden" name="commission" value="${ commission }">
 	                        <input type="hidden" name="deadline" value="${ deadline }">
+                         	
+                            <input type="hidden" name="totalPrice" value="${ totalAmount }">
+	                        <input type="hidden" name="commission" value="${ commission }">
                             
                         </div>
                     </div>

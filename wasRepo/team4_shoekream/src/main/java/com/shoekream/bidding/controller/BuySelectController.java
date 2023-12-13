@@ -22,7 +22,6 @@ public class BuySelectController extends HttpServlet{
 		try {
 			String productsNo = req.getParameter("productsNo");
 				// 받아와야 함
-//				productsNo = "46";
 			BiddingService bs = new BiddingService();
 			List<BiddingVo> voList = bs.buySelect(productsNo);
 			

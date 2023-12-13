@@ -1,14 +1,12 @@
 package com.shoekream.bidding.service;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.shoekream.bidding.dao.BiddingDao;
 import com.shoekream.biddingVo.BiddingVo;
-import com.shoekream.biddingVo.TestVo;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.mypage.vo.AccountVo;
 import com.shoekream.mypage.vo.AddrBookVo;
@@ -36,7 +34,41 @@ public class BiddingService {
 
 	
 	
+	// 상품 정보 조회
+	public ProductInfoVo productInfo(String no) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		ProductInfoVo infoVo = dao.productInfo(conn, no);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return infoVo;
+	}
 	
+	
+	
+	// 입찰 상품 정보 조회
+	public BiddingVo productInfo(BiddingVo vo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		BiddingVo dbVo = dao.productInfo(conn, vo);
+	
+		// close
+		JDBCTemplate.close(conn);
+		
+		return dbVo;
+	}
+	
+	
+	
+
 	
 	
 	// 구매 상품 정보(판매입찰)
@@ -65,46 +97,6 @@ public class BiddingService {
 		return m;
 	}
 	
-	
-	
-	
-	
-		
-	// 입찰 상품 정보 조회
-	public BiddingVo productInfo(BiddingVo vo) throws Exception {
-		// conn
-		Connection conn = JDBCTemplate.getConnection();
-		
-		// dao
-		BiddingDao dao = new BiddingDao();
-		BiddingVo dbVo = dao.productInfo(conn, vo);
-	
-		// close
-		JDBCTemplate.close(conn);
-		
-		return dbVo;
-	}
-	// 상품 정보 조회
-	public ProductInfoVo productInfo(String no) throws Exception {
-		// conn
-		Connection conn = JDBCTemplate.getConnection();
-		
-		// dao
-		BiddingDao dao = new BiddingDao();
-		ProductInfoVo infoVo = dao.productInfo(conn, no);
-		
-		// close
-		JDBCTemplate.close(conn);
-		
-		return infoVo;
-	}
-	
-	
-
-
-
-
-
 
 	// 최종 주문 정보 조회
 	public Map<String, Object> resultInfo(String loginMemberNo) throws Exception{
@@ -129,8 +121,6 @@ public class BiddingService {
 		
 		return result;
 	}
-
-
 
 
 
@@ -183,14 +173,14 @@ public class BiddingService {
 
 
 	// 입찰 등록
-	public int buyBidding(String memberNo, String biddingNo, String biddingPrice) {
+	public int buyBidding(String memberNo, String productsNo, String productsSizesNo, String biddingPrice, String deadline) throws Exception{
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		BiddingDao dao = new BiddingDao();
 //			System.out.println("에러확인 buyBidding Service");
-		int result = dao.orders(conn, memberNo, biddingNo, biddingPrice);
+		int result = dao.buyBidding(conn, memberNo, productsNo, productsSizesNo, biddingPrice, deadline);
 		
 		// tx
 		if (result == 1) {
@@ -204,6 +194,62 @@ public class BiddingService {
 //			System.out.println("에러확인 buyBidding Dao -> Service");
 		
 		return result;
+	}
+
+
+
+	//------------------------------------------------------------------------------------------------------------------------
+
+
+	// 판매하기(상품조회)
+	public List<BiddingVo> sellSelect(String productsNo) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		List<BiddingVo> voList = dao.sellSelect(conn, productsNo);
+	
+		// close
+		JDBCTemplate.close(conn);
+		
+		return voList;
+	}
+
+
+	
+
+	// 상품 정보 조회
+	public ProductInfoVo sellProductInfo(String productsNo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		ProductInfoVo infoVo = dao.sellProductInfo(conn, productsNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return infoVo;
+	}
+	
+	
+	
+	
+	// 입찰 상품 정보 조회
+	public BiddingVo sellproductInfo(BiddingVo vo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		BiddingVo dbVo = dao.sellProductInfo(conn, vo);
+	
+		// close
+		JDBCTemplate.close(conn);
+		
+		return dbVo;
 	}
 
 }
