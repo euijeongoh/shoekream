@@ -26,7 +26,7 @@
 
                <div class="wishlist-body">
                	<c:forEach items="${ wishList }" var="wishVo">
-               		<div class="wish-item">
+               		<div class="wish-item" onclick="location.href='/shoekream/product/detail?modelNumber=${ wishVo.modelNumber }'">
                        <div class="wish-product">
                            <div class="product-img">
                                <img src=${ wishVo.productImg }>

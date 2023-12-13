@@ -27,6 +27,7 @@
     justify-content: space-between;
     padding: 20px 0px 19px;
     border-bottom: 1px solid #ebebeb;
+    cursor: pointer;
 }
 
 .wish-product {
