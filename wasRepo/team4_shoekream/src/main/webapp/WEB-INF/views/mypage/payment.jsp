@@ -24,10 +24,22 @@
                         <p class="sub_title">수수료(패널티, 착불 배송비 등)가 정산되지 않을 경우, 별도 고지 없이 해당 금액을 결제 시도할 수 있습니다.</p>
                     </div>
                     <div class="btn_box">
-                        <a href="#" class="btn btn_add">
+                        <a href="#" class="btn btn_add" id="openModal">
                             <span class="btn_txt">+ 새 카드 추가하기</span>
                         </a>
                     </div>
+                    <!-- 모달 -->
+					<div id="myModal" class="modal">
+						<div class="modal-content">
+							<!-- 모달 내용을 여기에 추가하세요 -->
+							<p><%@ include file="/WEB-INF/views/mypage/newPay.jsp"%></p>
+							<button id="closeModal">모달 닫기</button>
+						</div>
+					</div>
+
+					<!-- 비활성화된 요소를 나타내는 오버레이 -->
+					<div id="overlay" class="overlay"></div>
+                    
                 </div>
                 <div class="my_list">
                     <div class="basic">
@@ -57,4 +69,58 @@
 <%@ include file = "/WEB-INF/views/common/footer.jsp" %>
 
 </body>
+<script>
+	// 모달 요소 및 오버레이 요소 가져오기
+	const modal = document.getElementById("myModal");
+	const overlay = document.getElementById("overlay");
+
+	// 모달을 열기 위한 버튼 가져오기
+	const btn = document.getElementById("openModal");
+
+	// 모달을 닫기 위한 버튼 가져오기
+	const closeModalBtn = document.getElementById("closeModal");
+
+	// 사용자가 버튼을 클릭하면 모달 열기
+	btn.onclick = function() {
+		modal.style.display = "block";
+		overlay.style.display = "block";
+	}
+	
+
+	// 사용자가 닫기 버튼을 클릭하면 모달 닫기
+	closeModalBtn.onclick = function() {
+		modal.style.display = "none";
+		overlay.style.display = "none";
+	}
+
+	// 사용자가 모달 외부를 클릭하면 모달 닫기
+	window.onclick = function(event) {
+		if (event.target === overlay) {
+			modal.style.display = "none";
+			overlay.style.display = "none";
+		}
+	}
+	document.addEventListener("DOMContentLoaded", function() {
+		// 닫기 버튼에 대한 이벤트 리스너 추가
+		document.querySelector('.btn_layer_close').addEventListener('click',
+				function() {
+					closeModal();
+				});
+
+		// 취소 버튼에 대한 이벤트 리스너 추가
+		document.querySelector('.btn_delete').addEventListener('click',
+				function() {
+					closeModal();
+				});
+	});
+
+	function closeModal() {
+		// 모달 닫기
+		const modal = document.getElementById("myModal");
+		const overlay = document.getElementById("overlay");
+
+		modal.style.display = 'none';
+		overlay.style.display = 'none';
+	}
+</script>
 </html>
