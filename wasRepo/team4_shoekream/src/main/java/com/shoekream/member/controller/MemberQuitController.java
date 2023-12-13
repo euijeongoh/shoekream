@@ -27,6 +27,7 @@ public class MemberQuitController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			System.out.println("doPost 호출됨");
 			// 데이터
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 			if(loginMember==null) {
@@ -35,7 +36,8 @@ public class MemberQuitController extends HttpServlet{
 			// service
 			MemberService ms = new MemberService();
 			int result = ms.quit(loginMember);
-			
+			System.out.println("=========");
+			System.out.println(result);
 			// result == view
 			if(result == -2) {
 				throw new Exception("탈퇴할 수 없는 회원");
@@ -52,6 +54,7 @@ public class MemberQuitController extends HttpServlet{
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+			req.getSession().setAttribute("quitFail", "탈퇴할 수 없는 회원입니다.");
 			resp.sendRedirect("/shoekream/member/quit");
 		}
 		

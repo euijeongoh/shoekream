@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	String quitFail = (String) session.getAttribute("quitFail");
+    	session.removeAttribute("quitFail");
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +17,18 @@
 <script defer src="/shoekream/resources/js/member/quit.js"></script>
 </head>
 <body>
+
+<script>
+<%
+	if(quitFail != null) {%>
+		alert("<%=quitFail%>");
+	<%}
+
+%>
+
+</script>
+
+
 	
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
@@ -29,7 +47,7 @@
                 </div>
 
                 <div class="quit-body">
-                    <form action="">
+                    <form action="/shoekream/member/quit" method="post">
                         <div class="quit_term">
                         	<div class="main_term">
 	                            <input type="checkbox">
@@ -52,11 +70,11 @@
                         </div>
 
 						<div class="btn_area">
-                        <input type="button" value="탈퇴하기">
+                        <input type="submit" value="탈퇴하기">
                         <input type="button" onclick="location.href='/shoekream/member/info'" value="취소하기">						
 						</div>
 						
-						<%@ include file="/WEB-INF/views/member/quit_modal.jsp" %>
+<%-- 						<%@ include file="/WEB-INF/views/member/quit_modal.jsp" %> --%>
                     </form>
                     
                 </div>
