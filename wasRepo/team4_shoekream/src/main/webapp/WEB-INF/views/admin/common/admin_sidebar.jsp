@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="sidebar">
-        <a href="/shoekream/admin/home"><h2>관리자 페이지</h2></a>
+        <a href="/shoekream/admin/home"><h3>관리자 페이지</h3></a>
         <br>
         <nav class="sidenav">
             <div class="sidenav_list">
@@ -32,7 +32,7 @@
                 <strong class="sidenav_title">상품 관리</strong>
                 <ul class="sidenav_menu">
                     <li class="menu_item">
-                        <a href="/shoekream/admin/product/enroll" class="menu_link">상품등록</a>
+                        <a href="/shoekream/admin/product/enroll" class="menu_link">상품 등록</a>
                     </li>
                     <li class="menu_item">
                         <a href="/shoekream/admin/product/list" class="menu_link">상품 목록</a>

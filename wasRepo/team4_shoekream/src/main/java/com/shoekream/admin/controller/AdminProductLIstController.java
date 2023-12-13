@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shoekream.admin.manager.vo.ManagerVo;
 import com.shoekream.admin.service.AdminProductListService;
 import com.shoekream.admin.vo.EnrollProductVo;
 import com.shoekream.page.vo.PageVo;
@@ -20,6 +21,11 @@ public class AdminProductLIstController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			ManagerVo loginMenager = (ManagerVo) req.getSession().getAttribute("loginAdmin");
+
+			if (loginMenager == null) {
+				throw new Exception();
+			}
 			
 			AdminProductListService ps = new AdminProductListService();
 			int listCount = ps.selectProductCount(); 
@@ -54,7 +60,11 @@ public class AdminProductLIstController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			
+			ManagerVo loginMenager = (ManagerVo) req.getSession().getAttribute("loginAdmin");
+
+			if (loginMenager == null) {
+				throw new Exception();
+			}
 			//data
 			String[] selectedProducts = req.getParameterValues("modelNumber"); 
 			

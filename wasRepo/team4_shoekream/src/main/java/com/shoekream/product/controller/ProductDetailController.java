@@ -20,6 +20,10 @@ public class ProductDetailController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+			if(loginMember == null) {
+				resp.sendRedirect("/shoekream/member/login");
+			}
 			//modelNumber 가져오기
 			String modelNumber = req.getParameter("modelNumber");
 			

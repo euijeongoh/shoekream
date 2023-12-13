@@ -1,3 +1,4 @@
+<%@page import="com.shoekream.admin.manager.vo.ManagerVo"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.shoekream.admin.vo.EnrollProductVo"%>
 <%@page import="java.util.List"%>
@@ -7,6 +8,9 @@
   <%
     	List<EnrollProductVo> productVoList = (List<EnrollProductVo>) request.getAttribute("productVoList");
     	PageVo pvo = (PageVo)request.getAttribute("pvo");
+    	 ManagerVo loginAdmin = (ManagerVo) session.getAttribute("loginAdmin");
+    		String alertMsg = (String) session.getAttribute("alertMsg");
+    		session.removeAttribute("alertMsg");
     %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -58,54 +62,7 @@
     <hr>
     <br><br><br>
     <div class="main_body">
-        <div class="side_body">
-            <div class="sidebar">
-            <a href="/admin"><h3>관리자 페이지</h3></a>
-            <br>
-                 <nav class="sidenav">
-                    <div class="sidenav_list">
-                         <strong class="sidenav_title"><a href="">주문관리</a></strong>
-                            <ul class="sidenav_menu">
-                            <li class="menu_item">    
-                            <a href="/shoekream/admin/order/storage/list" class="menu_link">입고 현황</a>
-                            </li>
-                            <li class="menu_item">
-                                <a href="/shoekream/admin/order/check/list" class="menu_link">검수진행 현황</a>
-                            </li>
-                            <li class="menu_item">
-                                <a href="/shoekream/admin/order/send/list" class="menu_link">배송 현황</a>
-                            </li>
-                        </ul>
-                    </div>
-                <br>
-                    <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="/shoekream/admin/product/list">상품 관리</a></strong>
-                    <ul class="sidenav_menu">
-                        <li class="menu_item">
-                            <a href="/shoekream/admin/product/enroll" class="menu_link">상품등록</a>
-                        </li>
-                        <li>
-                            <a href="/shoekream/admin/product/list" class="menu_link"><b><u>상품 목록</u></b></a>
-                        </li>
-                    </ul>
-                    </div>
-                <br>
-                    <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="">고객 센터</a></strong>
-                        <ul class="sidenav_menu">
-                            <li class="menu_item">
-                                <a href="/shoekream/notice/list" class="menu_link">공지사항</a>
-                            </li>
-                            <li class="menu_item">
-                                <a href="/shoekream/faq/list" class="menu_link">FAQ</a>
-                            </li>
-                            <li class="menu_item">
-                                <a href="/shoekream/qna/list" class="menu_link">Q&A</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+        <%@ include file="/WEB-INF/views/admin/common/admin_sidebar.jsp"%>
             <div class="list_body">
                <form action="/shoekream/admin/product/list" method="post">
 					    <table border="1">
