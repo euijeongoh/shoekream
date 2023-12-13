@@ -20,7 +20,7 @@
                 <ul>
                     <li><a href="/shoekream/notice/list">고객센터</a></li>
                     <li><a href="/shoekream/mypage/main">마이페이지</a></li>
-                    <li><a href="/shoekream/wishlist">관심</a></li>
+                    <li><a href="/shoekream/mypage/wishlist">관심</a></li>
                     <li><a>알림</a></li>
                     <li><a href="/shoekream/member/searchID">로그인</a></li>
                 </ul>
@@ -51,55 +51,56 @@
     <br><br>
     <hr>
     <br><br><br>
-    <div class="side-body">
-        <div class="sidebar">
-            <a href="/shoekream/admin/home"><h3>관리자 페이지</h3></a>
-            <br>
-            <nav class="sidenav">
-                <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="">주문관리</a></strong>
-                    <ul class="sidenav_menu">
-                        <li class="menu_item">
-                            <a href="/shoekream/admin/order/storage/list" class="menu_link">입고 현황</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="/shoekream/admin/order/check/list" class="menu_link">검수진행 현황</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="/shoekream/admin/order/send/list" class="menu_link">배송 현황</a>
-                        </li>
-                    </ul>
-                </div>
-                <br>
-                <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="">상품 관리</a></strong>
-                    <ul class="sidenav_menu">
-                        <li class="menu_item">
-                            <a href="/shoekream/admin/product/enroll" class="menu_link"><b><u>상품등록</u></b></a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="/shoekream/admin/product/list?pno=1" class="menu_link">상품 목록</a>
-                        </li>
-                    </ul>
-                </div>
-                <br>
-                <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="">고객 센터</a></strong>
-                    <ul class="sidenav_menu">
-                        <li class="menu_item">
-                            <a href="/shoekream/notice/list" class="menu_link">공지사항</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="/shoekream/faq/list" class="menu_link">FAQ</a>
-                        </li>
-                        <li class="menu_item">
-                            <a href="/shoekream/qna/list" class="menu_link">Q&A</a>
-                        </li>
-                    </ul>
-                </div>
-            </div> 
-            </nav>
-            
+<!--     <div class="side-body"> -->
+<!--         <div class="sidebar"> -->
+<!--             <a href="/shoekream/admin/home"><h3>관리자 페이지</h3></a> -->
+<!--             <br> -->
+<!--             <nav class="sidenav"> -->
+<!--                 <div class="sidenav_list"> -->
+<!--                     <strong class="sidenav_title"><a href="">주문관리</a></strong> -->
+<!--                     <ul class="sidenav_menu"> -->
+<!--                         <li class="menu_item"> -->
+<!--                             <a href="/shoekream/admin/order/storage/list" class="menu_link">입고 현황</a> -->
+<!--                         </li> -->
+<!--                         <li class="menu_item"> -->
+<!--                             <a href="/shoekream/admin/order/check/list" class="menu_link">검수진행 현황</a> -->
+<!--                         </li> -->
+<!--                         <li class="menu_item"> -->
+<!--                             <a href="/shoekream/admin/order/send/list" class="menu_link">배송 현황</a> -->
+<!--                         </li> -->
+<!--                     </ul> -->
+<!--                 </div> -->
+<!--                 <br> -->
+<!--                 <div class="sidenav_list"> -->
+<!--                     <strong class="sidenav_title"><a href="">상품 관리</a></strong> -->
+<!--                     <ul class="sidenav_menu"> -->
+<!--                         <li class="menu_item"> -->
+<!--                             <a href="/shoekream/admin/product/enroll" class="menu_link"><b><u>상품등록</u></b></a> -->
+<!--                         </li> -->
+<!--                         <li class="menu_item"> -->
+<!--                             <a href="/shoekream/admin/product/list?pno=1" class="menu_link">상품 목록</a> -->
+<!--                         </li> -->
+<!--                     </ul> -->
+<!--                 </div> -->
+<!--                 <br> -->
+<!--                 <div class="sidenav_list"> -->
+<!--                     <strong class="sidenav_title"><a href="">고객 센터</a></strong> -->
+<!--                     <ul class="sidenav_menu"> -->
+<!--                         <li class="menu_item"> -->
+<!--                             <a href="/shoekream/notice/list" class="menu_link">공지사항</a> -->
+<!--                         </li> -->
+<!--                         <li class="menu_item"> -->
+<!--                             <a href="/shoekream/faq/list" class="menu_link">FAQ</a> -->
+<!--                         </li> -->
+<!--                         <li class="menu_item"> -->
+<!--                             <a href="/shoekream/qna/list" class="menu_link">Q&A</a> -->
+<!--                         </li> -->
+<!--                     </ul> -->
+<!--                 </div> -->
+<!--             </div>  -->
+<!--             </nav> -->
+       	<div class="wrap">
+        <%@ include file="/WEB-INF/views/admin/common/admin_sidebar.jsp"%>
             <div class="enroll-area">
                 <br>
                 <div id="product-information">
@@ -151,9 +152,10 @@
                 
             </div>
         </div>
+        </div>
   <br><br><br><br><br>
 
-
+<%@ include file="/WEB-INF/views/admin/common/admin_footer.jsp"%>
 </body>
 </html>
 

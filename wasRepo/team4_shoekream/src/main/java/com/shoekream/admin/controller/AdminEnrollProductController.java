@@ -124,7 +124,7 @@ public class AdminEnrollProductController extends HttpServlet {
 			in.close();
 			out.close();
 			req.getSession().setAttribute("alertMsg", "제품 등록 성공!");
-			resp.sendRedirect("/shoekream/admin/product/enroll");
+			resp.sendRedirect("/shoekream/admin/product/list");
 		}catch(Exception e) {
 			System.out.println("제품 등록 실패");
 			e.printStackTrace();

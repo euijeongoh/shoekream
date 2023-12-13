@@ -89,10 +89,11 @@
                             <a href="/shoekream/product/detail?modelNumber=<%=vo.getModelNumber()%>">
                                 <div class="product">
                                     <div id="product_img">
-                                        <img src="/shoekream/resources/img/product/<%=vo.getModelNumber()%>.webp">
                                     <%if(Integer.parseInt(vo.getProductNo()) >= 52){ %>
-                                        <img src="/shoekream/resources/img/product/shoekream/<%=vo.getModelNumber()%>.png">
-                                    <%} %>
+                                        <img src="/shoekream/resources/img/product/<%=vo.getModelNumber()%>.png">
+                                    <%}else{ %>
+                                        <img src="/shoekream/resources/img/product/<%=vo.getModelNumber()%>.webp">
+                                        <%} %>
                                     </div>
                                     <div class="info_box">
                                         <div id="brand"><%= vo.getBrand()%></div>
