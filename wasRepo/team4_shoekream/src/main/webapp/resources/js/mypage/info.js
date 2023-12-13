@@ -39,7 +39,7 @@ infoInputTagArr[0].addEventListener('keyup', () => {
 	const jsonStr = JSON.stringify(jsonObj);
 
 	// 아이디 중복체크
-	fetch("/shoekream/member/check/id" +  strId, 
+	fetch("/shoekream/member/check/id", 
 		{method: "POST", body: jsonStr})
 	.then((resp) => { return resp.json() })
 	.then((data) => { 
