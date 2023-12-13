@@ -74,33 +74,38 @@
                             
                         </dl>
                         <div class="buttons">
-                            <div class="division_btn_box lg">
-                                 <a class="buy_btn" href="/shoekream/buy/select?productsNo=<%= productDetailVo.getProductNo()%>">
-	                               <button class="btn_action" style="background-color: rgb(239, 98, 83);">
-	                                   <strong class="title">구매</strong>
-	                                   <div class="price">
-	                                       <span class="amount">
-	                                           <em class="num"></em>
-	                                           <span class="won"><%=buyingPrice %>원</span>
-	                                       </span>
-	                                       <span class="desc">즉시 구매가</span>
-	                                   </div>
-	                               </button>
-                                 </a>
-                                  <a href="/shoekream/sell/select?productsNo=?<%=productDetailVo.getProductNo() %>">
-	                                <button class="btn_action" style="background-color: rgb(65, 185, 121);">
-	                                    <strong class="title">판매</strong>
-	                                    <div class="price">
-	                                        <span class="amount">
-	                                            <em class="num"></em>
-	                                                <span class="won"><%=sellingPrice %>원</span>
-	                                        </span>
-	                                        <span class="desc">즉시 판매가</span>
-	                                    </div>
-	                                </button>
-                                  </a>
-                            </div>
-                        </div>
+    <div class="division_btn_box lg">
+        <a class="buy_btn" href="/shoekream/buy/select?productsNo=<%= productDetailVo.getProductNo()%>">
+            <button class="btn_action" style="background-color: rgb(239, 98, 83);">
+                <strong class="title">구매</strong>
+                <div class="price">
+                    <span class="amount">
+                        <em class="num"></em>
+                        <span class="won"><%=buyingPrice %>원</span>
+                    </span>
+                    <span class="desc">즉시 구매가</span>
+                </div>
+            </button>
+        </a>
+        <!-- 관심 상품 등록 버튼 추가 -->
+        <button class="btn_action wishlist" style="background-color: rgb(100, 149, 237);">
+            <strong class="title">관심 상품 등록</strong>
+        </button>
+        <a href="/shoekream/sell/select?productsNo=?<%=productDetailVo.getProductNo() %>">
+            <button class="btn_action" style="background-color: rgb(65, 185, 121);">
+                <strong class="title">판매</strong>
+                <div class="price">
+                    <span class="amount">
+                        <em class="num"></em>
+                        <span class="won"><%=sellingPrice %>원</span>
+                    </span>
+                    <span class="desc">즉시 판매가</span>
+                </div>
+            </button>
+        </a>
+    </div>
+</div>
+
                     </div>
                 </div>
                 <div class="wrap_bids">

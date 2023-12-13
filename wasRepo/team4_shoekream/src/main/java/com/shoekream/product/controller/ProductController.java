@@ -61,11 +61,12 @@ public class ProductController extends HttpServlet{
 			System.out.println(Arrays.toString(brandNos));
 			System.out.println(Arrays.toString(categoryNos));
 			List<EnrollProductVo> filterProductList = ps.searchFilterProduct(filterVo);
-			for(EnrollProductVo vo : filterProductList) {
-				System.out.println(vo.getModelNumber());
-			}
-			req.setAttribute("filterProductList", filterProductList);
-			resp.sendRedirect("/shoekream/product");
+			// JSON 형식으로 응답하기
+		    resp.setContentType("application/json");
+		    resp.setCharacterEncoding("UTF-8");
+		    String jsonResponse = gson.toJson(filterProductList);
+		    resp.getWriter().write(jsonResponse);
+		    req.setAttribute("filterProductList", filterProductList);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

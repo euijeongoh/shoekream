@@ -372,7 +372,7 @@ public class AdminEnrollProductDao {
 
 	    for (String brandNo : brandNos) {
 	        for (String categoryNo : categoryNos) {
-	            String sql = "SELECT P.NO AS NO, P.MODEL_NUMBER AS MODEL_NUMBER, P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, B.BRAND_NAME AS BRAND_NAME, C.CATEGORY_NAME AS CATEGORY_NAME FROM PRODUCTS P JOIN BRAND B ON B.NO = P.BRAND_NO JOIN CATEGORY C ON C.NO = P.CATEGORY_NO WHERE P.CATEGORY_NO = ? or P.BRAND_NO = ?";
+	            String sql = "SELECT P.NO AS NO, P.MODEL_NUMBER AS MODEL_NUMBER, P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, B.BRAND_NAME AS BRAND_NAME, C.CATEGORY_NAME AS CATEGORY_NAME FROM PRODUCTS P JOIN BRAND B ON B.NO = P.BRAND_NO JOIN CATEGORY C ON C.NO = P.CATEGORY_NO WHERE P.CATEGORY_NO = ? AND P.BRAND_NO = ?";
 	            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	                pstmt.setString(1, categoryNo);
 	                pstmt.setString(2, brandNo);
