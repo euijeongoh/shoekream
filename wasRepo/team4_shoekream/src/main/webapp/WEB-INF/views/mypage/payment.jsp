@@ -93,7 +93,7 @@
                                         </span></div>
                                 </div>
                             </div>
-                            <div class="btn_bind"><a href="shoekream/mypage/payInfo/change?no=<%=loginMember.getNo() %>" class="btn outlinegrey small"> 기본결제 변경 </a></div>
+                            <div class="btn_bind"><a href="/shoekream/mypage/payInfo/change?mamberNo=<%=loginMember.getNo() %>&no=<%=pv.getNo() %>" class="btn outlinegrey small"> 기본결제 변경 </a></div>
                             <div class="btn_bind delete"><a href="#" class="btn outlinegrey small"> 삭제 </a></div>
                         </div>
                     </div>

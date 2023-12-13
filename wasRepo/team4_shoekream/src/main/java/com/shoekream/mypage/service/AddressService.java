@@ -86,14 +86,14 @@ public class AddressService {
 		return result;
 	}
 
-	public int changeDefault(String no) throws Exception {
+	public int changeDefault(String no, String memberNo) throws Exception {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		AddressDao ad = new AddressDao();
-		int result = ad.changeDefaultYn(conn, no);
+		int result = ad.changeDefaultYn(conn, no, memberNo);
 		
-		if (result == 2 ) {
+		if (result > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);

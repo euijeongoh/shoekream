@@ -125,7 +125,7 @@
 								</div>
 							</div>
 							<div class="btn_bind">
-								<a href="/shoekream/mypage/addr/change?no=<%=loginMember.getNo() %>" class="btn outlinegrey small"><span
+								<a href="/shoekream/mypage/addr/change?no=<%=av.getNo()%>&memberNo=<%=loginMember.getNo()  %>" class="btn outlinegrey small"><span
 							class="btn_txt">기본배송지 변경</span></a> 
 								<a href="/shoekream/mypage/addr/edit?no=<%=av.getNo() %>" class="btn outlinegrey small openModal_edit"  id="openModal_edit"><span
 							class="btn_txt">수정</span></a> 

@@ -47,6 +47,7 @@ public class AddressController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
+			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 			String name = req.getParameter("name");
 			String phoneNum = req.getParameter("phone_num");
 			String postCode = req.getParameter("post_code");
@@ -55,14 +56,13 @@ public class AddressController extends HttpServlet{
 			String defaultAddr = req.getParameter("default_addr");
 			
 			AddrBookVo vo = new AddrBookVo();
-			vo.setMemberNo("1");
+			vo.setMemberNo(loginMember.getNo());
 			vo.setAddersName(name);
 			vo.setPhoneNumber(phoneNum);
 			vo.setAddres(addr);
 			vo.setDetailAddres(detailAddr);
 			vo.setPostCode(postCode);
 			vo.setDefaultAddrYn(defaultAddr);
-			System.out.println(vo);
 			
 			AddressService as = new AddressService();
 			int result = as.insertAddr(vo);
@@ -70,7 +70,7 @@ public class AddressController extends HttpServlet{
 			if(result != 1) {
 				throw new Exception("주소 추가에서 오류");
 			}
-			resp.sendRedirect("/shoekream/mypage/addr?no=1");
+			resp.sendRedirect("/shoekream/mypage/addr?no="+loginMember.getNo());
 			
 		} catch (Exception e) {
 			e.printStackTrace();

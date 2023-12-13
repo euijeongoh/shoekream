@@ -95,8 +95,6 @@ public class AddressDao {
 
 	public int insertAddr(Connection conn, AddrBookVo vo) throws Exception {
 
-		System.out.println(vo.getAddersName());
-
 		String sql = "INSERT INTO ADDERSS_BOOK (NO ,MEMBER_NO ,ADDRES_NAME ,ADDRES ,DETAIL_ADDRES ,PHONE_NUMBER ,POST_CODE ,DEFAULT_ADDRESS_YN) VALUES (SEQ_ADDERSS_BOOK_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getMemberNo());
@@ -177,11 +175,12 @@ public class AddressDao {
 		return result;
 	}
 
-	public int changeDefaultYn(Connection conn, String no) throws Exception{
+	public int changeDefaultYn(Connection conn, String no, String memberNo) throws Exception{
 		
-		String sql = "UPDATE ADDERSS_BOOK SET DEFAULT_ADDRESS_YN = CASE WHEN DEFAULT_ADDRESS_YN = 'N' THEN 'Y' WHEN DEFAULT_ADDRESS_YN = 'Y' THEN 'N' ELSE DEFAULT_ADDRESS_YN END WHERE DEL_YN = 'N' AND MEMBER_NO = ?";
+		String sql = "UPDATE ADDERSS_BOOK SET DEFAULT_ADDRESS_YN = CASE WHEN DEFAULT_ADDRESS_YN = 'Y' THEN 'N' WHEN DEFAULT_ADDRESS_YN = 'N' AND NO = ? THEN 'Y' ELSE DEFAULT_ADDRESS_YN END WHERE DEL_YN = 'N' AND MEMBER_NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, no);
+		pstmt.setString(2, memberNo);
 		int result = pstmt.executeUpdate();
 		
 		JDBCTemplate.close(pstmt);

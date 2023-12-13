@@ -24,13 +24,14 @@ public class AddrChangeDefaultController extends HttpServlet{
 				throw new Exception();
 			}
 			String no = req.getParameter("no");
+			String memberNo = req.getParameter("memberNo");
 			
 			AddressService as = new AddressService();
-			int result = as.changeDefault(no);
+			int result = as.changeDefault(no, memberNo);
 			
 			
-			if(result == 2 ) {
-				resp.sendRedirect("/shoekream/mypage/addr?no=1");
+			if(result > 0 ) {
+				resp.sendRedirect("/shoekream/mypage/addr?no=" + loginMember.getNo());
 			}else {
 				throw new Exception();
 			}
