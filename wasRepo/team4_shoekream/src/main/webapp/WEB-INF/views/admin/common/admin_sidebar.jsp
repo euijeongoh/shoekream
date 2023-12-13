@@ -44,13 +44,16 @@
                 <strong class="sidenav_title">고객 센터</strong>
                 <ul class="sidenav_menu">
                     <li class="menu_item">
-                        <a href="" class="menu_link">공지사항</a>
+                        <a href="/shoekream/admin/notice/list?pno=1" class="menu_link">공지사항</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">FAQ</a>
+                        <a href="/shoekream/admin/faq/list?pno=1" class="menu_link">FAQ</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">Q&A</a>
+                        <a href="/shoekream/admin/qna/list?pno=1" class="menu_link">Q&A</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="/shoekream/admin/request/list" class="menu_link">상품 등록 요청</a>
                     </li>
                 </ul>
             </div>

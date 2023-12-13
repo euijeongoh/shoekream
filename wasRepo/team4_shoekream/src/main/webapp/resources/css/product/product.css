@@ -243,11 +243,13 @@ header .main_list li {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
 }
 
 .product_list_wrap li{
     width: 30%;
     margin-right: 6px;
+
     
 }
 
@@ -269,16 +271,24 @@ header .main_list li {
     font-family: 'Pretendard';
     width: 100%;
 }
-
+.info_box div{
+	text-decoration: none;
+	color: black;       
+}
+.product div{
+	text-decoration: none;
+	color : black;
+}
 #brand {
     font-size: 13px;
     font-weight: 600;
 }
 
-#model-name {
-    font-size: 13px;
+#model_name{
+    font-size: 16px;
     margin-bottom: 2px;
     color: rgba(34, 34, 34, 0.8);
+    text-decoration: none;
 }
 
 #price {
