@@ -29,7 +29,7 @@
                		<div class="wish-item">
                        <div class="wish-product">
                            <div class="product-img">
-                               <img src="./resources/product1.webp">
+                               <img src=${ wishVo.productImg }>
                            </div>
                            <div class="product-info">
                                <div id="brand">${ wishVo.brandName }</div>
@@ -44,8 +44,10 @@
                                    <br><span>즉시구매가</span>
                                </div>
                            </button>
-                           <input type="text" name="productNo" value="${ wishVo.productNo }" hidden>
-                           <div id="a"><a>삭제</a></div>
+                           <div id="a">
+                           	<a onclick="deleteWish();">삭제</a>
+                            <input type="text" name="productNo" value="${ wishVo.productNo }" hidden>
+                           </div>
                        </div>
                    </div>
                	</c:forEach>
