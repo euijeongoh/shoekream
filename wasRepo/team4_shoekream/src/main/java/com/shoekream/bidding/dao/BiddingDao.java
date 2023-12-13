@@ -120,6 +120,7 @@ public class BiddingDao {
 	
 	// 구매 상품 정보(즉시 구매가 : 판매입찰)
 	public BiddingVo buyProductList(Connection conn, BiddingVo vo) throws Exception{
+			System.out.println("-----------------즉시구매-----------------");
 			System.out.println("에러확인 : vo.getProductsNo() : " + vo.getProductsNo());
 			System.out.println("에러확인 : vo.getPrice() : " + vo.getPrice());
 			System.out.println("에러확인 : vo.getShoesSizes() : " + vo.getShoesSizes());
@@ -155,10 +156,11 @@ public class BiddingDao {
 	
 	// 판매 상품 정보(즉시 판매가 : 구매입찰)
 	public BiddingVo sellProductList(Connection conn, BiddingVo vo) throws Exception{
+			System.out.println("-----------------즉시판매-----------------");
 			System.out.println("에러확인 : vo.getProductsNo() : " + vo.getProductsNo());
 			System.out.println("에러확인 : vo.getProductsNo() : " + vo.getShoesSizes());
 		// sql
-		String sql = "SELECT SHOES_SIZES , MAX(PRICE) AS PRICE FROM ( SELECT B.NO ,B.MEMBER_NO ,B.PRODUCTS_NO ,B.PRODUCTS_SIZES_NO ,SS.SHOES_SIZES ,B.BIDDING_STATUS_NO ,BS.BIDDING_STATUS ,B.BIDDING_POSITION_NO ,BP.BIDDING_POSITION ,B.PRICE ,B.ENROLL_DATE ,B.EXPIRE_DATE FROM BIDDING B JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO JOIN BIDDING_POSITION BP ON B.BIDDING_POSITION_NO = BP.NO JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE PRODUCTS_NO = ? AND BIDDING_STATUS = '진행중' AND BIDDING_POSITION = '구매입찰' AND B.EXPIRE_DATE >= SYSDATE ) GROUP BY SHOES_SIZES HAVING SHOES_SIZES = ?";
+		String sql = "SELECT SHOES_SIZES , MIN(PRICE) AS PRICE FROM ( SELECT B.NO ,B.MEMBER_NO ,B.PRODUCTS_NO ,B.PRODUCTS_SIZES_NO ,SS.SHOES_SIZES ,B.BIDDING_STATUS_NO ,BS.BIDDING_STATUS ,B.BIDDING_POSITION_NO ,BP.BIDDING_POSITION ,B.PRICE ,B.ENROLL_DATE ,B.EXPIRE_DATE FROM BIDDING B JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO JOIN BIDDING_POSITION BP ON B.BIDDING_POSITION_NO = BP.NO JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE PRODUCTS_NO = ? AND BIDDING_STATUS = '진행중' AND BIDDING_POSITION = '판매입찰' AND B.EXPIRE_DATE >= SYSDATE ) GROUP BY SHOES_SIZES HAVING SHOES_SIZES = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getProductsNo());
 		pstmt.setString(2, vo.getShoesSizes());
