@@ -112,4 +112,19 @@ public class ProductDetailService {
 		JDBCTemplate.close(conn);
 		return biddingList;
 	}
+
+	public int addWishList(String memberNo, String productNo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ProductDetailDao dao = new ProductDetailDao();
+		
+		int result = dao.addWishList(conn, memberNo, productNo);
+		
+		if(result ==1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		return result;
+	}
 }

@@ -190,5 +190,18 @@ public class ProductDetailDao {
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
 		return price;
+	}
+
+
+	public int addWishList(Connection conn, String memberNo, String productNo) throws Exception{
+		String sql = "INSERT INTO WISHLIST(NO, MEMBER_NO, PRODUCTS_NO, WISH_DATE) VALUES(SEQ_WISHLIST_NO.NEXTVAL, ?,?,SYSDATE)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, memberNo);
+		pstmt.setString(2, productNo);
+		
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		return result;
 	}	
 }
