@@ -84,12 +84,13 @@
     padding-bottom: 19px;
 }
 
+
 .dropdown{
     display: flex;
-    width: 700px;
+    width:	800px;
     height: 17.477px;
     cursor: pointer;
-    /* background-color: aqua; */
+/*     background-color: aqua; */
 }
 
 .pagination{

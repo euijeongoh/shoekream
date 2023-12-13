@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<%-- ${ pvo } --%>
+<%-- ${ qnaVoList } --%>
 
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
@@ -43,9 +43,13 @@
 					<%for(QnaVo vo : QnaVoList) {%>
 					<li>
 					<a href="/shoekream/qna/detail?no=<%= vo.getNo() %>">
-							<div class="dropdown"><%= vo.getTitle() %></div>
-							<div class="nickname"><%= vo.getMemberNick() %></div>
-							<div class="date"><%= vo.getEnrollDate() %></div>
+					<% if(vo.getReplyTitle() != null) { %>
+						<div class="dropdown">✔ <%= vo.getTitle() %></div>
+					<% } else { %>
+						<div class="dropdown"><%= vo.getTitle() %></div>
+					<% } %>
+						<div class="nickname"><%= vo.getMemberNick() %></div>
+						<div class="date"><%= vo.getEnrollDate() %></div>
 					</a>
 					</li>
 					<% } %>

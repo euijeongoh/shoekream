@@ -23,6 +23,7 @@ public class AdminQnaListController extends HttpServlet{
 		QnaService qs = new QnaService();
 
 		try {
+		String x = req.getParameter("x");
 		//data
 		int listCount = qs.selectQnaCount();
 		String currentPage_ = req.getParameter("pno");
