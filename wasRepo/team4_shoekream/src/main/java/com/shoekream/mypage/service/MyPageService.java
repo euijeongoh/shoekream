@@ -12,7 +12,7 @@ import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.dao.MyPageDao;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.HistoryCntVo;
-import com.shoekream.mypage.vo.OrdersHistoryVo;
+import com.shoekream.mypage.vo.BuyingHistoryVo;
 import com.shoekream.mypage.vo.WishListVo;
 import com.shoekream.page.vo.PageVo;
 
@@ -54,13 +54,13 @@ public class MyPageService {
 	}
 
 	// 구매 진행중 내역 정보
-	public List<OrdersHistoryVo> viewBuyingPendingList(MemberVo loginMember, Map<String, String> map) throws Exception {
+	public List<BuyingHistoryVo> viewBuyingPendingList(MemberVo loginMember, Map<String, String> map) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		MyPageDao dao = new MyPageDao();
-		List<OrdersHistoryVo> pendList = dao.getBuyPendingInfo(conn, loginMember, map);
+		List<BuyingHistoryVo> pendList = dao.getBuyPendingInfo(conn, loginMember, map);
 		
 		// close
 		JDBCTemplate.close(conn);
@@ -70,13 +70,13 @@ public class MyPageService {
 	}
 	
 	// 구매완료 내역 조회
-	public List<OrdersHistoryVo> viewBuyingFinishedList(MemberVo loginMember, Map<String, String> map) throws Exception {
+	public List<BuyingHistoryVo> viewBuyingFinishedList(MemberVo loginMember, Map<String, String> map) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		MyPageDao dao = new MyPageDao();
-		List<OrdersHistoryVo> finishedList = dao.getBuyFinishedInfo(conn, loginMember, map);
+		List<BuyingHistoryVo> finishedList = dao.getBuyFinishedInfo(conn, loginMember, map);
 		
 		// close
 		JDBCTemplate.close(conn);
@@ -202,13 +202,13 @@ public class MyPageService {
 	}
 
 	// 판매 진행중 내역 조회
-	public List<OrdersHistoryVo> viewSellingPendingList(MemberVo loginMember, Map<String, String> map) throws Exception {
+	public List<BuyingHistoryVo> viewSellingPendingList(MemberVo loginMember, Map<String, String> map) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		MyPageDao dao = new MyPageDao();
-		List<OrdersHistoryVo> pendList = dao.getSellPendingInfo(conn, loginMember, map);			
+		List<BuyingHistoryVo> pendList = dao.getSellPendingInfo(conn, loginMember, map);			
 		
 		// close
 		JDBCTemplate.close(conn);
@@ -217,13 +217,13 @@ public class MyPageService {
 	}
 
 	// 판매 완료 내역 조회
-	public List<OrdersHistoryVo> viewSellingFinishedList(MemberVo loginMember, Map<String, String> map) throws Exception {
+	public List<BuyingHistoryVo> viewSellingFinishedList(MemberVo loginMember, Map<String, String> map) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao
 		MyPageDao dao = new MyPageDao();
-		List<OrdersHistoryVo> finishList = dao.getSellFinishedInfo(conn, loginMember, map);			
+		List<BuyingHistoryVo> finishList = dao.getSellFinishedInfo(conn, loginMember, map);			
 		
 		// close
 		JDBCTemplate.close(conn);

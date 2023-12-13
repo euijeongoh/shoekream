@@ -32,7 +32,14 @@ public class HomeDao {
 			}
 			
 			
-			ProductInfoVo vo = new ProductInfoVo(productNo, productName, thumbnail, brand, model, immediatePrice, productEnrollDate);
+			ProductInfoVo vo = new ProductInfoVo();
+			vo.setProductNo(productNo);
+			vo.setProductName(productName);
+			vo.setThumbnail(thumbnail);
+			vo.setBrandName(brand);
+			vo.setModelName(model);
+			vo.setImmediatePrice(immediatePrice);
+			vo.setProductEnrollDate(productEnrollDate);
 			recentEnrollList.add(vo);
 			
 		}
@@ -61,7 +68,14 @@ public class HomeDao {
 				minPrice = "-";
 			}
 			
-			ProductInfoVo vo = new ProductInfoVo(productNo, productName, thumbnail, brand, model, minPrice, latestEnrollDate);
+			ProductInfoVo vo = new ProductInfoVo();
+			vo.setProductNo(productNo);
+			vo.setProductName(productName);
+			vo.setThumbnail(thumbnail);
+			vo.setBrandName(brand);
+			vo.setModelName(model);
+			vo.setImmediatePrice(minPrice);
+			vo.setBidEnrollDate(latestEnrollDate);
 			newImmediatePriceList.add(vo);
 			
 		}
