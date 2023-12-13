@@ -33,7 +33,11 @@ public class QnaWriteController extends HttpServlet {
 				vo.setTitle(title);
 				vo.setContent(content);
 				
-//				System.out.println(vo);
+//				HttpSession session = req.getSession();
+//				MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+//				if(loginMember == null) {
+//					throw new Exception("로그인 안했음");
+//				}
 				
 				//service
 				QnaService qs = new QnaService();

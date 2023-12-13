@@ -74,7 +74,7 @@ public class QnaDao {
 		//검색 게시글 갯수
 			public int selectSearchQnaCount(Connection conn, String title) throws Exception{
 				
-				String sql = "SELECT COUNT(*) FROM NOTICE_BOARD WHERE DEL_YN = 'N' AND TITLE LIKE '%' || ?|| '%'";
+				String sql = "SELECT COUNT(*) FROM QNA_BOARD WHERE TITLE LIKE '%' || ?|| '%'";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, title);
 				

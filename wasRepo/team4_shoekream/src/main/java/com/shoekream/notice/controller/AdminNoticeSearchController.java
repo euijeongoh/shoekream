@@ -32,17 +32,22 @@ public class AdminNoticeSearchController extends HttpServlet{
 			int pageLimit = 5;
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
-//			System.out.println("title값 확인 : " + title);
+			
+//			HttpSession session = req.getSession();
+//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+//			if(loginAdmin == null) {
+//				throw new Exception("로그인 안했음");
+//			}
 			
 			//service
 			List<NoticeVo> noticeVoList = ns.noticeSearch(title, pvo);
-//			System.out.println("notice값 확인 : " + noticeVoList);
 			
 			
 			//result == view
 			
 			req.setAttribute("noticeVoList", noticeVoList);
 			req.setAttribute("pvo", pvo);
+			req.setAttribute("x", title);
 			req.getRequestDispatcher("/WEB-INF/views/admin/board/notice/adminList.jsp").forward(req, resp);
 			
 			

@@ -34,12 +34,19 @@ public class AdminQnaListController extends HttpServlet{
 		int boardLimit = 10;
 		PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
+//		HttpSession session = req.getSession();
+//		ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+//		if(loginAdmin == null) {
+//			throw new Exception("로그인 안했음");
+//		}
+		
 		//service
 		List<QnaVo> QnaVoList = qs.QnaList(pvo);
 		
 		//result == view
 		req.setAttribute("qnaVoList", QnaVoList);
 		req.setAttribute("pvo", pvo);
+		req.setAttribute("x", x);
 		req.getRequestDispatcher("/WEB-INF/views/admin/board/qna/adminList.jsp").forward(req, resp);
 		
 		}catch(Exception e) {

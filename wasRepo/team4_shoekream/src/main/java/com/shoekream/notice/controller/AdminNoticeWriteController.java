@@ -34,7 +34,12 @@ public class AdminNoticeWriteController extends HttpServlet{
 			vo.setTitle(title);
 			vo.setContent(content);
 			
-			// System.out.println(vo);
+//			HttpSession session = req.getSession();
+//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+//			if(loginAdmin == null) {
+//				throw new Exception("로그인 안했음");
+//			}
+			
 			
 			//service
 			NoticeService ns = new NoticeService();
@@ -51,7 +56,7 @@ public class AdminNoticeWriteController extends HttpServlet{
 		}catch(Exception e) {
 			System.out.println("[ERROR-M001] 공지사항 게시글 생성 중 에러 발생");
 			e.printStackTrace();
-			req.setAttribute("error", "게시글 작성 실패...");
+			req.setAttribute("alarm", "게시글 작성 실패...");
 			req.getRequestDispatcher("/WEB-INF/views/common.fail.jsp").forward(req, resp);
 		}
 	}

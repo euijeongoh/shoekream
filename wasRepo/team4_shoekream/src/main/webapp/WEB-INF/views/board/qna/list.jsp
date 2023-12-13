@@ -6,6 +6,7 @@
 <%
 		List<QnaVo> QnaVoList = (List<QnaVo>)request.getAttribute("qnaVoList");
 		PageVo pvo = (PageVo)request.getAttribute("pvo");
+		String x = (String) request.getAttribute("x");
 %>
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@
 				<div class="board_search">
 					<div>	
 					<form action="/shoekream/qna/search" method="get">
-						검색: <input class="search" name="search" type="text">
+						검색: <input class="search" name="search" type="text"  value="${ x }">
 						<input type="submit" value="검색하기">
 					</div>
 					</form>
@@ -49,7 +50,41 @@
 					</li>
 					<% } %>
 				</ul>
-				<div class="pagination">
+				<% if(x != null && x.length() > 0){ %>
+					<div class="pagination">
+					<div class="pagination_box">
+						<div class="prev_btn">
+							<% if(pvo.getStartPage() != 1) { %>
+							<a href="/shoekream/qna/search?pno=1&search=<%= x %>">《 </a>
+							<% } %>
+							<% if(pvo.getStartPage() != 1) { %>
+							<a href="/shoekream/qna/search?pno=<%= pvo.getStartPage() - 1 %>&search=<%= x %>">〈 </a>
+							<% } %>
+						</div>
+
+						<div class="page_bind">
+						<% for(int i = pvo.getStartPage(); i <= pvo.getEndPage(); i++) { %>
+							<% if(i == pvo.getCurrentPage()) { %>
+								<a href="/shoekream/qna/search?pno=<%= i %>&search=<%= x %>"><%= i %></a>
+							<% }else {%>
+								<a href="/shoekream/qna/search?pno=<%= i %>&search=<%= x %>"><%= i %></a>
+							<% } %>
+						<% } %>
+						</div>
+						
+						<div class="next_btn_box">
+							<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+							<a href="/shoekream/qna/search?pno=<%= pvo.getEndPage() + 1 %>&search=<%= x %>"> 〉</a>
+							<% } %>
+							<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+							 <a href="/shoekream/qna/search?pno=<%= pvo.getMaxPage() %>&search=<%= x %>"> 》</a>
+							 <% } %>
+						
+						</div>
+					</div>
+				</div>
+				<% }else{ %>
+					<div class="pagination">
 					<div class="pagination_box">
 						<div class="prev_btn">
 							<% if(pvo.getStartPage() != 1) { %>
@@ -81,13 +116,13 @@
 						</div>
 					</div>
 				</div>
+				<% } %>
 				<div class="write_box">
                     <div class="write_btn"><a href="/shoekream/qna/write">글 작성</a></div>
                 </div>
 	           </div>
 			</div>
 		</div>
-	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

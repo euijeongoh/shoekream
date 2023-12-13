@@ -44,6 +44,6 @@ FaqVo vo = (FaqVo) request.getAttribute("vo");
 		</div>
 	</div>
 
-	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	<%@ include file="/WEB-INF/views/admin/common/admin_footer.jsp"%>
 </body>
 </html>
