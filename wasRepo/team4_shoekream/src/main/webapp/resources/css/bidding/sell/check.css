@@ -81,7 +81,6 @@ body {
                     text-decoration: none;
                     -webkit-tap-highlight-color: rgba(0,0,0,.1);
                     color: inherit;
-                    cursor: pointer;
                     box-sizing: border-box;
                 }
                     .notice_group {
@@ -92,13 +91,16 @@ body {
                         word-break: keep-all;
                         box-sizing: border-box;
                     }
-                        .notice_maintext {
-                            font-size: 15px;
-                            letter-spacing: -.15px;
-                            letter-spacing: -.01px;
-                            line-height: 18px;
-                            box-sizing: border-box;
+                        .check_label {
+                            cursor: pointer;
                         }
+                            .notice_maintext {
+                                font-size: 15px;
+                                letter-spacing: -.15px;
+                                letter-spacing: -.01px;
+                                line-height: 18px;
+                                box-sizing: border-box;
+                            }
                             .notice_subtext {
                                 color: rgba(34,34,34,.5);
                                 font-size: 13px;
