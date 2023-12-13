@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.AddressService;
 
 @WebServlet("/mypage/addr/delete")
@@ -16,6 +17,11 @@ public class AddrDeleteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+			
+			if(loginMember == null) {
+				throw new Exception();
+			}
 			String no = req.getParameter("no");
 			System.out.println(no);
 
@@ -30,6 +36,7 @@ public class AddrDeleteController extends HttpServlet{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			resp.sendRedirect("/shoekream/member/login");
 		}
 	
 	}

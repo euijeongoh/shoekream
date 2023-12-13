@@ -10,20 +10,20 @@
 </head>
 <body>
     <div class="sidebar">
-        <a href="/admin"><h2>관리자 페이지</h2></a>
+        <a href="/shoekream/admin/home"><h2>관리자 페이지</h2></a>
         <br>
         <nav class="sidenav">
             <div class="sidenav_list">
                 <strong class="sidenav_title">주문관리</strong>
                 <ul class="sidenav_menu">
                     <li class="menu_item">
-                        <a href="" class="menu_link">입고 현황</a>
+                        <a href="/shoekream/admin/order/storage/list?pno=1" class="menu_link">입고 현황</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">검수진행 현황</a>
+                        <a href="/shoekream/admin/order/check/list?pno=1" class="menu_link">검수 현황</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">배송 현황</a>
+                        <a href="/shoekream/admin/order/send/list?pno=1" class="menu_link">배송 현황</a>
                     </li>
                 </ul>
             </div>

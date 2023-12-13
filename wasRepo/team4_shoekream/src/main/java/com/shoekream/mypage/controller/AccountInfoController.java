@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.AccountService;
 import com.shoekream.mypage.vo.AccountVo;
 
@@ -18,6 +19,12 @@ public class AccountInfoController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			// data
+			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+						
+			if(loginMember == null) {
+				throw new Exception();
+			}
 			String no = req.getParameter("no");
 			
 			AccountService as = new AccountService();
@@ -29,6 +36,7 @@ public class AccountInfoController extends HttpServlet{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			resp.sendRedirect("/shoekream/member/login");
 		}
 		
 	}
@@ -74,6 +82,7 @@ public class AccountInfoController extends HttpServlet{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 	
 	}

@@ -15,12 +15,12 @@ import com.shoekream.admin.vo.BreakdownVo;
 import com.shoekream.admin.vo.OrdersVo;
 import com.shoekream.page.vo.PageVo;
 
-@WebServlet("/admin/order/send/list")
-public class SendController extends HttpServlet{
+@WebServlet("/admin/home")
+public class AdminMainController extends HttpServlet{
 	
-	public static String sendSize;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		try {
 			ManagerVo loginMenager = (ManagerVo) req.getSession().getAttribute("loginAdmin");
 
@@ -41,18 +41,27 @@ public class SendController extends HttpServlet{
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 			//service
-			List<OrdersVo> OrderVoList =  os.selectSendList(pvo);
+			List<OrdersVo> OrderStorageVoList =  os.selectStorageList(pvo);
+			List<OrdersVo> OrderCheckVoList =  os.selectCheckList(pvo);
+			List<OrdersVo> OrderSendVoList =  os.selectSendList(pvo);
+			String storageSize = Integer.toString(OrderStorageVoList.size());
+			String checkSize = Integer.toString(OrderCheckVoList.size());
+			String sendSize = Integer.toString(OrderSendVoList.size());
+			
 			
 			//result
-			req.setAttribute("OrderSendVoList", OrderVoList);
-			req.setAttribute("pvo" , pvo);
-			req.getRequestDispatcher("/WEB-INF/views/admin/order/list/send.jsp").forward(req, resp);
+			req.setAttribute("storageSize",storageSize);
+			req.setAttribute("checkSize",checkSize);
+			req.setAttribute("sendSize",sendSize);
+			
+			req.getRequestDispatcher("/WEB-INF/views/admin/adminHome.jsp").forward(req, resp);
 			
 		} catch (Exception e) {
 			System.out.println("[ERROR-B001]게시글 목록 조회 중 에러 발생");
 			e.printStackTrace();
 			resp.sendRedirect("/shoekream/admin/login");	
 		}
+	
 	}
 
 }

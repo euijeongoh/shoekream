@@ -25,9 +25,9 @@
                   <div id="title">내 정보</div>
                   <ul class="myinfo">
                       <li><a href="/shoekream/mypage/info">로그인 정보</a></li>
-                      <li><a href="/shoekream/mypage/addr">주소록</a></li>
-                      <li><a href="/shoekream/mypage/payInfo">결제 정보</a></li>
-                      <li><a href="/shoekream/mypage/ACCOUNT">정산 계좌</a></li>
+                      <li><a href="/shoekream/mypage/addr?no=1">주소록</a></li>
+                      <li><a href="/shoekream/mypage/payInfo?no=1">결제 정보</a></li>
+                      <li><a href="/shoekream/mypage/ACCOUNT?no=1">정산 계좌</a></li>
                   </ul>
               </div>
           </nav>
