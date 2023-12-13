@@ -28,20 +28,20 @@ public class BuyBiddingControlloer extends HttpServlet{
 		String buySize = req.getParameter("buySize");
 		buyPrVo.setPrice(buyPrice);
 		buyPrVo.setShoesSizes(buySize);
-			System.out.println("-----------------구매입찰-----------------");
-			System.out.println("BuyBiddingController 에러확인 buyPrice : " + buyPrice );
-			System.out.println("BuyBiddingController 에러확인 buySize : " + buySize );
+//			System.out.println("-----------------구매입찰-----------------");
+//			System.out.println("BuyBiddingController 에러확인 buyPrice : " + buyPrice );
+//			System.out.println("BuyBiddingController 에러확인 buySize : " + buySize );
 		
 		BiddingVo sellPrVo = new BiddingVo();
 		String sellPrice = req.getParameter("sellPrice");
 		String sellSize = req.getParameter("sellSize");
 		sellPrVo.setPrice(sellPrice);
 		sellPrVo.setShoesSizes(sellSize);
-			System.out.println("BuyBiddingController 에러확인 sellPrice : " + sellPrice );
-			System.out.println("BuyBiddingController 에러확인 sellSize : " + sellSize );
+//			System.out.println("BuyBiddingController 에러확인 sellPrice : " + sellPrice );
+//			System.out.println("BuyBiddingController 에러확인 sellSize : " + sellSize );
 		
 		String productsNo = req.getParameter("productsNo");
-			System.out.println("BuyBiddingController 에러확인 productsNo : " + productsNo );
+//			System.out.println("BuyBiddingController 에러확인 productsNo : " + productsNo );
 		
 		req.setAttribute("productsNo", productsNo);
 		req.setAttribute("buyPrVo", buyPrVo);

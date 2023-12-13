@@ -48,6 +48,9 @@ public class BuyCheckController extends HttpServlet{
 				throw new Exception("예외 발생 : dbVo == null");
 			}
 			
+			/**
+			 * 
+			 */
 			req.getSession().setAttribute("BuyProductInfo", dbVo);
 			
 			req.setAttribute("dbVo", dbVo);

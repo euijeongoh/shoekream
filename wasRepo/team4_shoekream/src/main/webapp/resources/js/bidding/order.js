@@ -9,7 +9,7 @@ window.onload=function(){
     console.log(order_status_2.id);
     console.log(order_status_3.id);
     console.log(order_status_4.id);
-    if (ordersStatus.value === '거래체결') {
+    if (ordersStatus.value === '결제완료') {
         order_status_1.id = 'success';
     } else if (ordersStatus.value === '입고완료') {
         order_status_1.id = 'success';
@@ -18,19 +18,22 @@ window.onload=function(){
         order_status_1.id = 'success';
         order_status_2.id = 'success';
         order_status_3.id = 'success';
-    } else if (ordersStatus.value === '배송완료') {
+    } else if (ordersStatus.value === '발송완료') {
         order_status_1.id = 'success';
         order_status_2.id = 'success';
         order_status_3.id = 'success';
         order_status_4.id = 'success';
-        order_status_4.innerHTML = '배송완료';
+        order_status_4.innerHTML = '발송완료';
     } else if (ordersStatus.value === '반송처리') {
         order_status_1.id = 'success';
         order_status_2.id = 'success';
         order_status_3.id = 'success';
         order_status_4.id = 'success';
         order_status_4.innerHTML = "반송처리";
-    } else {
+    } else if (ordersStatus.value === '결제실패') {
+        order_status_1.id = 'success';
+        order_status_1.innerHTML = "결제실패";
+    }  else {
         alert('order 페이지 js 에러');
     }
   }

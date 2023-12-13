@@ -14,7 +14,7 @@ import com.shoekream.bidding.service.BiddingService;
 import com.shoekream.orders.vo.OrdersVo;
 
 @WebServlet("/buy/order")
-public class orderController extends HttpServlet{
+public class OrderController extends HttpServlet{
 	
 	public static String getHiddenData(String data, int index) {
 		String hiddenData = data.substring(0, index); {
@@ -42,7 +42,7 @@ public class orderController extends HttpServlet{
 			if (ordersVo == null) {
 				throw new Exception("예외 발생 : ordersVo == null");
 			}
-			
+				System.out.println("orderController 에러확인 ordersVo : " + ordersVo);
 			
 			req.setAttribute("ordersVo", ordersVo);
 			
@@ -62,8 +62,8 @@ public class orderController extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		
 	}
+	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -391,3 +391,14 @@ body {
                         text-align: center;
                         vertical-align: middle;
                     }
+.bank_name {
+    box-sizing: border-box;
+    color: rgba(34,34,34,.5);
+    font-size: 14px;
+    letter-spacing: -.21px;
+}
+.account_number {
+    color: rgba(34,34,34,.5);
+    font-size: 14px;
+    box-sizing: border-box;
+}

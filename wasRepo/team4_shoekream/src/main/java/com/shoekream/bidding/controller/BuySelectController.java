@@ -22,7 +22,7 @@ public class BuySelectController extends HttpServlet{
 		try {
 			String productsNo = req.getParameter("productsNo");
 				// 받아와야 함
-				productsNo = "46";
+//				productsNo = "46";
 			BiddingService bs = new BiddingService();
 			List<BiddingVo> voList = bs.buySelect(productsNo);
 			
@@ -30,9 +30,13 @@ public class BuySelectController extends HttpServlet{
 				throw new Exception("예외 발생 : voList == null");
 			}
 			
-			ProductInfoVo infoVo = bs.productInfo(productsNo);
-				System.out.println("BuySelectController 에러확인 infoVo : " + infoVo);
-			req.getSession().setAttribute("infoVo", infoVo);
+			ProductInfoVo productInfoVo = bs.productInfo(productsNo);
+//				System.out.println("BuySelectController 에러확인 infoVo : " + productInfoVo);
+				
+			/**
+			 * 
+			 */
+			req.getSession().setAttribute("productInfoVo", productInfoVo);
 			
 			req.setAttribute("voList", voList);
 			req.getRequestDispatcher("/WEB-INF/views/buy/select.jsp").forward(req, resp);

@@ -103,29 +103,29 @@
                                 <h3 class="payment_title_txt">결제 방법</h3>
                             </div>
                             <div>
-                                <div class="payment_account">
-                                    <h4 class="method_title">
-                                        <div class="main_title">
-                                            <p>계좌 간편결제</p>
-                                        </div>
-                                        <a class="btn_card_add">새 계좌 추가</a>
-                                    </h4>
-                                    <div>
-                                        <div class="payment_detail">
-                                            <div class="payment_item">
-                                                <div class="info_wrap">
-                                                    <div class="bank_info">
-                                                        <span class="bank_name">KEB하나은행</span>
-                                                        <div class="account_number">630-910560-19107</div>
-<%--                                                 <input class="accNo" type="hidden" name="accNo" value="${ accInfo.no }"> --%>
-<%--                                                 <input class="accMemberNo" type="hidden" name="accMemberNo" value="${ accInfo.memberNo }"> --%>
-                                                    </div>
-                                                    <!-- <a class="regist_link">계좌를 등록하세요</a> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                 <div class="payment_account"> -->
+<!--                                     <h4 class="method_title"> -->
+<!--                                         <div class="main_title"> -->
+<!--                                             <p>계좌 간편결제</p> -->
+<!--                                         </div> -->
+<!--                                         <a class="btn_card_add">새 계좌 추가</a> -->
+<!--                                     </h4> -->
+<!--                                     <div> -->
+<!--                                         <div class="payment_detail"> -->
+<!--                                             <div class="payment_item"> -->
+<!--                                                 <div class="info_wrap"> -->
+<!--                                                     <div class="bank_info"> -->
+<!--                                                         <span class="bank_name"></span> -->
+<!--                                                         <div class="account_number"></div> -->
+<!--                                                 <input class="accNo" type="hidden" name="accNo" value=""> -->
+<!--                                                 <input class="accMemberNo" type="hidden" name="accMemberNo" value=""> -->
+<!--                                                     </div> -->
+<!--                                                     <a class="regist_link">계좌를 등록하세요</a> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
                                 <div class="payment_card">
                                     <h4 class="method_title">
                                         <div class="main_title">
@@ -136,7 +136,9 @@
                                         <div class="card_list">
                                             <div class="main_card">
                                                 <a class="regist_link">
-                                                    <span class="regist_text">카드를 등록하세요</span>
+                                                        <span class="bank_name">${ cardInfo.cardCompanyName }</span>
+                                                        <div class="account_number">${ cardInfo.cardNumber }</div>
+<!--                                                     <span class="regist_text">카드를 등록하세요</span> -->
 <%--                                                 <input class="cardNo" type="hidden" name="cardNo" value="${ cardInfo.no }"> --%>
 <%--                                                 <input class="cardMemberNo" type="hidden" name="cardMemberNo" value="${ cardInfo.memberNo }"> --%>
                                                 </a>
