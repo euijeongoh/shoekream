@@ -37,7 +37,13 @@ joinInputTagArr[1].addEventListener('keyup', ()=>{
 	}
 
 	// 아이디 중복체크
-	fetch("/shoekream/member/check/id?memberId=" +  strId, {method: "POST"})
+	const jsonObj = {
+		strId : strId
+	}
+	
+	const jsonStr = JSON.stringify(jsonObj);
+	
+	fetch("/shoekream/member/check/id", {method: "POST", body: jsonStr})
 	.then((resp) => { return resp.json() })
 	.then((data) => { 
 		const result = data.msg;
@@ -56,7 +62,6 @@ joinInputTagArr[1].addEventListener('keyup', ()=>{
 	});	
 })
 
-console.log(idValid);
 
 // 비밀번호 유효성 체크
 // 비밀번호 영문, 숫자, 특수문자 조합 8-16자
@@ -130,11 +135,16 @@ joinInputTagArr[5].addEventListener('keyup', ()=>{
 	}
 
 	// 이메일 중복 체크
-	fetch("/shoekream/member/check/email?email=" + strEmail, { method: "POST" })
+	const jsonObj = {
+		strEmail : strEmail
+	}
+	
+	const jsonStr = JSON.stringify(jsonObj);
+	
+	fetch("/shoekream/member/check/email", { method: "POST" , body: jsonStr})
 	.then((resp)=>{ return resp.json() })
 	.then((data)=>{
 		const result = data.reply;
-		console.log(result);
 		const isDup = (result == "no");
 		const emailCheckDiv = document.querySelector("#email_check");
 		if(isDup === true) {
