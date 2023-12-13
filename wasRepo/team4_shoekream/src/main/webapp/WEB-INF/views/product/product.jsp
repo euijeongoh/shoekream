@@ -137,41 +137,61 @@
 
     // AJAX 요청 전송 함수
     function sendAjaxRequest() {
-        const selectedCategories = getSelectedValues(categoryCheckboxes);
-        console.log(selectedCategories);
-        const selectedBrands = getSelectedValues(brandCheckboxes);
-        console.log(selectedBrands);
-		
-        const jsonObj={
-        	categoryNos : selectedCategories,
-        	brandNos : selectedBrands
-        };
-        
-        const jsonStr = JSON.stringify(jsonObj);
-        
-        fetch("/shoekream/product", {method: "post", body: jsonStr})
-        .then( (resp) => {	return resp.json() } )
-        .then( (data) => {
-        	
-        	
-        })
-    }
-//         // 데이터 전송 및 서버 응답 처리
-//         const filterData = { categories: selectedCategories, brands: selectedBrands, prices: selectedPrices };
-//         const xhr = new XMLHttpRequest();
-//         xhr.open("POST", "/product", true); // 실제 서버 URL로 변경 필요
-//         xhr.setRequestHeader("Content-Type", "application/json");
-//         xhr.onreadystatechange = function() {
-//             if (xhr.readyState === XMLHttpRequest.DONE) {
-//                 if (xhr.status === 200) {
-//                     console.log("Response:", xhr.responseText);
-//                     // 페이지 내용 갱신 로직 추가
-//                 } else {
-//                     console.error("AJAX request failed:", xhr.statusText);
-//                 }
-//             }
-//         };
-//         xhr.send(JSON.stringify(filterData));
+    const selectedCategories = getSelectedValues(categoryCheckboxes);
+    const selectedBrands = getSelectedValues(brandCheckboxes);
+
+    const jsonObj = {
+        categoryNos: selectedCategories,
+        brandNos: selectedBrands
+    };
+
+    const jsonStr = JSON.stringify(jsonObj);
+
+    fetch("/shoekream/product", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json' // JSON 데이터를 보낼 때는 Content-Type 헤더 설정 필요
+        },
+        body: jsonStr
+    })
+    .then(response => response.json())
+    .then(data => {
+    console.log(data); // 여기서 응답 데이터 확인
+    updateProductList(data);
+})
+    .catch(error => console.error('Error:', error));
+}
+
+// 선택된 체크박스 값 배열로 반환하는 함수
+function getSelectedValues(checkboxes) {
+    return Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+}
+
+// 서버로부터 받은 데이터로 상품 목록을 업데이트하는 함수
+function updateProductList(products) {
+    const productListElement = document.querySelector('.product_list_wrap');
+    productListElement.innerHTML = ''; // 기존 목록 초기화
+
+    products.forEach(product => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <a href="/shoekream/product/detail?modelNumber=${product.modelNumber}">
+                <div class="product">
+                    <div id="product_img">
+                        <img src="/shoekream/resources/img/product/${product.modelNumber}.webp">
+                    </div>
+                    <div class="info_box">
+                        <div id="brand">${product.brand}</div>
+                        <div id="model_name">${product.productName}</div>
+                        <div id="price">${product.releasePrice}</div>
+                    </div>
+                </div>
+            </a>`;
+        productListElement.appendChild(listItem);
+    });
+}
 
     // 선택된 체크박스 값 배열로 반환 함수
     function getSelectedValues(checkboxes) {
