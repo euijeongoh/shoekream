@@ -24,18 +24,16 @@ public class BuyNowControlloer extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-//			BiddingVo dbVo = (BiddingVo)req.getParameter("dbVo");
-//			System.out.println("BuyNowController 에러확인 dbVo : " + dbVo);
-			BiddingVo BuyProductInfo = (BiddingVo) req.getSession().getAttribute("BuyProductInfo");
-				System.out.println("-----------------즉시구매-----------------");
-				System.out.println("BuyNowController 에러확인 BuyProductInfo : " + BuyProductInfo);
+			BiddingVo BuyProductInfo = (BiddingVo)req.getSession().getAttribute("BuyProductInfo");
+//				System.out.println("-----------------즉시구매-----------------");
+//				System.out.println("BuyNowController 에러확인 BuyProductInfo : " + BuyProductInfo);
 			
 			String productsNo = req.getParameter("productsNo");
 			String price = req.getParameter("price");
 			String size = req.getParameter("size");
-				System.out.println("BuyNowController 에러확인 productsNo : " + productsNo);
-				System.out.println("BuyNowController 에러확인 price : " + price);
-				System.out.println("BuyNowController 에러확인 size : " + size);
+//				System.out.println("BuyNowController 에러확인 productsNo : " + productsNo);
+//				System.out.println("BuyNowController 에러확인 price : " + price);
+//				System.out.println("BuyNowController 에러확인 size : " + size);
 			
 			BiddingVo vo = new BiddingVo();
 			vo.setProductsNo(productsNo);

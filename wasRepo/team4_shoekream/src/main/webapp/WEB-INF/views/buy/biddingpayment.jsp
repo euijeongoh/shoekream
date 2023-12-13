@@ -71,15 +71,15 @@
                                     <dl class="info_list">
                                         <div class="info_box">
                                             <dt class="title">받는 분</dt>
-                                            <dd class="desc">곽태윤</dd>
+                                            <dd class="desc">${addInfo.addersName}</dd>
                                         </div>
                                         <div class="info_box">
                                             <dt class="title">연락처</dt>
-                                            <dd class="desc">010-9740-4885</dd>
+                                            <dd class="desc">${addInfo.phoneNumber}</dd>
                                         </div>
                                         <div class="info_box">
                                             <dt class="title">배송 주소</dt>
-                                            <dd class="desc">인천 연수구 함박뫼로 100 (연수동, 문남마을아파트) 109-505</dd>
+                                            <dd class="desc">${addInfo.addres}${addInfo.detailAddres}</dd>
                                         </div>
                                     </dl>
                                 </div>
@@ -109,7 +109,8 @@
                                     <div class="card_list">
                                         <div class="main_card">
                                             <a class="regist_link">
-                                                <span class="regist_text">카드를 등록하세요</span>
+												<span class="bank_name">${ cardInfo.cardCompanyName }</span>
+												<div class="account_number">${ cardInfo.cardNumber }</div>
                                             </a>
                                         </div>
                                     </div>
@@ -135,7 +136,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        168,000원
+                                        ${ biddingPrice }원
                                     </em>
                                 </p>
                             </div>
@@ -155,7 +156,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        5,000원
+                                        ${ commission }원
                                     </em>
                                 </p>
                             </div>
@@ -165,7 +166,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        3,000원
+                                        3000원
                                     </em>
                                 </p>
                             </div>
@@ -177,7 +178,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        60일-2024/01/31
+                                        ${ deadline }
                                     </em>
                                 </p>
                             </div>
@@ -188,24 +189,32 @@
                 <!-- 최종 주문정보 -->
 
                 <!-- 결제하기 -->
-                <div class="buy_total_confirm">
-                    <div class="price_total">
-                        <dl class="price_box">
-                            <dt class="price_title">총 결제금액</dt>
-                            <dd class="price_empty_desc">
-                                <span class="amount">176,000</span>
-                                <span class="unit">원</span>
-                            </dd>
-                        </dl>
-                        <span class="price_warning">
-                            <em></em>
-                        </span>
+                <form action="/shoekream/buy/biddingorder">
+                    <div class="buy_total_confirm">
+                        <div class="price_total">
+                            <dl class="price_box">
+                                <dt class="price_title">총 결제금액</dt>
+                                <dd class="price_empty_desc">
+                                    <span class="amount">${ totalAmount }원</span>
+                                </dd>
+                            </dl>
+                            <span class="price_warning">
+                                <em></em>
+                            </span>
+                        </div>
+                        <div class="btn_confirm">
+                            <a blind class="blind_full_solid_false">계속하기</a>
+                            <button class="blind_full_solid_false">구매 입찰하기</button>
+                            
+                            <input type="hidden" name="biddingNo" value="${ ${ dbVo.no } }">
+                            <input type="hidden" name="totalPrice" value="${ ${ totalAmount } }">
+                         	<input type="hidden" name="biddingPrice" value="${ biddingPrice }">
+	                        <input type="hidden" name="commission" value="${ commission }">
+	                        <input type="hidden" name="deadline" value="${ deadline }">
+                            
+                        </div>
                     </div>
-                    <div class="btn_confirm">
-                        <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">결제하기</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -242,12 +251,6 @@
         </div>
         <div class="box4"></div>
     </footer>
-
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
 
 </body>
 </html>

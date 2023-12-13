@@ -10,7 +10,9 @@ import java.util.Map;
 import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.biddingVo.TestVo;
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.mypage.vo.AccountVo;
 import com.shoekream.mypage.vo.AddrBookVo;
+import com.shoekream.mypage.vo.PaymentVo;
 import com.shoekream.orders.vo.OrdersVo;
 import com.shoekream.product.vo.ProductInfoVo;
 
@@ -50,9 +52,9 @@ public class BiddingDao {
 	
 	// 구매 상품 정보(즉시 구매가 : 판매입찰)
 	public BiddingVo buyProductList(Connection conn, BiddingVo vo) throws Exception{
-		System.out.println(vo.getProductsNo());
-		System.out.println(vo.getPrice());
-		System.out.println(vo.getShoesSizes());
+//			System.out.println("에러확인 : vo.getProductsNo() : " + vo.getProductsNo());
+//			System.out.println("에러확인 : vo.getPrice() : " + vo.getPrice());
+//			System.out.println("에러확인 : vo.getShoesSizes() : " + vo.getShoesSizes());
 		
 		// sql
 		String sql = "SELECT B.NO AS NO ,B.MEMBER_NO AS MEMBER_NO ,B.PRODUCTS_NO AS PRODUCTS_NO ,B.PRODUCTS_SIZES_NO AS PRODUCTS_SIZES_NO ,SS.SHOES_SIZES AS SHOES_SIZES ,B.BIDDING_STATUS_NO AS BIDDING_STATUS_NO ,BS.BIDDING_STATUS AS BIDDING_STATUS ,B.BIDDING_POSITION_NO AS BIDDING_POSITION_NO ,BP.BIDDING_POSITION AS BIDDING_POSITION ,B.PRICE AS PRICE ,B.ENROLL_DATE AS ENROLL_DATE ,B.EXPIRE_DATE AS EXPIRE_DATE FROM BIDDING B JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO JOIN BIDDING_POSITION BP ON B.BIDDING_POSITION_NO = BP.NO JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE BIDDING_STATUS = '진행중' AND BIDDING_POSITION = '판매입찰' AND B.EXPIRE_DATE >= SYSDATE AND B.PRODUCTS_NO = ? AND B.PRICE = ? AND SS.SHOES_SIZES = ? ORDER BY NO";
@@ -68,9 +70,9 @@ public class BiddingDao {
 			buyPrVo = new BiddingVo();
 			buyPrVo.setShoesSizes(rs.getString("SHOES_SIZES"));
 			buyPrVo.setPrice(rs.getString("PRICE"));
-						System.out.println("buyProductList : 판매입찰(즉시구매가)");
-						System.out.println("dao에러확인 SHOES_SIZES : "+rs.getString("SHOES_SIZES"));
-						System.out.println("dao에러확인 PRICE : "+rs.getString("PRICE"));
+//					System.out.println("buyProductList : 판매입찰(즉시구매가)");
+//					System.out.println("dao에러확인 SHOES_SIZES : "+rs.getString("SHOES_SIZES"));
+//					System.out.println("dao에러확인 PRICE : "+rs.getString("PRICE"));
 		}
 		
 		// close
@@ -81,8 +83,8 @@ public class BiddingDao {
 	}
 	// 판매 상품 정보(즉시 판매가 : 구매입찰)
 	public BiddingVo sellProductList(Connection conn, BiddingVo vo) throws Exception{
-		System.out.println(vo.getProductsNo());
-		System.out.println(vo.getShoesSizes());
+//			System.out.println("에러확인 : vo.getProductsNo() : " + vo.getProductsNo());
+//			System.out.println("에러확인 : vo.getProductsNo() : " + vo.getShoesSizes());
 		// sql
 		String sql = "SELECT SHOES_SIZES , MAX(PRICE) AS PRICE FROM ( SELECT B.NO ,B.MEMBER_NO ,B.PRODUCTS_NO ,B.PRODUCTS_SIZES_NO ,SS.SHOES_SIZES ,B.BIDDING_STATUS_NO ,BS.BIDDING_STATUS ,B.BIDDING_POSITION_NO ,BP.BIDDING_POSITION ,B.PRICE ,B.ENROLL_DATE ,B.EXPIRE_DATE FROM BIDDING B JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO JOIN BIDDING_POSITION BP ON B.BIDDING_POSITION_NO = BP.NO JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO WHERE PRODUCTS_NO = ? AND BIDDING_STATUS = '진행중' AND BIDDING_POSITION = '구매입찰' AND B.EXPIRE_DATE >= SYSDATE ) GROUP BY SHOES_SIZES HAVING SHOES_SIZES = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -96,9 +98,9 @@ public class BiddingDao {
 			sellPrVo = new BiddingVo();
 			sellPrVo.setShoesSizes(rs.getString("SHOES_SIZES"));
 			sellPrVo.setPrice(rs.getString("PRICE"));
-						System.out.println("sellProductList : 구매입찰(즉시판매가)");
-						System.out.println("dao에러확인 SHOES_SIZES : "+rs.getString("SHOES_SIZES"));
-						System.out.println("dao에러확인 PRICE : "+rs.getString("PRICE"));
+//					System.out.println("sellProductList : 구매입찰(즉시판매가)");
+//					System.out.println("dao에러확인 SHOES_SIZES : "+rs.getString("SHOES_SIZES"));
+//					System.out.println("dao에러확인 PRICE : "+rs.getString("PRICE"));
 		}
 		
 		// close
@@ -139,8 +141,8 @@ public class BiddingDao {
 			dbVo.setPrice(rs.getString(10));
 			dbVo.setEnrollDate(rs.getString(11));
 			dbVo.setExpireDate(rs.getString(12));
-			System.out.println("productInfo : 상품 정보 조회");
-			System.out.println("dao에러확인 dbVo : " + dbVo);
+//				System.out.println("productInfo : 상품 정보 조회");
+//				System.out.println("dao에러확인 dbVo : " + dbVo);
 		}
 		
 		// close
@@ -163,10 +165,10 @@ public class BiddingDao {
 		if(rs.next()) {
 			infoVo = new ProductInfoVo();
 			infoVo.setProductName(rs.getString(4));;
-//			infoVo.setProductKoName(rs.getString(5));;
-			infoVo.setImmediatePrice(rs.getString(6));;
-			System.out.println("infoVo : 제품 정보");
-			System.out.println("dao에러확인 infoVo : " + infoVo);
+			infoVo.setBrandName(rs.getString(5));;
+			infoVo.setModelName(rs.getString(6));;
+//				System.out.println("infoVo : 제품 정보");
+//				System.out.println("dao에러확인 infoVo : " + infoVo);
 		}
 		
 		// close
@@ -203,8 +205,8 @@ public class BiddingDao {
 			addInfo.setDefaultAddrYn(rs.getString(8));
 			addInfo.setDelYn(rs.getString(9));
 			addInfo.setEnrollDate(rs.getString(10));
-			System.out.println("addInfo : 주소록 조회");
-			System.out.println("dao에러확인 addInfo : " + addInfo);
+//				System.out.println("addInfo : 주소록 조회");
+//				System.out.println("dao에러확인 addInfo : " + addInfo);
 		}
 		
 		// close
@@ -214,20 +216,27 @@ public class BiddingDao {
 		return addInfo;
 	}
 	// 계좌 조회
-	public TestVo accInfo(Connection conn, String loginMemberNo) throws Exception {
+	public AccountVo accInfo(Connection conn, String loginMemberNo) throws Exception {
 
 		// sql
-		String sql = "SELECT A.NO ,A.MEMBER_NO ,A.BANK_AGENT_NO ,A.ACCOUNT_NUMBER ,A.DEPOSITOR ,A.ENROLL_DATE ,BA.NO ,BA.BANK_COMPANY_NAME FROM ACCOUNT A JOIN BANK_AGENT BA ON A.NO = BA.NO WHERE A.NO = ?";
+		String sql = "SELECT A.NO ,A.MEMBER_NO ,A.BANK_AGENT_NO ,A.ACCOUNT_NUMBER ,A.DEPOSITOR ,A.ENROLL_DATE,BA.BANK_COMPANY_NAME FROM ACCOUNT A JOIN BANK_AGENT BA ON A.NO = BA.NO WHERE A.NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMemberNo);
 		ResultSet rs = pstmt.executeQuery();
 
 		// rs
-		TestVo accInfo = null;
+		AccountVo accInfo = null;
 		if(rs.next()) {
-			accInfo = new TestVo();
-			System.out.println("accInfo : 계좌 조회");
-			System.out.println("dao에러확인 accInfo : " + accInfo);
+			accInfo = new AccountVo();
+			accInfo.setNo(rs.getString(1));
+			accInfo.setMemberNo(rs.getString(2));
+			accInfo.setBankAgentNo(rs.getString(3));
+			accInfo.setAccountNumber(rs.getString(4));
+			accInfo.setDepositor(rs.getString(5));
+			accInfo.setEnrollDate(rs.getString(6));
+			accInfo.setBankAgentName(rs.getString(7));
+//				System.out.println("accInfo : 계좌 정보 조회");
+//				System.out.println("dao에러확인 accInfo : " + accInfo);
 		}
 		
 		// close
@@ -237,20 +246,28 @@ public class BiddingDao {
 		return accInfo;
 	}
 	// 카드 조회
-	public TestVo cardInfo(Connection conn, String loginMemberNo) throws Exception {
+	public PaymentVo cardInfo(Connection conn, String loginMemberNo) throws Exception {
 
 		// sql
-		String sql = "SELECT C.NO ,C.MEMBER_NO ,C.CARD_COMPANY_NO ,C.CARD_NUMBER ,C.EXPIRATION_DATE ,C.CVC_NUMBER ,C.ENROLL_DATE ,C.DEL_YN ,CC.NO ,CC.CARD_COMPANY_NAME FROM CARD C JOIN CARD_COMPANY CC ON C.NO = CC.NO WHERE C.NO = ?";
+		String sql = "SELECT C.NO ,C.MEMBER_NO ,C.CARD_COMPANY_NO ,C.CARD_NUMBER ,C.EXPIRATION_DATE ,C.CVC_NUMBER ,C.ENROLL_DATE,CC.CARD_COMPANY_NAME FROM CARD C JOIN CARD_COMPANY CC ON C.NO = CC.NO WHERE C.NO = ? AND DEL_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginMemberNo);
 		ResultSet rs = pstmt.executeQuery();
 
 		// rs
-		TestVo cardInfo = null;
+		PaymentVo cardInfo = null;
 		if(rs.next()) {
-			cardInfo = new TestVo();
-			System.out.println("cardInfo : 카드 조회");
-			System.out.println("dao에러확인 cardInfo : " + cardInfo);
+			cardInfo = new PaymentVo();
+			cardInfo.setNo(rs.getNString(1));
+			cardInfo.setMemberNo(rs.getNString(2));
+			cardInfo.setCardCompanyNo(rs.getNString(3));
+			cardInfo.setCardNumber(rs.getNString(4));
+			cardInfo.setExpirationDate(rs.getNString(5));
+			cardInfo.setCvcNumber(rs.getNString(6));
+			cardInfo.setEnrollDate(rs.getNString(7));
+			cardInfo.setCardCompanyName(rs.getNString(8));
+//				System.out.println("cardInfo : 카드 조회");
+//				System.out.println("dao에러확인 cardInfo : " + cardInfo);
 		}
 		
 		// close
@@ -272,15 +289,15 @@ public class BiddingDao {
 		pstmt.setString(1, memberNo);
 		pstmt.setString(2, biddingNo);
 		pstmt.setString(3, productsNo);
-			System.out.println("에러확인 ordersInfo Dao");
+//			System.out.println("에러확인 ordersInfo Dao");
 		ResultSet rs = pstmt.executeQuery();
-			System.out.println("에러확인 ordersInfo Dao executeQuery()");
+//			System.out.println("에러확인 ordersInfo Dao executeQuery()");
 
 		// rs
 		OrdersVo ordersVo = null;
 		if(rs.next()) {
-				System.out.println("에러확인 ordersInfo Dao if(rs.next())");
-				System.out.println("조회하는 biddingNo 가 일치하지 않음.. INSERT 먼저 할 것.");
+//				System.out.println("에러확인 ordersInfo Dao if(rs.next())");
+//				System.out.println("조회하는 biddingNo 가 일치하지 않음.. INSERT 먼저 할 것.");
 			ordersVo = new OrdersVo();
 			ordersVo.setNo(rs.getString(1));
 			ordersVo.setMemberNo(rs.getString(2));
@@ -300,10 +317,10 @@ public class BiddingDao {
 			ordersVo.setTotalPrice(rs.getString(16));
 			ordersVo.setCommission(rs.getString(17));
 			ordersVo.setPrice(rs.getString(19));
-				System.out.println("ordersVo : 주문 조회");
-				System.out.println("dao에러확인 ordersVo : " + ordersVo);
+//				System.out.println("ordersVo : 주문 조회");
+//				System.out.println("dao에러확인 ordersVo : " + ordersVo);
 		}
-			System.out.println("에러확인 ordersInfo Dao before close()");
+//			System.out.println("에러확인 ordersInfo Dao before close()");
 		// close
 		JDBCTemplate.close(pstmt);
 		JDBCTemplate.close(rs);
@@ -320,12 +337,42 @@ public class BiddingDao {
 		// sql
 		String sql = "INSERT INTO ORDERS VALUES(SEQ_ORDERS_NO.NEXTVAL, ?, 4, ?, ?, 1, SYSDATE, '카드', SYSDATE, NULL, NULL, NULL, NULL, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-			System.out.println("orders : 주문 정보 입력");
-			System.out.println("dao에러확인 loginMemberNo : " + loginMemberNo);
-			System.out.println("dao에러확인 biddngNo : " + biddngNo);
-			System.out.println("dao에러확인 productsNo : " + productsNo);
-			System.out.println("dao에러확인 totalAmount : " + totalAmountStr);
-			System.out.println("dao에러확인 commission : " + commissionStr);
+//			System.out.println("orders : 주문 정보 입력");
+//			System.out.println("dao에러확인 loginMemberNo : " + loginMemberNo);
+//			System.out.println("dao에러확인 biddngNo : " + biddngNo);
+//			System.out.println("dao에러확인 productsNo : " + productsNo);
+//			System.out.println("dao에러확인 totalAmount : " + totalAmountStr);
+//			System.out.println("dao에러확인 commission : " + commissionStr);
+		pstmt.setString(1, loginMemberNo);
+		pstmt.setString(2, biddngNo);
+		pstmt.setString(3, productsNo);
+		pstmt.setString(4, totalAmountStr);
+		pstmt.setString(5, commissionStr);
+		int result = pstmt.executeUpdate();
+
+		// rs
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+
+
+
+
+	public int buyBidding(Connection conn, String memberNo, String biddingNo, String biddingPrice) {
+		
+		// sql
+		String sql = "";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+//			System.out.println("orders : 주문 정보 입력");
+//			System.out.println("dao에러확인 loginMemberNo : " + loginMemberNo);
+//			System.out.println("dao에러확인 biddngNo : " + biddngNo);
+//			System.out.println("dao에러확인 productsNo : " + productsNo);
+//			System.out.println("dao에러확인 totalAmount : " + totalAmountStr);
+//			System.out.println("dao에러확인 commission : " + commissionStr);
 		pstmt.setString(1, loginMemberNo);
 		pstmt.setString(2, biddngNo);
 		pstmt.setString(3, productsNo);

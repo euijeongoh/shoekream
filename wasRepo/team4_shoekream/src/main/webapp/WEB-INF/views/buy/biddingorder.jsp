@@ -8,10 +8,10 @@
 </head>
 
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
-	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/order.css">
+	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/biddingorder.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 
-    <script defer src="/shoekream/resources/js/bidding/order.js"></script>
+    <script defer src="/shoekream/resources/js/bidding/biddingorder.js"></script>
 <body>
     <div class="wrap">
         <header>
@@ -52,12 +52,12 @@
         <div class="content">
             <div class="buy_immediate">
                 <!-- 주문번호  -->
-                <div class="order_area">
+                <!-- <div class="order_area">
                     <div class="area_number">
                         <dt class="title">주문번호</dt>
                         <dd class="desc">43124284</dd>
                     </div>
-                </div>
+                </div> -->
                 <!-- 주문번호  -->
 
                 <div class="display_separator"></div>
@@ -66,10 +66,10 @@
                 <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                 <!-- 상품 정보 -->
 
-                <div class="display_separator"></div>
+                <!-- <div class="display_separator"></div> -->
 
                 <!-- 진행 상황 -->
-                <div class="order_area">
+                <!-- <div class="order_area">
                     <div class="status_process">진행상황</div>
                     <div class="status_area">
                         <input class="ordersStatus" type="hidden" name="ordersStatus" value="${ ordersVo.ordersStatus }">
@@ -78,7 +78,7 @@
                         <div class="order_status order_status_3" >검수완료</div>
                         <div class="order_status order_status_4" >배송완료</div>
                     </div>
-                </div>
+                </div> -->
                 <!-- 진행 상황 -->
 
                 <div class="display_separator"></div>
@@ -86,11 +86,11 @@
                 <!-- 최종 주문정보 -->
                 <div class="section_orderinfo">
                     <div class="orderinfo_area">
-                        <div class="title_wrap">
+                        <!-- <div class="title_wrap">
                             <div>
                                 <p class="wrap_title">결제 내역</p>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="title_description" id="totalAmount">
                             <p class="line_title title_txt">총 결제금액</p>
                             <div class="description_wrap">
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <div class="title_description">
-                            <p class="line_title">즉시 구매가</p>
+                            <p class="line_title">구매 희망가</p>
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
@@ -145,7 +145,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="title_description" id="expire_date">
+                        <div class="title_description">
                             <p class="line_title">입찰 마감기한</p>
                             <div class="description_wrap">
                                 <p class="line_description">
@@ -159,7 +159,7 @@
                     </div>
                 </div>
                 <!-- 최종 주문정보 -->
-
+                <!--  -->
                 <div class="display_separator"></div>
 
                 <form action="/shoekream/buy/order" method="post">
@@ -204,28 +204,28 @@
                                 <h3 class="payment_title_txt">결제 정보</h3>
                             </div>
                             <div>
-                                <div class="payment_account">
-                                    <!-- <h4 class="method_title">
+                                <!-- <div class="payment_account">
+                                    <h4 class="method_title">
                                         <div class="main_title">
                                             <p>계좌</p>
                                         </div>
                                         <a class="btn_card_add">새 계좌 추가</a>
-                                    </h4> -->
+                                    </h4>
                                     <div>
                                         <div class="payment_detail">
                                             <div class="payment_item">
                                                 <div class="info_wrap">
                                                     <div class="bank_info">
-                                                        <span class="bank_name">${ cardInfo.cardCompanyName }</span>
-                                                        <div class="account_number">${ cardInfo.cardNumber }</div>
+                                                        <span class="bank_name">KEB하나은행</span>
+                                                        <div class="account_number">630-910560-19107</div>
                                                     </div>
-                                                    <!-- <a class="regist_link">계좌를 등록하세요</a> -->
+                                                    <a class="regist_link">계좌를 등록하세요</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- <div class="payment_card">
+                                </div> -->
+                                <div class="payment_card">
                                     <h4 class="method_title">
                                         <div class="main_title">
                                             <p>카드 간편결제</p>
@@ -235,12 +235,14 @@
                                         <div class="card_list">
                                             <div class="main_card">
                                                 <a class="regist_link">
-                                                    <span class="regist_text">카드를 등록하세요</span>
+                                                    <!-- <span class="regist_text">카드를 등록하세요</span> -->
+                                                    <span class="bank_name">${ cardInfo.cardCompanyName }</span>
+                                                    <div class="account_number">${ cardInfo.cardNumber }</div>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,16 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 
     <script defer src="/shoekream/resources/js/bidding/buy/bidding.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- <script type="text/javascript" defer src="/shoekream/WEB-INF/lib/moment.min.js"></script> -->
 </head>
-
+<!-- <html>
+    <script>
+        $(document).ready(function(){
+            alert('jquery 동작합니다');            
+        })
+    </script>
+</html> -->
 
 <body>
     <div class="wrap">
@@ -99,7 +108,7 @@
                                 <dt class="price_now_title">구매 희망가</dt>
                                 <dd class="price">
                                     <!-- input_amount1 이거 CSS 안됨.. -->
-                                    <input class="input_amount1" type="text" placeholder="희망가 입력">
+                                    <input class="input_amount1" type="number" max="${ buyPrVo.price }" min="1000" placeholder="희망가 입력">
                                     <span class="unit_b">원</span>
                                 </dd>
                             </dl>
@@ -118,7 +127,7 @@
                     </div>
                     <div class="section_content">
                         <div class="bid_deadline">
-                            <p class="deadline_txt">60일 (2024/01/31 마감)</p>
+                            <p class="deadline_txt">-</p>
                             <div class="deadline_tab">
                                 <a class="btnoutlinegrey">1일</a>
                                 <a class="btnoutlinegrey">3일</a>
@@ -140,10 +149,19 @@
                             <em></em>
                         </span>
                     </div>
-                    <div class="btn_confirm">
-                        <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">구매 입찰 계속</button>
-                    </div>
+                    <form action="/shoekream/buy/biddingpayment">
+                        <div class="btn_confirm" onmouseover="mouseover()">
+                            <a blind class="blind_full_solid_false">계속하기</a>
+                            <button class="blind_full_solid_false" type="submit" >구매 입찰 계속</button>
+                            <input class="deadline" type="hidden" name="deadline" value="">
+                            <input class="biddingPrice" type="hidden" name="biddingPrice" value="">
+                            
+                            <input type="hidden" name="loginMemberNo" value="${ loginMember.no }">
+                         	<input type="hidden" name="productsNo" value="${BuyProductInfo.productsNo}">
+	                        <input type="hidden" name="buyPrice" value="${BuyProductInfo.price}">
+	                        <input type="hidden" name="buySize" value="${BuyProductInfo.shoesSizes}">
+                        </div>
+                    </form>
                 </div>
             
             </div>

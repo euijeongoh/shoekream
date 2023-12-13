@@ -10,7 +10,9 @@ import com.shoekream.bidding.dao.BiddingDao;
 import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.biddingVo.TestVo;
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.mypage.vo.AccountVo;
 import com.shoekream.mypage.vo.AddrBookVo;
+import com.shoekream.mypage.vo.PaymentVo;
 import com.shoekream.orders.vo.OrdersVo;
 import com.shoekream.product.vo.ProductInfoVo;
 
@@ -116,8 +118,8 @@ public class BiddingService {
 		
 		// 주소록, 계좌, 카드 정보
 		AddrBookVo addInfo = dao.addInfo(conn, loginMemberNo);
-		TestVo accInfo = dao.accInfo(conn, loginMemberNo);
-		TestVo cardInfo = dao.cardInfo(conn, loginMemberNo);
+		AccountVo accInfo = dao.accInfo(conn, loginMemberNo);
+		PaymentVo cardInfo = dao.cardInfo(conn, loginMemberNo);
 		result.put("addInfo", addInfo);
 		result.put("accInfo", accInfo);
 		result.put("cardInfo", cardInfo);
@@ -139,12 +141,12 @@ public class BiddingService {
 		
 		// dao
 		BiddingDao dao = new BiddingDao();
-			System.out.println("에러확인 ordersInfo Service");
+//			System.out.println("에러확인 ordersInfo Service");
 		OrdersVo ordersVo = dao.ordersInfo(conn, memberNo, biddingNo, productsNo);
 		
 		// close
 		JDBCTemplate.close(conn);
-			System.out.println("에러확인 ordersInfo Dao -> Service");
+//			System.out.println("에러확인 ordersInfo Dao -> Service");
 		return ordersVo;
 	}
 
@@ -159,7 +161,7 @@ public class BiddingService {
 		
 		// dao
 		BiddingDao dao = new BiddingDao();
-		System.out.println("에러확인 orders Service");
+//			System.out.println("에러확인 orders Service");
 		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo, commissionStr, totalAmountStr);
 		
 		// tx
@@ -171,7 +173,35 @@ public class BiddingService {
 		
 		// close
 		JDBCTemplate.close(conn);
-		System.out.println("에러확인 orders Dao -> Service");
+//			System.out.println("에러확인 orders Dao -> Service");
+		
+		return result;
+	}
+
+
+
+
+
+	// 입찰 등록
+	public int buyBidding(String memberNo, String biddingNo, String biddingPrice) {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+//			System.out.println("에러확인 buyBidding Service");
+		int result = dao.orders(conn, memberNo, biddingNo, biddingPrice);
+		
+		// tx
+		if (result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}		
+		
+		// close
+		JDBCTemplate.close(conn);
+//			System.out.println("에러확인 buyBidding Dao -> Service");
 		
 		return result;
 	}

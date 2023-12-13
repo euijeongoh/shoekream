@@ -40,6 +40,12 @@ body {
             background-color: rgb(255, 255, 255);
             box-sizing: border-box;
         }
+            /* 주문번호 */
+            .order_area{
+                padding: 32px;
+                flex: 1;
+                box-sizing: border-box;
+            }
         
             /* 상품 정보 */
             .product_info_area {
@@ -106,6 +112,40 @@ body {
                 }
             /* 상품 정보 */
             
+            /* 진행상황 */
+            .order_area {
+                box-sizing: border-box;
+                padding: 32px;
+            }
+                .status_process {
+                    padding-bottom: 15px;
+                    font-size: 18px;
+                    font-weight: 600;
+                    letter-spacing: -.15px;
+                    line-height: 22px;
+                }
+                .status_area {
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                    .order_status {
+                        border-top: 3px solid rgb(240, 240, 240);
+                        padding-top: 7px;
+                        margin-right: 2px;
+                        width: 100%;
+                        font-size: 13px;
+                        letter-spacing: -.21px;
+                        overflow: hidden;
+                        box-sizing: border-box;
+                    }
+                    #success {
+                        border-top: 3px solid black;
+                        font-weight: 600;
+                        box-sizing: border-box;
+                    }
+            /* 진행상황 */
+
             .display_separator { /* 빈공간1 */
                 height: 8px;
                 box-sizing: border-box;
@@ -214,6 +254,7 @@ body {
                     box-sizing: border-box;
                 }
                     .payment_title {
+                        padding-bottom: 12px;
                         /* display: flex;
                         align-items: center; */
                     }
@@ -271,13 +312,10 @@ body {
                                             }
                                                 .bank_name {
                                                     box-sizing: border-box;
-                                                    color: rgba(34,34,34,.5);
                                                     font-size: 14px;
                                                     letter-spacing: -.21px;
                                                 }
                                                 .account_number {
-                                                    color: rgba(34,34,34,.5);
-                                                    font-size: 14px;
                                                     box-sizing: border-box;
                                                 }
                         .payment_card {
@@ -312,7 +350,7 @@ body {
             .section_orderinfo {
                 padding-bottom: 16px!important;
                 padding: 32px;
-                height: 190px;
+                height: min-content;
                 box-sizing: border-box;
             }
                 .orderinfo_area {
@@ -342,6 +380,19 @@ body {
                         line-height: 17px;
                         padding: 4px 0;
                     }
+                    #totalAmount {
+                        background-color: #f1f1f1;
+                        border-top: 1px solid black;
+                        padding: 15px 0 15px 0;
+                        box-sizing: border-box;
+                    }
+                    #expire_date {
+                        display: none;
+                        margin-top: 10px;
+                        padding-top: 10px;
+                        border-top: 1px solid #ebebeb;
+                        box-sizing: border-box;
+                    }
                         .line_title {
                             box-sizing: border-box;
                             color: rgb(34, 34, 34);
@@ -366,7 +417,7 @@ body {
             /* 최종 주문정보 */
 
             /* 결제하기 */
-            .buy_total_confirm {
+            /* .buy_total_confirm {
                 height: 132px;
                 border-top: 1px solid #ebebeb;
                 padding: 0 32px 32px;
@@ -413,7 +464,7 @@ body {
                             }
                 .btn_confirm {
                     box-sizing: border-box;
-                }
+                } */
                     /* 즉시 구매 버튼 뒤에  */
                     .blind_full_solid_false[blind] {
                         clip: rect(0,0,0,0)!important;
