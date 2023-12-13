@@ -30,7 +30,7 @@ public class RequestWriteController extends HttpServlet {
 			}
 			
 			RequestService bs = new RequestService();
-			req.getRequestDispatcher("/WEB-INF/views/request/write.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/board/request/write.jsp").forward(req, resp);
 			
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -13,16 +13,16 @@
             <div class="service-title"><h2>고객센터</h2></div>
             <nav>
                 <div class="notice">
-                    <div id="title"><a href="/notice/list">공지사항</a></div>
+                    <div id="title"><a href="/shoekream/notice/list">공지사항</a></div>
                 </div>
                 <div class="faq">
-                    <div id="title"><a href="">자주 묻는 질문</a></div>
+                    <div id="title"><a href="/shoekream/faq/list">자주 묻는 질문</a></div>
                 </div>
                 <div class="qna">
-                    <div id="title"><a href="">Q&A</a></div>
+                    <div id="title"><a href="/shoekream/qna/list">Q&A</a></div>
                 </div>
                 <div class="request">
-                    <div id="title"><a href="">상품 등록 요청</a></div>
+                    <div id="title"><a href="/shoekream/request/list">상품 등록 요청</a></div>
                 </div>
             </nav>
         </div>
