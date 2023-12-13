@@ -171,33 +171,24 @@ public class AddressDao {
 		pstmt.setString(6, vo.getDefaultAddrYn());
 		pstmt.setString(7, vo.getNo());
 		int result = pstmt.executeUpdate();
-
+		
 		JDBCTemplate.close(pstmt);
 
 		return result;
 	}
 
 	public int changeDefaultYn(Connection conn, String no) throws Exception{
-		String sql = "UPDATE ADDERSS_BOOK SET DEFAULT_ADDRESS_YN = 'Y' WHERE DEFAULT_ADDRESS_YN = 'N' AND DEL_YN = 'N' AND MEMBER_NO = ?";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, no);
 		
-		int result = pstmt.executeUpdate();
-
-		JDBCTemplate.close(pstmt);
-
-		return result;
-	}
-
-	public int changeDefaultNy(Connection conn, String no) throws Exception{
-		String sql = "UPDATE ADDERSS_BOOK SET DEFAULT_ADDRESS_YN = 'N' WHERE DEFAULT_ADDRESS_YN = 'Y' AND DEL_YN = 'N' AND MEMBER_NO = ?";
+		String sql = "UPDATE ADDERSS_BOOK SET DEFAULT_ADDRESS_YN = CASE WHEN DEFAULT_ADDRESS_YN = 'N' THEN 'Y' WHEN DEFAULT_ADDRESS_YN = 'Y' THEN 'N' ELSE DEFAULT_ADDRESS_YN END WHERE DEL_YN = 'N' AND MEMBER_NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, no);
 		int result = pstmt.executeUpdate();
-
+		
 		JDBCTemplate.close(pstmt);
+		
 
 		return result;
 	}
+
 
 }

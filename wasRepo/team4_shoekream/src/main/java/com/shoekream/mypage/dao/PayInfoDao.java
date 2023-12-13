@@ -98,4 +98,16 @@ public class PayInfoDao {
 		return extraVoList;
 	}
 
+	public int changeDefaultYn(Connection conn, String no) throws Exception{
+		String sql = "UPDATE CARD SET DEFAULT_PAYINFO_YN = CASE WHEN DEFAULT_PAYINFO_YN = 'N' THEN 'Y' WHEN DEFAULT_PAYINFO_YN = 'Y' THEN 'N' ELSE DEFAULT_PAYINFO_YN END WHERE DEL_YN = 'N' AND MEMBER_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+
+		return result;
+	}
+
 }

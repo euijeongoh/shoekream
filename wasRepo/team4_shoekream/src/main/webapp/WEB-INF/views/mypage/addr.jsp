@@ -4,10 +4,14 @@
 	pageEncoding="UTF-8"%>
 	
 	<% 
+		
+	
 		AddrBookVo vo = (AddrBookVo) request.getAttribute("vo");
+		
 		String first = null;
 		String middle = null;
 		String last = null;
+		
 		if(vo != null){
 		first = vo.getPhoneNumber().substring(0, 3);
 		middle = vo.getPhoneNumber().substring(3, 4);
@@ -15,6 +19,7 @@
 		}
 		
 		List<AddrBookVo> extraVo = (List<AddrBookVo>) request.getAttribute("extraVo");
+		
 		String extraFirst = null;
 		String extraMiddle = null;
 		String extraLast = null;
@@ -120,9 +125,8 @@
 								</div>
 							</div>
 							<div class="btn_bind">
-								<form action="/shoekream/mypage/addr/change?no=<%=av.getNo() %>" method="post">
-								<a href="" type="submit" class="btn outlinegrey small"><span
-							class="btn_txt">기본배송지 변경</span></a> </form>
+								<a href="/shoekream/mypage/addr/change?no=<%=loginMember.getNo() %>" class="btn outlinegrey small"><span
+							class="btn_txt">기본배송지 변경</span></a> 
 								<a href="/shoekream/mypage/addr/edit?no=<%=av.getNo() %>" class="btn outlinegrey small openModal_edit"  id="openModal_edit"><span
 							class="btn_txt">수정</span></a> 
 								<a href="/shoekream/mypage/addr/delete?no=<%=av.getNo() %>" class="btn outlinegrey small"><span

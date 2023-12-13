@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.AddressService;
+import com.shoekream.mypage.service.PayInfoService;
 
-@WebServlet("/mypage/addr/change")
-public class AddrChangeDefaultController extends HttpServlet{
-	
+@WebServlet("/mypage/payInfo/change")
+public class PayChangeDefaultController extends HttpServlet {
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		try {
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 
@@ -24,17 +25,16 @@ public class AddrChangeDefaultController extends HttpServlet{
 				throw new Exception();
 			}
 			String no = req.getParameter("no");
-			
-			AddressService as = new AddressService();
+
+			PayInfoService as = new PayInfoService();
 			int result = as.changeDefault(no);
-			
-			
-			if(result == 2 ) {
-				resp.sendRedirect("/shoekream/mypage/addr?no=1");
-			}else {
+
+			if (result == 2) {
+				resp.sendRedirect("/shoekream/mypage/payInfo?no=1");
+			} else {
 				throw new Exception();
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

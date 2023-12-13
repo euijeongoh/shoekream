@@ -86,27 +86,24 @@ public class AddressService {
 		return result;
 	}
 
-	public Map<String, Object> changeDefault(String no) throws Exception {
+	public int changeDefault(String no) throws Exception {
+		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		AddressDao ad = new AddressDao();
 		int result = ad.changeDefaultYn(conn, no);
-		int result2 = ad.changeDefaultNy(conn, no);
 		
-		if (result == 1 && result2 == 1) {
+		if (result == 2 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("result", result);
-		map.put("result2", result2);
 
 		// close
 		JDBCTemplate.close(conn);
 		
-		return map;
+		return result;
 	}
 
 }
