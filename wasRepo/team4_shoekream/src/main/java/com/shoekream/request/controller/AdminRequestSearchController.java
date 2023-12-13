@@ -9,18 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
+import com.shoekream.qna.service.QnaService;
+import com.shoekream.qna.vo.QnaVo;
 
-@WebServlet("/request/search")
-public class RequestSearchController extends HttpServlet{
-	
+@WebServlet("/admin/request/search")
+public class AdminRequestSearchController extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		QnaService qs = new QnaService();
 		try {
 			//data
+			String x = req.getParameter("x");
+			
 			String title = req.getParameter("search");
 			int listCount = qs.selectSearchQnaCount(title);
 			String currentPage_ = req.getParameter("pno");
@@ -33,8 +36,8 @@ public class RequestSearchController extends HttpServlet{
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 //			HttpSession session = req.getSession();
-//			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-//			if(loginMember == null) {
+//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+//			if(loginAdmin == null) {
 //				throw new Exception("로그인 안했음");
 //			}
 			
@@ -47,7 +50,7 @@ public class RequestSearchController extends HttpServlet{
 			req.setAttribute("qnaVoList", qnaVoList);
 			req.setAttribute("pvo", pvo);
 			req.setAttribute("x", title);
-			req.getRequestDispatcher("/WEB-INF/views/board/qna/list.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/admin/board/qna/adminList.jsp").forward(req, resp);
 			
 			
 		}catch(Exception e) {
@@ -56,5 +59,4 @@ public class RequestSearchController extends HttpServlet{
 			req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp");
 		}
 	}
-
 }
