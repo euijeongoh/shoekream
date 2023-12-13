@@ -215,3 +215,7 @@ body {
 .order-table > thead > .order-title{
     text-align: center;
 }
+.page-area {
+    text-align: center;
+    margin-top: 50px; /* 필요에 따라 조절하세요 */
+}
