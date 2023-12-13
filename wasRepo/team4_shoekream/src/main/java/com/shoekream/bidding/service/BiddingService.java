@@ -262,6 +262,7 @@ public class BiddingService {
 	
 	// 구매 판매 정보(구매입찰)
 	public Map<String, Object> sellProductList(BiddingVo vo) throws Exception{
+			System.out.println("-----------------sellProductList-----------------");
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -272,14 +273,16 @@ public class BiddingService {
 		
 		// 구매하려는 최저가 상품 객체
 		BiddingVo buyPrVo = dao.buyProductList(conn, vo);
+			System.out.println("Service 에러확인 buyPrVo  : " + buyPrVo );
 		// 구매가가 너무 높아서 구매입찰하려는데 
 		BiddingVo sellPrVo = dao.sellProductList(conn, vo);
+			System.out.println("Service 에러확인 buyPrVo  : " + sellPrVo );
 			// 이렇게 하면 안됨.. el 의 forEach 도 향상된 포문이라..ㅠㅠ
 			// 아마도 HashMap을 써야 할 것 같음 
 			// Map<String, Object> 변수 = new HashMap<String, Object>();
 		m.put("buyPrVo", buyPrVo);
 		m.put("sellPrVo", sellPrVo);
-	
+			System.out.println("-----------------sellProductList-----------------");
 		// close
 		JDBCTemplate.close(conn);
 		

@@ -13,8 +13,8 @@ import org.apache.coyote.RequestGroupInfo;
 import com.shoekream.bidding.service.BiddingService;
 import com.shoekream.orders.vo.OrdersVo;
 
-@WebServlet("/buy/order")
-public class OrderController extends HttpServlet{
+@WebServlet("/sell/order")
+public class SellOrderController extends HttpServlet{
 	
 	public static String getHiddenData(String data, int index) {
 		String hiddenData = data.substring(0, index); {
@@ -56,7 +56,7 @@ public class OrderController extends HttpServlet{
 			req.setAttribute("commission", commission);
 			req.setAttribute("totalAmount", ordersVo.getTotalPrice());
 			
-			req.getRequestDispatcher("/WEB-INF/views/buy/order.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/sell/order.jsp").forward(req, resp);
 		} catch (Exception e) {
 			System.out.println("order 중 예외 발생");
 			e.printStackTrace();
@@ -68,7 +68,7 @@ public class OrderController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		req.getRequestDispatcher("/WEB-INF/views/buy/order.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/sell/order.jsp").forward(req, resp);
 		
 	}	
 	

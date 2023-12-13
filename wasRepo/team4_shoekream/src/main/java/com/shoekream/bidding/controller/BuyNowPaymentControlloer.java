@@ -33,13 +33,12 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 //				System.out.println("BuyNowPaymentController 에러확인 productsNo : " + productsNo);
 //				System.out.println("BuyNowPaymentController 에러확인 buyPrice : " + buyPrice);
 //				System.out.println("BuyNowPaymentController 에러확인 buySize : " + buySize);
-			
-				
 			BiddingVo vo = new BiddingVo();
 			vo.setProductsNo(productsNo);
 			vo.setPrice(buyPrice);
 			vo.setShoesSizes(buySize);
 				
+			
 			BiddingService bs = new BiddingService();
 			BiddingVo dbVo = bs.productInfo(vo);
 //				System.out.println("BuyNowPaymentController 에러확인 dbVo : " + dbVo);
@@ -47,13 +46,13 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 				throw new Exception("예외 발생 : dbVo == null");
 			}
 			
+			
 			int commission = ((int)(Math.round(((Integer.parseInt(dbVo.getPrice()))*0.03)*0.01)*100));
 			int price = Integer.parseInt(dbVo.getPrice());
 			int totalAmount = commission + 3000 + price;
 //				System.out.println("BuyNowPaymentController 에러확인 commission : " + commission);
 //				System.out.println("BuyNowPaymentController 에러확인 price : " + price);
 //				System.out.println("BuyNowPaymentController 에러확인 totalAmount : " + totalAmount);
-			
 			String commissionStr = String.valueOf(commission);
 			String totalAmountStr = String.valueOf(totalAmount);
 
@@ -63,11 +62,11 @@ public class BuyNowPaymentControlloer extends HttpServlet{
 				throw new Exception("예외 발생 : ordersResult != 1");
 			}
 			
+			
 			Map<String, Object> result = bs.resultInfo(loginMemberNo);
 			if (result == null) {
 				throw new Exception("예외 발생 : result == null");
 			}
-			
 			AddrBookVo addInfo = (AddrBookVo)result.get("addInfo");
 			AccountVo accInfo = (AccountVo)result.get("accInfo");
 			PaymentVo cardInfo = (PaymentVo)result.get("cardInfo");

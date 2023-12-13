@@ -11,7 +11,7 @@ body, html {
 
 body {
         /* 픽스드(탑고정) : 헤더크기 여유분 */
-        padding-top: 86px;
+/*        padding-top: 86px;*/
         /* 픽스드(탑고정) : 헤더크기 여유분 */
     width: 100%;
     box-sizing: border-box;
