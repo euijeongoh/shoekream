@@ -27,7 +27,7 @@
         <div class="profile_state">
             <div class="profile">
                 <div class="kitty">
-                        <img href="/shoekream/review/mylist" src="/shoekream/resources/img/review/wave.png" alt="kitty" class="profile_kitty">
+                        <img href="/shoekream/review/mylist" src="<%= loginMember.getProfileImage() %>" class="profile_kitty">
                 </div>
                 <div class="profile_detail">
                     <div>
@@ -53,7 +53,7 @@
         <br>
         
         <div class="picture">
-            <img src="/shoekream/resources/img/review/picture.png" alt="리뷰이미지" class="main_picture">
+            <img src="/shoekream/resources/img/review/된장포스최종.png" alt="리뷰이미지" class="main_picture">
         </div>
         
         <div class="tage01">
@@ -62,39 +62,36 @@
             <div class="tage_img">
                 <div> 
                     <a href="">
-                        <img src="/shoekream/resources/img/review/tage_img.png" alt="상품태그" class="pink_tag">
+                        <img src="/shoekream/resources/img/review/semi.png" alt="" class="pink_tag">
                     </a>
                 </div>
                 <div class="jordan">
-                    <% if(productVo != null) { %>
-				    <p class="jordan_eg"><b><%=productVo.getProductName()%></b></p>
-				    <p class="jordan_ko"><%=productVo.getProductNameKo()%></p>
-				<% } else { %>
-				    <!-- Handle the case where productVo is null -->
-				    <p>Product information is not available.</p>
-				<% } %>
+                    <%-- <% if(productVo != null) { %> --%>
+				    <p class="jordan_eg"><b>Nike Air Force 1 '07 WB Flax</b></p>
+				    <p class="jordan_ko">나이키 에어포스 1 '07 WB 플랙스</p>
+				<%-- <% } else { %> --%>
+				<%-- <% } %> --%>
 
                 </div>
             </div>
         </div>
         <br>
-        <div class="test">
+        <!-- <div class="test">
             <div class="licom">
                 <a href="/shoekream/review/detail"><img src="/shoekream/resources/img/review/like.png" alt="좋아요" class="likeimg"></a>
                 <a href="/shoekream/review/comment"><img src="/shoekream/resources/img/review/comment.png" alt="댓글" class="commentimg"></a>
             </div>
-        </div>
+        </div> -->
         
-        <div class="like">
+        <!-- <div class="like">
             <p><b>좋아요 8개</b></p>
-        </div>
+        </div> -->
         <div class="abcd">
 
         </div>
         <div class="content">
             <div class="review">
-            <% (ReviewVo vo : reviewVoList) %>
-                <h3><%= vo.getcontent() %></h3>
+                <h3>너무 예뻐용</h3>
             </div>
             <div class="abcd">
 
@@ -113,7 +110,7 @@
             </ul>
         </div>
 
-        <div class="kitty_box">
+        <!-- <div class="kitty_box">
             <div class="one_comment">
                 <br><br><p class="commentnum"><b>댓글 2개</b></p><br>
             </div>
@@ -164,6 +161,9 @@
                 </div>
             </div>
         </div>
+    
+    </div> -->
+    <div class="abcd">
     
     </div>
 </body>

@@ -64,7 +64,7 @@
                 	<div class="listphoto">
                 		<div class="mylist">
 	                		<div class="photo">
-	                			<img src="<%=vo.getReviewImage()%>">
+	                			<a href="/shoekream/review/detail"><img src="<%=vo.getReviewImage()%>"></a>
 	                		</div>
                 		</div>
                 	</div>
