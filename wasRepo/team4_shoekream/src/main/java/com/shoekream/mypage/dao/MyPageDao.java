@@ -10,8 +10,10 @@ import java.util.Map;
 
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
+import com.shoekream.mypage.vo.BiddingDetailVo;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.BuyingHistoryVo;
+import com.shoekream.mypage.vo.OrderDetailVo;
 import com.shoekream.mypage.vo.WishListVo;
 import com.shoekream.page.vo.PageVo;
 
@@ -725,6 +727,66 @@ public class MyPageDao {
 		
 		return result;
 	}
+
+	// 구매입찰 내역 상세 조회
+	public BiddingDetailVo selectBiddingDetail(Connection conn, String bidNo) throws Exception {
+		// sql
+		String sql = "SELECT IMG.THUMBNAIL THUMBNAIL , P.MODEL_NUMBER MODEL_NO , P.NAME NAME , P.NAME_KO NAME_KO , SS.SHOES_SIZES  SIZES , BS.BIDDING_STATUS BID_STATUS , SUBSTR(TO_CHAR(B.EXPIRE_DATE), 1, 8) EXPIRE_DATE, B.PRICE PRICE FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO LEFT JOIN MEMBER M ON M.NO = B.MEMBER_NO LEFT JOIN ADDERSS_BOOK AB ON AB.MEMBER_NO = M.NO LEFT JOIN CARD C ON C.MEMBER_NO = M.NO LEFT JOIN CARD_COMPANY CC ON CC.NO = C.CARD_COMPANY_NO WHERE B.NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, bidNo);
+		ResultSet rs = pstmt.executeQuery();
+		
+		BiddingDetailVo vo = null;
+		if(rs.next()) {
+			String productImg = rs.getString("THUMBNAIL");
+			String modelNumber = rs.getString("MODEL_NO");
+			String productName = rs.getString("NAME");
+			String productNameKo = rs.getString("NAME_KO");
+			String productSize = rs.getString("SIZES");
+			String bidStatus = rs.getString("BID_STATUS");
+			String expireDate = rs.getString("EXPIRE_DATE");
+			int bidPrice = rs.getInt("PRICE");
+			
+			vo = new BiddingDetailVo();
+			vo.setProductImg(productImg);
+			vo.setModelNumber(modelNumber);
+			vo.setProductName(productName);
+			vo.setProductNameKo(productNameKo);
+			vo.setProductSize(productSize);
+			vo.setBidStatus(bidStatus);
+			vo.setBidExpireDate(expireDate);
+			vo.setBidPrice(bidPrice);
+			vo.setCommission(bidPrice);
+			vo.setFinalPrice(bidPrice, vo.getCommission());
+			
+		}
+		
+		// close
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return vo;
+	}
+
+//	public OrderDetailVo getOrderDetail(Connection conn, String orderNo) {
+//		// sql
+//		String sql = "SELECT IMG.THUMBNAIL THUMBNAIL , P.MODEL_NUMBER MODEL_NO , P.NAME NAME , P.NAME_KO NAME_KO , SS.SHOES_SIZES  SIZES , OS.ORDERS_STATUS ORDER_STATUS , SUBSTR(TO_CHAR(O.ORDERS_DATE), 1, 8) FROM ORDERS O LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO LEFT JOIN MEMBER M ON M.NO = B.MEMBER_NO LEFT JOIN ADDERSS_BOOK AB ON AB.MEMBER_NO = M.NO LEFT JOIN CARD C ON C.MEMBER_NO = M.NO LEFT JOIN CARD_COMPANY CC ON CC.NO = C.CARD_COMPANY_NO WHERE O.NO = ?";
+//		PreparedStatement pstmt = conn.prepareStatement(sql);
+//		pstmt.setString(1, orderNo);
+//		
+//		ResultSet rs = pstmt.executeQuery();
+//		
+//		if(rs.next()) {
+//			String productImg = rs.getString("THUMBNAIL");
+//			String modelNumber = rs.getString("MODEL_NO");
+//			String productName = rs.getString("NAME");
+//			String productNameKo = rs.getString("NAME_KO");
+//			String productSize = rs.getString("SIZES");
+//			String bidStatus = 
+//		}
+//		
+//		return null;
+//	}
 
 
 }
