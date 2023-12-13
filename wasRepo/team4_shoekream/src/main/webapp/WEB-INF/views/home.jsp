@@ -43,7 +43,7 @@
         	<%for( ProductInfoVo vo : enrollList ) { %>
                	<li>
                 <div id="product_img">
-                    <img src="./resources/product1.webp">
+                    <img src=<%= vo.getThumbnail() %>>
                 </div>
                 <div class="info_box">
                     <div id="brand"><%= vo.getBrandName() %></div>
@@ -69,16 +69,18 @@
         	<%for( ProductInfoVo priceVo : immediatePriceList ) { %>
                	<li>
                 <div id="product_img">
-                    <img src="./resources/product1.webp">
+                    <img src=<%= priceVo.getThumbnail() %>>
                 </div>
                 <div class="info_box">
                     <div id="brand"><%= priceVo.getBrandName() %></div>
                     <div id="model_name"><%= priceVo.getProductName() %></div>
-                    <div id="price"><%= priceVo.getImmediatePrice() %></div>
+                    <div id="price"><%= priceVo.getImmediatePrice() %> 원</div>
                 </div>
             	</li>
             <% }%>
         </ul>
     </div>
+    
+    <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>
