@@ -15,7 +15,7 @@ import com.shoekream.biddingVo.BiddingVo;
 import com.shoekream.orders.vo.OrdersVo;
 
 @WebServlet("/buy/biddingorder")
-public class BiddingOrderController extends HttpServlet{
+public class BuyBiddingOrderController extends HttpServlet{
 	
 	public static String getHiddenData(String data, int index) {
 		String hiddenData = data.substring(0, index); {

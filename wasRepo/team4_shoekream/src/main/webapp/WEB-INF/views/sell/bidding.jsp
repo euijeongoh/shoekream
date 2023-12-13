@@ -10,6 +10,10 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/sell/bidding.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+    
+    <script defer src="/shoekream/resources/js/bidding/sell/bidding.js"></script>
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script> -->
+    <script type="text/javascript" src="/shoekream/resources/js/bidding/sell/moment.min.js"></script>
 <body>
     <div class="wrap">
         <header>
@@ -89,14 +93,19 @@
 
                     <div class="instant_group">
                         <div class="tab_area">
-                            <ul class="tab_list">
-                                <li class="item">
-                                    <a color class="item_link">판매 입찰</a>
-                                </li>
-                                <li class="item_on">
-                                    <a  class="item_link">즉시 판매</a>
-                                </li>
-                            </ul>
+                            <form action="/shoekream/sell/now" method="post" >
+                        		<input class="productsNo" type="hidden" name="productsNo" value="${ productsNo }">
+                        		<input class="sellPrice" type="hidden" name="price" value="${ sellPrVo.price }">
+                                <input class="sellSize" type="hidden" name="size" value="${ sellPrVo.shoesSizes }">
+                                <ul class="tab_list">
+                                    <li class="item">
+                                        <a color class="item_link">판매 입찰</a>
+                                    </li>
+                                    <li class="item_on">
+                                        <button class="btn1" type="submit">즉시 판매</button>
+                                    </li>
+                                </ul>
+                            </form>
                         </div>
                         <div class="price_now">
                             <dl class="price_now_box">
@@ -113,13 +122,13 @@
                                 <dt class="price_title">
                                     <span id="fo">검수비</span>
                                 </dt>
-                                <dd class="price_text">-</dd>
+                                <dd class="price_text">무료</dd>
                             </dl>
                             <dl class="price_addition">
                                 <dt class="price_title">
                                     <span id="fo">수수료</span>
                                 </dt>
-                                <dd class="price_text">-</dd>
+                                <dd class="price_text" id="textar">-</dd>
                             </dl>
                             <dl class="price_addition">
                                 <dt class="price_title">
@@ -139,13 +148,13 @@
                     </div>
                     <div class="section_content">
                         <div class="bid_deadline">
-                            <p class="deadline_txt">60일 (2024/01/31 마감)</p>
+                            <p class="deadline_txt">-</p>
                             <div class="deadline_tab">
                                 <a class="btnoutlinegrey">1일</a>
                                 <a class="btnoutlinegrey">3일</a>
                                 <a class="btnoutlinegrey">7일</a>
                                 <a class="btnoutlinegrey">30일</a>
-                                <a btnoutlinegrey_color class="btnoutlinegrey">60일</a>
+                                <a class="btnoutlinegrey" id="btnoutlinegrey_color">60일</a>
                             </div>
                         </div>
                     </div>
@@ -163,9 +172,19 @@
                             </dd>
                         </dl>
                     </div>
-                    <div class="btn_confirm">
-                        <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">판매 입찰 계속</button>
+                    <form action="/shoekream/buy/biddingpayment">
+                        <div class="btn_confirm" onmouseover="mouseover()">
+                            <a blind class="blind_full_solid_false">계속하기</a>
+                            <button class="blind_full_solid_false">판매 입찰 계속</button>
+                            <input class="deadline" type="hidden" name="deadline" value="">
+                            <input class="biddingPrice" type="hidden" name="biddingPrice" value="">
+                            
+                            <input type="hidden" name="loginMemberNo" value="${ loginMember.no }">
+                            <input type="hidden" name="productsNo" value="${BuyProductInfo.productsNo}">
+                            <input type="hidden" name="buyPrice" value="${BuyProductInfo.price}">
+                            <input type="hidden" name="buySize" value="${BuyProductInfo.shoesSizes}">
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
