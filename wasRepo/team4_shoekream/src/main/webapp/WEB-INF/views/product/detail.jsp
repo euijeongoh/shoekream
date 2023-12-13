@@ -101,7 +101,7 @@
 						        </a>
 						        <!-- 관심 상품 등록 버튼 추가 -->
 						        <form action="/shoekream/product/detail" method="post">
-						        <button class="btn_action wishlist" style="background-color: rgb(100, 149, 237);" >
+						        <button class="btn_action " style="background-color: rgb(100, 149, 237);" >
 						            <input type=text name="productNo" value="<%= productDetailVo.getProductNo() %>"	hidden>
 						            <input type="submit" value="관심상품등록">
 						        </button>

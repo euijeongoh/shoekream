@@ -20,7 +20,7 @@
                 <ul>
                     <li><a href="/shoekream/notice/list">고객센터</a></li>
                     <li><a href="/shoekream/mypage/main">마이페이지</a></li>
-                    <li><a href="/shoekream/wishlist">관심</a></li>
+                    <li><a href="/shoekream/mypage/wishlist">관심</a></li>
                     <li><a>알림</a></li>
                     <li><a href="/shoekream/member/searchID">로그인</a></li>
                 </ul>

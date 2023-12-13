@@ -138,7 +138,7 @@ public class ProductDetailDao {
 	    
 	//
 	public List<EnrollProductVo> getProductList(Connection conn) throws Exception{
-		String sql = "SELECT P.NO AS NO, P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, P.MODEL_NUMBER AS MODEL_NUMBER, B.BRAND_NAME AS BRAND_NAME FROM PRODUCTS P JOIN BRAND B ON B.NO = P.BRAND_NO";
+		String sql = "SELECT P.NO AS NO, P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, P.MODEL_NUMBER AS MODEL_NUMBER, B.BRAND_NAME AS BRAND_NAME FROM PRODUCTS P JOIN BRAND B ON B.NO = P.BRAND_NO ORDER BY P.NO DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		List<EnrollProductVo> dbVo = new ArrayList<EnrollProductVo>();
@@ -192,7 +192,7 @@ public class ProductDetailDao {
 		return price;
 	}
 
-
+	//위시리스트 추가
 	public int addWishList(Connection conn, String memberNo, String productNo) throws Exception{
 		String sql = "INSERT INTO WISHLIST(NO, MEMBER_NO, PRODUCTS_NO, WISH_DATE) VALUES(SEQ_WISHLIST_NO.NEXTVAL, ?,?,SYSDATE)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);

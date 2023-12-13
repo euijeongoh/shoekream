@@ -24,11 +24,11 @@
         <div class="header-inner">
             <div class="top-list">
                 <ul>
-                    <li><a href="">고객센터</a></li>
-                    <li><a href="">마이페이지</a></li>
-                    <li><a href="">관심</a></li>
+                    <li><a href="/shoekream/notice/list">고객센터</a></li>
+                    <li><a href="/shoekream/mypage/main">마이페이지</a></li>
+                    <li><a href="/shoekream/mypage/wishlist">관심</a></li>
                     <li><a>알림</a></li>
-                    <li><a href="">로그인</a></li>
+                    <li><a href="/shoekream/admin/login">로그인</a></li>
                 </ul>
             </div>
             <div class="main-list">
@@ -40,8 +40,8 @@
                 </div>
                 <div class="head-list">
                     <ul>
-                        <li><a href="">HOME</a></li>
-                        <li><a href="">SHOP</a></li>
+                        <li><a href="/shoekream/home">HOME</a></li>
+                        <li><a href="/shoekream/product/list?pno=1">SHOP</a></li>
                         <li id="search-btn"><a><img src="/shoekream/resources/img/admin/header/searchIcon.png"></a></li>
                     </ul>
                 </div>
@@ -94,13 +94,13 @@
                     <strong class="sidenav_title"><a href="">고객 센터</a></strong>
                         <ul class="sidenav_menu">
                             <li class="menu_item">
-                                <a href="" class="menu_link">공지사항</a>
+                                <a href="/shoekream/notice/list" class="menu_link">공지사항</a>
                             </li>
                             <li class="menu_item">
-                                <a href="" class="menu_link">FAQ</a>
+                                <a href="/shoekream/faq/list" class="menu_link">FAQ</a>
                             </li>
                             <li class="menu_item">
-                                <a href="" class="menu_link">Q&A</a>
+                                <a href="/shoekream/qna/list" class="menu_link">Q&A</a>
                             </li>
                         </ul>
                     </div>
@@ -113,7 +113,11 @@
 					            <%for(EnrollProductVo vo : productVoList) {%>
 					            <tr>
 					                <td>상품</td>
+					                <%if(Integer.parseInt(vo.getProductNo())>51){ %>
+					                <td><img src="/shoekream/resources/img/product/<%=vo.getModelNumber() %>.png" alt="씀네일" class="product_image"></td>
+					                <%}else{ %>
 					                <td><img src="/shoekream/resources/img/product/<%=vo.getModelNumber() %>.webp" alt="씀네일" class="product_image"></td>
+					                <% }%>
 					                <td>
 					                    <a href="/shoekream/admin/product/edit?no=<%=vo.getProductNo() %>&name=<%=vo.getProductName()%>&nameKo=<%=vo.getProductNameKo()%>&modelNumber=<%=vo.getModelNumber()%>&releasePrice=<%=vo.getReleasePrice()%>&category=<%=vo.getCategory()%>&brand=<%=vo.getBrand()%>">
 					                        <%=vo.getProductNameKo() + " " + vo.getModelNumber()%>
@@ -123,7 +127,7 @@
 					            </tr>
 					            <%} %>
 					        </tbody>
-					    </table>
+					    </table>	
 					    <br>
 					    <input type="submit" value="삭제하기">
 					</form>
