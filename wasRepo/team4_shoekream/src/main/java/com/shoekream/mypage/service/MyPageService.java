@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import com.shoekream.db.util.JDBCTemplate;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.dao.MyPageDao;
+import com.shoekream.mypage.vo.BiddingDetailVo;
 import com.shoekream.mypage.vo.BiddingHistoryVo;
 import com.shoekream.mypage.vo.HistoryCntVo;
+import com.shoekream.mypage.vo.OrderDetailVo;
 import com.shoekream.mypage.vo.BuyingHistoryVo;
 import com.shoekream.mypage.vo.WishListVo;
 import com.shoekream.page.vo.PageVo;
@@ -295,6 +297,38 @@ public class MyPageService {
 		
 		return result;
 	}
+
+	// 구매입찰 내역 상세조회
+	public BiddingDetailVo viewBiddingDetail(String bidNo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		BiddingDetailVo vo = dao.selectBiddingDetail(conn, bidNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return vo;
+	}
+
+
+	// 주문 상세내역 조회
+//	public OrderDetailVo viewOrderDetail(String orderNo) {
+//		// conn
+//		Connection conn = JDBCTemplate.getConnection();
+//		
+//		// dao
+//		MyPageDao dao = new MyPageDao();
+//		OrderDetailVo vo = dao.getOrderDetail(conn, orderNo);
+//		
+//		// close
+//		JDBCTemplate.close(conn);
+//		
+//		
+//		return vo;
+//	}
 
 
 

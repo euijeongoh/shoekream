@@ -105,7 +105,7 @@ function bidTabAjax() {
 			detailBtn.innerHTML="상세내역";
 			detailBtn.onclick = () => {
 				console.log(data[i].bidExpireDate);
-		        location.href = "/shoekream/buy/biddingorder?memberNo='" + data[i].memberNo + "&productsNo=" + data[i].productNo + "&productsSizesNo=" + data[i].productSizeNo + "&biddingPrice=" + data[i].bidPrice + "&deadline=" + data[i].bidExpireDate;
+		        location.href = "/shoekream/mypage/bidding/detail?biddingNo=" + data[i].biddingNo;
 		     };
 			
 			li2.innerHTML=data[i].bidStatus;
