@@ -169,10 +169,7 @@ public class EnrollProductVo {
 		this.sizeStr = String.join(",", size);
 	}
 	public String getSizeStr() {
-		if(size == null) {
-			return "";
-		}
-		return String.join(",", size);
+		return sizeStr;
 	}
 	public void setSizeStr(String sizeStr) {
 		this.sizeStr = sizeStr;

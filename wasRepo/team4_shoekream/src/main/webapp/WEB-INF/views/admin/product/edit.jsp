@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    	EnrollProductVo vo = request.getAttribute(EnrollProductVo);
+    	EnrollProductVo vo = (EnrollProductVo)request.getAttribute("enrolledProductVo");
     %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -104,7 +104,7 @@
             <div class="enroll-area">
                 <br>
                 <div id="product-information">
-                    <form action="/shoekream/admin/product/enroll" method="post" enctype="multipart/form-data">
+                    <form action="/shoekream/admin/product/edit" method="post" enctype="multipart/form-data">
 	                <div id="product-image-container">
 	                <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)" name="f">
 	                    <div id="image-preview-container" >
@@ -114,14 +114,14 @@
 	                        <label for="file-input" id="file-input-label">이미지 선택</label>
 	                    </div>
 	                </div>
-	                
-                        <input type="text" name="productName" placeholder="제품명">
-                        <input type="text" name="productNameKo" placeholder="한글명">
-                        <input type="text" name="modelNumber" placeholder="모델 번호">
-                        <input type="text" name="releasePrice" placeholder="발매가">
-                        <input type="text" name="category" placeholder="카테고리">	
-                        <input type="text" name="brand" placeholder="브랜드">
-                        <input type="date" name="releaseDate" placeholder="출시일">
+						<input type="text" name="productNo" value="<%=vo.getProductNo() %>" hidden>
+                        <input type="text" name="productName" value="<%=vo.getProductName()%>">
+                        <input type="text" name="productNameKo" value="<%=vo.getProductNameKo()%>">
+                        <input type="text" name="modelNumber" value="<%=vo.getModelNumber()%>">
+                        <input type="text" name="releasePrice" value="<%=vo.getReleasePrice()%>">
+                        <input type="text" name="category" value="<%=vo.getCategory()%>">	
+                        <input type="text" name="brand" value="<%=vo.getBrand()%>">
+                        <input type="date" name="releaseDate" value="<%=vo.getReleaseDate()%>">
                         <span>사이즈</span>
                         <div>
                             <input type="checkbox" name="size" value="215">215

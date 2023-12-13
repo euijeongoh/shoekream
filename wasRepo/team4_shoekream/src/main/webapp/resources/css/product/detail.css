@@ -36,7 +36,7 @@ main {
 
 /* 이미지 슬라이더 관련 스타일 */
 .slider_container {
-    width: 100%;
+    width: 40%;
     padding-right: 40px;
     overflow: hidden;
 }
@@ -47,7 +47,7 @@ main {
 }
 
 .slide {
-    min-width: 33%;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -288,3 +288,6 @@ li a {
 
 /* 추가 스타일 필요시 여기에 작성... */
 
+.buy_btn{
+	width: 200px;
+}

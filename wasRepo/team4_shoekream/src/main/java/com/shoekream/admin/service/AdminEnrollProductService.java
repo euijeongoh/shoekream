@@ -118,5 +118,55 @@ public class AdminEnrollProductService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+
+	public int editProduct(EnrollProductVo vo) throws Exception{
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		AdminEnrollProductDao dao = new AdminEnrollProductDao();
+		
+		int result = dao.editProduct(conn, vo);
+		
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		
+		
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+	//상품의 데이터 수정
+	public int editProductSize(EnrollProductVo productSizesVo) throws Exception{
+		//Conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		AdminEnrollProductDao dao = new AdminEnrollProductDao();
+		
+		int result = dao.editProductSize(conn, productSizesVo);
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		return result;
+	}
+	//modelNumber로 상품번호 가져오기
+	public EnrollProductVo getEnrolledProductNo(String modelNumber) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		AdminEnrollProductDao dao = new AdminEnrollProductDao();
+		EnrollProductVo dbVo = dao.getEnrolledProductNo(conn, modelNumber);
+		JDBCTemplate.close(conn);
+		return dbVo;
+	}
 	
 }

@@ -27,12 +27,8 @@
             <div class="container">
                     <div class="slider_container">
                         <div class="slider">
-                            <div class="slide"><img src="./KakaoTalk_20231117_164603392-removebg-preview.png" alt=""></div>
-                            <div class="slide"><img src="./KakaoTalk_20231117_164605398-removebg-preview.png" alt=""></div>
-                            <div class="slide"><img src="./KakaoTalk_20231117_164607805-removebg-preview.png" alt=""></div>
+                            <div class="slide"><img src="/shoekream/resources/img/product/<%=productDetailVo.getModelNumber() %>.webp" alt=""></div>
                         </div>
-                        <button>이전</button>
-                        <button>다음</button>
                     </div>
                     <div class="column_2">
                         <div class="price_container">
@@ -46,10 +42,9 @@
                         <div class="product_size_select">
                             <select name="product_size" class="select_box">
                                 <option value="all_size">모든 사이즈</option>
-								<% for(EnrollProductVo vo : shoesSizesList){ %>    
-							    <option value="<%= vo.getSizeStr() %>"><%= vo.getSizeStr() %></option>
+								<% for(EnrollProductVo vo : shoesSizesList) { %>
+								    <option value="<%= vo.getSizeStr() %>"><%= vo.getSizeStr() %></option>
 								<% } %>
-
                             </select>
                         </div>
                         <dl  class="detail-product-container">
@@ -80,27 +75,30 @@
                         </dl>
                         <div class="buttons">
                             <div class="division_btn_box lg">
-                                
-                                <button class="btn_action" style="background-color: rgb(239, 98, 83);">
-                                    <strong class="title">구매</strong>
-                                    <div class="price">
-                                        <span class="amount">
-                                            <em class="num"></em>
-                                            <span class="won"><%=buyingPrice %>원</span>
-                                        </span>
-                                        <span class="desc">즉시 구매가</span>
-                                    </div>
-                                </button>
-                                <button class="btn_action" style="background-color: rgb(65, 185, 121);">
-                                    <strong class="title">판매</strong>
-                                    <div class="price">
-                                        <span class="amount">
-                                            <em class="num"></em>
-                                                <span class="won"><%=sellingPrice %>원</span>
-                                        </span>
-                                        <span class="desc">즉시 판매가</span>
-                                    </div>
-                                </button>
+                                 <a class="buy_btn" href="/shoekream/buy/select?productsNo=<%= productDetailVo.getProductNo()%>">
+	                               <button class="btn_action" style="background-color: rgb(239, 98, 83);">
+	                                   <strong class="title">구매</strong>
+	                                   <div class="price">
+	                                       <span class="amount">
+	                                           <em class="num"></em>
+	                                           <span class="won"><%=buyingPrice %>원</span>
+	                                       </span>
+	                                       <span class="desc">즉시 구매가</span>
+	                                   </div>
+	                               </button>
+                                 </a>
+                                  <a href="/shoekream/sell/select?productsNo=?<%=productDetailVo.getProductNo() %>">
+	                                <button class="btn_action" style="background-color: rgb(65, 185, 121);">
+	                                    <strong class="title">판매</strong>
+	                                    <div class="price">
+	                                        <span class="amount">
+	                                            <em class="num"></em>
+	                                                <span class="won"><%=sellingPrice %>원</span>
+	                                        </span>
+	                                        <span class="desc">즉시 판매가</span>
+	                                    </div>
+	                                </button>
+                                  </a>
                             </div>
                         </div>
                     </div>
@@ -129,12 +127,6 @@
                                     </tr>
                                 </thead>
                                 <thead>
-    <tr>
-        <th>이름</th>
-        <th>가격</th>
-        <th>날짜</th>
-    </tr>
-</thead>
                                 <tbody>
                                 <% for(BiddingVo vo : biddingList){%>
                                     <tr>
@@ -268,9 +260,5 @@
         }
     });
     </script>
-    
-    
-</script>
-
 </body>
 </html>
