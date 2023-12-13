@@ -135,18 +135,30 @@ public class AdminEnrollProductDao {
 	//제품 목록 조회
 	public List<EnrollProductVo> selectProductList(Connection conn, PageVo pvo) throws Exception{
 		//sql
-		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NAME_KO, MODEL_NUMBER FROM PRODUCTS WHERE DEL_YN = 'N' ORDER BY MODEL_NUMBER DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT P.NO AS NO , P.NAME AS NAME, P.NAME_KO AS NAME_KO, P.MODEL_NUMBER AS MODEL_NUMBER, P.RELEASE_PRICE AS RELEASE_PRICE, P.RELEASE_DATE AS RELEASE_DATE, C.CATEGORY_NAME AS CATEGORY_NAME, B.BRAND_NAME AS BRAND_NAME FROM PRODUCTS P INNER JOIN CATEGORY C ON P.CATEGORY_NO = C.NO INNER JOIN BRAND B ON P.BRAND_NO = B.NO WHERE P.DEL_YN = 'N' ORDER BY P.MODEL_NUMBER DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, pvo.getStartRow());
 		pstmt.setInt(2, pvo.getLastRow());
 		ResultSet rs = pstmt.executeQuery();
 		List<EnrollProductVo> voList = new ArrayList<EnrollProductVo>();
 		while(rs.next()) {
+			String no = rs.getString("NO");
+			String name = rs.getString("NAME");
 			String nameKo = rs.getString("NAME_KO");
 			String modelNumber = rs.getString("MODEL_NUMBER");
+			String category = rs.getString("CATEGORY_NAME");
+			String brand = rs.getString("BRAND_NAME");
+			String releasePrice = rs.getString("RELEASE_PRICE");
+			String releaseDate = rs.getString("RELEASE_DATE");
 			EnrollProductVo dbVo = new EnrollProductVo();
+			dbVo.setProductNo(no);
+			dbVo.setProductName(name);
 			dbVo.setProductNameKo(nameKo);
 			dbVo.setModelNumber(modelNumber);
+			dbVo.setCategory(category);
+			dbVo.setBrand(brand);
+			dbVo.setReleasePrice(releasePrice);
+			dbVo.setReleaseDate(releaseDate);
 			
 			voList.add(dbVo);
 		}
@@ -277,6 +289,65 @@ public class AdminEnrollProductDao {
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
 		return dbVo;
+	}
+
+	public int editProduct(Connection conn, EnrollProductVo vo) throws Exception{
+		String sql = "UPDATE PRODUCTS SET BRAND_NO = ?, CATEGORY_NO = ?, NAME = ?, NAME_KO = ?, MODEL_NUMBER = ?, RELEASE_PRICE = ?, RELEASE_DATE = ?, DEL_YN = ? WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getBrandNo());
+		pstmt.setString(2, vo.getCategoryNo());
+		pstmt.setString(3, vo.getProductName());
+		pstmt.setString(4, vo.getProductNameKo());
+		pstmt.setString(5, vo.getModelNumber());
+		pstmt.setString(6, vo.getReleasePrice());
+		pstmt.setString(7, vo.getReleaseDate());
+		pstmt.setString(8, vo.getDelYn());
+		pstmt.setString(9, vo.getProductNo());
+
+		int result = pstmt.executeUpdate();
+		System.out.println("dao result : " + result);
+		JDBCTemplate.close(pstmt);
+
+		return result;
+	}
+
+	public int editProductSize(Connection conn, EnrollProductVo productSizesVo)throws Exception {
+		String[] sizeNo = productSizesVo.getSizeNo();
+		int result = 0;
+		for(String size :sizeNo) {
+			String sql = "UPDATE PRODUCT_SIZES SET SHOES_SIZES_NO = ? WHERE PRODUCT_NO = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, size);
+			pstmt.setString(2, productSizesVo.getProductNo());
+			result += pstmt.executeUpdate();
+
+			JDBCTemplate.close(pstmt);
+			
+		}
+		if(sizeNo.length == result) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+
+	public EnrollProductVo getEnrolledProductNo(Connection conn, String modelNumber) throws Exception{
+		String sql = "SELECT NO FROM PRODUCTS WHERE MODEL_NUMBER = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, modelNumber);
+		ResultSet rs = pstmt.executeQuery();
+		EnrollProductVo dbVo = null;
+		if(rs.next()) {
+			String no = String.valueOf(rs.getInt(1));
+			dbVo = new EnrollProductVo();
+			dbVo.setProductNo(no);
+			
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return dbVo;
+	
 	}
 
 	

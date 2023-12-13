@@ -1,6 +1,7 @@
 package com.shoekream.product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,10 +32,10 @@ public class ProductDetailController extends HttpServlet{
 				throw new Exception("상품 상세조회 중 에러 발생");
 			}
 			productDetailVo.setModelNumber(modelNumber);
-			System.out.println("productDetailVo's productNo = " + productDetailVo.getProductNo());
 			// 제품번호(PRODUCTS테이블의 NO)를 넘겨서 그에 해당하는 사이즈를 가져오기위해 PRODUCT_SIZES테이블에 접근해서
 			// 해당 제품이 가질 수 있는 SHOES_SIZES_NO의 배열을 가져오고 SHOES_SIZES테이블에서 배열 원소에 해당하는 사이즈 값을 반환
-			List<EnrollProductVo> shoesSizesList = ps.getShoesSizesDetail(productDetailVo);
+			List<EnrollProductVo> shoesSizesList = new ArrayList<EnrollProductVo>();
+			shoesSizesList = ps.getShoesSizesDetail(productDetailVo);
 			System.out.println(shoesSizesList);
 			//BIDDING 테이블 쪽 데이터
 			List<BiddingVo> biddingList = ps.getBiddingDetail(productDetailVo.getProductNo());
@@ -58,7 +59,6 @@ public class ProductDetailController extends HttpServlet{
 			req.setAttribute("buyBiddingList", buyBiddingLIst);
 			//판매입찰목록
 			req.setAttribute("sellBiddingList", sellBiddingLIst);
-			
 			
 			//즉시구매가 담아주기
 			req.setAttribute("buyingPrice", immediatelyBuyingPrice);

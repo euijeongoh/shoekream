@@ -67,19 +67,19 @@
                          <strong class="sidenav_title"><a href="">주문관리</a></strong>
                             <ul class="sidenav_menu">
                             <li class="menu_item">    
-                            <a href="" class="menu_link">입고 현황</a>
+                            <a href="/shoekream/admin/order/storage/list" class="menu_link">입고 현황</a>
                             </li>
                             <li class="menu_item">
-                                <a href="" class="menu_link">검수진행 현황</a>
+                                <a href="/shoekream/admin/order/check/list" class="menu_link">검수진행 현황</a>
                             </li>
                             <li class="menu_item">
-                                <a href="" class="menu_link">배송 현황</a>
+                                <a href="/shoekream/admin/order/send/list" class="menu_link">배송 현황</a>
                             </li>
                         </ul>
                     </div>
                 <br>
                     <div class="sidenav_list">
-                    <strong class="sidenav_title"><a href="">상품 관리</a></strong>
+                    <strong class="sidenav_title"><a href="/shoekream/admin/product/list">상품 관리</a></strong>
                     <ul class="sidenav_menu">
                         <li class="menu_item">
                             <a href="/shoekream/admin/product/enroll" class="menu_link">상품등록</a>
@@ -108,26 +108,26 @@
             </div>
             <div class="list_body">
                <form action="/shoekream/admin/product/list" method="post">
-                   <table border="1">
-                       <tbody>
-                       
-                       		<%for(EnrollProductVo vo : productVoList) {%>
-                           <tr>
-                               <td>상품</td>
-                               <td><img src="/shoekream/resources/img/admin/header/logo.svg" alt="씀네일"></td>
-								<td><a href="/shoekream/admin/product/edit/modelNumber=<%=vo.getModelNumber()%>"><%=vo.getProductNameKo() + " " + vo.getModelNumber()%></a></td>
+					    <table border="1">
+					        <tbody>
+					            <%for(EnrollProductVo vo : productVoList) {%>
+					            <tr>
+					                <td>상품</td>
+					                <td><img src="/shoekream/resources/img/product/<%=vo.getModelNumber() %>.webp" alt="씀네일" class="product_image"></td>
+					                <td>
+					                    <a href="/shoekream/admin/product/edit?no=<%=vo.getProductNo() %>&name=<%=vo.getProductName()%>&nameKo=<%=vo.getProductNameKo()%>&modelNumber=<%=vo.getModelNumber()%>&releasePrice=<%=vo.getReleasePrice()%>&category=<%=vo.getCategory()%>&brand=<%=vo.getBrand()%>">
+					                        <%=vo.getProductNameKo() + " " + vo.getModelNumber()%>
+					                    </a>
+					                </td>
+					                <td><input type="checkbox" name="modelNumber" value="<%=vo.getModelNumber() %>"></td>
+					            </tr>
+					            <%} %>
+					        </tbody>
+					    </table>
+					    <br>
+					    <input type="submit" value="삭제하기">
+					</form>
 
-                               <td><input type="checkbox" name="modelNumber" value="<%=vo.getModelNumber() %>"></td>
-                           </tr>
-                       		
-                       		<%} %>
-                          
-                        </tbody>
-                   </table>
-                   <br>
-                   
-                  <input type="submit" value="삭제하기">
-               </form>
                <br>
              <div class="page-area">
         <% 

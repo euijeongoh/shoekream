@@ -60,7 +60,7 @@
                     <strong class="sidenav_title"><a href="">주문관리</a></strong>
                     <ul class="sidenav_menu">
                         <li class="menu_item">
-                            <a href="/shoekream/admin/order/storage/list " class="menu_link">입고 현황</a>
+                            <a href="/shoekream/admin/order/storage/list" class="menu_link">입고 현황</a>
                         </li>
                         <li class="menu_item">
                             <a href="/shoekream/admin/order/check/list" class="menu_link">검수진행 현황</a>

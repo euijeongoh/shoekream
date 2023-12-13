@@ -67,7 +67,6 @@ public class AdminEnrollProductController extends HttpServlet {
 			String releaseDate = req.getParameter("releaseDate");
 			String productNameKo = req.getParameter("productNameKo");
 			EnrollProductVo vo = new EnrollProductVo();
-			
 			vo.setProductName(productName);
 			vo.setProductNameKo(productNameKo);
 			vo.setModelNumber(modelNumber);

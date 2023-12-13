@@ -52,11 +52,14 @@ public class ProductDetailDao {
 	    List<EnrollProductVo> shoesSizesList = new ArrayList<>();
 	    while (rs.next()) {
 	        EnrollProductVo dbVo = new EnrollProductVo();
-	        dbVo.setProductNo(rs.getString("PRODUCT_NO"));
-	        dbVo.setSizeStr(rs.getString("SHOES_SIZES")); 
+	        String productNo = rs.getString("PRODUCT_NO");
+	        String sizeStr = rs.getString("SHOES_SIZES");
+	        
+	        dbVo.setProductNo(productNo);
+	        dbVo.setSizeStr(sizeStr); 
+	        
 	        shoesSizesList.add(dbVo);
 	    }
-
 	    JDBCTemplate.close(rs);
 	    JDBCTemplate.close(pstmt);
 

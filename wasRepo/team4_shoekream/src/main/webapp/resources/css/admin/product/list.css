@@ -170,3 +170,7 @@ a {
 a:hover {
     text-decoration: underline; /* 마우스 오버시 밑줄 표시, 필요에 따라 변경 */
 }
+.product_image{
+	width: 100px;
+	height: 100px;
+}
