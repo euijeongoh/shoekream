@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shoekream.qna.service.QnaService;
-import com.shoekream.qna.vo.QnaVo;
+import com.shoekream.request.service.RequestService;
+import com.shoekream.request.vo.RequestVo;
 
 @WebServlet("/request/write")
 public class RequestWriteController extends HttpServlet {
@@ -17,7 +17,7 @@ public class RequestWriteController extends HttpServlet {
 	//게시글 작성 화면
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			req.getRequestDispatcher("/WEB-INF/views/board/qna/write.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/board/request/write.jsp").forward(req, resp);
 		}
 		
 		//게시글 작성 로직
@@ -29,7 +29,7 @@ public class RequestWriteController extends HttpServlet {
 				String title = req.getParameter("title");
 				String content = req.getParameter("contents");
 				
-				QnaVo vo = new QnaVo();
+				RequestVo vo = new RequestVo();
 				vo.setTitle(title);
 				vo.setContent(content);
 				
@@ -40,8 +40,8 @@ public class RequestWriteController extends HttpServlet {
 //				}
 				
 				//service
-				QnaService qs = new QnaService();
-				int result = qs.qnaWrite(vo);
+				RequestService qs = new RequestService();
+				int result = qs.requestWrite(vo);
 				
 				//result == view
 				if(result != 1) {
@@ -49,7 +49,7 @@ public class RequestWriteController extends HttpServlet {
 				}
 				
 				req.getSession().setAttribute("alarm", "게시글 작성 성공!");
-				resp.sendRedirect("/shoekream/qna/list");
+				resp.sendRedirect("/shoekream/request/list");
 				
 			}catch(Exception e) {
 				System.out.println("[ERROR-M001] Q&A 게시글 생성 중 에러 발생");

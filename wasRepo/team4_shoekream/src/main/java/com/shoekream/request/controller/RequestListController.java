@@ -20,12 +20,12 @@ public class RequestListController extends HttpServlet{
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
-			RequestService qs = new RequestService();
+			RequestService rs = new RequestService();
 
 			try {
 			String x = req.getParameter("x");
 			//data
-			int listCount = qs.selectRequestCount();
+			int listCount = rs.selectRequestCount();
 			String currentPage_ = req.getParameter("pno");
 			if(currentPage_ == null) {
 				currentPage_ = "1";
@@ -36,7 +36,7 @@ public class RequestListController extends HttpServlet{
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 			//service
-			List<RequestVo> requestVoList = qs.RequestList(pvo);
+			List<RequestVo> requestVoList = rs.RequestList(pvo);
 			
 			//result == view
 			req.setAttribute("requestVoList", requestVoList);

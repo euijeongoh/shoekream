@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shoekream.qna.service.QnaService;
-import com.shoekream.qna.vo.QnaVo;
+import com.shoekream.request.service.RequestService;
+import com.shoekream.request.vo.RequestVo;
+
 
 @WebServlet("/request/detail")
 public class RequestDetailController extends HttpServlet{
@@ -28,12 +29,12 @@ public class RequestDetailController extends HttpServlet{
 //			}
 			
 			//service
-			QnaService qs = new QnaService();
-			QnaVo vo = qs.selectQnaListByNo(no);
+			RequestService qs = new RequestService();
+			RequestVo vo = qs.selectRequestListByNo(no);
 			
 			//result ==view
 			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/WEB-INF/views/board/qna/detail.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/board/request/detail.jsp").forward(req, resp);
 		
 		}catch(Exception e) {
 			System.out.println("[ERROR-002] 게시글 상세 조회 중 에러 발생..");

@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
+import com.shoekream.request.service.RequestService;
+import com.shoekream.request.vo.RequestVo;
 
 @WebServlet("/request/search")
 public class RequestSearchController extends HttpServlet{
@@ -18,11 +19,11 @@ public class RequestSearchController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		QnaService qs = new QnaService();
+		RequestService qs = new RequestService();
 		try {
 			//data
 			String title = req.getParameter("search");
-			int listCount = qs.selectSearchQnaCount(title);
+			int listCount = qs.selectSearchRequestCount(title);
 			String currentPage_ = req.getParameter("pno");
 			if(currentPage_ == null) {
 				currentPage_ = "1";
@@ -39,15 +40,15 @@ public class RequestSearchController extends HttpServlet{
 //			}
 			
 			//service
-			List<QnaVo> qnaVoList = qs.qnaSearch(title, pvo);
+			List<RequestVo> requestVoList = qs.requestSearch(title, pvo);
 			
 			
 			//result == view
 			
-			req.setAttribute("qnaVoList", qnaVoList);
+			req.setAttribute("requestVoList", requestVoList);
 			req.setAttribute("pvo", pvo);
 			req.setAttribute("x", title);
-			req.getRequestDispatcher("/WEB-INF/views/board/qna/list.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/board/request/list.jsp").forward(req, resp);
 			
 			
 		}catch(Exception e) {
