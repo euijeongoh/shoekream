@@ -200,8 +200,8 @@
                                             <div class="main_card">
                                                 <a class="regist_link">
                                                     <!-- <span class="regist_text">카드를 등록하세요</span> -->
-                                                    <span class="bank_name">${ detailVo.cardCompany }</span>
-                                                    <div class="account_number">${ detailVo.cardNumber }</div>
+                                                    <span class="bank_name">${ orderDetailVo.cardCompany }</span>
+                                                    <div class="account_number">${ orderDetailVo.cardNumber }</div>
                                                 </a>
                                             </div>
                                         </div>

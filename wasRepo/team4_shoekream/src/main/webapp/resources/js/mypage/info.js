@@ -1,22 +1,8 @@
 const infoInputTagArr = document.querySelectorAll(".input-box");
 
-function updateId() {
-	const strId = infoInputTagArr[0].value;
+function updateInfo() {
 	
-	if(strId.length<6) {
-		alert("아이디는 6자 이상이어야 합니다.");
-	}
-	
-	
-	
-	fetch("/shoekream/member/update/id", {method: "POST"})
-	.then( (resp) => { return resp.json() })
-	.then( (data) => {
-		
-	})
 }
-
-
 
 
 let idValid = false;

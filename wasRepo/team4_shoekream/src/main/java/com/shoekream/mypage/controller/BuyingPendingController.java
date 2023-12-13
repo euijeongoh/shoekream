@@ -74,6 +74,7 @@ public class BuyingPendingController extends HttpServlet{
 			// result json으로 변환 후 응답
 			PrintWriter out = resp.getWriter();
 			String respJson = mapper.writeValueAsString(respMap);
+			System.out.println(respJson);
 			out.write(respJson);
 			
 			out.close();

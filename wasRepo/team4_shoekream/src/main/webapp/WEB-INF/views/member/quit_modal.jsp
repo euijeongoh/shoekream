@@ -35,8 +35,8 @@
             <div class="layer_btn">
                 <!-- 여기 하단(풋터) -->
                 <button type="button" onclick="location.href='/shoekream/member/quit'">탈퇴 안 할래요</button>
-                <form action="/shoekream/member/quit" method="post">
-                <input type="submit" value="탈퇴하기">
+                <form name="quitForm" action="/shoekream/member/quit" method="post">
+                <input type="submit" name="quitBtn" value="탈퇴하기">
                 </form>
             </div>
         </div>

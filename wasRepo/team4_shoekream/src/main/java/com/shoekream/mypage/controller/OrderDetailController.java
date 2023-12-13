@@ -36,11 +36,11 @@ public class OrderDetailController extends HttpServlet {
 			// result == view
 			req.setAttribute("orderDetailVo", orderDetailVo);
 			
-			req.getRequestDispatcher("/WEB-INF/views/mypage/orderDetail.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/mypage/orderdetail.jsp").forward(req, resp);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-			resp.sendRedirect("/shoekream/home");
+//			resp.sendRedirect("/shoekream/home");
 		}
 		
 	}
