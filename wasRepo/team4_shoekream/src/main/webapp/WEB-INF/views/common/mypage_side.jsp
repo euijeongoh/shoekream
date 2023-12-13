@@ -47,23 +47,23 @@ if(location.href.indexOf("/mypage/buying")>-1) {
 } else if(location.href.indexOf("/mypage/selling")>-1) {
 	shopTagArr[1].style.fontWeight= "600";
 	shopTagArr[1].style.color="#222222";
-} else if(location.href.indexOf("/mypage/wishlist")){
+} else if(location.href.indexOf("/mypage/wishlist")>-1){
 	shopTagArr[2].style.fontWeight= "600";
 	shopTagArr[2].style.color="#222222";
 }
 
 if(location.href.indexOf("/mypage/info")>-1) {
-	myinfoTagArr[0].style.fontWeight= "600";
-	myinfoTagArr[0].style.color= "#222222";
+	myInfoTagArr[0].style.fontWeight= "600";
+	myInfoTagArr[0].style.color= "#222222";
 } else if(location.href.indexOf("/mypage/addr")>-1) {
-	myinfoTagArr[1].style.fontWeight= "600";
-	myinfoTagArr[1].style.color= "#222222";
+	myInfoTagArr[1].style.fontWeight= "600";
+	myInfoTagArr[1].style.color= "#222222";
 } else if(location.href.indexOf("/mypage/payInfo")>-1) {
-	myinfoTagArr[2].style.fontWeight= "600";
-	myinfoTagArr[2].style.color= "#222222";
+	myInfoTagArr[2].style.fontWeight= "600";
+	myInfoTagArr[2].style.color= "#222222";
 } else if(location.href.indexOf("/mypage/ACCOUNT")>-1){
-	myinfoTagArr[3].style.fontWeight= "600";
-	myinfoTagArr[3].style.color= "#222222";
+	myInfoTagArr[3].style.fontWeight= "600";
+	myInfoTagArr[3].style.color= "#222222";
 }
 </script>
 </html>

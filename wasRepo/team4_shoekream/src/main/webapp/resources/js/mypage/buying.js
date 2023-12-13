@@ -104,7 +104,6 @@ function bidTabAjax() {
 			detailBtn.className = "detail-btn"
 			detailBtn.innerHTML="상세내역";
 			detailBtn.onclick = () => {
-				console.log(data[i].bidExpireDate);
 		        location.href = "/shoekream/mypage/bidding/detail?biddingNo=" + data[i].biddingNo;
 		     };
 			
@@ -202,7 +201,7 @@ function pendTabAjax() {
 		      detailBtn.className = "detail-btn"
 		      detailBtn.innerHTML = "상세내역";
 		      detailBtn.onclick = () => {
-		        location.href = "/shoekream/order/detail?orderNo='" + item.orderNo;
+		        location.href = "/shoekream/order/detail?orderNo=" + item.orderNo;
 		      };
 		      li2.innerHTML = item.orderStatus;
 		      li3.innerHTML = item.orderDate;
@@ -295,16 +294,16 @@ function finishTabAjax() {
 			detailBtn.className = "detail-btn"
 			detailBtn.innerHTML="상세내역";
 			detailBtn.onclick = () => {
-		        location.href = "/shoekream/buy/order?memberNo='" + data[i].memberNo + "&biddingNo=" + data[i].biddingNo + "&productsNo=" + data[i].productNo;
+		        location.href = "/shoekream/order/detail?orderNo=" + data[i].orderNo;
 		     };
 			
 			li2.innerHTML=data[i].orderStatus;
-			
+			console.log(data[i].productNo);
 			const reviewLink = document.createElement("a");
 			li3.appendChild(reviewLink);
 			reviewLink.innerHTML="리뷰 작성하기";
 			reviewLink.onclick = () => {
-		        location.href = "shoekream/review/write?productNo='" + data[i].productNo;
+		        location.href = "/shoekream/review/write?productNo=" + data[i].productNo;
 		    }
 		}
 		
