@@ -28,7 +28,7 @@
             </div>
             <br>
             <div class="picjor">
-             <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
+             <input type="file" accept="image/*" name="f">
                 <div class="picture">
                     <img src="" alt="" class="picture_img">
                 </div>
@@ -40,7 +40,7 @@
 
         <form action="/shoekream/review/write" method="post" id="reviewForm" enctype="multipart/form-data">
             
-            <div class="ggg">
+            <!-- <div class="ggg">
                 <div class="ignition">
                     <div class="wignition">
                         <p id="wignition"><b>착화감</b></p>
@@ -53,20 +53,20 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
-            <br><br>
+            <!-- <br><br>
             <div class="content">
                 <p id="wcontent"><b>내용</b></p>
                     <textarea name="write" placeholder="     다른 회원 분들에게 도움이 되는 나만의 팁을 소개해주세요 !" id="write"
                     ></textarea>
             </div>
         
-            <br><br>
-        
-            <div class="upload">
+            <br><br> -->
+        <input type="file" id="file-input" name="f" accept="image/*" onchange="previewImage(event)">
+            <!-- <div class="upload">
                 <p id="wupload"><b>사진 업로드</b></p>
-                <input type="file" id="file-input" name="f" accept="image/*" onchange="previewImage(event)">
+                
                 <div>
                     <div class="upload_picture">
                         <img src="" alt="" id="reviewpng">
@@ -75,7 +75,7 @@
                         <label for="file-input" id="file-input-label">이미지 선택</label>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="update">
                 <ul>
                     <li id="update_detail"><input type="submit" value="올리기"></li>
