@@ -104,13 +104,16 @@ public class AdminProductEditController extends HttpServlet{
 			//db에서 먼저 체크할 데이터들
 			String category = req.getParameter("category");
 			String brand = req.getParameter("brand");
-			//사이즈 값들의 배열
 			String[] sizes = req.getParameterValues("size");
+			String productNo = req.getParameter("productNo");
+			String productName = req.getParameter("productName");
+			String releasePrice = req.getParameter("releasePrice");
+			String releaseDate = req.getParameter("releaseDate");
+			String productNameKo = req.getParameter("productNameKo");
 			
 			//service
 			AdminEnrollProductService ps = new AdminEnrollProductService();
 			
-			String productNo = req.getParameter("productNo");
 			//카테고리 번호를 가져올 vo
 			EnrollProductVo categoryCheckVo = ps.categoryCheck(category);
 			//가져온 카테고리 번호
@@ -126,10 +129,6 @@ public class AdminProductEditController extends HttpServlet{
 			String[] sizeNo = sizeCheckVo.getSizeNo();
 			
 			//DB의 PRODUCTS 테이블에 상품정보 등록
-			String productName = req.getParameter("productName");
-			String releasePrice = req.getParameter("releasePrice");
-			String releaseDate = req.getParameter("releaseDate");
-			String productNameKo = req.getParameter("productNameKo");
 			EnrollProductVo vo = new EnrollProductVo();
 			vo.setProductName(productName);
 			vo.setProductNameKo(productNameKo);
@@ -141,9 +140,6 @@ public class AdminProductEditController extends HttpServlet{
 			vo.setDelYn("N");
 			vo.setProductNo(productNo);
 			System.out.println(vo.getProductNo());
-			//등록한 상품의 제품번호확인(modelNumber로 확인)
-//			EnrollProductVo productNoCheckVo = ps.getEnrolledProductNo(modelNumber);
-//			String productNo = productNoCheckVo.getProductNo();
 			
 			int result = ps.editProduct(vo);
 			if(result != 1) {
@@ -153,9 +149,12 @@ public class AdminProductEditController extends HttpServlet{
 			EnrollProductVo productSizesVo = new EnrollProductVo();
 			productSizesVo.setProductNo(productNo);
 			productSizesVo.setSizeNo(sizeNo);
-			
-			int result2 = ps.editProductSize(productSizesVo);
-			if(result2 != 1) {
+			int result2 = ps.deleteEnrolledProductSize(productNo);
+			if(result2 != 1	) {
+				throw new Exception("result2 != 1");
+			}
+			int result3 = ps.editProductSize(productSizesVo);
+			if(result3 != 1) {
 				throw new Exception("result2 != 1");
 			}
 			resp.sendRedirect("/shoekream/admin/product/list");

@@ -27,7 +27,7 @@
             <div class="container">
                     <div class="slider_container">
                         <div class="slider">
-                            <div class="slide"><img src="/shoekream/resources/img/product/<%=productDetailVo.getModelNumber() %>.webp" alt=""></div>
+                            <div class="slide"><img src="/shoekream/resources/img/product/<%=productDetailVo.getModelNumber() %>.webp" alt="" id="pro_img"></div>
                         </div>
                     </div>
                     <div class="column_2">
@@ -104,19 +104,7 @@
                     </div>
                 </div>
                 <div class="wrap_bids">
-                    <div class="tap_area">
-                        <ul role="tablist" class="tab_list">
-                            <li class="item_on">
                                 <a href="#" class="item_link">체결 거래</a>
-                            </li>
-                            <li>
-                                <a href="#" class="item_link">판매 입찰</a>
-                            </li>
-                            <li>
-                                <a href="#" class="item_link">구매 입찰</a>
-                            </li>
-                        </ul>
-                    </div>
                         <div>
                             <table border="1">
                                 <thead>
@@ -148,62 +136,9 @@
                             </table>
                         </div>
                 </div>
-                <div class="detail_item_title feed_title">
-                    
-                    <p class="product_detail_item_title reviews"> 스타일 418 </p>
-                    <!---->
-                </div>
-        </main>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
         
-        <div class="listpoto">
-            <div class="one">
-                <img src="../ouj/img/reviewlist02.png" alt="사진02" class="poto">
-                <div class="detail">
-                    <div>
-                        <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
-                    </div>
-                    <div>
-                            <img src="../ouj/img/like.png" alt="좋아요" class="likey">  
-                    </div>
-                </div>
-            </div>
-
-            <div class="one">
-                <img src="../ouj/img/reviewlist02.png" alt="사진02" class="poto">
-                <div class="detail">
-                    <div>
-                        <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
-                    </div>
-                    <div>
-                            <img src="../ouj/img/like.png" alt="좋아요" class="likey">  
-                    </div>
-                </div>
-            </div>
-
-            <div class="one">
-                <img src="../ouj/img/reviewlist03.png" alt="사진03" class="poto">
-                <div class="detail">
-                    <div>
-                        <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
-                    </div>
-                    <div>
-                        <img src="../ouj/img/like.png" alt="좋아요" class="likey">  
-                    </div>
-                </div>
-            </div>
-
-            <div class="one">
-                <img src="../ouj/img/reviewlist04.png" alt="사진04" class="poto">
-                <div class="detail">
-                    <div>
-                        <img src="../ouj/img/물결.png" alt="물결프사" class="wave">
-                    </div>
-                    <div>
-                        <img src="../ouj/img/like.png" alt="좋아요" class="likey">  
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 <script>
     let currentIndex = 0;
     const slides = document.querySelectorAll('.slide');

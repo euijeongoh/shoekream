@@ -21,25 +21,45 @@ public class EnrollProductVo {
 	private String sizeStr;
 	private String[] sizeNo;
 	private String sizeNoStr;
+	private String[] categoryNos;
+    private String[] brandNos;
 	public EnrollProductVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String[] getCategoryNos() {
+		return categoryNos;
+	}
+
+	public void setCategoryNos(String[] categoryNos) {
+		this.categoryNos = categoryNos;
+	}
+
+	public String[] getBrandNos() {
+		return brandNos;
+	}
+
+	public void setBrandNos(String[] brandNos) {
+		this.brandNos = brandNos;
+	}
+
 	@Override
 	public String toString() {
 		return "EnrollProductVo [productNo=" + productNo + ", brand=" + brand + ", category=" + category
 				+ ", productName=" + productName + ", productNameKo=" + productNameKo + ", modelNumbers="
 				+ Arrays.toString(modelNumbers) + ", modelNumber=" + modelNumber + ", releasePrice=" + releasePrice
 				+ ", releaseDate=" + releaseDate + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate
-				+ ", delYn=" + delYn + ", categoryNo=" + categoryNo + ", brandNo=" + brandNo + ", sizeNo="
-				+ Arrays.toString(sizeNo) + ", size=" + Arrays.toString(size) + ", sizeStr=" + sizeStr + ", sizeNoStr="
-				+ sizeNoStr + "]";
+				+ ", delYn=" + delYn + ", categoryNo=" + categoryNo + ", brandNo=" + brandNo + ", size="
+				+ Arrays.toString(size) + ", sizeStr=" + sizeStr + ", sizeNo=" + Arrays.toString(sizeNo)
+				+ ", sizeNoStr=" + sizeNoStr + ", categoryNos=" + Arrays.toString(categoryNos) + ", brandNos="
+				+ Arrays.toString(brandNos) + "]";
 	}
-	
+
 	public EnrollProductVo(String productNo, String brand, String category, String productName, String productNameKo,
 			String[] modelNumbers, String modelNumber, String releasePrice, String releaseDate, String enrollDate,
-			String modifyDate, String delYn, String categoryNo, String brandNo, String[] sizeNo, String[] size,
-			String sizeStr, String sizeNoStr) {
+			String modifyDate, String delYn, String categoryNo, String brandNo, String[] size, String sizeStr,
+			String[] sizeNo, String sizeNoStr, String[] categoryNos, String[] brandNos) {
 		super();
 		this.productNo = productNo;
 		this.brand = brand;
@@ -55,11 +75,14 @@ public class EnrollProductVo {
 		this.delYn = delYn;
 		this.categoryNo = categoryNo;
 		this.brandNo = brandNo;
-		this.sizeNo = sizeNo;
 		this.size = size;
 		this.sizeStr = sizeStr;
+		this.sizeNo = sizeNo;
 		this.sizeNoStr = sizeNoStr;
+		this.categoryNos = categoryNos;
+		this.brandNos = brandNos;
 	}
+
 	public String getProductNo() {
 		return productNo;
 	}

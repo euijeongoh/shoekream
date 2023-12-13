@@ -312,13 +312,15 @@ public class AdminEnrollProductDao {
 	}
 
 	public int editProductSize(Connection conn, EnrollProductVo productSizesVo)throws Exception {
+		
 		String[] sizeNo = productSizesVo.getSizeNo();
 		int result = 0;
 		for(String size :sizeNo) {
-			String sql = "UPDATE PRODUCT_SIZES SET SHOES_SIZES_NO = ? WHERE PRODUCT_NO = ?";
+			String sql = "INSERT INTO PRODUCT_SIZES(NO, PRODUCT_NO, SHOES_SIZES_NO) VALUES(SEQ_PRODUCT_SIZES_NO, ?,?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, size);
-			pstmt.setString(2, productSizesVo.getProductNo());
+			pstmt.setString(1, productSizesVo.getProductNo());
+			pstmt.setString(2, size);
+			System.out.println(size);
 			result += pstmt.executeUpdate();
 
 			JDBCTemplate.close(pstmt);
@@ -349,6 +351,58 @@ public class AdminEnrollProductDao {
 		return dbVo;
 	
 	}
+
+	public int deleteEnrolledProductSize(Connection conn, String productNo) throws Exception{
+		String sql = "DELETE FROM PRODUCT_SIZES WHERE PRODUCT_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productNo);
+		int result = pstmt.executeUpdate();
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+	public List<EnrollProductVo> searchFilterProduct(Connection conn, EnrollProductVo filterVo) throws Exception {
+	    List<EnrollProductVo> productList = new ArrayList<>();
+	    String[] brandNos = filterVo.getBrandNos();
+	    String[] categoryNos = filterVo.getCategoryNos();
+
+	    // 여기서 적절한 방식으로 brandNos와 categoryNos를 사용하여 쿼리 실행
+	    // 예: 각 브랜드에 대해 모든 카테고리를 검색하거나, 또는 그 반대
+
+	    for (String brandNo : brandNos) {
+	        for (String categoryNo : categoryNos) {
+	            String sql = "SELECT P.NO AS NO, P.MODEL_NUMBER AS MODEL_NUMBER, P.NAME AS NAME, P.RELEASE_PRICE AS RELEASE_PRICE, B.BRAND_NAME AS BRAND_NAME, C.CATEGORY_NAME AS CATEGORY_NAME FROM PRODUCTS P JOIN BRAND B ON B.NO = P.BRAND_NO JOIN CATEGORY C ON C.NO = P.CATEGORY_NO WHERE P.CATEGORY_NO = ? or P.BRAND_NO = ?";
+	            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	                pstmt.setString(1, categoryNo);
+	                pstmt.setString(2, brandNo);
+
+	                try (ResultSet rs = pstmt.executeQuery()) {
+	                    while (rs.next()) {
+	                        EnrollProductVo product = new EnrollProductVo();
+	                        String no = rs.getString("NO");
+	                        String modelNumber = rs.getString("MODEL_NUMBER");
+	                        String name = rs.getString("NAME");
+	                        String releasePrice = rs.getString("RELEASE_PRICE");
+	                        String brand = rs.getString("BRAND_NAME");
+	                        String category = rs.getString("CATEGORY_NAME");
+	                        product.setModelNumber(modelNumber);
+	                        product.setProductNo(no);
+	                        product.setProductName(name);
+	                        product.setReleasePrice(releasePrice);
+	                        product.setBrand(brand);
+	                        product.setCategory(category);
+	                        
+	                        // product 객체에 데이터 설정
+	                        productList.add(product);
+	                    }
+	                }
+	            }
+	        }
+	    }
+	    return productList;
+	}
+
 
 	
 	
