@@ -84,6 +84,13 @@
     height: 200%;
     /* background-color: aqua; */
 }
+.feed ul{
+	display: flex;
+	justify-content: space-around;
+}
+ul li{
+	 margin-right: 10px;
+}
 
 .listphoto{
     width: 1200px;

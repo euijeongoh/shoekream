@@ -80,11 +80,12 @@ public class ReviewWriteController extends HttpServlet {
            }
            
          Part f = req.getPart("f");
-         InputStream in = f.getInputStream();
          String submittedFileName = f.getSubmittedFileName();
          System.out.println("-------");
          System.out.println(submittedFileName);
          System.out.println("-------");
+         
+         InputStream in = f.getInputStream();
          
       // data //이미지는 어떤 타입?
        String no = req.getParameter("no");
@@ -147,7 +148,7 @@ public class ReviewWriteController extends HttpServlet {
          
          
          req.getSession().setAttribute("alertMsg", "리뷰 작성 성공 !");
-         resp.sendRedirect("/shoekream//review/write");
+         resp.sendRedirect("/shoekream//review/mylist");
          
       }catch(Exception e) {
          System.out.println("[ERROR-B002] 리뷰 작성 실패 ...");
