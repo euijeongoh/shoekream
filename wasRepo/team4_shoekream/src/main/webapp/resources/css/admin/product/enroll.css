@@ -141,7 +141,6 @@ header .main-list li {
     flex-direction: row; /* 상품 등록 영역의 요소들을 가로로 배치 */
     align-items: center;
     width: 800px;
-    margin: auto;
 }
 #product-image-container{
 	padding: 40px;
@@ -240,14 +239,21 @@ header .main-list li {
     flex-direction: column;
     flex-wrap: wrap;
 }
-.sidebar{
-    margin-left: auto;
-    margin-right: 20px; /* 오른쪽 여백 */
-    width: 180px;
-    font-size: 22px;
-    /* 기타 필요한 스타일 속성 추가 */
-}.side-body {
-    display: flex;
-    width: 1200px;
-    justify-content: flex-start;
+/*.sidebar{*/
+/*    margin-left: auto;*/
+/*    margin-right: 20px;  오른쪽 여백 */
+/*    width: 180px;*/
+/*    font-size: 22px;*/
+/*     기타 필요한 스타일 속성 추가 */
+/*}.side-body {*/
+/*    display: flex;*/
+/*    width: 1200px;*/
+/*    justify-content: flex-start;*/
+/*}*/
+
+.wrap{
+	display: flex;
+	margin: auto;
+	width: 100%;
+	justify-content: center;
 }

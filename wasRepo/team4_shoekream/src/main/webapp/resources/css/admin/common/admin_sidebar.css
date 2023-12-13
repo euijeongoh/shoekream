@@ -5,11 +5,11 @@
 }
 .sidebar{
     margin-left: 40px;/*필요시 제거*/
-    margin-right: 20px; /* 오른쪽 여백 추가 */
+    margin-right: 60px; /* 오른쪽 여백 추가 */
     width: 180px;
     font-size: 22px;
 }
- .sidebar :link, .sidebar :hover, .sidebar :active{
+ .sidebar a :link, .sidebar a :hover, .sidebar  a:active{
     text-decoration: none;
     color: black;
 }
