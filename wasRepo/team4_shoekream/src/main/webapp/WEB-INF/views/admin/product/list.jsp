@@ -8,9 +8,7 @@
   <%
     	List<EnrollProductVo> productVoList = (List<EnrollProductVo>) request.getAttribute("productVoList");
     	PageVo pvo = (PageVo)request.getAttribute("pvo");
-    	 ManagerVo loginAdmin = (ManagerVo) session.getAttribute("loginAdmin");
-    		String alertMsg = (String) session.getAttribute("alertMsg");
-    		session.removeAttribute("alertMsg");
+    	 
     %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -24,39 +22,7 @@
     
 </head>
 <body>
-    <header>
-        <div class="header-inner">
-            <div class="top-list">
-                <ul>
-                    <li><a href="/shoekream/notice/list">고객센터</a></li>
-                    <li><a href="/shoekream/mypage/main">마이페이지</a></li>
-                    <li><a href="/shoekream/mypage/wishlist">관심</a></li>
-                    <li><a>알림</a></li>
-                    <li><a href="/shoekream/admin/login">로그인</a></li>
-                </ul>
-            </div>
-            <div class="main-list">
-                <div class="logo-area">
-                    <a href="">
-                    <img src="/shoekream/resources/img/admin/header/logo.svg">
-                    <span>관리자</span>
-                    </a>
-                </div>
-                <div class="head-list">
-                    <ul>
-                        <li><a href="/shoekream/home">HOME</a></li>
-                        <li><a href="/shoekream/product/list?pno=1">SHOP</a></li>
-                        <li id="search-btn"><a><img src="/shoekream/resources/img/admin/header/searchIcon.png"></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="header_list">
-                <a href="/shoekream/admin/product/enroll">상품등록</a>
-                <a href="/shoekream/admin/product/list"><b><u>상품목록</u></b></a>
-            </div>        
-        </div>
-    </header>
-
+	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp" %>
         <br>
     <br><br>
     <hr>
