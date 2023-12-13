@@ -14,7 +14,7 @@ public class ManagerLogoutController extends HttpServlet{
 
 	// 로그아웃 처리
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().invalidate();
 		
 		req.getSession().setAttribute("alertMsg", "로그아웃 완료");
