@@ -39,7 +39,7 @@ public class WishListController extends HttpServlet{
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 			if(loginMember == null) {
-				resp.sendRedirect("/shoekream/member/login");
+				throw new Exception("로그인 안함");
 			}
 			
 			// service
@@ -52,7 +52,7 @@ public class WishListController extends HttpServlet{
 			req.getRequestDispatcher("/WEB-INF/views/mypage/wishlist.jsp").forward(req, resp);
 		} catch(Exception e) {
 			e.printStackTrace();
-			
+			resp.sendRedirect("/shoekream/member/login");
 		}
 		
 	}
