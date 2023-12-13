@@ -25,12 +25,13 @@ public class PayChangeDefaultController extends HttpServlet {
 				throw new Exception();
 			}
 			String no = req.getParameter("no");
+			String mamberNo = req.getParameter("mamberNo");
 
 			PayInfoService as = new PayInfoService();
-			int result = as.changeDefault(no);
+			int result = as.changeDefault(no,mamberNo);
 
-			if (result == 2) {
-				resp.sendRedirect("/shoekream/mypage/payInfo?no=1");
+			if (result > 0) {
+				resp.sendRedirect("/shoekream/mypage/payInfo?no=" + loginMember.getNo());
 			} else {
 				throw new Exception();
 			}

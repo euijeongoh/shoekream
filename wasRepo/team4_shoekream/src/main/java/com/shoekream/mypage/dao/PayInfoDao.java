@@ -98,10 +98,11 @@ public class PayInfoDao {
 		return extraVoList;
 	}
 
-	public int changeDefaultYn(Connection conn, String no) throws Exception{
-		String sql = "UPDATE CARD SET DEFAULT_PAYINFO_YN = CASE WHEN DEFAULT_PAYINFO_YN = 'N' THEN 'Y' WHEN DEFAULT_PAYINFO_YN = 'Y' THEN 'N' ELSE DEFAULT_PAYINFO_YN END WHERE DEL_YN = 'N' AND MEMBER_NO = ?";
+	public int changeDefaultYn(Connection conn, String no, String mamberNo) throws Exception{
+		String sql = "UPDATE CARD SET DEFAULT_PAYINFO_YN = CASE WHEN DEFAULT_PAYINFO_YN = 'Y' THEN 'N' WHEN DEFAULT_PAYINFO_YN = 'N' AND NO = ? THEN 'Y' ELSE DEFAULT_PAYINFO_YN END WHERE DEL_YN = 'N' AND MEMBER_NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, no);
+		pstmt.setString(2, mamberNo);
 		int result = pstmt.executeUpdate();
 		
 		JDBCTemplate.close(pstmt);
@@ -110,4 +111,40 @@ public class PayInfoDao {
 		return result;
 	}
 
+	public int insertPayinfo(Connection conn, PayInfoVo vo) throws Exception{
+		String sql = "INSERT INTO CARD (NO, MEMBER_NO, CARD_COMPANY_NO, CARD_NUMBER, EXPIRATION_DATE ,CVC_NUMBER , DEFAULT_PAYINFO_YN) VALUES (SEQ_CARD_NO.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getMemberNo());
+		pstmt.setString(2, vo.getCardCompanyNo());
+		pstmt.setString(3, vo.getCardNumber());
+		pstmt.setString(4, vo.getNoexpirationDate());
+		pstmt.setString(5, vo.getCvcNumber());
+		pstmt.setString(6, vo.getDefaultPayInfoYn());
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+
+		return result;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

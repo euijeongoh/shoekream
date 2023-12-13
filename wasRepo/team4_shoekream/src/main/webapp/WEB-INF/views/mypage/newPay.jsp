@@ -1,5 +1,7 @@
+<%@page import="com.shoekream.member.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 
 <head>
@@ -28,7 +30,7 @@
 			</a>
 			<div class="layer_header">
 				<!-- 여기 헤더 -->
-				<h2>새 주소 추가</h2>
+				<h2>새 카드 추가</h2>
 			</div>
 			<div class="layer_content">
 				<div class="delivery_bind">
@@ -37,38 +39,53 @@
 							<!-- 여기 내용 -->
 							<h4 class="input_title">이름</h4>
 							<div class="input_item">
-								<input type="text" placeholder="카드 소유자" class="input_txt" name="name">
+								<input type="text" placeholder="카드 소유자" class="input_txt" name="MEMBER_NAME">
+								<input type="hidden" class="input_txt" name="MEMBER_NO" value="${loginMember.no}">
 							</div>
 							<!-- <p class="input_error">올바른 이름을 입력해주세요. (2-50자)</p> -->
 						</div>
 						<div class="input_box">
 							<!-- 여기 내용 -->
+							<h4 class="input_title">카드사</h4>
+							<div class="input_item">
+								<input type="radio" placeholder="-없이 입력" class="card_company" name="CARD_COMPANY_NO" value="1">국민카드
+								<input type="radio" placeholder="-없이 입력" class="card_company" name="CARD_COMPANY_NO" value="2">우리카드
+								<input type="radio" placeholder="-없이 입력" class="card_company" name="CARD_COMPANY_NO" value="3">롯데카드
+								<input type="radio" placeholder="-없이 입력" class="card_company" name="CARD_COMPANY_NO" value="4">비씨카드<br>
+								<input type="radio" placeholder="-없이 입력" class="card_company" name="CARD_COMPANY_NO" value="5">삼성카드
+								<input type="radio" placeholder="-없이 입력" class="card_company" name="CARD_COMPANY_NO" value="6">신한카드
+								<input type="radio" placeholder="-없이 입력" class="card_company" name="CARD_COMPANY_NO" value="7">하나카드
+								<input type="radio" placeholder="-없이 입력" class="card_company" name="CARD_COMPANY_NO" value="8">현대카드
+								
+							</div>
+						</div>
+						<div class="input_box">
+							<!-- 여기 내용 -->
 							<h4 class="input_title">카드번호</h4>
 							<div class="input_item">
-								<input type="text" placeholder="-없이 입력" class="input_txt" name="card_num">
+								<input type="text" placeholder="-없이 입력" class="input_txt" name="CARD_NUMBER">
 							</div>
 						</div>
 						<div class="input_box">
 							<!-- 여기 내용 -->
 							<h4 class="input_title">유효기간</h4>
 							<div class="input_item" id="map">
-								<input type="text" placeholder="YY" class="input_txt" id="expiration_date" name="expiration_date" >
-								<input type="text" placeholder="MM" class="input_txt" id="expiration_date" name="expiration_date" >
+								<input type="text" placeholder="YYMM" class="input_txt" id="expiration_date" name="EXPIRATION_DATE" >
 							</div>
 						</div>
 						<div class="input_box">
 							<!-- 여기 내용 -->
 							<h4 class="input_title">CVC</h4>
 							<div class="input_item">
-								<input type="text" id="CVC" name="CVC" placeholder="CVC를 입력하세요"
+								<input type="text" id="CVC" name="CVC_NUMBER" placeholder="CVC를 입력하세요"
 									class="input_txt" >
 							</div>
 						</div>
 						<div class="input_box">
 							<div class="delivery_check">
-								<div class="checkbox_item" data-v-4be3d37a="">
-									<input id="check1" type="checkbox" class="blind" name="default_addr" onchange="updateDefaultAddress()">
-									<input type="hidden" id="defaultAddressHiddenInput" name="default_addr" value="N">
+								<div class="checkbox_item" >
+									<input id="check1" type="checkbox" class="blind" name="DEFAULT_PAYINFO_YN" onchange="updateDefaultAddress()">
+									<input type="hidden" id="defaultHiddenInput" name="DEFAULT_PAYINFO_YN" value="N">
 									
 									<label for="check1" class="check_label"> <span
 										class="label_txt">기본 결제 설정</span>

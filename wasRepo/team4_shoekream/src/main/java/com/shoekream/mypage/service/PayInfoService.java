@@ -34,13 +34,13 @@ public class PayInfoService {
 		return extraVo;
 	}
 
-	public int changeDefault(String no) throws Exception{
+	public int changeDefault(String no, String mamberNo) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 
 		PayInfoDao ad = new PayInfoDao();
-		int result = ad.changeDefaultYn(conn, no);
+		int result = ad.changeDefaultYn(conn, no, mamberNo);
 
-		if (result == 2) {
+		if (result > 0) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
@@ -50,6 +50,19 @@ public class PayInfoService {
 		JDBCTemplate.close(conn);
 
 		return result;
+	}
+
+	public int insertPayInfo(PayInfoVo vo) throws Exception {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		PayInfoDao pd = new PayInfoDao();
+		int result = pd.insertPayinfo(conn, vo);
+
+		JDBCTemplate.close(conn);
+
+		return result;
+	
 	}
 
 }
