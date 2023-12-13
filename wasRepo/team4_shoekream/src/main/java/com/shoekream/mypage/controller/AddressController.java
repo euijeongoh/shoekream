@@ -34,6 +34,18 @@ public class AddressController extends HttpServlet{
 			List<AddrBookVo> extraVo = as.selectExtraAddrList(no);
 			req.setAttribute("extraVo", extraVo);
 			
+			//service
+			AddressService bs = new AddressService();
+			AddrBookVo avo = bs.editAddr(no); 
+			
+			//result
+			if(avo == null) {
+				throw new Exception();
+				
+			}
+			
+			req.setAttribute("avo", avo);
+			
 			
 			req.getRequestDispatcher("/WEB-INF/views/mypage/addr.jsp").forward(req, resp);
 		} catch (Exception e) {

@@ -18,41 +18,7 @@ import com.shoekream.mypage.vo.AddrBookVo;
 public class AddrEditController extends HttpServlet{
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
-		try {
-			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
-			
-			if(loginMember == null) {
-				throw new Exception();
-			}
-			//data
-			String no = req.getParameter("no");
-			
-			//service
-			AddressService bs = new AddressService();
-			AddrBookVo avo = bs.editAddr(no); 
-			
-			//result
-			if(avo == null) {
-				throw new Exception();
-				
-			}
-			
-			req.setAttribute("avo", avo);
-			req.getRequestDispatcher("/WEB-INF/views/mypage/editAddr.jsp").forward(req, resp);
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			resp.sendRedirect("/shoekream/member/login");
-		}
-	
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
 			String no = req.getParameter("no");
