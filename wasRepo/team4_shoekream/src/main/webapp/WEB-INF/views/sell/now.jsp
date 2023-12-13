@@ -103,7 +103,7 @@
                                 <dt class="price_title">
                                     <span id="fo">수수료</span>
                                 </dt>
-                                <dd class="price_text">-4,400원</dd>
+                                <dd class="price_text">-${ commission }</dd>
                             </dl>
                             <dl class="price_addition">
                                 <dt class="price_title">
@@ -123,18 +123,20 @@
                         <dl class="price_box">
                             <dt class="price_title">정산금액</dt>
                             <dd class="price_b">
-                                <span class="amount_c">158,600</span>
+                                <span class="amount_c">${ totalAmount }</span>
                                 <span class="unit">원</span>
                             </dd>
                         </dl>
                     </div>
                     <div class="btn_confirm">
-<%--                             <input 					type="hidden" name="loginMemberNo" value="${ loginMember.no }"> --%>
-<%--                             <input 					type="hidden" name="productsNo" value="${ productsNo }"> --%>
-<%--                             <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }"> --%>
-<%--                             <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }"> --%>
-                        <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">즉시 판매 계속</button>
+                    	<form action="shoekream/sell/nowsattle">
+	                        <input 					type="hidden" name="loginMemberNo" value="${ loginMember.no }">
+	                        <input 					type="hidden" name="productsNo" value="${ productsNo }">
+	                        <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
+	                        <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
+	                        <a blind class="blind_full_solid_false">계속하기</a>
+	                        <button class="blind_full_solid_false" type="submit">즉시 판매 계속</button>
+                        </form>
                     </div>
                 </div>
             </div>
