@@ -18,4 +18,11 @@ public class SellBiddingSattleControlloer extends HttpServlet{
 		
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.getRequestDispatcher("/WEB-INF/views/sell/biddingsattle.jsp").forward(req, resp);
+		
+	}
+	
 }

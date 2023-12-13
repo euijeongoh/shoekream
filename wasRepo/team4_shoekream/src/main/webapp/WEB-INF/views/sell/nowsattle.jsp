@@ -226,7 +226,7 @@
                             <em></em>
                         </span>
                     </div>
-                    <form action="/shoekream/buy/order" method="get">
+                    <form action="/shoekream/sell/order" method="get">
 	                    <div class="btn_confirm">
 	                    	<input class="memberNo" type="hidden" name="memberNo" value="${ loginMember.no }">
 	                        <input class="biddingNo" type="hidden" name="biddingNo" value="${ BuyProductInfo.no }">

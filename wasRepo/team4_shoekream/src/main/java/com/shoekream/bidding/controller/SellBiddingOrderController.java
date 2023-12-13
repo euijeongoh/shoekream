@@ -13,8 +13,8 @@ import org.apache.coyote.RequestGroupInfo;
 import com.shoekream.bidding.service.BiddingService;
 import com.shoekream.orders.vo.OrdersVo;
 
-@WebServlet("/sell/order")
-public class SellOrderController extends HttpServlet{
+@WebServlet("/sell/biddingorder")
+public class SellBiddingOrderController extends HttpServlet{
 	
 	public static String getHiddenData(String data, int index) {
 		String hiddenData = data.substring(0, index); {
@@ -31,7 +31,7 @@ public class SellOrderController extends HttpServlet{
 		try {
 			String name = "곽태윤";
 			String dataName = getHiddenData(name, 1);
-			req.setAttribute("trade","판매");
+			req.setAttribute("trade","구매");
 			req.setAttribute("process", " 진행 중");
 			
 			BiddingService bs = new BiddingService();
@@ -55,7 +55,6 @@ public class SellOrderController extends HttpServlet{
 			req.setAttribute("price", ordersVo.getPrice());
 			req.setAttribute("commission", commission);
 			req.setAttribute("totalAmount", ordersVo.getTotalPrice());
-			
 			
 			req.getRequestDispatcher("/WEB-INF/views/sell/order.jsp").forward(req, resp);
 		} catch (Exception e) {

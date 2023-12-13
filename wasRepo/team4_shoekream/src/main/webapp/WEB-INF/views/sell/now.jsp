@@ -74,9 +74,16 @@
                     <div class="instant_group">
                         <div class="tab_area">
                             <ul class="tab_list">
-                                <li class="item">
-                                    <a class="item_link">판매 입찰</a>
-                                </li>
+                               	<form action="/shoekream/sell/bidding" method="post" style="height: 50%; width: 50%;">
+                               		<li class="item">
+	                                    <button class="item_link" id="btn1" type="submit">판매 입찰</button>
+	                             		<input type="hidden" name="productsNo" value="${ productsNo }">
+	                                    <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
+	                                    <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
+	                                    <input class="sellPrice" type="hidden" name="sellPrice" value="${ sellPrVo.price }">
+	                                    <input class="sellSize" type="hidden" name="sellSize" value="${ sellPrVo.shoesSizes }">
+                                    </li>
+                                </form>
                                 <li class="item_on">
                                     <a color class="item_link">즉시 판매</a>
                                 </li>

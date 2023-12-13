@@ -139,7 +139,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        3000원
+                                        선불,판매자 부담
                                     </em>
                                     <input class="deliveryCharge" type="hidden" name="deliveryCharge" value="3000">
                                 </p>

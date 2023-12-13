@@ -169,6 +169,14 @@ body {
                                 margin-left: 3px;
                                 box-sizing: border-box;
                             }
+                            	#btn1 {
+								    width: 100%;
+								    background-color: white;
+								    box-sizing: border-box;
+								    border: none;
+								    font-size: 14px;
+								    color: rgba(34, 34, 34, .8);
+								}
                                 .item_link {
                                     display: block;
                                     box-sizing: border-box;

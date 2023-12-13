@@ -10,6 +10,10 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/sell/bidding.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+    
+    <script defer src="/shoekream/resources/js/bidding/sell/bidding.js"></script>
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script> -->
+    <script type="text/javascript" src="/shoekream/resources/js/bidding/sell/moment.min.js"></script>
 <body>
     <div class="wrap">
         <header>
@@ -50,23 +54,7 @@
         <div class="content">
             <div class="buy_immediate">
 
-                <div class="product_info_area">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                            <div class="model_desc">
-                                <p class="size_txt">250</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
 
                 <div class="price_descision_box">
 
@@ -74,14 +62,14 @@
                         <li class="list_item">
                             <p class="title">즉시 구매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">171,000</span>
+                                <span class="price_a">${ buyPrVo.price }</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
                         <li class="list_item">
                             <p class="title">즉시 판매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">163,000</span>
+                                <span class="price_a">${ sellPrVo.price }</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
@@ -89,14 +77,19 @@
 
                     <div class="instant_group">
                         <div class="tab_area">
-                            <ul class="tab_list">
-                                <li class="item">
-                                    <a color class="item_link">판매 입찰</a>
-                                </li>
-                                <li class="item_on">
-                                    <a  class="item_link">즉시 판매</a>
-                                </li>
-                            </ul>
+                            <form action="/shoekream/sell/now" method="post" >
+                        		<input class="productsNo" type="hidden" name="productsNo" value="${ productsNo }">
+                        		<input class="sellPrice" type="hidden" name="price" value="${ sellPrVo.price }">
+                                <input class="sellSize" type="hidden" name="size" value="${ sellPrVo.shoesSizes }">
+                                <ul class="tab_list">
+                                    <li class="item">
+                                        <a color class="item_link">판매 입찰</a>
+                                    </li>
+                                    <li class="item_on">
+                                        <button class="btn1" type="submit">즉시 판매</button>
+                                    </li>
+                                </ul>
+                            </form>
                         </div>
                         <div class="price_now">
                             <dl class="price_now_box">
@@ -113,13 +106,13 @@
                                 <dt class="price_title">
                                     <span id="fo">검수비</span>
                                 </dt>
-                                <dd class="price_text">-</dd>
+                                <dd class="price_text">무료</dd>
                             </dl>
                             <dl class="price_addition">
                                 <dt class="price_title">
                                     <span id="fo">수수료</span>
                                 </dt>
-                                <dd class="price_text">-</dd>
+                                <dd class="price_text" id="textar">-</dd>
                             </dl>
                             <dl class="price_addition">
                                 <dt class="price_title">
@@ -139,13 +132,13 @@
                     </div>
                     <div class="section_content">
                         <div class="bid_deadline">
-                            <p class="deadline_txt">60일 (2024/01/31 마감)</p>
+                            <p class="deadline_txt">-</p>
                             <div class="deadline_tab">
                                 <a class="btnoutlinegrey">1일</a>
                                 <a class="btnoutlinegrey">3일</a>
                                 <a class="btnoutlinegrey">7일</a>
                                 <a class="btnoutlinegrey">30일</a>
-                                <a btnoutlinegrey_color class="btnoutlinegrey">60일</a>
+                                <a class="btnoutlinegrey" id="btnoutlinegrey_color">60일</a>
                             </div>
                         </div>
                     </div>
@@ -163,9 +156,19 @@
                             </dd>
                         </dl>
                     </div>
-                    <div class="btn_confirm">
-                        <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">판매 입찰 계속</button>
+                    <form action="/shoekream/sell/biddingsattle">
+                        <div class="btn_confirm" onmouseover="mouseover()">
+                            <a blind class="blind_full_solid_false">계속하기</a>
+                            <button class="blind_full_solid_false">판매 입찰 계속</button>
+                            <input class="deadline" type="hidden" name="deadline" value="">
+                            <input class="biddingPrice" type="hidden" name="biddingPrice" value="">
+                            
+                            <input type="hidden" name="loginMemberNo" value="${ loginMember.no }">
+                            <input type="hidden" name="productsNo" value="${BuyProductInfo.productsNo}">
+                            <input type="hidden" name="buyPrice" value="${BuyProductInfo.price}">
+                            <input type="hidden" name="buySize" value="${BuyProductInfo.shoesSizes}">
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -204,12 +207,6 @@
         </div>
         <div class="box4"></div>
     </footer>
-
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
 
 </body>
 </html>
