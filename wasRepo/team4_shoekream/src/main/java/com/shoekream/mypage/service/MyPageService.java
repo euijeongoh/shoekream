@@ -315,20 +315,20 @@ public class MyPageService {
 
 
 	// 주문 상세내역 조회
-//	public OrderDetailVo viewOrderDetail(String orderNo) {
-//		// conn
-//		Connection conn = JDBCTemplate.getConnection();
-//		
-//		// dao
-//		MyPageDao dao = new MyPageDao();
-//		OrderDetailVo vo = dao.getOrderDetail(conn, orderNo);
-//		
-//		// close
-//		JDBCTemplate.close(conn);
-//		
-//		
-//		return vo;
-//	}
+	public OrderDetailVo viewOrderDetail(String orderNo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		MyPageDao dao = new MyPageDao();
+		OrderDetailVo vo = dao.getOrderDetail(conn, orderNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		
+		return vo;
+	}
 
 
 
