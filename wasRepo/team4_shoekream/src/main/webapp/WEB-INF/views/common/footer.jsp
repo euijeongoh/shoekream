@@ -18,39 +18,39 @@
 		<div class="box3">
 			<div class="left_bar">
 				<div>
-					<a href="/shoekream/notice/list">고객지원</a>
+					<a href="/shoekream/notice/list" class="footer_a">고객지원</a>
 				</div>
 				<div>
-					<a href="/shoekream/notice/list">공지사항</a>
+					<a href="/shoekream/notice/list" class="footer_a">공지사항</a>
 				</div>
 				<div>
-					<a href="/shoekream/qna/list">1:1문의</a>
+					<a href="/shoekream/qna/list" class="footer_a">1:1문의</a>
 				</div>
 				<div>
-					<a href="/shoekream/request/list">상품 등록 문의</a>
+					<a href="/shoekream/request/list" class="footer_a">상품 등록 문의</a>
 				</div>
 			</div>
 			<div class="icons">
 				<div>
-					<a href=""> <img src="/shoekream/resources/img/footer/인별.png"
+					<a href=""> <img class="etc" src="/shoekream/resources/img/footer/인별.png"
 						alt="인별">
 					</a>
 				</div>
 				<div>
-					<a href=""> <img src="/shoekream/resources/img/footer/페북.png"
+					<a href=""> <img class="etc" src="/shoekream/resources/img/footer/페북.png"
 						alt="페북">
 					</a>
 				</div>
 				<div>
-					<a href=""> <img src="/shoekream/resources/img/footer/카톡.png"
+					<a href=""> <img class="etc" src="/shoekream/resources/img/footer/카톡.png"
 						alt="카톡">
 					</a>
 				</div>
 			</div>
 			<div></div>
 			<div class="faq">
-				<button>
-					<a href="/shoekream/faq/list">자주 묻는 질문</a>
+				<button class="faq_button">
+					<a href="/shoekream/faq/list" class="footer_a">자주 묻는 질문</a>
 				</button>
 			</div>
 		</div>

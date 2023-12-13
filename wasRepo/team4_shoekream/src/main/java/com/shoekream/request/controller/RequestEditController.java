@@ -30,8 +30,8 @@ public class RequestEditController extends HttpServlet{
 //			}
 			
 			//service
-			RequestService ns = new RequestService();
-			RequestVo vo = ns.getRequestByNo(no);
+			RequestService rs = new RequestService();
+			RequestVo vo = rs.getRequestByNo(no);
 
 			//result
 			req.setAttribute("vo", vo);

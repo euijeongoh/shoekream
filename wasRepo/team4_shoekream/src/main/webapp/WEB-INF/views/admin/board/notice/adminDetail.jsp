@@ -37,13 +37,13 @@
                     <div class="btn_rightbox">
                         <div class="btn_editbox">
                         <a href="/shoekream/admin/notice/edit?no=<%=vo.getNo()%>">수정</a>
-<%--                             <a href="/shoekream/admin/notice/edit?no=<%=vo.getNo()%>&title=<%=vo.getTitle()%>&content=<%=vo.getContent()%>">수정</a> --%>
                         </div>
                         <div class="btn_deletebox">
                             <a href="/shoekream/admin/notice/delete?no=<%= vo.getNo() %>">삭제</a>
                         </div>
                     </div>
                 </div>
+<%--                             <a href="/shoekream/admin/notice/edit?no=<%=vo.getNo()%>&title=<%=vo.getTitle()%>&content=<%=vo.getContent()%>">수정</a> --%>
 			</div>
 		</div>
 	</div>

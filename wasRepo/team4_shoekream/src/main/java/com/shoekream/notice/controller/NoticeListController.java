@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.notice.service.NoticeService;
 import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
@@ -38,11 +40,11 @@ public class NoticeListController extends HttpServlet{
 		PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
 		
-//		HttpSession session = req.getSession();
-//		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-//		if(loginMember == null) {
-//			throw new Exception("로그인 안했음");
-//		}
+		HttpSession session = req.getSession();
+		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+		if(loginMember == null) {
+			throw new Exception("로그인 안했음");
+		}
 		
 		//service
 		List<NoticeVo> noticeVoList = ns.NoticeList(pvo);

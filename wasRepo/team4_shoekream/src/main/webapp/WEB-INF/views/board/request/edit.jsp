@@ -1,9 +1,9 @@
-<%@page import="com.shoekream.notice.vo.NoticeVo"%>
+<%@page import="com.shoekream.request.vo.RequestVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%
-NoticeVo vo = (NoticeVo) request.getAttribute("vo");
+RequestVo vo = (RequestVo) request.getAttribute("vo");
 %>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@ NoticeVo vo = (NoticeVo) request.getAttribute("vo");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="/shoekream/resources/css/admin/board/notice/admin_edit.css">
+	href="/shoekream/resources/css/admin/board/request/admin_edit.css">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp"%>
@@ -22,8 +22,8 @@ NoticeVo vo = (NoticeVo) request.getAttribute("vo");
 			<div class="board_wrap">
 				<div class="board_title">공지사항</div>
 				<div class="dropdown_head">
-					<form action="/shoekream/admin/notice/edit?no=<%=vo.getNo()%>" method="post">
-						<div class="notice_title">
+					<form action="/shoekream/admin/request/edit?no=<%=vo.getNo()%>" method="post">
+						<div class="request_title">
 							제목 : <input type="text" name="title" value= <%=vo.getTitle()%>>
 						</div>
 				</div>
