@@ -36,11 +36,11 @@
 			    if (reviewVoList != null && !reviewVoList.isEmpty()) {
 			        reviewImage = reviewVoList.get(0).getReviewImage();
 			    }
-			%>
-                <img src="/shoekream/resources/img/review/wave.png" alt="프로필사진" class="profile_img02">
+			%> 
+                <img src="<%= loginMember.getProfileImage() %>" alt="프로필사진" class="profile_img02">
                 <div class="profile_info_box">
                     <ul>
-                        <li><h2>helloprofile</h2></li>
+                        <li><h2> <%= loginMember.getNickname() %> </h2></li>
                     </ul>
                 </div>
             </div>
@@ -59,19 +59,19 @@
 
                <li>
 
-                <a href="/shoekream/review/write?no=<%= productVo.getProductNo() %>">
+                <a href="/shoekream/review/write?no=<%= vo.getProductNo() %>">
                 
                 	<div class="listphoto">
                 		<div class="mylist">
 	                		<div class="photo">
-	                			<img src="/shoekream/resources/img/review/<%=vo.getReviewImage() %>">
+	                			<img src="<%=vo.getReviewImage()%>">
 	                		</div>
                 		</div>
                 	</div>
                     <div class="profileimage">
-                        <div class="detail"><%= vo.getProfileImage() %></div>
+                        <div class="detail"><img src="<%= loginMember.getProfileImage() %>"></div>
                     </div>    
-                  </a>
+                  </a> 
                 </li>
                  <% } %>
               </ul>

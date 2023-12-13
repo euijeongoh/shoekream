@@ -41,7 +41,7 @@ public class ReviewDao {
 	public List<ReviewVo> myReviewList(Connection conn, MemberVo loginMember) throws Exception {
 		
 		//sql
-		String sql = "SELECT NO, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM REVIEW WHERE DEL_YN = 'N' ORDER BY ENROLL_DATE DESC";
+		String sql = "SELECT R.NO, TO_CHAR(R.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE , R.PRODUCT_NO , R.REVIEW_IMAGE, M.PROFILE_IMAGE PROFILE_IMAGE, M.NICKNAME NICK FROM REVIEW R LEFT JOIN MEMBER M ON M.NO = R.MEMBER_NO WHERE R.DEL_YN = 'N' ORDER BY R.ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -51,16 +51,18 @@ public class ReviewDao {
 			
 			String no = rs.getString("NO");
 			String enrollDate = rs.getString("ENROLL_DATE");
-//			String likeBtn = rs.getString("LIKE_BTN");
-//			String reviewImage = rs.getString("REVIEW_IMAGE");
-//			String profileImage = rs.getString("PROFILE_IMAGE");
+			String productNo = rs.getString("PRODUCT_NO");
+			String reviewImage = rs.getString("REVIEW_IMAGE");
+			String profileImage = rs.getString("PROFILE_IMAGE");
+			String memberNick = rs.getString("NICK");
 			
 			ReviewVo vo = new ReviewVo();
 			vo.setNo(no);
 			vo.setEnrollDate(enrollDate);
-//			vo.setLikeBtn(likeBtn);
-//			vo.setReviewImage(reviewImage);
-//			vo.setProfileImage(profileImage);
+			vo.setProductNo(productNo);
+			vo.setReviewImage(reviewImage);
+			vo.setProfileImage(profileImage);
+			vo.setMemberNick(memberNick);
 			
 			myreviewVoList.add(vo);
 			
