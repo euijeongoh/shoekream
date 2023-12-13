@@ -23,11 +23,11 @@ public class AdminFaqDeleteController extends HttpServlet{
 			//data
 			String no = req.getParameter("no");
 			
-//			HttpSession session = req.getSession();
-//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
-//			if(loginAdmin == null) {
-//				throw new Exception("로그인 안했음");
-//			}
+			HttpSession session = req.getSession();
+			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+			if(loginAdmin == null) {
+				throw new Exception("로그인 안했음");
+			}
 			
 			//service
 			FaqService fs = new FaqService();

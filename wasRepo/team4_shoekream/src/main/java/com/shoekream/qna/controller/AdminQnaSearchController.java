@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.shoekream.admin.manager.vo.ManagerVo;
 import com.shoekream.page.vo.PageVo;
 import com.shoekream.qna.service.QnaService;
 import com.shoekream.qna.vo.QnaVo;
@@ -35,11 +37,11 @@ public class AdminQnaSearchController extends HttpServlet{
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
-//			HttpSession session = req.getSession();
-//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
-//			if(loginAdmin == null) {
-//				throw new Exception("로그인 안했음");
-//			}
+			HttpSession session = req.getSession();
+			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+			if(loginAdmin == null) {
+				throw new Exception("로그인 안했음");
+			}
 			
 			//service
 			List<QnaVo> qnaVoList = qs.qnaSearch(title, pvo);

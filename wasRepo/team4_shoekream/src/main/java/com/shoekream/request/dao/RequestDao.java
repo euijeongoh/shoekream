@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shoekream.db.util.JDBCTemplate;
-import com.shoekream.notice.vo.NoticeVo;
 import com.shoekream.page.vo.PageVo;
 import com.shoekream.request.vo.RequestVo;
 
@@ -76,7 +75,7 @@ public class RequestDao {
 		//검색 게시글 갯수
 			public int selectSearchRequestCount(Connection conn, String title) throws Exception{
 				
-				String sql = "SELECT COUNT(*) FROM Request_BOARD WHERE TITLE LIKE '%' || ?|| '%'";
+				String sql = "SELECT COUNT(*) FROM PRODUCT_REGISTER_REQUEST_BOARD WHERE TITLE LIKE '%' || ?|| '%'";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, title);
 				
@@ -115,15 +114,12 @@ public class RequestDao {
 				String enrollDate = rs.getString("ENROLL_DATE");
 				String hit = rs.getString("HIT");
 
-				
-				
 				vo.setNo(requestNo);
 				vo.setMemberNick(nickname);
 				vo.setTitle(title);
 				vo.setContent(content);
 				vo.setEnrollDate(enrollDate);
 				vo.setHit(hit);
-				
 			}
 			
 			//close
@@ -132,12 +128,25 @@ public class RequestDao {
 			
 			return vo;
 		}
+		
+		//상세조회 시 조회수 증가
+		public int increaseHit(Connection conn, String no) throws Exception{
+			
+			String sql = "UPDATE PRODUCT_REGISTER_REQUEST_BOARD SET HIT = HIT + 1 WHERE NO = ? AND DEL_YN='N' ";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			int result = pstmt.executeUpdate();
+			
+			JDBCTemplate.close(pstmt);
+			
+			return result;
+		}
 
 		//게시글 검색(제목)
 		public List<RequestVo> requestSearch(Connection conn, String title, PageVo pvo) throws Exception{
 			
 			//SQL
-			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT Q.NO, Q.TITLE, Q.CONTENT, M.NICKNAME, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM Request_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO WHERE Q.TITLE LIKE '%' || ? || '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM (   SELECT P.NO, P.TITLE, P.CONTENT, M.NICKNAME, TO_CHAR(P.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, HIT FROM PRODUCT_REGISTER_REQUEST_BOARD P JOIN MEMBER M ON P.MEMBER_NO = M.NO WHERE P.TITLE LIKE '%' || ? || '%' ORDER BY NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
 	 		pstmt.setInt(2, pvo.getStartRow());
@@ -155,6 +164,7 @@ public class RequestDao {
 				vo.setTitle(rs.getString("TITLE"));
 				vo.setMemberNick(rs.getString("NICKNAME"));
 				vo.setEnrollDate(rs.getString("ENROLL_DATE"));
+				vo.setHit(rs.getString("HIT"));
 				
 				requestVoList.add(vo);
 				
@@ -183,9 +193,9 @@ public class RequestDao {
 		}
 
 		//게시글 삭제
-		public int noticeDelete(Connection conn, String no) throws Exception{
+		public int requestDelete(Connection conn, String no) throws Exception{
 			//SQL
-			String sql = "UPDATE NOTICE_BOARD SET DEL_YN = 'Y' WHERE NO = ?";
+			String sql = "UPDATE PRODUCT_REGISTER_REQUEST_BOARD SET DEL_YN = 'Y' WHERE NO = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
 			
@@ -200,18 +210,18 @@ public class RequestDao {
 		}
 		
 		//no로 DB받아오기
-		public NoticeVo getNoticeByNo(Connection conn, String no) throws Exception{
+		public RequestVo getRequestByNo(Connection conn, String no) throws Exception{
 			//SQL
-			String sql = "SELECT TITLE, CONTENT FROM NOTICE_BOARD WHERE NO = ?";
+			String sql = "SELECT TITLE, CONTENT FROM PRODUCT_REGISTER_REQUEST_BOARD WHERE NO = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
 			
 			ResultSet rs = pstmt.executeQuery();
 			
 			//rs
-			NoticeVo vo = null;
+			RequestVo vo = null;
 			if(rs.next()) {
-				vo = new NoticeVo();
+				vo = new RequestVo();
 				
 				vo.setNo(no);
 				vo.setTitle(rs.getString("TITLE")); 
@@ -227,10 +237,10 @@ public class RequestDao {
 		}
 
 		//게시글 수정
-		public int noticeEdit(Connection conn, NoticeVo vo) throws Exception{
+		public int requestEdit(Connection conn, RequestVo vo) throws Exception{
 			
 			//SQL
-			String sql = "UPDATE NOTICE_BOARD SET TITLE = ? , CONTENT = ? , MODIFY_DATE = SYSDATE WHERE NO = ?";
+			String sql = "UPDATE PRODUCT_REGISTER_REQUEST_BOARD SET TITLE = ? , CONTENT = ? , MODIFY_DATE = SYSDATE WHERE NO = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());

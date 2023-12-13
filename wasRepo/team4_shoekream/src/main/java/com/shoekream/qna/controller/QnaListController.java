@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.page.vo.PageVo;
 import com.shoekream.qna.service.QnaService;
 import com.shoekream.qna.vo.QnaVo;
@@ -34,6 +36,12 @@ public class QnaListController extends HttpServlet{
 			int pageLimit = 5;
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
+			
+			HttpSession session = req.getSession();
+			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+			if(loginMember == null) {
+				throw new Exception("로그인 안했음");
+			}
 			
 			//service
 			List<QnaVo> qnaVoList = qs.QnaList(pvo);

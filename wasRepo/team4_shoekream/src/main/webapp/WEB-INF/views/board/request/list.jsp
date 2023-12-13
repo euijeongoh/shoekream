@@ -30,7 +30,7 @@
 
 			<!-- 본문 -->
 			<div class="board_wrap">
-				<div class="board_title">Q&A</div>
+				<div class="board_title">상품 등록 요청</div>
 				<div class="board_search">
 					<div>	
 					<form action="/shoekream/request/search" method="get">
@@ -44,8 +44,11 @@
 					<li>
 					<a href="/shoekream/request/detail?no=<%= vo.getNo() %>">
 						<div class="dropdown"><%= vo.getTitle() %></div>
-						<div class="hit"><%= vo.getHit() %></div>
-						<div class="date"><%= vo.getEnrollDate() %></div>
+						<div class="serve">
+							<div class="nickname"><%= vo.getMemberNick() %></div>
+							<div class="hit"><%= vo.getHit() %></div>
+							<div class="date"><%= vo.getEnrollDate() %></div>
+						</div>
 					</a>
 					</li>
 					<% } %>
