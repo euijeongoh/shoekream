@@ -12,8 +12,8 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 
     <script defer src="/shoekream/resources/js/bidding/buy/bidding.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <!-- <script type="text/javascript" defer src="/shoekream/WEB-INF/lib/moment.min.js"></script> -->
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script> -->
+    <script type="text/javascript" src="/shoekream/resources/js/bidding/buy/moment.min.js"></script>
 </head>
 <!-- <html>
     <script>

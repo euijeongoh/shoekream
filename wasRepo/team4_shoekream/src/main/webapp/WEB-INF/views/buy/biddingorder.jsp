@@ -22,7 +22,7 @@
                         <li><a href="">마이페이지</a></li>
                         <li><a href="">관심</a></li>
                         <li><a>알림</a></li>
-                        <li><a href="">로그인</a></li>
+                        <li><a href="">로그아웃</a></li>
                     </ul>
                 </div>
                 <div class="main-list">
@@ -150,7 +150,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        까지
+                                        ${ deadline }까지
                                     </em>
                                     <input class="111" type="hidden" name="1111" value="${ totalAmount }">
                                 </p>

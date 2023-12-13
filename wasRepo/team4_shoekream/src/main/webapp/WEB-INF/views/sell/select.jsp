@@ -1,5 +1,11 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.List"%>
+<%@page import="com.shoekream.biddingVo.BiddingVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +15,11 @@
 
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/sell/select.css">
-    <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
-    <body>
+	<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+	
+	<script defer src="/shoekream/resources/js/bidding/buy/select.js"></script>
+	
+<body>
     <div class="wrap">
         <header>
             <div class="header-inner">
@@ -44,204 +53,45 @@
         </header>
     </div>
 
-    
-
     <div class="container buy lg">
         <div class="content_area">
             <div class="buy_before">
                 <div id="buy_before_check">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                        </div>
-                    </div>
+                    <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                     <div><div></div></div>
                     <div class="buy_before_select">
                         <div class="select_area md">
                             <ul class="select_list grid_3">
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
-                                <li id="select_item">
-                                    <button class="select_link buy">
-                                        <div class="link_inner">
-                                            <div class="size">220</div>
-                                            <div class="price">180,000</div>
-                                        </div>
-                                    </button>
-                                </li>
+								<c:forEach items="${ voList }" var="vo">
+	                            	<li id="select_item">
+	                                    <button type="button" class="select_link buy" onclick="f01('46', '${ vo.price }', '${ vo.shoesSizes }' )">
+	                                        <div class="link_inner">
+	                                            <div class="size">${ vo.shoesSizes }</div>
+	                                            <div class="price">${ vo.price }</div>
+	                                        </div>
+	                                    </button>
+	                                </li>
+                                </c:forEach>
                             </ul>
                         </div>
                         <div class="order_btn_area">
-                            <button class="btn_order order_buy buy clickable">
-                                <div class="box">
-                                    <div class="order_price">180,000</div>
-                                    <div class="order_desc">선불발송</div>
-                                </div>
-                            </button>
+                            <form action="/shoekream/sell/check" method="post">
+                                <button class="btn_order order_buy buy clickable" disabled="disabled">
+                                    <div class="box">
+                                        <input class="products_No" value="" type="hidden" name="productsNo">
+                                        <input class="products_price" value="" type="hidden" name="price">
+                                        <input class="products_size" type="hidden" name="size">
+                                        <div class="order_price">-</div>
+                                        <div class="order_desc">5-7일소요</div>
+                                    </div>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-        
 
     <footer>
         <div class="box1"></div>
@@ -264,7 +114,7 @@
                     <img src="/shoekream/resources/img/footer/페북.png" alt="페북">
                 </div>
                 <div>
-                    <img src="/shoekream/resources/img/footer/카톡.png" alt="카톡">
+                    <img src="/shoekream/resources/img/footer//카톡.png" alt="카톡">
                 </div>
             </div>
             <div></div>
@@ -274,12 +124,6 @@
         </div>
         <div class="box4"></div>
     </footer>
-
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
 
 </body>
 </html>

@@ -42,7 +42,7 @@ public class BuyCheckController extends HttpServlet{
 			BiddingService bs = new BiddingService();
 			BiddingVo dbVo = bs.productInfo(vo);
 
-				System.out.println("BuyCheckController 에러확인 dbVo : " + dbVo);
+//				System.out.println("BuyCheckController 에러확인 dbVo : " + dbVo);
 				
 			if (dbVo == null) {
 				throw new Exception("예외 발생 : dbVo == null");
