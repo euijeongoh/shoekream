@@ -731,7 +731,7 @@ public class MyPageDao {
 	// 구매입찰 내역 상세 조회
 	public BiddingDetailVo selectBiddingDetail(Connection conn, String bidNo) throws Exception {
 		// sql
-		String sql = "SELECT IMG.THUMBNAIL THUMBNAIL , P.MODEL_NUMBER MODEL_NO , P.NAME NAME , P.NAME_KO NAME_KO , SS.SHOES_SIZES  SIZES , BS.BIDDING_STATUS BID_STATUS , SUBSTR(TO_CHAR(B.EXPIRE_DATE), 1, 8) EXPIRE_DATE, B.PRICE PRICE FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO LEFT JOIN MEMBER M ON M.NO = B.MEMBER_NO LEFT JOIN ADDERSS_BOOK AB ON AB.MEMBER_NO = M.NO LEFT JOIN CARD C ON C.MEMBER_NO = M.NO LEFT JOIN CARD_COMPANY CC ON CC.NO = C.CARD_COMPANY_NO WHERE B.NO = ?";
+		String sql = "SELECT IMG.THUMBNAIL THUMBNAIL , P.MODEL_NUMBER MODEL_NO , P.NAME NAME , P.NAME_KO NAME_KO , SS.SHOES_SIZES  SIZES , BS.BIDDING_STATUS BID_STATUS , SUBSTR(TO_CHAR(B.EXPIRE_DATE), 1, 8) EXPIRE_DATE , B.PRICE PRICE , AB.ADDRES_NAME ADDRESS_NAME , AB.ADDRES ADDRESS , AB.DETAIL_ADDRES DETAIL_ADDRESS , AB.PHONE_NUMBER PHONE , C.CARD_NUMBER CARD_NUMBER , CC.CARD_COMPANY_NAME CARD_COMPANY FROM BIDDING B LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO LEFT JOIN MEMBER M ON M.NO = B.MEMBER_NO LEFT JOIN ADDERSS_BOOK AB ON AB.MEMBER_NO = M.NO LEFT JOIN CARD C ON C.MEMBER_NO = M.NO LEFT JOIN CARD_COMPANY CC ON CC.NO = C.CARD_COMPANY_NO WHERE B.NO = ? AND AB.DEFAULT_ADDRESS_YN = 'Y'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, bidNo);
 		ResultSet rs = pstmt.executeQuery();
@@ -746,6 +746,12 @@ public class MyPageDao {
 			String bidStatus = rs.getString("BID_STATUS");
 			String expireDate = rs.getString("EXPIRE_DATE");
 			int bidPrice = rs.getInt("PRICE");
+			String addressName = rs.getString("ADDRESS_NAME");
+			String address = rs.getString("ADDRESS");
+			String detailAddress = rs.getString("DETAIL_ADDRESS");
+			String phone = rs.getString("PHONE");
+			String cardNumber = rs.getString("CARD_NUMBER");
+			String cardCompany = rs.getString("CARD_COMPANY");
 			
 			vo = new BiddingDetailVo();
 			vo.setProductImg(productImg);
@@ -758,6 +764,12 @@ public class MyPageDao {
 			vo.setBidPrice(bidPrice);
 			vo.setCommission(bidPrice);
 			vo.setFinalPrice(bidPrice, vo.getCommission());
+			vo.setAddressName(addressName);
+			vo.setAddress(address);
+			vo.setDetailAddress(detailAddress);
+			vo.setPhone(phone);
+			vo.setCardNumber(cardNumber);
+			vo.setCardCompany(cardCompany);
 			
 		}
 		
@@ -768,25 +780,57 @@ public class MyPageDao {
 		return vo;
 	}
 
-//	public OrderDetailVo getOrderDetail(Connection conn, String orderNo) {
-//		// sql
-//		String sql = "SELECT IMG.THUMBNAIL THUMBNAIL , P.MODEL_NUMBER MODEL_NO , P.NAME NAME , P.NAME_KO NAME_KO , SS.SHOES_SIZES  SIZES , OS.ORDERS_STATUS ORDER_STATUS , SUBSTR(TO_CHAR(O.ORDERS_DATE), 1, 8) FROM ORDERS O LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN BIDDING_STATUS BS ON B.BIDDING_STATUS_NO = BS.NO LEFT JOIN MEMBER M ON M.NO = B.MEMBER_NO LEFT JOIN ADDERSS_BOOK AB ON AB.MEMBER_NO = M.NO LEFT JOIN CARD C ON C.MEMBER_NO = M.NO LEFT JOIN CARD_COMPANY CC ON CC.NO = C.CARD_COMPANY_NO WHERE O.NO = ?";
-//		PreparedStatement pstmt = conn.prepareStatement(sql);
-//		pstmt.setString(1, orderNo);
-//		
-//		ResultSet rs = pstmt.executeQuery();
-//		
-//		if(rs.next()) {
-//			String productImg = rs.getString("THUMBNAIL");
-//			String modelNumber = rs.getString("MODEL_NO");
-//			String productName = rs.getString("NAME");
-//			String productNameKo = rs.getString("NAME_KO");
-//			String productSize = rs.getString("SIZES");
-//			String bidStatus = 
-//		}
-//		
-//		return null;
-//	}
+public OrderDetailVo getOrderDetail(Connection conn, String orderNo) throws Exception {
+	// sql
+	String sql = "SELECT IMG.THUMBNAIL THUMBNAIL, P.MODEL_NUMBER MODEL_NO, P.NAME NAME, P.NAME_KO NAME_KO, SS.SHOES_SIZES SIZES, OS.ORDERS_STATUS ORDER_STATUS, SUBSTR(TO_CHAR(O.ORDERS_DATE), 1, 8) ORDER_DATE, O.TOTAL_PRICE TOTAL_PRICE, O.COMMISSION COMMISSION, B.PRICE BID_PRICE, AB.ADDRES_NAME ADDRESS_NAME, AB.ADDRES ADDRESS, AB.DETAIL_ADDRES DETAIL_ADDRESS, AB.PHONE_NUMBER PHONE, C.CARD_NUMBER CARD_NUMBER, CC.CARD_COMPANY_NAME CARD_COMPANY FROM ORDERS O LEFT JOIN BIDDING B ON O.BIDDING_NO = B.NO LEFT JOIN PRODUCTS P ON B.PRODUCTS_NO = P.NO LEFT JOIN PRODUCT_SIZES PS ON B.PRODUCTS_SIZES_NO = PS.NO LEFT JOIN SHOES_SIZES SS ON PS.SHOES_SIZES_NO = SS.NO LEFT JOIN IMAGE IMG ON IMG.PRODUCT_NO = P.NO LEFT JOIN ORDERS_STATUS OS ON OS.NO = O.ORDERS_STATUS_NO LEFT JOIN MEMBER M ON M.NO = O.MEMBER_NO LEFT JOIN ADDERSS_BOOK AB ON AB.MEMBER_NO = M.NO LEFT JOIN CARD C ON C.MEMBER_NO = M.NO LEFT JOIN CARD_COMPANY CC ON CC.NO = C.CARD_COMPANY_NO WHERE O.NO = ? AND AB.DEFAULT_ADDRESS_YN = 'Y';";
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, orderNo);
+	
+	ResultSet rs = pstmt.executeQuery();
+	
+	OrderDetailVo vo = null;
+	if(rs.next()) {
+		String productImg = rs.getString("THUMBNAIL");
+		String modelNumber = rs.getString("MODEL_NO");
+		String productName = rs.getString("NAME");
+		String productNameKo = rs.getString("NAME_KO");
+		String productSize = rs.getString("SIZES");
+		String orderStatus = rs.getString("ORDER_STATUS");
+		String orderDate = rs.getString("ORDER_DATE");
+		String bidPrice = rs.getString("BID_PRICE");
+		String commission = rs.getString("COMMISSION");
+		String finalPrice = rs.getString("TOTAL_PRICE");
+		String addressName = rs.getString("ADDRESS_NAME");
+		String address = rs.getString("ADDRESS");
+		String detailAddress = rs.getString("DETAIL_ADDRESS");
+		String phone = rs.getString("PHONE");
+		String cardNumber = rs.getString("CARD_NUMBER");
+		String cardCompany = rs.getString("CARD_COMPANY");
+		
+		
+		vo = new OrderDetailVo();
+		vo.setProductImg(productImg);
+		vo.setModelNumber(modelNumber);
+		vo.setProductName(productName);
+		vo.setProductNameKo(productNameKo);
+		vo.setProductSize(productSize);
+		vo.setOrderStatus(orderStatus);
+		vo.setBidPrice(bidPrice);
+		vo.setCommission(commission);
+		vo.setFinalPrice(finalPrice);
+		vo.setAddressName(addressName);
+		vo.setAddress(address);
+		vo.setDetailAddress(detailAddress);
+		vo.setPhone(phone);
+		vo.setCardNumber(cardNumber);
+		vo.setCardCompany(cardCompany);
+	}
+	
+	JDBCTemplate.close(rs);
+	JDBCTemplate.close(pstmt);
+	
+	return vo;
+}
 
 
 }

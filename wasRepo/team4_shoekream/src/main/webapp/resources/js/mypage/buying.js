@@ -202,7 +202,7 @@ function pendTabAjax() {
 		      detailBtn.className = "detail-btn"
 		      detailBtn.innerHTML = "상세내역";
 		      detailBtn.onclick = () => {
-		        location.href = "/shoekream/buy/order?memberNo='" + data[i].memberNo + "&biddingNo=" + data[i].biddingNo + "&productsNo=" + data[i].productNo;
+		        location.href = "/shoekream/order/detail?orderNo='" + item.orderNo;
 		      };
 		      li2.innerHTML = item.orderStatus;
 		      li3.innerHTML = item.orderDate;

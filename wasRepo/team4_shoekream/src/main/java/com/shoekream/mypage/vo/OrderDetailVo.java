@@ -1,18 +1,16 @@
 package com.shoekream.mypage.vo;
 
-public class BiddingDetailVo {
+public class OrderDetailVo {
 	
 	private String productImg;
 	private String modelNumber;
 	private String productName;
 	private String productNameKo;
 	private String productSize;
-	
-	private String bidStatus;
-	private String bidExpireDate;
-	private int bidPrice;
-	private int commission;
-	private int finalPrice;
+	private String orderStatus;
+	private String bidPrice;
+	private String finalPrice;
+	private String commission;
 	
 	private String addressName;
 	private String phone;
@@ -20,16 +18,11 @@ public class BiddingDetailVo {
 	private String detailAddress;
 	private String cardCompany;
 	private String cardNumber;
-	
-	public BiddingDetailVo() {
+	public OrderDetailVo() {
 		
 	}
-	
-	
-	
-
-	public BiddingDetailVo(String productImg, String modelNumber, String productName, String productNameKo,
-			String productSize, String bidStatus, String bidExpireDate, int bidPrice, int commission, int finalPrice,
+	public OrderDetailVo(String productImg, String modelNumber, String productName, String productNameKo,
+			String productSize, String orderStatus, String bidPrice, String finalPrice, String commission,
 			String addressName, String phone, String address, String detailAddress, String cardCompany,
 			String cardNumber) {
 		super();
@@ -38,11 +31,10 @@ public class BiddingDetailVo {
 		this.productName = productName;
 		this.productNameKo = productNameKo;
 		this.productSize = productSize;
-		this.bidStatus = bidStatus;
-		this.bidExpireDate = bidExpireDate;
+		this.orderStatus = orderStatus;
 		this.bidPrice = bidPrice;
-		this.commission = commission;
 		this.finalPrice = finalPrice;
+		this.commission = commission;
 		this.addressName = addressName;
 		this.phone = phone;
 		this.address = address;
@@ -50,185 +42,105 @@ public class BiddingDetailVo {
 		this.cardCompany = cardCompany;
 		this.cardNumber = cardNumber;
 	}
-
-
-
-
 	public String getProductImg() {
 		return productImg;
 	}
-
-
 	public void setProductImg(String productImg) {
 		this.productImg = productImg;
 	}
-
-
 	public String getModelNumber() {
 		return modelNumber;
 	}
-
-
 	public void setModelNumber(String modelNumber) {
 		this.modelNumber = modelNumber;
 	}
-
-
 	public String getProductName() {
 		return productName;
 	}
-
-
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-
-
 	public String getProductNameKo() {
 		return productNameKo;
 	}
-
-
 	public void setProductNameKo(String productNameKo) {
 		this.productNameKo = productNameKo;
 	}
-
-
 	public String getProductSize() {
 		return productSize;
 	}
-
-
 	public void setProductSize(String productSize) {
 		this.productSize = productSize;
 	}
-
-
-	public String getBidStatus() {
-		return bidStatus;
+	public String getOrderStatus() {
+		return orderStatus;
 	}
-
-
-	public void setBidStatus(String bidStatus) {
-		this.bidStatus = bidStatus;
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
-
-
-	public String getBidExpireDate() {
-		return bidExpireDate;
-	}
-
-
-	public void setBidExpireDate(String bidExpireDate) {
-		this.bidExpireDate = bidExpireDate;
-	}
-
-
-	public int getBidPrice() {
+	public String getBidPrice() {
 		return bidPrice;
 	}
-
-
-	public void setBidPrice(int bidPrice) {
+	public void setBidPrice(String bidPrice) {
 		this.bidPrice = bidPrice;
 	}
-
-	public int getCommission() {
-		return commission;
-	}
-	
-	public void setCommission(int bidPrice) {
-		this.commission = (int)((Math.round(bidPrice*0.03)*0.01)*100);
-	}
-	
-	public int getFinalPrice() {
+	public String getFinalPrice() {
 		return finalPrice;
 	}
-	
-	public void setFinalPrice(int bidPrice, int commission) {
-		this.finalPrice = bidPrice + commission + 3000;
+	public void setFinalPrice(String finalPrice) {
+		this.finalPrice = finalPrice;
 	}
-
-
+	public String getCommission() {
+		return commission;
+	}
+	public void setCommission(String commission) {
+		this.commission = commission;
+	}
 	public String getAddressName() {
 		return addressName;
 	}
-
-
 	public void setAddressName(String addressName) {
 		this.addressName = addressName;
 	}
-
-
 	public String getPhone() {
 		return phone;
 	}
-
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-
 	public String getAddress() {
 		return address;
 	}
-
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-
-	public String getCardCompany() {
-		return cardCompany;
-	}
-
-
-	public void setCardCompany(String cardCompany) {
-		this.cardCompany = cardCompany;
-	}
-
-
-	public String getCardNumber() {
-		return cardNumber;
-	}
-
-
-	public void setCardNumber(String cardNumber) {
-		this.cardNumber = cardNumber;
-	}
-
-	
-	
-	
 	public String getDetailAddress() {
 		return detailAddress;
 	}
-
-
-
-
 	public void setDetailAddress(String detailAddress) {
 		this.detailAddress = detailAddress;
 	}
-
-
-
-
+	public String getCardCompany() {
+		return cardCompany;
+	}
+	public void setCardCompany(String cardCompany) {
+		this.cardCompany = cardCompany;
+	}
+	public String getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
 	@Override
 	public String toString() {
-		return "BiddingDetailVo [productImg=" + productImg + ", modelNumber=" + modelNumber + ", productName="
-				+ productName + ", productNameKo=" + productNameKo + ", productSize=" + productSize + ", bidStatus="
-				+ bidStatus + ", bidExpireDate=" + bidExpireDate + ", bidPrice=" + bidPrice + ", commission="
-				+ commission + ", finalPrice=" + finalPrice + ", addressName=" + addressName + ", phone=" + phone
-				+ ", address=" + address + ", detailAddress=" + detailAddress + ", cardCompany=" + cardCompany
-				+ ", cardNumber=" + cardNumber + "]";
+		return "OrderDetailVo [productImg=" + productImg + ", modelNumber=" + modelNumber + ", productName="
+				+ productName + ", productNameKo=" + productNameKo + ", productSize=" + productSize + ", orderStatus="
+				+ orderStatus + ", bidPrice=" + bidPrice + ", finalPrice=" + finalPrice + ", commission=" + commission
+				+ ", addressName=" + addressName + ", phone=" + phone + ", address=" + address + ", detailAddress="
+				+ detailAddress + ", cardCompany=" + cardCompany + ", cardNumber=" + cardNumber + "]";
 	}
-
-
-
-
+	
 	
 	
 }
