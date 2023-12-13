@@ -46,21 +46,19 @@ public class BuyingFinishedController extends HttpServlet{
 			TypeReference<Map<String, String>> typeReference = new TypeReference<Map<String, String>>() {};
 			Map<String, String> map = mapper.readValue(jsonStr, typeReference);
 			
-			
 			// service 호출
 			MyPageService service = new MyPageService();
 			List<OrdersHistoryVo> finishedList = service.viewBuyingFinishedList(loginMember, map);
-			
+			System.out.println(finishedList);
 			// result json으로 변환 후 응답
 			PrintWriter out = resp.getWriter();
 			String finishedListJson = mapper.writeValueAsString(finishedList);
-			System.out.println(finishedListJson);
 			out.write(finishedListJson);
 			
 			out.close();
 			
 		} catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 	}

@@ -52,9 +52,8 @@
                         <input type="date" name="startDate" id="startDate">
                         <span>~</span>
                         <input type="date" name="endDate" id="endDate">
-                        <input type="text" name="tab" id="tab" hidden>
+                        <input type="text" name="tab" id="tab" hidden value="bidding">
                         <input type="button" value="조회" onclick="chooseAjax();">
->
                     </form>
                 </div>
 

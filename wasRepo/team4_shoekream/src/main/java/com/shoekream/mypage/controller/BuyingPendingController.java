@@ -65,7 +65,7 @@ public class BuyingPendingController extends HttpServlet{
 			
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);		
 			List<OrdersHistoryVo> pendList = service.viewBuyingPendingList(loginMember, map);
-			
+			System.out.println(pendList);
 			// 데이터 가공(map)
 			Map<String, Object> respMap = new HashMap<String, Object>();
 			respMap.put("pvo", pvo);
@@ -74,7 +74,6 @@ public class BuyingPendingController extends HttpServlet{
 			// result json으로 변환 후 응답
 			PrintWriter out = resp.getWriter();
 			String respJson = mapper.writeValueAsString(respMap);
-			System.out.println(respJson);
 			out.write(respJson);
 			
 			out.close();

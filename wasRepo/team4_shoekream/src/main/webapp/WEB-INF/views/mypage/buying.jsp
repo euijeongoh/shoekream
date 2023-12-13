@@ -54,7 +54,7 @@
                         <input type="date" name="endDate" id="endDate">
                         <input type="text" name="tab" id="tab" hidden>
                         <input type="button" value="조회" onclick="chooseAjax();">
->
+
                     </form>
                 </div>
 
