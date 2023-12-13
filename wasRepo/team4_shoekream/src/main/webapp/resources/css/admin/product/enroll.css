@@ -104,32 +104,7 @@ header .main-list li {
     color: black;
 }
 
-/*사이드 메뉴*/
-.side-body {
-    display: flex;
-    width: 1200px;
-    justify-content: space-between;
-    margin : auto;
-}
-.sidebar{
-    margin-right: 20px; /* 오른쪽 여백 추가 */
-    width: 180px;
-    font-size: 22px;
-}
- .sidebar :visited, .sidebar :link, .sidebar :hover, .sidebar :active{
-    text-decoration: none;
-    color: black;
-}
-.sidebar a{
-    font-family: 'Pretendard';
-} 
-.sidenav_menu{
-    list-style: none;
-    padding-left: 0px;
-}
-.sidenav_list{
-    font-size: 20px;
-}
+
 .menu_link{
     font-size: 16px;
     color: rgb(141, 141, 141);
@@ -140,10 +115,10 @@ header .main-list li {
     justify-content: space-between;
     flex-direction: row; /* 상품 등록 영역의 요소들을 가로로 배치 */
     align-items: center;
-    width: 800px;
+    width: 1000px;
 }
 #product-image-container{
-	padding: 40px;
+/*	padding: 40px;*/
 	display: flex;
     justify-content: center;
     align-items: center;
@@ -186,6 +161,7 @@ header .main-list li {
     width: 100%; /* 나머지 48%로 설정 */
     box-sizing: border-box;
     padding: 20px;
+    margin-left: 40px;
 }
 
 #product-information form {
@@ -239,21 +215,10 @@ header .main-list li {
     flex-direction: column;
     flex-wrap: wrap;
 }
-/*.sidebar{*/
-/*    margin-left: auto;*/
-/*    margin-right: 20px;  오른쪽 여백 */
-/*    width: 180px;*/
-/*    font-size: 22px;*/
-/*     기타 필요한 스타일 속성 추가 */
-/*}.side-body {*/
-/*    display: flex;*/
-/*    width: 1200px;*/
-/*    justify-content: flex-start;*/
-/*}*/
+
 
 .wrap{
 	display: flex;
-	margin: auto;
 	width: 100%;
 	justify-content: center;
 }

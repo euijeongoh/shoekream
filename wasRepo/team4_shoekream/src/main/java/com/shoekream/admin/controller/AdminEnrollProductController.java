@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.shoekream.admin.manager.vo.ManagerVo;
 import com.shoekream.admin.service.AdminEnrollProductService;
 import com.shoekream.admin.vo.EnrollProductVo;
 @MultipartConfig(
@@ -33,7 +34,11 @@ public class AdminEnrollProductController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			
+			ManagerVo loginMenager = (ManagerVo) req.getSession().getAttribute("loginAdmin");
+
+			if (loginMenager == null) {
+				throw new Exception();
+			}
 			
 			//db에서 먼저 체크할 데이터들
 			String category = req.getParameter("category");

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.shoekream.admin.manager.vo.ManagerVo;
 import com.shoekream.admin.service.AdminEnrollProductService;
 import com.shoekream.admin.service.AdminProductListService;
 import com.shoekream.admin.vo.EnrollProductVo;
@@ -32,7 +33,11 @@ public class AdminProductEditController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			
+			ManagerVo loginMenager = (ManagerVo) req.getSession().getAttribute("loginAdmin");
+
+			if (loginMenager == null) {
+				throw new Exception();
+			}
 			//상품의 기존 정보 가져오기
 			String no = req.getParameter("no");
 			String name = req.getParameter("name");
@@ -71,6 +76,11 @@ public class AdminProductEditController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			ManagerVo loginMenager = (ManagerVo) req.getSession().getAttribute("loginAdmin");
+
+			if (loginMenager == null) {
+				throw new Exception();
+			}
 			req.setCharacterEncoding("UTF-8");
 			Part f = req.getPart("f");
 			
