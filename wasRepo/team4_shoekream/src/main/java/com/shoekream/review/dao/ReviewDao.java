@@ -19,13 +19,13 @@ public class ReviewDao {
 	public int write(Connection conn, ReviewVo vo) throws Exception {
 		
 	 //SQL
-	  String sql = "INSERT INTO REVIEW(NO, MEMBER_NO, PRODUCT_NO, COMFORT_NO, CONTENT) VALUES(SEQ_REVIEW_NO.NEXTVAL, ?, ?, ?, ?)";
+	  String sql = "INSERT INTO REVIEW(NO, MEMBER_NO, PRODUCT_NO, COMFORT_NO, CONTENT, REVIEW_IMAGE) VALUES(SEQ_REVIEW_NO.NEXTVAL, ?, ?, ?, ?, ?)";
       PreparedStatement pstmt = conn.prepareStatement(sql);
-//      pstmt.setString(1, vo.getNo());
       pstmt.setString(1, vo.getMemberNo());
       pstmt.setString(2, vo.getProductNo());
       pstmt.setString(3, vo.getComfortNo());
       pstmt.setString(4, vo.getContent());
+      pstmt.setString(5, vo.getReviewImage());
 //      pstmt.setString(5, vo.getLikeBtn());
 //      pstmt.setString(6,  vo.getReviewImage());
       int result = pstmt.executeUpdate();
@@ -38,7 +38,7 @@ public class ReviewDao {
 	
 
 	//내 리뷰 목록조회 (리스트)
-	public List<ReviewVo> myReviewList(Connection conn) throws Exception {
+	public List<ReviewVo> myReviewList(Connection conn, MemberVo loginMember) throws Exception {
 		
 		//sql
 		String sql = "SELECT NO, LIKE_BTN, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM REVIEW WHERE DEL_YN = 'N' ORDER BY ENROLL_DATE DESC";

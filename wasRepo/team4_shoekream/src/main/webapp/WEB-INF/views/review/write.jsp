@@ -6,9 +6,7 @@
     pageEncoding="UTF-8"%>
     
     <%
-    	List<ReviewVo> reviewVoList = (List<ReviewVo>)request.getAttribute("ReviewVoList");
     	EnrollProductVo productVo = (EnrollProductVo) request.getAttribute("productVo");
-    	ReviewProductVo reviewVo = (ReviewProductVo) request.getAttribute("reviewVo");
     %>
     
 <!DOCTYPE html>
@@ -41,6 +39,7 @@
             </div>
 
         <form action="/shoekream/review/write" method="post" id="reviewForm" enctype="multipart/form-data">
+            
             <div class="ggg">
                 <div class="ignition">
                     <div class="wignition">
@@ -67,7 +66,7 @@
         
             <div class="upload">
                 <p id="wupload"><b>사진 업로드</b></p>
-                <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
+                <input type="file" id="file-input" name="f" accept="image/*" onchange="previewImage(event)">
                 <div>
                     <div class="upload_picture">
                         <img src="" alt="" id="reviewpng">
@@ -83,6 +82,10 @@
                     <li id="update_detail"><input type="reset" value="초기화" onclick="resetForm(event)"></li>
                 </ul>
             </div>
+            
+            
+            
+            
         </form>
             
         </div>
@@ -146,10 +149,5 @@
         document.getElementById('reviewpng').src = '#';
     }
 </script>
-
-
-
-</script>
-
 
 
