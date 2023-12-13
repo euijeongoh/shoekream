@@ -17,7 +17,7 @@ public class QnaDao {
 		public List<QnaVo> QnaList(Connection conn, PageVo pvo) throws Exception{
 			
 			//sql
-			String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT Q.NO, M.NICKNAME, Q.TITLE, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO ORDER BY Q.NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
+			String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT Q.NO, M.NICKNAME, Q.TITLE, TO_CHAR(Q.ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, REPLY_TITLE FROM QNA_BOARD Q JOIN MEMBER M ON Q.MEMBER_NO = M.NO ORDER BY Q.NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pvo.getStartRow());
 			pstmt.setInt(2, pvo.getLastRow());
@@ -30,6 +30,7 @@ public class QnaDao {
 				String nickname = rs.getString("NICKNAME");
 				String title = rs.getString("TITLE");
 				String enrollDate = rs.getString("ENROLL_DATE");
+				String replyTitle = rs.getString("REPLY_TITLE");
 				
 				QnaVo vo = new QnaVo();
 				
@@ -37,6 +38,7 @@ public class QnaDao {
 				vo.setMemberNick(nickname);
 				vo.setTitle(title);
 				vo.setEnrollDate(enrollDate);
+				vo.setReplyTitle(replyTitle);
 				
 				qnaVoList.add(vo);
 			}

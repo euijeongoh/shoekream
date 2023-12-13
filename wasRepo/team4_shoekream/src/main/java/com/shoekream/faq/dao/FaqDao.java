@@ -17,7 +17,7 @@ public class FaqDao {
 	public List<FaqVo> FaqList(Connection conn, PageVo pvo) throws Exception{
 		
 		//sql
-		String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM FAQ_BOARD WHERE DEL_YN = 'N' ORDER BY NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
+		String sql = "SELECT * FROM    ( SELECT ROWNUM RNUM, T.* FROM ( SELECT NO, TITLE, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, HIT FROM FAQ_BOARD WHERE DEL_YN = 'N' ORDER BY NO DESC) T ) WHERE RNUM BETWEEN ? AND ? ";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, pvo.getStartRow());
 		pstmt.setInt(2, pvo.getLastRow());
@@ -29,12 +29,14 @@ public class FaqDao {
 			String no = rs.getString("NO");
 			String title = rs.getString("TITLE");
 			String enrollDate = rs.getString("ENROLL_DATE");
+			String hit = rs.getString("HIT");
 			
 			FaqVo vo = new FaqVo();
 			
 			vo.setNo(no);
 			vo.setTitle(title);
 			vo.setEnrollDate(enrollDate);
+			vo.setHit(hit);
 			
 			faqVoList.add(vo);
 		}

@@ -21,8 +21,13 @@
 			<div class="board_wrap">
 				<div class="board_title">FAQ</div>
 				<div class="dropdown_head">
-					<div class="date"><%= vo.getEnrollDate() %></div>
-					<div class="faq_title"> <%= vo.getTitle()%> </div>
+					<div class="date_box">
+						<div class="date"><%= vo.getEnrollDate() %></div>
+					</div>
+					<div class="faq_box">
+						<div class="faq_title"> <%= vo.getTitle()%> </div>
+						<div class="faq_hit"> 조회수: <%= vo.getHit() %></div>
+					</div>
 				</div>
 				<div class="dropdown_content">
 					<div class="content">

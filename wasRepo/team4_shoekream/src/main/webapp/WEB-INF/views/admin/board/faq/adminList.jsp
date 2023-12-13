@@ -45,7 +45,8 @@
 					<li>
 					<a href="/shoekream/admin/faq/detail?no=<%= vo.getNo() %>">
 							<div class="dropdown"><%= vo.getTitle() %></div>
-							<div class="date"><%= vo.getEnrollDate() %></div>
+							<div class="hit"><%= vo.getHit() %></div>
+							<div class="date"><%= vo.getEnrollDate() %></div>	
 					</a>
 					</li>
 					<% } %>
