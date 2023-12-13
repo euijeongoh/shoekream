@@ -110,6 +110,16 @@ public class AdminProductListService {
 		
 		return dbVo;
 	}
+	public List<EnrollProductVo> searchFilterProduct(EnrollProductVo filterVo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		AdminEnrollProductDao dao = new AdminEnrollProductDao();
+		
+		List<EnrollProductVo> dbVoList = dao.searchFilterProduct(conn, filterVo);
+		
+		JDBCTemplate.close(conn);
+		return dbVoList;
+	}
 
 
 }

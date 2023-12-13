@@ -52,7 +52,7 @@ main {
 }
 
 /* 이미지 스타일 설정 */
-img {
+#pro_img {
     width: 100%;
     height: 500px;
 }
@@ -287,6 +287,151 @@ li a {
 }
 
 /* 추가 스타일 필요시 여기에 작성... */
+
+
+
+
+/* 체결 거래 테이블 스타일 */
+.wrap_bids table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.wrap_bids th,
+.wrap_bids td {
+    padding: 10px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.wrap_bids th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: 600;
+}
+
+.wrap_bids tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.wrap_bids tr:hover {
+    background-color: #f1f1f1;
+}
+
+.wrap_bids th:first-child,
+.wrap_bids td:first-child {
+    border-left: none;
+}
+
+.wrap_bids th:last-child,
+.wrap_bids td:last-child {
+    border-right: none;
+}
+
+/* 테이블 헤더 및 테이블 내용 폰트 스타일 */
+.wrap_bids thead th {
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+
+.wrap_bids tbody td {
+    color: #555;
+}
+
+/* 체결 거래 탭 스타일 */
+.tab_area {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab_area .tab_list {
+    border-bottom: 2px solid #ddd;
+}
+
+.tab_area .tab_list li {
+    margin-right: 20px;
+}
+
+.tab_area .tab_list li a {
+    padding: 10px 15px;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+}
+
+.tab_area .tab_list li a:hover,
+.tab_area .tab_list li.item_on a {
+    color: rgb(192, 192, 192);
+    border-bottom: 2px solid rgb(192, 192, 192);
+}
+/* .item_link 스타일 */
+.item_link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: rgb(192, 192, 192); /* 배경색 */
+    color: white; /* 글씨 색상 */
+    font-size: 16px;
+    text-decoration: none; /* 밑줄 제거 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 색상 전환 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+}
+
+.item_link:hover, .item_link:focus {
+    background-color: rgb(192, 192, 192); /* 호버 시 배경색 */
+    color: #fff; /* 호버 시 글씨 색상 */
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
+
+/* 선택된 .item_link 스타일 */
+.item_link.active {
+    background-color: rgb(192, 192, 192); /* 활성화 시 배경색 */
+    color: #fff; /* 활성화 시 글씨 색상 */
+}
+/* 탭 컨테이너 스타일 */
+.tab_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8; /* 배경색 */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    margin-bottom: 20px;
+}
+
+/* 탭 리스트 스타일 */
+.tab_area .tab_list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    border-bottom: 3px solid #ddd;
+    margin: 0;
+}
+
+/* 개별 탭 스타일 */
+.tab_area .tab_list li {
+    margin: 0 10px;
+}
+
+.tab_area .tab_list li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    padding-bottom: 5px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+/* 탭 호버 및 활성화 상태 스타일 */
+.tab_area .tab_list li a:hover,
+.tab_area .tab_list li a.active {
+    color: rgb(192, 192, 192); /* 호버 또는 활성화된 탭의 글씨 색상 */
+    border-bottom: 3px solid rgb(192, 192, 192); /* 호버 또는 활성화된 탭의 밑줄 색상 */
+}
 
 .buy_btn{
 	width: 200px;

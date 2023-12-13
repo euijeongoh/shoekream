@@ -168,5 +168,18 @@ public class AdminEnrollProductService {
 		JDBCTemplate.close(conn);
 		return dbVo;
 	}
+
+	public int deleteEnrolledProductSize(String productNo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		AdminEnrollProductDao dao = new AdminEnrollProductDao();
+		int result = dao.deleteEnrolledProductSize(conn, productNo);
+		if(result ==1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.close(conn);
+		}
+				
+		return result;
+	}
 	
 }
