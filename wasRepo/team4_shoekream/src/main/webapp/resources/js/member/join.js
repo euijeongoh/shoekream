@@ -29,9 +29,8 @@ joinInputTagArr[1].addEventListener('keyup', ()=>{
 	
 	if(strId.length>=1 && strId.length < 6) {
 		idCheckDiv.innerHTML="6자 이상 입력해주세요";
-	}
-	
-	if(strId.length>=6){
+		idValid=false;
+	}else {
 		idCheckDiv.innerHTML="";
 		idValid = true;
 	}
@@ -53,12 +52,11 @@ joinInputTagArr[1].addEventListener('keyup', ()=>{
 		if(isDup===true) {
 			idCheckDiv.innerHTML="사용할 수 없는 아이디입니다.(중복)";
 			idValid = false;
+		} else {
+			idValid = true;
 		} 
 		
-		if(isDup===false){
-			idCheckDiv.innerHTML="";
-			idValid = true;
-		}
+		
 	});	
 })
 
