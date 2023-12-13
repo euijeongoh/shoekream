@@ -137,7 +137,7 @@ public class RequestDao {
 		//SQL
 		String sql = "INSERT INTO PRODUCT_REGISTER_REQUEST_BOARD(NO, MEMBER_NO, TITLE, CONTENT ) VALUES(SEQ_PRODUCT_REGISTER_REQUEST_BOARD_NO.NEXTVAL, ?, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, vo.getNo());
+		pstmt.setString(1, vo.getMemberNo());
 		pstmt.setString(2, vo.getTitle());
 		pstmt.setString(3, vo.getContent());
 		int result = pstmt.executeUpdate();
