@@ -1,5 +1,22 @@
+<%@page import="java.util.List"%>
+<%@page import="com.shoekream.mypage.vo.PayInfoVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	PayInfoVo payVo = (PayInfoVo) request.getAttribute("payVo");
+		String first = null;
+		
+		if(payVo != null){
+		first = payVo.getCardNumber().substring(12, 16);
+		}
+		
+		List<PayInfoVo> extraPayInfoVo = (List<PayInfoVo>) request.getAttribute("extraPayInfoVo");
+		String extraFirst = null;
+		
+		for(PayInfoVo pv : extraPayInfoVo){
+		extraFirst = pv.getCardNumber().substring(11, 15);
+		}
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,17 +58,18 @@
 					<div id="overlay" class="overlay"></div>
                     
                 </div>
+                <%if(payVo != null){ %>
                 <div class="my_list">
                     <div class="basic">
                         <div class="my_item" default-mark="기본 결제">
                             <div class="info_bind"><!---->
-                                <div class="card_info"><span class="card_name"> KB</span>
+                                <div class="card_info"><span class="card_name"> <%= payVo.getCardCompanyName() %></span>
                                     <div class="card_num"><span class="num_bind"><span class="dot"><span
                                                     class="dot"></span></span><span class="hyphen"></span><span
                                                 class="dot"><span class="dot"></span></span><span
                                                 class="hyphen"></span><span class="dot"><span
                                                     class="dot"></span></span><span class="hyphen"></span>
-                                            <div d class="last_num_box"><span class="last_num">1039</span></div>
+                                            <div d class="last_num_box"><span class="last_num"><%= first %></span></div>
                                         </span><span class="mark">기본 결제</span></div>
                                 </div>
                             </div>
@@ -59,14 +77,35 @@
                                     data-v-7d49a47c="" href="#" class="btn outlinegrey small"> 삭제 </a></div>
                         </div>
                     </div>
-                    <div class="other" data-v-1c284ef0=""></div>
                 </div>
+                <%for(PayInfoVo pv : extraPayInfoVo){ %>
+                <div class="my_list">
+                    <div class="basic">
+                        <div class="my_item">
+                            <div class="info_bind"><!---->
+                                <div class="card_info"><span class="card_name"> <%= pv.getCardCompanyName() %></span>
+                                    <div class="card_num"><span class="num_bind"><span class="dot"><span
+                                                    class="dot"></span></span><span class="hyphen"></span><span
+                                                class="dot"><span class="dot"></span></span><span
+                                                class="hyphen"></span><span class="dot"><span
+                                                    class="dot"></span></span><span class="hyphen"></span>
+                                            <div d class="last_num_box"><span class="last_num"><%= extraFirst %></span></div>
+                                        </span></div>
+                                </div>
+                            </div>
+                            <div class="btn_bind"><a href="#" class="btn outlinegrey small"> 기본결제 변경 </a></div>
+                            <div class="btn_bind delete"><a href="#" class="btn outlinegrey small"> 삭제 </a></div>
+                        </div>
+                    </div>
+                </div>
+                <%} %>
+                <%} %>
             </div>
         </div>
 	</div>
 
 
-<%@ include file = "/WEB-INF/views/common/footer.jsp" %>
+	<%@ include file = "/WEB-INF/views/common/footer.jsp" %>
 
 </body>
 <script>
