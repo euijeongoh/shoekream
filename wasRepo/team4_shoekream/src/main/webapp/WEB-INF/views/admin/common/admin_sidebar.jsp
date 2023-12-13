@@ -54,8 +54,7 @@
                     </li>
                 </ul>
             </div>
-        </div> 
         </nav>
-    </div>
+        </div> 
 </body>
 </html>

@@ -106,8 +106,8 @@
                                 </select>
                             </td>
                             <td class="status">
-                                <input type="checkbox" value="requires-warehousing">검수완료<br>
                                 <input type="checkbox" value="inspection-completed">입고완료<br>
+                                <input type="checkbox" value="requires-warehousing">검수완료<br>
                                 <input type="checkbox" value="delivery-completed">배송완료<br>
                             </td>
                         </tr>
