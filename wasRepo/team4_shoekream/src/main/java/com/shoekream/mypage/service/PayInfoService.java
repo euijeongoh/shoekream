@@ -4,13 +4,14 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.shoekream.db.util.JDBCTemplate;
+import com.shoekream.mypage.dao.AddressDao;
 import com.shoekream.mypage.dao.PayInfoDao;
 import com.shoekream.mypage.vo.PayInfoVo;
 
 public class PayInfoService {
 
-	public PayInfoVo selectPayInfoList(String no) throws Exception{
-		
+	public PayInfoVo selectPayInfoList(String no) throws Exception {
+
 		Connection conn = JDBCTemplate.getConnection();
 
 		PayInfoDao ad = new PayInfoDao();
@@ -21,8 +22,8 @@ public class PayInfoService {
 		return vo;
 	}
 
-	public List<PayInfoVo> selectExtraPayInfoList(String no) throws Exception{
-		
+	public List<PayInfoVo> selectExtraPayInfoList(String no) throws Exception {
+
 		Connection conn = JDBCTemplate.getConnection();
 
 		PayInfoDao ad = new PayInfoDao();
@@ -33,6 +34,22 @@ public class PayInfoService {
 		return extraVo;
 	}
 
+	public int changeDefault(String no) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
 
+		PayInfoDao ad = new PayInfoDao();
+		int result = ad.changeDefaultYn(conn, no);
+
+		if (result == 2) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+
+		// close
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
 
 }

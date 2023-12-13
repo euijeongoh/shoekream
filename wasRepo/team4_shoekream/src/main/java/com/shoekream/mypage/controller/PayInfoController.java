@@ -27,6 +27,7 @@ public class PayInfoController extends HttpServlet {
 				throw new Exception();
 			}
 			String no = req.getParameter("no");
+			System.out.println(no);
 
 			PayInfoService as = new PayInfoService();
 			PayInfoVo payVo = as.selectPayInfoList(no);
