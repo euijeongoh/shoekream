@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/sell/now.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
-    <body>
+<body>
     <div class="wrap">
         <header>
             <div class="header-inner">
@@ -50,23 +50,7 @@
         <div class="content">
             <div class="buy_immediate">
 
-                <div class="product_info_area">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                            <div class="model_desc">
-                                <p class="size_txt">250</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
 
                 <div class="price_descision_box">
 
@@ -74,14 +58,14 @@
                         <li class="list_item">
                             <p class="title">즉시 구매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">171,000</span>
+                                <span class="price_a">${ buyPrVo.price }</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
                         <li class="list_item">
                             <p class="title">즉시 판매가</p>
                             <div style="display: flex; justify-content: center;">
-                                <span class="price_a">163,000</span>
+                                <span class="price_a">${ sellPrVo.price }</span>
                                 <span class="unit_a">원</span>
                             </div>
                         </li>
@@ -102,7 +86,7 @@
                             <dl class="price_now_box">
                                 <dt class="price_now_title">즉시판매가</dt>
                                 <dd class="price">
-                                    <span class="amount_b">163,000</span>
+                                    <span class="amount_b">${ sellPrVo.price }</span>
                                     <span class="unit_b">원</span>
                                 </dd>
                             </dl>
@@ -145,6 +129,10 @@
                         </dl>
                     </div>
                     <div class="btn_confirm">
+<%--                             <input 					type="hidden" name="loginMemberNo" value="${ loginMember.no }"> --%>
+<%--                             <input 					type="hidden" name="productsNo" value="${ productsNo }"> --%>
+<%--                             <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }"> --%>
+<%--                             <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }"> --%>
                         <a blind class="blind_full_solid_false">계속하기</a>
                         <button class="blind_full_solid_false">즉시 판매 계속</button>
                     </div>
@@ -185,12 +173,6 @@
         </div>
         <div class="box4"></div>
     </footer>
-
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
 
 </body>
 </html>
