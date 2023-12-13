@@ -129,11 +129,11 @@
                         </dl>
                     </div>
                     <div class="btn_confirm">
-                    	<form action="shoekream/sell/nowsattle">
+                    	<form action="/shoekream/sell/nowsattle">
 	                        <input 					type="hidden" name="loginMemberNo" value="${ loginMember.no }">
 	                        <input 					type="hidden" name="productsNo" value="${ productsNo }">
-	                        <input class="buyPrice" type="hidden" name="buyPrice" value="${ buyPrVo.price }">
-	                        <input class="buySize" type="hidden" name="buySize" value="${ buyPrVo.shoesSizes }">
+	                        <input class="buyPrice" type="hidden" name="sellPrice" value="${ sellPrVo.price }">
+	                        <input class="buySize" type="hidden" name="sellSize" value="${ sellPrVo.shoesSizes }">
 	                        <a blind class="blind_full_solid_false">계속하기</a>
 	                        <button class="blind_full_solid_false" type="submit">즉시 판매 계속</button>
                         </form>

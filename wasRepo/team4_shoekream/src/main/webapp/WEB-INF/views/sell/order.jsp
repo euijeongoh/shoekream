@@ -13,39 +13,39 @@
 
     <script defer src="/shoekream/resources/js/bidding/order.js"></script>
 <body>
-<!--     <div class="wrap"> -->
-<!--         <header> -->
-<!--             <div class="header-inner"> -->
-<!--                 <div class="top-list"> -->
-<!--                     <ul> -->
-<!--                         <li><a href="">고객센터</a></li> -->
-<!--                         <li><a href="">마이페이지</a></li> -->
-<!--                         <li><a href="">관심</a></li> -->
-<!--                         <li><a>알림</a></li> -->
-<!--                         <li><a href="">로그인</a></li> -->
-<!--                     </ul> -->
-<!--                 </div> -->
-<!--                 <div class="main-list"> -->
-<!--                     <div class="logo-area"> -->
-<!--                         <a href=""> -->
-<!--                         <img src="/shoekream/resources/img/header/logo.svg"> -->
-<!--                         </a> -->
-<!--                     </div> -->
-<!--                     <div class="center"> -->
-<!--                         <h2 class="h2_buy"> -->
-<%--                             <span>${ trade }${ process }</span> --%>
-<!--                         </h2> -->
-<!--                     </div> -->
-<!--                     <div class="right"> -->
-<!--                         <button type="button" class="btn_standard"> -->
-<!--                             검수기준 -->
-<!--                         </button> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--             </div> -->
-<!--         </header> -->
-<!--     </div> -->
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+    <div class="wrap">
+        <header>
+            <div class="header-inner">
+                <div class="top-list">
+                    <ul>
+                        <li><a href="">고객센터</a></li>
+                        <li><a href="">마이페이지</a></li>
+                        <li><a href="">관심</a></li>
+                        <li><a>알림</a></li>
+                        <li><a href="">로그인</a></li>
+                    </ul>
+                </div>
+                <div class="main-list">
+                    <div class="logo-area">
+                        <a href="">
+                        <img src="/shoekream/resources/img/header/logo.svg">
+                        </a>
+                    </div>
+                    <div class="center">
+                        <h2 class="h2_buy">
+                            <span>${ trade }${ process }</span>
+                        </h2>
+                    </div>
+                    <div class="right">
+                        <button type="button" class="btn_standard">
+                            검수기준
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
     
 
     <div class="container">
@@ -271,38 +271,38 @@
         </div>
     </div>
         
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-<!--     <footer> -->
-<!--         <div class="box1"></div> -->
-<!--         <div class="box2"> -->
-<!--             <div></div> -->
-<!--             <div>고객센터 1588-4444</div> -->
-<!--         </div> -->
-<!--         <div class="box3"> -->
-<!--             <div class="left_bar"> -->
-<!--                 <div>고객지원</div> -->
-<!--                 <div>공지사항</div> -->
-<!--                 <div>1:1문의</div> -->
-<!--                 <div>상품 등록 문의</div> -->
-<!--             </div> -->
-<!--             <div class="icons"> -->
-<!--                 <div> -->
-<!--                     <img src="/shoekream/resources/img/footer/인별.png" alt="인별"> -->
-<!--                 </div> -->
-<!--                 <div> -->
-<!--                     <img src="/shoekream/resources/img/footer/페북.png" alt="페북"> -->
-<!--                 </div> -->
-<!--                 <div> -->
-<!--                     <img src="/shoekream/resources/img/footer/카톡.png" alt="카톡"> -->
-<!--                 </div> -->
-<!--             </div> -->
-<!--             <div></div> -->
-<!--             <div class="faq"> -->
-<!--                 <button>자주 묻는 질문</button> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--         <div class="box4"></div> -->
-<!--     </footer> -->
+
+    <footer>
+        <div class="box1"></div>
+        <div class="box2">
+            <div></div>
+            <div>고객센터 1588-4444</div>
+        </div>
+        <div class="box3">
+            <div class="left_bar">
+                <div>고객지원</div>
+                <div>공지사항</div>
+                <div>1:1문의</div>
+                <div>상품 등록 문의</div>
+            </div>
+            <div class="icons">
+                <div>
+                    <img src="/shoekream/resources/img/footer/인별.png" alt="인별">
+                </div>
+                <div>
+                    <img src="/shoekream/resources/img/footer/페북.png" alt="페북">
+                </div>
+                <div>
+                    <img src="/shoekream/resources/img/footer/카톡.png" alt="카톡">
+                </div>
+            </div>
+            <div></div>
+            <div class="faq">
+                <button>자주 묻는 질문</button>
+            </div>
+        </div>
+        <div class="box4"></div>
+    </footer>
 
 </body>
 </html>

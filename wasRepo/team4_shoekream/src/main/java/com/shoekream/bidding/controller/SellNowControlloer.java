@@ -24,9 +24,10 @@ public class SellNowControlloer extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		try {
+				System.out.println("-----------------/sell/now-----------------");
 			BiddingVo BuyProductInfo = (BiddingVo)req.getSession().getAttribute("BuyProductInfo");
-				System.out.println("-----------------즉시판매-----------------");
 //				System.out.println("BuyNowController 에러확인 BuyProductInfo : " + BuyProductInfo);
 			
 			String productsNo = req.getParameter("productsNo");
