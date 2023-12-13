@@ -7,7 +7,7 @@
 .wrap{
     display: flex;
     width: 100%;
-    height: 100%;
+/*    height: 100%;*/
     justify-content: center;
     /* background-color: yellow; */
 }
@@ -15,13 +15,13 @@
 .wrap_inner{
     display: flex;
     width: 1200px;
-    height: 1220px;
+/*    height: 1220px;*/
     /* margin-left: auto; *
     /* margin-right:auto; */
     padding-left :40px;
     padding-top : 40px;
     padding-right: 40px;
-    padding-bottom: 160px;;
+/*    padding-bottom: 160px;;*/
     /* background-color: blue; */
     justify-content: center;
 }
@@ -29,7 +29,7 @@
 .board_wrap{
     display: flex;
     width: 1000px;
-    height: 1220px;
+/*    height: 1220px;*/
     flex-direction: column;
     /* background-color:antiquewhite; */
  }
@@ -60,7 +60,7 @@
 }
 .qna_box{
 	display: flex;
-	width: 1000px;
+/*	width: 1000px;*/
 /*	height: 50px;*/
 	justify-content: space-between;
 }

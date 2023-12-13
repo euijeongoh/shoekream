@@ -23,6 +23,9 @@ public class FaqListController extends HttpServlet{
 		FaqService fs = new FaqService();
 
 		try {
+			
+		String x = req.getParameter("x");
+			
 		//data
 		int listCount = fs.selectFaqCount();
 		String currentPage_ = req.getParameter("pno");
@@ -34,12 +37,20 @@ public class FaqListController extends HttpServlet{
 		int boardLimit = 10;
 		PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
+//		HttpSession session = req.getSession();
+//		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+//		if(loginMember == null) {
+//			throw new Exception("로그인 안했음");
+//		}
+		
+		
 		//service
 		List<FaqVo> faqVoList = fs.FaqList(pvo);
 		
 		//result == view
 		req.setAttribute("faqVoList", faqVoList);
 		req.setAttribute("pvo", pvo);
+		req.setAttribute("x", x);
 		req.getRequestDispatcher("/WEB-INF/views/board/faq/list.jsp").forward(req, resp);
 		
 		}catch(Exception e) {

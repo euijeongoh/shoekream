@@ -23,6 +23,9 @@ public class NoticeListController extends HttpServlet{
 		NoticeService ns = new NoticeService();
 
 		try {
+		
+		String x = req.getParameter("x");
+		
 		//data
 		int listCount = ns.selectNoticeCount();
 		String currentPage_ = req.getParameter("pno");
@@ -34,12 +37,20 @@ public class NoticeListController extends HttpServlet{
 		int boardLimit = 10;
 		PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
+		
+//		HttpSession session = req.getSession();
+//		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+//		if(loginMember == null) {
+//			throw new Exception("로그인 안했음");
+//		}
+		
 		//service
 		List<NoticeVo> noticeVoList = ns.NoticeList(pvo);
 		
 		//result == view
 		req.setAttribute("noticeVoList", noticeVoList);
 		req.setAttribute("pvo", pvo);
+		req.setAttribute("x", x);
 		req.getRequestDispatcher("/WEB-INF/views/board/notice/list.jsp").forward(req, resp);
 		
 		}catch(Exception e) {

@@ -22,6 +22,8 @@ public class AdminFaqListController extends HttpServlet{
 
 		try {
 		//data
+		String x = req.getParameter("x");
+		
 		int listCount = fs.selectFaqCount();
 		String currentPage_ = req.getParameter("pno");
 		if(currentPage_ == null) {
@@ -32,12 +34,19 @@ public class AdminFaqListController extends HttpServlet{
 		int boardLimit = 10;
 		PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
+//		HttpSession session = req.getSession();
+//		ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+//		if(loginAdmin == null) {
+//			throw new Exception("로그인 안했음");
+//		}
+		
 		//service
 		List<FaqVo> faqVoList = fs.FaqList(pvo);
 		
 		//result == view
 		req.setAttribute("faqVoList", faqVoList);
 		req.setAttribute("pvo", pvo);
+		req.setAttribute("x", x);
 		req.getRequestDispatcher("/WEB-INF/views/admin/board/faq/adminList.jsp").forward(req, resp);
 		
 		}catch(Exception e) {

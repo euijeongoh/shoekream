@@ -66,9 +66,20 @@ public class FaqService {
 		
 		//dao
 		FaqDao dao = new FaqDao();
-		FaqVo vo = dao.selectFaqByNo(conn, no);
+		int result = dao.increaseHit(conn, no);
+		
+		FaqVo vo = null;
+		if(result==1) {
+			vo = dao.selectFaqByNo(conn, no);
+		}
 		
 		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
 		
 		//close
 		JDBCTemplate.close(conn);

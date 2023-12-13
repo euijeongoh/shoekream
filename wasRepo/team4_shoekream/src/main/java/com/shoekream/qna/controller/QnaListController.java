@@ -23,6 +23,7 @@ public class QnaListController extends HttpServlet{
 			QnaService qs = new QnaService();
 
 			try {
+			String x = req.getParameter("x");
 			//data
 			int listCount = qs.selectQnaCount();
 			String currentPage_ = req.getParameter("pno");
@@ -40,6 +41,7 @@ public class QnaListController extends HttpServlet{
 			//result == view
 			req.setAttribute("qnaVoList", qnaVoList);
 			req.setAttribute("pvo", pvo);
+			req.setAttribute("x", x);
 			req.getRequestDispatcher("/WEB-INF/views/board/qna/list.jsp").forward(req, resp);
 			
 			}catch(Exception e) {

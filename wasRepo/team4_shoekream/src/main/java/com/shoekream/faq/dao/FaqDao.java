@@ -94,7 +94,7 @@ public class FaqDao {
 	public FaqVo selectFaqByNo(Connection conn, String no) throws Exception{
 		
 		//SQL
-		String sql = "SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE FROM FAQ_BOARD WHERE NO = ? AND DEL_YN = 'N'";
+		String sql = "SELECT NO, TITLE, CONTENT, TO_CHAR(ENROLL_DATE, 'YYYY.MM.DD') AS ENROLL_DATE, HIT FROM FAQ_BOARD WHERE NO = ? AND DEL_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, no);
 		ResultSet rs = pstmt.executeQuery();
@@ -107,11 +107,13 @@ public class FaqDao {
 			String title = rs.getString("TITLE");
 			String content = rs.getString("CONTENT");
 			String enrollDate = rs.getString("ENROLL_DATE");
+			String hit =rs.getString("HIT");
 			
 			vo.setNo(faqNo);
 			vo.setTitle(title);
 			vo.setContent(content);
 			vo.setEnrollDate(enrollDate);
+			vo.setHit(hit);
 		}
 		
 		//close
@@ -119,6 +121,20 @@ public class FaqDao {
 		JDBCTemplate.close(pstmt);
 		
 		return vo;
+	}
+	
+	
+	//상세조회 시 조회수 증가
+	public int increaseHit(Connection conn, String no) throws Exception{
+		
+		String sql = "UPDATE FAQ_BOARD SET HIT = HIT + 1 WHERE NO = ? AND DEL_YN='N' ";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
 	}
 
 	//게시글 검색(제목)
@@ -232,6 +248,8 @@ public class FaqDao {
 		
 		return result;
 	}
+
+
 	
 
 }

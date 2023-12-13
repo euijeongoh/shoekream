@@ -33,6 +33,12 @@ public class AdminFaqSearchController extends HttpServlet{
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
+//			HttpSession session = req.getSession();
+//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+//			if(loginAdmin == null) {
+//				throw new Exception("로그인 안했음");
+//			}
+			
 			//service
 			List<FaqVo> faqVoList = fs.faqSearch(title, pvo);
 			
@@ -40,6 +46,7 @@ public class AdminFaqSearchController extends HttpServlet{
 			
 			req.setAttribute("faqVoList", faqVoList);
 			req.setAttribute("pvo", pvo);
+			req.setAttribute("x", title);
 			req.getRequestDispatcher("/WEB-INF/views/admin/board/faq/adminList.jsp").forward(req, resp);
 			
 			

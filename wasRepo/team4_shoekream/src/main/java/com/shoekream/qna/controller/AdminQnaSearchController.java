@@ -22,6 +22,8 @@ public class AdminQnaSearchController extends HttpServlet{
 		QnaService qs = new QnaService();
 		try {
 			//data
+			String x = req.getParameter("x");
+			
 			String title = req.getParameter("search");
 			int listCount = qs.selectSearchQnaCount(title);
 			String currentPage_ = req.getParameter("pno");
@@ -32,17 +34,22 @@ public class AdminQnaSearchController extends HttpServlet{
 			int pageLimit = 5;
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
-//			System.out.println("title값 확인 : " + title);
+			
+//			HttpSession session = req.getSession();
+//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+//			if(loginAdmin == null) {
+//				throw new Exception("로그인 안했음");
+//			}
 			
 			//service
 			List<QnaVo> qnaVoList = qs.qnaSearch(title, pvo);
-//			System.out.println("notice값 확인 : " + noticeVoList);
 			
 			
 			//result == view
 			
 			req.setAttribute("qnaVoList", qnaVoList);
 			req.setAttribute("pvo", pvo);
+			req.setAttribute("x", title);
 			req.getRequestDispatcher("/WEB-INF/views/admin/board/qna/adminList.jsp").forward(req, resp);
 			
 			

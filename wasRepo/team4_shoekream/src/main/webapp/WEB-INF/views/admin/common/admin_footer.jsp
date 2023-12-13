@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
+<link rel="stylesheet" href="/shoekream/resources/css/admin/common/admin_footer.css">
 </head>
 <body>
 	<footer>
@@ -18,16 +18,16 @@
 		<div class="box3">
 			<div class="left_bar">
 				<div>
-					<a href="/shoekream/notice/list">고객지원</a>
+					<a href="/shoekream/admin/notice/list">고객지원</a>
 				</div>
 				<div>
-					<a href="/shoekream/notice/list">공지사항</a>
+					<a href="/shoekream/admin/notice/list">공지사항</a>
 				</div>
 				<div>
-					<a href="/shoekream/qna/list">1:1문의</a>
+					<a href="/shoekream/admin/qna/list">1:1문의</a>
 				</div>
 				<div>
-					<a href="/shoekream/request/list">상품 등록 문의</a>
+					<a href="/shoekream/admin/request/list">상품 등록 문의</a>
 				</div>
 			</div>
 			<div class="icons">
@@ -50,7 +50,7 @@
 			<div></div>
 			<div class="faq">
 				<button>
-					<a href="/shoekream/faq/list">자주 묻는 질문</a>
+					<a href="/shoekream/admin/faq/list">자주 묻는 질문</a>
 				</button>
 			</div>
 		</div>

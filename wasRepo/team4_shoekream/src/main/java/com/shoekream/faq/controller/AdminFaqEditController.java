@@ -20,9 +20,20 @@ public class AdminFaqEditController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			//data
 			String no = req.getParameter("no");
-			FaqService ns = new FaqService();
-			FaqVo vo = ns.getFaqByNo(no);
+			
+//			HttpSession session = req.getSession();
+//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+//			if(loginAdmin == null) {
+//				throw new Exception("로그인 안했음");
+//			}
+			
+			//service
+			FaqService fs = new FaqService();
+			
+			//result
+			FaqVo vo = fs.getFaqByNo(no);
 			req.setAttribute("vo", vo);
 			req.getRequestDispatcher("/WEB-INF/views/admin/board/faq/adminEdit.jsp").forward(req, resp);
 		}catch(Exception e) {
