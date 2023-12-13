@@ -30,7 +30,8 @@
             <div class="picjor">
              <input type="file" accept="image/*" name="f">
                 <div class="picture">
-                    <img src="" alt="" class="picture_img">
+                <% (EnrollProductVo vo : productVoList) %>
+                    <img src="/shoekream/resources/img/product/<%=vo.getModelNumber()%>.png" class="picture_img">
                 </div>
                 <div class="jordan">
                     <p class="jordan_eg"><b><%=productVo.getProductName() %></b></p>
@@ -148,4 +149,6 @@
         // 이미지 미리보기도 초기화
         document.getElementById('reviewpng').src = '#';
     }
+    
+    
 </script>

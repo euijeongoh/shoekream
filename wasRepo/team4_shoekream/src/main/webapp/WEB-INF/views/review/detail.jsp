@@ -31,20 +31,21 @@
                 </div>
                 <div class="profile_detail">
                     <div>
+                    
                         <a href="/shoekream/review/mylist">
-                            <h4>helloprofile</h4>
+                            <h4><%= loginMember.getNickname() %></h4>
                         </a>
                     </div>
                     <div>
-                        <p class="date001">2023년2월9일</p>
+                        <p class="date001">2023년12월15일</p>
                     </div>
                 </div>
             </div>
             
-            <div class="user_button">
+            <%-- <div class="user_button">
                 <button onclick="location.href='/shoekream/review/edit?no=<%= reviewVo.getReviewNo() %>'"><p id="click">수정</p></button>
                 <button onclick="location.href='/shoekream/review/delete?no=<%= reviewVo.getReviewNo() %>'"><p id="click">삭제</p></button>
-            </div>
+            </div> --%>
 
 
         </div>
@@ -92,7 +93,8 @@
         </div>
         <div class="content">
             <div class="review">
-                <h3><%= reviewVo.getContent()%></h3>
+            <% (ReviewVo vo : reviewVoList) %>
+                <h3><%= vo.getcontent() %></h3>
             </div>
             <div class="abcd">
 

@@ -258,3 +258,6 @@
 #update_detail{
     text-align: center;
 }
+.picjor input{
+	display: none;
+}
