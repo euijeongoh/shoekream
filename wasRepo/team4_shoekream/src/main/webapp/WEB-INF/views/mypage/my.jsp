@@ -39,7 +39,6 @@
                             <div><%= loginMember.getNickname() %></div>
                             <div><%= loginMember.getId() %></div>
                             <form id="img_form">
-                            	<input id="img_upload" name="f" type="file">
                             	<button type="button" id="change_profile">프로필 사진 변경</button>
                             	<button type="button" onclick="location.href='/shoekream/review/boardlist'">내 리뷰</button>
                             </form>
