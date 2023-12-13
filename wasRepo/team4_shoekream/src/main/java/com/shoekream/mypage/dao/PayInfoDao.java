@@ -127,6 +127,18 @@ public class PayInfoDao {
 		return result;
 	}
 
+	public int payInfoDelete(Connection conn, String no) throws Exception {
+
+		String sql = "UPDATE CARD SET DEL_YN = 'Y' WHERE NO = ? AND DEFAULT_PAYINFO_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		int result = pstmt.executeUpdate();
+
+		JDBCTemplate.close(pstmt);
+
+		return result;
+	}
+
 }
 
 

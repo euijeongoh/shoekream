@@ -55,25 +55,25 @@
 							<!-- 여기 내용 -->
 							<h4 class="input_title">우편번호</h4>
 							<div class="input_item" id="map">
-								<input type="text" placeholder="우편 번호를 검색하세요" class="input_txt" id="sample6_postcode" name="post_code" readonly value="${avo.postCode }">
-								<input type="button" class="btn btn_zipcode outline small" onclick="sample6_execDaumPostcode()"  value="우편번호">
+								<input type="text" placeholder="우편 번호를 검색하세요" class="input_txt" id="sample6_postcode_edit" name="post_code" readonly">
+								<input type="button" class="btn btn_zipcode outline small" onclick="sample6_execDaumPostcode_edit()"  value="우편번호">
 							</div>
 						</div>
 						<div class="input_box">
 							<!-- 여기 내용 -->
 							<h4 class="input_title">주소</h4>
 							<div class="input_item">
-								<input type="text" id="sample6_address" id="sample6_extraAddress" name="addr" placeholder="우편 번호 검색 후, 자동입력 됩니다"
-									class="input_txt" readonly value="${avo.addres }">
+								<input type="text" id="sample6_address_edit" id="sample6_extraAddress_edit" name="addr" placeholder="우편 번호 검색 후, 자동입력 됩니다"
+									class="input_txt" readonly>
 							</div>
 						</div>
 						<div class="input_box">
 							<!-- 여기 내용 -->
 							<h4 class="input_title">상세 주소</h4>
 							<div class="input_item">
-								<input type="text" id="sample6_detailAddress" placeholder="건물, 아파트, 동/호수 이력"
+								<input type="text" id="sample6_detailAddress_edit" placeholder="건물, 아파트, 동/호수 이력"
 									class="input_txt" name="detail_addr" value="${avo.detailAddres }">
-								<input type="hidden" id="sample6_extraAddress" >
+								<input type="hidden" id="sample6_extraAddress_edit" >
 							</div>
 							<div class="delivery_check">
 								<div class="checkbox_item">
@@ -105,7 +105,7 @@
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    function sample6_execDaumPostcode() {
+    function sample6_execDaumPostcode_edit() {
     	new daum.Postcode({
             oncomplete: function(data) {
             	console.log(data);
@@ -138,17 +138,17 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                    document.getElementById("sample6_extraAddress_edit").value = extraAddr;
                 
                 } else {
-                    document.getElementById("sample6_extraAddress").value = '';
+                    document.getElementById("sample6_extraAddress_edit").value = '';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr + extraAddr;
+                document.getElementById('sample6_postcode_edit').value = data.zonecode;
+                document.getElementById("sample6_address_edit").value = addr + extraAddr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                document.getElementById("sample6_detailAddress_edit").focus();
             }
         }).open();
     }

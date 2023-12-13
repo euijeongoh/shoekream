@@ -65,4 +65,16 @@ public class PayInfoService {
 	
 	}
 
+	public int payInfoDelete(String no) throws Exception {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		PayInfoDao ad = new PayInfoDao();
+		int result = ad.payInfoDelete(conn, no);
+
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
+
 }
