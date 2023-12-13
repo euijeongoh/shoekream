@@ -50,7 +50,7 @@ public class ReviewDetailController extends HttpServlet{
 		
 		//result == view
 		req.setAttribute("vo", vo);
-		req.setAttribute("productVo", productVo);
+//		req.setAttribute("productVo", productVo);
 		req.setAttribute("reviewVo", reviewVo);
 		req.getRequestDispatcher("/WEB-INF/views/review/detail.jsp").forward(req, resp);
 		
