@@ -105,7 +105,7 @@ function bidTabAjax() {
 			detailBtn.innerHTML="상세내역";
 			detailBtn.onclick = () => {
 				console.log(data[i].bidExpireDate);
-		        location.href = "/shoekream/buy/bidding?memberNo='" + data[i].memberNo + "&productsNo=" + data[i].productNo + "&productsSizesNo=" + data[i].productSizeNo + "&biddingPrice=" + data[i].bidPrice + "&deadline=" + data[i].bidExpireDate;
+		        location.href = "/shoekream/buy/biddingorder?memberNo='" + data[i].memberNo + "&productsNo=" + data[i].productNo + "&productsSizesNo=" + data[i].productSizeNo + "&biddingPrice=" + data[i].bidPrice + "&deadline=" + data[i].bidExpireDate;
 		     };
 			
 			li2.innerHTML=data[i].bidStatus;
@@ -304,8 +304,8 @@ function finishTabAjax() {
 			li3.appendChild(reviewLink);
 			reviewLink.innerHTML="리뷰 작성하기";
 			reviewLink.onclick = () => {
-		        location.href = "shoekream/review/write?productNo='" + data[i].shoeNo;
-		      }
+		        location.href = "shoekream/review/write?productNo='" + data[i].productNo;
+		    }
 		}
 		
 	});	
