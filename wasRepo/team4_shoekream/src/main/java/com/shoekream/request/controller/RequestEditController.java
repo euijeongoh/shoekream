@@ -35,7 +35,7 @@ public class RequestEditController extends HttpServlet{
 
 			//result
 			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/WEB-INF/views/admin/board/request/adminEdit.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/board/request/edit.jsp").forward(req, resp);
 		}catch(Exception e) {
 			System.out.println("[ERROR-M003] 번호로 vo받아오는데 오류 발생!");
 			e.printStackTrace();
@@ -57,10 +57,10 @@ public class RequestEditController extends HttpServlet{
 			vo.setTitle(title);
 			vo.setContent(content);
 			
-			
+			System.out.println(vo);
 			//service
-			RequestService ns =  new RequestService();
-			int result = ns.requestEdit(vo);
+			RequestService rs =  new RequestService();
+			int result = rs.requestEdit(vo);
 			
 			//result == view
 			if(result != 1) {
@@ -68,7 +68,7 @@ public class RequestEditController extends HttpServlet{
 			}
 			
 			req.getSession().setAttribute("alarm", "게시글 편집 성공!");
-			resp.sendRedirect("/shoekream/admin/request/list");
+			resp.sendRedirect("/shoekream/request/list");
 			
 		}catch(Exception e) {
 			System.out.println("[ERROR-M004] 게시글 편집 중 에러 발생!");

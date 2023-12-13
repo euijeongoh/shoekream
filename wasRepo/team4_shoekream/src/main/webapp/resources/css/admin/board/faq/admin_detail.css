@@ -27,6 +27,7 @@
 }
 
 .board_wrap{
+	margin: auto;
     display: flex;
     width: 1000px;
 /*    height: 1220px;*/

@@ -11,20 +11,20 @@ RequestVo vo = (RequestVo) request.getAttribute("vo");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="/shoekream/resources/css/admin/board/request/admin_edit.css">
+	href="/shoekream/resources/css/board/request/edit.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp"%>
-
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%-- ${vo } --%>
 	<div class="wrap">
 		<div class="wrap_inner">
-			<%@ include file="/WEB-INF/views/admin/common/admin_sidebar.jsp"%>
+			<%@ include file="/WEB-INF/views/common/service_center_side.jsp"%>
 			<div class="board_wrap">
 				<div class="board_title">공지사항</div>
 				<div class="dropdown_head">
-					<form action="/shoekream/admin/request/edit?no=<%=vo.getNo()%>" method="post">
+					<form action="/shoekream/request/edit?no=<%=vo.getNo()%>" method="post">
 						<div class="request_title">
-							제목 : <input type="text" name="title" value= <%=vo.getTitle()%>>
+							제목 : <input class="title_input" type="text" name="title" value= <%=vo.getTitle()%>>
 						</div>
 				</div>
 				<div class="dropdown_content">
@@ -35,7 +35,6 @@ RequestVo vo = (RequestVo) request.getAttribute("vo");
 				</div>
 				<div class="btn_list">
 					<div class="btn_editbox">
-						<!--                     <a href="">작성완료</a> -->
 						<input type="submit" id="submit" value="수정하기">
 						</form>
 					</div>
@@ -44,6 +43,6 @@ RequestVo vo = (RequestVo) request.getAttribute("vo");
 		</div>
 	</div>
 
-	<%@ include file="/WEB-INF/views/admin/common/admin_footer.jsp"%>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>
