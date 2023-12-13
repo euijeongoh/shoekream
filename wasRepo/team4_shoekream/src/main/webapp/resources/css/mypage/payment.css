@@ -189,3 +189,7 @@ a, a:active, a:focus, a:hover {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1; /* 오버레이를 다른 요소 위에 표시 */
 }
+
+.delete{
+	margin-left: 10px;
+}

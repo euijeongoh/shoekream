@@ -24,8 +24,8 @@ public class AddressService {
 
 	}
 
-	public List<AddrBookVo> selectExtraAddrList(String no) throws Exception{
-		
+	public List<AddrBookVo> selectExtraAddrList(String no) throws Exception {
+
 		Connection conn = JDBCTemplate.getConnection();
 
 		AddressDao ad = new AddressDao();
@@ -36,32 +36,32 @@ public class AddressService {
 		return extraVo;
 	}
 
-	public int insertAddr(AddrBookVo vo) throws Exception{
-		
+	public int insertAddr(AddrBookVo vo) throws Exception {
+
 		Connection conn = JDBCTemplate.getConnection();
-		
+
 		AddressDao ad = new AddressDao();
 		int result = ad.insertAddr(conn, vo);
-		
+
 		JDBCTemplate.close(conn);
-		
+
 		return result;
 	}
 
-	public int addrDelete(String no) throws Exception{
-		
+	public int addrDelete(String no) throws Exception {
+
 		Connection conn = JDBCTemplate.getConnection();
-		
+
 		AddressDao ad = new AddressDao();
-		int result = ad.addrDelete(conn , no);
-		
+		int result = ad.addrDelete(conn, no);
+
 		JDBCTemplate.close(conn);
-		
+
 		return result;
 	}
 
-	public AddrBookVo editAddr(String no) throws Exception{
-		
+	public AddrBookVo editAddr(String no) throws Exception {
+
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 
@@ -71,19 +71,42 @@ public class AddressService {
 
 		// close
 		JDBCTemplate.close(conn);
-		
+
 		return vo;
 	}
 
-	public int updateAddr(AddrBookVo vo) throws Exception{
-Connection conn = JDBCTemplate.getConnection();
-		
+	public int updateAddr(AddrBookVo vo) throws Exception {
+		Connection conn = JDBCTemplate.getConnection();
+
 		AddressDao ad = new AddressDao();
 		int result = ad.updateAddr(conn, vo);
+
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
+
+	public Map<String, Object> changeDefault(String no) throws Exception {
+		Connection conn = JDBCTemplate.getConnection();
 		
+		AddressDao ad = new AddressDao();
+		int result = ad.changeDefaultYn(conn, no);
+		int result2 = ad.changeDefaultNy(conn, no);
+		
+		if (result == 1 && result2 == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", result);
+		map.put("result2", result2);
+
+		// close
 		JDBCTemplate.close(conn);
 		
-		return result;
+		return map;
 	}
 
 }
