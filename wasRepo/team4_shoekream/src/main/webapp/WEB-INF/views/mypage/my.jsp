@@ -40,15 +40,15 @@
                             <div><%= loginMember.getId() %></div>
                             <form id="img_form">
                             	<button type="button" id="change_profile">프로필 사진 변경</button>
-                            	<button type="button" onclick="location.href='/shoekream/review/boardlist'">내 리뷰</button>
+                            	<button type="button" onclick="location.href='/shoekream/review/mylist'">내 리뷰</button>
                             </form>
                         </div>
                     </div>
                     <div class="user-menu">
                         <div class="icon">
                             <div>
-                                <a>
-                                <img href="/shoekream/notice/main" src="/shoekream/resources/img/mypage/noticeicon.png">
+                                <a href="/shoekream/notice/list">
+                                <img src="/shoekream/resources/img/mypage/noticeicon.png">
                                 <div>공지사항</div>      
                                 </a>
                             </div>
@@ -111,7 +111,7 @@
                 	<%for( WishListVo vo : wishList) { %>
                 		<li>
                         <div id="product-img">
-                            <img src="./resources/product1.webp">
+                            <img src=<%= vo.getProductImg() %>>
                         </div>
                         <div class="info-box">
                             <div id="brand"><%= vo.getBrandName() %></div>
@@ -124,6 +124,8 @@
         </div>
 
 	</main>
+	
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 </body>
 </html>
