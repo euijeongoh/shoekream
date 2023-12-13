@@ -374,7 +374,7 @@ body {
                                 line-height: 26px;
                                 box-sizing: border-box;
                                 /* color: #31b46e; */
-                                color: #222!important;
+                                color: #222;
                             }
                             .unit {
                                 font-size: 20px;
@@ -383,6 +383,7 @@ body {
                                 line-height: 26px;
                                 box-sizing: border-box;
                                 color: #31b46e;
+                                
                             }
 
                 .btn_confirm {
