@@ -1,11 +1,5 @@
 package com.shoekream.mypage.vo;
 
-/**
- * 
- */
-/**
- * 
- */
 public class PayInfoVo {
 
 	private String No;
@@ -16,6 +10,7 @@ public class PayInfoVo {
 	private String cardNumber;
 	private String noexpirationDate;
 	private String cvcNumber;
+	private String defaultPayInfoYn;
 	private String enrollDate;
 	private String delYn;
 
@@ -25,7 +20,8 @@ public class PayInfoVo {
 	}
 
 	public PayInfoVo(String no, String memberNo, String memberName, String cardCompanyNo, String cardCompanyName,
-			String cardNumber, String noexpirationDate, String cvcNumber, String enrollDate, String delYn) {
+			String cardNumber, String noexpirationDate, String cvcNumber, String defaultPayInfoYn, String enrollDate,
+			String delYn) {
 		super();
 		No = no;
 		this.memberNo = memberNo;
@@ -35,6 +31,7 @@ public class PayInfoVo {
 		this.cardNumber = cardNumber;
 		this.noexpirationDate = noexpirationDate;
 		this.cvcNumber = cvcNumber;
+		this.defaultPayInfoYn = defaultPayInfoYn;
 		this.enrollDate = enrollDate;
 		this.delYn = delYn;
 	}
@@ -103,6 +100,14 @@ public class PayInfoVo {
 		this.cvcNumber = cvcNumber;
 	}
 
+	public String getDefaultPayInfoYn() {
+		return defaultPayInfoYn;
+	}
+
+	public void setDefaultPayInfoYn(String defaultPayInfoYn) {
+		this.defaultPayInfoYn = defaultPayInfoYn;
+	}
+
 	public String getEnrollDate() {
 		return enrollDate;
 	}
@@ -123,8 +128,8 @@ public class PayInfoVo {
 	public String toString() {
 		return "PayInfoVo [No=" + No + ", memberNo=" + memberNo + ", memberName=" + memberName + ", cardCompanyNo="
 				+ cardCompanyNo + ", cardCompanyName=" + cardCompanyName + ", cardNumber=" + cardNumber
-				+ ", noexpirationDate=" + noexpirationDate + ", cvcNumber=" + cvcNumber + ", enrollDate=" + enrollDate
-				+ ", delYn=" + delYn + "]";
+				+ ", noexpirationDate=" + noexpirationDate + ", cvcNumber=" + cvcNumber + ", defaultPayInfoYn="
+				+ defaultPayInfoYn + ", enrollDate=" + enrollDate + ", delYn=" + delYn + "]";
 	}
 
 }

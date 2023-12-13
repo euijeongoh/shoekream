@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shoekream.member.MemberVo;
-import com.shoekream.mypage.service.AddressService;
 import com.shoekream.mypage.service.PayInfoService;
-import com.shoekream.mypage.vo.AddrBookVo;
 import com.shoekream.mypage.vo.PayInfoVo;
 
 @WebServlet("/mypage/payInfo")
@@ -21,6 +19,7 @@ public class PayInfoController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		try {
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 
@@ -30,12 +29,11 @@ public class PayInfoController extends HttpServlet {
 			String no = req.getParameter("no");
 
 			PayInfoService as = new PayInfoService();
-			PayInfoVo payVvo = as.selectPayInfoList(no);
-			req.setAttribute("payVvo", payVvo);
+			PayInfoVo payVo = as.selectPayInfoList(no);
+			req.setAttribute("payVo", payVo);
 
 			List<PayInfoVo> extraPayInfoVo = as.selectExtraPayInfoList(no);
 			req.setAttribute("extraPayInfoVo", extraPayInfoVo);
-
 			req.getRequestDispatcher("/WEB-INF/views/mypage/payment.jsp").forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();

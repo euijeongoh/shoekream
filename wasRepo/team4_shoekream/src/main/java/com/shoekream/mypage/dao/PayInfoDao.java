@@ -14,7 +14,7 @@ public class PayInfoDao {
 
 	public PayInfoVo selectPayInfoList(Connection conn, String no) throws Exception{
 		
-		String spl = "SELECT C.NO ,C.MEMBER_NO ,M.NAME AS MEMBER_NAME ,C.CARD_COMPANY_NO ,CP.CARD_COMPANY_NAME AS CARD_COMPANY_NAME ,C.CARD_NUMBER ,C.EXPIRATION_DATE ,C.CVC_NUMBER ,C.ENROLL_DATE ,C.DEL_YN FROM CARD C JOIN MEMBER M ON M.NO = C.NO JOIN CARD_COMPANY CP ON CP.NO = C.NO WHERE M.NO = ? AND C.DEL_YN = 'N'";
+		String spl = "SELECT C.NO ,C.MEMBER_NO ,M.NAME AS MEMBER_NAME ,C.CARD_COMPANY_NO ,CP.CARD_COMPANY_NAME AS CARD_COMPANY_NAME ,C.CARD_NUMBER ,C.EXPIRATION_DATE ,C.CVC_NUMBER ,C.DEFAULT_PAYINFO_YN ,C.ENROLL_DATE ,C.DEL_YN FROM CARD C JOIN MEMBER M ON M.NO = C.MEMBER_NO JOIN CARD_COMPANY CP ON CP.NO = C.CARD_COMPANY_NO WHERE C.MEMBER_NO = ? AND C.DEL_YN = 'N' AND DEFAULT_PAYINFO_YN = 'Y'";
 		PreparedStatement pstmt = conn.prepareStatement(spl);
 		pstmt.setString(1, no);
 		ResultSet rs = pstmt.executeQuery();
@@ -29,6 +29,7 @@ public class PayInfoDao {
 			String cardNumber = rs.getString("CARD_NUMBER");
 			String expirationDate = rs.getString("EXPIRATION_DATE");
 			String cvcNumber = rs.getString("CVC_NUMBER");
+			String defaultPayInfoYn = rs.getString("DEFAULT_PAYINFO_YN");
 			String enrollDate = rs.getString("ENROLL_DATE");
 			String delYn = rs.getString("DEL_YN");
 
@@ -41,6 +42,7 @@ public class PayInfoDao {
 			vo.setCardNumber(cardNumber);
 			vo.setNoexpirationDate(expirationDate);
 			vo.setCvcNumber(cvcNumber);
+			vo.setCvcNumber(defaultPayInfoYn);
 			vo.setDelYn(delYn);
 			vo.setEnrollDate(enrollDate);
 
@@ -54,7 +56,7 @@ public class PayInfoDao {
 
 	public List<PayInfoVo> selectExtraPayInfoList(Connection conn, String no) throws Exception{
 		
-		String spl = "SELECT C.NO ,C.MEMBER_NO ,M.NAME AS MEMBER_NAME ,C.CARD_COMPANY_NO ,CP.CARD_COMPANY_NAME AS CARD_COMPANY_NAME ,C.CARD_NUMBER ,C.EXPIRATION_DATE ,C.CVC_NUMBER ,C.ENROLL_DATE ,C.DEL_YN FROM CARD C JOIN MEMBER M ON M.NO = C.NO JOIN CARD_COMPANY CP ON CP.NO = C.NO WHERE M.NO = ? AND C.DEL_YN = 'N'";
+		String spl = "SELECT C.NO ,C.MEMBER_NO ,M.NAME AS MEMBER_NAME ,C.CARD_COMPANY_NO ,CP.CARD_COMPANY_NAME AS CARD_COMPANY_NAME ,C.CARD_NUMBER ,C.EXPIRATION_DATE ,C.CVC_NUMBER ,C.DEFAULT_PAYINFO_YN ,C.ENROLL_DATE ,C.DEL_YN FROM CARD C JOIN MEMBER M ON M.NO = C.MEMBER_NO JOIN CARD_COMPANY CP ON CP.NO = C.CARD_COMPANY_NO WHERE C.MEMBER_NO = ? AND C.DEL_YN = 'N' AND DEFAULT_PAYINFO_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(spl);
 		pstmt.setString(1, no);
 		ResultSet rs = pstmt.executeQuery();
@@ -69,6 +71,7 @@ public class PayInfoDao {
 			String cardNumber = rs.getString("CARD_NUMBER");
 			String expirationDate = rs.getString("EXPIRATION_DATE");
 			String cvcNumber = rs.getString("CVC_NUMBER");
+			String defaultPayInfoYn = rs.getString("DEFAULT_PAYINFO_YN");
 			String enrollDate = rs.getString("ENROLL_DATE");
 			String delYn = rs.getString("DEL_YN");
 
@@ -81,6 +84,7 @@ public class PayInfoDao {
 			extraVo.setCardNumber(cardNumber);
 			extraVo.setNoexpirationDate(expirationDate);
 			extraVo.setCvcNumber(cvcNumber);
+			extraVo.setDefaultPayInfoYn(defaultPayInfoYn);
 			extraVo.setDelYn(delYn);
 			extraVo.setEnrollDate(enrollDate);
 			
