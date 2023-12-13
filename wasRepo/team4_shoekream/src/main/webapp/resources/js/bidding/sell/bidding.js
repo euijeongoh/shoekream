@@ -42,7 +42,7 @@ function mouseover() {
     console.log(result);
 
     const textar = document.querySelector('#textar');
-    textar.innerText = result;
+    textar.innerText = String(Math.round(comm*0.05 / 100)*100) + "원";
 }   
 
 
