@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.shoekream.member.service.MemberService;
 
 @WebServlet("/member/check/id")
@@ -33,9 +34,8 @@ public class IdDupCheckController extends HttpServlet{
 			}
 			System.out.println(jsonStr);
 			// json to map
-			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<Map<String, String>> typeReference = new TypeReference<Map<String, String>>() {};
-			Map<String, String> map = mapper.readValue(jsonStr, typeReference);
+			Gson gson = new Gson();
+			Map<String, String> map = gson.fromJson(jsonStr, Map.class);
 			
 			// service
 			MemberService ms = new MemberService();
