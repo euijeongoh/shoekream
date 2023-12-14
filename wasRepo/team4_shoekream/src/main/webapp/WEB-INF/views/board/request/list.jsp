@@ -20,7 +20,6 @@
 </head>
 <body>
 
-${ requestVoList }
 
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 

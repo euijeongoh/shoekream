@@ -16,6 +16,7 @@ public class FaqService {
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
+		
 		//dao
 		FaqDao dao = new FaqDao();
 		List<FaqVo> faqVoList = dao.FaqList(conn, pvo);

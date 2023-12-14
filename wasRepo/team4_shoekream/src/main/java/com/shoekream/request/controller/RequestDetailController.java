@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.request.service.RequestService;
 import com.shoekream.request.vo.RequestVo;
 
@@ -22,11 +24,11 @@ public class RequestDetailController extends HttpServlet{
 			//data
 			String no = req.getParameter("no");
 			
-//			HttpSession session = req.getSession();
-//			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-//			if(loginMember == null) {
-//				throw new Exception("로그인 안했음");
-//			}
+			HttpSession session = req.getSession();
+			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+			if(loginMember == null) {
+				throw new Exception("로그인 안했음");
+			}
 			
 			//service
 			RequestService qs = new RequestService();

@@ -40,11 +40,11 @@ public class NoticeListController extends HttpServlet{
 		PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
 		
-		HttpSession session = req.getSession();
-		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-		if(loginMember == null) {
-			throw new Exception("로그인 안했음");
-		}
+//		HttpSession session = req.getSession();
+//		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+//		if(loginMember == null) {
+//			throw new Exception("로그인 안했음");
+//		}
 		
 		//service
 		List<NoticeVo> noticeVoList = ns.NoticeList(pvo);

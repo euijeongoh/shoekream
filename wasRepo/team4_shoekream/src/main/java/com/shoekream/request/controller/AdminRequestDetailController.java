@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.shoekream.admin.manager.vo.ManagerVo;
 import com.shoekream.request.service.RequestService;
 import com.shoekream.request.vo.RequestVo;
 
@@ -21,11 +23,11 @@ public class AdminRequestDetailController extends HttpServlet{
 			//data
 			String no = req.getParameter("no");
 			
-//			HttpSession session = req.getSession();
-//			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
-//			if(loginAdmin == null) {
-//				throw new Exception("로그인 안했음");
-//			}
+			HttpSession session = req.getSession();
+			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+			if(loginAdmin == null) {
+				throw new Exception("로그인 안했음");
+			}
 			
 			//service
 			RequestService rs = new RequestService();
