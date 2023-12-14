@@ -15,7 +15,7 @@ RequestVo vo = (RequestVo) request.getAttribute("vo");
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-<%-- ${vo } --%>
+${vo }
 	<div class="wrap">
 		<div class="wrap_inner">
 			<%@ include file="/WEB-INF/views/common/service_center_side.jsp"%>
