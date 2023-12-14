@@ -8,7 +8,7 @@
 </head>
 
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/Userheader.css">
-	<link rel="stylesheet" href="/shoekream/resources/css/bidding/buy/order.css">
+	<link rel="stylesheet" href="/shoekream/resources/css/bidding/sell/biddingorder.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 
     <script defer src="/shoekream/resources/js/bidding/order.js"></script>
@@ -66,7 +66,7 @@
                 <%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                 <!-- 상품 정보 -->
 
-                <div class="display_separator"></div>
+                <!-- <div class="display_separator"></div> -->
 
                 <!-- 진행 상황 -->
 <!--                 <div class="order_area"> -->
@@ -145,12 +145,12 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="title_description" id="expire_date">
+                        <div class="title_description">
                             <p class="line_title">입찰 마감기한</p>
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        까지
+                                        ${ deadline }까지
                                     </em>
                                     <input class="111" type="hidden" name="1111" value="${ totalAmount }">
                                 </p>
@@ -201,7 +201,7 @@
                     <div class="section_payment">
                         <div class="payment_area">
                             <div class="payment_title">
-                                <h3 class="payment_title_txt">결제 정보</h3>
+                                <h3 class="payment_title_txt">판매 정산 계좌</h3>
                             </div>
                             <div>
                                 <div class="payment_account">
@@ -216,8 +216,8 @@
                                             <div class="payment_item">
                                                 <div class="info_wrap">
                                                     <div class="bank_info">
-                                                        <span class="bank_name">${ cardInfo.cardCompanyName }</span>
-                                                        <div class="account_number">${ cardInfo.cardNumber }</div>
+                                                        <span class="bank_name">${ accInfo.bankAgentName }${ accInfo.accountNumber }</span>
+                                                        <div class="account_number">${ accInfo.depositor }</div>
                                                     </div>
                                                     <!-- <a class="regist_link">계좌를 등록하세요</a> -->
                                                 </div>

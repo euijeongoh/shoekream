@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/shoekream/resources/css/bidding/sell/biddingsattle.css">
     <link rel="stylesheet" href="/shoekream/resources/css/common/footer.css">
 <body>
-    <div class="wrap">
+    <!-- <div class="wrap">
         <header>
             <div class="header-inner">
                 <div class="top-list">
@@ -42,9 +42,8 @@
                 </div>
             </div>
         </header>
-    </div>
-
-    
+    </div> -->
+    <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
     <div class="container">
         <div class="content">
@@ -118,7 +117,7 @@
                 <div class="display_separator"></div>
 
                 <!-- 결제 방법 -->
-                <div class="section_payment">
+                <!-- <div class="section_payment">
                     <div class="payment_area">
                         <div class="payment_title">
                             <h3 class="payment_title_txt">결제 방법</h3>
@@ -142,10 +141,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- 결제 방법 -->
 
-                <div class="display_separator"></div>
+                <!-- <div class="display_separator"></div> -->
 
                 <!-- 최종 주문정보 -->
                 <div class="section_orderinfo">
@@ -245,9 +244,9 @@
             </div>
         </div>
     </div>
-        
+    <%@ include file="/WEB-INF/views/common/footer.jsp" %>
     <!-- 풋터 -->
-    <footer>
+    <!-- <footer>
         <div class="box1"></div>
         <div class="box2">
             <div></div>
@@ -277,13 +276,7 @@
             </div>
         </div>
         <div class="box4"></div>
-    </footer>
-
-
-
-    <script>
-        const searchBtn = document.querySelector("#search-btn");
-    </script>
+    </footer> -->
 
 </body>
 </html>

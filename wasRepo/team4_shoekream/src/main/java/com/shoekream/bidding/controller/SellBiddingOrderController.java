@@ -48,7 +48,7 @@ public class SellBiddingOrderController extends HttpServlet{
 			System.out.println("에러확인 deadline : " + deadline);
 
 			BiddingService bs = new BiddingService();
-			int result = bs.buyBidding(memberNo, productsNo, productsSizesNo, biddingPrice, deadline);
+			int result = bs.sellBidding(memberNo, productsNo, productsSizesNo, biddingPrice, deadline);
 			if (result != 1) {
 				throw new Exception("예외 발생 : result != 1");
 			}
