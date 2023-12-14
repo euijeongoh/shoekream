@@ -45,11 +45,11 @@ function mouseover() {
     textar.innerText = String(Math.round(comm*0.05 / 100)*100) + "원";
     
     var x = input_amount1.value;
-    var totalPrice = String(parseInt(x, 10) + (Math.round(comm*0.05 / 100)*100));
+    var totalPrice = String(parseInt(x, 10) - (Math.round(comm*0.05 / 100)*100));
     console.log(totalPrice);
 
     const amount_c = document.querySelector('.amount_c');
-    amount_c.innerHTML = String(parseInt(x, 10) + (Math.round(comm*0.05 / 100)*100)) + "원";
+    amount_c.innerHTML = String(parseInt(x, 10) - (Math.round(comm*0.05 / 100)*100)) + "원";
     amount_c.classList.add('unit');
 }   
 

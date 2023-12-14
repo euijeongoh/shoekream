@@ -407,10 +407,35 @@ public class BiddingDao {
 
 
 
-	// 입찰 등록
+	// 구매 입찰 등록
 	public int buyBidding(Connection conn, String memberNo, String productsNo, String productsSizesNo, String biddingPrice, String deadline) throws Exception{
 		// sql
 		String sql = "INSERT INTO BIDDING VALUES(SEQ_BIDDING_NO.NEXTVAL, ?, ?, ?, 1, 1, ?, SYSDATE, TO_DATE(?,'YYYY/MM/DD'))";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+			System.out.println("orders : 주문 정보 입력");
+			System.out.println("dao에러확인 memberNo : " + memberNo);
+			System.out.println("dao에러확인 productsNo : " + productsNo);
+			System.out.println("dao에러확인 productsSizesNo : " + productsSizesNo);
+			System.out.println("dao에러확인 biddingPrice : " + biddingPrice);
+			System.out.println("dao에러확인 deadline : " + deadline);
+		pstmt.setString(1, memberNo);
+		pstmt.setString(2, productsNo);
+		pstmt.setString(3, productsSizesNo);
+		pstmt.setString(4, biddingPrice);
+		pstmt.setString(5, deadline);
+		int result = pstmt.executeUpdate();
+
+		// rs
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+	// 판매 입찰 등록
+	public int sellBidding(Connection conn, String memberNo, String productsNo, String productsSizesNo, String biddingPrice, String deadline) throws Exception{
+		// sql
+		String sql = "INSERT INTO BIDDING VALUES(SEQ_BIDDING_NO.NEXTVAL, ?, ?, ?, 1, 2, ?, SYSDATE, TO_DATE(?,'YYYY/MM/DD'))";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 			System.out.println("orders : 주문 정보 입력");
 			System.out.println("dao에러확인 memberNo : " + memberNo);
