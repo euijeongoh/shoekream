@@ -36,11 +36,11 @@ public class AdminRequestListController extends HttpServlet{
 		int boardLimit = 10;
 		PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
-//		HttpSession session = req.getSession();
-//		ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
-//		if(loginAdmin == null) {
-//			throw new Exception("로그인 안했음");
-//		}
+		HttpSession session = req.getSession();
+		ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+		if(loginAdmin == null) {
+			throw new Exception("로그인 안했음");
+		}
 		
 		//service
 		List<RequestVo> requestVoList = ns.RequestList(pvo);

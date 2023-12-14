@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.shoekream.member.MemberVo;
 import com.shoekream.page.vo.PageVo;
 import com.shoekream.request.service.RequestService;
 import com.shoekream.request.vo.RequestVo;
@@ -24,6 +26,13 @@ public class RequestListController extends HttpServlet{
 
 			try {
 			String x = req.getParameter("x");
+			
+			HttpSession session = req.getSession();
+			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+			if(loginMember == null) {
+				throw new Exception("로그인 안했음");
+			}
+			
 			//data
 			int listCount = rs.selectRequestCount();
 			String currentPage_ = req.getParameter("pno");

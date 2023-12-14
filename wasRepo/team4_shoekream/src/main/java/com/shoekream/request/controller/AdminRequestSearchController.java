@@ -26,6 +26,12 @@ public class AdminRequestSearchController extends HttpServlet{
 			//data
 			String x = req.getParameter("x");
 			
+			HttpSession session = req.getSession();
+			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
+			if(loginAdmin == null) {
+				throw new Exception("로그인 안했음");
+			}
+			
 			String title = req.getParameter("search");
 			int listCount = qs.selectSearchRequestCount(title);
 			String currentPage_ = req.getParameter("pno");

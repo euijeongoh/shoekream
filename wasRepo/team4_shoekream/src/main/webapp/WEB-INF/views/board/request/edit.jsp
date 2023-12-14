@@ -15,7 +15,7 @@ RequestVo vo = (RequestVo) request.getAttribute("vo");
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-${vo }
+
 	<div class="wrap">
 		<div class="wrap_inner">
 			<%@ include file="/WEB-INF/views/common/service_center_side.jsp"%>
@@ -24,7 +24,7 @@ ${vo }
 				<div class="dropdown_head">
 					<form action="/shoekream/request/edit?no=<%=vo.getNo()%>" method="post">
 						<div class="request_title">
-							제목 : <input class="title_input" type="text" name="title" value= <%=vo.getTitle()%>>
+							제목 : <input class="title_input" type="text" name="title" value="<%=vo.getTitle()%>">
 						</div>
 				</div>
 				<div class="dropdown_content">

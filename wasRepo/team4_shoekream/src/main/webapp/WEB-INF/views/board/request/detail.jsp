@@ -12,7 +12,6 @@
 </head>
 <body>
 
-${vo}
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 	<div class="wrap">
