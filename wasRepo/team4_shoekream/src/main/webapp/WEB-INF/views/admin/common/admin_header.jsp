@@ -47,8 +47,9 @@
                 </div>
                 <div class="head_list">
                     <ul>
-                        <li><a href="">HOME</a></li>
-                        <li><a href="">SHOP</a></li>
+                        <li><a href="/shoekream/home">HOME</a></li>
+                        <li><a href="/shoekream/review/list">STYLE</a></li>
+                        <li><a href="/shoekream/product">SHOP</a></li>
                         <li id="search_btn"><a><img src="/shoekream/resources/img/admin/header/searchIcon.png"></a></li>
                     </ul>
                 </div>

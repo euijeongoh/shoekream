@@ -54,8 +54,6 @@
                 </div>
             </form>
             <ul>
-                <li><a href="/shoekream/admin/searchID">아이디 찾기</a></li>
-                <li><a href="/shoekream/admin/searchPwd">비밀번호 찾기</a></li>
             </ul>
         </div>
     </div>
