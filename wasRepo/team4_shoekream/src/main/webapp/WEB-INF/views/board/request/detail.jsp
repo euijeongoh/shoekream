@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%-- ${vo} --%>
+${vo}
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 	<div class="wrap">

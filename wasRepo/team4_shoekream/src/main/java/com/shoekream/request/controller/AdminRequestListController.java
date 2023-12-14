@@ -8,24 +8,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.shoekream.admin.manager.vo.ManagerVo;
 import com.shoekream.page.vo.PageVo;
-import com.shoekream.qna.service.QnaService;
-import com.shoekream.qna.vo.QnaVo;
+import com.shoekream.request.service.RequestService;
+import com.shoekream.request.vo.RequestVo;
 
 @WebServlet("/admin/request/list")
 public class AdminRequestListController extends HttpServlet{
-
-	//화면출력
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		QnaService qs = new QnaService();
+		RequestService ns = new RequestService();
 
 		try {
+			
 		String x = req.getParameter("x");
 		//data
-		int listCount = qs.selectQnaCount();
+		int listCount = ns.selectRequestCount();
 		String currentPage_ = req.getParameter("pno");
 		if(currentPage_ == null) {
 			currentPage_ = "1";
@@ -42,13 +43,13 @@ public class AdminRequestListController extends HttpServlet{
 //		}
 		
 		//service
-		List<QnaVo> QnaVoList = qs.QnaList(pvo);
+		List<RequestVo> requestVoList = ns.RequestList(pvo);
 		
 		//result == view
-		req.setAttribute("qnaVoList", QnaVoList);
+		req.setAttribute("requestVoList", requestVoList);
 		req.setAttribute("pvo", pvo);
 		req.setAttribute("x", x);
-		req.getRequestDispatcher("/WEB-INF/views/admin/board/qna/adminList.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/board/request/adminList.jsp").forward(req, resp);
 		
 		}catch(Exception e) {
 			System.out.println("[ERROR-001] 게시글 조회 중 에러 발생..");
@@ -56,4 +57,5 @@ public class AdminRequestListController extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
+
 }
