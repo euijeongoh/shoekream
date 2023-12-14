@@ -87,7 +87,7 @@
 						                </div>
 						            </button>
 						        </a>
-						        <a href="/shoekream/sell/select?productsNo=?<%=productDetailVo.getProductNo() %>">
+						        <a href="/shoekream/sell/select?productsNo=<%=productDetailVo.getProductNo() %>">
 						            <button class="btn_action" style="background-color: rgb(65, 185, 121);">
 						                <strong class="title">판매</strong>
 						                <div class="price">

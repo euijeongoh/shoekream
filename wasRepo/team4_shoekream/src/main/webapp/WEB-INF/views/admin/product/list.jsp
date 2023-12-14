@@ -17,12 +17,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/shoekream/resources/css/admin/product/list.css">
-    <link rel="stylesheet" href="/shoekream/resources/css/admin/common/admin_sidebar.css">
-    <link rel="stylesheet" href="/shoekream/resources/css/admin/common/admin_header.css">
     
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/admin/common/admin_header.jsp" %>
+	 		<div class="header_list">
+                <a href="/shoekream/admin/product/enroll"><span>상품등록</span></a>
+                <a href="/shoekream/admin/product/list"><b><span>상품목록</span></b></a>
+            </div>    
         <br>
     <br><br>
     <hr>
@@ -85,6 +87,6 @@
     </div>
         </div>
     </div>
-
+	<%@ include file="/WEB-INF/views/admin/common/admin_footer.jsp" %>
 </body>
 </html>
