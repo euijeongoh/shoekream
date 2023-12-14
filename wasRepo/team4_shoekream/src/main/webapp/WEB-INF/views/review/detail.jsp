@@ -19,6 +19,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/shoekream/resources/css/common/header.css"> 
 <link rel="stylesheet" href="/shoekream/resources/css/review/detail.css">
+<link rel="stylesheet" href="/shoekream/resources/css/common/footer.css"> 
+
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -166,5 +168,8 @@
     <div class="abcd">
     
     </div>
+    
+    
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

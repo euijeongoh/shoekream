@@ -30,7 +30,7 @@
             <div class="picjor">
              <input type="file" accept="image/*" name="f">
                 <div class="picture">
-                    <img src="" alt="" class="picture_img">
+                    <img src="/shoekream/resources/img/review/semi.png" alt="" class="picture_img">
                 </div>
                 <div class="jordan">
                     <p class="jordan_eg"><b><%=productVo.getProductName() %></b></p>
