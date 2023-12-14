@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/shoekream/resources/css/admin/commmon/admin_sidebar.css">
+    <link rel="stylesheet" href="/shoekream/resources/css/admin/common/admin_sidebar.css">
 </head>
 <body>
     <div class="sidebar">

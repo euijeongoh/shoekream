@@ -39,9 +39,9 @@
 					            <tr>
 					                <td>상품</td>
 					                <%if(Integer.parseInt(vo.getProductNo())>51){ %>
-					                <td><img src="/shoekream/resources/img/product/<%=vo.getModelNumber() %>.png" alt="씀네일" class="product_image"></td>
+					                <td><img src="/shoekream/resources/img/product/<%=vo.getModelNumber() %>.png" alt="썸네일" class="product_image"></td>
 					                <%}else{ %>
-					                <td><img src="/shoekream/resources/img/product/<%=vo.getModelNumber() %>.webp" alt="씀네일" class="product_image"></td>
+					                <td><img src="/shoekream/resources/img/product/<%=vo.getModelNumber() %>.webp" alt="썸네일" class="product_image"></td>
 					                <% }%>
 					                <td>
 					                    <a href="/shoekream/admin/product/edit?no=<%=vo.getProductNo() %>&name=<%=vo.getProductName()%>&nameKo=<%=vo.getProductNameKo()%>&modelNumber=<%=vo.getModelNumber()%>&releasePrice=<%=vo.getReleasePrice()%>&category=<%=vo.getCategory()%>&brand=<%=vo.getBrand()%>">
