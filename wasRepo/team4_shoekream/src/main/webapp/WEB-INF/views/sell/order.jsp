@@ -159,6 +159,33 @@
                     </div>
                 </div>
                 <!-- 최종 주문정보 -->
+                
+				<div class="display_separator"></div>
+				
+                <!-- 판매 정산 계좌 -->
+                <div class="section_payout_account">
+                    <div class="payout_account_area">
+                        <div class="section_title">
+                            <h3 class="title_txt">판매 정산 계좌</h3>
+                        </div>
+                        <div class="section_content_b">
+                            <div class="account_info">
+                                <dl class="info_list">
+                                    <div class="info_box">
+                                        <dt class="title">계좌</dt>
+                                        <dd class="desc">${ accInfo.bankAgentName }${ accInfo.accountNumber }</dd>
+                                    </div>
+                                    <div margin class="info_box">
+                                        <dt class="title">예금주</dt>
+                                        <dd class="desc">${ loginMember.name }</dd>
+                                    </div>
+                                </dl>
+                            </div>
+                            <a class="btn_account_edit">변경</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 판매 정산 계좌 -->
 
                 <div class="display_separator"></div>
 
@@ -198,33 +225,33 @@
                     <div class="display_separator"></div>
 
                     <!-- 결제 방법 -->
-                    <div class="section_payment">
-                        <div class="payment_area">
-                            <div class="payment_title">
-                                <h3 class="payment_title_txt">결제 정보</h3>
-                            </div>
-                            <div>
-                                <div class="payment_account">
+<!--                     <div class="section_payment"> -->
+<!--                         <div class="payment_area"> -->
+<!--                             <div class="payment_title"> -->
+<!--                                 <h3 class="payment_title_txt">결제 정보</h3> -->
+<!--                             </div> -->
+<!--                             <div> -->
+<!--                                 <div class="payment_account"> -->
                                     <!-- <h4 class="method_title">
                                         <div class="main_title">
                                             <p>계좌</p>
                                         </div>
                                         <a class="btn_card_add">새 계좌 추가</a>
                                     </h4> -->
-                                    <div>
-                                        <div class="payment_detail">
-                                            <div class="payment_item">
-                                                <div class="info_wrap">
-                                                    <div class="bank_info">
-                                                        <span class="bank_name">${ cardInfo.cardCompanyName }</span>
-                                                        <div class="account_number">${ cardInfo.cardNumber }</div>
-                                                    </div>
+<!--                                     <div> -->
+<!--                                         <div class="payment_detail"> -->
+<!--                                             <div class="payment_item"> -->
+<!--                                                 <div class="info_wrap"> -->
+<!--                                                     <div class="bank_info"> -->
+<%--                                                         <span class="bank_name">${ cardInfo.cardCompanyName }</span> --%>
+<%--                                                         <div class="account_number">${ cardInfo.cardNumber }</div> --%>
+<!--                                                     </div> -->
                                                     <!-- <a class="regist_link">계좌를 등록하세요</a> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
                                 <!-- <div class="payment_card">
                                     <h4 class="method_title">
                                         <div class="main_title">
@@ -241,9 +268,9 @@
                                         </div>
                                     </div>
                                 </div> -->
-                            </div>
-                        </div>
-                    </div>
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
                     <!-- 결제 방법 -->
 
 

@@ -161,36 +161,7 @@ public class BiddingService {
 
 
 
-
-
-	// 주문 정보 입력
-	public int orders(String loginMemberNo, String biddngNo, String productsNo, String commissionStr, String totalAmountStr) throws Exception{
-		// conn
-		Connection conn = JDBCTemplate.getConnection();
-		
-		// dao
-		BiddingDao dao = new BiddingDao();
-//			System.out.println("에러확인 orders Service");
-		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo, commissionStr, totalAmountStr);
-		
-		// tx
-		if (result == 1) {
-			JDBCTemplate.commit(conn);
-		} else {
-			JDBCTemplate.rollback(conn);
-		}		
-		
-		// close
-		JDBCTemplate.close(conn);
-//			System.out.println("에러확인 orders Dao -> Service");
-		
-		return result;
-	}
-
-
-
-
-
+	
 	// 구매 입찰 등록
 	public int buyBidding(String memberNo, String productsNo, String productsSizesNo, String biddingPrice, String deadline) throws Exception{
 		// conn
@@ -238,6 +209,58 @@ public class BiddingService {
 		return result;
 	}
 
+	
+	
+	
+	// 주문 정보 입력
+	public int orders(String loginMemberNo, String biddngNo, String productsNo, String commissionStr, String totalAmountStr) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+//			System.out.println("에러확인 orders Service");
+		int result = dao.orders(conn, loginMemberNo, biddngNo, productsNo, commissionStr, totalAmountStr);
+		
+		// tx
+		if (result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}		
+		
+		// close
+		JDBCTemplate.close(conn);
+//			System.out.println("에러확인 orders Dao -> Service");
+		
+		return result;
+	}
+
+	
+	
+	
+	// 입찰 상태 업데이트
+	public int productUpdate(String memberNo, String biddingNo, String productNo, String price) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		
+		int result = dao.productUpdate(conn, memberNo, biddingNo, productNo, price);
+		
+		// tx
+		if (result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}		
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 
 
 	//------------------------------------------------------------------------------------------------------------------------

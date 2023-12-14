@@ -383,12 +383,12 @@ public class BiddingDao {
 		// sql
 		String sql = "INSERT INTO ORDERS VALUES(SEQ_ORDERS_NO.NEXTVAL, ?, 4, ?, ?, 1, SYSDATE, '카드', SYSDATE, NULL, NULL, NULL, NULL, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-//			System.out.println("orders : 주문 정보 입력");
-//			System.out.println("dao에러확인 loginMemberNo : " + loginMemberNo);
-//			System.out.println("dao에러확인 biddngNo : " + biddngNo);
-//			System.out.println("dao에러확인 productsNo : " + productsNo);
-//			System.out.println("dao에러확인 totalAmount : " + totalAmountStr);
-//			System.out.println("dao에러확인 commission : " + commissionStr);
+			System.out.println("orders : 주문 정보 입력");
+			System.out.println("dao에러확인 loginMemberNo : " + loginMemberNo);
+			System.out.println("dao에러확인 biddngNo : " + biddngNo);
+			System.out.println("dao에러확인 productsNo : " + productsNo);
+			System.out.println("dao에러확인 totalAmount : " + totalAmountStr);
+			System.out.println("dao에러확인 commission : " + commissionStr);
 		pstmt.setString(1, loginMemberNo);
 		pstmt.setString(2, biddngNo);
 		pstmt.setString(3, productsNo);
@@ -432,6 +432,31 @@ public class BiddingDao {
 		
 		return result;
 	}
+	
+	
+	
+	
+	public int productUpdate(Connection conn, String memberNo, String biddingNo, String productNo, String price) throws Exception{
+		// sql
+		String sql = "UPDATE BIDDING SET BIDDING_STATUS_NO = 3 WHERE NO = ? AND PRODUCTS_NO = ? AND PRICE = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, biddingNo);
+		pstmt.setString(2, productNo);
+		pstmt.setString(3, price);
+		int result = pstmt.executeUpdate();
+		System.out.println("즉시구매 UPDATE 확인 : " + result);
+		// rs
+		
+		// close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+		
+	}
+	
+	
+	
+	
 	// 판매 입찰 등록
 	public int sellBidding(Connection conn, String memberNo, String productsNo, String productsSizesNo, String biddingPrice, String deadline) throws Exception{
 		// sql
