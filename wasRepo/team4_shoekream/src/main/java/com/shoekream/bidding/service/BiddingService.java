@@ -65,6 +65,20 @@ public class BiddingService {
 		
 		return dbVo;
 	}
+	// 입찰 상품 정보 조회
+	public BiddingVo productInfo2sell(BiddingVo vo) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+		BiddingVo dbVo = dao.productInfo2sell(conn, vo);
+	
+		// close
+		JDBCTemplate.close(conn);
+		
+		return dbVo;
+	}
 	
 
 	

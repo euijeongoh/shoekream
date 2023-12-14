@@ -51,23 +51,7 @@
             <div class="buy_immediate">
 
                 <!-- 상품 정보 -->
-                <div class="product_info_area">
-                    <div class="product_info">
-                        <div class="product_thumb">
-                            <div class="porduct">
-                                <img id="airforce" src="/shoekream/resources/img/bidding/airforce.webp">
-                            </div>
-                        </div>
-                        <div class="product_detail">
-                            <p class="code">CJ9179-200</p>
-                            <p class="name">Nike Air Force 1 '07 WB Flax</p>
-                            <p class="translated_name">나이키 에어포스 1 '07 WB 플랙스</p>
-                            <div class="model_desc">
-                                <p class="size_txt">250</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				<%@ include file="/WEB-INF/views/buy/selectproduct.jsp" %>
                 <!-- 상품 정보 -->
 
                 <div class="display_separator"></div>
@@ -83,11 +67,11 @@
                                 <dl class="info_list">
                                     <div class="info_box">
                                         <dt class="title">계좌</dt>
-                                        <dd class="desc">하나은행 63091056019107</dd>
+                                        <dd class="desc">${ accInfo.bankAgentName }${ accInfo.accountNumber }</dd>
                                     </div>
                                     <div margin class="info_box">
                                         <dt class="title">예금주</dt>
-                                        <dd class="desc">곽태윤</dd>
+                                        <dd class="desc">${ accInfo.depositor }</dd>
                                     </div>
                                 </dl>
                             </div>
@@ -112,15 +96,15 @@
                                     <dl class="info_list">
                                         <div class="info_box">
                                             <dt class="title">받는 분</dt>
-                                            <dd class="desc">곽태윤</dd>
+                                            <dd class="desc">${addInfo.addersName}</dd>
                                         </div>
                                         <div class="info_box">
                                             <dt class="title">연락처</dt>
-                                            <dd class="desc">010-9740-4885</dd>
+                                            <dd class="desc">${addInfo.phoneNumber}</dd>
                                         </div>
                                         <div class="info_box">
                                             <dt class="title">배송 주소</dt>
-                                            <dd class="desc">인천 연수구 함박뫼로 100 (연수동, 문남마을아파트) 109-505</dd>
+                                            <dd class="desc">${addInfo.addres}${addInfo.detailAddres}</dd>
                                         </div>
                                     </dl>
                                 </div>
@@ -176,7 +160,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        163,000원
+                                        ${ biddingPrice }원
                                     </em>
                                 </p>
                             </div>
@@ -196,7 +180,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        -9,100원
+                                        -${ commission }원
                                     </em>
                                 </p>
                             </div>
@@ -218,7 +202,7 @@
                             <div class="description_wrap">
                                 <p class="line_description">
                                     <em style="color:inherit;">
-                                        60일-2024/01/31
+                                        ${ deadline }
                                     </em>
                                 </p>
                             </div>
@@ -229,24 +213,35 @@
                 <!-- 최종 주문정보 -->
 
                 <!-- 결제하기 -->
-                <div class="buy_total_confirm">
-                    <div class="price_total">
-                        <dl class="price_box">
-                            <dt class="price_title">정산금액</dt>
-                            <dd class="price_empty_desc">
-                                <span class="amount">153,900</span>
-                                <span class="unit">원</span>
-                            </dd>
-                        </dl>
-                        <span class="price_warning">
-                            <em></em>
-                        </span>
-                    </div>
-                    <div class="btn_confirm">
-                        <a blind class="blind_full_solid_false">계속하기</a>
-                        <button class="blind_full_solid_false">바로 판매하기</button>
-                    </div>
-                </div>
+                <form action="/shoekream/sell/biddingorder">
+	                <div class="buy_total_confirm">
+	                    <div class="price_total">
+	                        <dl class="price_box">
+	                            <dt class="price_title">정산금액</dt>
+	                            <dd class="price_empty_desc">
+	                                <span class="amount">${ totalAmount }</span>
+	                                <span class="unit">원</span>
+	                            </dd>
+	                        </dl>
+	                        <span class="price_warning">
+	                            <em></em>
+	                        </span>
+	                    </div>
+	                    <div class="btn_confirm">
+	                        <a blind class="blind_full_solid_false">계속하기</a>
+	                        <button class="blind_full_solid_false">판매 입찰하기</button>
+	                        
+	                            <input type="hidden" name="memberNo" value="${ loginMember.no }">
+	                            <input type="hidden" name="productsNo" value="${ dbVo.productsNo }">
+	                         	<input type="hidden" name="productsSizesNo" value="${ dbVo.productsSizesNo }">
+	                         	<input type="hidden" name="biddingPrice" value="${ biddingPrice }">
+		                        <input type="hidden" name="deadline" value="${ deadline }">
+	                         	
+	                            <input type="hidden" name="totalPrice" value="${ totalAmount }">
+		                        <input type="hidden" name="commission" value="${ commission }">
+	                    </div>
+	                </div>
+                </form>
             </div>
         </div>
     </div>
