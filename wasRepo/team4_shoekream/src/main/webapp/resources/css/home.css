@@ -85,12 +85,13 @@
     width: 100%;
     height: 234px;
     border-radius: 12px;
+    cursor: pointer;
 }
 
 .product_list_wrap li #product_img img {
     width: 100%;
     height: 234px;
-    border-radius: 12px;
+    border-radius: 12px
 }
 
 .info_box {
