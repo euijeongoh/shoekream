@@ -23,11 +23,11 @@ public class NoticeDetailController extends HttpServlet{
 			//data
 			String no = req.getParameter("no");
 			
-			HttpSession session = req.getSession();
-			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-			if(loginMember == null) {
-				throw new Exception("로그인 안했음");
-			}
+//			HttpSession session = req.getSession();
+//			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+//			if(loginMember == null) {
+//				throw new Exception("로그인 안했음");
+//			}
 			
 			//service
 			NoticeService ns = new NoticeService();
