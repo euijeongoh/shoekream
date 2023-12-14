@@ -31,7 +31,7 @@ public class SellBiddingOrderController extends HttpServlet{
 		try {
 			String name = "곽태윤";
 			String dataName = getHiddenData(name, 1);
-			req.setAttribute("trade","구매");
+			req.setAttribute("trade","판매");
 			req.setAttribute("process", " 진행 중");
 			
 			BiddingService bs = new BiddingService();
