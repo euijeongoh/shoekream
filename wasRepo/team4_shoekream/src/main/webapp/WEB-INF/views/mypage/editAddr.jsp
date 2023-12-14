@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>새주소추가</title>
+<title>주소 수정</title>
 
 <link rel="stylesheet"
 	href="/shoekream/resources/css/mypage/newAdderss.css">
