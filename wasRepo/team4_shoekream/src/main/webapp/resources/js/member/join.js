@@ -142,6 +142,7 @@ joinInputTagArr[5].addEventListener('keyup', ()=>{
 	fetch("/shoekream/member/check/email", { method: "POST" , body: jsonStr})
 	.then((resp)=>{ return resp.json() })
 	.then((data)=>{
+		console.log(data.reply);
 		const result = data.reply;
 		const isDup = (result == "no");
 		const emailCheckDiv = document.querySelector("#email_check");

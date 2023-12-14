@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.eclipse.jdt.internal.compiler.ast.TypeReference;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.shoekream.member.service.MemberService;
 
 @WebServlet("/member/check/email")
@@ -33,9 +31,8 @@ public class EmailDupCheckController extends HttpServlet{
 			}
 			System.out.println(jsonStr);
 			// json to map
-			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<Map<String, String>> typeReference = new TypeReference<Map<String, String>>() {};
-			Map<String, String> map = mapper.readValue(jsonStr, typeReference);
+			Gson gson = new Gson();
+			Map<String, String> map = gson.fromJson(jsonStr, Map.class);
 			
 			// service
 			MemberService ms = new MemberService();
@@ -47,9 +44,9 @@ public class EmailDupCheckController extends HttpServlet{
 				throw new Exception("이미 가입된 아이디");
 			}
 			
-			out.write("{\"msg\" : \"ok\"}");
+			out.write("{\"reply\" : \"ok\"}");
 		} catch(Exception e) {
-			out.write("{\"msg\" : \"no\"}");
+			out.write("{\"reply\" : \"no\"}");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
