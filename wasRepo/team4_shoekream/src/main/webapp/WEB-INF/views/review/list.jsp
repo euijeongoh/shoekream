@@ -33,15 +33,14 @@
                 <div class="listphoto">
                     <div class="one">
                         <a href="/shoekream/review/detail">
-                            <img src="/shoekream/resources/img/review/picture.png" alt="사진01" class="photo3">
+                            <img src="/shoekream/resources/img/review/된장포스최종.png" alt="사진01" class="photo3">
                         </a>
                         <div class="detail">
                             <a href="">
                                 <img src="/shoekream/resources/img/review/wave.png" alt="wave" class="wave">
                             </a>
                             <div class="text2">
-                            <p>역시 예뻐요!
-                            <br>반사이즈 업 추천드려요!</p>
+                            <p>너무 예뻐용</p>
                             </div>  
                             <div>
                                 <a href="">
@@ -52,14 +51,14 @@
                     </div>
 
                     <div class="one">
-                        <img src="/shoekream/resources/img/review/reviewlist02.png" alt="사진02" class="photo4">
+                        <img src="/shoekream/resources/img/review/picture.png" alt="사진02" class="photo3">
                         <div class="detail">
                             <a href="">
                                 <img src="/shoekream/resources/img/review/profile01.png" alt="wave" class="wave">
                             </a> 
-                            <div class="text">
-                            <p>보들보들 예뿌다
-                            <br>사이즈는 230!</p>
+                            <div class="text2">
+                            <p>역시 예뻐요!
+                            <br>반사이즈 업 추천드려요!</p>
                             </div>                                           
                             <div>
                                 <a href="">
@@ -74,7 +73,10 @@
                         <div class="detail">
                             <a href="">
                                 <img src="/shoekream/resources/img/review/profile02.png" alt="wave" class="wave">
-                            </a>                            
+                            </a>   
+                            <div class="text2">
+                            <p>예뻐!!!</p>
+                            </div>                           
                             <div>
                                 <a href="">
                                     <img src="/shoekream/resources/img/review/like.png" alt="좋아요" class="likey">  

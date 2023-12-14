@@ -127,8 +127,6 @@ public class ReviewWriteController extends HttpServlet {
        in.close();
        out.close();
        
-//       String likeBtn = req.getParameter("likeBtn");
-	   
 	     ReviewVo vo = new ReviewVo();
 	     vo.setNo(no);
 	     vo.setMemberNo(loginMember.getNo());
@@ -136,7 +134,6 @@ public class ReviewWriteController extends HttpServlet {
 	     vo.setComfortNo(comfortNo);
 	     vo.setContent(content);
 	     vo.setReviewImage(url);
-//	     vo.setLikeBtn(likeBtn);
          
          // service
          ReviewService bs = new ReviewService();
@@ -150,7 +147,7 @@ public class ReviewWriteController extends HttpServlet {
          
          
          req.getSession().setAttribute("alertMsg", "리뷰 작성 성공 !");
-         resp.sendRedirect("/shoekream/home");
+         resp.sendRedirect("/shoekream/mypage/main");
          
       }catch(Exception e) {
          System.out.println("[ERROR-B002] 리뷰 작성 실패 ...");
