@@ -34,8 +34,18 @@ public class BuyOrderController extends HttpServlet{
 			req.setAttribute("trade","구매");
 			req.setAttribute("process", " 진행 중");
 			
+			String memberNo = req.getParameter("memberNo");
+			String biddingNo = req.getParameter("biddingNo");
+			String productNo = req.getParameter("productsNo");
+			String price = req.getParameter("price");
+			
+			
 			BiddingService bs = new BiddingService();
-			OrdersVo ordersVo = bs.ordersInfo(req.getParameter("memberNo"),req.getParameter("biddingNo"),req.getParameter("productsNo"));
+			int result = bs.productUpdate(memberNo,biddingNo,productNo, price);
+			
+			
+			
+			OrdersVo ordersVo = bs.ordersInfo(memberNo,biddingNo,productNo);
 				System.out.println("orderController 에러확인 memberNo : " + req.getParameter("memberNo"));
 				System.out.println("orderController 에러확인 biddingNo : " + req.getParameter("biddingNo"));
 				System.out.println("orderController 에러확인 productsNo : " + req.getParameter("productsNo"));

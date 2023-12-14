@@ -72,6 +72,7 @@
                                                 <input class="memberNo" type="hidden" name="memberNo" value="${ loginMember.no }">
                                                 <input class="biddingNo" type="hidden" name="biddingNo" value="${ BuyProductInfo.no }">
                                                 <input class="productsNo" type="hidden" name="productsNo" value="${ BuyProductInfo.productsNo }">
+                                                <input class="price" type="hidden" name="price" value="${ dbVo.price }">
                                                 <dt class="title">받는 분</dt>
                                                 <dd class="desc">${addInfo.addersName}</dd>
                                                 <input class="addNo" type="hidden" name="addNo" value="${ addInfo.no }">

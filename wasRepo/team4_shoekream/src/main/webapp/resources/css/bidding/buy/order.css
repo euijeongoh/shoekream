@@ -491,3 +491,61 @@ body {
                         text-align: center;
                         vertical-align: middle;
                     }
+            /* 판매 정산 계좌 */
+            .section_payout_account {
+                box-sizing: border-box;
+                padding: 32px;
+            }
+                .payout_account_area {
+                    box-sizing: border-box;
+                }
+                    .section_title {
+                        padding-bottom: 12px;
+                        box-sizing: border-box;
+                        color: #222;
+                    }
+                        /* .title_txt {
+                            font-size: 18px;
+                            font-weight: 600;
+                            letter-spacing: -.15px;
+                            line-height: 22px;
+                            box-sizing: border-box;
+                        } */
+                    .section_content_b {
+                        height: 100%;
+                        position: relative;
+                        box-sizing: border-box;
+                        color: #222;
+                    }
+                        .account_info {
+                            box-sizing: border-box;
+                        }
+                            .info_list {
+                                box-sizing: border-box;
+                            }
+                                .info_box {
+                                    line-height: 17px;
+                                    overflow: hidden;
+                                    box-sizing: border-box;
+                                }
+                                .info_box[margin] {
+                                    margin-top: 6px;
+                                }
+                        .btn_account_edit {
+                            position: absolute;
+                            top: 2px;
+                            right: 0;
+                            border: 1px solid #d3d3d3;
+                            color: rgba(34,34,34,.8);
+                            border-radius: 10px;
+                            font-size: 12px;
+                            height: 34px;
+                            padding: 0 14px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            text-align: center;
+                        }
+
+
+            /* 판매 정산 계좌 */

@@ -117,36 +117,6 @@
                 
                 <div class="display_separator"></div>
 
-                <!-- 결제 방법 -->
-                <div class="section_payment">
-                    <div class="payment_area">
-                        <div class="payment_title">
-                            <h3 class="payment_title_txt">결제 방법</h3>
-                        </div>
-                        <div>
-                            <div class="payment_card">
-                                <h4 class="method_title">
-                                    <div class="main_title">
-                                        <p class="payment">카드 간편결제</p>
-                                    </div>
-                                </h4>
-                                <div>
-                                    <div class="card_list">
-                                        <div class="main_card">
-                                            <a class="regist_link">
-                                                <span class="regist_text">카드를 등록하세요</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 결제 방법 -->
-
-                <div class="display_separator"></div>
-
                 <!-- 최종 주문정보 -->
                 <div class="section_orderinfo">
                     <div class="orderinfo_area">

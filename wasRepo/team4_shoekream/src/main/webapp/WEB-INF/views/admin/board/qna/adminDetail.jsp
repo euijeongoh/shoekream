@@ -34,7 +34,7 @@
 				<% if(vo.getReplyTitle()==null) {%>
 				<form action="/shoekream/admin/qna/detail?no=<%=vo.getNo()%>" method="post">
 					<div class="dropdown_reply">
-						<div class="reply_date">날짜</div>
+						<div class="reply_date"></div>
 						<div class="reply_title">
 							제목: <input type="text" name="replyTitle" >
 						</div>
