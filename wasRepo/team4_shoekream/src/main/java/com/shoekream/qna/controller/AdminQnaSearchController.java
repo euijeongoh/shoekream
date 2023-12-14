@@ -43,23 +43,15 @@ public class AdminQnaSearchController extends HttpServlet{
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
-			HttpSession session = req.getSession();
-			ManagerVo loginAdmin = (ManagerVo)session.getAttribute("loginAdmin");
-			if(loginAdmin == null) {
-				throw new Exception("로그인 안했음");
-			}
-			
 			//service
 			List<QnaVo> qnaVoList = qs.qnaSearch(title, pvo);
 			
 			
 			//result == view
-			
 			req.setAttribute("qnaVoList", qnaVoList);
 			req.setAttribute("pvo", pvo);
 			req.setAttribute("x", title);
 			req.getRequestDispatcher("/WEB-INF/views/admin/board/qna/adminList.jsp").forward(req, resp);
-			
 			
 		}catch(Exception e) {
 			System.out.println("[ERROR-003] 게시글 검색 중 에러 발생..");
