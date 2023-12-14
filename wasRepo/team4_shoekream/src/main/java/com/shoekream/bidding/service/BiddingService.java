@@ -191,7 +191,7 @@ public class BiddingService {
 
 
 
-	// 입찰 등록
+	// 구매 입찰 등록
 	public int buyBidding(String memberNo, String productsNo, String productsSizesNo, String biddingPrice, String deadline) throws Exception{
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
@@ -200,6 +200,29 @@ public class BiddingService {
 		BiddingDao dao = new BiddingDao();
 //			System.out.println("에러확인 buyBidding Service");
 		int result = dao.buyBidding(conn, memberNo, productsNo, productsSizesNo, biddingPrice, deadline);
+		
+		// tx
+		if (result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}		
+		
+		// close
+		JDBCTemplate.close(conn);
+//			System.out.println("에러확인 buyBidding Dao -> Service");
+		
+		return result;
+	}
+	// 판매 입찰 등록
+	public int sellBidding(String memberNo, String productsNo, String productsSizesNo, String biddingPrice, String deadline) throws Exception{
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		BiddingDao dao = new BiddingDao();
+//			System.out.println("에러확인 buyBidding Service");
+		int result = dao.sellBidding(conn, memberNo, productsNo, productsSizesNo, biddingPrice, deadline);
 		
 		// tx
 		if (result == 1) {
