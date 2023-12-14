@@ -64,7 +64,7 @@ public class AdminEnrollProductController extends HttpServlet {
 			EnrollProductVo sizeCheckVo = ps.sizeCheck(sizes);
 			//가져온 사이즈 번호
 			String[] sizeNo = sizeCheckVo.getSizeNo();
-			
+			System.out.println(Arrays.toString(sizeNo));
 			//DB의 PRODUCTS 테이블에 상품정보 등록
 			String productName = req.getParameter("productName");
 			String modelNumber = req.getParameter("modelNumber");
@@ -80,15 +80,16 @@ public class AdminEnrollProductController extends HttpServlet {
 			vo.setBrandNo(brandNo);
 			vo.setReleaseDate(releaseDate);
 			vo.setDelYn("N");
-			//등록한 상품의 제품번호확인(modelNumber로 확인)
-			EnrollProductVo productNoCheckVo = ps.getEnrolledProductNo(vo);
-			String productNo = productNoCheckVo.getProductNo();
-			vo.setProductNo(productNo);
-			
 			int result = ps.enrollProduct(vo);
 			if(result != 1) {
 				throw new Exception("result != 1");
 			}
+			//등록한 상품의 제품번호확인(modelNumber로 확인)
+			
+			EnrollProductVo productNoCheckVo = ps.getEnrolledProductNo(vo);
+			String productNo = productNoCheckVo.getProductNo();
+			vo.setProductNo(productNo);
+			
 			
 			EnrollProductVo productSizesVo = new EnrollProductVo();
 			productSizesVo.setProductNo(productNo);
@@ -99,7 +100,6 @@ public class AdminEnrollProductController extends HttpServlet {
 				throw new Exception("result2 != 1");
 			}
 			
-			req.setCharacterEncoding("UTF-8");
 			Part f = req.getPart("f");
 			
 			InputStream in = f.getInputStream();
@@ -128,7 +128,6 @@ public class AdminEnrollProductController extends HttpServlet {
 			//정리
 			in.close();
 			out.close();
-			req.getSession().setAttribute("alertMsg", "제품 등록 성공!");
 			resp.sendRedirect("/shoekream/admin/product/list");
 		}catch(Exception e) {
 			System.out.println("제품 등록 실패");
