@@ -31,22 +31,22 @@
                                                 <h2>배송 현황</h2>
                                                     <thead>
                                                         <tr class="order">
-                                                            <th class="checkbox-header"><input type="checkbox"></th>
+                                                            <th class="checkbox-header">번호</th>
                                                             <th class="order-date">주문일자</th>
-                                                            <th class="order-info">주문번호/<br>이메일</th>
+                                                            <th class="order-info">입찰번호/<br>이메일</th>
                                                             <th class="product">상품</th>
                                                             <th class="price">구매가격</th>
                                                             <th class="seller-buyer">구매자</th>
                                                             <th class="inspection-progress">검수진행</th>
                                                             <th class="status">진행현황</th>
+                                                            <th class="button">저장</th>
                                                         </tr>
                                                     </thead>
                                                     <%for(OrdersVo vo : OrderVoList){ %>
+                                                        <form action="" method="post">
                                                         <tbody>
                                                             <tr class="order-item">
                                                                 <td class="checkbox-cell">
-                                                                    <input type="checkbox">
-                                                                    <br>
                                                                     <p>
                                                                         <%=vo.getNo() %>
                                                                     </p>
@@ -71,22 +71,23 @@
                                                                     <%=vo.getMemberName() %>
                                                                 </td>
                                                                 <td class="inspection-progress">
-                                                                    <select name="inspection" id="inspection">
-                                                                        <option value="inspection_success">검수(합격)
-                                                                        </option>
-                                                                        <option value="inspection_fail">검수(불합격)</option>
-                                                                    </select>
+                                                                    <%=vo.getCheckResult() %>
                                                                 </td>
                                                                 <td class="status">
-                                                                    <input type="checkbox" value="inspection-completed"
-                                                                        checked="checked">입고완료<br>
-                                                                    <input type="checkbox"
-                                                                        value="requires-warehousing" checked="checked">검수완료<br>
-                                                                    <input type="checkbox"
-                                                                        value="delivery-completed">배송완료<br>
+                                                                    <input type="radio" value="1" id="storage" name="order_status" >입고완료<br>
+                                                                    <input type="radio" value="2" id="check_success" name="order_status" checked="checked">검수합격<br>
+                                                                    <input type="hidden" value="2" id="check_success" name="check_result">
+                                                                    <input type="radio" value="2" id="check_fail" name="order_status">검수불합격<br>
+                                                                    <input type="hidden" value="3" id="check_fail" name="check_result">
+                                                                    <input type="radio" value="6" id="send_success" name="order_status">배송완료<br>
+                                                                    <input type="radio" value="3" id="send_fail" name="order_status">반송완료
+                                                                </td>
+                                                                <td class="button">
+                                                                    <input type="submit" value="저장">
                                                                 </td>
                                                             </tr>
                                                         </tbody>
+                                                    </form>
                                                         <%} %>
                                                 </table>
 
