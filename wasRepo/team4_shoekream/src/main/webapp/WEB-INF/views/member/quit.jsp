@@ -71,7 +71,7 @@
 
 						<div class="btn_area">
                         <input type="submit" value="탈퇴하기">
-                        <input type="button" onclick="location.href='/shoekream/member/info'" value="취소하기">						
+                        <input type="button" onclick="location.href='/shoekream/mypage/info'" value="취소하기">						
 						</div>
 						
 <%-- 						<%@ include file="/WEB-INF/views/member/quit_modal.jsp" %> --%>

@@ -118,6 +118,7 @@ function bidTabAjax() {
 
 function pendTabAjax() {
 	
+	// 탭 클릭 시 탭 css 변경
 	bidCount.style.color="#222222";
 	tabBidding.style.borderBottom="none";
 	pendCount.style.color="#F15746";
@@ -125,24 +126,26 @@ function pendTabAjax() {
 	finishedCount.style.color="#222222";
 	tabFinished.style.borderBottom="none";
 	
+	// hidden input값 설정
 	inputTabValue = "pending";
 	
 	// json 형태로 데이터 보내기
 	const startDateValue = document.querySelector("input[name=startDate]").value;
 	const endDateValue = document.querySelector("input[name=endDate]").value;
 	
+	// startDate, endDate 값이 없을 시 2개월로 설정
 	if(startDateValue==="" || endDateValue === "") {
 		set2Mths();
 	}
 	
-
+	// json 객체 생성
 	const jsonObj = {
 		startDate : startDateValue,
 		endDate : endDateValue,
 	}
 	
+	// 문자열로 변환
 	const jsonStr = JSON.stringify(jsonObj);
-	console.log(jsonStr);
 	
 	// ajax 요청
 	fetch("/shoekream/mypage/buying/pendList",
@@ -151,7 +154,6 @@ function pendTabAjax() {
 	.then( (data) => {
 		const purchaseBody = document.querySelector(".purchase-body");
 		purchaseBody.innerHTML="";
-		
 		
 		data.pendList.map((item) => {
 	      for(let i=0; i<data.pendList.length; ++i) {

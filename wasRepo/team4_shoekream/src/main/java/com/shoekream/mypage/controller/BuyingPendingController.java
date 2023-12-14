@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.shoekream.member.MemberVo;
 import com.shoekream.mypage.service.MyPageService;
 import com.shoekream.mypage.vo.HistoryCntVo;
@@ -44,9 +45,8 @@ public class BuyingPendingController extends HttpServlet{
 			}
 			
 			// json to map
-			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<Map<String, String>> typeReference = new TypeReference<Map<String, String>>() {};
-			Map<String, String> map = mapper.readValue(jsonStr, typeReference);
+			Gson gson = new Gson();
+			Map<String, String> map = gson.fromJson(jsonStr, Map.class);
 			
 			// service 호출
 			MyPageService service = new MyPageService();
@@ -65,7 +65,6 @@ public class BuyingPendingController extends HttpServlet{
 			
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);		
 			List<BuyingHistoryVo> pendList = service.viewBuyingPendingList(loginMember, map);
-			System.out.println(pendList);
 			// 데이터 가공(map)
 			Map<String, Object> respMap = new HashMap<String, Object>();
 			respMap.put("pvo", pvo);
@@ -73,8 +72,7 @@ public class BuyingPendingController extends HttpServlet{
 			
 			// result json으로 변환 후 응답
 			PrintWriter out = resp.getWriter();
-			String respJson = mapper.writeValueAsString(respMap);
-			System.out.println(respJson);
+			String respJson = gson.toJson(respMap);
 			out.write(respJson);
 			
 			out.close();
