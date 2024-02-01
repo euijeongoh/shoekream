@@ -38,6 +38,8 @@ public class MemberSearchPwdController extends HttpServlet{
 			MemberService service = new MemberService();
 			int result = service.sendPwdEmail(vo);
 			
+			req.setAttribute("sendEmailSuccess", "해당 이메일로 임시 비밀번호가 발급되었습니다.");
+			
 			// result == view
 			if(result != 1) {
 				throw new Exception("비밀번호 업데이트 실패");

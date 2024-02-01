@@ -19,11 +19,11 @@
 </head>
 <body>
 
-
+<script>
 		<%if(alertMsg!=null){ %>
 			alert(<%=alertMsg%>);			
 		<%} %>
-	
+</script>
 
 	
 	<header>

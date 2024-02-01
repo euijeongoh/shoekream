@@ -27,7 +27,7 @@
                 </div>
                 <div class="main-list">
                     <div class="logo-area">
-                        <a href="">
+                        <a href="/shoekream/home">
                         <img src="/shoekream/resources/img/header/logo.svg">
                         </a>
                     </div>
@@ -194,7 +194,7 @@
                     <section>
                         <div class="section_unit">
                             <div class="section_title">
-                                <h3 class="title_txt">배송 주소</h3>
+                                <h3 class="title_txt">반송 주소</h3>
                                 <!-- <a class="add_more_btn">+ 새 주소 추가</a> -->
                             </div>
                             <div class="section_content">
@@ -210,7 +210,7 @@
                                                 <dd class="desc">${addInfo.phoneNumber}</dd>
                                             </div>
                                             <div class="info_box">
-                                                <dt class="title">배송 주소</dt>
+                                                <dt class="title">주소</dt>
                                                 <dd class="desc">${addInfo.addres}${addInfo.detailAddres}</dd>
                                             </div>
                                         </dl>

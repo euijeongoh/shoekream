@@ -12,6 +12,7 @@
 </head>
 <body>
 
+
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
 	<main>
@@ -23,7 +24,7 @@
                    로그인 정보
                    <div></div>
                </div>
-			 <form action="/shoekream/mypage/info" method="post" onsubmit="return checkValidation();">
+			 <form action="/shoekream/mypage/info" method="post">
 
                    	<div class="myinfo-input">
                        <div>아이디</div>
@@ -58,7 +59,7 @@
                    <div class="myinfo-input">
                        	<div>이메일</div>
                        	<div class="input-area">
-	                        <input class="input-box" type="text" name="email" value="<%=loginMember.getEmail()%>">
+	                        <input class="input-box" type="text" name="memberEmail" value="<%=loginMember.getEmail()%>">
                        	</div>
 						<div id="email_check"></div>                       
 <!--                        	<button id="send_email" onclick="sendEmail();">인증하기</button> -->
@@ -77,6 +78,14 @@
 	</main>
 	
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	
+	
+<script>
+const submitBtn = document.querySelector("#submit");
+submitBtn.addEventListener('click', () => {
+	alert("로그인 정보가 수정되었습니다.");
+});
+</script>
 	
 </body>
 </html>
