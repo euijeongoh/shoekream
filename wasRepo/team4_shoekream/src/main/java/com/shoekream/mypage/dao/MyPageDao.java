@@ -92,11 +92,11 @@ public class MyPageDao {
 			String memberNo = rs1.getString("MEMBER_NO");
 			String biddingNo = rs1.getString("BIDDING_NO");
 			String productNo = rs1.getString("PRODUCT_NO");
-			String productName = rs1.getString("NAME");
+			String productName = rs1.getString("PRODUCT_NAME");
 			String productImg = rs1.getString("THUMBNAIL");
 			String productSize = rs1.getString("SIZES");
 			String orderNo = rs1.getString("ORDER_NO");
-			String orderStatus = rs1.getString("ORDERSTATUS");
+			String orderStatus = rs1.getString("ORDER_STATUS");
 			String finalPrice = rs1.getString("PRICE");
 			String orderDate = rs1.getString("ORDERS_DATE");
 			

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 @WebServlet("/send/email")
 
@@ -112,8 +112,8 @@ public class EmailSendController extends HttpServlet{
 			map.put("authKey", authenticationKey);
 			map.put("mail", "ok");
 			
-			ObjectMapper mapper = new ObjectMapper();
-			String jsonData = mapper.writeValueAsString(map);
+			Gson gson = new Gson();
+			String jsonData = gson.toJson(map);
 			
 			out.write(jsonData);
 			
